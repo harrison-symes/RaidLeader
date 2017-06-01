@@ -30,9 +30,9 @@ You can check that this was successful by running `heroku apps` to view a list o
 
 #### Adding postgres
 
-Add postgresql (hobby dev) to your app through heroku.com
+Add postgresql (hobby dev) to your app at `https://dashboard.heroku.com/apps/[APP NAME HERE]/resources`
 
-Check tha is has been added by running `heroku addons` to ensure the postgresql db is added to your app
+Check that pg has been added by running `heroku addons` to ensure the postgresql db is on your app
 
 
 ### Deploying!
