@@ -1,10 +1,11 @@
 import React from 'react'
 
-const App = () => {
-  return (
-    <h1>React development has begun!</h1>
-  )
-}
+import Greetings from './Greetings'
+
+const App = () => (
+  <div className='app-container'>
+    <Greetings />
+  </div>
+)
 
 export default App
-

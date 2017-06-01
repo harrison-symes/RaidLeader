@@ -4,11 +4,10 @@ var env = process.env.NODE_ENV || 'development'
 var knex = require('knex')
 var config = require('../knexfile')[env]
 
-server.set('knex', knex(config))
+server.set('db', knex(config))
 
 var PORT = process.env.PORT || 3000
 
 server.listen(PORT, function () {
   console.log('Listening on port', PORT)
 })
-
