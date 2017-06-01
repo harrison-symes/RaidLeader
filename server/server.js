@@ -1,12 +1,12 @@
 var path = require('path')
 var express = require('express')
 var bodyParser = require('body-parser')
+const cors = require('cors')
 
 
 var greetings = require('./routes/greeting')
 
-var server = express()
-const cors = require('cors')
+
 const corsOptions = {
   origin: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -14,7 +14,9 @@ const corsOptions = {
   credentials: true
 }
 
+var server = express()
 server.use(cors(corsOptions))
+
 server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
