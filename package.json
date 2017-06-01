@@ -9,7 +9,10 @@
     "start": "node server/index",
     "test": "ava  -v 'test/**/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
-    "knex": "knex"
+    "h:deploy": "git push heroku master",
+    "h:migrate": "heroku run knex migrate:latest",
+    "h:rollback": "heroku run knex migrate:rollback",
+    "h:seed": "heroku run knex seed:run"
   },
   "ava": {
     "require": "babel-register",
