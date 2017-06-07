@@ -15,6 +15,9 @@ module.exports = (test, createServer) => {
 
   // Destroy the database connection after each test.
   test.afterEach(function (t) {
-    t.context.db.destroy()
+    return t.context.db.migrate.rollback()
+      .then(function () {
+        return t.context.db.destroy()
+      })
   })
 }

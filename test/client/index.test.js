@@ -6,3 +6,9 @@ import App from '../../client/components/App'
 import './setup-dom'
 
 App.prototype.componentDidMount = () => {}
+
+
+test('Heading renders on App', t => {
+  const wrapper = shallow(<App />)
+  t.is(wrapper.find('h1').text(), 'Hello')
+})
