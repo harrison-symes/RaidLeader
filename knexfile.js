@@ -9,6 +9,15 @@ module.exports = {
     },
     useNullAsDefault: true
   },
+
+  test: {
+       client: 'sqlite3',
+       connection: {
+         filename: ':memory:'
+       },
+       useNullAsDefault: true
+     },
+
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
