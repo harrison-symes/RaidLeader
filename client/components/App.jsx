@@ -5,7 +5,7 @@ import Greetings from './Greetings'
 const App = () => (
   <Router>
     <div className='app-container'>
-      <h1>Hello</h1>
+      <h1>Hello World</h1>
       <Route exact path="/" component={Greetings} />
     </div>
   </Router>
