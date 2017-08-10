@@ -5,7 +5,7 @@
   "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
   "main": "server/index.js",
   "scripts": {
-    "postinstall": "node server/index",
+    "postinstall": "webpack",
     "dev": "nodemon --watch server server/index & webpack --watch",
     "start": "node server/index",
     "test": "ava  -v  --serial 'test/**/*.test.js'",
