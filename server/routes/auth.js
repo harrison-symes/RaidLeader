@@ -18,6 +18,6 @@ function register (req, res, next) {
 
 
 
-// router.post('/login', )
+router.post('/login', token.issue)
 
 module.exports = router
