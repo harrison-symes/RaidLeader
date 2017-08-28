@@ -25,10 +25,14 @@ class Register extends React.Component {
       <form className="Register" onSubmit={this.submit}>
         <label>Username:
           <input type="text" name="user_name" onChange={this.updateDetails}/>
+        </label><br/>
+        <label>Password:
           <input type="password" name="password" onChange={this.updateDetails}/>
+        </label><br/>
+        <label>Confirm:
           <input type="password" name="confirm_password" onChange={this.updateDetails}/>
+        </label><br/>
           <input type="submit" />
-        </label>
       </form>
     )
   }
