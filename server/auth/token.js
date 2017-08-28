@@ -3,7 +3,7 @@ var {getUserByName} = require('../db/users')
 var verifyJwt = require('express-jwt')
 
 function issue (req, res) {
-  getUserByName(req.body.username, req.app.get('db'))
+  getUserByName(req.body.user_name, req.app.get('db'))
     .then(user => {
       var token = createToken(user, process.env.JWT_SECRET)
       res.json({
