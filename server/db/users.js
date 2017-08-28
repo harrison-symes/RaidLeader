@@ -1,7 +1,7 @@
 var hash = require('../auth/hash')
 
 function createUser (username, password, db) {
-  return new Promise (resolve, reject) {
+  return new Promise ((resolve, reject) => {
     hash.generate(password, (err, hash) => {
       if (err) reject(err)
       db('users')
@@ -9,7 +9,7 @@ function createUser (username, password, db) {
         .then(user_id => resolve(user_id))
     })
 
-  }
+  })
 }
 
 function userExists (username, db) {
