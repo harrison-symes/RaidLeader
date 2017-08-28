@@ -52,6 +52,7 @@
     "jsdom": "^11.0.0",
     "jsonwebtoken": "^7.4.3",
     "jsx-loader": "^0.13.2",
+    "jwt-decode": "^2.2.0",
     "knex": "^0.13.0",
     "passport": "^0.4.0",
     "pg": "^6.2.3",
