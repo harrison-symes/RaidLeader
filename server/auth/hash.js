@@ -4,10 +4,11 @@ function generate(password, cb) {
   bcrypt.hash(password, 12, cb)
 }
 
-function compare (hash, password) {
-  
+function compare (password, hash, cb) {
+  bcrypt.compare(password, hash, cb)
 }
 
 module.exports = {
-  generate
+  generate,
+  compare
 }
