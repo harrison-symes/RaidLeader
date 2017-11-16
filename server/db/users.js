@@ -15,7 +15,7 @@ function userExists (user_name, db) {
   console.log({user_name});
   return db('users')
     .where('user_name', user_name)
-    .then(user => return !!user)
+    .then(user => !!user)
 }
 
 function getUserByName (user_name, db) {
