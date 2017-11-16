@@ -1,11 +1,19 @@
-# A starter webpack project for React, Redux, Express and Knex
+# A starter webpack project for React, Redux, Express and Knex, Auth
 
-This is a rad base for starting a new full-stack project, or just as reference for how to do things the Harrison way (which is with absolutely no test folder, I'll leave that one to Alan)
+This is a rad base for starting a new full-stack project + Auth, or just as reference for how to do things the Harrison way (which is with absolutely no test folder, I'll leave that one to Alan)
 
 * Fork this repo to your github
 * Rename your repo according to the app you're building
-* Clone your forked repo down
-* Run the following commands in your terminal
+
+To start a new project:
+  * Make a new repo on github
+  * `git clone https://github.com/harrison-symes/auth-plates.git <NEW REPO NAME HERE>`
+  * `git remote remove origin`
+  * `git remote add origin <NEW REPO URL HERE`
+  * `git remote -v` to see your remotes
+  * `git push origin master` to push the boilerplate code to your new repo
+
+Run the following commands in your terminal:
 
 ```sh
 npm install
