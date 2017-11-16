@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {registerUserRequest} from '../actions/register'
 
 class Register extends React.Component {
   constructor(props) {
@@ -17,8 +18,9 @@ class Register extends React.Component {
   }
   submit(e) {
     e.preventDefault()
+    e.target.reset()
     let {user_name, password, confirm_password} = this.state
-    console.log("passwords match: ", password == confirm_password);
+    if (password == confirm_password) this.props.dispatch(registerUserRequest({user_name, password}))
   }
   render() {
     return (
