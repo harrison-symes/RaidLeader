@@ -14,11 +14,8 @@ function createUser (user_name, password, db) {
 function userExists (user_name, db) {
   console.log({user_name});
   return db('users')
-    .count('id as n')
     .where('user_name', user_name)
-    .then(count => {
-      return count[0].n > 0
-    })
+    .then(user => return !!user)
 }
 
 function getUserByName (user_name, db) {
