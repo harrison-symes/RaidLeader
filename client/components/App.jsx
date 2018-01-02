@@ -6,6 +6,7 @@ import Login from './Login'
 import Register from './Register'
 import Home from './Home'
 import Nav from './Nav'
+import Game from './Game'
 
 const App = ({auth}) => (
   <Router>
@@ -14,6 +15,7 @@ const App = ({auth}) => (
       <Route path="/" component={Nav} />
       {auth.isAuthenticated
         ? <Switch>
+          <Route path="/game" component={Game} />
           <Route path="/" component={Home} />
         </Switch>
         : <div>

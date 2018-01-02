@@ -1,0 +1,36 @@
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+class Game extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      started: false,
+      interval: null
+    }
+    this.startGame = this.startGame.bind(this)
+  }
+  startGame () {
+    this.setState({started: true})
+  }
+  render () {
+    const {started} = this.state
+    return <div className="game">
+      {!started && <button onClick={this.startGame}>Start</button>}
+    </div>
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game)
