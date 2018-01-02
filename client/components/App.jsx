@@ -1,19 +1,34 @@
 import React from 'react'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 import Login from './Login'
 import Register from './Register'
+import Home from './Home'
 import Nav from './Nav'
 
-const App = () => (
+const App = ({auth}) => (
   <Router>
     <div className='app-container'>
       <h1>Hello World</h1>
       <Route path="/" component={Nav} />
-      <Route path="/login" component={Login} />
-      <Route path="/Register" component={Register} />
+      {auth.isAuthenticated
+        ? <Switch>
+          <Route path="/" component={Home} />
+        </Switch>
+        : <div>
+          <Route path="/login" component={Login} />
+          <Route path="/Register" component={Register} />
+        </div>
+      }
     </div>
   </Router>
 )
 
-export default App
+const mapStateToProps = ({auth}) => {
+  return {
+    auth
+  }
+}
+
+export default connect(mapStateToProps)(App)
