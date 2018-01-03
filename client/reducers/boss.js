@@ -4,25 +4,36 @@ const testBoss = {
   hp: 40,
   initPower: 2,
   power: 2,
-  initArmor: 1,
-  armor: 1,
+  initArmor: 15,
+  armor: 15,
   maxMana: 10,
   mana: 0,
-  manaRegen: 1
+  manaRegen: 1,
+  armorRegen: 3,
 }
 
 export default function boss (state = testBoss, action) {
   let newState = {...state}
   switch(action.type) {
-    case 'TICK_ONE_SECOND':
-      if (state.mana == state.maxMana) state.mana = state.maxMana
+    case 'BOSS_GAIN_ARMOR':
+      newState.armor+=action.amount
+      if (newState.armor >= newState.initArmor) newState.armor = newState.initArmor
+      return newState
+    case 'BOSS_GAIN_MANA':
+      newState.mana+=action.amount
+      if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
     case 'PHYSICAL_ATTACK_BOSS':
-      console.log({newState, action});
       let damage = action.power - newState.armor
-      if (damage < 1) damage = 1
+      if (damage < 1) damage = 0
       newState.hp = newState.hp - damage
-      console.log({newState});
+      newState.armor-=1
+      if (newState.armor < 0) newState.armor = 0
+      return newState
+    case 'SPECIAL_ATTACK_BOSS':
+      damage = action.power
+      if (newState.armor == 0) damage*=2
+      newState.hp = newState.hp - damage
       return newState
     default: return state
   }

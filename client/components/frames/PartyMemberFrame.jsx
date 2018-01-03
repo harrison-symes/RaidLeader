@@ -14,6 +14,9 @@ class MemberFrame extends Component {
     console.log("attack");
     this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
   }
+  specialAttack() {
+    this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: this.props.member.power})
+  }
   singleHeal(power, target) {
     console.log("heal")
     this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
@@ -45,28 +48,37 @@ class MemberFrame extends Component {
       case 'Monk':
         attackType = 'healAll'
         break;
+      case 'Mage':
+        attackType = 'special'
+        break;
       default:
         attackType = 'physical'
     }
     let interval = null
     console.log({heroClass, attackType});
     if (attackType == 'heal') this.startHealing()
+    else if (attackType == 'healAll') {
+      interval = setInterval(() => this.healAll(power), 10000 / speed)
+      this.setState({interval})
+    }
+    else if (attackType == 'special') {
+      interval = setInterval(() => this.specialAttack(power), 10000 / speed)
+      this.setState({interval})
+    }
     else if (attackType == 'physical') {
       interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
       this.setState({interval})
     }
-    else if (attackType == 'healAll') {
-      interval = setInterval(() => this.healAll(power), 10000 / speed)
-    }
+
   }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) this.startFighting()
   }
   render() {
-    const {member} = this.props
+    const {member, dispatch, friendlyTarget} = this.props
     console.log({member});
     const {initHp, hp, name} = member
-    return <div className="box MemberFrame">
+    return <div className={`column button MemberFrame ${friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <h1 className="title is-3">{name}</h1>
       <div className="columns">
         {member.heroClass}
@@ -76,10 +88,11 @@ class MemberFrame extends Component {
   }
 }
 
-const mapStateToProps = ({started, party}) => {
+const mapStateToProps = ({started, party, friendlyTarget}) => {
   return {
     started,
-    party
+    party,
+    friendlyTarget
   }
 }
 

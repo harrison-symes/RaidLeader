@@ -5,11 +5,15 @@ import boss from './boss'
 import player from './player'
 import party from './party'
 import started from './started'
+import selectedSpell from './selectedSpell'
+import friendlyTarget from './friendlyTarget'
 
 export default combineReducers({
   auth,
   boss,
   player,
   party,
-  started
+  started,
+  selectedSpell,
+  friendlyTarget
 })

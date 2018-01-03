@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import HealthBar from './HealthBar'
 import ManaBar from './ManaBar'
+import PlayerSpellBar from './PlayerSpellBar'
 
 class PlayerFrame extends Component {
   constructor(props) {
@@ -11,14 +12,14 @@ class PlayerFrame extends Component {
 
   render() {
     const {player} = this.props
-    const {initHp, hp, maxMana, mana} = player
+    const {initHp, hp, maxMana, mana, spells} = player
     return <div className="section PlayerFrame">
       <div className="columns">
-        <div className="column is-4">
+        <div className="column is-3">
           haha
         </div>
-        <div className="column is-8">
-          <h1>Player</h1>
+        <div className="column is-9">
+          <PlayerSpellBar spells={spells}/>
         </div>
       </div>
       <div className="columns">
@@ -33,9 +34,10 @@ class PlayerFrame extends Component {
   }
 }
 
-const mapStateToProps = ({player}) => {
+const mapStateToProps = ({player, selectedSpell}) => {
   return {
-    player
+    player,
+    selectedSpell
   }
 }
 

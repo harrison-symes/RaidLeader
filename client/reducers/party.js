@@ -1,22 +1,24 @@
 const testParty = [
   createMember('JeffPaladin', 'Paladin', 20, 2, 2, 2),
   createMember('JeffPriest', 'Priest', 15, 0, 5, 1),
-  createMember('JeffPriest', 'Monk', 20, 0, 3, 1)
+  createMember('JeffMonk', 'Monk', 20, 0, 3, 1),
+  createMember('JeffRogue', 'Rogue', 15, 0, 6, 1),
+  createMember('JeffMage', 'Mage', 10, 0, 3, 2)
 ]
 
 function createMember (name, heroClass, hp, armor, speed, power) {
   return  {
-      name,
-      heroClass,
-      initHp: hp,
-      hp: hp -10,
-      initArmor: armor,
-      armor,
-      initSpeed: speed,
-      speed,
-      initPower: power,
-      power
-    }
+    name,
+    heroClass,
+    initHp: hp,
+    hp: hp -10,
+    initArmor: armor,
+    armor,
+    initSpeed: speed,
+    speed,
+    initPower: power,
+    power
+  }
 }
 
 export default function party (state = testParty, action) {

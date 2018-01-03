@@ -13,3 +13,17 @@
 .BossFrame, .PlayerFrame, .PartyFrame {
   height: 33%;
 }
+
+
+.PlayerSpellBar {
+  height: 10vh;
+}
+
+.MemberFrame {
+  height: 15vh;
+}
+
+.PlayerSpell {
+  height: 10vh;
+  width: 10vw;
+}
