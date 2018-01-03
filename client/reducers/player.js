@@ -15,7 +15,16 @@ const testPlayer = {
       cast: 2,
       cost: 10,
       coolDown: 1,
-      type: 'heal'
+      type: 'heal',
+      singleTarget: true
+    },
+    {
+      name: 'circle',
+      cast: 3,
+      cost: 20,
+      coolDown: 5,
+      type: 'heal',
+      singleTarget: false
     }
   ]
 }

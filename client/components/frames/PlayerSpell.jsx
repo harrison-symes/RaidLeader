@@ -15,6 +15,18 @@ class PlayerSpell extends Component {
     this.tickCast = this.tickCast.bind(this)
     this.tickCD = this.tickCD.bind(this)
   }
+  castSwitch(target) {
+    const {spell, dispatch} = this.props
+    if (spell.type == 'heal') {
+      switch(spell.name) {
+        case 'circle':
+          return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power})
+        default:
+          return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power: this.props.player.power})
+      }
+    }
+
+  }
   tickCD() {
     let {currentCD, cooldownInterval} = this.state
     currentCD+= 0.1
@@ -31,8 +43,8 @@ class PlayerSpell extends Component {
     let {currentCastTime, target, castInterval} = this.state
     currentCastTime+= 0.1
     if (currentCastTime >= this.props.spell.cast) {
+      this.castSwitch(target)
       this.props.dispatch({type: 'CAST_SPELL', spell: this.props.spell, target})
-      if (this.props.spell.type == 'heal') this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power: this.props.player.power})
       clearInterval(castInterval)
       this.setState({currentCD: 0, currentCastTime: 0, castInterval: null, onCooldown: true})
       this.startCooldown()
@@ -46,7 +58,7 @@ class PlayerSpell extends Component {
   }
   clickSpell() {
     console.log("click spell");
-    if (this.props.friendlyTarget && !this.state.onCooldown) {
+    if (((this.props.spell.singleTarget && this.props.friendlyTarget) || !this.props.spell.singleTarget) && !this.state.onCooldown) {
       this.startCasting()
     }
   }
@@ -58,10 +70,13 @@ class PlayerSpell extends Component {
         <thead className='thead'>
           <th className="th title is-3">({idx}) {spell.name}</th>
         </thead>
-
         <tfoot className="tfoot">
-          {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-          {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
+          <tr>
+            <td>
+              {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
+              {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
+            </td>
+          </tr>
         </tfoot>
       </table>
     </div>
