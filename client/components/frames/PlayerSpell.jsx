@@ -34,7 +34,7 @@ class PlayerSpell extends Component {
       this.props.dispatch({type: 'CAST_SPELL', spell: this.props.spell, target})
       if (this.props.spell.type == 'heal') this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power: this.props.player.power})
       clearInterval(castInterval)
-      this.setState({currentCD: 0, currentCastTime: 0, castInterval: null, onCooldown: true, target: null})
+      this.setState({currentCD: 0, currentCastTime: 0, castInterval: null, onCooldown: true})
       this.startCooldown()
     } else this.setState({currentCastTime})
   }
@@ -46,17 +46,36 @@ class PlayerSpell extends Component {
   }
   clickSpell() {
     console.log("click spell");
-    if (this.props.friendlyTarget) {
+    if (this.props.friendlyTarget && !this.state.onCooldown) {
       this.startCasting()
     }
   }
   render() {
     const {spell, selectedSpell, dispatch, idx} = this.props
-    const {onCooldown} = this.state
+    const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     return <div className={`PlayerSpell button ${onCooldown ? 'is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'}`} onClick={() => this.clickSpell()}>
-      <p className="title is-3">({idx}) {spell.name}</p>
+      <table className="table">
+        <thead className='thead'>
+          <th className="th title is-3">({idx}) {spell.name}</th>
+        </thead>
+
+        <tfoot className="tfoot">
+          {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
+          {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
+        </tfoot>
+      </table>
     </div>
   }
+}
+
+function CoolDownBar ({spell, currentCD}) {
+  const percent = 100 - (currentCD / spell.coolDown * 100)
+  return <progress className={`SpellCooldDown progress is-danger`} max="100" value={percent}>{percent}%</progress>
+}
+
+function CastBar ({spell, currentCastTime}) {
+  const percent = (currentCastTime / spell.cast * 100)
+  return <progress className={`SpellCooldDown progress is-primary`} max="100" value={percent}>{percent}%</progress>
 }
 
 const mapStateToProps = ({player, selectedSpell, friendlyTarget}) => {

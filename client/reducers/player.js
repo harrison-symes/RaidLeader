@@ -1,8 +1,8 @@
 const testPlayer = {
   initHp: 100,
   hp: 60,
-  initPower: 2,
-  power: 2,
+  initPower: 5,
+  power: 5,
   initArmor: 1,
   armor: 1,
   maxMana: 100,
@@ -14,7 +14,7 @@ const testPlayer = {
       name: 'heal',
       cast: 2,
       cost: 10,
-      coolDown: 0,
+      coolDown: 1,
       type: 'heal'
     }
   ]

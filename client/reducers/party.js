@@ -25,7 +25,7 @@ export default function party (state = testParty, action) {
   let newState = [...state]
   switch(action.type) {
     case 'HEAL_FRIENDLY_TARGET':
-      const target = newState.find(member => member == action.target)
+      const target = newState.find(member => member.name == action.target.name)
       target.hp = target.hp + action.power
       if (target.hp > target.initHp) target.hp = target.initHp
       return newState
