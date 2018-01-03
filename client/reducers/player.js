@@ -1,6 +1,6 @@
 const testPlayer = {
   initHp: 100,
-  hp: 100,
+  hp: 60,
   initPower: 2,
   power: 2,
   initArmor: 1,
@@ -23,6 +23,10 @@ export default function player (state = testPlayer, action) {
     case 'TICK_ONE_SECOND':
       newState.mana++
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
+      return newState
+    case 'HEAL_ALL_FRIENDLY':
+      newState.hp+= action.power
+      if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     default: return state
   }

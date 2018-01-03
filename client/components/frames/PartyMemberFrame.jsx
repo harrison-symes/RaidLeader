@@ -14,11 +14,16 @@ class MemberFrame extends Component {
     console.log("attack");
     this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
   }
-  heal(power, target) {
+  singleHeal(power, target) {
     console.log("heal")
     this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
     console.log("healing", target);
     if (this.props.started) this.startHealing()
+  }
+  healAll(power) {
+    console.log("heal")
+    this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+    console.log("healingall ");
   }
   startHealing() {
     const {power, speed} = this.props.member
@@ -28,14 +33,17 @@ class MemberFrame extends Component {
       if (member.initHp - member.hp > target.initHp - target.hp) target = member
     })
     console.log("start healing", target);
-    setTimeout(() => this.heal(power, target), 10000 / speed)
+    setTimeout(() => this.singleHeal(power, target), 10000 / speed)
   }
   startFighting () {
-    const {heroClass, power} = this.props.member
+    const {heroClass, power, speed} = this.props.member
     let attackType
     switch(heroClass) {
       case 'Priest':
         attackType = 'heal';
+        break;
+      case 'Monk':
+        attackType = 'healAll'
         break;
       default:
         attackType = 'physical'
@@ -44,8 +52,11 @@ class MemberFrame extends Component {
     console.log({heroClass, attackType});
     if (attackType == 'heal') this.startHealing()
     else if (attackType == 'physical') {
-      interval = setInterval(() => this.physicalAttack(power), 10000 / this.props.member.speed)
+      interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
       this.setState({interval})
+    }
+    else if (attackType == 'healAll') {
+      interval = setInterval(() => this.healAll(power), 10000 / speed)
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -53,8 +64,8 @@ class MemberFrame extends Component {
   }
   render() {
     const {member} = this.props
-    const {initHp, hp, name} = member
     console.log({member});
+    const {initHp, hp, name} = member
     return <div className="box MemberFrame">
       <h1 className="title is-3">{name}</h1>
       <div className="columns">

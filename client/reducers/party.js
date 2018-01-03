@@ -1,6 +1,7 @@
 const testParty = [
-  createMember('JeffTank', 'Paladin', 20, 2, 2, 2),
-  createMember('JeffHeal', 'Priest', 15, 0, 5, 1)
+  createMember('JeffPaladin', 'Paladin', 20, 2, 2, 2),
+  createMember('JeffPriest', 'Priest', 15, 0, 5, 1),
+  createMember('JeffPriest', 'Monk', 20, 0, 3, 1)
 ]
 
 function createMember (name, heroClass, hp, armor, speed, power) {
@@ -25,6 +26,13 @@ export default function party (state = testParty, action) {
       const target = newState.find(member => member == action.target)
       target.hp = target.hp + action.power
       if (target.hp > target.initHp) target.hp = target.initHp
+      return newState
+    case 'HEAL_ALL_FRIENDLY':
+      newState = newState.map(member => {
+        member.hp = member.hp + action.power
+        if (member.hp > member.initHp) member.hp = member.initHp
+        return member
+      })
       return newState
     default: return state
   }
