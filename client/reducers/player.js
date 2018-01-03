@@ -1,3 +1,5 @@
+import spells from '../utils/spells'
+
 const testPlayer = {
   initHp: 100,
   hp: 60,
@@ -10,24 +12,9 @@ const testPlayer = {
   manaRegen: 1,
   isCasting: false,
   spells: [
-    {
-      name: 'heal',
-      cast: 2,
-      cost: 10,
-      coolDown: 1,
-      type: 'heal',
-      singleTarget: true,
-      powerRatio: 1
-    },
-    {
-      name: 'circle',
-      cast: 3,
-      cost: 20,
-      coolDown: 5,
-      type: 'heal',
-      singleTarget: false,
-      powerRatio: 1
-    }
+    spells.Heal,
+    spells['Healing Ring'],
+    spells.Fireball
   ]
 }
 

@@ -25,6 +25,11 @@ class PlayerSpell extends Component {
         default:
           return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
       }
+    } else if (spell.type = 'damage') {
+      switch(spell.name) {
+        default:
+          return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+      }
     }
   }
   tickCD() {
