@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import BossFrame from './frames/BossFrame'
+import PlayerFrame from './frames/PlayerFrame'
+import PartyFrame from './frames/PartyFrame'
+
 class Game extends Component {
   constructor(props) {
     super(props)
@@ -16,6 +20,9 @@ class Game extends Component {
   render () {
     const {started} = this.state
     return <div className="game">
+      <BossFrame />
+      <PartyFrame />
+      <PlayerFrame />
       {!started && <button onClick={this.startGame}>Start</button>}
     </div>
   }
