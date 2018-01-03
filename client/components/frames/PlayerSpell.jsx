@@ -18,18 +18,20 @@ class PlayerSpell extends Component {
   castSwitch(target) {
     const {spell, dispatch} = this.props
     const power = this.props.player.power * spell.powerRatio
-    if (spell.type == 'heal') {
-      switch(spell.name) {
-        case 'circle':
-          return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
-        default:
-          return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-      }
-    } else if (spell.type = 'damage') {
-      switch(spell.name) {
-        default:
-          return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
-      }
+    switch(spell.name) {
+      case 'Heal':
+        return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+      case 'Circle':
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+      case 'Bind':
+        dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'HEAL_PLAYER', power})
+      case 'Fireball':
+        return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+      case 'Life Tap':
+        dispatch({type: 'PLAYER_GAIN_MANA', power})
+        return dispatch({type: 'DAMAGE_PLAYER', power})
+      default: return
     }
   }
   tickCD() {
@@ -56,33 +58,38 @@ class PlayerSpell extends Component {
     } else this.setState({currentCastTime})
   }
   startCasting() {
-    console.log("start casting");
     this.props.dispatch({type: 'START_CASTING', spell: this.props.spell})
     const interval = setInterval(this.tickCast, 100)
     this.setState({castInterval: interval, target: this.props.friendlyTarget})
   }
   clickSpell() {
-    console.log("click spell");
-    if (((this.props.spell.singleTarget && this.props.friendlyTarget) || !this.props.spell.singleTarget) && !this.state.onCooldown) {
+    const {spell, player, friendlyTarget, started} = this.props
+    if (started && ((spell.singleTarget && friendlyTarget) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
       this.startCasting()
     }
+    else console.log("conditions not met", {spell, player, friendlyTarget});
   }
   render() {
-    const {spell, selectedSpell, dispatch, idx} = this.props
+    const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
-    return <div className={`PlayerSpell button ${onCooldown ? 'is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'}`} onClick={() => this.clickSpell()}>
+    const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    return <div
+      className={`PlayerSpell button ${spellColour}`}
+      onClick={() => this.clickSpell()}>
       <table className="table">
-        <thead className='thead'>
-          <th className="th title is-3">({idx}) {spell.name}</th>
+        <thead className='thead has-text-centered'>
+          <th className="th subtitle is-5 has-text-centered">({idx}) {spell.name}</th>
         </thead>
-        <tfoot className="tfoot">
-          <tr>
-            <td>
-              {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-              {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
-            </td>
-          </tr>
-        </tfoot>
+        {(onCooldown || castInterval) &&
+          <tfoot className="tfoot">
+            <tr>
+              <td>
+                {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
+                {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
+              </td>
+            </tr>
+          </tfoot>
+        }
       </table>
     </div>
   }
@@ -90,16 +97,17 @@ class PlayerSpell extends Component {
 
 function CoolDownBar ({spell, currentCD}) {
   const percent = 100 - (currentCD / spell.coolDown * 100)
-  return <progress className={`SpellCooldDown progress is-danger`} max="100" value={percent}>{percent}%</progress>
+  return <progress className={`SpellCooldDown is-large progress is-danger`} max="100" value={percent}>{percent}%</progress>
 }
 
 function CastBar ({spell, currentCastTime}) {
   const percent = (currentCastTime / spell.cast * 100)
-  return <progress className={`SpellCooldDown progress is-primary`} max="100" value={percent}>{percent}%</progress>
+  return <progress className={`SpellCooldDown is-large progress is-primary`} max="100" value={percent}>{percent}%</progress>
 }
 
-const mapStateToProps = ({player, selectedSpell, friendlyTarget}) => {
+const mapStateToProps = ({started, player, selectedSpell, friendlyTarget}) => {
   return {
+    started,
     player,
     selectedSpell,
     friendlyTarget

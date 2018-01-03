@@ -24,8 +24,8 @@
 }
 
 .PlayerSpell {
-  height: 10vh;
-  width: 10vw;
+  height: 80px;
+  width: 200px;
 }
 
 .SpellCooldDown {

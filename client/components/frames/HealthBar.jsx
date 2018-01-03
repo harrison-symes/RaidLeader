@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 
 const HealthBar = ({maxHP, hp}) => {
   const percent = hp/maxHP * 100
-  console.log({maxHP, hp, percent})
   const colourClass = percent > 1/3*100
     ? percent > 2/3*100
       ? percent == 100

@@ -14,7 +14,9 @@ const testPlayer = {
   spells: [
     spells.Heal,
     spells['Healing Ring'],
-    spells.Fireball
+    spells.Fireball,
+    spells.Bind,
+    spells['Life Tap']
   ]
 }
 
@@ -45,7 +47,17 @@ export default function player (state = testPlayer, action) {
       newState.isCasting = false
       newState.mana-=action.spell.cost
       return newState
-
+    case 'HEAL_PLAYER':
+      newState.hp+= action.power
+      if (newState.hp > newState.initHp) newState.hp = newState.initHp
+      return newState
+    case 'DAMAGE_PLAYER':
+      newState.hp-= action.power
+      return newState
+    case 'PLAYER_GAIN_MANA':
+      newState.mana += action.power
+      if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
+      return newState
     default: return state
   }
 }

@@ -13,7 +13,6 @@ class BossFrame extends Component {
     }
   }
   startTicking() {
-    console.log("start ticking boss");
     let manaInterval = setInterval(() => this.props.dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
     let armorInterval = setInterval(() => this.props.dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.manaRegen)
   }
