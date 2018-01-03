@@ -7,15 +7,18 @@ class PlayerFrame extends Component {
   }
 
   render() {
-    return <div>
-      Player
+    const {player} = this.props
+    console.log({player});
+    return <div className="container">
+      <h1>Player</h1>
+      <h1>Hp: {player.hp}</h1>
     </div>
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({player}) => {
   return {
-
+    player
   }
 }
 

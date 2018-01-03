@@ -7,15 +7,17 @@ class PartyFrame extends Component {
   }
 
   render() {
+    const {party} = this.props
     return <div>
       Party
+      <h1>party count: {party.length}</h1>
     </div>
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({party}) => {
   return {
-
+    party
   }
 }
 
