@@ -7,15 +7,17 @@ class BossFrame extends Component {
   }
 
   render() {
+    const {boss} = this.props
     return <div>
-      Boss
+      <h1>Boss</h1>
+      <p>boss hp: {boss.hp}</p>
     </div>
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({boss}) => {
   return {
-
+    boss
   }
 }
 
