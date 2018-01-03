@@ -13,6 +13,12 @@ class Game extends Component {
     }
     this.startGame = this.startGame.bind(this)
   }
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.started && nextProps.started) {
+      let interval = this.setInterval(() => this.props.dispatch({type: 'TICK_ONE_SECOND'}), 1000)
+      this.setState({interval})
+    }
+  }
   startGame () {
     this.props.dispatch({type: 'START'})
   }

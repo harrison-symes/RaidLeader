@@ -1,6 +1,6 @@
 const testParty = [
-  createMember('Jeff', 'Paladin', 20, 2, 2, 2),
-  createMember('Jeff2', 'Paladin', 20, 2, 2, 2)
+  createMember('JeffTank', 'Paladin', 20, 2, 2, 2),
+  createMember('JeffHeal', 'Priest', 20, 2, 2, 2)
 ]
 
 function createMember (name, heroClass, hp, armor, speed, power) {
@@ -8,7 +8,7 @@ function createMember (name, heroClass, hp, armor, speed, power) {
       name,
       heroClass,
       initHp: hp,
-      hp,
+      hp: hp -10,
       initArmor: armor,
       armor,
       initSpeed: speed,
@@ -19,7 +19,13 @@ function createMember (name, heroClass, hp, armor, speed, power) {
 }
 
 export default function party (state = testParty, action) {
+  let newState = [...state]
   switch(action.type) {
+    case 'HEAL_FRIENDLY_TARGET':
+      const target = newState.find(member => member == action.target)
+      target.hp = target.hp + action.power
+      if (target.hp > target.initHp) target.hp = target.initHp
+      return newState
     default: return state
   }
 }

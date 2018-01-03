@@ -16,8 +16,10 @@ export default function boss (state = testBoss, action) {
   switch(action.type) {
     case 'TICK_ONE_SECOND':
       if (state.mana == state.maxMana) state.mana = state.maxMana
-    case 'PARTY_ATTACK':
-      newState.hp = newState.hp - action.power
+    case 'PHYSICAL_ATTACK_BOSS':
+      let damage = action.power - newState.armor
+      if (damage < 1) damage = 1
+      newState.hp = newState.hp - damage
       return newState
     default: return state
   }

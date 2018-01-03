@@ -18,8 +18,12 @@ const testPlayer = {
 }
 
 export default function player (state = testPlayer, action) {
+  let newState = {...state}
   switch (action.type) {
-
+    case 'TICK_ONE_SECOND':
+      newState.mana++
+      if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
+      return newState
     default: return state
   }
 }
