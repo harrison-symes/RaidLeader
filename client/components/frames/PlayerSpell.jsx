@@ -17,15 +17,15 @@ class PlayerSpell extends Component {
   }
   castSwitch(target) {
     const {spell, dispatch} = this.props
+    const power = this.props.player.power * spell.powerRatio
     if (spell.type == 'heal') {
       switch(spell.name) {
         case 'circle':
-          return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power})
+          return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
         default:
-          return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power: this.props.player.power})
+          return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
       }
     }
-
   }
   tickCD() {
     let {currentCD, cooldownInterval} = this.state
