@@ -12,7 +12,9 @@ const testBoss = {
 
 export default function boss (state = testBoss, action) {
   switch(action.type) {
-
+    case 'TICK_ONE_SECOND':
+      let newState = {...state}
+      if (state.mana == state.maxMana) state.mana = state.maxMana 
     default: return state
   }
 }
