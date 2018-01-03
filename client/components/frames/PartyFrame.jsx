@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import MemberFrame from './PartyMemberFrame'
+
 class PartyFrame extends Component {
   constructor(props) {
     super(props)
@@ -8,9 +10,10 @@ class PartyFrame extends Component {
 
   render() {
     const {party} = this.props
-    return <div>
-      Party
-      <h1>party count: {party.length}</h1>
+    return <div className="section PartyFrame">
+      <div className="columns">
+        {party.map((member, i) => <MemberFrame member={member} key={`member-${i}`} /> )}
+      </div>
     </div>
   }
 }

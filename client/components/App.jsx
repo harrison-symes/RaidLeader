@@ -11,7 +11,6 @@ import Game from './Game'
 const App = ({auth}) => (
   <Router>
     <div className='app-container'>
-      <h1>Hello World</h1>
       <Route path="/" component={Nav} />
       {auth.isAuthenticated
         ? <Switch>

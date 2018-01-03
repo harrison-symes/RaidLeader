@@ -1,6 +1,7 @@
 const testBoss = {
-  initHP: 100,
-  hp: 100,
+  name: 'Test-O-Saurus',
+  initHp: 100,
+  hp: 30,
   initPower: 2,
   power: 2,
   initArmor: 1,
@@ -11,10 +12,13 @@ const testBoss = {
 }
 
 export default function boss (state = testBoss, action) {
+  let newState = {...state}
   switch(action.type) {
     case 'TICK_ONE_SECOND':
-      let newState = {...state}
-      if (state.mana == state.maxMana) state.mana = state.maxMana 
+      if (state.mana == state.maxMana) state.mana = state.maxMana
+    case 'PARTY_ATTACK':
+      newState.hp = newState.hp - action.power
+      return newState
     default: return state
   }
 }

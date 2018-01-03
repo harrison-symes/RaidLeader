@@ -9,17 +9,17 @@ class Game extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      started: false,
       interval: null
     }
     this.startGame = this.startGame.bind(this)
   }
   startGame () {
-    this.setState({started: true})
+    this.props.dispatch({type: 'START'})
   }
   render () {
-    const {started} = this.state
-    return <div className="game">
+    const {started} = this.props
+    console.log(this.props);
+    return <div className="Game">
       <BossFrame />
       <PartyFrame />
       <PlayerFrame />
@@ -28,16 +28,11 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({started}) => {
   return {
-
+    started
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(mapStateToProps)(Game)

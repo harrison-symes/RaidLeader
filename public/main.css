@@ -1,0 +1,15 @@
+.app {
+  height: 100vh;
+}
+
+.Nav {
+  height: 5vh;
+}
+
+.Game {
+  height: 80vh;
+}
+
+.BossFrame, .PlayerFrame, .PartyFrame {
+  height: 33%;
+}

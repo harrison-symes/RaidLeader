@@ -1,5 +1,6 @@
 const testParty = [
-  createMember('Jeff', 'Paladin', 20, 2, 2, 2)
+  createMember('Jeff', 'Paladin', 20, 2, 2, 2),
+  createMember('Jeff2', 'Paladin', 20, 2, 2, 2)
 ]
 
 function createMember (name, heroClass, hp, armor, speed, power) {

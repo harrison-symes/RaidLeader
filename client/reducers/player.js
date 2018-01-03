@@ -1,12 +1,12 @@
 const testPlayer = {
-  initHP: 100,
+  initHp: 100,
   hp: 100,
   initPower: 2,
   power: 2,
   initArmor: 1,
   armor: 1,
   maxMana: 100,
-  mana: 0,
+  mana: 20,
   manaRegen: 1,
   spells: [
     {
