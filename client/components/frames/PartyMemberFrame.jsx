@@ -25,7 +25,7 @@ class MemberFrame extends Component {
     const {party} = this.props
     let target = party[0]
     party.forEach(member => {
-      if (member.hp < target.hp) target = member
+      if (member.initHp - member.hp > target.initHp - target.hp) target = member
     })
     console.log("start healing", target);
     setTimeout(() => this.heal(power, target), 10000 / speed)
