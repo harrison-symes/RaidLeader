@@ -23,6 +23,9 @@ class MemberFrame extends Component {
   healAll(power) {
     this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power})
   }
+  damageAllFriendly(power) {
+    this.props.dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+  }
   startHealing() {
     const {power, speed} = this.props.member
     const {party} = this.props
@@ -34,36 +37,35 @@ class MemberFrame extends Component {
   }
   startFighting () {
     const {heroClass, power, speed} = this.props.member
-    let attackType
+    let interval = null
     switch(heroClass) {
       case 'Priest':
-        attackType = 'heal';
+        this.startHealing();
         break;
       case 'Monk':
-        attackType = 'healAll'
+        interval = setInterval(() => {
+          if (heroClass == 'Monk') this.physicalAttack(power)
+          this.healAll(power)
+        }, 10000 / speed)
+        this.setState({interval})
         break;
       case 'Mage':
-        attackType = 'special'
+        interval = setInterval(() => this.specialAttack(power), 10000 / speed)
+        this.setState({interval})
+      case 'Warlock':
+        interval = setInterval(() => {
+          this.specialAttack(power)
+          this.damageAllFriendly(power/2)
+        }, 10000 / speed)
+        this.setState({interval})
+      case 'Paladin':
+        interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
+        this.setState({interval})
         break;
-      default:
-        attackType = 'physical'
-    }
-    let interval = null
-    if (attackType == 'heal') this.startHealing()
-    else if (attackType == 'healAll') {
-      interval = setInterval(() => {
-        if (heroClass == 'Monk') this.physicalAttack(power)
-        this.healAll(power)
-      }, 10000 / speed)
-      this.setState({interval})
-    }
-    else if (attackType == 'special') {
-      interval = setInterval(() => this.specialAttack(power), 10000 / speed)
-      this.setState({interval})
-    }
-    else if (attackType == 'physical') {
-      interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
-      this.setState({interval})
+      case 'Warrior':
+        interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
+        this.setState({interval})
+      default: return
     }
 
   }

@@ -39,6 +39,7 @@ export default function boss (state = testBoss, action) {
     case 'SPECIAL_ATTACK_BOSS':
       damage = action.power
       if (newState.armor == 0) damage*=2
+      else damage*=0.5
       newState.hp = newState.hp - damage
       return newState
     default: return state

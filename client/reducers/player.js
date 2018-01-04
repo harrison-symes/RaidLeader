@@ -15,8 +15,8 @@ const testSpellSet2 = [
 const testPlayer = {
   initHp: 100,
   hp: 60,
-  initPower: 5,
-  power: 5,
+  initPower: 2,
+  power: 2,
   initArmor: 1,
   armor: 1,
   maxMana: 100,
@@ -58,6 +58,9 @@ export default function player (state = testPlayer, action) {
       if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'DAMAGE_PLAYER':
+      newState.hp-= action.power
+      return newState
+    case 'DAMAGE_ALL_FRIENDLY':
       newState.hp-= action.power
       return newState
     case 'PLAYER_GAIN_MANA':
