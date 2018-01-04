@@ -12,15 +12,19 @@ class BossFrame extends Component {
       armorInterval: null
     }
   }
-  startTicking() {
-    let manaInterval = setInterval(() => this.props.dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
-    let armorInterval = setInterval(() => this.props.dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.manaRegen)
+  startTicking(dispatch) {
+    console.log("start ticking");
+    let manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
+    let armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
+    this.setState({manaInterval, armorInterval})
   }
   componentWillReceiveProps(nextProps) {
-    if (!this.props.started && nextProps.started) this.startTicking()
+    console.log({nextProps});
+    if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
   }
   render() {
     const {boss} = this.props
+    console.log({boss});
     const {name, hp, initHp, mana, maxMana, armor, initArmor} = boss
     return <div className="section BossFrame">
       <div className="columns">
@@ -40,16 +44,11 @@ class BossFrame extends Component {
   }
 }
 
-const mapStateToProps = ({boss}) => {
+const mapStateToProps = ({boss, started}) => {
   return {
-    boss
+    boss,
+    started
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BossFrame)
+export default connect(mapStateToProps)(BossFrame)

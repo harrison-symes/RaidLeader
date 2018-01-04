@@ -1,5 +1,17 @@
 import spells from '../utils/spells'
 
+const testSpellSet1 = [
+  spells.Heal
+]
+
+const testSpellSet2 = [
+  spells.Heal,
+  spells['Healing Ring'],
+  spells.Fireball,
+  spells.Bind,
+  spells['Life Tap']
+]
+
 const testPlayer = {
   initHp: 100,
   hp: 60,
@@ -11,13 +23,7 @@ const testPlayer = {
   mana: 100,
   manaRegen: 1,
   isCasting: false,
-  spells: [
-    spells.Heal,
-    spells['Healing Ring'],
-    spells.Fireball,
-    spells.Bind,
-    spells['Life Tap']
-  ]
+  spells: testSpellSet1
 }
 
 export default function player (state = testPlayer, action) {

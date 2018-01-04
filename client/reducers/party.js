@@ -1,19 +1,26 @@
 const testParty = [
-  createMember('JeffPaladin', 'Paladin', 20, 2, 2, 2),
-  createMember('JeffPriest', 'Priest', 15, 0, 5, 1),
-  createMember('JeffMonk', 'Monk', 20, 0, 3, 1),
-  createMember('JeffRogue', 'Rogue', 15, 0, 6, 1),
-  createMember('JeffMage', 'Mage', 10, 0, 3, 2)
+  createMember('JeffPaladin', 'Paladin', 10, 3, 3),
+  createMember('JeffPriest', 'Priest', 15, 5, 1),
+  createMember('JeffMonk', 'Monk', 20, 3, 1),
+  createMember('JeffRogue', 'Rogue', 15, 6, 1),
+  createMember('JeffMage', 'Mage', 10, 3, 2)
 ]
 
-function createMember (name, heroClass, hp, armor, speed, power) {
+const testParty1 = [
+  createPaladin('Level 1', 1),
+]
+console.log(createPaladin('blah', 4));
+
+function createPaladin (name, level) {
+  return createMember(name, 'Paladin', 5 + (level * 5), 1 + (level * 2), 3)
+}
+
+function createMember (name, heroClass, hp, power, speed) {
   return  {
     name,
     heroClass,
     initHp: hp,
-    hp: hp -10,
-    initArmor: armor,
-    armor,
+    hp,
     initSpeed: speed,
     speed,
     initPower: power,
@@ -21,7 +28,7 @@ function createMember (name, heroClass, hp, armor, speed, power) {
   }
 }
 
-export default function party (state = testParty, action) {
+export default function party (state = testParty1, action) {
   let newState = [...state]
   switch(action.type) {
     case 'HEAL_FRIENDLY_TARGET':

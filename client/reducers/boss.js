@@ -1,25 +1,31 @@
-const testBoss = {
-  name: 'Test-O-Saurus',
-  initHp: 100,
-  hp: 40,
-  initPower: 2,
-  power: 2,
-  initArmor: 15,
-  armor: 15,
-  maxMana: 10,
-  mana: 0,
-  manaRegen: 1,
-  armorRegen: 3,
+function createBoss (name, hp, power, armor, mana, maxMana, manaRegen, armorRegen) {
+  return {
+    name,
+    initHp: hp,
+    hp,
+    initPower: power,
+    power,
+    initArmor: armor,
+    armor,
+    mana,
+    maxMana,
+    manaRegen,
+    armorRegen
+  }
 }
+
+const testBoss = createBoss('Test-O-Saurus', 5, 5, 5, 5, 5, 5, 5)
 
 export default function boss (state = testBoss, action) {
   let newState = {...state}
   switch(action.type) {
     case 'BOSS_GAIN_ARMOR':
+    console.log("gain armor");
       newState.armor+=action.amount
       if (newState.armor >= newState.initArmor) newState.armor = newState.initArmor
       return newState
     case 'BOSS_GAIN_MANA':
+    console.log("gain mana");
       newState.mana+=action.amount
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
