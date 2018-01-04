@@ -21,6 +21,10 @@ const createRogue = (name, level) => createMember(name, 'Rogue', (level + 1) * 3
 
 const createMage = (name, level) => createMember(name, 'Mage', (level + 1) * 2, level * 2, 3)
 
+const createWarrior = (name, level) => createMember(name, 'Warrior', (level + 1) * 5, level * 3, 2)
+
+const createWarlock = (name, level) => createMember(name, 'Warlock', (level + 1) * 3, level * 2, 3)
+
 
 module.exports = (name, heroClass, level) => {
   switch(heroClass) {
@@ -29,6 +33,8 @@ module.exports = (name, heroClass, level) => {
     case 'Monk': return createMonk(name, level)
     case 'Rogue': return createRogue(name, level)
     case 'Mage': return createMage(name, level)
+    case 'Warrior': return createWarrior(name, level)
+    case 'Warlock': return createWarlock(name, level)
     default: return null
   }
 }

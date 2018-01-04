@@ -51,7 +51,10 @@ class MemberFrame extends Component {
     let interval = null
     if (attackType == 'heal') this.startHealing()
     else if (attackType == 'healAll') {
-      interval = setInterval(() => this.healAll(power), 10000 / speed)
+      interval = setInterval(() => {
+        if (heroClass == 'Monk') this.physicalAttack(power)
+        this.healAll(power)
+      }, 10000 / speed)
       this.setState({interval})
     }
     else if (attackType == 'special') {

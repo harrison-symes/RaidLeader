@@ -10,9 +10,9 @@ import createClass from '../utils/createClass'
 
 const testParty1 = [
   createClass('Paladin 1', 'Paladin', 1),
-  createClass('Priest 1', 'Priest', 1),
-  createClass('Rogue 1', 'Rogue', 1),
-  createClass('Mage 1', 'Mage', 1),
+  // createClass('Priest 1', 'Priest', 1),
+  // createClass('Rogue 1', 'Rogue', 1),
+  // createClass('Mage 1', 'Mage', 1),
   createClass('Monk 1', 'Monk', 1)
 ]
 
