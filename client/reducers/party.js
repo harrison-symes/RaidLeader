@@ -1,32 +1,20 @@
-const testParty = [
-  createMember('JeffPaladin', 'Paladin', 10, 3, 3),
-  createMember('JeffPriest', 'Priest', 15, 5, 1),
-  createMember('JeffMonk', 'Monk', 20, 3, 1),
-  createMember('JeffRogue', 'Rogue', 15, 6, 1),
-  createMember('JeffMage', 'Mage', 10, 3, 2)
-]
+import createClass from '../utils/createClass'
+
+// const testParty = [
+//   createClass('JeffPaladin', 4),
+//   createPriest('JeffPriest', 4),
+//   createMonk('JeffMonk', 4),
+//   createMember('JeffRogue', 'Rogue', 15, 6, 1),
+//   createMember('JeffMage', 'Mage', 10, 3, 2)
+// ]
 
 const testParty1 = [
-  createPaladin('Level 1', 1),
+  createClass('Paladin 1', 'Paladin', 1),
+  createClass('Priest 1', 'Priest', 1),
+  createClass('Rogue 1', 'Rogue', 1),
+  createClass('Mage 1', 'Mage', 1),
+  createClass('Monk 1', 'Monk', 1)
 ]
-console.log(createPaladin('blah', 4));
-
-function createPaladin (name, level) {
-  return createMember(name, 'Paladin', 5 + (level * 5), 1 + (level * 2), 3)
-}
-
-function createMember (name, heroClass, hp, power, speed) {
-  return  {
-    name,
-    heroClass,
-    initHp: hp,
-    hp,
-    initSpeed: speed,
-    speed,
-    initPower: power,
-    power
-  }
-}
 
 export default function party (state = testParty1, action) {
   let newState = [...state]
