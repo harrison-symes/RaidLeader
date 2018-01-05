@@ -64,6 +64,7 @@ export default function boss (state = testBoss, action) {
     case 'PHYSICAL_ATTACK_BOSS':
       let damage = action.power - newState.armor
       if (damage < 1) damage = 0
+      damage = Math.round(damage)
       newState.hp = newState.hp - damage
       newState.armor-=1
       if (newState.armor < 0) newState.armor = 0
@@ -72,6 +73,7 @@ export default function boss (state = testBoss, action) {
       damage = action.power
       if (newState.armor == 0) damage*=2
       else damage*=0.5
+      damage = Math.round(damage)
       newState.hp = newState.hp - damage
       return newState
     case 'BOSS_WANTS_TO_CAST':
@@ -89,6 +91,7 @@ export default function boss (state = testBoss, action) {
       if (!spell) return newState
       newState.isCasting = false
       newState.wantsToCast = null
+      newState.mana-=action.spell.cost
       spell.onCooldown = true
       return newState
     case 'BOSS_SPELL_FINISH_COOLDOWN':

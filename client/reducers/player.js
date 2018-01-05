@@ -23,7 +23,7 @@ const testPlayer = {
   mana: 100,
   manaRegen: 1,
   isCasting: false,
-  spells: testSpellSet1
+  spells: testSpellSet2
 }
 
 export default function player (state = testPlayer, action) {
@@ -42,26 +42,25 @@ export default function player (state = testPlayer, action) {
       // })
       return newState
     case 'HEAL_ALL_FRIENDLY':
-      newState.hp+= action.power
+      newState.hp+= Math.round(action.power)
       if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'START_CASTING':
       newState.isCasting = true
       return newState
     case 'CAST_SPELL':
-      console.log({action}, 'CAST SPELL');
       newState.isCasting = false
       newState.mana-=action.spell.cost
       return newState
     case 'HEAL_PLAYER':
-      newState.hp+= action.power
+      newState.hp+= Math.round(action.power)
       if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'DAMAGE_PLAYER':
-      newState.hp-= action.power
+      newState.hp-= Math.round(action.power)
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
-      newState.hp-= action.power
+      newState.hp-= Math.round(action.power)
       return newState
     case 'PLAYER_GAIN_MANA':
       newState.mana += action.power

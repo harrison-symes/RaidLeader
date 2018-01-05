@@ -35,8 +35,9 @@ class BossFrame extends Component {
   }
   startCast(props) {
     const {spells, speed, mana} = props.boss
-    setTimeout(() => {
-      props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: this.solveSpell(spells, props.boss)})
+    let spellToCast = this.solveSpell(spells, props.boss)
+    if (spellToCast) setTimeout(() => {
+       props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: this.solveSpell(spells, props.boss)})
     }, 10000 / speed)
   }
   startTicking(dispatch) {

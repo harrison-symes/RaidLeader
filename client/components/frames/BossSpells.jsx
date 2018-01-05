@@ -24,7 +24,7 @@ class PlayerSpell extends Component {
       case 'Swipe':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Protect':
-        return dispatch({type: 'BOSS_GAIN_ARMOR', power: spell.powerRatio})
+        return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.powerRatio})
       default: return
     }
   }

@@ -11,11 +11,11 @@ import createClass from '../utils/createClass'
 const testParty1 = [
   createClass('Paladin 1', 'Paladin', 1),
   // createClass('Priest 1', 'Priest', 1),
-  // createClass('Rogue 1', 'Rogue', 1),
+  createClass('Rogue 1', 'Rogue', 1),
   // createClass('Mage 1', 'Mage', 1),
   // createClass('Monk 1', 'Monk', 1),
   // createClass('Warlock 1', 'Warlock', 1),
-  createClass('Warrior 1', 'Warrior', 1)
+  // createClass('Warrior 1', 'Warrior', 1)
 ]
 
 export default function party (state = testParty1, action) {
@@ -25,19 +25,19 @@ export default function party (state = testParty1, action) {
       if (!action.target) return newState
       let target = newState.find(member => member.name == action.target.name)
       if (!target) return newState
-      target.hp = target.hp + action.power
+      target.hp = target.hp + Math.round(action.power)
       if (target.hp > target.initHp) target.hp = target.initHp
       return newState
     case 'HEAL_ALL_FRIENDLY':
       newState = newState.map(member => {
-        member.hp+= action.power
+        member.hp+= Math.round(action.power)
         if (member.hp > member.initHp) member.hp = member.initHp
         return member
       })
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
-        member.hp-=action.power
+        member.hp-=Math.round(action.power)
         return member
       })
       return newState
@@ -45,7 +45,7 @@ export default function party (state = testParty1, action) {
       if (!action.target) return newState
       target = newState.find(member => member.name == action.target.name)
       if (!target) return newState
-      target.hp-=action.power
+      target.hp-=Math.round(action.power)
       return newState
     default: return state
   }
