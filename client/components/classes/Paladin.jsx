@@ -3,7 +3,21 @@ import PartyMemberFrame from '../frames/PartyMemberFrame'
 import {connect} from 'react-redux'
 
 class Paladin extends PartyMemberFrame {
-
+  constructor(props) {
+    super(props)
+  }
+  paladinAttack(member) {
+    this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: member.power})
+    this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
+    this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target: member, power: member.power / 2})
+  }
+  startFighting () {
+    console.log("paladin fighting");
+    const {power, speed} = this.props.member
+    let interval = null
+    interval = setInterval(() => this.paladinAttack(this.props.member), 10000 / speed)
+    this.setState({interval})
+  }
 }
 
 const mapStateToProps = ({started, party, friendlyTarget}) => {

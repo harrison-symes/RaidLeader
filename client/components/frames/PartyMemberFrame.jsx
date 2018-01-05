@@ -35,40 +35,6 @@ class MemberFrame extends Component {
     })
     setTimeout(() => this.singleHeal(power, target), 10000 / speed)
   }
-  startFighting () {
-    const {heroClass, power, speed} = this.props.member
-    let interval = null
-    switch(heroClass) {
-      case 'Priest':
-        this.startHealing();
-        break;
-      case 'Monk':
-        interval = setInterval(() => {
-          if (heroClass == 'Monk') this.physicalAttack(power)
-          this.healAll(power)
-        }, 10000 / speed)
-        this.setState({interval})
-        break;
-      case 'Mage':
-        interval = setInterval(() => this.specialAttack(power), 10000 / speed)
-        this.setState({interval})
-      case 'Warlock':
-        interval = setInterval(() => {
-          this.specialAttack(power)
-          this.damageAllFriendly(power/2)
-        }, 10000 / speed)
-        this.setState({interval})
-      case 'Paladin':
-        interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
-        this.setState({interval})
-        break;
-      case 'Warrior':
-        interval = setInterval(() => this.physicalAttack(power), 10000 / speed)
-        this.setState({interval})
-      default: return
-    }
-
-  }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) this.startFighting()
   }
@@ -93,10 +59,4 @@ const mapStateToProps = ({started, party, friendlyTarget}) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps)(MemberFrame)
+export default MemberFrame

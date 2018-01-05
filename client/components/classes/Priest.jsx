@@ -3,7 +3,10 @@ import PartyMemberFrame from '../frames/PartyMemberFrame'
 import {connect} from 'react-redux'
 
 class Priest extends PartyMemberFrame {
-
+  startFighting () {
+    const {heroClass, power, speed} = this.props.member
+    this.startHealing();
+  }
 }
 
 const mapStateToProps = ({started, party, friendlyTarget}) => {

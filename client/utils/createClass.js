@@ -11,7 +11,7 @@ const createMember = (name, heroClass, hp, power, speed) => (
   }
 )
 
-const createPaladin = (name, level) => createMember(name, 'Paladin', (level + 1) * 5, 1 + (level * 2), 3)
+const createPaladin = (name, level) => createMember(name, 'Paladin', (level + 1) * 5, (level * 2), 3)
 
 const createPriest = (name, level) => createMember(name, 'Priest', (level + 1) * 3, level, 5)
 
