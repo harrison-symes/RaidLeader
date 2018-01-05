@@ -17,25 +17,40 @@ class BossFrame extends Component {
   findTarget({dispatch, party}) {
     dispatch({type: 'BOSS_CHANGE_TARGET', target: party[0]})
   }
+  solveSpell(spells, boss) {
+    let castSpell = spells.filter(spell => {
+      if (spell.cost <= boss.mana) {
+        switch (spell.name) {
+          case 'Protect':
+            return (boss.armor < boss.initArmor - 1)
+          case 'Swipe':
+            return true
+          case 'Bite': return true
+          default: return false
+        }
+      } else return false
+    })[0]
+    console.log({castSpell});
+    return castSpell
+  }
   startCast(props) {
-    const {spells} = props.boss
-    props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: spells[2]})
+    const {spells, speed, mana} = props.boss
+    setTimeout(() => {
+      props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: this.solveSpell(spells, props.boss)})
+    }, 10000 / speed)
   }
   startTicking(dispatch) {
-    console.log("start ticking");
     let manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
     let armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
     this.setState({manaInterval, armorInterval})
   }
   componentWillReceiveProps(nextProps) {
-    console.log({nextProps});
     if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
     if (nextProps.started && !nextProps.boss.bossTarget) this.findTarget(nextProps)
     if (nextProps.started && !nextProps.boss.wantsToCast && !nextProps.boss.isCasting) this.startCast(nextProps)
   }
   render() {
     const {boss} = this.props
-    console.log({boss});
     const {name, hp, initHp, mana, maxMana, armor, initArmor, spells} = boss
     return <div className="section BossFrame">
       <div className="columns">
@@ -61,7 +76,7 @@ const mapStateToProps = ({boss, started, party, player}) => {
     boss,
     started,
     party,
-    player            
+    player
   }
 }
 

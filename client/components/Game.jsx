@@ -24,7 +24,6 @@ class Game extends Component {
   }
   render () {
     const {started} = this.props
-    console.log(this.props);
     return <div className="Game">
       <BossFrame />
       <PartyFrame />

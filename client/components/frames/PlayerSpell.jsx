@@ -67,7 +67,6 @@ class PlayerSpell extends Component {
     if (started && ((spell.singleTarget && friendlyTarget) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
       this.startCasting()
     }
-    else console.log("conditions not met", {spell, player, friendlyTarget});
   }
   render() {
     const {spell, selectedSpell, dispatch, idx, player} = this.props

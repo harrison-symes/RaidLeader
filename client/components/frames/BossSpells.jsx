@@ -37,6 +37,7 @@ class PlayerSpell extends Component {
     } else this.setState({currentCD})
   }
   startCooldown() {
+    console.log("finished casting");
     const interval = setInterval(this.tickCD, 100)
     this.setState({cooldownInterval: interval})
   }
@@ -56,12 +57,12 @@ class PlayerSpell extends Component {
     const interval = setInterval(this.tickCast, 100)
     this.setState({castInterval: interval, target: this.props.boss.bossTarget})
   }
-  clickSpell() {
-    const {spell, started, boss} = this.props
+  componentWillReceiveProps(nextProps) {
+    const {spell, started, boss} = nextProps
     if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !this.state.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+      console.log("conditions met, start casting");
       this.startCasting()
     }
-    else console.log("conditions not met", {spell, boss, target: boss.target});
   }
   render() {
     const {spell, dispatch, boss} = this.props
