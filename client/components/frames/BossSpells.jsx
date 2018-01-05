@@ -34,6 +34,7 @@ class PlayerSpell extends Component {
     if (currentCD >= this.props.spell.coolDown) {
       clearInterval(cooldownInterval)
       this.setState({currentCD: 0, currentCastTime: 0, cooldownInterval: null, onCooldown: false})
+      this.props.dispatch({type: 'BOSS_SPELL_FINISH_COOLDOWN', spell: this.props.spell})
     } else this.setState({currentCD})
   }
   startCooldown() {
@@ -59,7 +60,7 @@ class PlayerSpell extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const {spell, started, boss} = nextProps
-    if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !this.state.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+    if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
       console.log("conditions met, start casting");
       this.startCasting()
     }

@@ -91,6 +91,12 @@ export default function boss (state = testBoss, action) {
       newState.wantsToCast = null
       spell.onCooldown = true
       return newState
+    case 'BOSS_SPELL_FINISH_COOLDOWN':
+      if (!action.spell) return newState
+      spell = newState.spells.find(bossSpell => bossSpell == action.spell)
+      if (!spell) return newState
+      spell.onCooldown = false
+      return newState
     case 'BOSS_CHANGE_TARGET':
       newState.bossTarget = action.target
       return newState
