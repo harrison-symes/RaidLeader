@@ -9,12 +9,13 @@ import createClass from '../utils/createClass'
 // ]
 
 const testParty1 = [
-  // createClass('Paladin 1', 'Paladin', 1),
+  createClass('Paladin 1', 'Paladin', 1),
   // createClass('Priest 1', 'Priest', 1),
   // createClass('Rogue 1', 'Rogue', 1),
   // createClass('Mage 1', 'Mage', 1),
-  // createClass('Monk 1', 'Monk', 1)
-  createClass('Warlock 1', 'Warlock', 1)
+  // createClass('Monk 1', 'Monk', 1),
+  // createClass('Warlock 1', 'Warlock', 1),
+  createClass('Warrior 1', 'Warrior', 1)
 ]
 
 export default function party (state = testParty1, action) {
@@ -22,7 +23,7 @@ export default function party (state = testParty1, action) {
   switch(action.type) {
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
-      const target = newState.find(member => member.name == action.target.name)
+      let target = newState.find(member => member.name == action.target.name)
       if (!target) return newState
       target.hp = target.hp + action.power
       if (target.hp > target.initHp) target.hp = target.initHp
@@ -42,7 +43,7 @@ export default function party (state = testParty1, action) {
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
-      const target = newState.find(member => member.name == action.target.name)
+      target = newState.find(member => member.name == action.target.name)
       if (!target) return newState
       target.hp-=action.power
       return newState

@@ -15,7 +15,7 @@ class PlayerFrame extends Component {
     const {initHp, hp, maxMana, mana, spells} = player
     return <div className="section PlayerFrame">
       <div className="columns">
-        <div className="column is-3">
+        <div className="column is-3 box">
           haha
         </div>
         <div className="column is-9">

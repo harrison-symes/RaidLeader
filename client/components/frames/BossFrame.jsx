@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import HealthBar from './HealthBar'
 import ManaBar from './ManaBar'
 
+import BossSpellBar from './BossSpellBar'
+
 class BossFrame extends Component {
   constructor(props) {
     super(props)
@@ -11,6 +13,13 @@ class BossFrame extends Component {
       manaInterval: null,
       armorInterval: null
     }
+  }
+  findTarget({dispatch, party}) {
+    dispatch({type: 'BOSS_CHANGE_TARGET', target: party[0]})
+  }
+  startCast(props) {
+    const {spells} = props.boss
+    props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: spells[2]})
   }
   startTicking(dispatch) {
     console.log("start ticking");
@@ -21,21 +30,24 @@ class BossFrame extends Component {
   componentWillReceiveProps(nextProps) {
     console.log({nextProps});
     if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
+    if (nextProps.started && !nextProps.boss.bossTarget) this.findTarget(nextProps)
+    if (nextProps.started && !nextProps.boss.wantsToCast && !nextProps.boss.isCasting) this.startCast(nextProps)
   }
   render() {
     const {boss} = this.props
     console.log({boss});
-    const {name, hp, initHp, mana, maxMana, armor, initArmor} = boss
+    const {name, hp, initHp, mana, maxMana, armor, initArmor, spells} = boss
     return <div className="section BossFrame">
       <div className="columns">
-        <div className="column is-4 has-text-centered">
+        <div className="column is-3 has-text-centered">
           <h1 className="title is-2">{name}</h1>
 
         </div>
-        <div className="column is-4">
-          <ManaBar mana={mana} maxMana={maxMana} />
+        <div className="column is-5">
+          <BossSpellBar spells={spells}/>
         </div>
-        <div className="column is-4">
+        <div className="column is-4 has-text-centered">
+          <ManaBar mana={mana} maxMana={maxMana} />
           <h1 className="title is-3">Armor: {armor}/{initArmor}</h1>
         </div>
       </div>
@@ -44,10 +56,12 @@ class BossFrame extends Component {
   }
 }
 
-const mapStateToProps = ({boss, started}) => {
+const mapStateToProps = ({boss, started, party, player}) => {
   return {
     boss,
-    started
+    started,
+    party,
+    player            
   }
 }
 
