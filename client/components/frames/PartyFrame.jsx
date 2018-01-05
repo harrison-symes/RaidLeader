@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import MemberFrame from './PartyMemberFrame'
+import Paladin from '../classes/Paladin'
 
 class PartyFrame extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class PartyFrame extends Component {
     const {party} = this.props
     return <div className="section PartyFrame">
       <div className="columns">
-        {party.map((member, i) => <MemberFrame member={member} key={`member-${i}`} /> )}
+        {party.map((member, i) => <Paladin member={member} key={`member-${i}`} /> )}
       </div>
     </div>
   }
