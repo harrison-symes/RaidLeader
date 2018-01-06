@@ -14,7 +14,6 @@ class Monk extends PartyMemberFrame {
   }
   startFighting () {
     const {power, speed} = this.props.member
-    console.log({speed});
     this.props.dispatch({type: 'MONK_START_BUFF', target: this.props.member})
     this.startCast()
   }

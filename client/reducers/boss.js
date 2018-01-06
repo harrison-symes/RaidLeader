@@ -74,6 +74,7 @@ export default function boss (state = testBoss, action) {
       if (newState.armor == 0) damage*=2
       else damage*=0.5
       damage = Math.round(damage)
+      console.log({damage, power: action.power});
       newState.hp = newState.hp - damage
       return newState
     case 'BOSS_WANTS_TO_CAST':

@@ -30,7 +30,6 @@ class BossFrame extends Component {
         }
       } else return false
     })[0]
-    console.log({castSpell});
     return castSpell
   }
   startCast(props) {
