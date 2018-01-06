@@ -66,6 +66,10 @@ export default function player (state = testPlayer, action) {
       newState.mana += action.power
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'MAGE_START_BUFF':
+      newState.mana = Math.round(newState.mana * 1.2)
+      newState.maxMana = Math.round(newState.maxMana * 1.2)
+      return newState
     default: return state
   }
 }

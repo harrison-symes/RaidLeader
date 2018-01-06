@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 class Mage extends PartyMemberFrame {
   startFighting () {
     const {power, speed} = this.props.member
+    this.props.dispatch({type: 'MAGE_START_BUFF'})
     let interval = null
     interval = setInterval(() => this.specialAttack(power), 10000 / speed)
     this.setState({interval})
