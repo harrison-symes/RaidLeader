@@ -1,6 +1,7 @@
-const createMember = (name, heroClass, hp, power, speed) => (
+const createMember = (name, level, heroClass, hp, power, speed) => (
   {
     name,
+    level,
     heroClass,
     initHp: hp,
     hp,
@@ -11,19 +12,19 @@ const createMember = (name, heroClass, hp, power, speed) => (
   }
 )
 
-const createPaladin = (name, level) => createMember(name, 'Paladin', (level + 1) * 5, (level * 2), 3)
+const createPaladin = (name, level) => createMember(name, level, 'Paladin', (level + 1) * 5, (level * 2), 3)
 
-const createPriest = (name, level) => createMember(name, 'Priest', (level + 1) * 3, level, 5)
+const createPriest = (name, level) => createMember(name, level, 'Priest', (level + 1) * 3, level, 5)
 
-const createMonk = (name, level) => createMember(name, 'Monk', (level + 1) * 5, level, 3)
+const createMonk = (name, level) => createMember(name, level, 'Monk', (level + 1) * 5, level, 3)
 
-const createRogue = (name, level) => createMember(name, 'Rogue', (level + 1) * 3, level, 4 + level)
+const createRogue = (name, level) => createMember(name, level, 'Rogue', (level + 1) * 3, level, 4 + level)
 
-const createMage = (name, level) => createMember(name, 'Mage', (level + 1) * 2, level * 2, 3)
+const createMage = (name, level) => createMember(name, level, 'Mage', (level + 1) * 2, level * 2, 3)
 
-const createWarrior = (name, level) => createMember(name, 'Warrior', (level + 1) * 5, level * 3, 2)
+const createWarrior = (name, level) => createMember(name, level, 'Warrior', (level + 1) * 5, level * 3, 2)
 
-const createWarlock = (name, level) => createMember(name, 'Warlock', (level + 1) * 3, level * 2, 3)
+const createWarlock = (name, level) => createMember(name, level, 'Warlock', (level + 1) * 3, level * 2, 3)
 
 
 module.exports = (name, heroClass, level) => {

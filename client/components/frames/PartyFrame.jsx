@@ -14,6 +14,7 @@ class PartyFrame extends Component {
     super(props)
   }
   classSwitch(member, i) {
+    console.log({member, i});
     switch(member.heroClass) {
       case 'Paladin': return <Paladin member={member} key={`member-${i}`} />
       case 'Warrior': return <Warrior member={member} key={`member-${i}`} />
@@ -27,9 +28,10 @@ class PartyFrame extends Component {
   }
   render() {
     const {party} = this.props
+    console.log({party});
     return <div className="section PartyFrame">
       <div className="columns">
-        {party.map(this.classSwitch)}
+        {party.map((member, i) => this.classSwitch(member, i))}
       </div>
     </div>
   }

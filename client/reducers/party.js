@@ -50,7 +50,17 @@ export default function party (state = testParty1, action) {
     case 'PRIEST_START_BUFF':
       newState = newState.map(member => {
         member.initHp+= Math.round(action.hp)
+        return member
       })
+      return newState
+    case 'PALADIN_START_BUFF':
+      if (!action.target) return newState
+      target = newState.find(member => member.name == action.target.name)
+      if (!target) return newState
+      let bonusHp = newState.filter(member => member != action.target).length * target.level
+      target.initHp += bonusHp
+      target.hp += bonusHp
+      console.log({target});
       return newState
     default: return state
   }

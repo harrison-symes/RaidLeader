@@ -14,6 +14,7 @@ class Paladin extends PartyMemberFrame {
   startFighting () {
     console.log("paladin fighting");
     const {power, speed} = this.props.member
+    this.props.dispatch({type: 'PALADIN_START_BUFF', target: this.props.member})
     let interval = null
     interval = setInterval(() => this.paladinAttack(this.props.member), 10000 / speed)
     this.setState({interval})

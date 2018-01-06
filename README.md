@@ -29,8 +29,7 @@
   * Stats: The rogue should be low power, high speed, medium hp
   * Traits: (20%) chance to deal critical hits
   * Starting Buff:
-    Option 1: The Boss starts with 10% less hp.
-    Option 2: The Boss starts with 50% of their Mana
+    The Boss starts with 10% less hp.
 
 ### Warrior:
   * The Warrior is a heavy hitting physical attacker, capable of taking hits.
