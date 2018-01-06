@@ -28,8 +28,7 @@
   * Physical Attacker
   * Stats: The rogue should be low power, high speed, medium hp
   * Traits: (20%) chance to deal critical hits
-  * Starting Buff:
-    The Boss starts with 10% less hp.
+  * Starting Buff: The Boss starts with 10% less hp.
 
 ### Warrior:
   * The Warrior is a heavy hitting physical attacker, capable of taking hits.

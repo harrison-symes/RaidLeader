@@ -74,7 +74,14 @@ export default function boss (state = testBoss, action) {
       if (newState.armor == 0) damage*=2
       else damage*=0.5
       damage = Math.round(damage)
-      console.log({damage, power: action.power});
+      newState.hp = newState.hp - damage
+      return newState
+    case 'CRITICAL_ATTACK_BOSS':
+      console.log("CRIT", {action});
+      damage = action.power * 2
+      damage = Math.round(damage)
+      newState.armor-=1
+      if (newState.armor < 0) newState.armor = 0
       newState.hp = newState.hp - damage
       return newState
     case 'BOSS_WANTS_TO_CAST':
