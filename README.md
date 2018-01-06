@@ -34,8 +34,8 @@
   * The Warrior is a heavy hitting physical attacker, capable of taking hits.
   * Physical Attacker
   * Stats: The Warrior should be medium power, low speed and high hp.
-  * Traits: Power is doubled while below 50% hp
-  * Starting Buff: All Party members gain power equal to their own level
+  * Traits: Always deals critical damage when below 50% hp
+  * Starting Buff: All other Party members gain power equal to their own level
 
 ### Monk:
   * The Monk is a phsyical attacking group Healer, useful for aoe damage from boss or Warlocks
