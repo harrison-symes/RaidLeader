@@ -104,6 +104,9 @@ export default function boss (state = testBoss, action) {
     case 'BOSS_CHANGE_TARGET':
       newState.bossTarget = action.target
       return newState
+    case 'ROGUE_START_BUFF':
+      newState.hp = Math.round(newState.hp * 0.9)
+      return newState
     default: return state
   }
 }
