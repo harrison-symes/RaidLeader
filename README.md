@@ -7,20 +7,20 @@
   * Physical Attacker
   * Stats: the Paladin should be low power, medium speed and high hp.
   * Traits: The Paladin heals itself whenever it deals damage, to assist with his/her own surviviability, and taunts the boss into attacking the paladin with every attack..
-  * Starting Buff: Not implemented
+  * Starting Buff: Gains (level) hp for each other party member
 
 ### Priest:
   * The priest serves the role of a party spot healer. With no damage capability, the priest will continuously heal the most damaged party member at a fairly high rate. Useful for sustained single target damage with occasional area of effect.
   * Healer
   * Stats: The Priest should be low power, high speed and medium hp.
-  * Traits: Not implemented
+  * Traits: If no party member is damage, the priest will attack the boss instead
   * Starting Buff: The priest increases the maximum hp of all party member by 50% of the priest initial max hp. The party members will still start at their initial hp total, but can be healed higher from the start of the battle
 
 ### Mage:
   * The mage is a special attacking damage dealer. Special attacks are great for ignoring armor, and finishing of bosses when their armor is depleted.
   * Special Attacker
   * Stats: The Mage should be high power, medium speed and low hp.
-  * Traits: Not implemented
+  * Traits: When the player is below 30% mana, the mage has double power
   * Starting Buff: The Mage increases the total and current *Mana* of the player by 20%
 
 ### Rogue:
