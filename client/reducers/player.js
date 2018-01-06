@@ -13,6 +13,7 @@ const testSpellSet2 = [
 ]
 
 const testPlayer = {
+  name: 'Harrison',
   initHp: 100,
   hp: 60,
   initPower: 2,
@@ -23,6 +24,7 @@ const testPlayer = {
   mana: 100,
   manaRegen: 1,
   isCasting: false,
+  isAlive: true,
   spells: testSpellSet2
 }
 
@@ -69,6 +71,10 @@ export default function player (state = testPlayer, action) {
     case 'MAGE_START_BUFF':
       newState.mana = Math.round(newState.mana * 1.2)
       newState.maxMana = Math.round(newState.maxMana * 1.2)
+      return newState
+    case 'DAMAGE_FRIENDLY_TARGET':
+      if (!action.target) return newState
+      if (action.target.name == newState.name) newState.hp-=Math.round(action.power)
       return newState
     default: return state
   }

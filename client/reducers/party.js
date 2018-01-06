@@ -9,7 +9,7 @@ import createClass from '../utils/createClass'
 // ]
 
 const testParty1 = [
-  createClass('Paladin 1', 'Paladin', 2),
+  // createClass('Paladin 1', 'Paladin', 2),
   // createClass('Priest 1', 'Priest', 2),
   // createClass('Rogue 1', 'Rogue', 1),
   // createClass('Mage 1', 'Mage', 1),
@@ -24,12 +24,13 @@ export default function party (state = testParty1, action) {
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       let target = newState.find(member => member.name == action.target.name)
-      if (!target) return newState
+      if (!target || !target.isAlive) return newState
       target.hp = target.hp + Math.round(action.power)
       if (target.hp > target.initHp) target.hp = target.initHp
       return newState
     case 'HEAL_ALL_FRIENDLY':
       newState = newState.map(member => {
+        if (!member.isAlive) return member
         member.hp+= Math.round(action.power)
         if (member.hp > member.initHp) member.hp = member.initHp
         return member
@@ -37,14 +38,14 @@ export default function party (state = testParty1, action) {
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
-        member.hp-=Math.round(action.power)
+        if (member.isAlive) member.hp-=Math.round(action.power)
         return member
       })
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
       target = newState.find(member => member.name == action.target.name)
-      if (!target) return newState
+      if (!target || !target.isAlive) return newState
       target.hp-=Math.round(action.power)
       return newState
     case 'PRIEST_START_BUFF':
@@ -77,6 +78,13 @@ export default function party (state = testParty1, action) {
         }
         return member
       })
+      return newState
+    case 'MEMBER_DIED':
+      if (!action.target) return newState
+      target = newState.find(member => member.name == action.target.name)
+      if (!target) return newState
+      target.hp = 0
+      target.isAlive = false
       return newState
     default: return state
   }

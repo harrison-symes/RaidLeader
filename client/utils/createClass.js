@@ -8,7 +8,8 @@ const createMember = (name, level, heroClass, hp, power, speed) => (
     initSpeed: speed,
     speed,
     initPower: power,
-    power
+    power,
+    isAlive: true
   }
 )
 

@@ -6,30 +6,20 @@ import HealthBar from './HealthBar'
 class MemberFrame extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      interval: null
-    }
   }
-  physicalAttack() {
-    this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
-  }
-  specialAttack() {
-    this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: this.props.member.power})
-  }
-  healAll(power) {
-    this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power})
-  }
-  damageAllFriendly(power) {
-    this.props.dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+  startCast() {
+    const {power, speed, isAlive} = this.props.member
+    if (isAlive) setTimeout(() => this.finishCast(power), 10000 / speed)
   }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) this.startFighting()
+    if (nextProps.member.hp <= 0 && nextProps.member.isAlive) this.props.dispatch({type: 'MEMBER_DIED', target: this.props.member})
   }
   render() {
-    const {member, dispatch, friendlyTarget} = this.props
-    const {initHp, hp, name} = member
-    return <div className={`column button MemberFrame ${friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
-      <h1 className="title is-3">{name}</h1>
+    const {member, dispatch, friendlyTarget, boss} = this.props
+    const {initHp, hp, name, isAlive} = member
+    return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
+      <h1 className="title is-3" style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name}</h1>
       <div className="columns has-text-centered">
         <p>{member.heroClass}</p>
         <p>{member.power}</p>
