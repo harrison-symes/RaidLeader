@@ -14,8 +14,8 @@ const testParty1 = [
   // createClass('Rogue 1', 'Rogue', 1),
   // createClass('Mage 1', 'Mage', 1),
   // createClass('Monk 1', 'Monk', 1),
-  // createClass('Warlock 1', 'Warlock', 1),
-  createClass('Warrior 1', 'Warrior', 1)
+  createClass('Warlock 1', 'Warlock', 1),
+  // createClass('Warrior 1', 'Warrior', 1)
 ]
 
 export default function party (state = testParty1, action) {
@@ -68,6 +68,15 @@ export default function party (state = testParty1, action) {
       let bonusSpeed = newState.filter(member => member != action.target).length
       target.initSpeed += bonusSpeed
       target.speed += bonusSpeed
+      return newState
+    case 'WARRIOR_START_BUFF':
+      newState = newState.map(member => {
+        if (member != action.target) {
+          member.initPower += member.level
+          member.power += member.level
+        }
+        return member
+      })
       return newState
     default: return state
   }

@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 class Warrior extends PartyMemberFrame {
   finishCast(power) {
-    if (this.props.member.hp / this.props.member.initHp * 100 < 50) this.props.dispatch({type: 'CRITICAL_ATTACK_BOSS', power})
+    if (this.props.boss.hp / this.props.boss.initHp * 100 < 25) this.props.dispatch({type: 'CRITICAL_ATTACK_BOSS', power})
     else this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
     this.startCast()
   }
@@ -18,11 +18,12 @@ class Warrior extends PartyMemberFrame {
   }
 }
 
-const mapStateToProps = ({started, party, friendlyTarget}) => {
+const mapStateToProps = ({started, party, boss, friendlyTarget}) => {
   return {
     started,
     party,
-    friendlyTarget
+    friendlyTarget,
+    boss
   }
 }
 

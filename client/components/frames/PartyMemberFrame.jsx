@@ -30,8 +30,9 @@ class MemberFrame extends Component {
     const {initHp, hp, name} = member
     return <div className={`column button MemberFrame ${friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <h1 className="title is-3">{name}</h1>
-      <div className="columns">
-        {member.heroClass}
+      <div className="columns has-text-centered">
+        <p>{member.heroClass}</p>
+        <p>{member.power}</p>
       </div>
       <HealthBar maxHP={initHp} hp={hp} />
     </div>

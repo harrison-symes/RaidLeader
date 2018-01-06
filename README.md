@@ -34,7 +34,7 @@
   * The Warrior is a heavy hitting physical attacker, capable of taking hits.
   * Physical Attacker
   * Stats: The Warrior should be medium power, low speed and high hp.
-  * Traits: Always deals critical damage when below 50% hp
+  * Traits: Always deals critical damage when the boss is below 25% hp
   * Starting Buff: All other Party members gain power equal to their own level
 
 ### Monk:

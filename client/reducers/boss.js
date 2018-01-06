@@ -114,6 +114,10 @@ export default function boss (state = testBoss, action) {
     case 'ROGUE_START_BUFF':
       newState.hp = Math.round(newState.hp * 0.9)
       return newState
+    case 'WARLOCK_START_BUFF':
+      newState.armor-=action.power
+      if (newState.armor < 0) newState.armor = 0
+      return newState
     default: return state
   }
 }

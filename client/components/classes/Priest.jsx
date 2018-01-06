@@ -3,16 +3,12 @@ import PartyMemberFrame from '../frames/PartyMemberFrame'
 import {connect} from 'react-redux'
 
 class Priest extends PartyMemberFrame {
-  priestCast(power, target) {
-    this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-    if (this.props.started) this.priestStart()
+  finishCast(power, target) {
+    if (!target) this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: power * 2})
+    else this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+    this.startCast()
   }
-  priestAttack(power) {
-    console.log("Priest attack");
-    this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: power * 2})
-    this.priestStart()
-  }
-  priestStart() {
+  startCast() {
     const {power, speed} = this.props.member
     const {party} = this.props
     let target = null
@@ -20,14 +16,12 @@ class Priest extends PartyMemberFrame {
       if (!target && member.hp < member.initHp) target = member
       else if (target && member.initHp - member.hp > target.initHp - target.hp) target = member
     })
-    if (!target) console.log("no target");
-    if (!target) setTimeout(() => this.priestAttack(power), 10000 / speed)
-    else setTimeout(() => this.priestCast(power, target), 10000 / speed)
+    setTimeout(() => this.finishCast(power, target), 10000 / speed)
   }
   startFighting () {
     const {heroClass, power, speed, initHp} = this.props.member
     this.props.dispatch({type: 'PRIEST_START_BUFF', hp: initHp / 2})
-    this.priestStart();
+    this.startCast();
   }
 }
 
