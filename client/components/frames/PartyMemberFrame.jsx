@@ -16,24 +16,11 @@ class MemberFrame extends Component {
   specialAttack() {
     this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: this.props.member.power})
   }
-  singleHeal(power, target) {
-    this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-    if (this.props.started) this.startHealing()
-  }
   healAll(power) {
     this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power})
   }
   damageAllFriendly(power) {
     this.props.dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
-  }
-  startHealing() {
-    const {power, speed} = this.props.member
-    const {party} = this.props
-    let target = party[0]
-    party.forEach(member => {
-      if (member.initHp - member.hp > target.initHp - target.hp) target = member
-    })
-    setTimeout(() => this.singleHeal(power, target), 10000 / speed)
   }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) this.startFighting()
