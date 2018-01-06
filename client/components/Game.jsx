@@ -9,17 +9,22 @@ class Game extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      started: false,
       interval: null
     }
     this.startGame = this.startGame.bind(this)
   }
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.started && nextProps.started) {
+      let interval = setInterval(() => this.props.dispatch({type: 'TICK_ONE_SECOND'}), 1000)
+      this.setState({interval})
+    }
+  }
   startGame () {
-    this.setState({started: true})
+    this.props.dispatch({type: 'START'})
   }
   render () {
-    const {started} = this.state
-    return <div className="game">
+    const {started} = this.props
+    return <div className="Game">
       <BossFrame />
       <PartyFrame />
       <PlayerFrame />
@@ -28,16 +33,11 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({started}) => {
   return {
-
+    started
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(mapStateToProps)(Game)
