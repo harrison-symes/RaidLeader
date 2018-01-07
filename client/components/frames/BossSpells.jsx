@@ -57,9 +57,16 @@ class PlayerSpell extends Component {
     const interval = setInterval(this.tickCast, 100)
     this.setState({castInterval: interval, target: this.props.boss.bossTarget})
   }
+  stopCasting() {
+    console.log("boss stop casting");
+    this.props.dispatch({type: 'BOSS_FINISH_CASTING', spell: this.props.spell, target: null})
+    clearInterval(this.props.castInterval)
+    this.setState({currentCd: 0, currentCastTime: 0, castInterval: null, onCooldown: false})
+  }
   componentWillReceiveProps(nextProps) {
     const {spell, started, boss} = nextProps
-    if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+    if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive) this.stopCasting()
+    else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
       this.startCasting()
     }
   }

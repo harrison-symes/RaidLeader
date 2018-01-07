@@ -12,7 +12,7 @@ class MemberFrame extends Component {
     if (isAlive) setTimeout(() => this.finishCast(power), 10000 / speed)
   }
   componentWillReceiveProps(nextProps) {
-    if (!this.props.started && nextProps.started) this.startFighting()
+    if (!this.props.started && nextProps.started) setTimeout(() => this.startFighting(), Math.random() * 1000)
     if (nextProps.member.hp <= 0 && nextProps.member.isAlive) this.props.dispatch({type: 'MEMBER_DIED', target: this.props.member})
   }
   render() {
