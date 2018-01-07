@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import BossFrame from './frames/BossFrame'
+import bossSwitch from './bosses/utils/bossSwitch'
 import PlayerFrame from './frames/PlayerFrame'
 import PartyFrame from './frames/PartyFrame'
 
@@ -23,9 +23,9 @@ class Game extends Component {
     this.props.dispatch({type: 'START'})
   }
   render () {
-    const {started} = this.props
+    const {started, boss} = this.props
     return <div className="Game">
-      <BossFrame />
+      {bossSwitch(boss)}
       <PartyFrame />
       <PlayerFrame />
       {!started && <button onClick={this.startGame}>Start</button>}
@@ -33,9 +33,10 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = ({started}) => {
+const mapStateToProps = ({started, boss}) => {
   return {
-    started
+    started,
+    boss
   }
 }
 

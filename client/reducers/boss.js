@@ -48,7 +48,7 @@ function createBoss (name, hp, power, armor, maxArmor, armorRegen, mana, maxMana
   }
 }
 
-const testBoss = createBoss('Test-O-Saurus', 50, 3, 3, 3, 10, 5, 5, 5)
+const testBoss = createBoss('Test-Boss-1', 50, 3, 3, 3, 10, 5, 5, 5)
 
 export default function boss (state = testBoss, action) {
   let newState = {...state}
