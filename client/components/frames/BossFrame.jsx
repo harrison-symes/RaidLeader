@@ -20,8 +20,9 @@ class BossFrame extends Component {
       if (member.isAlive) {
         if (!target) target = member
         else if (target.hp > member.hp) target = member
-      } else target = player
+      }
     })
+    if (!target) target = player
     console.log({target});
     dispatch({type: 'BOSS_CHANGE_TARGET', target})
   }
