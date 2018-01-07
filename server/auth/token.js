@@ -26,7 +26,7 @@ function createToken (user, secret) {
     user_id:user.user_id,
     user_name: user.user_name
   }, secret, {
-    expiresIn: '24h'
+    expiresIn: '14d'
   })
 }
 

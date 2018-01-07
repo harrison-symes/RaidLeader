@@ -1,4 +1,4 @@
-function createBoss (name, hp, power, armor, mana, maxMana, manaRegen, armorRegen) {
+function createBoss (name, hp, power, armor, maxArmor, armorRegen, mana, maxMana, manaRegen ) {
   return {
     name,
     initHp: hp,
@@ -28,7 +28,7 @@ function createBoss (name, hp, power, armor, mana, maxMana, manaRegen, armorRege
         name: 'Protect',
         cast: 0.5,
         cost: 1,
-        coolDown: 1,
+        coolDown: 5,
         type: 'armor',
         singleTarget: false,
         powerRatio: 1,
@@ -48,7 +48,7 @@ function createBoss (name, hp, power, armor, mana, maxMana, manaRegen, armorRege
   }
 }
 
-const testBoss = createBoss('Test-O-Saurus', 50, 3, 3, 5, 5, 5, 5)
+const testBoss = createBoss('Test-O-Saurus', 50, 3, 3, 3, 10, 5, 5, 5)
 
 export default function boss (state = testBoss, action) {
   let newState = {...state}
@@ -63,7 +63,7 @@ export default function boss (state = testBoss, action) {
       return newState
     case 'PHYSICAL_ATTACK_BOSS':
       let damage = action.power - newState.armor
-      if (damage < 1) damage = 0
+      if (damage < 1) damage = 1
       damage = Math.round(damage)
       newState.hp = newState.hp - damage
       newState.armor-=1
@@ -74,6 +74,8 @@ export default function boss (state = testBoss, action) {
       if (newState.armor == 0) damage*=2
       else damage*=0.5
       damage = Math.round(damage)
+      newState.armor-=1
+      if (newState.armor < 0) newState.armor = 0
       newState.hp = newState.hp - damage
       return newState
     case 'CRITICAL_ATTACK_BOSS':
