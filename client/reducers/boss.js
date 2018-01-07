@@ -121,6 +121,9 @@ export default function boss (state = testBoss, action) {
     case 'PALADIN_START_BUFF':
       newState.bossTarget = action.target
       return newState
+    case 'MEMBER_DIED':
+      if (action.target == newState.bossTarget) newState.bossTarget.isAlive = false
+      return newState
     default: return state
   }
 }
