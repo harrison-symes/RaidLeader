@@ -66,7 +66,6 @@ class BossFrame extends Component {
       <div className="columns">
         <div className="column is-3 has-text-centered">
           <h1 className="title is-2">{name}</h1>
-
         </div>
         <div className="column is-5">
           <BossSpellBar spells={spells}/>

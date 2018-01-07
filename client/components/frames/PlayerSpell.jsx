@@ -21,7 +21,7 @@ class PlayerSpell extends Component {
     switch(spell.name) {
       case 'Heal':
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-      case 'Circle':
+      case 'Healing Ring':
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Bind':
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})

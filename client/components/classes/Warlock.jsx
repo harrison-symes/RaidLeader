@@ -8,7 +8,7 @@ class Warlock extends PartyMemberFrame {
   finishCast(power) {
     if (this.props.member.isAlive) {
       this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
-      this.props.dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: power / 2})
+      this.props.dispatch({type: 'LEVEL_DAMAGE_ALL_FRIENDLY', power: power / 2})
       this.startCast()
     }
   }
