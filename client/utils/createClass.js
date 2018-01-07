@@ -8,7 +8,8 @@ const createMember = (name, level, heroClass, hp, power, speed) => (
     initSpeed: speed,
     speed,
     initPower: power,
-    power
+    power,
+    isAlive: true
   }
 )
 
@@ -16,7 +17,7 @@ const createPaladin = (name, level) => createMember(name, level, 'Paladin', (lev
 
 const createPriest = (name, level) => createMember(name, level, 'Priest', (level + 1) * 3, level, 5)
 
-const createMonk = (name, level) => createMember(name, level, 'Monk', (level + 1) * 5, level, 2)
+const createMonk = (name, level) => createMember(name, level, 'Monk', (level + 1) * 5, level, 1)
 
 const createRogue = (name, level) => createMember(name, level, 'Rogue', (level + 1) * 3, level, 4 + level)
 

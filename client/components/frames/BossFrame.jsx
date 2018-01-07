@@ -14,8 +14,16 @@ class BossFrame extends Component {
       armorInterval: null
     }
   }
-  findTarget({dispatch, party}) {
-    dispatch({type: 'BOSS_CHANGE_TARGET', target: party[0]})
+  findTarget({dispatch, party, player}) {
+    let target = null
+    party.forEach(member => {
+      if (member.isAlive) {
+        if (!target) target = member
+        else if (target.hp > member.hp) target = member
+      } else target = player
+    })
+    console.log({target});
+    dispatch({type: 'BOSS_CHANGE_TARGET', target})
   }
   solveSpell(spells, boss) {
     let castSpell = spells.filter(spell => {
@@ -45,9 +53,10 @@ class BossFrame extends Component {
     this.setState({manaInterval, armorInterval})
   }
   componentWillReceiveProps(nextProps) {
+    const {started, boss} = nextProps
     if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
-    if (nextProps.started && !nextProps.boss.bossTarget) this.findTarget(nextProps)
-    if (nextProps.started && !nextProps.boss.wantsToCast && !nextProps.boss.isCasting) this.startCast(nextProps)
+    if (started && (!boss.bossTarget || (boss.bossTarget && !boss.bossTarget.isAlive))) this.findTarget(nextProps)
+    if (started && !boss.wantsToCast && !boss.isCasting) this.startCast(nextProps)
   }
   render() {
     const {boss} = this.props
