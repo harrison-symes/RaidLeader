@@ -28,7 +28,7 @@ module.exports = {
   },
   'Bind': {
     name: 'Bind',
-    cast: 0.5,
+    cast: 0,
     cost: 10,
     coolDown: 10,
     type: 'heal',
@@ -37,7 +37,7 @@ module.exports = {
   },
   'Life Tap': {
     name: 'Life Tap',
-    cast: 0.5,
+    cast: 0,
     cost: 0,
     coolDown: 10,
     type: 'special',
