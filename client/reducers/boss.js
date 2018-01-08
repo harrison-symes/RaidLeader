@@ -2,7 +2,7 @@ import bossOne from '../utils/bosses/bossOne'
 import bossTwo from '../utils/bosses/bossTwo'
 import bossThree from '../utils/bosses/bossThree'
 
-export default function boss (state = bossThree, action) {
+export default function boss (state = bossTwo, action) {
   let newState = {...state}
   switch(action.type) {
     case 'BOSS_GAIN_ARMOR':

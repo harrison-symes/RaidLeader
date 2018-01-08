@@ -15,22 +15,32 @@ export default {
   spells: [
     {
       name: 'Protect',
-      cast: 3,
-      cost: 10,
+      cast: 1,
+      cost: 5,
       coolDown: 0,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 10,
+      powerRatio: 5,
       onCooldown: false
     },
     {
       name: 'Swipe',
-      cast: 5,
+      cast: 3,
       cost: 0,
+      coolDown: 3,
+      type: 'damage',
+      singleTarget: false,
+      powerRatio: 3,
+      onCooldown: false
+    },
+    {
+      name: 'Spit',
+      cast: 1,
+      cost: 1,
       coolDown: 0,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 2,
+      powerRatio: 1,
       onCooldown: false
     }
   ]
