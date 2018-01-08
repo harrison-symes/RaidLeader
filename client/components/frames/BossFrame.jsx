@@ -23,23 +23,7 @@ class BossFrame extends Component {
       }
     })
     if (!target) target = player
-    console.log({target});
     dispatch({type: 'BOSS_CHANGE_TARGET', target})
-  }
-  solveSpell(spells, boss) {
-    let castSpell = spells.filter(spell => {
-      if (!spell.onCooldown && spell.cost <= boss.mana) {
-        switch (spell.name) {
-          case 'Protect':
-            return (boss.armor < boss.initArmor - 1)
-          case 'Swipe':
-            return true
-          case 'Bite': return true
-          default: return false
-        }
-      } else return false
-    })[0]
-    return castSpell
   }
   startCast(props) {
     const {spells, speed, mana} = props.boss

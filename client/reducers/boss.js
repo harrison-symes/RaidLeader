@@ -1,56 +1,6 @@
-function createBoss (name, hp, power, armor, maxArmor, armorRegen, mana, maxMana, manaRegen ) {
-  return {
-    name,
-    initHp: hp,
-    hp,
-    initPower: power,
-    power,
-    initArmor: armor,
-    armor,
-    mana,
-    maxMana,
-    manaRegen,
-    armorRegen,
-    isCasting: false,
-    bossTarget: null,
-    spells: [
-      {
-        name: 'Swipe',
-        cast: 3,
-        cost: 3,
-        coolDown: 10,
-        type: 'damage',
-        singleTarget: false,
-        powerRatio: 0.5,
-        onCooldown: false
-      },
-      {
-        name: 'Protect',
-        cast: 0.5,
-        cost: 1,
-        coolDown: 5,
-        type: 'armor',
-        singleTarget: false,
-        powerRatio: 1,
-        onCooldown: false
-      },
-      {
-        name: 'Bite',
-        cost: 0,
-        cast: 5,
-        coolDown: 1,
-        powerRatio: 1,
-        type: 'damage',
-        singleTarget: true,
-        onCooldown: false
-      }
-    ]
-  }
-}
+import bossOne from '../utils/bosses/bossOne'
 
-const testBoss = createBoss('Test-Boss-1', 50, 3, 3, 3, 10, 5, 5, 5)
-
-export default function boss (state = testBoss, action) {
+export default function boss (state = bossOne, action) {
   let newState = {...state}
   switch(action.type) {
     case 'BOSS_GAIN_ARMOR':
