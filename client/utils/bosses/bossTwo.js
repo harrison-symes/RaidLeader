@@ -20,7 +20,7 @@ export default {
       coolDown: 10,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 5,
+      powerRatio: 10,
       onCooldown: false
     },
     {
