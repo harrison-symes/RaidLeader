@@ -71,4 +71,31 @@ module.exports = {
     singleTarget: false,
     powerRatio: 5
   },
+  'Drain Life': {
+    name: 'Drain Life',
+    cast: 2,
+    cost: 10,
+    coolDown: 5,
+    type: 'damage',
+    singleTarget: false,
+    powerRatio: 1
+  },
+  'Harvest Life': {
+    name: 'Harvest Life',
+    cast: 5,
+    cost: 30,
+    coolDown: 20,
+    type: 'damage',
+    singleTarget: false,
+    powerRatio: 3
+  },
+  'Drain Soul': {
+    name: 'Drain Soul',
+    cast: 3,
+    cost: 0,
+    coolDown: 0,
+    type: 'damage',
+    singleTarget: false,
+    powerRatio: 1
+  },
 }

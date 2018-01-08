@@ -27,16 +27,26 @@ class PlayerSpell extends Component {
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'HEAL_PLAYER', power})
       case 'Fireball':
-        return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+        return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Fireblast':
-        return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+        return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Flash Fire':
-        return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+        return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+      case 'Drain Life':
+        dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+        return dispatch({type: 'HEAL_PLAYER', power: power * 2})
+      case 'Harvest Life':
+        dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Life Tap':
         dispatch({type: 'PLAYER_GAIN_MANA', power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Evocate':
         return dispatch({type: 'PLAYER_GAIN_MANA', power})
+      case 'Drain Soul':
+        dispatch({type: 'PLAYER_GAIN_MANA', power: this.props.player.maxMana / 50})
+        dispatch({type: 'HEAL_PLAYER', power})
+        return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       default: return
     }
   }

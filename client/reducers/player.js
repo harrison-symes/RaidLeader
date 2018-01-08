@@ -11,7 +11,7 @@ const testSpellSet2 = [
   spells['Flash Fire'],
   // spells.Bind,
   // spells['Life Tap'],
-  spells.Fireblast
+  spells['Drain Soul']
   // spells['Evocate']
 ]
 
