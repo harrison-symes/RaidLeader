@@ -1,12 +1,30 @@
 module.exports = {
-  'Heal': {
-    name: 'Heal',
-    cast: 2,
-    cost: 5,
-    coolDown: 0.5,
+  'Lesser Heal': {
+    name: 'Lesser Heal',
+    cast: 1,
+    cost: 10,
+    coolDown: 0,
     type: 'heal',
     singleTarget: true,
     powerRatio: 1
+  },
+  'Heal': {
+    name: 'Heal',
+    cast: 3,
+    cost: 10,
+    coolDown: 0.5,
+    type: 'heal',
+    singleTarget: true,
+    powerRatio: 2
+  },
+  'Greater Heal': {
+    name: 'Greater Heal',
+    cast: 5,
+    cost: 10,
+    coolDown: 0.5,
+    type: 'heal',
+    singleTarget: true,
+    powerRatio: 3
   },
   'Healing Ring': {
     name: 'Healing Ring',
@@ -93,9 +111,9 @@ module.exports = {
     name: 'Drain Soul',
     cast: 3,
     cost: 0,
-    coolDown: 0,
+    coolDown: 3,
     type: 'damage',
     singleTarget: false,
     powerRatio: 1
-  },
+  }
 }

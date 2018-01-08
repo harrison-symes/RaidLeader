@@ -5,13 +5,17 @@ const testSpellSet1 = [
 ]
 
 const testSpellSet2 = [
-  spells.Heal,
-  spells['Healing Ring'],
-  spells.Fireball,
-  spells['Flash Fire'],
+  spells['Lesser Heal'],
+  spells['Heal'],
+  spells['Greater Heal'],
+  // spells['Healing Ring'],
+  // spells.Fireball,
+  // spells['Fireblast'],
+  // spells['Flash Fire'],
   // spells.Bind,
   // spells['Life Tap'],
-  spells['Drain Soul']
+  spells['Drain Soul'],
+  spells['Harvest Life'],
   // spells['Evocate']
 ]
 
