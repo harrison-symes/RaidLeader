@@ -28,9 +28,15 @@ class PlayerSpell extends Component {
         return dispatch({type: 'HEAL_PLAYER', power})
       case 'Fireball':
         return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+      case 'Fireblast':
+        return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+      case 'Flash Fire':
+        return dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
       case 'Life Tap':
         dispatch({type: 'PLAYER_GAIN_MANA', power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
+      case 'Evocate':
+        return dispatch({type: 'PLAYER_GAIN_MANA', power})
       default: return
     }
   }

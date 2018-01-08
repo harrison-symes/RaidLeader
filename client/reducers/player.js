@@ -8,8 +8,11 @@ const testSpellSet2 = [
   spells.Heal,
   spells['Healing Ring'],
   spells.Fireball,
-  spells.Bind,
-  spells['Life Tap']
+  spells['Flash Fire'],
+  // spells.Bind,
+  // spells['Life Tap'],
+  spells.Fireblast
+  // spells['Evocate']
 ]
 
 const testPlayer = {

@@ -17,15 +17,6 @@ module.exports = {
     singleTarget: false,
     powerRatio: 2
   },
-  'Fireball': {
-    name: 'Fireball',
-    cast: 5,
-    cost: 10,
-    coolDown: 10,
-    type: 'damage',
-    singleTarget: false,
-    powerRatio: 3
-  },
   'Bind': {
     name: 'Bind',
     cast: 0,
@@ -35,6 +26,33 @@ module.exports = {
     singleTarget: true,
     powerRatio: 2
   },
+  'Fireball': {
+    name: 'Fireball',
+    cast: 5,
+    cost: 15,
+    coolDown: 10,
+    type: 'damage',
+    singleTarget: false,
+    powerRatio: 3
+  },
+  'Fireblast': {
+    name: 'Fireblast',
+    cast: 2.5,
+    cost: 15,
+    coolDown: 5,
+    type: 'damage',
+    singleTarget: false,
+    powerRatio: 2
+  },
+  'Flash Fire': {
+    name: 'Flash Fire',
+    cast: 0,
+    cost: 15,
+    coolDown: 15,
+    type: 'damage',
+    singleTarget: false,
+    powerRatio: 1
+  },
   'Life Tap': {
     name: 'Life Tap',
     cast: 0,
@@ -43,5 +61,14 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 3
-  }
+  },
+  'Evocate': {
+    name: 'Evocate',
+    cast: 5,
+    cost: 0,
+    coolDown: 0,
+    type: 'special',
+    singleTarget: false,
+    powerRatio: 5
+  },
 }
