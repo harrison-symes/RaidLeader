@@ -1,6 +1,7 @@
 import bossOne from '../utils/bosses/bossOne'
+import bossTwo from '../utils/bosses/bossTwo'
 
-export default function boss (state = bossOne, action) {
+export default function boss (state = bossTwo, action) {
   let newState = {...state}
   switch(action.type) {
     case 'BOSS_GAIN_ARMOR':
@@ -12,25 +13,39 @@ export default function boss (state = bossOne, action) {
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
     case 'PHYSICAL_ATTACK_BOSS':
-      let damage = action.power - newState.armor
-      if (damage < 1) damage = 1
-      damage = Math.round(damage)
-      newState.hp = newState.hp - damage
-      newState.armor-=1
-      if (newState.armor < 0) newState.armor = 0
+      let damage = Math.round(action.power)
+      if (newState.armor >= damage) {
+        newState.armor-=damage
+        damage = 0
+      } else {
+        damage-=newState.armor
+        newState.armor = 0
+      }
+      newState.hp-= damage
       return newState
     case 'SPECIAL_ATTACK_BOSS':
-      damage = action.power
-      if (newState.armor == 0) damage*=2
-      else damage*=0.5
-      damage = Math.round(damage)
-      newState.armor-=1
-      if (newState.armor < 0) newState.armor = 0
-      newState.hp = newState.hp - damage
+      damage = Math.round(action.power)
+      if (newState.armor == 0) {
+        damage*=1.5
+      } else if (newState.armor >= damage) {
+        newState.armor-=damage
+        damage = 0
+      } else {
+        damage-=newState.armor
+        newState.armor = 0
+      }
+      newState.hp-= damage
       return newState
     case 'PLAYER_ATTACK_BOSS':
       damage = Math.round(action.power)
-      newState.hp -= damage
+      if (newState.armor >= damage) {
+        newState.armor-=damage
+        damage = 0
+      } else {
+        damage-=newState.armor
+        newState.armor = 0
+      }
+      newState.hp-= damage
       return newState
     case 'CRITICAL_ATTACK_BOSS':
       console.log("CRIT", {action});

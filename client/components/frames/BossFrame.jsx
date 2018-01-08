@@ -33,8 +33,15 @@ class BossFrame extends Component {
     }, 10000 / speed)
   }
   startTicking(dispatch) {
-    let manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
-    let armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
+    let manaInterval
+    if (this.props.boss.manaRegen) {
+      manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
+
+    }
+    let armorInterval
+    if (this.props.boss.armorRegen) {
+      armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
+    }
     this.setState({manaInterval, armorInterval})
   }
   componentWillReceiveProps(nextProps) {
@@ -64,13 +71,4 @@ class BossFrame extends Component {
   }
 }
 
-const mapStateToProps = ({boss, started, party, player}) => {
-  return {
-    boss,
-    started,
-    party,
-    player
-  }
-}
-
-export default connect(mapStateToProps)(BossFrame)
+export default (BossFrame)

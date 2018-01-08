@@ -5,6 +5,9 @@ import mapStateToProps from './utils/bossStateMap'
 import BossFrame from '../frames/BossFrame'
 
 class BossOne extends BossFrame {
+  constructor(props) {
+    super(props)
+  }
   solveSpell(spells, boss) {
     let castSpell = spells.filter(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
@@ -13,7 +16,6 @@ class BossOne extends BossFrame {
             return (boss.armor < boss.initArmor - 1)
           case 'Swipe':
             return true
-          case 'Bite': return true
           default: return false
         }
       } else return false
