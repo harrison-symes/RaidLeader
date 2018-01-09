@@ -16,7 +16,7 @@ export default {
     {
       name: 'Protect',
       cast: 1,
-      cost: 5,
+      cost: 10,
       coolDown: 0,
       type: 'armor',
       singleTarget: false,
