@@ -6,7 +6,12 @@ import Spellbook from './menuComponents/Spellbook'
 import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 
+import {getRecruits} from '../actions/recruits'
+
 class Menu extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(getRecruits())
+  }
   render() {
     return <div className="section has-text-centered">
       <div className="columns">

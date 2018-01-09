@@ -7,6 +7,7 @@ import party from './party'
 import started from './started'
 import selectedSpell from './selectedSpell'
 import friendlyTarget from './friendlyTarget'
+import recruits from './recruits'
 
 export default combineReducers({
   auth,
@@ -15,5 +16,6 @@ export default combineReducers({
   party,
   started,
   selectedSpell,
-  friendlyTarget
+  friendlyTarget,
+  recruits
 })

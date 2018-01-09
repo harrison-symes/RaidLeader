@@ -7,11 +7,17 @@ class Party extends React.Component {
 
   }
   render() {
+    console.log(this.props);
     return <div>
       Party Menu
     </div>
   }
 }
 
+const mapStateToProps = ({recruits}) => {
+  return {
+    recruits
+  }
+}
 
-export default connect()(Party)
+export default connect(mapStateToProps)(Party)
