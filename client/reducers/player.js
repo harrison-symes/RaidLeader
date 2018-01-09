@@ -5,11 +5,18 @@ const testSpellSet1 = [
 ]
 
 const testSpellSet2 = [
-  spells.Heal,
-  spells['Healing Ring'],
-  spells.Fireball,
-  spells.Bind,
-  spells['Life Tap']
+  spells['Lesser Heal'],
+  spells['Heal'],
+  spells['Greater Heal'],
+  // spells['Healing Ring'],
+  // spells.Fireball,
+  // spells['Fireblast'],
+  // spells['Flash Fire'],
+  // spells.Bind,
+  // spells['Life Tap'],
+  spells['Drain Soul'],
+  spells['Harvest Life'],
+  // spells['Evocate']
 ]
 
 const testPlayer = {
@@ -34,14 +41,6 @@ export default function player (state = testPlayer, action) {
     case 'TICK_ONE_SECOND':
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
-      // newState.spells = newState.spells.map(spell => {
-      //   spell.currentCD++
-      //   if (spell.currentCD >= spell.coolDown) {
-      //     spell.currentCD = 0
-      //     spell.onCooldown = false
-      //   }
-      //   return spell
-      // })
       return newState
     case 'HEAL_ALL_FRIENDLY':
       newState.hp+= Math.round(action.power)
@@ -74,7 +73,7 @@ export default function player (state = testPlayer, action) {
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
-      if (action.target.name == newState.name) newState.hp-=Math.round(action.power)
+      if (action.target.name == newState.name) newState.hp-=Math.round(action.power * 2)
       return newState
     default: return state
   }

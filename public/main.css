@@ -2,21 +2,27 @@
   height: 100vh;
 }
 
-.Nav {
-  height: 5vh;
-}
+
 
 .Game {
-  height: 80vh;
+  height: 100vh;
 }
 
-.BossFrame, .PlayerFrame, .PartyFrame {
+.BossFrame {
+  height: 30%;
+}
+
+.PartyFrame {
   height: 33%;
+}
+
+.PlayerFrame {
+  height: 25%;
 }
 
 
 .PlayerSpellBar {
-  height: 10vh;
+  height: 20vh;
 }
 
 .MemberFrame {

@@ -20,25 +20,10 @@ class BossFrame extends Component {
       if (member.isAlive) {
         if (!target) target = member
         else if (target.hp > member.hp) target = member
-      } else target = player
+      }
     })
-    console.log({target});
+    if (!target) target = player
     dispatch({type: 'BOSS_CHANGE_TARGET', target})
-  }
-  solveSpell(spells, boss) {
-    let castSpell = spells.filter(spell => {
-      if (!spell.onCooldown && spell.cost <= boss.mana) {
-        switch (spell.name) {
-          case 'Protect':
-            return (boss.armor < boss.initArmor - 1)
-          case 'Swipe':
-            return true
-          case 'Bite': return true
-          default: return false
-        }
-      } else return false
-    })[0]
-    return castSpell
   }
   startCast(props) {
     const {spells, speed, mana} = props.boss
@@ -48,8 +33,15 @@ class BossFrame extends Component {
     }, 10000 / speed)
   }
   startTicking(dispatch) {
-    let manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
-    let armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
+    let manaInterval
+    if (this.props.boss.manaRegen) {
+      manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
+
+    }
+    let armorInterval
+    if (this.props.boss.armorRegen) {
+      armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
+    }
     this.setState({manaInterval, armorInterval})
   }
   componentWillReceiveProps(nextProps) {
@@ -65,7 +57,6 @@ class BossFrame extends Component {
       <div className="columns">
         <div className="column is-3 has-text-centered">
           <h1 className="title is-2">{name}</h1>
-
         </div>
         <div className="column is-5">
           <BossSpellBar spells={spells}/>
@@ -80,13 +71,4 @@ class BossFrame extends Component {
   }
 }
 
-const mapStateToProps = ({boss, started, party, player}) => {
-  return {
-    boss,
-    started,
-    party,
-    player
-  }
-}
-
-export default connect(mapStateToProps)(BossFrame)
+export default (BossFrame)

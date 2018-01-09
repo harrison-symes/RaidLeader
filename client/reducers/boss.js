@@ -1,56 +1,8 @@
-function createBoss (name, hp, power, armor, mana, maxMana, manaRegen, armorRegen) {
-  return {
-    name,
-    initHp: hp,
-    hp,
-    initPower: power,
-    power,
-    initArmor: armor,
-    armor,
-    mana,
-    maxMana,
-    manaRegen,
-    armorRegen,
-    isCasting: false,
-    bossTarget: null,
-    spells: [
-      {
-        name: 'Swipe',
-        cast: 3,
-        cost: 3,
-        coolDown: 10,
-        type: 'damage',
-        singleTarget: false,
-        powerRatio: 0.5,
-        onCooldown: false
-      },
-      {
-        name: 'Protect',
-        cast: 0.5,
-        cost: 1,
-        coolDown: 1,
-        type: 'armor',
-        singleTarget: false,
-        powerRatio: 1,
-        onCooldown: false
-      },
-      {
-        name: 'Bite',
-        cost: 0,
-        cast: 5,
-        coolDown: 1,
-        powerRatio: 1,
-        type: 'damage',
-        singleTarget: true,
-        onCooldown: false
-      }
-    ]
-  }
-}
+import bossOne from '../utils/bosses/bossOne'
+import bossTwo from '../utils/bosses/bossTwo'
+import bossThree from '../utils/bosses/bossThree'
 
-const testBoss = createBoss('Test-O-Saurus', 50, 3, 3, 5, 5, 5, 5)
-
-export default function boss (state = testBoss, action) {
+export default function boss (state = bossTwo, action) {
   let newState = {...state}
   switch(action.type) {
     case 'BOSS_GAIN_ARMOR':
@@ -62,19 +14,39 @@ export default function boss (state = testBoss, action) {
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
     case 'PHYSICAL_ATTACK_BOSS':
-      let damage = action.power - newState.armor
-      if (damage < 1) damage = 0
-      damage = Math.round(damage)
-      newState.hp = newState.hp - damage
-      newState.armor-=1
-      if (newState.armor < 0) newState.armor = 0
+      let damage = Math.round(action.power)
+      if (newState.armor >= damage) {
+        newState.armor-=damage
+        damage = 0
+      } else {
+        damage-=newState.armor
+        newState.armor = 0
+      }
+      newState.hp-= damage
       return newState
     case 'SPECIAL_ATTACK_BOSS':
-      damage = action.power
-      if (newState.armor == 0) damage*=2
-      else damage*=0.5
-      damage = Math.round(damage)
-      newState.hp = newState.hp - damage
+      damage = Math.round(action.power)
+      if (newState.armor == 0) {
+        damage*=1.5
+      } else if (newState.armor >= damage) {
+        newState.armor-=damage
+        damage = 0
+      } else {
+        damage-=newState.armor
+        newState.armor = 0
+      }
+      newState.hp-= damage
+      return newState
+    case 'PLAYER_ATTACK_BOSS':
+      damage = Math.round(action.power)
+      if (newState.armor >= damage) {
+        newState.armor-=damage
+        damage = 0
+      } else {
+        damage-=newState.armor
+        newState.armor = 0
+      }
+      newState.hp-= damage
       return newState
     case 'CRITICAL_ATTACK_BOSS':
       console.log("CRIT", {action});
