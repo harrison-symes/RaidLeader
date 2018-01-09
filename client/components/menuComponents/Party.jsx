@@ -6,16 +6,17 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 const grid = 8;
 const getItemStyle = (draggableStyle, isDragging) => ({
   userSelect: 'none',
-  padding: grid * 2,
-  margin: `0 0 ${grid}px `,
-  background: isDragging ? 'lightgreen' : 'grey',
+  padding: '5%',
+  margin: `5%`,
+  width: '90%',
+  background: isDragging ? 'lightgreen' : 'white',
   ...draggableStyle,
 });
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
-  width: 250,
-  height: 250
+  width: '50%',
+  height: '90vh'
 });
 
 class Party extends React.Component {
@@ -48,6 +49,7 @@ class Party extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
+                <h1 className="subtitle is-1">Recruits</h1>
                 {roster.map(item => (
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
@@ -78,11 +80,13 @@ class Party extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
+                <h1 className="subtitle is-1">Party</h1>
                 {playerParty.map(item => (
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
                       <div>
                         <div
+                          className=""
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -90,7 +94,50 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {item.name}
+                          <table className="table has-text-centered">
+                            <tbody className="tbody">
+                              <tr className="tr">
+                                <th className="th">
+                                  <p className="subtitle is-4">Name:</p>
+                                </th>
+                                <td className="td">
+                                  <p className="subtitle is-4">
+                                    {item.name}
+                                  </p>
+                                </td>
+                              </tr>
+                              <tr className="tr">
+                                <th className="th">
+                                  <p className="subtitle is-4">Class:</p>
+                                </th>
+                                <td className="td">
+                                  <p className="subtitle is-4">
+                                    {item.class}
+                                  </p>
+                                </td>
+                              </tr>
+                              <tr className="tr">
+                                <th className="th">
+                                  <p className="subtitle is-4">Level:</p>
+                                </th>
+                                <td className="td">
+                                  <p className="subtitle is-4">
+                                    {item.level}
+                                  </p>
+                                </td>
+                              </tr>
+                              <tr className="tr">
+                                <th className="th">
+                                  <p className="subtitle is-4">Weapon:</p>
+                                </th>
+                                <td className="td">
+                                  <p className="subtitle is-4">
+                                    {item.weapon_name || "none"}
+                                  </p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                         {provided.placeholder}
                       </div>
