@@ -7,6 +7,7 @@ import Register from './Register'
 import Home from './Home'
 import Nav from './Nav'
 import Game from './Game'
+import Menu from './Menu'
 
 const App = ({auth}) => (
   <Router>
@@ -15,11 +16,12 @@ const App = ({auth}) => (
       {auth.isAuthenticated
         ? <Switch>
           <Route path="/game" component={Game} />
-          <Route path="/" component={Home} />
+          <Route path='/' component={Menu} />
         </Switch>
         : <div>
           <Route path="/login" component={Login} />
           <Route path="/Register" component={Register} />
+          <Route path="/" component={Home} />
         </div>
       }
     </div>
