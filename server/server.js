@@ -13,5 +13,6 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
 server.use('/api/auth', require('./routes/auth'))
+server.use('/api/recruits', require('./routes/recruits'))
 
 module.exports = server
