@@ -1,9 +1,11 @@
 export default function (state = [], action) {
+  let newState = [...state]
   switch(action.type) {
     case 'ADD_RECRUIT_TO_PARTY':
-      console.log({action});
-      if (state.find(recruit => recruit == action.recruit)) return [...state].filter(recruit => recruit != action.recruit)
-      else return [...state, action.recruit]
+      newState.splice(action.idx, 0, action.recruit)
+      return newState
+    case 'REMOVE_RECRUIT_FROM_PARTY':
+      return newState.filter(recruit => recruit != action.recruit)
     default: return state
   }
 }

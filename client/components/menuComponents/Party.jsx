@@ -28,10 +28,15 @@ class Party extends React.Component {
   }
   onDragEnd(result) {
     console.log({result});
+    const {source, destination} = result
+    const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
+    if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
+    else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
   }
   render() {
     console.log(this.props);
     const {recruits, playerParty} = this.props
+    const roster = recruits.filter(recruit => !playerParty.find(party => recruit == party))
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -42,7 +47,7 @@ class Party extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
-                {recruits.map(item => (
+                {roster.map(item => (
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
                       <div>
@@ -73,7 +78,7 @@ class Party extends React.Component {
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
                 {playerParty.map(item => (
-                  <Draggable key={item.id + '-party'} draggableId={item.id + '-party'}>
+                  <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
                       <div>
                         <div
