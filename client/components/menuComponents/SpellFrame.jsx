@@ -30,11 +30,31 @@ class SpellFrame extends React.Component {
       {showMore && [
         (<tr key={`spell-${name}-hp`} className="tr">
           <th className="th">
+            <p className="subtitle is-4">Type:</p>
+          </th>
+          <td className="td">
+            <p className="subtitle is-4">
+              {spell.type}
+            </p>
+          </td>
+        </tr>),
+        (<tr key={`spell-${name}-hp`} className="tr">
+          <th className="th">
+            <p className="subtitle is-4">Targeted:</p>
+          </th>
+          <td className="td">
+            <p className="subtitle is-4">
+              {spell.singleTarget ? "Yes" : "No"}
+            </p>
+          </td>
+        </tr>),
+        (<tr key={`spell-${name}-cooldown`} className="tr">
+          <th className="th">
             <p className="subtitle is-4">CD:</p>
           </th>
           <td className="td">
             <p className="subtitle is-4">
-              {spell.coolDown || "none"}
+              {spell.coolDown} s
             </p>
           </td>
         </tr>),
@@ -44,7 +64,7 @@ class SpellFrame extends React.Component {
           </th>
           <td className="td">
             <p className="subtitle is-4">
-              {spell.powerRatio * 100}%
+              {spell.powerRatio * 100} %
             </p>
           </td>
         </tr>),
@@ -54,7 +74,7 @@ class SpellFrame extends React.Component {
           </th>
           <td className="td">
             <p className="subtitle is-4">
-              {spell.cost}
+              {spell.cost} mana
             </p>
           </td>
         </tr>),
@@ -64,7 +84,7 @@ class SpellFrame extends React.Component {
           </th>
           <td className="td">
             <p className="subtitle is-4">
-              {spell.cast}s
+              {spell.cast} s
             </p>
           </td>
         </tr>)
