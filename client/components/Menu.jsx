@@ -26,15 +26,20 @@ class Menu extends React.Component {
     const {playerParty, playerSpells} = this.props
     this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells})
   }
+  renderMenuLink (path, display) {
+    const {pathname} = this.props.location
+    return <Link to={pathname == path ? '/' : path} className={`button is-large ${pathname == path ? 'is-success' : 'is-info is-outlined'}`}>{display}</Link>
+  }
   render() {
     const {playerParty, playerSpells} = this.props
+    console.log(this.props);
     return <div className="section has-text-centered">
       <div className="columns">
         <div className="column">
           <div className="level">
-            <Link className="button is-large" to="/spellbook">Spell Book</Link>
-            <Link className="button is-large" to="/party">Party</Link>
-            <Link className="button is-large" to="/selectboss">Select Boss</Link>
+            {this.renderMenuLink('/spellbook', 'Spell Book')}
+            {this.renderMenuLink('/party', 'Assemble Party')}
+            {this.renderMenuLink('/selectboss', 'Select Boss')}
             <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
           </div>
           <hr />
@@ -57,7 +62,7 @@ class Menu extends React.Component {
             <hr />
           </div>
         </div>
-        <div className="column box">
+        {this.props.location.pathname != '/' && <div className="column">
           <Router>
             <div>
               <Route path="/spellbook" component={Spellbook} />
@@ -66,7 +71,7 @@ class Menu extends React.Component {
               <Route path="/inventory" component={Inventory} />
             </div>
           </Router>
-        </div>
+        </div>}
       </div>
     </div>
   }

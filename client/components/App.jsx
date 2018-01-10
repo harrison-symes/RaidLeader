@@ -12,7 +12,7 @@ import Menu from './Menu'
 const App = ({auth}) => (
   <Router>
     <div className='app-container'>
-      <Route exact path="/" component={Nav} />
+      {/* <Route exact path="/" component={Nav} /> */}
       {auth.isAuthenticated
         ? <Switch>
           <Route path="/game" component={Game} />
