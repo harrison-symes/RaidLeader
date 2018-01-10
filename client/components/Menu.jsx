@@ -27,10 +27,10 @@ class Menu extends React.Component {
     this.props.dispatch({type: 'LOAD_GAME', playerParty})
   }
   render() {
-    const {playerParty} = this.props
+    const {playerParty, playerSpells} = this.props
     return <div className="section has-text-centered">
       <div className="columns">
-        <div className="column is-6">
+        <div className="column">
           <div className="level">
             <Link className="button is-large" to="/spellbook">Spell Book</Link>
             <Link className="button is-large" to="/party">Party</Link>
@@ -46,8 +46,17 @@ class Menu extends React.Component {
             </div>
             <hr />
           </div>
+          <div className="has-text-centered">
+            <p className="subtitle is-1">Your Spells:</p>
+            <div className="columns is-multiline">
+              {playerSpells.map((spell, i) => <table key={`spell-in-bar-main-${i}`} className="column is-4 table box">
+                <SpellFrame spell={spell}  />
+              </table>)}
+            </div>
+            <hr />
+          </div>
         </div>
-        <div className="column is-6 box">
+        <div className="column box">
           <Router>
             <div>
               <Route path="/spellbook" component={Spellbook} />
@@ -62,9 +71,10 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty}) => {
+const mapStateToProps = ({playerParty, playerSpells}) => {
   return {
-    playerParty
+    playerParty,
+    playerSpells
   }
 }
 
