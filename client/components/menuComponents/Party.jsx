@@ -40,7 +40,7 @@ class Party extends React.Component {
   render() {
     console.log(this.props);
     const {recruits, playerParty} = this.props
-    const roster = recruits.filter(recruit => !playerParty.find(party => recruit == party))
+    const roster = recruits.filter(recruit => !playerParty.find(party => recruit.id == party.id))
     console.log({recruits});
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
