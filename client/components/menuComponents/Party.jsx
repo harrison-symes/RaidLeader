@@ -18,7 +18,7 @@ const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
-  maxHeight: '90vh',
+  maxHeight: '80vh',
   overflow: 'scroll'
 });
 

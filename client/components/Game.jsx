@@ -14,6 +14,8 @@ class Game extends Component {
     this.startGame = this.startGame.bind(this)
   }
   componentWillReceiveProps(nextProps) {
+    console.log({nextProps});
+    if (nextProps.player.spells.length == 0 || nextProps.party.length == 0 || !nextProps.boss) return this.props.location.push('/')
     if (!this.props.started && nextProps.started) {
       let interval = setInterval(() => this.props.dispatch({type: 'TICK_ONE_SECOND'}), 1000)
       this.setState({interval})
@@ -23,7 +25,9 @@ class Game extends Component {
     this.props.dispatch({type: 'START'})
   }
   render () {
-    const {started, boss} = this.props
+    const {started, boss, player, party} = this.props
+    console.log(this.props);
+    if (player.spells.length == 0 || party.length == 0 || !boss) this.props.history.push('/'); return null
     return <div className="Game">
       {bossSwitch(boss)}
       <PartyFrame />
@@ -33,10 +37,12 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = ({started, boss}) => {
+const mapStateToProps = ({started, boss, player, party}) => {
   return {
     started,
-    boss
+    boss,
+    player,
+    party
   }
 }
 
