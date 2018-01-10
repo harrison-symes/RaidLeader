@@ -7,6 +7,9 @@ import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 import BossSelection from './menuComponents/BossSelection'
 
+import RecruitFrame from './menuComponents/RecruitFrame'
+import SpellFrame from './menuComponents/SpellFrame'
+
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
 
@@ -36,9 +39,12 @@ class Menu extends React.Component {
           </div>
           <div className="has-text-centered">
             <p className="subtitle is-1">Your Party:</p>
-            <div className="columns">
-              {playerParty.map(({name, heroClass}, i) => <div key={`player-in-party-main-${i}`} className="tag is-info is-large">{name} the {heroClass}</div>)}
+            <div className="columns is-multiline">
+              {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
+                <RecruitFrame recruit={recruit}  />
+              </table>)}
             </div>
+            <hr />
           </div>
         </div>
         <div className="column is-6 box">
