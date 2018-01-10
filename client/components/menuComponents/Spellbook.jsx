@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import RecruitFrame from './RecruitFrame'
+import SpellFrame from './SpellFrame'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
@@ -30,30 +30,31 @@ class SpellBook extends React.Component {
   }
   onDragEnd(result) {
     console.log({result});
+    console.log(this.props);
     const {source, destination} = result
-    const spell = this.props.spellbook.find(spell => spell.name == result.draggableId)
-    // if (!source || !destination) return
-    // else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
-    // else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
-    // else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
+    const spell = this.props.spellBook.find(spell => spell.id == result.draggableId)
+    if (!source || !destination) return
+    else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar') this.props.dispatch({type: 'ADD_SPELL_TO_BAR', spell, idx: destination.index})
+    else if (source.droppableId == 'spellBar' && destination.droppableId == 'spellBook') this.props.dispatch({type: 'REMOVE_SPELL_FROM_BAR', spell})
+    else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
   }
   render() {
     console.log(this.props);
     const {spellBook, playerSpells} = this.props
-    const bar = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
+    const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
           <Droppable droppableId="spellBook">
             {(provided, snapshot) => (
               <div
-                className="Recruits"
+                className="spellBook"
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
                 <h1 className="subtitle is-1">Spellbook</h1>
                 <hr />
-                {spellBook.map(spell => (
+                {available.map(spell => (
                   <Draggable key={spell.id} draggableId={spell.id}>
                     {(provided, snapshot) => (
                       <div>
@@ -65,7 +66,7 @@ class SpellBook extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {/* <SpellFrame key={`spell-${spell.id}`} recruit={recruit} /> */}
+                          <SpellFrame key={`spell-${spell.id}`} spell={spell} />
                         </table>
                         {provided.placeholder}
                       </div>
@@ -76,16 +77,16 @@ class SpellBook extends React.Component {
               </div>
               )}
           </Droppable>
-          <Droppable droppableId="party">
+          <Droppable droppableId="spellBar">
             {(provided, snapshot) => (
               <div
-                className="Party"
+                className="SpellBar"
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
-                <h1 className="subtitle is-1">Your Spells</h1>
+                <h1 className="subtitle is-1">Spell Bar</h1>
                 <hr />
-                {bar.map(spell => (
+                {playerSpells.map(spell => (
                   <Draggable key={spell.id} draggableId={spell.id}>
                     {(provided, snapshot) => (
                       <div>
@@ -98,7 +99,7 @@ class SpellBook extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {/* <SpellFrame key={`spell-${spell.id}`} recruit={recruit} /> */}
+                          <SpellFrame key={`spell-${spell.id}`} spell={spell} />
                         </table>
                         {provided.placeholder}
                       </div>
