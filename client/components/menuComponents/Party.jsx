@@ -16,7 +16,6 @@ const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
-  height: '90vh'
 });
 
 class Party extends React.Component {
@@ -95,6 +94,7 @@ class Party extends React.Component {
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
                 <h1 className="subtitle is-1">Recruits</h1>
+                <hr />
                 {roster.map(item => (
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
@@ -126,6 +126,7 @@ class Party extends React.Component {
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
                 <h1 className="subtitle is-1">Party</h1>
+                <hr />
                 {playerParty.map(item => (
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
