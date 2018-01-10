@@ -31,9 +31,54 @@ class Party extends React.Component {
     console.log({result});
     const {source, destination} = result
     const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
-    if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
+    if (!source || !destination) return
+    else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
     else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
+  }
+  recruitTable(item) {
+    return <tbody className="tbody">
+      <tr className="tr">
+        <th className="th">
+          <p className="subtitle is-4">Name:</p>
+        </th>
+        <td className="td">
+          <p className="subtitle is-4">
+            {item.name}
+          </p>
+        </td>
+      </tr>
+      <tr className="tr">
+        <th className="th">
+          <p className="subtitle is-4">Class:</p>
+        </th>
+        <td className="td">
+          <p className="subtitle is-4">
+            {item.class}
+          </p>
+        </td>
+      </tr>
+      <tr className="tr">
+        <th className="th">
+          <p className="subtitle is-4">Level:</p>
+        </th>
+        <td className="td">
+          <p className="subtitle is-4">
+            {item.level}
+          </p>
+        </td>
+      </tr>
+      <tr className="tr">
+        <th className="th">
+          <p className="subtitle is-4">Weapon:</p>
+        </th>
+        <td className="td">
+          <p className="subtitle is-4">
+            {item.weapon_name || "none"}
+          </p>
+        </td>
+      </tr>
+    </tbody>
   }
   render() {
     console.log(this.props);
@@ -54,7 +99,7 @@ class Party extends React.Component {
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
                       <div>
-                        <div
+                        <table className="table has-text-centered"
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -62,8 +107,8 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {item.name}
-                        </div>
+                          {this.recruitTable(item)}
+                        </table>
                         {provided.placeholder}
                       </div>
                     )}
@@ -85,8 +130,8 @@ class Party extends React.Component {
                   <Draggable key={item.id} draggableId={item.id}>
                     {(provided, snapshot) => (
                       <div>
-                        <div
-                          className=""
+                        <table
+                          className="table has-text-centered"
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -94,51 +139,8 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <table className="table has-text-centered">
-                            <tbody className="tbody">
-                              <tr className="tr">
-                                <th className="th">
-                                  <p className="subtitle is-4">Name:</p>
-                                </th>
-                                <td className="td">
-                                  <p className="subtitle is-4">
-                                    {item.name}
-                                  </p>
-                                </td>
-                              </tr>
-                              <tr className="tr">
-                                <th className="th">
-                                  <p className="subtitle is-4">Class:</p>
-                                </th>
-                                <td className="td">
-                                  <p className="subtitle is-4">
-                                    {item.class}
-                                  </p>
-                                </td>
-                              </tr>
-                              <tr className="tr">
-                                <th className="th">
-                                  <p className="subtitle is-4">Level:</p>
-                                </th>
-                                <td className="td">
-                                  <p className="subtitle is-4">
-                                    {item.level}
-                                  </p>
-                                </td>
-                              </tr>
-                              <tr className="tr">
-                                <th className="th">
-                                  <p className="subtitle is-4">Weapon:</p>
-                                </th>
-                                <td className="td">
-                                  <p className="subtitle is-4">
-                                    {item.weapon_name || "none"}
-                                  </p>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                          {this.recruitTable(item)}
+                        </table>
                         {provided.placeholder}
                       </div>
                     )}
