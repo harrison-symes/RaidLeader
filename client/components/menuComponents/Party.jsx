@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import RecruitFrame from './RecruitFrame'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
@@ -10,6 +11,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   margin: `5%`,
   width: '90%',
   background: isDragging ? 'lightgreen' : 'white',
+  cursor: 'pointer',
   ...draggableStyle,
 });
 const getListStyle = isDraggingOver => ({
@@ -35,54 +37,11 @@ class Party extends React.Component {
     else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
   }
-  recruitTable(item) {
-    return <tbody className="tbody">
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Name:</p>
-        </th>
-        <td className="td">
-          <p className="subtitle is-4">
-            {item.name}
-          </p>
-        </td>
-      </tr>
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Class:</p>
-        </th>
-        <td className="td">
-          <p className="subtitle is-4">
-            {item.class}
-          </p>
-        </td>
-      </tr>
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Level:</p>
-        </th>
-        <td className="td">
-          <p className="subtitle is-4">
-            {item.level}
-          </p>
-        </td>
-      </tr>
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Weapon:</p>
-        </th>
-        <td className="td">
-          <p className="subtitle is-4">
-            {item.weapon_name || "none"}
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  }
   render() {
     console.log(this.props);
     const {recruits, playerParty} = this.props
     const roster = recruits.filter(recruit => !playerParty.find(party => recruit == party))
+    console.log({recruits});
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -95,8 +54,8 @@ class Party extends React.Component {
                 >
                 <h1 className="subtitle is-1">Recruits</h1>
                 <hr />
-                {roster.map(item => (
-                  <Draggable key={item.id} draggableId={item.id}>
+                {roster.map(recruit => (
+                  <Draggable key={recruit.id} draggableId={recruit.id}>
                     {(provided, snapshot) => (
                       <div>
                         <table className="table has-text-centered"
@@ -107,7 +66,7 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {this.recruitTable(item)}
+                          <RecruitFrame key={`recruit-${recruit.id}`} recruit={recruit} />
                         </table>
                         {provided.placeholder}
                       </div>
@@ -127,8 +86,8 @@ class Party extends React.Component {
                 >
                 <h1 className="subtitle is-1">Party</h1>
                 <hr />
-                {playerParty.map(item => (
-                  <Draggable key={item.id} draggableId={item.id}>
+                {playerParty.map(recruit => (
+                  <Draggable key={recruit.id} draggableId={recruit.id}>
                     {(provided, snapshot) => (
                       <div>
                         <table
@@ -140,7 +99,7 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {this.recruitTable(item)}
+                          <RecruitFrame key={`recruit-${recruit.id}`} recruit={recruit} />
                         </table>
                         {provided.placeholder}
                       </div>

@@ -1,9 +1,10 @@
 import request from '../utils/api'
+import createClass from '../utils/createClass'
 
 export function receiveRecruitsAction (recruits) {
   return {
     type: "RECEIVE_RECRUITS",
-    recruits
+    recruits: recruits.map(recruit => createClass(recruit))
   }
 }
 
