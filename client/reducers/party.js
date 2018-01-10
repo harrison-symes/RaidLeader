@@ -19,9 +19,11 @@ const testParty1 = [
   // createClass('Warrior 1', 'Warrior', 1)
 ]
 
-export default function party (state = testParty1, action) {
+export default function party (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'LOAD_GAME':
+      return action.playerParty
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       let target = newState.find(member => member == action.target)

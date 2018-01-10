@@ -10,8 +10,16 @@ import BossSelection from './menuComponents/BossSelection'
 import {getRecruits} from '../actions/recruits'
 
 class Menu extends React.Component {
+  constructor(props) {
+    super(props)
+    this.loadGame = this.loadGame.bind(this)
+  }
   componentDidMount() {
     this.props.dispatch(getRecruits())
+  }
+  loadGame() {
+    const {playerParty} = this.props
+    this.props.dispatch({type: 'LOAD_GAME', playerParty})
   }
   render() {
     return <div className="section has-text-centered">
@@ -20,6 +28,7 @@ class Menu extends React.Component {
           <Link className="button is-large" to="/spellbook">Spell Book</Link>
           <Link className="button is-large" to="/party">Party</Link>
           <Link className="button is-large" to="/selectboss">Select Boss</Link>
+          <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
           {/* <Link className="button is-large" to="/inventory">Inventory</Link> */}
         </div>
         <div className="column is-6 box">
@@ -37,4 +46,10 @@ class Menu extends React.Component {
   }
 }
 
-export default connect()(Menu)
+const mapStateToProps = ({playerParty}) => {
+  return {
+    playerParty
+  }
+}
+
+export default connect(mapStateToProps)(Menu)
