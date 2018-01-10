@@ -1,24 +1,3 @@
-import spells from '../utils/spells'
-
-const testSpellSet1 = [
-  spells.Heal
-]
-
-const testSpellSet2 = [
-  spells['Lesser Heal'],
-  spells['Heal'],
-  spells['Greater Heal'],
-  // spells['Healing Ring'],
-  // spells.Fireball,
-  // spells['Fireblast'],
-  // spells['Flash Fire'],
-  // spells.Bind,
-  // spells['Life Tap'],
-  spells['Drain Soul'],
-  spells['Harvest Life'],
-  // spells['Evocate']
-]
-
 const testPlayer = {
   name: 'Harrison',
   initHp: 100,

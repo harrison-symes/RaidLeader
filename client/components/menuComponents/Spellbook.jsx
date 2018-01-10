@@ -18,6 +18,8 @@ const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
+  maxHeight: '90vh',
+  overflow: 'scroll'
 });
 
 class SpellBook extends React.Component {
@@ -52,7 +54,7 @@ class SpellBook extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
                 >
-                <h1 className="subtitle is-1">Spellbook</h1>
+                <h1 className="subtitle is-1">Spell Book</h1>
                 <hr />
                 {available.map(spell => (
                   <Draggable key={spell.id} draggableId={spell.id}>

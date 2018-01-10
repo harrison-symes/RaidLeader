@@ -18,6 +18,8 @@ const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
+  maxHeight: '90vh',
+  overflow: 'scroll'
 });
 
 class Party extends React.Component {
