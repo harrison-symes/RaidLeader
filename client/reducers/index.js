@@ -9,6 +9,8 @@ import selectedSpell from './selectedSpell'
 import friendlyTarget from './friendlyTarget'
 import recruits from './recruits'
 import playerParty from './playerParty'
+import playerSpells from './playerSpells'
+import spellBook from './spellBook'
 
 export default combineReducers({
   auth,
@@ -19,5 +21,7 @@ export default combineReducers({
   selectedSpell,
   friendlyTarget,
   recruits,
-  playerParty
+  playerParty,
+  playerSpells,
+  spellBook
 })

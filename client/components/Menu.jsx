@@ -8,6 +8,7 @@ import Inventory from './menuComponents/Inventory'
 import BossSelection from './menuComponents/BossSelection'
 
 import {getRecruits} from '../actions/recruits'
+import {getSpells} from '../actions/spells'
 
 class Menu extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Menu extends React.Component {
   }
   componentDidMount() {
     this.props.dispatch(getRecruits())
+    this.props.dispatch(getSpells())
   }
   loadGame() {
     const {playerParty} = this.props
