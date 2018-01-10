@@ -23,8 +23,8 @@ class Menu extends React.Component {
     this.props.dispatch(getSpells())
   }
   loadGame() {
-    const {playerParty} = this.props
-    this.props.dispatch({type: 'LOAD_GAME', playerParty})
+    const {playerParty, playerSpells} = this.props
+    this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells})
   }
   render() {
     const {playerParty, playerSpells} = this.props
@@ -37,8 +37,9 @@ class Menu extends React.Component {
             <Link className="button is-large" to="/selectboss">Select Boss</Link>
             <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
           </div>
+          <hr />
           <div className="has-text-centered">
-            <p className="subtitle is-1">Your Party:</p>
+            <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
             <div className="columns is-multiline">
               {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
                 <RecruitFrame recruit={recruit}  />
@@ -47,7 +48,7 @@ class Menu extends React.Component {
             <hr />
           </div>
           <div className="has-text-centered">
-            <p className="subtitle is-1">Your Spells:</p>
+            <p className="subtitle is-1">Your Spells: ({playerSpells.length}/3)</p>
             <div className="columns is-multiline">
               {playerSpells.map((spell, i) => <table key={`spell-in-bar-main-${i}`} className="column is-4 table box">
                 <SpellFrame spell={spell}  />

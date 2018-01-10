@@ -32,12 +32,15 @@ const testPlayer = {
   manaRegen: 1,
   isCasting: false,
   isAlive: true,
-  spells: testSpellSet2
+  spells: []
 }
 
 export default function player (state = testPlayer, action) {
   let newState = {...state}
   switch (action.type) {
+    case 'LOAD_GAME':
+      newState.spells = action.playerSpells
+      return newState
     case 'TICK_ONE_SECOND':
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
