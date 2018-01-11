@@ -13,9 +13,10 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   background: isDragging ? 'lightgreen' : 'white',
   cursor: 'pointer',
   ...draggableStyle,
-});
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+})
+
+const getListStyle = (isDraggingOver, isFull) => ({
+  background: isFull ? 'red': isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
   maxHeight: '80vh',
@@ -45,6 +46,7 @@ class SpellBook extends React.Component {
     console.log(this.props);
     const {spellBook, playerSpells} = this.props
     const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
+    const isFull = playerSpells.length > 3
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -53,7 +55,7 @@ class SpellBook extends React.Component {
               <div
                 className="spellBook"
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
+                style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
                 <h1 className="subtitle is-1">Spell Book</h1>
                 <hr />
@@ -85,7 +87,7 @@ class SpellBook extends React.Component {
               <div
                 className="SpellBar"
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
+                style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
                 <h1 className="subtitle is-1">Spell Bar</h1>
                 <hr />
