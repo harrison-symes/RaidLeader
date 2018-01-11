@@ -38,7 +38,7 @@ class Menu extends React.Component {
     return <Link to={pathname == path ? '/' : path} className={`button is-large ${pathname == path ? 'is-success' : 'is-info is-outlined'}`}>{display}</Link>
   }
   render() {
-    const {playerParty, playerSpells} = this.props
+    const {playerParty, playerSpells, currentLocation} = this.props
     console.log(this.props);
     return <div className="section has-text-centered">
       <div className="level">
@@ -68,6 +68,10 @@ class Menu extends React.Component {
             </div>
             <hr />
           </div>
+          <div className="has-text-centered">
+            <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
+            <hr />
+          </div>
         </div>
         {this.props.location.pathname != '/' && <div className="column">
           <Router>
@@ -84,10 +88,11 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty, playerSpells}) => {
+const mapStateToProps = ({playerParty, playerSpells, location}) => {
   return {
     playerParty,
-    playerSpells
+    playerSpells,
+    currentLocation: location
   }
 }
 

@@ -12,6 +12,7 @@ import playerParty from './playerParty'
 import playerSpells from './playerSpells'
 import spellBook from './spellBook'
 import dungeons from './dungeons'
+import location from './location'
 
 export default combineReducers({
   auth,
@@ -25,5 +26,6 @@ export default combineReducers({
   playerParty,
   playerSpells,
   spellBook,
-  dungeons
+  dungeons,
+  location
 })
