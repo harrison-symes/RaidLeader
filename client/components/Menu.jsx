@@ -46,11 +46,21 @@ class Menu extends React.Component {
     console.log(this.props);
     return <div className="section has-text-centered">
       <div className="level">
-        {this.renderMenuLink('/spellbook', 'Spell Book')}
-        {this.renderMenuLink('/party', 'Assemble Party')}
-        {this.renderMenuLink('/dungeons', 'Dungeon')}
-        {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={this.goToTown}>Travel to Town</button>}
-        {this.renderStartGameButton()}
+        <div className="level-left">
+          {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={this.goToTown}>Travel to Town</button>}
+          {this.renderMenuLink('/dungeons', 'Dungeon Map')}
+        </div>
+        <div className="level-right">
+          {currentLocation.name != 'Town'
+            ? this.renderMenuLink('/party', 'Assemble Party')
+            : <button className="button is-large is-info isoutlined" disabled>Assemble Party</button>
+          }
+          {currentLocation.name != 'Town'
+            ? this.renderMenuLink('/spellbook', 'Spell Book')
+            : <button className="button is-large is-info isoutlined" disabled>Choose Spells</button>
+          }
+          {this.renderStartGameButton()}
+        </div>
       </div>
       <hr />
       <div className="columns" >
