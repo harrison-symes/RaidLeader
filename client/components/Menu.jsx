@@ -17,6 +17,9 @@ import {getDungeons} from '../actions/dungeons'
 class Menu extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      townTravelModal: false
+    }
     this.loadGame = this.loadGame.bind(this)
     this.goToTown = this.goToTown.bind(this)
   }
@@ -39,15 +42,39 @@ class Menu extends React.Component {
     return <Link to={pathname == path ? '/' : path} className={`button is-large ${pathname == path ? 'is-success' : 'is-info is-outlined'}`}>{display}</Link>
   }
   goToTown() {
+    this.setState({townTravelModal: false})
     this.props.dispatch({type: "TRAVEL_TO_TOWN"})
+  }
+  setTownModalState(townTravelModal) {
+    this.setState({townTravelModal})
   }
   render() {
     const {playerParty, playerSpells, currentLocation} = this.props
+    const {townTravelModal} = this.state
     console.log(this.props);
     return <div className="section has-text-centered">
+      <div className={`modal ${townTravelModal ? 'is-active' : ''}`} >
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Travel to Town:</p>
+            <button onClick={() => this.setTownModalState(false)} className="delete" aria-label="close"></button>
+          </header>
+          <section className="modal-card-body">
+            <p className="subtitle is-4">If you travel to Town, you will lose all progress for your current dungeon</p>
+          </section>
+          <footer className="modal-card-foot has-text-centered">
+            <div className="level">
+              <button onClick={() => this.setTownModalState(false)} className="button is-large">Cancel</button>
+              <button onClick={this.goToTown} className="button is-success is-large">Travel Anyway</button>
+            </div>
+          </footer>
+        </div>
+        <button onClick={() => this.setTownModalState(false)} className="modal-close is-large" aria-label="close"></button>
+      </div>
       <div className="level">
         <div className="level-left">
-          {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={this.goToTown}>Travel to Town</button>}
+          {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
           {this.renderMenuLink('/dungeons', 'Dungeon Map')}
         </div>
         <div className="level-right">
