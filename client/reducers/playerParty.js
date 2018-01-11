@@ -10,6 +10,10 @@ export default function (state = [], action) {
       newState = newState.filter(recruit => recruit != action.recruit)
       newState.splice(action.idx, 0, action.recruit)
       return newState
+    case 'REPLACE_SPELL_IN_BAR':
+      newState = newState.filter(recruit => recruit != action.recruit)
+      newState.splice(action.idx, 1, action.recruit)
+      return newState
     default: return state
   }
 }

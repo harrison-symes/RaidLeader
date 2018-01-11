@@ -13,12 +13,13 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   background: isDragging ? 'lightgreen' : 'white',
   cursor: 'pointer',
   ...draggableStyle,
-});
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+})
+
+const getListStyle = (isDraggingOver, isFull) => ({
+  background: isFull ? 'red': isDraggingOver ? 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
-  maxHeight: '90vh',
+  maxHeight: '80vh',
   overflow: 'scroll'
 });
 
@@ -36,6 +37,7 @@ class SpellBook extends React.Component {
     const {source, destination} = result
     const spell = this.props.spellBook.find(spell => spell.id == result.draggableId)
     if (!source || !destination) return
+    else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar' && this.props.playerSpells.length >= 3) this.props.dispatch({type: 'REPLACE_SPELL_IN_BAR', idx: destination.index, spell})
     else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar') this.props.dispatch({type: 'ADD_SPELL_TO_BAR', spell, idx: destination.index})
     else if (source.droppableId == 'spellBar' && destination.droppableId == 'spellBook') this.props.dispatch({type: 'REMOVE_SPELL_FROM_BAR', spell})
     else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
@@ -44,6 +46,7 @@ class SpellBook extends React.Component {
     console.log(this.props);
     const {spellBook, playerSpells} = this.props
     const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
+    const isFull = playerSpells.length > 3
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -52,7 +55,7 @@ class SpellBook extends React.Component {
               <div
                 className="spellBook"
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
+                style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
                 <h1 className="subtitle is-1">Spell Book</h1>
                 <hr />
@@ -84,7 +87,7 @@ class SpellBook extends React.Component {
               <div
                 className="SpellBar"
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
+                style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
                 <h1 className="subtitle is-1">Spell Bar</h1>
                 <hr />
