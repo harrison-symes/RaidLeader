@@ -1,11 +1,13 @@
 import request from '../utils/api'
-// import createClass from '../utils/createClass'
+import bosses from '../utils/bosses/bosses'
 
 export function receiveDungeonsAction (dungeons) {
-  console.log({dungeons});
   return {
-    type: "RECEIVE_RECRUITS",
-    // dungeons: dungeons.map(recruit => createClass(recruit))
+    type: "RECEIVE_DUNGEONS",
+    dungeons: dungeons.map(dungeon => {
+      dungeon.bosses = dungeon.bosses.map(boss => bosses(boss.name)).filter(boss => boss)
+      return dungeon
+    })
   }
 }
 

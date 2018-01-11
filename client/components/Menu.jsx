@@ -5,7 +5,7 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import Spellbook from './menuComponents/Spellbook'
 import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
-import BossSelection from './menuComponents/BossSelection'
+import Dungeons from './menuComponents/Dungeons'
 
 import RecruitFrame from './menuComponents/RecruitFrame'
 import SpellFrame from './menuComponents/SpellFrame'
@@ -44,7 +44,7 @@ class Menu extends React.Component {
       <div className="level">
         {this.renderMenuLink('/spellbook', 'Spell Book')}
         {this.renderMenuLink('/party', 'Assemble Party')}
-        {this.renderMenuLink('/selectboss', 'Select Boss')}
+        {this.renderMenuLink('/dungeons', 'Dungeon')}
         {this.renderStartGameButton()}
       </div>
       <hr />
@@ -74,7 +74,7 @@ class Menu extends React.Component {
             <div>
               <Route path="/spellbook" component={Spellbook} />
               <Route path="/party" component={Party} />
-              <Route path="/selectboss" component={BossSelection} />
+              <Route path="/dungeons" component={Dungeons} />
               <Route path="/inventory" component={Inventory} />
             </div>
           </Router>
