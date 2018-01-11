@@ -52,7 +52,7 @@ class Menu extends React.Component {
         <div className="column">
           <div className="has-text-centered">
             <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
-            <div className="columns is-multiline">
+            <div className="columns is-multiline" style={{overflowX:'scroll'}}>
               {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
                 <RecruitFrame recruit={recruit}  />
               </table>)}

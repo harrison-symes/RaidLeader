@@ -14,18 +14,25 @@ class Dungeon extends React.Component {
   }
   render() {
     const {dungeon} = this.props
-    return <div className="column is-4">
-      <button onClick={this.toggleShow} className={`button is-large ${dungeon.isCompleted ? 'is-success' : 'is-warning'}`}>{dungeon.name} <p className="tag is-large">({dungeon.min_level})</p></button>
+    return <table className="table is-fullwidth is-hoverable has-text-centered" style={{marginBottom: '10%'}}>
+      <tbody className="tbody">
+        <td className="th is-left" style={{cursor: 'pointer'}}>
+          <p className="subtitle is-1">{dungeon.name}</p>
+        </td>
+        <td className="th">
+          <p className="subtitle is-1" style={{float: 'right'}}>Level {dungeon.min_level}</p>
+        </td>
+      </tbody>
       {this.state.showMore && dungeon.bosses.map((boss, i) => <div className="tag is-large is-info">{boss.name}</div>)}
       {this.state.showMore && <button className="button is-primary">Travel Here</button>}
-    </div>
+    </table>
   }
 }
 
 const Dungeons = ({dungeons}) => {
   return <div>
     <p className="subtitle is-1">Dungeons:</p>
-    <div className="columns is-multiline">
+    <div className="has-text-centered" style={{overflowY: 'scroll', maxHeight: '70vh'}}>
       {dungeons.map((dungeon, i) => <Dungeon dungeon={dungeon} key={`dungeon-${i}`} />)}
     </div>
   </div>
