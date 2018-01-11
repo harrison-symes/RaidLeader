@@ -12,6 +12,7 @@ import SpellFrame from './menuComponents/SpellFrame'
 
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
+import {getDungeons} from '../actions/dungeons'
 
 class Menu extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class Menu extends React.Component {
   componentDidMount() {
     this.props.dispatch(getRecruits())
     this.props.dispatch(getSpells())
+    this.props.dispatch(getDungeons())
   }
   loadGame() {
     const {playerParty, playerSpells} = this.props
