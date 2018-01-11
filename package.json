@@ -33,6 +33,7 @@
     "ava": "^0.19.1",
     "enzyme": "^2.8.2",
     "nodemon": "^1.11.0",
+    "react-beautiful-dnd": "^3.0.0",
     "sqlite3": "^3.1.8",
     "supertest": "^3.0.0"
   },

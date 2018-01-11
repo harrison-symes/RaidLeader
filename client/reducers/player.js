@@ -1,24 +1,3 @@
-import spells from '../utils/spells'
-
-const testSpellSet1 = [
-  spells.Heal
-]
-
-const testSpellSet2 = [
-  spells['Lesser Heal'],
-  spells['Heal'],
-  spells['Greater Heal'],
-  // spells['Healing Ring'],
-  // spells.Fireball,
-  // spells['Fireblast'],
-  // spells['Flash Fire'],
-  // spells.Bind,
-  // spells['Life Tap'],
-  spells['Drain Soul'],
-  spells['Harvest Life'],
-  // spells['Evocate']
-]
-
 const testPlayer = {
   name: 'Harrison',
   initHp: 100,
@@ -32,12 +11,15 @@ const testPlayer = {
   manaRegen: 1,
   isCasting: false,
   isAlive: true,
-  spells: testSpellSet2
+  spells: []
 }
 
 export default function player (state = testPlayer, action) {
   let newState = {...state}
   switch (action.type) {
+    case 'LOAD_GAME':
+      newState.spells = action.playerSpells
+      return newState
     case 'TICK_ONE_SECOND':
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
