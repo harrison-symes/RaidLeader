@@ -15,16 +15,31 @@ class Dungeon extends React.Component {
   render() {
     const {dungeon} = this.props
     return <table className="table is-fullwidth is-hoverable has-text-centered" style={{marginBottom: '10%'}}>
-      <tbody className="tbody">
+      <thead className="thead">
         <td className="th is-left" style={{cursor: 'pointer'}}>
-          <p className="subtitle is-1">{dungeon.name}</p>
+          <p onClick={this.toggleShow} className="subtitle is-1">{dungeon.name}</p>
         </td>
         <td className="th">
           <p className="subtitle is-1" style={{float: 'right'}}>Level {dungeon.min_level}</p>
         </td>
+      </thead>
+      <tbody className="tbody">
+        {this.state.showMore && dungeon.bosses.map((boss, i) => <tr className="tr is-large is-info">
+          <td className="td">
+            <p className="title is-3">Boss {i+1}:</p>
+          </td>
+          <td className="td">
+            <p className="title is-3" style={{float: 'right'}}>{boss.name}</p>
+          </td>
+        </tr>)}
+        <tfoot className="tfoot has-text-centered" >
+          <tr className="tr has-text-centered">
+            <td className="td">
+              {this.state.showMore && <p className="button is-primary is-large">Travel Here</p>}
+            </td>
+          </tr>
+        </tfoot>
       </tbody>
-      {this.state.showMore && dungeon.bosses.map((boss, i) => <div className="tag is-large is-info">{boss.name}</div>)}
-      {this.state.showMore && <button className="button is-primary">Travel Here</button>}
     </table>
   }
 }
