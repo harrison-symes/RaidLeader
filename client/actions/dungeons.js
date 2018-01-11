@@ -6,6 +6,7 @@ export function receiveDungeonsAction (dungeons) {
     type: "RECEIVE_DUNGEONS",
     dungeons: dungeons.map(dungeon => {
       dungeon.bosses = dungeon.bosses.map(boss => bosses(boss.name)).filter(boss => boss)
+      dungeon.type = 'Dungeon'
       return dungeon
     })
   }
