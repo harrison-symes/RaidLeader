@@ -1,5 +1,5 @@
 export default {
-  name: 'Test-Turtle',
+  name: 'Trampling Turtle',
   initHp: 10,
   hp: 10,
   initPower: 1,

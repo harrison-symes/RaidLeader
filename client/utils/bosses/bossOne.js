@@ -1,5 +1,5 @@
 export default {
-  name: 'Test-O-Saurus',
+  name: 'Biting Bear',
   initHp: 50,
   hp: 50,
   initPower: 5,

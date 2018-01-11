@@ -8,7 +8,7 @@ const town = {
 let initialState = JSON.parse(get('location'))
 console.log({initialState});
 
-export default function (state = get('location') || town, action) {
+export default function (state = initialState || town, action) {
   let newState = {...state}
   switch (action.type) {
     case 'TRAVEL_TO_DUNGEON':
@@ -18,6 +18,8 @@ export default function (state = get('location') || town, action) {
       })
       set('location', JSON.stringify(action.dungeon))
       return action.dungeon
+    case 'TRAVEL_TO_TOWN':
+      return town
     default: return state
   }
 }

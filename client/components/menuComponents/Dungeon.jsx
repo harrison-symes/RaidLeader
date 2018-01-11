@@ -18,7 +18,7 @@ class Dungeon extends React.Component {
     this.props.dispatch({type: 'TRAVEL_TO_DUNGEON', dungeon})
   }
   render() {
-    const {dungeon, location} = this.props
+    const {dungeon, location, partyLevel} = this.props
     return <table className="table is-fullwidth is-hoverable has-text-centered" style={{marginBottom: '10%'}}>
       <thead className="thead">
         <td className="th is-left" style={{cursor: 'pointer'}}>
@@ -41,7 +41,11 @@ class Dungeon extends React.Component {
       <tfoot className="tfoot has-text-centered" >
         <tr className="tr has-text-centered">
           <td className="td">
-            {this.state.showMore && location != dungeon && <p className="button is-primary is-large" onClick={this.travelHere}>Travel Here</p>}
+            {location.name == dungeon.name && <p className="button is-info is-outlined is-large" disabled>You Are Here</p>}
+            {this.state.showMore && location.name != dungeon.name &&  partyLevel >= dungeon.min_level && <p className="button is-primary is-large" onClick={this.travelHere}>Travel Here</p>
+            }
+            {this.state.showMore && location.name != dungeon.name &&  partyLevel < dungeon.min_level && <p className="button is-danger is-large is-outlined" disabled>Requires Level ({dungeon.min_level})</p>
+            }
           </td>
         </tr>
       </tfoot>

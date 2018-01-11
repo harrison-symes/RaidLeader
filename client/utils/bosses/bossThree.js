@@ -1,5 +1,5 @@
 export default {
-  name: 'Test-Turantula',
+  name: 'Spitting Spider',
   initHp: 50,
   hp: 50,
   initPower: 1,

@@ -18,6 +18,7 @@ class Menu extends React.Component {
   constructor(props) {
     super(props)
     this.loadGame = this.loadGame.bind(this)
+    this.goToTown = this.goToTown.bind(this)
   }
   componentDidMount() {
     this.props.dispatch(getRecruits())
@@ -37,6 +38,9 @@ class Menu extends React.Component {
     const {pathname} = this.props.location
     return <Link to={pathname == path ? '/' : path} className={`button is-large ${pathname == path ? 'is-success' : 'is-info is-outlined'}`}>{display}</Link>
   }
+  goToTown() {
+    this.props.dispatch({type: "TRAVEL_TO_TOWN"})
+  }
   render() {
     const {playerParty, playerSpells, currentLocation} = this.props
     console.log(this.props);
@@ -45,11 +49,12 @@ class Menu extends React.Component {
         {this.renderMenuLink('/spellbook', 'Spell Book')}
         {this.renderMenuLink('/party', 'Assemble Party')}
         {this.renderMenuLink('/dungeons', 'Dungeon')}
+        {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={this.goToTown}>Travel to Town</button>}
         {this.renderStartGameButton()}
       </div>
       <hr />
-      <div className="columns">
-        <div className="column">
+      <div className="columns" >
+        <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
           <div className="has-text-centered">
             <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
             <div className="columns is-multiline" style={{overflowX:'scroll'}}>
