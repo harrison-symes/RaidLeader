@@ -23,14 +23,14 @@ class BossSelection extends React.Component {
           <button onClick={() => this.changeModal(false, null)} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <p className="subtitle is-3">{boss.description}</p>
+          <p className="subtitle is-5">{boss.description}</p>
           <hr />
           <p className="title is-3">Stats</p>
           <ul className="columns is-multiline">
             {renderStat(`Health: ${boss.hp} / ${boss.initHp}`)}
-            {renderStat(`Mana: ${boss.mana} / ${boss.maxMana} ${boss.manaRegen != 0 && `(1 per ${boss.manaRegen} s)`}`)}
+            {renderStat(`Mana: ${boss.mana} / ${boss.maxMana} ${boss.manaRegen != 0 ? `(1 per ${boss.manaRegen} s)` : ''}`)}
             {renderStat(`Power: ${boss.power}`)}
-            {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 && `(1 per ${boss.armorRegen} s)`}`)}
+            {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 ? `(1 per ${boss.armorRegen} s)` : ''}`)}
           </ul>
           <hr />
           <p className="title is-4">Boss Abilities:</p>

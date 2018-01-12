@@ -12,7 +12,7 @@ export default {
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
-  description: "This Spider knows you hate her, but she hates you too, and she spits on you for it."
+  description: "This Spider knows you hate her, but she hates you too, and she spits on you for it.",
   spells: [
     {
       name: 'Feed',
@@ -33,7 +33,7 @@ export default {
       type: 'damage',
       singleTarget: false,
       powerRatio: 3,
-      onCooldown: false
+      onCooldown: false,
       description: "Damage ALL enemy characters for 100% BOSS POWER"
     },
     {
