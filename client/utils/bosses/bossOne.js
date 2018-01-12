@@ -12,7 +12,7 @@ export default {
   armorRegen: 10,
   isCasting: false,
   bossTarget: null,
-  description: "You encounter a starving Bear in the Wilds, and this Bear is very, very hungry...",
+  description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
   spells: [
     {
       name: 'Swipe',

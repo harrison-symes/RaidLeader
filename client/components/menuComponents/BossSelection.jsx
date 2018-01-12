@@ -20,9 +20,9 @@ class BossSelection extends React.Component {
           <button onClick={() => this.changeModal(false, null)} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <p className="subtitle is-4">{boss.description}</p>
+          <p className="subtitle is-3">{boss.description}</p>
           <hr />
-          <p className="title is-4">Stats</p>
+          <p className="title is-3">Stats</p>
           <ul className="columns is-multiline">
             {renderStat(`Health: ${boss.hp} / ${boss.initHp}`)}
             {renderStat(`Mana: ${boss.mana} / ${boss.maxMana} ${boss.manaRegen != 0 && `(1 per ${boss.manaRegen} s)`}`)}
@@ -30,19 +30,23 @@ class BossSelection extends React.Component {
             {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 && `(1 per ${boss.armorRegen} s)`}`)}
           </ul>
           <hr />
-          <p className="subtitle is-4">Boss Abilities:</p>
+          <p className="title is-4">Boss Abilities:</p>
           <hr />
           <ul>
-            {boss.spells.map(spell => <div>
-              <p className="subtitle is-4">{spell.name}</p>
-              <p className="subtitle is-6">{spell.description}</p>
-              <hr />
+            {boss.spells.map(spell => <div className="section box">
+              <p className="title is-4" style={{textDecoration: 'underline'}}>{spell.name}</p>
+              <div className="columns">
+                <p className="subtitle column is-4">Cast: {spell.cast} s</p>
+                <p className="subtitle column is-4">Cost: {spell.cost} mana</p>
+                <p className="subtitle column is-4">CD: {spell.coolDown} s</p>
+              </div>
+              <p className="content subtitle is-5">{spell.description}</p>
             </div>)}
           </ul>
         </section>
         <footer className="modal-card-foot">
-          <button className="button is-success">Set Target</button>
-          <button onClick={() => this.changeModal(false, null)} className="button">Cancel</button>
+          <button className="button is-large is-success">Set Target</button>
+          <button onClick={() => this.changeModal(false, null)} className="button is-large">Cancel</button>
         </footer>
       </div>
     </div>
