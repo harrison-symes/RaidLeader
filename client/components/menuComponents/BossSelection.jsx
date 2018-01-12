@@ -11,14 +11,34 @@ class BossSelection extends React.Component {
   }
   renderBossModal () {
     const {boss} = this.state
+    const renderStat = (text) => <li className="column is-6 has-text-centered"><p className="subtitle is-4">{text}</p></li>
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">{boss.name}</p>
+          <p className="modal-card-title title is-2">{boss.name}</p>
           <button onClick={() => this.changeModal(false, null)} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
+          <p className="subtitle is-4">{boss.description}</p>
+          <hr />
+          <p className="title is-4">Stats</p>
+          <ul className="columns is-multiline">
+            {renderStat(`Health: ${boss.hp} / ${boss.initHp}`)}
+            {renderStat(`Mana: ${boss.mana} / ${boss.maxMana} ${boss.manaRegen != 0 && `(1 per ${boss.manaRegen} s)`}`)}
+            {renderStat(`Power: ${boss.power}`)}
+            {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 && `(1 per ${boss.armorRegen} s)`}`)}
+          </ul>
+          <hr />
+          <p className="subtitle is-4">Boss Abilities:</p>
+          <hr />
+          <ul>
+            {boss.spells.map(spell => <div>
+              <p className="subtitle is-4">{spell.name}</p>
+              <p className="subtitle is-6">{spell.description}</p>
+              <hr />
+            </div>)}
+          </ul>
         </section>
         <footer className="modal-card-foot">
           <button className="button is-success">Set Target</button>

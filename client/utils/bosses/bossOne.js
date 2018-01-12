@@ -12,6 +12,7 @@ export default {
   armorRegen: 10,
   isCasting: false,
   bossTarget: null,
+  description: "You encounter a starving Bear in the Wilds, and this Bear is very, very hungry...",
   spells: [
     {
       name: 'Swipe',
@@ -21,7 +22,8 @@ export default {
       type: 'damage',
       singleTarget: false,
       powerRatio: 0.5,
-      onCooldown: false
+      onCooldown: false,
+      description: 'Damage the PLAYER and ALL party members for 50% of BOSS POWER'
     },
     {
       name: 'Protect',
@@ -31,7 +33,8 @@ export default {
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
-      onCooldown: false
+      onCooldown: false,
+      description: 'Gain 1 ARMOR'
     },
     {
       name: 'Bite',
@@ -41,7 +44,8 @@ export default {
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,
-      onCooldown: false
+      onCooldown: false,
+      description: "Damage the Boss' TARGET for 100% of BOSS POWER"
     }
   ]
 }
