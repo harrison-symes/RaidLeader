@@ -7,11 +7,20 @@ class BossSelection extends React.Component {
 
   }
   render() {
-    return <div>
-      BossSelection
+    const {currentLocation} = this.props
+    return <div className="has-text-centered">
+      {currentLocation.bosses.map((boss, i) => {
+        <div className="button is-danger is-large">{boss.name}</div>
+      })}
     </div>
   }
 }
 
+const mapStateToProps = ({location}) => {
+  return {
+    currentLocation: location
+  }
+}
 
-export default connect()(BossSelection)
+
+export default connect(mapStateToProps)(BossSelection)

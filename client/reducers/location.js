@@ -6,7 +6,6 @@ const town = {
 }
 
 let initialState = JSON.parse(get('location'))
-console.log({initialState});
 
 export default function (state = initialState || town, action) {
   let newState = {...state}

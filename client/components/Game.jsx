@@ -16,7 +16,6 @@ class Game extends Component {
     this.startGame = this.startGame.bind(this)
   }
   componentWillReceiveProps(nextProps) {
-    console.log({nextProps});
     if (nextProps.player.spells.length == 0 || nextProps.party.length == 0 || !nextProps.boss) return this.props.location.push('/')
     if (!this.props.started && nextProps.started) {
       let interval = setInterval(() => this.props.dispatch({type: 'TICK_ONE_SECOND'}), 1000)
@@ -28,7 +27,6 @@ class Game extends Component {
   }
   render () {
     const {started, boss, player, party} = this.props
-    console.log(this.props);
     if (player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered">
       <div className="hero">
         <h1 className="title is-1">Game not ready</h1><br />

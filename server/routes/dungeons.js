@@ -4,7 +4,6 @@ const {decode} = require('../auth/token')
 const dungeonsDb = require('../db/dungeons')
 
 router.get('/', decode, (req, res) => {
-  console.log({dungeonsDb});
   dungeonsDb.getDungeons()
     .then(dungeons => {
       dungeonsDb.getCompletedDungeons(req.user.user_id)

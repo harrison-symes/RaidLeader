@@ -13,7 +13,6 @@ export default function (state = [], action) {
     case 'REPLACE_RECRUIT_IN_PARTY':
       newState = newState.filter(recruit => recruit != action.recruit)
       newState.splice(action.idx, 1, action.recruit)
-      console.log({action});
       return newState
     default: return state
   }

@@ -7,6 +7,7 @@ import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 import Dungeons from './menuComponents/Dungeons'
 
+import BossSelection from './menuComponents/BossSelection'
 import RecruitFrame from './menuComponents/RecruitFrame'
 import SpellFrame from './menuComponents/SpellFrame'
 
@@ -72,7 +73,6 @@ class Menu extends React.Component {
   render() {
     const {playerParty, playerSpells, currentLocation} = this.props
     const {townTravelModal} = this.state
-    console.log(this.props);
     return <div className="section has-text-centered">
       {townTravelModal && this.renderTownConfirmModal()}
       <div className="level">
@@ -95,6 +95,8 @@ class Menu extends React.Component {
       <hr />
       <div className="columns" >
         <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+          <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
+          <hr/>
           <div className="has-text-centered">
             <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
             <div className="columns is-multiline" style={{overflowX:'scroll'}}>
@@ -113,10 +115,7 @@ class Menu extends React.Component {
             </div>
             <hr />
           </div>
-          <div className="has-text-centered">
-            <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
-            <hr />
-          </div>
+          {currentLocation.name != 'Town' && <BossSelection />}
         </div>
         {this.props.location.pathname != '/' && <div className="column">
           <Router>

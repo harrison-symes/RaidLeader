@@ -32,8 +32,6 @@ class SpellBook extends React.Component {
     // this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
   }
   onDragEnd(result) {
-    console.log({result});
-    console.log(this.props);
     const {source, destination} = result
     const spell = this.props.spellBook.find(spell => spell.id == result.draggableId)
     if (!source || !destination) return
@@ -43,7 +41,6 @@ class SpellBook extends React.Component {
     else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
   }
   render() {
-    console.log(this.props);
     const {spellBook, playerSpells} = this.props
     const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
     const isFull = playerSpells.length >= 3

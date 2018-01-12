@@ -31,7 +31,6 @@ class Party extends React.Component {
     this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
   }
   onDragEnd(result) {
-    console.log({result});
     const {source, destination} = result
     const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
     if (!source || !destination) return
@@ -41,7 +40,6 @@ class Party extends React.Component {
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
   }
   render() {
-    console.log(this.props);
     const {recruits, playerParty} = this.props
     const roster = recruits.filter(recruit => !playerParty.find(party => recruit.id == party.id))
     const isFull = playerParty.length >= 3
