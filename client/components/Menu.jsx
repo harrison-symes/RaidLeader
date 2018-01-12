@@ -122,10 +122,12 @@ class Menu extends React.Component {
         {this.props.location.pathname != '/' && <div className="column">
           <Router>
             <div>
-              <Route path="/spellbook" component={Spellbook} />
-              <Route path="/party" component={Party} />
               {currentLocation.name == 'Town' && <Route path="/dungeons" component={Dungeons} />}
-              <Route path="/inventory" component={Inventory} />
+              {currentLocation.name != 'Town' && <div>
+                <Route path="/spellbook" component={Spellbook} />
+                <Route path="/party" component={Party} />
+                <Route path="/inventory" component={Inventory} />
+              </div>}
             </div>
           </Router>
         </div>}
