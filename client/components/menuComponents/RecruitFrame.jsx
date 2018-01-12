@@ -15,7 +15,6 @@ class RecruitFrame extends React.Component {
   render() {
     const {recruit} = this.props
     const {showMore} = this.state
-    console.table({recruit});
     return <tbody className="tbody">
       <tr className="tr">
         <th className="th">

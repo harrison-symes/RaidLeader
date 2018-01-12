@@ -15,7 +15,6 @@ class SpellFrame extends React.Component {
   render() {
     const {spell} = this.props
     const {showMore} = this.state
-    console.table({spell});
     return <tbody className="tbody">
       <tr className="tr">
         <th className="th">
