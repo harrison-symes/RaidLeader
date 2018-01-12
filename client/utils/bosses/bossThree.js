@@ -12,26 +12,40 @@ export default {
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
+  description: "This Spider knows you hate her, but she hates you too, and she spits on you for it."
   spells: [
     {
-      name: 'Swipe',
-      cast: 2,
+      name: 'Feed',
+      cast: 5,
       cost: 10,
-      coolDown: 0,
+      coolDown: 10,
+      type: 'special',
+      singleTarget: false,
+      powerRatio: 1,
+      onCooldown: false,
+      description: "Gain +1 POWER"
+    },
+    {
+      name: 'Swipe',
+      cast: 3,
+      cost: 0,
+      coolDown: 5,
       type: 'damage',
       singleTarget: false,
       powerRatio: 3,
       onCooldown: false
+      description: "Damage ALL enemy characters for 100% BOSS POWER"
     },
     {
       name: 'Spit',
-      cast: 1,
+      cast: 2,
       cost: 0,
       coolDown: 0,
       type: 'damage',
       singleTarget: false,
       powerRatio: 1,
-      onCooldown: false
+      onCooldown: false,
+      description: "Damage the PLAYER for 100% BOSS POWER"
     },
   ]
 }

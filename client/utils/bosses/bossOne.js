@@ -23,7 +23,7 @@ export default {
       singleTarget: false,
       powerRatio: 0.5,
       onCooldown: false,
-      description: 'Damage the PLAYER and ALL party members for 50% of BOSS POWER'
+      description: 'Damage ALL enemy characters for 50% BOSS POWER'
     },
     {
       name: 'Protect',
