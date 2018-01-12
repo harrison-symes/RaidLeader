@@ -10,6 +10,7 @@ import Dungeons from './menuComponents/Dungeons'
 import BossSelection from './menuComponents/BossSelection'
 import RecruitFrame from './menuComponents/RecruitFrame'
 import SpellFrame from './menuComponents/SpellFrame'
+import BossPreview from './menuComponents/BossPreview'
 
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
@@ -71,7 +72,7 @@ class Menu extends React.Component {
     </div>
   }
   render() {
-    const {playerParty, playerSpells, currentLocation} = this.props
+    const {playerParty, playerSpells, currentLocation, boss} = this.props
     const {townTravelModal} = this.state
     return <div className="section has-text-centered">
     {townTravelModal && this.renderTownConfirmModal()}
@@ -96,6 +97,11 @@ class Menu extends React.Component {
       <div className="columns">
         {currentLocation.name != 'Town' &&
           <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+            <hr/>
+            {boss && <div className="has-text-centered">
+              <p className="title is-3">Target:</p>
+              <BossPreview i={0} boss={boss} />
+            </div>}
             <hr/>
             <div className="has-text-centered">
               <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
@@ -136,11 +142,12 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty, playerSpells, location}) => {
+const mapStateToProps = ({playerParty, playerSpells, location, boss}) => {
   return {
     playerParty,
     playerSpells,
-    currentLocation: location
+    currentLocation: location,
+    boss
   }
 }
 

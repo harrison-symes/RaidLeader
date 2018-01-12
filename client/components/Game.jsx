@@ -11,7 +11,8 @@ class Game extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      interval: null
+      interval: null,
+      startModal: true
     }
     this.startGame = this.startGame.bind(this)
   }
@@ -25,6 +26,14 @@ class Game extends Component {
   startGame () {
     this.props.dispatch({type: 'START'})
   }
+  renderStartModal() {
+    return <div className="modal is-active">
+      <div className="modal-background"></div>
+      <div className="modal-content has-text-centered">
+        <button onClick={() => this.startGame()} className="button is-large is-fullwidth is-success">START</button>
+      </div>
+    </div>
+  }
   render () {
     const {started, boss, player, party} = this.props
     if (player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered">
@@ -34,10 +43,10 @@ class Game extends Component {
       </div>
     </div>
     return <div className="Game">
+      {!started && this.renderStartModal()}
       {bossSwitch(boss)}
       <PartyFrame />
       <PlayerFrame />
-      {!started && <button onClick={this.startGame}>Start</button>}
     </div>
   }
 }
