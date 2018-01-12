@@ -10,11 +10,11 @@ const Dungeons = ({dungeons, playerParty}) => {
   })
   return <div>
     <div className="level">
-      <p style={{float: 'left'}} className="title is-1">Dungeons:</p>
-      <p style={{float: 'right'}} className="subtitle is-1">Party Level ({partyLevel})</p>
+      <p style={{float: 'left'}} className="title is-3">Dungeon Map</p>
+      <p style={{float: 'right'}} className="subtitle is-3">Party Level ({partyLevel})</p>
     </div>
     <hr />
-    <div className="has-text-centered" style={{overflowY: 'scroll', maxHeight: '70vh'}}>
+    <div className="has-text-centered" style={{overflowY: 'scroll', maxHeight: '65vh'}}>
       {dungeons.map((dungeon, i) => <Dungeon dungeon={dungeon} partyLevel={partyLevel} key={`dungeon-${i}`} />)}
     </div>
   </div>

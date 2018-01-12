@@ -74,7 +74,7 @@ class Menu extends React.Component {
     const {playerParty, playerSpells, currentLocation} = this.props
     const {townTravelModal} = this.state
     return <div className="section has-text-centered">
-      {townTravelModal && this.renderTownConfirmModal()}
+    {townTravelModal && this.renderTownConfirmModal()}
       <div className="level">
         <div className="level-left">
           {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
@@ -93,9 +93,8 @@ class Menu extends React.Component {
         </div>
       </div>
       <hr />
-      <div className="columns" >
+      <div className="columns">
         <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
-          <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
           <hr/>
           <div className="has-text-centered">
             <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
@@ -115,7 +114,8 @@ class Menu extends React.Component {
             </div>
             <hr />
           </div>
-          {currentLocation.name != 'Town' && <BossSelection />}
+        <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
+        {currentLocation.name != 'Town' && <BossSelection />}
         </div>
         {this.props.location.pathname != '/' && <div className="column">
           <Router>
