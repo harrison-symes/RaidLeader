@@ -5,6 +5,8 @@ import bossThree from '../utils/bosses/bossThree'
 export default function boss (state = null, action) {
   let newState = {...state}
   switch(action.type) {
+    case 'TRAVEL_TO_TOWN':
+      return null
     case 'TARGET_BOSS':
       return action.boss
     case 'BOSS_GAIN_ARMOR':

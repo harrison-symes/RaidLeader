@@ -35,8 +35,8 @@ class Menu extends React.Component {
     this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells})
   }
   renderStartGameButton () {
-    const {playerParty, playerSpells} = this.props
-    if (!playerParty.length == 0 && !playerSpells.length == 0) return <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
+    const {playerParty, playerSpells, boss} = this.props
+    if (!playerParty.length == 0 && !playerSpells.length == 0 && boss) return <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
     else return <Link disabled className="button is-large is-danger" to="/game">Start Game</Link>
   }
   renderMenuLink (path, display) {
@@ -74,6 +74,7 @@ class Menu extends React.Component {
   render() {
     const {playerParty, playerSpells, currentLocation, boss} = this.props
     const {townTravelModal} = this.state
+    console.log({boss});
     return <div className="section has-text-centered">
     {townTravelModal && this.renderTownConfirmModal()}
       <div className="level">
@@ -98,7 +99,7 @@ class Menu extends React.Component {
         {currentLocation.name != 'Town' &&
           <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
             <hr/>
-            {boss && <div className="has-text-centered">
+            {boss != null && <div className="has-text-centered">
               <p className="title is-3">Target:</p>
               <BossPreview i={0} boss={boss} />
             </div>}

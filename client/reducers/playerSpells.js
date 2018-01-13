@@ -1,6 +1,8 @@
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'TRAVEL_TO_TOWN':
+      return []
     case 'ADD_SPELL_TO_BAR':
       newState.splice(action.idx, 0, action.spell)
       return newState

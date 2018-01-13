@@ -1,6 +1,8 @@
 
 export default function (state = null, action) {
   switch(action.type) {
+    case 'TRAVEL_TO_TOWN':
+      return null
     case 'SELECT_FRIENDLY_TARGET':
       if (action.target.isAlive) return action.target
       else return state

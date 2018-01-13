@@ -1,6 +1,8 @@
 export default function party (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'TRAVEL_TO_TOWN':
+      return []
     case 'LOAD_GAME':
       return action.playerParty
     case 'HEAL_FRIENDLY_TARGET':

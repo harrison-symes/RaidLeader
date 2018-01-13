@@ -28,7 +28,7 @@ class BossFrame extends Component {
   startCast(props) {
     const {spells, speed, mana} = props.boss
     let spellToCast = this.solveSpell(spells, props.boss)
-    if (spellToCast) setTimeout(() => {
+    if (spellToCast && props.started) setTimeout(() => {
        props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: this.solveSpell(spells, props.boss)})
     }, 10000 / speed)
   }
@@ -49,6 +49,10 @@ class BossFrame extends Component {
     if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
     if (started && (!boss.bossTarget || (boss.bossTarget && !boss.bossTarget.isAlive))) this.findTarget(nextProps)
     if (started && !boss.wantsToCast && !boss.isCasting) this.startCast(nextProps)
+    if (!nextProps.started && this.props.started) {
+      clearInterval(this.state.manaInterval)
+      clearInterval(this.state.armorInterval)
+    }
   }
   render() {
     const {boss} = this.props
