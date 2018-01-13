@@ -13,6 +13,8 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
+  weaponRewards: ['Test Boss Weapon 1', 'Test Boss Weapon 2'],
+  weaponChance: 1,
   spells: [
     {
       name: 'Swipe',
@@ -23,7 +25,7 @@ export default {
       singleTarget: false,
       powerRatio: 0.5,
       onCooldown: false,
-      description: 'Damage ALL enemy characters for 50% BOSS POWER'
+      description: 'Damage ALL enemy characters for 50% BOSS POWER',
     },
     {
       name: 'Protect',

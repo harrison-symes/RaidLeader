@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 class BossRewardsModal extends Component {
   constructor(props) {
@@ -7,17 +8,33 @@ class BossRewardsModal extends Component {
     this.state = {
       showRewards: false,
       goldReward: props.boss.goldReward || 100,
-      weaponReward: Math.random() < props.boss.weaponChance ? this.solveWeaponReward(props.boss) : null
+      weaponReward: this.solveWeaponReward(props.boss)
     }
+    console.log(this.state);
+    this.showRewards = this.showRewards.bind(this)
+    this.showRewards = this.showRewards.bind(this)
   }
   solveWeaponReward(boss) {
     const {currentLocation} = this.props
-    const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
+    console.log({boss});
+    const giveWeapon = Math.random() < boss.weaponChance
+    if (!giveWeapon) return null
+    const weapons = boss.weaponRewards
+    // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward = weapons[Math.floor(Math.random() * weapons.length)]
-    return {name: weapons, type: 'weapon'}
+    console.log({reward, weapons});
+    return {name: reward, type: 'weapon'}
+  }
+  showRewards() {
+    this.setState({showRewards: true})
+  }
+  backToMenu() {
+    this.props.dispatch({type: 'RETURN_TO_MENU'})
+    this.props.location.push('/')
   }
   render() {
-    const {showRewards, goldReward, weaponReward}
+    const {showRewards, goldReward, weaponReward} = this.state
+    const {boss} = this.props
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
@@ -31,10 +48,11 @@ class BossRewardsModal extends Component {
               <p className="subtitle is-1">{goldReward} Gold</p>
               {weaponReward && <div>
                 <p className="title is-3">You found a Weapon!</p>
-                <h1>weaponReward</h1>
+                <h1>{weaponReward}</h1>
               </div>}
+              <button onClick={this.backToMenu} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
             </div>
-            : <button className="button is-large is-success">Collect Rewards</button>
+            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success">Collect Rewards</button>
           }
         </section>
         <footer className="modal-card-foot">
@@ -51,4 +69,4 @@ const mapStateToProps = ({location}) => {
   }
 }
 
-export default connect(mapStateToProps)(BossRewardsModal)
+export default withRouter(connect(mapStateToProps)(BossRewardsModal))

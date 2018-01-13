@@ -53,7 +53,7 @@ class Game extends Component {
     </div>
   }
   winModal() {
-    return <BossRewardsModal boss={boss} />
+    return <BossRewardsModal boss={this.props.boss} />
   }
   gameWon() {
     this.props.dispatch({type: 'GAME_WON'})
@@ -73,6 +73,7 @@ class Game extends Component {
       </div>
     </div>
     return <div className="Game">
+      {winModal && this.winModal()}
       {loseModal && this.loseModal()}
       {!started && !loseModal && !winModal && this.renderStartModal()}
       {bossSwitch(boss)}
