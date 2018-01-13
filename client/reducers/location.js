@@ -17,6 +17,7 @@ export default function (state = initialState || town, action) {
       set('location', JSON.stringify(newState))
       return newState
     case 'GAME_WON':
+    console.log({action, newState});
       let boss = newState.bosses.find(dungeonBoss => dungeonBoss.name == action.boss.name)
       boss.isDefeated = true
       newState.inGame = false
