@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import bossSwitch from './bosses/utils/bossSwitch'
 import PlayerFrame from './frames/PlayerFrame'
 import PartyFrame from './frames/PartyFrame'
+import BossRewardsModal from './BossRewardsModal'
 
 class Game extends Component {
   constructor(props) {
@@ -50,6 +51,9 @@ class Game extends Component {
         <button onClick={() => this.runToTown()} className="button is-large is-fullwidth is-info">Return To Town</button>
       </div>
     </div>
+  }
+  winModal() {
+    return <BossRewardsModal boss={boss} />
   }
   gameWon() {
     this.props.dispatch({type: 'GAME_WON'})
