@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router'
 
 class BossRewardsModal extends Component {
   constructor(props) {
@@ -29,17 +29,19 @@ class BossRewardsModal extends Component {
     this.setState({showRewards: true})
   }
   backToMenu() {
-    this.props.dispatch({type: 'RETURN_TO_MENU'})
-    this.props.location.push('/')
+    console.log(this.props);
+    this.props.dispatch({type: 'RETURN_TO_MENU', boss: this.props.boss})
+    this.props.history.push('/')
   }
   render() {
     const {showRewards, goldReward, weaponReward} = this.state
     const {boss} = this.props
+    console.log(this.props);
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title title is-1">{boss.name} Defeated! </p>
+          <p className="modal-card-title title is-1 has-text-centered">{boss.name} Defeated! </p>
         </header>
         <section className="modal-card-body">
           {showRewards
@@ -48,9 +50,9 @@ class BossRewardsModal extends Component {
               <p className="subtitle is-1">{goldReward} Gold</p>
               {weaponReward && <div>
                 <p className="title is-3">You found a Weapon!</p>
-                <h1>{weaponReward}</h1>
+                <h1>{weaponReward.name}</h1>
               </div>}
-              <button onClick={this.backToMenu} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
+              <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
             </div>
             : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success">Collect Rewards</button>
           }

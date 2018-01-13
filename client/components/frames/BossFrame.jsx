@@ -15,15 +15,17 @@ class BossFrame extends Component {
     }
   }
   findTarget({dispatch, party, player}) {
-    let target = null
-    party.forEach(member => {
-      if (member.isAlive) {
-        if (!target) target = member
-        else if (target.hp > member.hp) target = member
-      }
-    })
-    if (!target) target = player
-    dispatch({type: 'BOSS_CHANGE_TARGET', target})
+    if (this.props.started) {
+      let target = null
+      party.forEach(member => {
+        if (member.isAlive) {
+          if (!target) target = member
+          else if (target.hp > member.hp) target = member
+        }
+      })
+      if (!target) target = player
+      dispatch({type: 'BOSS_CHANGE_TARGET', target})
+    }
   }
   startCast(props) {
     const {spells, speed, mana} = props.boss
@@ -32,27 +34,34 @@ class BossFrame extends Component {
        props.dispatch({type: 'BOSS_WANTS_TO_CAST', spell: this.solveSpell(spells, props.boss)})
     }, 10000 / speed)
   }
+  gainArmor() {
+    console.log("started", this.props.started);
+    if (this.props.started) {
+      dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1})
+      this.castArmorGain()
+    }
+  }
+  castArmorGain() {
+    if (this.props.boss.armorRegen) setTimeout(() => this.castArmorGain(), 1000 * this.props.boss.armorRegen)
+  }
+  gainMana() {
+    if (this.props.started) {
+      dispatch({type: 'BOSS_GAIN_MANA', amount: 1})
+      this.castManaGain()
+    }
+  }
+  castManaGain() {
+    if (this.props.boss.manaRegen) setTimeout(() => this.castArmorGain(), 1000 * this.props.boss.manaRegen)
+  }
   startTicking(dispatch) {
-    let manaInterval
-    if (this.props.boss.manaRegen) {
-      manaInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_MANA', amount: 1}), 1000 * this.props.boss.manaRegen)
-
-    }
-    let armorInterval
-    if (this.props.boss.armorRegen) {
-      armorInterval = setInterval(() => dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1}), 1000 * this.props.boss.armorRegen)
-    }
-    this.setState({manaInterval, armorInterval})
+    this.castManaGain()
+    this.castArmorGain()
   }
   componentWillReceiveProps(nextProps) {
     const {started, boss} = nextProps
     if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
     if (started && (!boss.bossTarget || (boss.bossTarget && !boss.bossTarget.isAlive))) this.findTarget(nextProps)
     if (started && !boss.wantsToCast && !boss.isCasting) this.startCast(nextProps)
-    if (!nextProps.started && this.props.started) {
-      clearInterval(this.state.manaInterval)
-      clearInterval(this.state.armorInterval)
-    }
   }
   render() {
     const {boss} = this.props

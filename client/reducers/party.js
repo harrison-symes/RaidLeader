@@ -1,6 +1,8 @@
 export default function party (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'RETURN_TO_MENU':
+      return []
     case 'TRAVEL_TO_TOWN':
       return []
     case 'LOAD_GAME':

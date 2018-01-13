@@ -17,6 +17,13 @@ const testPlayer = {
 export default function player (state = testPlayer, action) {
   let newState = {...state}
   switch (action.type) {
+    case 'RETURN_TO_MENU':
+      newState.hp = newState.initHp
+      newState.power = newState.initPower
+      newState.spells = []
+      newState.isCasting = false,
+      newState.mana = newState.maxMana
+      return newState
     case 'TRAVEL_TO_TOWN':
       newState.hp = newState.initHp
       newState.power = newState.initPower

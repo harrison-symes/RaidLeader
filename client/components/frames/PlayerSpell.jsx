@@ -18,6 +18,7 @@ class PlayerSpell extends Component {
   castSwitch(target) {
     const {spell, dispatch} = this.props
     const power = this.props.player.power * spell.powerRatio
+    if (!this.props.started) return
     switch(spell.name) {
       case 'Heal':
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
@@ -55,6 +56,7 @@ class PlayerSpell extends Component {
     }
   }
   tickCD() {
+    if (!this.props.started) return
     let {currentCD, cooldownInterval} = this.state
     currentCD+= 0.1
     if (currentCD >= this.props.spell.coolDown) {
@@ -63,10 +65,12 @@ class PlayerSpell extends Component {
     } else this.setState({currentCD})
   }
   startCooldown() {
+    if (!this.props.started) return
     const interval = setInterval(this.tickCD, 100)
     this.setState({cooldownInterval: interval})
   }
   tickCast() {
+    if (!this.props.started) return
     let {currentCastTime, target, castInterval} = this.state
     currentCastTime+= 0.1
     if (currentCastTime >= this.props.spell.cast) {
@@ -78,11 +82,13 @@ class PlayerSpell extends Component {
     } else this.setState({currentCastTime})
   }
   startCasting() {
+    if (!this.props.started) return
     this.props.dispatch({type: 'START_CASTING', spell: this.props.spell})
     const interval = setInterval(this.tickCast, 100)
     this.setState({castInterval: interval, target: this.props.friendlyTarget})
   }
   clickSpell() {
+    if (!this.props.started) return
     const {spell, player, friendlyTarget, started} = this.props
     if (started && ((spell.singleTarget && friendlyTarget) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
       this.startCasting()

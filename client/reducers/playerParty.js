@@ -1,6 +1,12 @@
+import createClass from '../utils/createClass'
+
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'RETURN_TO_MENU':
+      newState = newState.map((member) => createClass(member))
+      console.log({newState});
+      return newState
     case 'TRAVEL_TO_TOWN':
       return []
     case 'ADD_RECRUIT_TO_PARTY':
