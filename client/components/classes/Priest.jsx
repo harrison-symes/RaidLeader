@@ -6,14 +6,15 @@ import mapStateToProps from './utils/classStateMap'
 
 class Priest extends PartyMemberFrame {
   finishCast(power, target) {
+    if (!this.props.started) return
     if (!target) this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: power * 2})
     else this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
     this.startCast()
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
-    const {party} = this.props
-    if (!isAlive) return
+    const {party, started} = this.props
+    if (!started) return
     let target = null
     party.forEach(member => {
       if (!target && member.hp < member.initHp) target = member

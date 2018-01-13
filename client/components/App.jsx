@@ -12,13 +12,13 @@ import Menu from './Menu'
 const App = ({auth}) => (
   <Router>
     <div className='app-container'>
-      {/* <Route exact path="/" component={Nav} /> */}
       {auth.isAuthenticated
         ? <Switch>
           <Route path="/game" component={Game} />
           <Route path='/' component={Menu} />
         </Switch>
         : <div>
+          <Route path="/" component={Nav} />
           <Route path="/login" component={Login} />
           <Route path="/Register" component={Register} />
           <Route path="/" component={Home} />

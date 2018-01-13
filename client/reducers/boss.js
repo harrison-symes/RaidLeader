@@ -2,9 +2,15 @@ import bossOne from '../utils/bosses/bossOne'
 import bossTwo from '../utils/bosses/bossTwo'
 import bossThree from '../utils/bosses/bossThree'
 
-export default function boss (state = bossTwo, action) {
+export default function boss (state = null, action) {
   let newState = {...state}
   switch(action.type) {
+    case 'RETURN_TO_MENU':
+      return null
+    case 'TRAVEL_TO_TOWN':
+      return null
+    case 'TARGET_BOSS':
+      return action.boss
     case 'BOSS_GAIN_ARMOR':
       newState.armor+=action.amount
       if (newState.armor >= newState.initArmor) newState.armor = newState.initArmor
@@ -49,7 +55,6 @@ export default function boss (state = bossTwo, action) {
       newState.hp-= damage
       return newState
     case 'CRITICAL_ATTACK_BOSS':
-      console.log("CRIT", {action});
       damage = action.power * 2
       damage = Math.round(damage)
       newState.armor-=1

@@ -1,6 +1,14 @@
+import createClass from '../utils/createClass'
+
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'RETURN_TO_MENU':
+      newState = newState.map((member) => createClass(member))
+      console.log({newState});
+      return newState
+    case 'TRAVEL_TO_TOWN':
+      return []
     case 'ADD_RECRUIT_TO_PARTY':
       newState.splice(action.idx, 0, action.recruit)
       return newState
@@ -9,6 +17,10 @@ export default function (state = [], action) {
     case 'SHIFT_PARTY_INDEX':
       newState = newState.filter(recruit => recruit != action.recruit)
       newState.splice(action.idx, 0, action.recruit)
+      return newState
+    case 'REPLACE_RECRUIT_IN_PARTY':
+      newState = newState.filter(recruit => recruit != action.recruit)
+      newState.splice(action.idx, 1, action.recruit)
       return newState
     default: return state
   }

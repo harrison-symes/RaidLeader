@@ -32,12 +32,13 @@ class PlayerSpell extends Component {
   }
   tickCD() {
     let {currentCD, cooldownInterval} = this.state
+    const {spell, started} = this.props
     currentCD+= 0.1
-    if (currentCD >= this.props.spell.coolDown) {
+    if (currentCD >= spell.coolDown && started) {
       clearInterval(cooldownInterval)
       this.setState({currentCD: 0, currentCastTime: 0, cooldownInterval: null, onCooldown: false})
       this.props.dispatch({type: 'BOSS_SPELL_FINISH_COOLDOWN', spell: this.props.spell})
-    } else this.setState({currentCD})
+    } else if (started) this.setState({currentCD})
   }
   startCooldown() {
     const interval = setInterval(this.tickCD, 100)
@@ -60,14 +61,16 @@ class PlayerSpell extends Component {
     this.setState({castInterval: interval, target: this.props.boss.bossTarget})
   }
   stopCasting() {
-    console.log("boss stop casting");
     this.props.dispatch({type: 'BOSS_FINISH_CASTING', spell: this.props.spell, target: null})
     clearInterval(this.props.castInterval)
     this.setState({currentCd: 0, currentCastTime: 0, castInterval: null, onCooldown: false})
   }
   componentWillReceiveProps(nextProps) {
     const {spell, started, boss} = nextProps
-    if (nextProps.boss.bossTarget && !nextProps.boss.bossTarget.isAlive) console.log({nextProps});
+    if (!nextProps.started && this.props.started) {
+      clearInterval(this.state.castInterval)
+      clearInterval(this.state.cooldownInterval)
+    }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.state.castInterval) this.stopCasting()
     else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
       this.startCasting()
