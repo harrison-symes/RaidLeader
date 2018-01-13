@@ -14,8 +14,8 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   cursor: 'pointer',
   ...draggableStyle,
 });
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+const getListStyle = (isDraggingOver, isFull) => ({
+  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'lightgrey',
   padding: grid,
   width: '50%',
   maxHeight: '80vh',
@@ -31,20 +31,18 @@ class Party extends React.Component {
     this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
   }
   onDragEnd(result) {
-    console.log({result});
     const {source, destination} = result
     const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
     if (!source || !destination) return
-    else if (source.droppableId == 'recruits' && destination.droppableId == 'party' && this.props.playerParty.length >= 3) this.props.dispatch({type: 'REPLACE_RECRUIT_IN_', idx: destination.index, recruit})
+    else if (source.droppableId == 'recruits' && destination.droppableId == 'party' && this.props.playerParty.length >= 3) this.props.dispatch({type: 'REPLACE_RECRUIT_IN_PARTY', idx: destination.index, recruit})
     else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
     else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
   }
   render() {
-    console.log(this.props);
     const {recruits, playerParty} = this.props
     const roster = recruits.filter(recruit => !playerParty.find(party => recruit.id == party.id))
-    console.log({recruits});
+    const isFull = playerParty.length >= 3
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -53,9 +51,9 @@ class Party extends React.Component {
               <div
                 className="Recruits"
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
+                style={getListStyle(snapshot.isDraggingOver, false)}
                 >
-                <h1 className="subtitle is-1">Recruits</h1>
+                <h1 className="subtitle is-1">Recruits ({roster.length} / {recruits.length})</h1>
                 <hr />
                 {roster.map(recruit => (
                   <Draggable key={recruit.id} draggableId={recruit.id}>
@@ -85,9 +83,9 @@ class Party extends React.Component {
               <div
                 className="Party"
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}
+                style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
-                <h1 className="subtitle is-1">Party</h1>
+                <h1 className="subtitle is-1">Party ({playerParty.length} / 3)</h1>
                 <hr />
                 {playerParty.map(recruit => (
                   <Draggable key={recruit.id} draggableId={recruit.id}>

@@ -1,5 +1,5 @@
 export default {
-  name: 'Test-O-Saurus',
+  name: 'Biting Bear',
   initHp: 50,
   hp: 50,
   initPower: 5,
@@ -12,6 +12,10 @@ export default {
   armorRegen: 10,
   isCasting: false,
   bossTarget: null,
+  description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
+  weaponRewards: ['Test Boss Weapon 1', 'Test Boss Weapon 2'],
+  goldReward: 100,
+  weaponChance: 0,
   spells: [
     {
       name: 'Swipe',
@@ -21,7 +25,8 @@ export default {
       type: 'damage',
       singleTarget: false,
       powerRatio: 0.5,
-      onCooldown: false
+      onCooldown: false,
+      description: 'Damage ALL enemy characters for 50% BOSS POWER',
     },
     {
       name: 'Protect',
@@ -31,7 +36,8 @@ export default {
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
-      onCooldown: false
+      onCooldown: false,
+      description: 'Gain 1 ARMOR'
     },
     {
       name: 'Bite',
@@ -41,7 +47,8 @@ export default {
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,
-      onCooldown: false
+      onCooldown: false,
+      description: "Damage the Boss' TARGET for 100% of BOSS POWER"
     }
   ]
 }

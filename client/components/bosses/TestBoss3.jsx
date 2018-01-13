@@ -12,6 +12,7 @@ class Spit extends BossFrame {
     let castSpell = spells.filter(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
+          case 'Feed': return true
           case 'Swipe': return true
           case 'Spit': return true
           default: return false

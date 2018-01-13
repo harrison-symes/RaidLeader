@@ -1,17 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-class BossSelection extends React.Component {
-  constructor(props) {
-    super(props)
+import BossPreview from './BossPreview'
 
-  }
-  render() {
-    return <div>
-      BossSelection
-    </div>
+const BossSelection = ({currentLocation}) => {
+  const {bosses} = currentLocation
+  return <div className="has-text-centered" id="bossModalID">
+    {bosses.map((boss, i) => <BossPreview key={'boss-preview-'+i} boss={boss} i={i} />)}
+  </div>
+}
+
+const mapStateToProps = ({location}) => {
+  return {
+    currentLocation: location
   }
 }
 
 
-export default connect()(BossSelection)
+export default connect(mapStateToProps)(BossSelection)

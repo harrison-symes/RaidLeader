@@ -14,7 +14,7 @@ class BossOne extends BossFrame {
         switch (spell.name) {
           case 'Protect':
             return (boss.armor < boss.initArmor - 1)
-          case 'Swipe': return true
+          case 'Swipe': return this.props.party.filter(member => member.isAlive).length > 0
           case 'Bite': return true
           default: return false
         }

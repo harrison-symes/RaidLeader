@@ -9,7 +9,10 @@ class MemberFrame extends Component {
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
-    if (isAlive) setTimeout(() => this.finishCast(power), 10000 / speed)
+    const {started} = this.props
+    if (isAlive && started) setTimeout(() => {
+      if (isAlive && started) this.finishCast(power)
+    }, 10000 / speed)
   }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) setTimeout(() => this.startFighting(), Math.random() * 1000)
