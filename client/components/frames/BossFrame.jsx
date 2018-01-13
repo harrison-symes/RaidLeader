@@ -35,23 +35,22 @@ class BossFrame extends Component {
     }, 10000 / speed)
   }
   gainArmor() {
-    console.log("started", this.props.started);
     if (this.props.started) {
-      dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1})
+      this.props.dispatch({type: 'BOSS_GAIN_ARMOR', amount: 1})
       this.castArmorGain()
     }
   }
   castArmorGain() {
-    if (this.props.boss.armorRegen) setTimeout(() => this.castArmorGain(), 1000 * this.props.boss.armorRegen)
+    if (this.props.boss.armorRegen) setTimeout(() => this.gainArmor(), 1000 * this.props.boss.armorRegen)
   }
   gainMana() {
     if (this.props.started) {
-      dispatch({type: 'BOSS_GAIN_MANA', amount: 1})
+      this.props.dispatch({type: 'BOSS_GAIN_MANA', amount: 1})
       this.castManaGain()
     }
   }
   castManaGain() {
-    if (this.props.boss.manaRegen) setTimeout(() => this.castArmorGain(), 1000 * this.props.boss.manaRegen)
+    if (this.props.boss.manaRegen) setTimeout(() => this.gainMana(), 1000 * this.props.boss.manaRegen)
   }
   startTicking(dispatch) {
     this.castManaGain()
