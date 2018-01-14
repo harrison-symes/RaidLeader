@@ -48,5 +48,23 @@
   * The Warlock is a very high special damage dealer, with a drawback, every attack will damage all friendly characters
   * Special Attacker
   * Stats: The warlock should be *Very* high power, medium hp, low/medium speed.
-  * Traits: Whenever the Warlock deals damage, deal 1/2 of the damage to each friendly character
+  * Traits: Whenever the Warlock deals damage, deale damage to each friendly character (damage = character level)
   * Starting Buff: The Boss loses armor equal to the Warlocks Power
+
+## Player Spells
+
+  |Name|Power Ratio|Cast Time|Cost|Cooldown|Type|Target|Description|
+  |--|--|--|--|--|--|--|--|--|
+  |Lesser Heal|100%|1|10|0.5|Healing|True|
+  |Heal|200%|3|10|0.5|Healing|True|
+  |Greater Heal|300%|5|10|0.5|Healing|True|
+  |Healing Ring|200%|3|10|5|Healing|False|
+  |Bind|200%|0|10|10|Healing|True|
+  |Fireball|300%|5|15|0|Damage|False|
+  |Fireblast|200%|2.5|15|5|Damage|False|
+  |Flash Fire|100%|0|15|10|Damage/Healing|False|
+  |Drain Life|100%|2|5|5|Damage|False
+  |Harvest Life|300%|5|20|20|Damage/Healing|False|
+  |Drain Soul|200%|5|0|0|Damage/Healing|False|
+  |Life Tap|300%|0|0|10|Special|False|
+  |Evocate|500%|5|0|0|Special|False|
