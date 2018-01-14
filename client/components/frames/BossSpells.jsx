@@ -27,6 +27,8 @@ class PlayerSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.powerRatio})
       case 'Spit':
         return dispatch({type: 'DAMAGE_PLAYER', power})
+      case 'Feed':
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
       default: return
     }
   }
