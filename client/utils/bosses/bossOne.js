@@ -13,9 +13,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Test Boss Weapon 1', 'Test Boss Weapon 2'],
+  weaponRewards: ['Boss 1 Weapon 1', 'Boss 1 Weapon 2'],
   goldReward: 100,
-  weaponChance: 0,
+  weaponChance: 0.5,
   spells: [
     {
       name: 'Swipe',

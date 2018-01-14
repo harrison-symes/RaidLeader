@@ -10,7 +10,7 @@ export default function boss (state = null, action) {
     case 'TRAVEL_TO_TOWN':
       return null
     case 'TARGET_BOSS':
-      return action.boss
+      return {...action.boss}
     case 'BOSS_GAIN_ARMOR':
       newState.armor+=action.amount
       if (newState.armor >= newState.initArmor) newState.armor = newState.initArmor

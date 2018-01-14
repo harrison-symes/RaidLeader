@@ -53,7 +53,7 @@ class Game extends Component {
     </div>
   }
   gameWon() {
-    this.props.dispatch({type: 'GAME_WON'})
+    this.props.dispatch({type: 'GAME_WON', boss: this.props.boss})
     this.setState({winModal: true})
   }
   gameLost() {

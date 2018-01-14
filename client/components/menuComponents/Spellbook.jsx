@@ -35,15 +35,15 @@ class SpellBook extends React.Component {
     const {source, destination} = result
     const spell = this.props.spellBook.find(spell => spell.id == result.draggableId)
     if (!source || !destination) return
-    else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar' && this.props.playerSpells.length >= 3) this.props.dispatch({type: 'REPLACE_SPELL_IN_BAR', idx: destination.index, spell})
+    else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar' && this.props.playerSpells.length >= this.props.currentLocation.max_spells) this.props.dispatch({type: 'REPLACE_SPELL_IN_BAR', idx: destination.index, spell})
     else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar') this.props.dispatch({type: 'ADD_SPELL_TO_BAR', spell, idx: destination.index})
     else if (source.droppableId == 'spellBar' && destination.droppableId == 'spellBook') this.props.dispatch({type: 'REMOVE_SPELL_FROM_BAR', spell})
     else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
   }
   render() {
-    const {spellBook, playerSpells} = this.props
+    const {spellBook, playerSpells, currentLocation} = this.props
     const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
-    const isFull = playerSpells.length >= 3
+    const isFull = playerSpells.length >= currentLocation.max_spells
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -118,10 +118,11 @@ class SpellBook extends React.Component {
   }
 }
 
-const mapStateToProps = ({spellBook, playerSpells}) => {
+const mapStateToProps = ({spellBook, playerSpells, location}) => {
   return {
     spellBook,
-    playerSpells
+    playerSpells,
+    currentLocation: location
   }
 }
 

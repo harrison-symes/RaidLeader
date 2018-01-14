@@ -13,6 +13,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "This Turtle has a strong shell. Really strong. Like, REALLY strong",
+  goldReward: 100,
+  weaponRewards: ['Boss 2 Weapon 1', 'Boss 2 Weapon 2'],
+  weaponChance: 0.5,
   spells: [
     {
       name: 'Protect',
@@ -45,7 +48,7 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       onCooldown: false,
-      description: "Damage the PLAYER for 100% BOSS POWER"
+      description: "Damage the PLAYER for 100% BOSS POWER (Only used if enemy party is dead)"
     }
   ]
 }

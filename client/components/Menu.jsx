@@ -80,6 +80,7 @@ class Menu extends React.Component {
       <div className="level">
         <div className="level-left">
           {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
+          {currentLocation.name == 'Town' &&  this.renderMenuLink('/', 'Town')}
           {currentLocation.name == 'Town' &&  this.renderMenuLink('/dungeons', 'Dungeon Map')}
         </div>
         <div className="level-right">
@@ -105,7 +106,7 @@ class Menu extends React.Component {
             </div>}
             <hr/>
             <div className="has-text-centered">
-              <p className="subtitle is-1">Your Party: ({playerParty.length}/3)</p>
+              <p className="subtitle is-1">Your Party: ({playerParty.length}/{currentLocation.max_party})</p>
               <div className="columns is-multiline" style={{overflowX:'scroll'}}>
                 {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
                   <RecruitFrame recruit={recruit}  />
@@ -114,7 +115,7 @@ class Menu extends React.Component {
               <hr />
             </div>
             <div className="has-text-centered">
-              <p className="subtitle is-1">Your Spells: ({playerSpells.length}/3)</p>
+              <p className="subtitle is-1">Your Spells: ({playerSpells.length}/{currentLocation.max_spells})</p>
               <div className="columns is-multiline">
                 {playerSpells.map((spell, i) => <table key={`spell-in-bar-main-${i}`} className="column is-4 table box">
                   <SpellFrame spell={spell}  />
