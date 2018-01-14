@@ -13,6 +13,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "This Spider knows you hate her, but she hates you too, and she spits on you for it.",
+  goldReward: 150,
+  weaponRewards: ['Boss 3 Weapon 1', 'Boss 3 Weapon 2', 'Boss 3 Weapon 3'],
+  weaponChance: 1,
   spells: [
     {
       name: 'Feed',
