@@ -52,6 +52,7 @@ class DungeonRewards extends Component {
     let loot = JSON.parse(currentLocation.rewards)
     loot = loot[Math.floor(Math.random() * loot.length)]
     this.setState({showRewards: true, loot})
+    this.props.dispatch({type: 'DUNGEON_CHEST_OPENED'})
   }
   render() {
     const {currentLocation} = this.props
