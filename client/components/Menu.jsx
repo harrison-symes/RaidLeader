@@ -109,6 +109,7 @@ class Menu extends React.Component {
             {boss != null && <div className="has-text-centered">
               <p className="title is-3">Target:</p>
               <BossPreview i={0} boss={boss} />
+              <hr />
             </div>}
             <BossSelection />
           </div>

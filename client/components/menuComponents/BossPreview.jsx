@@ -62,7 +62,14 @@ class BossPreview extends React.Component {
           </ul>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour}`} disabled={colour != 'is-success'}>Set Target</button>
+          <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour}`} disabled={colour != 'is-success'}>
+            {colour != 'is-success'
+              ? colour == 'is-danger'
+                ? `Requires ${boss.progress_required - defeatedBossCount} More Boss Defeats`
+                : 'Already Defeated'
+              : 'Set Target'
+            }
+          </button>
           <button onClick={() => this.changeModal(false, null)} className="button is-large">Cancel</button>
         </footer>
       </div>
