@@ -108,40 +108,43 @@ class Menu extends React.Component {
               <BossPreview i={0} boss={boss} />
             </div>}
             <hr/>
-            <div className="has-text-centered">
-              <p className="subtitle is-1">Your Party: ({playerParty.length}/{currentLocation.max_party})</p>
-              <div className="columns is-multiline" style={{overflowX:'scroll'}}>
-                {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
-                  <RecruitFrame recruit={recruit}  />
-                </table>)}
-              </div>
-              <hr />
-            </div>
-            <div className="has-text-centered">
-              <p className="subtitle is-1">Your Spells: ({playerSpells.length}/{currentLocation.max_spells})</p>
-              <div className="columns is-multiline">
-                {playerSpells.map((spell, i) => <table key={`spell-in-bar-main-${i}`} className="column is-4 table box">
-                  <SpellFrame spell={spell}  />
-                </table>)}
-              </div>
-              <hr />
-            </div>
+
           <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
           <BossSelection />
           </div>
         }
-        {this.props.location.pathname != '/' && <div className="column">
+        <div className="column">
           <Router>
             <div>
               {currentLocation.name == 'Town' && <Route path="/dungeons" component={Dungeons} />}
               {currentLocation.name != 'Town' && <div>
+                {this.props.location.pathname == '/' && <div>
+                  <div className="has-text-centered">
+                    <p className="subtitle is-1">Your Party: ({playerParty.length}/{currentLocation.max_party})</p>
+                    <div className="columns is-multiline" style={{overflowX:'scroll'}}>
+                      {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
+                        <RecruitFrame recruit={recruit}  />
+                      </table>)}
+                    </div>
+                    <hr />
+                  </div>
+                  <div className="has-text-centered">
+                    <p className="subtitle is-1">Your Spells: ({playerSpells.length}/{currentLocation.max_spells})</p>
+                    <div className="columns is-multiline">
+                      {playerSpells.map((spell, i) => <table key={`spell-in-bar-main-${i}`} className="column is-4 table box">
+                        <SpellFrame spell={spell}  />
+                      </table>)}
+                    </div>
+                    <hr />
+                  </div>
+                </div>}
                 <Route path="/spellbook" component={Spellbook} />
                 <Route path="/party" component={Party} />
                 <Route path="/inventory" component={Inventory} />
               </div>}
             </div>
           </Router>
-        </div>}
+        </div>
       </div>
     </div>
   }
