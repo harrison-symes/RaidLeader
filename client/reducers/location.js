@@ -7,7 +7,7 @@ const town = {
 }
 
 let initialState = JSON.parse(get('location'))
-if (initialState.inGame) initialState = null
+if (initialState && initialState.inGame) initialState = null
 
 export default function (state = initialState || town, action) {
   let newState = {...state}
