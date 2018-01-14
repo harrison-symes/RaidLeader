@@ -48,7 +48,7 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       onCooldown: false,
-      description: "Damage the PLAYER for 100% BOSS POWER"
+      description: "Damage the PLAYER for 100% BOSS POWER (Only used if enemy party is dead)"
     }
   ]
 }

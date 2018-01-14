@@ -80,7 +80,7 @@ class Menu extends React.Component {
       <div className="level">
         <div className="level-left">
           {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
-          {currentLocation.name == 'Town' &&  this.renderMenuLink('/', 'Tow')}
+          {currentLocation.name == 'Town' &&  this.renderMenuLink('/', 'Town')}
           {currentLocation.name == 'Town' &&  this.renderMenuLink('/dungeons', 'Dungeon Map')}
         </div>
         <div className="level-right">
