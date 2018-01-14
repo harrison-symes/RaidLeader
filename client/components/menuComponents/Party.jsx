@@ -34,7 +34,7 @@ class Party extends React.Component {
     const {source, destination} = result
     const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
     if (!source || !destination) return
-    else if (source.droppableId == 'recruits' && destination.droppableId == 'party' && this.props.playerParty.length >= currentLocation.max_party) this.props.dispatch({type: 'REPLACE_RECRUIT_IN_PARTY', idx: destination.index, recruit})
+    else if (source.droppableId == 'recruits' && destination.droppableId == 'party' && this.props.playerParty.length >= this.props.currentLocation.max_party) this.props.dispatch({type: 'REPLACE_RECRUIT_IN_PARTY', idx: destination.index, recruit})
     else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
     else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
@@ -85,7 +85,7 @@ class Party extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
-                <h1 className="subtitle is-1">Party ({playerParty.length} / 3)</h1>
+                <h1 className="subtitle is-1">Party ({playerParty.length} / {currentLocation.max_party})</h1>
                 <hr />
                 {playerParty.map(recruit => (
                   <Draggable key={recruit.id} draggableId={recruit.id}>

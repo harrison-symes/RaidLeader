@@ -30,6 +30,14 @@ class BossPreview extends React.Component {
         <section className="modal-card-body">
           <p className="subtitle is-5">{boss.description}</p>
           <hr />
+          <p className="title is-2">Rewards:</p>
+          <p className="title is-4">{boss.goldReward} Gold</p>
+          {boss.weaponRewards.length > 0 && <div>
+            <p className="title is-4">{boss.weaponChance * 100}% Chance:</p>
+            {boss.weaponRewards.map((reward, i) => <p className="title is-5">{i == boss.weaponRewards.length - 1 ? "or " : ""}{reward}</p>)}
+
+          </div>}
+          <hr />
           <p className="title is-3">Stats</p>
           <ul className="columns is-multiline">
             {renderStat(`Health: ${boss.hp} / ${boss.initHp}`)}
