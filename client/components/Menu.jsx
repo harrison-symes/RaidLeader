@@ -11,6 +11,7 @@ import BossSelection from './menuComponents/BossSelection'
 import RecruitFrame from './menuComponents/RecruitFrame'
 import SpellFrame from './menuComponents/SpellFrame'
 import BossPreview from './menuComponents/BossPreview'
+import DungeonRewards from './menuComponents/DungeonRewards'
 
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
@@ -102,15 +103,14 @@ class Menu extends React.Component {
       <div className="columns">
         {currentLocation.name != 'Town' &&
           <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+            <p className="title is-1">{currentLocation && currentLocation.name}</p>
             <hr/>
+            <DungeonRewards />
             {boss != null && <div className="has-text-centered">
               <p className="title is-3">Target:</p>
               <BossPreview i={0} boss={boss} />
             </div>}
-            <hr/>
-
-          <p className="subtitle is-1">Your Location: {currentLocation && currentLocation.name}</p>
-          <BossSelection />
+            <BossSelection />
           </div>
         }
         <div className="column">
