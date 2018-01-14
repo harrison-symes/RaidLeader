@@ -63,7 +63,7 @@ class DungeonRewards extends Component {
       <p className="title is-3">Dungeon Progress:</p>
       <hr />
       <p className="subtitle is-3">Bosses Defeated: {bossesDefeated.length} / {currentLocation.bosses.length}</p>
-      {bossesDefeated != currentLocation.bosses.length && this.renderRewardsModal()}
+      {bossesDefeated == currentLocation.bosses.length && this.renderRewardsModal()}
       {bossesDefeated.map(boss => <BossPreview boss={boss} i={0} />)}
       <hr />
     </div>
