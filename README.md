@@ -55,16 +55,16 @@
 
   |Name|Power Ratio|Cast Time|Cost|Cooldown|Type|Target|Description|
   |--|--|--|--|--|--|--|--|--|
-  |Lesser Heal|100%|1|10|0.5|Healing|True|
-  |Heal|200%|3|10|0.5|Healing|True|
-  |Greater Heal|300%|5|10|0.5|Healing|True|
-  |Healing Ring|200%|3|10|5|Healing|False|
-  |Bind|200%|0|10|10|Healing|True|
-  |Fireball|300%|5|15|0|Damage|False|
-  |Fireblast|200%|2.5|15|5|Damage|False|
-  |Flash Fire|100%|0|15|10|Damage/Healing|False|
-  |Drain Life|100%|2|5|5|Damage|False
-  |Harvest Life|300%|5|20|20|Damage/Healing|False|
-  |Drain Soul|200%|5|0|0|Damage/Healing|False|
-  |Life Tap|300%|0|0|10|Special|False|
-  |Evocate|500%|5|0|0|Special|False|
+  |Lesser Heal|100%|1|10|0.5|Healing|True|A quick but expensive single target Heal|
+  |Heal|200%|3|10|0.5|Healing|True|An efficient single target Heal|
+  |Greater Heal|300%|5|10|0.5|Healing|True|A slow, but powerful and very efficient single target heal|
+  |Healing Ring|200%|3|10|5|Healing|False|Heals ALL friendly characters|
+  |Bind|200%|0|10|10|Healing|True|Instant cast, heals a single friendly target, and also heals the PLAYER|
+  |Fireball|300%|5|15|0|Damage|False|A slow cast damage spell. Damages the Boss|
+  |Fireblast|200%|2.5|15|5|Damage|False|A quicker Boss Damage spell, but not as efficient as Fireball|
+  |Flash Fire|100%|0|15|10|Damage/Healing|False|Instant cast but very expensive boss damage spell, with a long cooldown|
+  |Drain Life|100%|2|5|5|Damage|False|Damages the boss and heals the player for the amount of damage done|
+  |Harvest Life|300%|5|20|20|Damage/Healing|False|Slow and heavy Boss Damage and Heals ALL friendly characters for the amount of damage done|
+  |Drain Soul|200%|5|0|0|Damage/Healing|False|Slow Boss Damage spell that restores health and mana to the player. No Cooldown|
+  |Life Tap|300%|0|0|10|Special|False|Sacrifice life to gain mana, instant cast|
+  |Evocate|500%|5|0|0|Special|False|Slow casting spell that restores mana|
