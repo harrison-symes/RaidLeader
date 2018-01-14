@@ -16,6 +16,7 @@ export default {
   weaponRewards: ['Boss 1 Weapon 1', 'Boss 1 Weapon 2'],
   goldReward: 100,
   weaponChance: 0.5,
+  progress_required: 0,
   spells: [
     {
       name: 'Swipe',

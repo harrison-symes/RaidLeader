@@ -16,8 +16,9 @@ class BossPreview extends React.Component {
   renderBossModal () {
     const {boss} = this.state
     const {bosses} = this.props.currentLocation
-    let i = bosses.findIndex(b => b == boss)
-    let colour = !boss.isDefeated ? (i > 0 && this.props.currentLocation.bosses[i-1].isDefeated) || i == 0 ? 'is-success' : 'is-danger' : 'is-dark'
+    const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
+    console.log({defeatedBossCount, boss});
+    let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     if (boss == this.props.targetBoss) colour='is-primary'
     const renderStat = (text) => <li className="column is-6 has-text-centered"><p className="subtitle is-4">{text}</p></li>
     return <div className="modal is-active">
@@ -76,11 +77,13 @@ class BossPreview extends React.Component {
   render() {
     const {bosses} = this.props.currentLocation
     const {showModal} = this.state
-    const {boss, i} = this.props
-    let colour = !boss.isDefeated ? (i > 0 && bosses[i-1].isDefeated) || i == 0 ? 'is-success' : 'is-danger' : 'is-dark'
+    const {boss} = this.props
+    const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
+    console.log({defeatedBossCount, boss});
+    let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     return <div>
       {showModal && this.renderBossModal()}
-      <button onClick={() => this.changeModal(true, boss)} key={`location-boss-preview-${i}`} className={`is-fullwidth button is-large ${colour}`}>{boss.name}</button>
+      <button onClick={() => this.changeModal(true, boss)} key={`location-boss-preview-${boss.id}`} className={`is-fullwidth button is-large ${colour}`}>{boss.name}</button>
     </div>
   }
 }

@@ -16,6 +16,7 @@ export default {
   goldReward: 150,
   weaponRewards: ['Boss 3 Weapon 1', 'Boss 3 Weapon 2', 'Boss 3 Weapon 3'],
   weaponChance: 1,
+  progress_required: 2,
   spells: [
     {
       name: 'Feed',
