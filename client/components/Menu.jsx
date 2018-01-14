@@ -15,6 +15,7 @@ import BossPreview from './menuComponents/BossPreview'
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
 import {getDungeons} from '../actions/dungeons'
+import {getPlayerGold} from '../actions/gold'
 
 class Menu extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class Menu extends React.Component {
     this.props.dispatch(getRecruits())
     this.props.dispatch(getSpells())
     this.props.dispatch(getDungeons())
+    this.props.dispatch(getPlayerGold())
   }
   loadGame() {
     const {playerParty, playerSpells} = this.props
@@ -72,7 +74,7 @@ class Menu extends React.Component {
     </div>
   }
   render() {
-    const {playerParty, playerSpells, currentLocation, boss} = this.props
+    const {playerParty, playerSpells, currentLocation, boss, gold} = this.props
     const {townTravelModal} = this.state
     console.log({boss});
     return <div className="section has-text-centered">
@@ -83,6 +85,7 @@ class Menu extends React.Component {
           {currentLocation.name == 'Town' &&  this.renderMenuLink('/', 'Town')}
           {currentLocation.name == 'Town' &&  this.renderMenuLink('/dungeons', 'Dungeon Map')}
         </div>
+        <p className="title is-3">Gold: {gold}</p>
         <div className="level-right">
           {currentLocation.name != 'Town'
             ? this.renderMenuLink('/party', 'Assemble Party')
@@ -144,12 +147,13 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty, playerSpells, location, boss}) => {
+const mapStateToProps = ({playerParty, playerSpells, location, boss, gold}) => {
   return {
     playerParty,
     playerSpells,
     currentLocation: location,
-    boss
+    boss,
+    gold
   }
 }
 

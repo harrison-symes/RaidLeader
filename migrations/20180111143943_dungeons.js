@@ -6,8 +6,9 @@ exports.up = function(knex, Promise) {
     table.integer('min_level')
     table.integer('max_party')
     table.integer('max_spells')
+    table.boolean('is_repeatable').defaultTo(true)
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('dungeons')

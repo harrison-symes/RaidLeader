@@ -2,21 +2,21 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 
+import {earnGold} from '../actions/gold'
+
 class BossRewardsModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
       showRewards: false,
-      goldReward: props.boss.goldReward || 100,
+      goldReward: props.boss.goldReward || 0,
       weaponReward: this.solveWeaponReward(props.boss)
     }
-    console.log(this.state);
     this.showRewards = this.showRewards.bind(this)
     this.showRewards = this.showRewards.bind(this)
   }
   solveWeaponReward(boss) {
     const {currentLocation} = this.props
-    console.log({boss});
     const giveWeapon = Math.random() < boss.weaponChance
     if (!giveWeapon) return null
     const weapons = boss.weaponRewards
@@ -27,6 +27,7 @@ class BossRewardsModal extends Component {
   }
   showRewards() {
     this.setState({showRewards: true})
+    this.props.dispatch(earnGold(this.state.goldReward))
   }
   backToMenu() {
     console.log(this.props);

@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments('user_id')
     table.string('user_name')
     table.string('hash')
+    table.integer('gold').defaultTo(0)
   })
 };
 
