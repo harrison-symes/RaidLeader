@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments('id')
     table.string('name')
     table.integer('min_level')
+    table.integer('max_party')
+    table.integer('max_spells')
   })
 };
 
