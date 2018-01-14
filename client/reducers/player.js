@@ -1,7 +1,7 @@
 const testPlayer = {
   name: 'Harrison',
   initHp: 100,
-  hp: 10,
+  hp: 100,
   initPower: 2,
   power: 2,
   initArmor: 1,
@@ -32,7 +32,7 @@ export default function player (state = testPlayer, action) {
       newState.mana = newState.maxMana
       return newState
     case 'LOAD_GAME':
-      newState.spells = action.playerSpells
+      newState.spells = [...action.playerSpells]
       return newState
     case 'TICK_ONE_SECOND':
       newState.mana+=newState.manaRegen
