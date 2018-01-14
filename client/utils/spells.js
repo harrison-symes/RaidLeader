@@ -4,7 +4,7 @@ module.exports = {
     name: 'Lesser Heal',
     cast: 1,
     cost: 10,
-    coolDown: 0,
+    coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
     powerRatio: 1
@@ -54,7 +54,7 @@ module.exports = {
     name: 'Fireball',
     cast: 5,
     cost: 15,
-    coolDown: 10,
+    coolDown: 0,
     type: 'damage',
     singleTarget: false,
     powerRatio: 3
@@ -74,7 +74,7 @@ module.exports = {
     name: 'Flash Fire',
     cast: 0,
     cost: 15,
-    coolDown: 15,
+    coolDown: 10,
     type: 'damage',
     singleTarget: false,
     powerRatio: 1
@@ -103,7 +103,7 @@ module.exports = {
     id: 11,
     name: 'Drain Life',
     cast: 2,
-    cost: 10,
+    cost: 5,
     coolDown: 5,
     type: 'damage',
     singleTarget: false,
@@ -113,7 +113,7 @@ module.exports = {
     id: 12,
     name: 'Harvest Life',
     cast: 5,
-    cost: 30,
+    cost: 20,
     coolDown: 20,
     type: 'damage',
     singleTarget: false,
@@ -122,11 +122,11 @@ module.exports = {
   'Drain Soul': {
     id: 13,
     name: 'Drain Soul',
-    cast: 3,
+    cast: 5,
     cost: 0,
-    coolDown: 3,
+    coolDown: 0,
     type: 'damage',
     singleTarget: false,
-    powerRatio: 1
+    powerRatio: 2
   }
 }

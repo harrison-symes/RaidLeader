@@ -64,7 +64,7 @@ class BossFrame extends Component {
   }
   render() {
     const {boss} = this.props
-    const {name, hp, initHp, mana, maxMana, armor, initArmor, spells} = boss
+    const {name, hp, initHp, mana, maxMana, armor, initArmor, spells, power} = boss
     return <div className="section BossFrame">
       <div className="columns">
         <div className="column is-3 has-text-centered">
@@ -75,7 +75,10 @@ class BossFrame extends Component {
         </div>
         <div className="column is-4 has-text-centered">
           <ManaBar mana={mana} maxMana={maxMana} />
-          <h1 className="title is-3">Armor: {armor}/{initArmor}</h1>
+          <div className="level">
+            <h1 className="title is-4">Armor: {armor}/{initArmor}</h1>
+            <h1 className="title is-4">Power: {power}</h1>
+          </div>
         </div>
       </div>
       <HealthBar hp={hp} maxHP={initHp} />

@@ -16,5 +16,6 @@ server.use('/api/v1/auth', require('./routes/auth'))
 server.use('/api/v1/recruits', require('./routes/recruits'))
 server.use('/api/v1/spells', require('./routes/spells'))
 server.use('/api/v1/dungeons', require('./routes/dungeons'))
+server.use('/api/v1/player', require('./routes/player'))
 
 module.exports = server

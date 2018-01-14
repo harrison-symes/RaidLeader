@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('name')
     table.integer('dungeon_id')
     table.integer('min_level').defaultTo(1)
+    table.integer('progress_required').defaultTo(0)
   })
 };
 

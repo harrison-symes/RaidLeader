@@ -13,6 +13,7 @@ import playerSpells from './playerSpells'
 import spellBook from './spellBook'
 import dungeons from './dungeons'
 import location from './location'
+import gold from './gold'
 
 export default combineReducers({
   auth,
@@ -27,5 +28,6 @@ export default combineReducers({
   playerSpells,
   spellBook,
   dungeons,
-  location
+  location,
+  gold
 })

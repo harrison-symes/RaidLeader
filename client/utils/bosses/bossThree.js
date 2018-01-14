@@ -16,6 +16,7 @@ export default {
   goldReward: 150,
   weaponRewards: ['Boss 3 Weapon 1', 'Boss 3 Weapon 2', 'Boss 3 Weapon 3'],
   weaponChance: 1,
+  progress_required: 2,
   spells: [
     {
       name: 'Feed',
@@ -32,16 +33,16 @@ export default {
       name: 'Swipe',
       cast: 3,
       cost: 0,
-      coolDown: 5,
+      coolDown: 3,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 3,
+      powerRatio: 1,
       onCooldown: false,
       description: "Damage ALL enemy characters for 100% BOSS POWER"
     },
     {
       name: 'Spit',
-      cast: 2,
+      cast: 1,
       cost: 0,
       coolDown: 0,
       type: 'damage',
