@@ -19,6 +19,9 @@ export default function boss (state = null, action) {
       newState.mana+=action.amount
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'BOSS_GAIN_POWER':
+      newState.power+=action.amount
+      return newState
     case 'PHYSICAL_ATTACK_BOSS':
       let damage = Math.round(action.power)
       if (newState.armor >= damage) {
