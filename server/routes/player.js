@@ -22,4 +22,9 @@ router.post('/weapon', decode, (req, res) => {
     .then(res => res.sendStatus(201))
 })
 
+router.get('/weapons', decode, (req, res) => {
+  playerDb.getWeapons(req.user.user_id)
+    .then(weapons => res.json(weapons))
+})
+
 module.exports = router
