@@ -2,6 +2,7 @@ import request from '../utils/api'
 import createClass from '../utils/createClass'
 
 export function receiveRecruitsAction (recruits) {
+  console.log({recruits});
   return {
     type: "RECEIVE_RECRUITS",
     recruits: recruits.map(recruit => createClass(recruit))

@@ -13,14 +13,12 @@ class RecruitModal extends Component {
   }
   renderWeaponFrame() {
     const {recruit, weapons} = this.props
-    console.log({weapons});
     let weapon
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     const availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
       return other.class == recruit.heroClass
     })
-    console.log({availableWeapons});
     return <div>
       {weapon
         ? <div className="box">
@@ -60,7 +58,7 @@ class RecruitModal extends Component {
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title is-1">{recruit.name} the {recruit.heroClass} (Level {recruit.level})</p>
-          <button className="delete" aria-label="close"></button>
+          <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
           <div className="title is-4">Stats</div>
