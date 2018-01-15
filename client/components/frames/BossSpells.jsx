@@ -19,6 +19,15 @@ class PlayerSpell extends Component {
     const {spell, dispatch, boss} = this.props
     const power = this.props.boss.power * spell.powerRatio
     switch(spell.name) {
+      case 'Soft Roar':
+        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 20})
+      case 'Weakened Bite':
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: t})
+      case 'Feeble Fire':
+        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 10})
       case 'Bite':
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':
