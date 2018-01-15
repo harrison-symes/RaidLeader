@@ -5,5 +5,6 @@ var knex = Knex(config)
 module.exports = {
   getDungeons: () => knex('dungeons'),
   getCompletedDungeons: (user_id) => knex('playerCompletedDungeon').where('user_id', user_id),
-  getBosses: () => knex('bosses')
+  getBosses: () => knex('bosses'),
+  dungeonComplete: (user_id, dungeon_id) => knex('playerCompletedDungeon').insert({user_id, dungeon_id})
 }

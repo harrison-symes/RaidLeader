@@ -15,10 +15,20 @@ class PlayerSpell extends Component {
     this.tickCast = this.tickCast.bind(this)
     this.tickCD = this.tickCD.bind(this)
   }
-  castSwitch(target) {
+  castSwitch() {
     const {spell, dispatch, boss} = this.props
-    const power = this.props.boss.power * spell.powerRatio
+    const power = boss.power * spell.powerRatio
+    console.log({target}, spell.name);
+    const target = boss.bossTarget
     switch(spell.name) {
+      case 'Roar':
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
+      case 'Weakened Bite':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 10})
+      case 'Feeble Fire':
+        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 20})
       case 'Bite':
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':

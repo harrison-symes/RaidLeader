@@ -1,7 +1,3 @@
-import bossOne from '../utils/bosses/bossOne'
-import bossTwo from '../utils/bosses/bossTwo'
-import bossThree from '../utils/bosses/bossThree'
-
 export default function boss (state = null, action) {
   let newState = {...state}
   switch(action.type) {

@@ -19,3 +19,18 @@ export function getDungeons () {
     .catch(err => console.log({err}))
   }
 }
+
+export function completeDungeonAction(dungeon) {
+  console.log({dungeon});
+  return {
+    type: "DUNGEON_COMPLETE",
+    dungeon
+  }
+}
+
+export function completeDungeon (dungeon) {
+  return dispatch => {
+    request('post', 'dungeons/complete', {dungeon_id: dungeon.id})
+      .then(res => dispatch(completeDungeonAction(dungeon)))
+  }
+}

@@ -35,7 +35,7 @@ class BossPreview extends React.Component {
           <p className="title is-4">{boss.goldReward} Gold</p>
           {boss.weaponRewards.length > 0 && <div>
             <p className="title is-4">{boss.weaponChance * 100}% Chance:</p>
-            {boss.weaponRewards.map((reward, i) => <p className="title is-5">{i == boss.weaponRewards.length - 1 ? "or " : ""}{reward}</p>)}
+            {boss.weaponRewards.map((reward, i) => <p className="title is-5">{i == boss.weaponRewards.length - 1 && boss.weaponRewards.length > 1 ? "or " : ""}{reward}</p>)}
 
           </div>}
           <hr />
@@ -62,7 +62,14 @@ class BossPreview extends React.Component {
           </ul>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour}`} disabled={colour != 'is-success'}>Set Target</button>
+          <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour}`} disabled={colour != 'is-success'}>
+            {colour != 'is-success'
+              ? colour == 'is-danger'
+                ? `Requires ${boss.progress_required - defeatedBossCount} More Boss Defeats`
+                : 'Already Defeated'
+              : 'Set Target'
+            }
+          </button>
           <button onClick={() => this.changeModal(false, null)} className="button is-large">Cancel</button>
         </footer>
       </div>

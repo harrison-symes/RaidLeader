@@ -12,13 +12,19 @@ router.get('/', decode, (req, res) => {
           .then(bosses => {
             dungeons = dungeons.map(dungeon => {
               dungeon.bosses = bosses.filter(boss => boss.dungeon_id == dungeon.id)
-              dungeon.isCompleted = completed.find(complete => complete.dungeon_id == dungeon.id)
+              dungeon.isCompleted = !!completed.find(complete => complete.dungeon_id == dungeon.id)
               return dungeon
             })
             res.json(dungeons)
           })
         })
     })
+})
+
+router.post('/complete', decode, (req, res) => {
+  console.log(req.body);
+  dungeonsDb.dungeonComplete(req.user.user_id, req.body.dungeon_id)
+    .then(() => res.sendStatus(201))
 })
 
 module.exports = router

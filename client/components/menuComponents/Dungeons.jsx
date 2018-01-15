@@ -5,6 +5,7 @@ import Dungeon from './Dungeon'
 
 const Dungeons = ({dungeons, playerParty}) => {
   let partyLevel = 1
+  console.log({dungeons});
   playerParty.forEach(member => {
     if (member.level > partyLevel) partyLevel = member.level
   })

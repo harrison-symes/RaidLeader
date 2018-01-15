@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import RecruitModal from './RecruitModal'
+
 class RecruitFrame extends React.Component {
   constructor(props) {
     super(props)
@@ -46,41 +48,10 @@ class RecruitFrame extends React.Component {
           </p>
         </td>
       </tr>
-      {showMore && [
-        (<tr key={`recruit-${name}-hp`} className="tr">
-          <th className="th">
-            <p className="subtitle is-4">Hp:</p>
-          </th>
-          <td className="td">
-            <p className="subtitle is-4">
-              {recruit.hp || "none"}
-            </p>
-          </td>
-        </tr>),
-        (<tr key={`recruit-${name}-power`} className="tr">
-          <th className="th">
-            <p className="subtitle is-4">Power:</p>
-          </th>
-          <td className="td">
-            <p className="subtitle is-4">
-              {recruit.power || "none"}
-            </p>
-          </td>
-        </tr>),
-        (<tr key={`recruit-${name}-speed`} className="tr">
-            <th className="th">
-              <p className="subtitle is-4">Speed:</p>
-            </th>
-            <td className="td">
-              <p className="subtitle is-4">
-                {recruit.speed || "none"}
-              </p>
-            </td>
-          </tr>)
-      ]}
-      <tr className="tr has-text-centered">
+      {showMore && <RecruitModal recruit={recruit} close={this.toggleShow} />}
+      {!showMore && <tr className="tr has-text-centered">
         <button onClick={this.toggleShow} className="button">{showMore ? 'Show Less' : 'Show More'}</button>
-      </tr>
+      </tr>}
     </tbody>
   }
 }

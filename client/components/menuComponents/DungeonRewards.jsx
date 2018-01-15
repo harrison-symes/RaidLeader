@@ -4,7 +4,9 @@ import {withRouter} from 'react-router'
 
 import BossPreview from './BossPreview'
 
+
 import {earnGold} from '../../actions/gold'
+import {completeDungeon} from '../../actions/dungeons'
 
 class DungeonRewards extends Component {
   constructor(props) {
@@ -53,17 +55,19 @@ class DungeonRewards extends Component {
     loot = loot[Math.floor(Math.random() * loot.length)]
     this.setState({showRewards: true, loot})
     this.props.dispatch({type: 'DUNGEON_CHEST_OPENED'})
+    this.props.dispatch(completeDungeon(currentLocation))
   }
   render() {
     const {currentLocation} = this.props
     console.log({currentLocation});
     const bossesDefeated = currentLocation.bosses.filter(boss => boss.isDefeated)
     const {showRewards} = this.state
+    console.log({bossesDefeated, currentLocation});
     return <div className="has-text-centered">
       <p className="title is-3">Dungeon Progress:</p>
       <hr />
       <p className="subtitle is-3">Bosses Defeated: {bossesDefeated.length} / {currentLocation.bosses.length}</p>
-      {bossesDefeated == currentLocation.bosses.length && this.renderRewardsModal()}
+      {bossesDefeated.length == currentLocation.bosses.length && this.renderRewardsModal()}
       {bossesDefeated.map(boss => <BossPreview boss={boss} i={0} />)}
       <hr />
     </div>
