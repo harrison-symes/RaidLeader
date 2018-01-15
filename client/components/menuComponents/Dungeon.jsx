@@ -28,7 +28,8 @@ class Dungeon extends React.Component {
   }
   render() {
     const {dungeon, location, partyLevel, dungeons} = this.props
-    const levelRestrict = dungeon.requires_complete == null || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted || false
+    let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
+    if (!dungeon.requires_complete) levelRestrict = false
     return <table className="table is-fullwidth is-hoverable has-text-centered" style={{marginBottom: '10%'}}>
       <thead className="thead">
         <td className="th is-left" style={{cursor: 'pointer'}}>
