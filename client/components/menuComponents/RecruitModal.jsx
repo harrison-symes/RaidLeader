@@ -12,12 +12,12 @@ class RecruitModal extends Component {
     this.props.dispatch(recruitEquipWeapon(recruit, weapon))
   }
   renderWeaponFrame() {
-    const {recruit, weapons} = this.props
+    const {recruit, weapons, recruits} = this.props
     let weapon
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     const availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
-      return other.class == recruit.heroClass && other.level <= recruit.level
+      return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
     })
     return <div>
       {weapon
@@ -79,11 +79,12 @@ class RecruitModal extends Component {
   }
 }
 
-const mapStateToProps = ({playerParty, weapons}) => {
+const mapStateToProps = ({playerParty, weapons, recruits}) => {
   console.log({weapons})
   return {
     playerParty,
-    weapons
+    weapons,
+    recruits
   }
 }
 
