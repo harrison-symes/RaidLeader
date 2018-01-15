@@ -17,12 +17,21 @@ class Dungeon extends React.Component {
     const {dungeon} = this.props
     this.props.dispatch({type: 'TRAVEL_TO_DUNGEON', dungeon})
   }
+  travelButton () {
+    const {dungeon, location, partyLevel} = this.props
+    const atDungeon = location.name == dungeon.name
+    const levelRestrict = partyLevel < dungeon.min_level
+    if (atDungeon) return <p className="button is-primary is-large">You are Here</p>
+    else if (levelRestrict) return <p className="button is-danger is-outlined is-large" disabled>Requires level ({dungeon.min_level})</p>
+    else if (dungeon.isCompleted && !dungeon.is_repeatable) return <p className="button is-dark is-outlined is-large" disabled>Not Repeatable</p>
+    else return <p className="button is-primary is-large" onClick={this.travelHere}>Travel Here</p>
+  }
   render() {
     const {dungeon, location, partyLevel} = this.props
     return <table className="table is-fullwidth is-hoverable has-text-centered" style={{marginBottom: '10%'}}>
       <thead className="thead">
         <td className="th is-left" style={{cursor: 'pointer'}}>
-          <p onClick={this.toggleShow} className="subtitle is-1">{dungeon.name}</p>
+          <p onClick={this.toggleShow} className="subtitle is-1">{dungeon.name}{dungeon.isCompleted ? "✔": ""}</p>
         </td>
         <td className="th">
           <p className="subtitle is-1" style={{float: 'right'}}>Level {dungeon.min_level}</p>
@@ -42,10 +51,7 @@ class Dungeon extends React.Component {
         <tr className="tr has-text-centered">
           <td className="td">
             {location.name == dungeon.name && <p className="button is-info is-outlined is-large" disabled>You Are Here</p>}
-            {this.state.showMore && location.name != dungeon.name &&  partyLevel >= dungeon.min_level && <p className="button is-primary is-large" onClick={this.travelHere}>Travel Here</p>
-            }
-            {this.state.showMore && location.name != dungeon.name &&  partyLevel < dungeon.min_level && <p className="button is-danger is-large is-outlined" disabled>Requires Level ({dungeon.min_level})</p>
-            }
+            {this.state.showMore && this.travelButton()}
           </td>
         </tr>
       </tfoot>
