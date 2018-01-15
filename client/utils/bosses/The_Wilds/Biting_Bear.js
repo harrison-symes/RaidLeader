@@ -1,5 +1,6 @@
 export default {
   name: 'Biting Bear',
+  level: 1,
   initHp: 50,
   hp: 50,
   initPower: 5,
@@ -13,9 +14,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Boss 1 Weapon 1', 'Boss 1 Weapon 2'],
+  weaponRewards: ['Bear Fangs', 'Bear Heart'],
   goldReward: 100,
-  weaponChance: 0.5,
+  weaponChance: 1,
   progress_required: 0,
   spells: [
     {
