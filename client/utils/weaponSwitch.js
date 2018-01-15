@@ -34,5 +34,53 @@ module.exports = {
     class: 'Warlock',
     description: 'The heart still beats, only a true sadist would find this useful',
     bonusEffect: null
-  })
+  }),
+  ['Turtle Shell']: (level, id) => ({
+    name: 'Turtle Shell',
+    type: 'Weapon',
+    level,
+    id,
+    hp: 5 * level,
+    power: -1 * level,
+    speed: -1,
+    class: 'Warrior',
+    description: 'A shell so heavy only a Warrior can weild it, not good for hitting things with, but great for not dying!',
+    bonusEffect: null
+  }),
+  ['Ancient Pearls']: (level, id) => ({
+    name: 'Ancient Pearls',
+    type: 'Weapon',
+    level,
+    id,
+    hp: -1 * level,
+    power: level,
+    speed: 1,
+    class: 'Monk',
+    description: "Strange, the Turtle was growing Pearls under it's shell",
+    bonusEffect: null
+  }),
+  ['Fine Silk']: (level, id) => ({
+    name: 'Fine Silk',
+    type: 'Weapon',
+    level,
+    id,
+    hp: -1 * level,
+    power: level,
+    speed: 1,
+    class: 'Priest',
+    description: "The Spider had spun some amazing silk. Very light, with",
+    bonusEffect: null
+  }),
+  ['Spider Eye Wand']: (level, id) => ({
+    name: 'Spider Eye Wand',
+    type: 'Weapon',
+    level,
+    id,
+    hp: -1 * level,
+    power: 1 * level,
+    speed: 1,
+    class: 'Mage',
+    description: "It's a stick with a Spider Eye on the end, so obviously it's magical",
+    bonusEffect: null
+  }),
 }
