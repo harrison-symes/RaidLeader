@@ -18,11 +18,11 @@ class Dungeon extends React.Component {
     this.props.dispatch({type: 'TRAVEL_TO_DUNGEON', dungeon})
   }
   travelButton () {
-    const {dungeon, location, partyLevel} = this.props
+    const {dungeon, location, partyLevel, dungeons} = this.props
     const atDungeon = location.name == dungeon.name
-    const levelRestrict = partyLevel < dungeon.min_level
+    const levelRestrict = !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (atDungeon) return <p className="button is-primary is-large">You are Here</p>
-    else if (levelRestrict) return <p className="button is-danger is-outlined is-large" disabled>Requires level ({dungeon.min_level})</p>
+    else if (levelRestrict) return <p className="button is-danger is-outlined is-large" disabled>Complete "{dungeon.requires_complete}" to Unlock</p>
     else if (dungeon.isCompleted && !dungeon.is_repeatable) return <p className="button is-dark is-outlined is-large" disabled>Not Repeatable</p>
     else return <p className="button is-primary is-large" onClick={this.travelHere}>Travel Here</p>
   }
@@ -59,9 +59,10 @@ class Dungeon extends React.Component {
   }
 }
 
-const mapStateToProps = ({location}) => {
+const mapStateToProps = ({location, dungeons}) => {
   return {
-    location
+    location,
+    dungeons
   }
 }
 
