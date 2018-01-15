@@ -36,7 +36,22 @@ class Menu extends React.Component {
     this.props.dispatch(getWeapons())
   }
   loadGame() {
-    const {playerParty, playerSpells} = this.props
+    let {playerParty, playerSpells, weapons} = this.props
+    playerParty = playerParty.map(recruit => {
+      if (recruit.weapon_id) {
+        let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
+        recruit.initHp += weapon.hp
+        recruit.hp += weapon.hp
+        recruit.initPower += weapon.power
+        recruit.power += weapon.power
+        recruit.initSpeed += weapon.speed
+        recruit.speed += weapon.speed
+        recruit.weapon_name = weapon.name
+      } else {
+        recruit.weapon_name = null
+      }
+      return recruit
+    })
     this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells})
   }
   renderStartGameButton () {
@@ -153,13 +168,14 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty, playerSpells, location, boss, gold}) => {
+const mapStateToProps = ({playerParty, playerSpells, location, boss, gold, weapons}) => {
   return {
     playerParty,
     playerSpells,
     currentLocation: location,
     boss,
-    gold
+    gold,
+    weapons
   }
 }
 

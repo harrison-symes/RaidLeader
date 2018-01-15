@@ -7,9 +7,11 @@ import mapStateToProps from './utils/classStateMap'
 
 class Monk extends PartyMemberFrame {
   finishCast() {
-    this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
-    this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.member.power / 2})
-    this.startCast()
+    if (this.props.started && this.props.member.isAlive) {
+      this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
+      this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.member.power / 2})
+      this.startCast()
+    }
   }
   startFighting () {
     const {power, speed} = this.props.member

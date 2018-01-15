@@ -14,8 +14,8 @@ export default {
   bossTarget: null,
   description: "This Spider knows you hate her, but she hates you too, and she spits on you for it.",
   goldReward: 150,
-  weaponRewards: ['Boss 3 Weapon 1', 'Boss 3 Weapon 2', 'Boss 3 Weapon 3'],
-  weaponChance: 1,
+  weaponRewards: ['Fine Silk', 'Spider Eye Wand'],
+  weaponChance: 0.5,
   progress_required: 2,
   spells: [
     {
