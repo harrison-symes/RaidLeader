@@ -24,7 +24,7 @@ class BossRewardsModal extends Component {
     const weapons = boss.weaponRewards
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward = weapons[Math.floor(Math.random() * weapons.length)]
-    reward = weaponSwitch[reward]()
+    reward = weaponSwitch[reward](boss.level)
     console.log({reward, weapons});
     return reward
   }
@@ -55,10 +55,10 @@ class BossRewardsModal extends Component {
               {weaponReward && <div>
                 <p className="title is-3">You found a Weapon!</p>
                 <hr />
-                <div className="columns is-multiline">
-                  <div className="subtitle is-3">Health: {weaponReward.hp}</div>
-                  <div className="subtitle is-3">Power: {weaponReward.power}</div>
-                  <div className="subtitle is-3">Speed: {weaponReward.speed}</div>
+                <div className="columns">
+                  <div className="column subtitle is-3">Health: {weaponReward.hp}</div>
+                  <div className="column subtitle is-3">Power: {weaponReward.power}</div>
+                  <div className="column subtitle is-3">Speed: {weaponReward.speed}</div>
                 </div>
                 <h1 className="title is-3">{weaponReward.name}</h1>
               </div>}
