@@ -12,7 +12,7 @@ class DamagedDragon extends BossFrame {
     let castSpell = spells.filter(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
-          case 'Soft Roar': return true
+          case 'Roar': return true
           case 'Feeble Fire': return true
           case 'Weakened Bite': return true
           default: return false

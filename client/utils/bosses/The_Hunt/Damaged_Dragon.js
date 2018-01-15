@@ -19,7 +19,7 @@ export default {
   progress_required: 0,
   spells: [
     {
-      name: 'Soft Roar',
+      name: 'Roar',
       cast: 1,
       cost: 10,
       coolDown: 20,
@@ -27,18 +27,18 @@ export default {
       singleTarget: false,
       powerRatio: 10,
       onCooldown: false,
-      description: 'Gain 10 Power, lose 20 health',
+      description: 'Gain 10 Power',
     },
     {
       name: 'Feeble Fire',
-      cast: 10,
+      cast: 5,
       cost: 3,
       coolDown: 10,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 0.15,
+      powerRatio: 0.10,
       onCooldown: false,
-      description: 'Damage ALL enemy characters for 15% BOSS POWER, lose 10 health',
+      description: 'Damage ALL enemy characters for 10% BOSS POWER, lose 20 health',
     },
     {
       name: 'Weakened Bite',
@@ -49,7 +49,7 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the TARGET for 10% of BOSS POWER, lose 5 health"
+      description: "Damage the TARGET for 10% of BOSS POWER, lose 10 health"
     }
   ]
 }
