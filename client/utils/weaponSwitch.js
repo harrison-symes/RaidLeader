@@ -1,8 +1,9 @@
 module.exports = {
-  ['Dragon Scale']: level => ({
+  ['Dragon Scale']: (level, id) => ({
     name: 'Dragon Scale',
     type: 'Weapon',
     level,
+    id,
     hp: 2 * level,
     power: level,
     speed: 0,

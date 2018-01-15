@@ -59,7 +59,6 @@ class BossRewardsModal extends Component {
   render() {
     const {showRewards, goldReward, weaponReward} = this.state
     const {boss} = this.props
-    console.log(this.props);
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
