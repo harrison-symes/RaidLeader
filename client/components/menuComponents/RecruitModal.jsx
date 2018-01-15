@@ -17,7 +17,7 @@ class RecruitModal extends Component {
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     const availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
-      return other.class == recruit.heroClass
+      return other.class == recruit.heroClass && other.level <= recruit.level
     })
     return <div>
       {weapon
