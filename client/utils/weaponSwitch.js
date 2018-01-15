@@ -7,6 +7,7 @@ module.exports = {
     power: level,
     speed: 0,
     class: 'Paladin',
-    description: 'A Scale from a Dragon, this should make a good shield'
+    description: 'A Scale from a Dragon, this should make a good shield',
+    bonusEffect: null
   })
 }

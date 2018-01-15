@@ -1,5 +1,6 @@
 export default {
   name: 'Damaged Dragon',
+  level: 1,
   initHp: 1000,
   hp: 200,
   initPower: 50,

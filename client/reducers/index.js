@@ -14,6 +14,7 @@ import spellBook from './spellBook'
 import dungeons from './dungeons'
 import location from './location'
 import gold from './gold'
+import weapons from './weapons'
 
 export default combineReducers({
   auth,
@@ -29,5 +30,6 @@ export default combineReducers({
   spellBook,
   dungeons,
   location,
-  gold
+  gold,
+  weapons
 })

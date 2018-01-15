@@ -17,6 +17,7 @@ import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
 import {getDungeons} from '../actions/dungeons'
 import {getPlayerGold} from '../actions/gold'
+import {getWeapons} from '../actions/weapons'
 
 class Menu extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Menu extends React.Component {
     this.props.dispatch(getSpells())
     this.props.dispatch(getDungeons())
     this.props.dispatch(getPlayerGold())
+    this.props.dispatch(getWeapons())
   }
   loadGame() {
     const {playerParty, playerSpells} = this.props
