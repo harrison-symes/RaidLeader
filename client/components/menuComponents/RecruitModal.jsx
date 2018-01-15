@@ -24,7 +24,8 @@ class RecruitModal extends Component {
     return <div>
       {weapon
         ? <div className="box">
-          <p className="title is-3">Weapon: {weapon.name}</p>
+          <p className="title is-3">Weapon: {weapon.name} ({weapon.level})</p>
+          <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
             {weapon.hp != 0 && <div className="column subtitle is-4">Health: {weapon.hp}</div>}
