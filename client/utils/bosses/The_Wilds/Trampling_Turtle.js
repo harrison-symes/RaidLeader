@@ -41,15 +41,15 @@ export default {
       description: "Damage ALL enemy characters for 300% BOSS POWER"
     },
     {
-      name: 'Spit',
+      name: 'Trample',
       cast: 1,
       cost: 1,
       coolDown: 0,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 1,
+      powerRatio: 5,
       onCooldown: false,
-      description: "Damage the PLAYER for 100% BOSS POWER (Only used if enemy party is dead)"
+      description: "Damage the PLAYER for 500% BOSS POWER (Only used if enemy party is dead)"
     }
   ]
 }
