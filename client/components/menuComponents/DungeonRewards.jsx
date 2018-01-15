@@ -4,6 +4,7 @@ import {withRouter} from 'react-router'
 
 import BossPreview from './BossPreview'
 
+
 import {earnGold} from '../../actions/gold'
 import {completeDungeon} from '../../actions/dungeons'
 

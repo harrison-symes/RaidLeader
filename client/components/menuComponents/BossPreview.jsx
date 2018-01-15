@@ -35,7 +35,7 @@ class BossPreview extends React.Component {
           <p className="title is-4">{boss.goldReward} Gold</p>
           {boss.weaponRewards.length > 0 && <div>
             <p className="title is-4">{boss.weaponChance * 100}% Chance:</p>
-            {boss.weaponRewards.map((reward, i) => <p className="title is-5">{i == boss.weaponRewards.length - 1 ? "or " : ""}{reward}</p>)}
+            {boss.weaponRewards.map((reward, i) => <p className="title is-5">{i == boss.weaponRewards.length - 1 && boss.weaponRewards.length > 1 ? "or " : ""}{reward}</p>)}
 
           </div>}
           <hr />

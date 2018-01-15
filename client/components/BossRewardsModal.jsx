@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 
+import weaponSwitch from '../utils/weaponSwitch'
+
 import {earnGold} from '../actions/gold'
 
 class BossRewardsModal extends Component {
@@ -22,8 +24,9 @@ class BossRewardsModal extends Component {
     const weapons = boss.weaponRewards
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward = weapons[Math.floor(Math.random() * weapons.length)]
+    reward = weaponSwitch[reward]()
     console.log({reward, weapons});
-    return {name: reward, type: 'weapon'}
+    return reward
   }
   showRewards() {
     this.setState({showRewards: true})
@@ -51,7 +54,13 @@ class BossRewardsModal extends Component {
               <p className="subtitle is-1">{goldReward} Gold</p>
               {weaponReward && <div>
                 <p className="title is-3">You found a Weapon!</p>
-                <h1>{weaponReward.name}</h1>
+                <hr />
+                <div className="columns is-multiline">
+                  <div className="subtitle is-3">Health: {weaponReward.hp}</div>
+                  <div className="subtitle is-3">Power: {weaponReward.power}</div>
+                  <div className="subtitle is-3">Speed: {weaponReward.speed}</div>
+                </div>
+                <h1 className="title is-3">{weaponReward.name}</h1>
               </div>}
               <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
             </div>

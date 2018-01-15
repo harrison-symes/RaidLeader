@@ -13,7 +13,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "A big scary Dragon, with a big Boo-Boo",
-  weaponRewards: ['Flash Fire'],
+  weaponRewards: ['Dragon Scale'],
   goldReward: 500,
   weaponChance: 1,
   progress_required: 0,
