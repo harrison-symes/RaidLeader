@@ -3,6 +3,10 @@ import createClass from '../utils/createClass'
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'RECRUIT_EQUIP_WEAPON':
+      let recruit = newState.find(other => other.id == action.recruit.id)
+      if (recruit) recruit.weapon_id = action.weapon_id
+      return newState
     case 'RETURN_TO_MENU':
       newState = newState.map((member) => createClass(member))
       console.log({newState});

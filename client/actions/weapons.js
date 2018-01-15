@@ -29,3 +29,19 @@ export function addWeapon (weapon) {
       .then(res => dispatch(addWeaponAction(weapons, res.body)))
   }
 }
+
+export function recruitEquipWeaponAction (recruit, weapon_id) {
+  console.log({recruit, weapon_id});
+  return {
+    type: 'RECRUIT_EQUIP_WEAPON',
+    recruit,
+    weapon_id
+  }
+}
+
+export function recruitEquipWeapon (recruit, {id}) {
+  return dispatch => {
+    request('put', 'recruits/weapons', {id: recruit.id, weapon_id: id})
+      .then(() => dispatch(recruitEquipWeaponAction(recruit, id)))
+  }
+}

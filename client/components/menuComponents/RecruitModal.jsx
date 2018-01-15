@@ -1,9 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import {recruitEquipWeapon} from '../../actions/weapons'
+
 class RecruitModal extends Component {
   constructor(props) {
     super(props)
+  }
+  equip(weapon) {
+    const {recruit} = this.props
+    this.props.dispatch(recruitEquipWeapon(recruit, weapon))
   }
   renderWeaponFrame() {
     const {recruit, weapons} = this.props
@@ -18,7 +24,7 @@ class RecruitModal extends Component {
     return <div>
       {weapon
         ? <div className="box">
-          <p className="title is-3">{weapon.name}</p>
+          <p className="title is-3">Weapon: {weapon.name}</p>
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
             <div className="column subtitle is-4">Health: {weapon.hp}</div>
@@ -30,10 +36,10 @@ class RecruitModal extends Component {
         : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
       }
       <hr />
-      {availableWeapons.length && [
+      {availableWeapons.length != 0 && [
         <p className="title is-4">Avaiable Weapons</p>,
         <div className="columns">
-          {availableWeapons.map((weapon, i) => <div className="column is-6 box">
+          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon)} className="column is-6 box">
             <p className="title is-4">{weapon.name} ({weapon.level})</p>
             <ul className="">
               {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp}</li>}

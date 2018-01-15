@@ -8,4 +8,9 @@ router.get('/', decode, (req, res) => {
     .then(recruits => res.json(recruits))
 })
 
+router.put('/weapons', decode, (req, res) => {
+  recruitsDb.equipWeapon(req.body.id, req.body.weapon_id)
+    .then(() => res.sendStatus(200))
+})
+
 module.exports = router
