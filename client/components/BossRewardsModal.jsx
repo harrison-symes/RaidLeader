@@ -55,11 +55,13 @@ class BossRewardsModal extends Component {
               {weaponReward && <div>
                 <p className="title is-3">You found a Weapon!</p>
                 <hr />
-                <div className="columns">
-                  <div className="column subtitle is-3">Health: {weaponReward.hp}</div>
-                  <div className="column subtitle is-3">Power: {weaponReward.power}</div>
-                  <div className="column subtitle is-3">Speed: {weaponReward.speed}</div>
+                <div className="title is-4">{weaponReward.class} Weapon!</div>
+                <div className="columns is-multiline">
+                  <div className="column subtitle is-4">Health: {weaponReward.hp}</div>
+                  <div className="column subtitle is-4">Power: {weaponReward.power}</div>
+                  <div className="column subtitle is-4">Speed: {weaponReward.speed}</div>
                 </div>
+                <div className="subtitle is-5">{weaponReward.description}</div>
                 <h1 className="title is-3">{weaponReward.name}</h1>
               </div>}
               <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
