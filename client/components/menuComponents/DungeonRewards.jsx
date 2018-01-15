@@ -5,6 +5,7 @@ import {withRouter} from 'react-router'
 import BossPreview from './BossPreview'
 
 import {earnGold} from '../../actions/gold'
+import {completeDungeon} from '../../actions/dungeons'
 
 class DungeonRewards extends Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class DungeonRewards extends Component {
     loot = loot[Math.floor(Math.random() * loot.length)]
     this.setState({showRewards: true, loot})
     this.props.dispatch({type: 'DUNGEON_CHEST_OPENED'})
+    this.props.dispatch(completeDungeon(currentLocation))
   }
   render() {
     const {currentLocation} = this.props

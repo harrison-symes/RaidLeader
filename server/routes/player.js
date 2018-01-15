@@ -13,7 +13,7 @@ router.put('/gold', decode, (req, res) => {
   playerDb.getPlayerGold(req.user.user_id)
     .then(({gold}) => {
       playerDb.updatePlayerGold(req.user.user_id, gold + req.body.gold)
-        .then(() => res.status(200))
+        .then(() => res.sendStatus(200))
     })
 })
 

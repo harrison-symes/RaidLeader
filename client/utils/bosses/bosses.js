@@ -1,6 +1,6 @@
-import Biting_Bear from './Biting_Bear'
-import Trampling_Turtle from './Trampling_Turtle'
-import Spitting_Spider from './Spitting_Spider'
+import Biting_Bear from './The_Wilds/Biting_Bear'
+import Trampling_Turtle from './The_Wilds/Trampling_Turtle'
+import Spitting_Spider from './The_Wilds/Spitting_Spider'
 
 export default function (bossName) {
   switch(bossName) {
