@@ -10,10 +10,12 @@ class Paladin extends PartyMemberFrame {
   }
   finishCast(power) {
     const {member} = this.props
-    this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: power})
-    this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
-    this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target: member, power: power / 2})
-    this.startCast()
+    if (this.props.started && this.props.member.isAlive) {
+      this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: power})
+      this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
+      this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target: member, power: power / 2})
+      this.startCast()
+    }
   }
   startFighting () {
     const {power, speed} = this.props.member
