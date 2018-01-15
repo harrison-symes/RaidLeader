@@ -27,19 +27,19 @@ class RecruitModal extends Component {
           <p className="title is-3">Weapon: {weapon.name}</p>
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
-            <div className="column subtitle is-4">Health: {weapon.hp}</div>
-            <div className="column subtitle is-4">Power: {weapon.power}</div>
-            <div className="column subtitle is-4">Speed: {weapon.speed}</div>
+            {weapon.hp != 0 && <div className="column subtitle is-4">Health: {weapon.hp}</div>}
+            {weapon.power != 0 && <div className="column subtitle is-4">Power: {weapon.power}</div>}
+            {weapon.speed !== 0 && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
             {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
           </div>
         </div>
         : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
       }
       <hr />
-      {availableWeapons.length != 0 && [
-        <p className="title is-4">Avaiable Weapons</p>,
+      {availableWeapons.length != 0 && <div>
+        <p className="title is-4">Avaiable Weapons</p>
         <div className="columns">
-          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon)} className="column is-6 box">
+          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon)} key={`available-weapon-${i}`}className="column is-6 box">
             <p className="title is-4">{weapon.name} ({weapon.level})</p>
             <ul className="">
               {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp}</li>}
@@ -49,7 +49,7 @@ class RecruitModal extends Component {
             {weapon.bonusEffect && <p className="subtitle is-6">{weapon.bonusEffect}</p>}
           </div>)}
         </div>
-      ]}
+      </div>}
     </div>
   }
   render() {
