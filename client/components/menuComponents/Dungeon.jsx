@@ -17,10 +17,9 @@ class Dungeon extends React.Component {
     const {dungeon} = this.props
     this.props.dispatch({type: 'TRAVEL_TO_DUNGEON', dungeon})
   }
-  travelButton () {
+  travelButton (levelRestrict) {
     const {dungeon, location, partyLevel, dungeons} = this.props
     const atDungeon = location.name == dungeon.name
-    const levelRestrict = dungeon.requires_complete == null || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (atDungeon) return <p className="button is-primary is-large is-fullwidth">You are Here</p>
     else if (levelRestrict) return <p className="button is-danger is-outlined is-large is-fullwidth" disabled>Complete "{dungeon.requires_complete}" to Unlock</p>
     else if (dungeon.isCompleted && !dungeon.is_repeatable) return <p className="button is-dark is-outlined is-large is-fullwidth" disabled>Not Repeatable</p>
@@ -58,7 +57,7 @@ class Dungeon extends React.Component {
       <tfoot className="tfoot has-text-centered" >
         <tr className="tr has-text-centered">
           <td className="td">
-            {this.state.showMore && this.travelButton()}
+            {this.state.showMore && this.travelButton(levelRestrict)}
           </td>
           {levelRestrict && [
             <td></td>,
