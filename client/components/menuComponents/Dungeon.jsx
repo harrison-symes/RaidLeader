@@ -34,11 +34,11 @@ class Dungeon extends React.Component {
         <td className="th is-left" style={{cursor: 'pointer'}}>
           <p onClick={this.toggleShow} className="subtitle is-1">{dungeon.name}{dungeon.isCompleted ? "✔": ""}</p>
         </td>
-        <td className="th">
+        {levelRestrict && <td className="th">
           <span className="icon is-large has-text-danger">
             <i className="fa fa-3x fa-lock" aria-hidden="true"></i>
           </span>
-        </td>
+        </td>}
         <td className="th">
           <p className="subtitle is-1" style={{float: 'right'}}>Level {dungeon.level}</p>
         </td>
@@ -48,7 +48,7 @@ class Dungeon extends React.Component {
           <td className="td">
             <p className="title is-3">Boss {i+1}:</p>
           </td>
-          <td></td>
+          {levelRestrict&&<td></td>}
           <td className="td">
             <p className="title is-3" style={{float: 'right'}}>{boss.name}</p>
           </td>
@@ -59,8 +59,10 @@ class Dungeon extends React.Component {
           <td className="td">
             {this.state.showMore && this.travelButton()}
           </td>
-          <td></td>
-          <td></td>
+          {levelRestrict && [
+            <td></td>,
+            <td></td>
+          ]}
         </tr>
       </tfoot>
     </table>
