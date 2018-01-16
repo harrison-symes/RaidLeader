@@ -112,7 +112,6 @@ class Menu extends React.Component {
         </div>
       </div>
       }
-      <hr />
       <div className="columns">
         {currentLocation.name != 'Town'
           && <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
