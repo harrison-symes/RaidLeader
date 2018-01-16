@@ -100,18 +100,20 @@ class Menu extends React.Component {
     if (showWelcome) return <Welcome />
     return <div className="section has-text-centered">
       {townTravelModal && this.renderTownConfirmModal()}
-      {currentLocation.name != 'Town' && <div className="level">
-        <div className="level-left">
-          {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
+      {currentLocation.name != 'Town' && <div>
+        <div className="level">
+          <div className="level-left">
+            {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
+          </div>
+          <p className="title is-3">Gold: {gold}</p>
+          <div className="level-right">
+            {this.renderMenuLink('/party', 'Assemble Party')}
+            {this.renderMenuLink('/spellbook', 'Spell Book')}
+            {this.renderStartGameButton()}
+          </div>
         </div>
-        <p className="title is-3">Gold: {gold}</p>
-        <div className="level-right">
-          {this.renderMenuLink('/party', 'Assemble Party')}
-          {this.renderMenuLink('/spellbook', 'Spell Book')}
-          {this.renderStartGameButton()}
-        </div>
-      </div>
-      }
+        <hr />
+      </div>}
       <div className="columns">
         {currentLocation.name != 'Town'
           && <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>

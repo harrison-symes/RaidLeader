@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import {logoutUser} from '../../actions/logout'
+
 import RecruitmentCentre from './RecruitmentCentre'
 import SecondHand from './SecondHand'
 import TrainingCentre from './TrainingCentre'
@@ -61,7 +63,7 @@ class Town extends Component {
           {this.renderTownMenuButton('Training Centre')}
           {this.renderTownMenuButton('Weapon Store')}
           {this.renderTownMenuButton('Second Hand')}
-          <div style={buttonStyle} className="button is-large is-fullwidth is-danger is-outlined is-inverted">Logout</div>
+          <Link to="/" style={buttonStyle} className="button is-large is-fullwidth is-danger is-outlined is-inverted" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
           <div style={buttonStyle} className="button is-large is-fullwidth is-primary is-outlined is-inverted">Profile</div>
         </div>
       </div>
