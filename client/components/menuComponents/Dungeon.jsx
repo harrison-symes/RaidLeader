@@ -32,7 +32,7 @@ class Dungeon extends React.Component {
     console.log({dungeon});
     return <div className="box has-text-centered" style={{backgroundColor: '#A9A9A9	'}}>
       <div onClick={this.toggleShow} className="level">
-        <p  className="title is-2">Name Name{dungeon.isCompleted ? "✔": ""}</p>
+        <p  className="title is-2">{dungeon.name}{dungeon.isCompleted ? "✔": ""}</p>
         {levelRestrict && <span className="icon is-large has-text-danger">
           <i className="fa fa-3x fa-lock" aria-hidden="true"></i>
         </span>}
