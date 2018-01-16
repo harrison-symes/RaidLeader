@@ -56,7 +56,6 @@ export default function boss (state = null, action) {
     case 'CRITICAL_ATTACK_BOSS':
       damage = action.power * 2
       damage = Math.round(damage)
-      newState.armor-=1
       if (newState.armor < 0) newState.armor = 0
       newState.hp = newState.hp - damage
       return newState

@@ -39,7 +39,7 @@ export function recruitEquipWeaponAction (recruit, weapon_id) {
   }
 }
 
-export function recruitEquipWeapon (recruit, {id}) {
+export function recruitEquipWeapon (recruit, id) {
   return dispatch => {
     request('put', 'recruits/weapons', {id: recruit.id, weapon_id: id})
       .then(() => dispatch(recruitEquipWeaponAction(recruit, id)))
