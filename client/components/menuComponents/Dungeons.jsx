@@ -14,7 +14,7 @@ class Dungeons extends Component {
           <p className="modal-card-title is-1">Dungeon Map</p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
-        <section className="modal-card-body" style={{backgroundColor: '#708090  '}}>
+        <section className="modal-card-body" style={{backgroundColor: '#DCDCDC'}}>
           <div className="has-text-centered">
             {dungeons.map((dungeon, i) => <Dungeon dungeon={dungeon} key={`dungeon-${i}`} />)}
           </div>
