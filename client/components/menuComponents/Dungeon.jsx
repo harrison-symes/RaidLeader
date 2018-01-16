@@ -30,12 +30,13 @@ class Dungeon extends React.Component {
     let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (!dungeon.requires_complete) levelRestrict = false
     console.log({dungeon});
-    return <div className="box has-text-centered" style={{backgroundColor: '#A9A9A9	'}}>
-      <div onClick={this.toggleShow} className="level">
+    return <div className="box has-text-centered" style={{backgroundColor: '#A9A9A9'}}>
+      <div onClick={this.toggleShow} style={{cursor: 'pointer'}} className="level">
         <p  className="title is-2">{dungeon.name} {dungeon.isCompleted ? "✔": ""}</p>
         {levelRestrict && <span className="icon is-large has-text-danger">
           <i className="fa fa-3x fa-lock" aria-hidden="true"></i>
         </span>}
+        {this.state.showMore && <p className="delete" onClick={this.toggleShow} />}
       </div>
       {this.state.showMore && <div>
         <p className="subtitle is-4">{dungeon.description || 'Mock description goes here'}</p>
