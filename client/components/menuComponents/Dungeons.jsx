@@ -9,14 +9,23 @@ const Dungeons = ({dungeons, playerParty}) => {
   playerParty.forEach(member => {
     if (member.level > partyLevel) partyLevel = member.level
   })
-  return <div>
-    <div className="level">
-      <p style={{float: 'left'}} className="title is-3">Dungeon Map</p>
-      <p style={{float: 'right'}} className="subtitle is-3">Party Level ({partyLevel})</p>
-    </div>
-    <hr />
-    <div className="has-text-centered" style={{overflowY: 'scroll', maxHeight: '65vh'}}>
-      {dungeons.map((dungeon, i) => <Dungeon dungeon={dungeon} partyLevel={partyLevel} key={`dungeon-${i}`} />)}
+  return <div className="modal is-active">
+    <div className="modal-background"></div>
+    <div className="modal-card">
+      <header className="modal-card-head">
+        <p className="modal-card-title is-1">Map</p>
+        <button onClick={close} className="delete" aria-label="close"></button>
+      </header>
+      <section className="modal-card-body">
+        <div className="level">
+          <p style={{float: 'left'}} className="title is-3">Dungeon Map</p>
+          <p style={{float: 'right'}} className="subtitle is-3">Party Level ({partyLevel})</p>
+        </div>
+        <hr />
+        <div className="has-text-centered" style={{overflowY: 'scroll', maxHeight: '65vh'}}>
+          {dungeons.map((dungeon, i) => <Dungeon dungeon={dungeon} partyLevel={partyLevel} key={`dungeon-${i}`} />)}
+        </div>
+      </section>
     </div>
   </div>
 }
