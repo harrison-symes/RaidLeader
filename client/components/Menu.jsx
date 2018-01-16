@@ -133,7 +133,6 @@ class Menu extends React.Component {
           <Router>
             <div>
               {currentLocation.name == 'Town' && <Route exact path='/' component={Town} /> }
-              {currentLocation.name == 'Town' && <Route path="/dungeons" component={Dungeons} />}
               {currentLocation.name != 'Town' && <div>
                 {this.props.location.pathname == '/' && <div>
                   <div className="has-text-centered">
