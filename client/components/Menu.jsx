@@ -93,10 +93,10 @@ class Menu extends React.Component {
     </div>
   }
   render() {
-    const {playerParty, playerSpells, currentLocation, boss, gold, recruits} = this.props
+    const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome} = this.props
     const {townTravelModal} = this.state
     console.log({boss});
-    if (recruits.length == 0) return <Welcome />
+    if (showWelcome) return <Welcome />
     return <div className="section has-text-centered">
     {townTravelModal && this.renderTownConfirmModal()}
       <div className="level">
@@ -170,8 +170,9 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty, playerSpells, location, boss, gold, weapons, recruits}) => {
+const mapStateToProps = ({showWelcome, playerParty, playerSpells, location, boss, gold, weapons, recruits}) => {
   return {
+    showWelcome,
     playerParty,
     playerSpells,
     currentLocation: location,
