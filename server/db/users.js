@@ -12,8 +12,7 @@ function createUser (user_name, password, db) {
   })
 }
 function userExists (user_name, db) {
-  return db('users')
-    .where('user_name', user_name)
+  return getUserByName(user_name, db)
     .then(user => !!user)
 }
 

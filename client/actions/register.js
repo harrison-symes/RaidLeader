@@ -5,7 +5,7 @@ import {receiveLogin} from './login'
 export function registerUserRequest ({user_name, password}) {
   return (dispatch) => {
     request
-      .post('/api/auth/register')
+      .post('/api/v1/auth/register')
       .send({
         user_name, password
       })
