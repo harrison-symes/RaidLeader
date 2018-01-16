@@ -5,7 +5,9 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('inventory').insert([
-        {id: 1, name: 'Bear Fangs', level: 1, is_weapon: true, user_id: 1}
+        {id: 1, name: 'Bear Fangs', level: 1, is_weapon: true, user_id: 1},
+        {id: 2, name: 'Bear Fangs', level: 1, is_weapon: true, user_id: 1},
+        {id: 3, name: 'Bear Fangs', level: 1, is_weapon: true, user_id: 1}
       ]);
     });
 };

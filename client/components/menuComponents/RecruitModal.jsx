@@ -64,8 +64,8 @@ class RecruitModal extends Component {
       <hr />
       {availableWeapons.length != 0 && <div>
         <p className="title is-4">Avaiable Weapons</p>
-        <div className="columns">
-          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon.id)} key={`available-weapon-${i}`}className="column is-6 box">
+        <div className="">
+          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon.id)} key={`available-weapon-${i}`} className="box">
             <p className="title is-4">{weapon.name} ({weapon.level})</p>
             <ul className="">
               {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp}</li>}
