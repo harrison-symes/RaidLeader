@@ -7,6 +7,7 @@ import Spellbook from './menuComponents/Spellbook'
 import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 import Dungeons from './menuComponents/Dungeons'
+import Town from './menuComponents/Town'
 
 import BossSelection from './menuComponents/BossSelection'
 import RecruitFrame from './menuComponents/RecruitFrame'
@@ -120,8 +121,8 @@ class Menu extends React.Component {
       </div>
       <hr />
       <div className="columns">
-        {currentLocation.name != 'Town' &&
-          <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+        {currentLocation.name != 'Town'
+          && <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
             <p className="title is-1">{currentLocation && currentLocation.name}</p>
             <hr/>
             <DungeonRewards />
@@ -132,10 +133,12 @@ class Menu extends React.Component {
             </div>}
             <BossSelection />
           </div>
+
         }
         <div className="column">
           <Router>
             <div>
+              {currentLocation.name == 'Town' && <Route exact path='/' component={Town} /> }
               {currentLocation.name == 'Town' && <Route path="/dungeons" component={Dungeons} />}
               {currentLocation.name != 'Town' && <div>
                 {this.props.location.pathname == '/' && <div>
