@@ -7,6 +7,7 @@ import Spellbook from './menuComponents/Spellbook'
 import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 import Dungeons from './menuComponents/Dungeons'
+import Town from './menuComponents/Town'
 
 import BossSelection from './menuComponents/BossSelection'
 import RecruitFrame from './menuComponents/RecruitFrame'
@@ -85,7 +86,7 @@ class Menu extends React.Component {
         <footer className="modal-card-foot has-text-centered">
           <div className="level">
             <button onClick={() => this.setTownModalState(false)} className="button is-large">Cancel</button>
-            <button onClick={this.goToTown} className="button is-warning is-large">Travel Anyway</button>
+            <Link to="/" onClick={this.goToTown} className="button is-warning is-large">Travel Anyway</Link>
           </div>
         </footer>
       </div>
@@ -93,35 +94,29 @@ class Menu extends React.Component {
     </div>
   }
   render() {
-    const {playerParty, playerSpells, currentLocation, boss, gold, recruits} = this.props
+    const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome} = this.props
     const {townTravelModal} = this.state
     console.log({boss});
-    if (recruits.length == 0) return <Welcome />
+    if (showWelcome) return <Welcome />
     return <div className="section has-text-centered">
-    {townTravelModal && this.renderTownConfirmModal()}
-      <div className="level">
-        <div className="level-left">
-          {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
-          {currentLocation.name == 'Town' &&  this.renderMenuLink('/', 'Town')}
-          {currentLocation.name == 'Town' &&  this.renderMenuLink('/dungeons', 'Dungeon Map')}
+      {townTravelModal && this.renderTownConfirmModal()}
+      {currentLocation.name != 'Town' && <div>
+        <div className="level">
+          <div className="level-left">
+            {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
+          </div>
+          <p className="title is-3">Gold: {gold}</p>
+          <div className="level-right">
+            {this.renderMenuLink('/party', 'Assemble Party')}
+            {this.renderMenuLink('/spellbook', 'Spell Book')}
+            {this.renderStartGameButton()}
+          </div>
         </div>
-        <p className="title is-3">Gold: {gold}</p>
-        <div className="level-right">
-          {currentLocation.name != 'Town'
-            ? this.renderMenuLink('/party', 'Assemble Party')
-            : <button className="button is-large is-info isoutlined" disabled>Assemble Party</button>
-          }
-          {currentLocation.name != 'Town'
-            ? this.renderMenuLink('/spellbook', 'Spell Book')
-            : <button className="button is-large is-info isoutlined" disabled>Choose Spells</button>
-          }
-          {this.renderStartGameButton()}
-        </div>
-      </div>
-      <hr />
+        <hr />
+      </div>}
       <div className="columns">
-        {currentLocation.name != 'Town' &&
-          <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+        {currentLocation.name != 'Town'
+          && <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
             <p className="title is-1">{currentLocation && currentLocation.name}</p>
             <hr/>
             <DungeonRewards />
@@ -132,10 +127,12 @@ class Menu extends React.Component {
             </div>}
             <BossSelection />
           </div>
+
         }
         <div className="column">
           <Router>
             <div>
+              {currentLocation.name == 'Town' && <Route exact path='/' component={Town} /> }
               {currentLocation.name == 'Town' && <Route path="/dungeons" component={Dungeons} />}
               {currentLocation.name != 'Town' && <div>
                 {this.props.location.pathname == '/' && <div>
@@ -170,8 +167,9 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({playerParty, playerSpells, location, boss, gold, weapons, recruits}) => {
+const mapStateToProps = ({showWelcome, playerParty, playerSpells, location, boss, gold, weapons, recruits}) => {
   return {
+    showWelcome,
     playerParty,
     playerSpells,
     currentLocation: location,

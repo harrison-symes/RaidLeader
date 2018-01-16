@@ -15,9 +15,11 @@ import dungeons from './dungeons'
 import location from './location'
 import gold from './gold'
 import weapons from './weapons'
+import showWelcome from './showWelcome'
 
 export default combineReducers({
   auth,
+  showWelcome,
   boss,
   player,
   party,
