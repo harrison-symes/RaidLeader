@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import RecruitmentCentre from './RecruitmentCentre'
 import SecondHand from './SecondHand'
@@ -42,7 +43,7 @@ class Town extends Component {
       <p className="title is-1">Town</p>
       {this.modalSwitch()}
       <div style={{height: '20vh'}} className="hero-body has-text-centered">
-        <div style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</div>
+        <Link to="/dungeons" style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</Link>
         <div className="columns is-multiline">
           {this.renderTownMenuButton('Recruitment Centre')}
           {this.renderTownMenuButton('Training Centre')}

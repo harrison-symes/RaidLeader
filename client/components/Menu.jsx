@@ -86,7 +86,7 @@ class Menu extends React.Component {
         <footer className="modal-card-foot has-text-centered">
           <div className="level">
             <button onClick={() => this.setTownModalState(false)} className="button is-large">Cancel</button>
-            <button onClick={this.goToTown} className="button is-warning is-large">Travel Anyway</button>
+            <Link to="/" onClick={this.goToTown} className="button is-warning is-large">Travel Anyway</Link>
           </div>
         </footer>
       </div>
@@ -99,26 +99,19 @@ class Menu extends React.Component {
     console.log({boss});
     if (showWelcome) return <Welcome />
     return <div className="section has-text-centered">
-    {townTravelModal && this.renderTownConfirmModal()}
-      <div className="level">
+      {townTravelModal && this.renderTownConfirmModal()}
+      {currentLocation.name != 'Town' && <div className="level">
         <div className="level-left">
           {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
-          {currentLocation.name == 'Town' &&  this.renderMenuLink('/', 'Town')}
-          {currentLocation.name == 'Town' &&  this.renderMenuLink('/dungeons', 'Dungeon Map')}
         </div>
         <p className="title is-3">Gold: {gold}</p>
         <div className="level-right">
-          {currentLocation.name != 'Town'
-            ? this.renderMenuLink('/party', 'Assemble Party')
-            : <button className="button is-large is-info isoutlined" disabled>Assemble Party</button>
-          }
-          {currentLocation.name != 'Town'
-            ? this.renderMenuLink('/spellbook', 'Spell Book')
-            : <button className="button is-large is-info isoutlined" disabled>Choose Spells</button>
-          }
+          {this.renderMenuLink('/party', 'Assemble Party')}
+          {this.renderMenuLink('/spellbook', 'Spell Book')}
           {this.renderStartGameButton()}
         </div>
       </div>
+      }
       <hr />
       <div className="columns">
         {currentLocation.name != 'Town'
