@@ -35,14 +35,23 @@ class Town extends Component {
     return <button onClick={() => this.toggleModal(name)} style={buttonStyle} className="column is-6 button is-large is-success is-fullwidth is-outlined is-inverted ">{name}</button>
   }
   render() {
-    const {gold} = this.props
+    const {gold, recruits, spellBook} = this.props
     const {showRecruitmentModal} = this.state
     return <div style={{height: '89vh', margin: '0'}} className="hero is-bold is-info">
       <div className="hero-head has-text-centered">
-        <div className="">
-          <p className="title is-1">Town</p>
+        <p className="title is-1">Town</p>
+        <div className="columns">
+          <div className="column is-4">
+            <p className="subtitle is-2">Spells Learnt: {spellBook.length}</p>
+          </div>
+          <div className="column is-4">
+            <p className="subtitle is-2">Gold: {gold}</p>
+          </div>
+          <div className="column is-4">
+            <p className="subtitle is-2">Recuits: {recruits.length}</p>
+          </div>
         </div>
-        <p className="subtitle is-2">Gold: {gold}</p>
+
       </div>
       {this.modalSwitch()}
       <div className="hero-body is-fullheight has-text-centered">
@@ -60,9 +69,9 @@ class Town extends Component {
   }
 }
 
-const mapStateToProps = ({gold}) => {
+const mapStateToProps = ({gold, recruits, spellBook}) => {
   return {
-    gold
+    gold, recruits, spellBook
   }
 }
 
