@@ -1,5 +1,6 @@
 export default {
   name: 'Spitting Spider',
+  level: 1,
   initHp: 50,
   hp: 50,
   initPower: 1,

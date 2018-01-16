@@ -7,9 +7,9 @@ class RecruitModal extends Component {
   constructor(props) {
     super(props)
   }
-  equip(weapon) {
+  equip(id) {
     const {recruit} = this.props
-    this.props.dispatch(recruitEquipWeapon(recruit, weapon))
+    this.props.dispatch(recruitEquipWeapon(recruit, id))
   }
   renderWeaponFrame() {
     const {recruit, weapons, recruits} = this.props
@@ -23,6 +23,7 @@ class RecruitModal extends Component {
       {weapon
         ? <div className="box">
           <p className="title is-3">Weapon: {weapon.name} ({weapon.level})</p>
+          <button onClick={() => this.equip(null)} className="delete" aria-label="close"></button>
           <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
@@ -38,7 +39,7 @@ class RecruitModal extends Component {
       {availableWeapons.length != 0 && <div>
         <p className="title is-4">Avaiable Weapons</p>
         <div className="columns">
-          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon)} key={`available-weapon-${i}`}className="column is-6 box">
+          {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon.id)} key={`available-weapon-${i}`}className="column is-6 box">
             <p className="title is-4">{weapon.name} ({weapon.level})</p>
             <ul className="">
               {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp}</li>}

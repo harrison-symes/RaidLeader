@@ -1,5 +1,6 @@
 export default {
   name: 'Trampling Turtle',
+  level: 1,
   initHp: 10,
   hp: 10,
   initPower: 1,
