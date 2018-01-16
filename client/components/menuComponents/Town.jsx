@@ -7,6 +7,7 @@ import {logoutUser} from '../../actions/logout'
 import RecruitmentCentre from './RecruitmentCentre'
 import SecondHand from './SecondHand'
 import TrainingCentre from './TrainingCentre'
+import Dungeons from './Dungeons'
 import WeaponStore from './WeaponStore'
 
 const buttonStyle = {height: '14vh', width: '45vw', margin: '1vw'}
@@ -30,6 +31,7 @@ class Town extends Component {
       case 'Second Hand': return <SecondHand close={close} />
       case 'Training Centre': return <TrainingCentre close={close} />
       case 'Weapon Store': return <WeaponStore close={close} />
+      case 'Dungeon Map': return <Dungeons close={close} />
       default: return null
     }
   }
@@ -57,7 +59,7 @@ class Town extends Component {
       </div>
       {this.modalSwitch()}
       <div className="hero-body is-fullheight has-text-centered">
-        <Link to="/dungeons" style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</Link>
+        <button onClick={() => this.toggleModal('Dungeon Map')} style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</button>
         <div className="columns is-multiline">
           {this.renderTownMenuButton('Recruitment Centre')}
           {this.renderTownMenuButton('Training Centre')}
