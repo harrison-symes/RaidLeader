@@ -3,6 +3,19 @@ import {connect} from 'react-redux'
 
 import {recruitEquipWeapon} from '../../actions/weapons'
 
+const startingBuff = heroClass => {
+  switch(heroClass) {
+    case 'Paladin': return 'The Paladin gains +(level) HP for each other Party Member'
+    case 'Priest': return "The Priest increases each Party Member's max HP by (50%) of the Priest's own max HP"
+    case 'Rogue': return "The Rogue damages the Boss equal to 5% of the Boss' current HP"
+    case 'Warrior': return "The Warrior increases the Power of each other Party Member (Power gained = Party Member's Level)"
+    case 'Warlock': return "The Warlock removes armor from the Boss (Armor removed is = to Warlock's Power)"
+    case 'Mage': return "The Mage increases the Player's Mana by 20%"
+    case 'Monk': return "The Monk gains 1 speed for each other Party Member"
+    default: return null
+  }
+}
+
 class RecruitModal extends Component {
   constructor(props) {
     super(props)
@@ -68,6 +81,11 @@ class RecruitModal extends Component {
             <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp}</p></div>
             <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power}</p></div>
             <div className="column is-4"><p className="subtitle is-4">Speed: {recruit.speed}</p></div>
+          </div>
+          <hr />
+          <div className="has-text-centered">
+            <p className="title is-4">Starting Buff</p>
+            <p className="subtitle is-4">{startingBuff(recruit.heroClass)}</p>
           </div>
           <hr />
           {this.renderWeaponFrame()}
