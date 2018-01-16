@@ -38,9 +38,12 @@ class Town extends Component {
     const {gold} = this.props
     const {showRecruitmentModal} = this.state
     return <div style={{height: '89vh', margin: '0'}} className="hero is-bold is-info">
-      {/* <div className="hero-head has-text-centered">
-      </div> */}
-      <p className="title is-1">Town</p>
+      <div className="hero-head has-text-centered">
+        <div className="">
+          <p className="title is-1">Town</p>
+        </div>
+        <p className="subtitle is-2">Gold: {gold}</p>
+      </div>
       {this.modalSwitch()}
       <div className="hero-body is-fullheight has-text-centered">
         <Link to="/dungeons" style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</Link>
