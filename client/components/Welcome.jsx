@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import createClass from '../utils/createClass'
+import {getStarted} from '../actions/welcome'
 
 class Welcome extends Component {
   constructor(props) {
@@ -11,11 +12,14 @@ class Welcome extends Component {
       paladinName: 'Random Name'
     }
     this.nextStage = this.nextStage.bind(this)
+    this.getStarted = this.getStarted.bind(this)
   }
   nextStage () {
     this.setState({stage: this.state.stage + 1})
   }
-  
+  getStarted() {
+    this.props.dispatch(getStarted(this.state.paladinName))
+  }
   stageOne() {
     return <div className="section has-text-centered">
       <p className="title is-1">Welcome!</p>
@@ -51,7 +55,7 @@ class Welcome extends Component {
       <p className="content is-large">I will drop you off in "Town".</p>
       <p className="content is-large">From there, open up your "Dungeon Map" and Travel to "The Hunt" for your first encounter.</p>
       <p className="content is-large">Good Luck!</p>
-      <button className="button is-large is-success">I'm sure I'll need it!</button>
+      <button onClick={this.getStarted} className="button is-large is-success">I'm sure I'll need it!</button>
     </div>
   }
   stageSwitch() {

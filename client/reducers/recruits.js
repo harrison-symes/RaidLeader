@@ -3,6 +3,8 @@ export default function (state = [], action) {
   switch(action.type) {
     case 'RECEIVE_RECRUITS':
       return action.recruits
+    case 'ADD_RECRUIT':
+      return [...newState, action.recruit]
     case 'RECRUIT_EQUIP_WEAPON':
       let recruit = newState.find(other => other.id == action.recruit.id)
       if (recruit) recruit.weapon_id = action.weapon_id

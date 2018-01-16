@@ -1,6 +1,8 @@
 const router = require('express').Router()
 
 const playerDb = require('../db/player')
+const {addRecruit} = require('../db/recruits')
+const {addSpell} = require('../db/spells')
 const {decode} = require('../auth/token')
 
 router.get('/gold', decode, (req, res) => {
@@ -25,6 +27,14 @@ router.post('/weapon', decode, (req, res) => {
 router.get('/weapons', decode, (req, res) => {
   playerDb.getWeapons(req.user.user_id)
     .then(weapons => res.json(weapons))
+})
+
+router.post('/getStarted', decode, (req, res) => {
+  addRecruit(req.user.user_id, req.body.paladinName, 1, 'Paladin')
+    .then(recruit => {
+      addSpell(req.user.user_id, 'Lesser Heal')
+        .then(spell => res.json({recruit, spell}))
+    })
 })
 
 module.exports = router
