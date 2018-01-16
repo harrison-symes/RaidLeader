@@ -3,7 +3,7 @@ import spellBook from '../utils/spells'
 
 export function receiveSpellsAction (spells) {
   return {
-    type: "RECEIVE_Spells",
+    type: "RECEIVE_SPELLS",
     spells: spells.map(spell => spellBook[spell.name])
   }
 }

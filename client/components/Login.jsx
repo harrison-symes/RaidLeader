@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loginUser} from '../actions/login'
 
+import {Link} from 'react-router-dom'
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -23,14 +25,16 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <form className="Login" onSubmit={this.submit}>
-        <label>Username:
-          <input type="text" name="user_name" onChange={this.updateDetails}/>
+      <form className="box form Login" onSubmit={this.submit}>
+        <p className="title is-1 is-dark">Login</p>
+        <label className="label is-large is-light">Username:
+          <input className="input is-large is-primary " type="text" name="user_name" onChange={this.updateDetails}/>
         </label><br/>
-        <label>Password:
-          <input type="password" name="password" onChange={this.updateDetails}/>
+        <label className="label is-large">Password:
+          <input className="input is-large is-primary" type="password" name="password" onChange={this.updateDetails}/>
         </label><br/>
-        <input type="submit" />
+        <input className="button is-large is-fullwidth is-success" type="submit" />
+        <Link to='/' className="button is-large is-fullwidth is-light">Cancel</Link>
       </form>
     )
   }
