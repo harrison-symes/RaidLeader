@@ -6,7 +6,7 @@ import SecondHand from './SecondHand'
 import TrainingCentre from './TrainingCentre'
 import WeaponStore from './WeaponStore'
 
-const buttonStyle = {height: '15vh', width: '45vw', margin: '1vw'}
+const buttonStyle = {height: '14vh', width: '45vw', margin: '1vw'}
 
 class Town extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ class Town extends Component {
       <p className="title is-1">Town</p>
       {this.modalSwitch()}
       <div style={{height: '20vh'}} className="hero-body has-text-centered">
+        <div style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</div>
         <div className="columns is-multiline">
           {this.renderTownMenuButton('Recruitment Centre')}
           {this.renderTownMenuButton('Training Centre')}
