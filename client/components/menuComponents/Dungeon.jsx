@@ -32,7 +32,7 @@ class Dungeon extends React.Component {
     console.log({dungeon});
     return <div className="box has-text-centered" style={{backgroundColor: '#A9A9A9	'}}>
       <div onClick={this.toggleShow} className="level">
-        <p  className="title is-2">{dungeon.name}{dungeon.isCompleted ? "✔": ""}</p>
+        <p  className="title is-2">{dungeon.name} {dungeon.isCompleted ? "✔": ""}</p>
         {levelRestrict && <span className="icon is-large has-text-danger">
           <i className="fa fa-3x fa-lock" aria-hidden="true"></i>
         </span>}
@@ -40,6 +40,7 @@ class Dungeon extends React.Component {
       {this.state.showMore && <div>
         <p className="subtitle is-4">{dungeon.description || 'Mock description goes here'}</p>
         <hr />
+        <p className="title is-4">Dungeon Level: {dungeon.level}</p>
         <p className="title is-3">Dungeon Bosses:</p>
         {dungeon.bosses.map((boss, i) => <div className="has-text-centered" key={`dungeon-row-${i}`}>
           <p className="subtitle is-3">{i+1}: {boss.name}</p>
