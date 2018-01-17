@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import RandomName from '../utils/randomName'
+
 import createClass from '../utils/createClass'
 import {getStarted} from '../actions/welcome'
 
@@ -9,7 +11,7 @@ class Welcome extends Component {
     super(props)
     this.state = {
       stage: 1,
-      paladinName: 'Random Name'
+      paladinName: randomName()
     }
     this.nextStage = this.nextStage.bind(this)
     this.getStarted = this.getStarted.bind(this)
