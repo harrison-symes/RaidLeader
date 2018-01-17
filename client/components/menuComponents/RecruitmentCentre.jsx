@@ -10,7 +10,7 @@ class RecruitmentCentre extends Component {
     super(props)
     this.state = {
       showChoices: !!JSON.parse(get('offeredRecruits')),
-      offeredRecruits: JSON.parse(get('offeredRecruits')) || this.solveOptions()
+      offeredRecruits: JSON.parse(get('offeredRecruits')) || []
     }
     console.log(this.state);
     this.showOptions = this.showOptions.bind(this)
@@ -23,17 +23,18 @@ class RecruitmentCentre extends Component {
       if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name: 'Random Name', heroClass})
     }
     console.log({offeredRecruits});
-    set('offeredRecruits', JSON.stringify(offeredRecruits))
     return offeredRecruits
   }
   showOptions() {
     this.props.dispatch(earnGold(-500))
-    this.setState({showChoices: true})
+    const offeredRecruits = this.solveOptions()
+    set('offeredRecruits', JSON.stringify(offeredRecruits))
+    this.setState({showChoices: true, offeredRecruits})
   }
   recruit(recruit) {
     this.props.dispatch(addRecruit(recruit))
-    let newRecruits = this.solveOptions()
-    this.setState({offeredRecruits: newRecruits, showChoices: null})
+    set('offeredRecruits', null)
+    this.setState({offeredRecruits: [], showChoices: null})
   }
   render() {
     const {close, gold} = this.props
