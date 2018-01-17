@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import RandomName from '../utils/randomName'
+import randomName from '../utils/randomName'
 
 import createClass from '../utils/createClass'
 import {getStarted} from '../actions/welcome'
