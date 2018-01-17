@@ -20,15 +20,12 @@ class RecruitmentCentre extends Component {
   solveOptions() {
     const offeredSpells = []
     const spellNames = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell))
-    if (spellNames.length == 0) return []
-    while (offeredSpells.length < 3 || offeredSpells.length < spellNames.length ) {
+    if (spellNames.length < 3) return spellNames.map(name => spells[name])
+    while (offeredSpells.length < 3)  {
       let idx = Math.floor(Math.random() * spellNames.length)
       let spell = spells[spellNames[idx]]
       if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
-      console.log({spellNames});
-      console.log({idx, spell});
     }
-    console.log({offeredSpells});
     return offeredSpells
   }
   selectSpell (selectedSpell) {
