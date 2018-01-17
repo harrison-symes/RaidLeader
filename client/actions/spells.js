@@ -15,3 +15,17 @@ export function getSpells () {
     .catch(err => console.log({err}))
   }
 }
+
+export function addSpellAction (spell) {
+  return {
+    type: 'ADD_SPELL',
+    spell
+  }
+}
+
+export function addSpell (spell) {
+  return dispatch => {
+    request('post', 'spells', spell)
+      .then(res => dispatch(addSpellAction(spell)))
+  }
+}
