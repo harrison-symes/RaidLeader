@@ -41,7 +41,7 @@ class Town extends Component {
   render() {
     const {gold, recruits, spellBook} = this.props
     const {showRecruitmentModal} = this.state
-    return <div style={{height: '89vh', margin: '0'}} className="hero is-bold is-info">
+    return <div style={{height: '89vh', margin: '0'}} className="hero is-bold is-primary">
       <div className="hero-head has-text-centered">
         <p className="title is-1">Town</p>
         <div className="columns">
