@@ -7,6 +7,10 @@ class WeaponStore extends Component {
     this.state = {
       isSell: false
     }
+    this.switch = this.switch.bind(this)
+  }
+  switch() {
+    this.setState({isSell: !this.state.isSell})
   }
   render() {
     const {close} = this.props
@@ -21,8 +25,8 @@ class WeaponStore extends Component {
         <section className="modal-card-body">
           <div className="has-text-centered">
             {isSell
-              ? <button className="button is-large is-info is-fullwidth is-inverted">Buy Items</button>
-              : <button className="button is-large is-info is-fullwidth is-inverted">Sell Items</button>
+              ? <button onClick={this.switch} className="button is-large is-info is-fullwidth is-inverted">Buy Items</button>
+              : <button onClick={this.switch}  className="button is-large is-info is-fullwidth is-inverted">Sell Items</button>
             }
           </div>
         </section>
