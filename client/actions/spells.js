@@ -17,9 +17,10 @@ export function getSpells () {
 }
 
 export function addSpellAction (spell) {
+  console.log({spell});
   return {
     type: 'ADD_SPELL',
-    spell
+    spell: spellBook[spell.name]
   }
 }
 

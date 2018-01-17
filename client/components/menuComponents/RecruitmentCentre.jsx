@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import randomName from '../../utils/randomName'
+
 import {earnGold} from '../../actions/gold'
 import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
@@ -20,7 +22,7 @@ class RecruitmentCentre extends Component {
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
-      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name: 'Random Name', heroClass})
+      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name: randomName(), heroClass})
     }
     console.log({offeredRecruits});
     return offeredRecruits

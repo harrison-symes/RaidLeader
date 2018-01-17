@@ -54,7 +54,7 @@ class SpellBook extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver, false)}
                 >
-                <h1 className="subtitle is-1">Spell Book</h1>
+                <h1 className="subtitle is-2">Spellbook ({spellBook.length - playerSpells.length}/{spellBook.length})</h1>
                 <hr />
                 {available.map(spell => (
                   <Draggable key={spell.id} draggableId={spell.id}>
@@ -86,7 +86,7 @@ class SpellBook extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
-                <h1 className="subtitle is-1">Spell Bar</h1>
+                <h1 className="subtitle is-2">Spell Bar ({playerSpells.length}/{currentLocation.max_spells})</h1>
                 <hr />
                 {playerSpells.map(spell => (
                   <Draggable key={spell.id} draggableId={spell.id}>
