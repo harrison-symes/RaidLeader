@@ -1,4 +1,5 @@
 const testPlayer = {
+  id: 0,
   name: 'Harrison',
   initHp: 100,
   hp: 100,
@@ -37,6 +38,13 @@ export default function player (state = testPlayer, action) {
     case 'TICK_ONE_SECOND':
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
+      return newState
+    case 'HEAL_FRIENDLY_TARGET':
+      if (!action.target) return newState
+      if (action.target.id == newState.id) {
+        newState.hp += action.power
+        if (newState.hp > newState.initHp) newState.hp = newState.initHp
+      }
       return newState
     case 'HEAL_ALL_FRIENDLY':
       newState.hp+= Math.round(action.power)
