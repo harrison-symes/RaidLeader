@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logoutUser} from '../../actions/logout'
 
 import RecruitmentCentre from './RecruitmentCentre'
-import SecondHand from './SecondHand'
+import Library from './Library'
 import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import WeaponStore from './WeaponStore'
@@ -28,7 +28,7 @@ class Town extends Component {
     close = close.bind(this)
     switch (showModal) {
       case 'Recruitment Centre': return <RecruitmentCentre close={close} />
-      case 'Second Hand': return <SecondHand close={close} />
+      case 'Library': return <Library close={close} />
       case 'Training Centre': return <TrainingCentre close={close} />
       case 'Weapon Store': return <WeaponStore close={close} />
       case 'Dungeon Map': return <Dungeons close={close} />
@@ -62,9 +62,9 @@ class Town extends Component {
         <button onClick={() => this.toggleModal('Dungeon Map')} style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</button>
         <div className="columns is-multiline">
           {this.renderTownMenuButton('Recruitment Centre')}
+          {this.renderTownMenuButton('Library')}
           {this.renderTownMenuButton('Training Centre')}
           {this.renderTownMenuButton('Weapon Store')}
-          {this.renderTownMenuButton('Second Hand')}
           <Link to="/" style={buttonStyle} className="button is-large is-fullwidth is-danger is-outlined is-inverted" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
           <div style={buttonStyle} className="button is-large is-fullwidth is-primary is-outlined is-inverted">Profile</div>
         </div>

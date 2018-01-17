@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-class SecondHand extends Component {
+class Library extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,7 +14,7 @@ class SecondHand extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Second hand Shop</p>
+          <p className="modal-card-title is-1">The Library</p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SecondHand)
+export default connect(mapStateToProps)(Library)
