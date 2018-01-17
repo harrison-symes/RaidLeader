@@ -63,10 +63,12 @@ class Town extends Component {
         <div className="columns is-multiline">
           {this.renderTownMenuButton('Recruitment Centre')}
           {this.renderTownMenuButton('Library')}
-          {this.renderTownMenuButton('Training Centre')}
-          {this.renderTownMenuButton('Weapon Store')}
+          <button disabled style={buttonStyle} className="column is-6 button is-large is-success is-fullwidth is-outlined is-inverted ">Training (WIP)</button>
+          <button disabled style={buttonStyle} className="column is-6 button is-large is-success is-fullwidth is-outlined is-inverted ">Store (WIP)</button>
+          {/* {this.renderTownMenuButton('Training Centre')}
+          {this.renderTownMenuButton('Weapon Store')} */}
           <Link to="/" style={buttonStyle} className="button is-large is-fullwidth is-danger is-outlined is-inverted" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
-          <div style={buttonStyle} className="button is-large is-fullwidth is-primary is-outlined is-inverted">Profile</div>
+          <div style={buttonStyle} disabled className="button is-large is-fullwidth is-primary is-outlined is-inverted">Profile (WIP)</div>
         </div>
       </div>
     </div>

@@ -22,10 +22,15 @@ class MemberFrame extends Component {
     const {member, dispatch, friendlyTarget, boss} = this.props
     const {initHp, hp, name, isAlive} = member
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
-      <h1 className="title is-3" style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name}</h1>
       <div className="columns has-text-centered">
-        <div className="column is-3"><p className="title is-4">Power: {member.power}</p></div>
-        <div className="column is-3"><p className="title is-4">Speed: {member.speed}</p></div>
+        <div className="column is-4"></div>
+        <div className="column is-4">
+          <h1 className="title is-3" style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} the {member.heroClass}</h1>
+        </div>
+        <div className="column is-4">
+          <div className=""><p className="title is-4">Power: {member.power}</p></div>
+          <div className=""><p className="title is-4">Speed: {member.speed}</p></div>
+        </div>
       </div>
       <HealthBar maxHP={initHp} hp={hp} />
     </div>
