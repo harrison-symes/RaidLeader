@@ -8,4 +8,9 @@ router.get('/', decode, (req, res) => {
     .then(spells => res.json(spells))
 })
 
+router.post('/', decode, (req, res) => {
+  spellsDb.addSpell(req.user.user_id, req.body.name)
+    .then(spell => res.json(spell))
+})
+
 module.exports = router

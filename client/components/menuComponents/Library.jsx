@@ -19,12 +19,13 @@ class RecruitmentCentre extends Component {
   }
   solveOptions() {
     const offeredSpells = []
-    console.log({spells});
-    const spellNames = Object.keys(spells)
-    while (offeredSpells.length < 3) {
+    const spellNames = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell))
+    if (spellNames.length == 0) return []
+    while (offeredSpells.length < 3 || offeredSpells.length < spellNames.length ) {
       let idx = Math.floor(Math.random() * spellNames.length)
       let spell = spells[spellNames[idx]]
       if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
+      console.log({spellNames});
       console.log({idx, spell});
     }
     console.log({offeredSpells});
@@ -42,7 +43,7 @@ class RecruitmentCentre extends Component {
   learnSpell(spell) {
     this.props.dispatch(addSpell(spell))
     set('offeredSpells', null)
-    this.setState({offeredSpells: [], showChoices: null})
+    this.setState({offeredSpells: [], showChoices: null, selectedSpell: null})
   }
   render() {
     const {close, gold, spellBook} = this.props
@@ -58,7 +59,10 @@ class RecruitmentCentre extends Component {
         <section style={{backgroundColor: '#A9A9A9'}} className="modal-card-body">
           <p className="title is-1">Welcome to The Library!</p>
           <p className="subtitle is-3">Here you can learn new spells to support your party in Dungeons</p>
-          <p className="subtitle is-3">It will cost {spellCost} Gold for your next Spell</p>
+          {!showChoices
+            ? <p className="subtitle is-3">It will cost {spellCost} Gold for your next Spell</p>
+            : <p className="subtitle is-3">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
+          }
           {showChoices
             ? (<div>
               <p className="title is-3">Choose a Spell:</p>
@@ -88,10 +92,11 @@ class RecruitmentCentre extends Component {
                 <hr />
               </div>)}
             </div>)
-            : (gold >= spellCost
-              ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} Gold)</button>
-              : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough Gold</button>
-            )
+            : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
+              ? gold >= spellCost
+                ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} Gold)</button>
+                : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough Gold</button>
+              : <button disabled className="is-danger is-large button is-fullwidth">There are no more spells for you to learn!</button>
           }
         </section>
         <footer className="modal-card-foot">

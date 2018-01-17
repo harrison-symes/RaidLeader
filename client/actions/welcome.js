@@ -1,12 +1,6 @@
 import request from '../utils/api'
 import {addRecruitAction} from './recruits'
-
-export function addSpellAction (spell) {
-  return {
-    type: 'ADD_SPELL',
-    spell
-  }
-}
+import {addSpellAction} from './spells'
 
 export function getStarted (recruit) {
   return dispatch => {
