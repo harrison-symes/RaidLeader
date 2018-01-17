@@ -8,12 +8,12 @@ export function addSpellAction (spell) {
   }
 }
 
-export function getStarted (paladinName) {
+export function getStarted (recruit) {
   return dispatch => {
-    request('post', 'player/getstarted', {paladinName})
+    request('post', 'player/getstarted', recruit)
       .then(res => {
-        dispatch(addRecruitAction(res.recruit))
-        dispatch(addSpellAction(res.spell))
+        dispatch(addRecruitAction(res.body.recruit))
+        dispatch(addSpellAction(res.body.spell))
         dispatch({type: 'GET_STARTED'})
       })
   }

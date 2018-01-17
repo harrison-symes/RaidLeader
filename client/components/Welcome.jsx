@@ -18,7 +18,7 @@ class Welcome extends Component {
     this.setState({stage: this.state.stage + 1})
   }
   getStarted() {
-    this.props.dispatch(getStarted(this.state.paladinName))
+    this.props.dispatch(getStarted({name: this.state.paladinName, heroClass: 'Paladin'}))
   }
   stageOne() {
     return <div className="section has-text-centered">
