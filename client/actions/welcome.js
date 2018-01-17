@@ -14,6 +14,7 @@ export function getStarted (paladinName) {
       .then(res => {
         dispatch(addRecruitAction(res.recruit))
         dispatch(addSpellAction(res.spell))
+        dispatch({type: 'GET_STARTED'})
       })
   }
 }
