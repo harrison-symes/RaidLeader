@@ -16,3 +16,17 @@ export function getRecruits () {
     .catch(err => console.log({err}))
   }
 }
+
+export function addRecruitAction (recruit) {
+  return {
+    type: 'ADD_RECRUIT',
+    recruit: createClass(recruit)
+  }
+}
+
+export function addRecruit (recruit) {
+  return dispatch => {
+    request('post', 'recruits', recruit)
+      .then(res => dispatch(addRecruitAction(res.body)))
+  }
+}
