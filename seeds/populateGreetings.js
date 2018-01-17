@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        {user_id: 1, user_name: 'symeshjb', hash: bcrypt.hashSync('Harrison145', 10), gold: 100}
+        {user_id: 1, user_name: 'symeshjb', hash: bcrypt.hashSync('Harrison145', 10), gold: 10000}
       ]);
     });
 };
