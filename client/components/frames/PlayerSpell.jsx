@@ -47,9 +47,9 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_GAIN_MANA', power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Evocate':
-        return dispatch({type: 'PLAYER_GAIN_MANA', power})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.powerRatio})
       case 'Drain Soul':
-        dispatch({type: 'PLAYER_GAIN_MANA', power: this.props.player.maxMana / 50})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: 3})
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       default: return
