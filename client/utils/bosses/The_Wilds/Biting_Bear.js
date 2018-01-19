@@ -1,16 +1,16 @@
 export default {
   name: 'Biting Bear',
   level: 1,
-  initHp: 50,
-  hp: 50,
-  initPower: 5,
-  power: 5,
-  initArmor: 3,
-  armor: 3,
+  initHp: 40,
+  hp: 40,
+  initPower: 3,
+  power: 3,
+  initArmor: 15,
+  armor: 20,
   mana: 5,
   maxMana: 5,
   manaRegen: 5,
-  armorRegen: 10,
+  armorRegen: 0,
   isCasting: false,
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
@@ -21,20 +21,20 @@ export default {
   spells: [
     {
       name: 'Swipe',
-      cast: 3,
-      cost: 3,
+      cast: 5,
+      cost: 2,
       coolDown: 10,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 0.5,
+      powerRatio: 1,
       onCooldown: false,
-      description: 'Damage ALL enemy characters for 50% BOSS POWER',
+      description: 'Damage ALL enemy characters for 100% BOSS POWER',
     },
     {
       name: 'Protect',
       cast: 0.5,
       cost: 1,
-      coolDown: 5,
+      coolDown: 1,
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
@@ -46,11 +46,11 @@ export default {
       cost: 0,
       cast: 5,
       coolDown: 1,
-      powerRatio: 1,
+      powerRatio: 2,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 100% of BOSS POWER"
+      description: "Damage the Boss' TARGET for 200% of BOSS POWER"
     }
   ]
 }

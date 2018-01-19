@@ -14,9 +14,8 @@ class BossTwo extends BossFrame {
         switch (spell.name) {
           case 'Protect':
             return (boss.armor <= boss.initArmor - spell.powerRatio)
-          case 'Spit':
-            return !this.props.party.find(member => member.isAlive)
-          case 'Swipe': return this.props.party.find(member => member.isAlive)
+            case 'Swipe': return this.props.party.find(member => member.isAlive)
+          case 'Trample': return true
           default: return false
         }
       } else return false

@@ -35,13 +35,13 @@ module.exports = {
   'Healing Ring': {
     id: 4,
     name: 'Healing Ring',
-    cast: 3,
-    cost: 10,
+    cast: 0,
+    cost: 15,
     coolDown: 5,
     type: 'heal',
     singleTarget: false,
-    powerRatio: 2,
-    description: "Heal ALL Friendly Characters for (200%) of Player Power"
+    powerRatio: 1,
+    description: "Heal ALL Friendly Characters for (100%) of Player Power"
   },
   'Bind': {
     id: 5,

@@ -35,6 +35,9 @@ class PlayerSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Protect':
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.powerRatio})
+      case 'Trample':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Spit':
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Feed':
