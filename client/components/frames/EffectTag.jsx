@@ -6,12 +6,18 @@ class EffectTag extends Component {
     super(props)
     this.state = {
       currentDuration: 0,
-      interval: null
+      interval: null,
+      ticks: 0
     }
   }
   tickSecond() {
     const {effect, target} = this.props
     const currentDuration = this.state.currentDuration + 1
+    if (currentDuration % effect.tickRate === 0) {
+      // this.setState({ticks: this.state.ticks+1})
+      console.log("TICK EFFECT", effect)
+      this.props.dispatch({type: effect.type, target, power: effect.power})
+    }
     if (currentDuration >= effect.duration) {
       clearInterval(this.state.interval)
       this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
@@ -19,7 +25,7 @@ class EffectTag extends Component {
   }
   startEffect() {
     let interval = setInterval(() => this.tickSecond(), 1000)
-    this.setState({currentDuration: 0, interval})
+    this.setState({currentDuration: 0, interval, ticks: 0})
   }
   componentDidMount() {
     this.startEffect()
