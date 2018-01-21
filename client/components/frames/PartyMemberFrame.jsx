@@ -32,8 +32,8 @@ class MemberFrame extends Component {
           <div className=""><p className={`subtitle is-5`}>Speed: {member.speed}</p></div>
         </div>
         <div className="column is-4">
-          <div className="columns is-multiline">
-            {effects.map(effect => <div key={`effect-${effect.name}-${member.name}`} className="column "><EffectTag effect={effect} target={member} /></div>)}
+          <div className="tags">
+            {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
           </div>
         </div>
       </div>
