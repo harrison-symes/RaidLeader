@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
         {id: 4, name: 'Spitting Spider', dungeon_id: 2, progress_required: 2},
         {id: 5, name: 'Seeping Slime', dungeon_id: 3, progress_required: 0},
         {id: 6, name: 'Decaying Deer', dungeon_id: 3, progress_required: 1},
-        {id: 7, name: 'Lunging Locusts', dungeon_id: 3, progress_required: 1}
+        {id: 7, name: 'Lunging Locusts', dungeon_id: 3, progress_required: 1},
         {id: 8, name: 'Plague Piltherer', dungeon_id: 3, progress_required: 2}
       ]);
     });
