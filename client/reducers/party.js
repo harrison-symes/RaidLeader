@@ -29,6 +29,13 @@ export default function party (state = [], action) {
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
       target.effects.push({...action.effect})
       return newState
+    case 'ADD_EFFECT_TO_ALL_FRIENDLY':
+      newState = newState.map(target => {
+        target.effects = target.effects.filter(effect => effect.name != action.effect.name)
+        target.effects.push({...action.effect})
+        return target
+      })
+      return newState
     case 'REMOVE_EFFECT_FROM_TARGET':
       if (!action.target) return newState
       target = newState.find(member => member == action.target)

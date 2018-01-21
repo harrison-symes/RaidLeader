@@ -6,7 +6,7 @@ const renewConstructor = (power) => ({
   duration: 9,
   tickRate: 3,
   power,
-  colour: 'light-green',
+  colour: '#8CE88C',
   type: 'HEAL_FRIENDLY_TARGET'
 })
 
@@ -63,6 +63,8 @@ class PlayerSpell extends Component {
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Renew':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(power), target})
+      case 'Greater Renew':
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor(power)})
       default: return
     }
   }

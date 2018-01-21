@@ -18,6 +18,10 @@ export default function boss (state = null, action) {
     case 'BOSS_GAIN_POWER':
       newState.power+=action.amount
       return newState
+    case 'HEAL_BOSS':
+      newState.hp += action.power
+      if (newState.hp > newState.initHp) newState.hp = newState.initHp
+      return newState
     case 'PHYSICAL_ATTACK_BOSS':
       let damage = Math.round(action.power)
       if (newState.armor >= damage) {
