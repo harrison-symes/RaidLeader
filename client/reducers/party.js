@@ -27,7 +27,7 @@ export default function party (state = [], action) {
       target = newState.find(member => member == action.target)
       if (!target || !target.isAlive) return newState
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
-      target.effect.push({...action.effects})
+      target.effects.push({...action.effect})
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {

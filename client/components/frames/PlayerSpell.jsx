@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+const renewConstructor = (power) => ({
+  name: 'Renew',
+  duration: 9,
+  power
+})
+
 class PlayerSpell extends Component {
   constructor(props) {
     super(props)
@@ -52,6 +58,8 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_GAIN_MANA', power: 3})
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+      case 'Renew':
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(power), target})
       default: return
     }
   }
