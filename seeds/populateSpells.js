@@ -18,7 +18,8 @@ exports.seed = function(knex, Promise) {
         {id: 11, name: 'Drain Life', user_id: 1},
         {id: 12, name: 'Harvest Life', user_id: 1},
         {id: 13, name: 'Drain Soul', user_id: 1},
-        {id: 14, name: 'Renew', user_id: 1}
+        {id: 14, name: 'Renew', user_id: 1},
+        {id: 15, name: 'Greater Renew', user_id: 1}
       ]);
     });
 };

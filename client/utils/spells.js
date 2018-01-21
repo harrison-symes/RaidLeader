@@ -151,6 +151,17 @@ module.exports = {
     type: 'healing',
     singleTarget: true,
     powerRatio: 1,
-    description: 'Place a Healing over Time effect on a friendly target, healing them for 100% of Player every 3 seconds for 9 seconds'
+    description: 'Place a Healing over Time effect on a friendly target, healing them for 100% of Player Power every 3 seconds for 9 seconds'
+  },
+  'Greater Renew': {
+    id: 15,
+    name: 'Greater Renew',
+    cast: 3,
+    cost: 15,
+    coolDown: 10,
+    type: 'healing',
+    powerRatio: 1,
+    singleTarget: false,
+    description: 'Place a Healing over Time effect on each friendly party member, healing them for 100% of Player Power every 3 seconds for 9 seconds'
   }
 }
