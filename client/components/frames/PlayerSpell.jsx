@@ -1,6 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+const renewConstructor = (power) => ({
+  name: 'Renew',
+  duration: 9,
+  tickRate: 3,
+  power,
+  colour: 'light-green',
+  type: 'HEAL_FRIENDLY_TARGET'
+})
+
 class PlayerSpell extends Component {
   constructor(props) {
     super(props)
@@ -47,11 +56,13 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_GAIN_MANA', power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Evocate':
-        return dispatch({type: 'PLAYER_GAIN_MANA', power})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.powerRatio})
       case 'Drain Soul':
-        dispatch({type: 'PLAYER_GAIN_MANA', power: this.props.player.maxMana / 50})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: 3})
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+      case 'Renew':
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(power), target})
       default: return
     }
   }

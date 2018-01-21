@@ -1,12 +1,12 @@
 export default {
   name: 'Trampling Turtle',
   level: 1,
-  initHp: 10,
-  hp: 10,
-  initPower: 1,
-  power: 1,
-  initArmor: 20,
-  armor: 20,
+  initHp: 20,
+  hp: 20,
+  initPower: 2,
+  power: 2,
+  initArmor: 30,
+  armor: 30,
   mana: 0,
   maxMana: 20,
   manaRegen: 1,
@@ -21,14 +21,14 @@ export default {
   spells: [
     {
       name: 'Protect',
-      cast: 1,
+      cast: 5,
       cost: 10,
       coolDown: 0,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 5,
+      powerRatio: 10,
       onCooldown: false,
-      description: "Gain 5 ARMOR"
+      description: "Gain 10 ARMOR"
     },
     {
       name: 'Swipe',
@@ -37,20 +37,20 @@ export default {
       coolDown: 3,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 3,
+      powerRatio: 1,
       onCooldown: false,
-      description: "Damage ALL enemy characters for 300% BOSS POWER"
+      description: "Damage ALL enemy characters for 100% BOSS POWER"
     },
     {
       name: 'Trample',
-      cast: 1,
-      cost: 1,
-      coolDown: 0,
+      cast: 5,
+      cost: 5,
+      coolDown: 5,
       type: 'damage',
-      singleTarget: false,
-      powerRatio: 5,
+      singleTarget: true,
+      powerRatio: 3,
       onCooldown: false,
-      description: "Damage the PLAYER for 500% BOSS POWER (Only used if enemy party is dead)"
+      description: "Damage the enemy TARGET and the PLAYER for 500% BOSS POWER"
     }
   ]
 }

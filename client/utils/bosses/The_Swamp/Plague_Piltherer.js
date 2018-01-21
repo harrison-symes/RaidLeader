@@ -1,5 +1,5 @@
 export default {
-  name: 'Biting Bear',
+  name: 'Plague Piltherer',
   level: 1,
   initHp: 40,
   hp: 40,
@@ -13,11 +13,11 @@ export default {
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
-  description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Bear Fangs', 'Bear Heart'],
+  description: "A crazed man darts around the Swamp lands, scavenging the many corpses for their precious loot. You even see him drinking some of that disgusting slime!",
+  weaponRewards: [],
   goldReward: 100,
   weaponChance: 0.5,
-  progress_required: 0,
+  progress_required: 3,
   spells: [
     {
       name: 'Swipe',

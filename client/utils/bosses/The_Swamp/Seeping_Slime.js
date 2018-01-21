@@ -1,5 +1,5 @@
 export default {
-  name: 'Biting Bear',
+  name: 'Seeping Slime',
   level: 1,
   initHp: 40,
   hp: 40,
@@ -13,8 +13,8 @@ export default {
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
-  description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Bear Fangs', 'Bear Heart'],
+  description: "As you investigate the off coloured swamp water at the entrance of the swamp, the water starts investigating you.",
+  weaponRewards: [],
   goldReward: 100,
   weaponChance: 0.5,
   progress_required: 0,

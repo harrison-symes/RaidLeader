@@ -88,14 +88,6 @@ class RecruitModal extends Component {
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <div className="title is-4">Stats</div>
-          <hr />
-          <div className="columns">
-            <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp}</p></div>
-            <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power}</p></div>
-            <div className="column is-4"><p className="subtitle is-4">Speed: {recruit.speed}</p></div>
-          </div>
-          <hr />
           <div className="has-text-centered box">
             <p className="title is-4">Starting Buff</p>
             <p className="subtitle is-4">{startingBuff(recruit.heroClass)}</p>
@@ -104,6 +96,14 @@ class RecruitModal extends Component {
           <div className="has-text-centered box">
             <p className="title is-4">Class Traits:</p>
             <p className="subtitle is-4">{classTraits(recruit.heroClass)}</p>
+          </div>
+          <hr />
+          <div className="title is-4">Stats</div>
+          <hr />
+          <div className="columns">
+            <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp}</p></div>
+            <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power}</p></div>
+            <div className="column is-4"><p className="subtitle is-4">Speed: {recruit.speed}</p></div>
           </div>
           <hr />
           {this.renderWeaponFrame()}

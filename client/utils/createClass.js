@@ -11,7 +11,8 @@ const createMember = (name, level, id, weapon_id, heroClass, hp, power, speed) =
     power,
     isAlive: true,
     id,
-    weapon_id
+    weapon_id,
+    effects: []
   }
 )
 
@@ -21,7 +22,7 @@ const createPriest = (name, level, id, weapon_id) => createMember(name, level, i
 
 const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 5, level, 1)
 
-const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 3, level, 4 + level)
+const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 3, level, 3 + level)
 
 const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 2, level * 2, 3)
 

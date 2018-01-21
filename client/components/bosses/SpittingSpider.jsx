@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/bossStateMap'
 import BossFrame from '../frames/BossFrame'
 
-class Spit extends BossFrame {
+class SpittingSpider extends BossFrame {
   constructor(props) {
     super(props)
   }
@@ -23,4 +23,4 @@ class Spit extends BossFrame {
   }
 }
 
-export default connect(mapStateToProps)(Spit)
+export default connect(mapStateToProps)(SpittingSpider)

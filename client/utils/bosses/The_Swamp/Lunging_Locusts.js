@@ -1,5 +1,5 @@
 export default {
-  name: 'Biting Bear',
+  name: 'Lunging Locusts',
   level: 1,
   initHp: 40,
   hp: 40,
@@ -13,11 +13,11 @@ export default {
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
-  description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Bear Fangs', 'Bear Heart'],
+  description: "As you explore deeper into the Swamp, you see less life around you, and a soft buzzing sound starts getting louder... and louder...",
+  weaponRewards: [],
   goldReward: 100,
   weaponChance: 0.5,
-  progress_required: 0,
+  progress_required: 1,
   spells: [
     {
       name: 'Swipe',

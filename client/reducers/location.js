@@ -32,7 +32,7 @@ export default function (state = initialState || town, action) {
       })
       action.dungeon.inGame = false
       set('location', JSON.stringify(action.dungeon))
-      return action.dungeon
+      return {...action.dungeon}
     case 'TRAVEL_TO_TOWN':
       set('location', JSON.stringify(town))
       return town

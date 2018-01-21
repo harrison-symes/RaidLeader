@@ -1,5 +1,5 @@
 export default {
-  name: 'Biting Bear',
+  name: 'Decaying Deer',
   level: 1,
   initHp: 40,
   hp: 40,
@@ -13,11 +13,11 @@ export default {
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
-  description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Bear Fangs', 'Bear Heart'],
+  description: "You find the corpse of a deer. So sad... and then it starts moving...",
+  weaponRewards: [],
   goldReward: 100,
   weaponChance: 0.5,
-  progress_required: 0,
+  progress_required: 1,
   spells: [
     {
       name: 'Swipe',

@@ -75,7 +75,9 @@ class Town extends Component {
   }
 }
 
-const mapStateToProps = ({gold, recruits, spellBook}) => {
+const mapStateToProps = (state) => {
+  console.log("town state", state);
+  const {gold, recruits, spellBook} = state
   return {
     gold, recruits, spellBook
   }

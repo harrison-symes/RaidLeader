@@ -29,11 +29,16 @@ class BossRewardsModal extends Component {
     console.log({reward, weapons});
     return reward
   }
-  showRewards() {
-    this.setState({showRewards: true})
+  componentDidMount() {
+    this.getReward()
+  }
+  getReward() {
     const {goldReward, weaponReward} = this.state
     this.props.dispatch(earnGold(goldReward))
     if (weaponReward) this.props.dispatch(addWeapon(weaponReward))
+  }
+  showRewards() {
+    this.setState({showRewards: true})
   }
   backToMenu() {
     this.props.dispatch({type: 'RETURN_TO_MENU', boss: this.props.boss})
