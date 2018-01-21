@@ -11,7 +11,8 @@ const createMember = (name, level, id, weapon_id, heroClass, hp, power, speed) =
     power,
     isAlive: true,
     id,
-    weapon_id
+    weapon_id,
+    effects: []
   }
 )
 

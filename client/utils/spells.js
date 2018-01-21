@@ -141,5 +141,16 @@ module.exports = {
     singleTarget: false,
     powerRatio: 2,
     description: 'Damage the Boss for (%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3 Mana to the Player'
+  },
+  'Renew': {
+    id: 14,
+    name: 'Renew',
+    cast: 0,
+    cost: 5,
+    coolDown: 0,
+    type: 'healing',
+    singleTarget: true,
+    powerRatio: 1,
+    description: 'Place a Healing over Time effect on a friendly target, healing them for 100% of Player every 3 seconds for 9 seconds'
   }
 }
