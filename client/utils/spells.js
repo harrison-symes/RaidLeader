@@ -147,7 +147,7 @@ module.exports = {
     name: 'Renew',
     cast: 0,
     cost: 5,
-    coolDown: 0,
+    coolDown: 3,
     type: 'healing',
     singleTarget: true,
     powerRatio: 1,
