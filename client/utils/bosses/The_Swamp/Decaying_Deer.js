@@ -1,15 +1,15 @@
 export default {
   name: 'Decaying Deer',
   level: 1,
-  initHp: 40,
-  hp: 40,
-  initPower: 3,
-  power: 3,
-  initArmor: 15,
+  initHp: 100,
+  hp: 30,
+  initPower: 5,
+  power: 5,
+  initArmor: 50,
   armor: 20,
   mana: 5,
   maxMana: 5,
-  manaRegen: 5,
+  manaRegen: 1,
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
@@ -17,10 +17,23 @@ export default {
   weaponRewards: [],
   goldReward: 100,
   weaponChance: 0.5,
-  progress_required: 1,
+  progress_required: 0,
   spells: [
     {
-      name: 'Swipe',
+      name: 'Regenerate',
+      cast: 5,
+      cost: 3,
+      coolDown: 5,
+      type: 'armor',
+      singleTarget: false,
+      powerRatio: 1,
+      armor: 10,
+      health: 10,
+      onCooldown: false,
+      description: 'Gain 10 Armor and 10 Health. (Only used when below 90 Health)'
+    },
+    {
+      name: 'Feed',
       cast: 5,
       cost: 2,
       coolDown: 10,
@@ -28,29 +41,18 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       onCooldown: false,
-      description: 'Damage ALL enemy characters for 100% BOSS POWER',
+      description: 'Gain 1 Power',
     },
     {
-      name: 'Protect',
-      cast: 0.5,
-      cost: 1,
-      coolDown: 1,
-      type: 'armor',
-      singleTarget: false,
-      powerRatio: 1,
-      onCooldown: false,
-      description: 'Gain 1 ARMOR'
-    },
-    {
-      name: 'Bite',
-      cost: 0,
+      name: 'Plague Bite',
       cast: 5,
-      coolDown: 1,
-      powerRatio: 2,
+      cost: 2,
+      coolDown: 5,
+      powerRatio: 1,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 200% of BOSS POWER"
+      description: "Damage the Boss' TARGET for 100% of BOSS POWER, Poison the Target for 100% Boss Power as Damage every 5 seconds for 15 seconds"
     }
   ]
 }

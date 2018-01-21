@@ -53,10 +53,13 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
       case 'Regenerate':
         dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor})
-        return dispatch({type: 'HEAL_BOSS', power})
+        return dispatch({type: 'HEAL_BOSS', power: spell.health})
       case 'Seep':
         dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Plague Bite':
+        dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
       case 'Poison':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
       default: return
