@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import HealthBar from './HealthBar'
+import EffectTag from './EffectTag'
 
 class MemberFrame extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class MemberFrame extends Component {
           <div className=""><p className={`subtitle is-${party.length + 2}`}>Speed: {member.speed}</p></div>
         </div>
         <div className="column is-4">
-          {effects.map(effect => <div className="tag">{effect.name}</div>)}
+          {effects.map(effect => <EffectTag effect={effect} target={member} />)}
         </div>
       </div>
       <HealthBar maxHP={initHp} hp={hp} />

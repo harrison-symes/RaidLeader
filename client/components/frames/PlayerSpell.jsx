@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 const renewConstructor = (power) => ({
   name: 'Renew',
   duration: 9,
-  power
+  power,
+  colour: 'light-green'
 })
 
 class PlayerSpell extends Component {
