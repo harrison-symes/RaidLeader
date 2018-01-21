@@ -25,14 +25,16 @@ class MemberFrame extends Component {
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
         <div className="column is-4">
-          <h1 className={`subtitle is-${party.length + 1}`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} the {member.heroClass}</h1>
+          <h1 className={`subtitle is-4`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} the {member.heroClass}</h1>
         </div>
         <div className="column is-4">
-          <div className=""><p className={`subtitle is-${party.length + 2} `}>Power: {member.power}</p></div>
-          <div className=""><p className={`subtitle is-${party.length + 2}`}>Speed: {member.speed}</p></div>
+          <div className=""><p className={`subtitle is-5`}>Power: {member.power}</p></div>
+          <div className=""><p className={`subtitle is-5`}>Speed: {member.speed}</p></div>
         </div>
         <div className="column is-4">
-          {effects.map(effect => <EffectTag effect={effect} target={member} />)}
+          <div className="columns is-multiline">
+            {effects.map(effect => <div key={`effect-${effect.name}-${member.name}`} className="column "><EffectTag effect={effect} target={member} /></div>)}
+          </div>
         </div>
       </div>
       <HealthBar maxHP={initHp} hp={hp} />

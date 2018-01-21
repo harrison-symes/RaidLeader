@@ -140,7 +140,7 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 2,
-    description: 'Damage the Boss for (%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3 Mana to the Player'
+    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3 Mana to the Player'
   },
   'Renew': {
     id: 14,
