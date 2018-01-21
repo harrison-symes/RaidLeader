@@ -6,7 +6,7 @@ const renewConstructor = (power) => ({
   duration: 9,
   tickRate: 3,
   power,
-  colour: 'light-green',
+  colour: '#8CE88C',
   type: 'HEAL_FRIENDLY_TARGET'
 })
 

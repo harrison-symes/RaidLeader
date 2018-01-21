@@ -44,7 +44,7 @@ class EffectTag extends Component {
     const {name, duration, colour} = this.props.effect
     const {currentDuration, maxDuration} = this.state
     return <div>
-      <div style={{backgroundColor: colour}}  className="tag is-large">{name} ({maxDuration - Math.floor(currentDuration)})</div>
+      <div style={{backgroundColor: colour, borderColor: 'black'}}  className="tag is-large">{name} ({maxDuration - Math.floor(currentDuration)})</div>
     </div>
   }
 }

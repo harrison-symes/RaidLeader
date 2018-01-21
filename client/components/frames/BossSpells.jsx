@@ -1,7 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-class PlayerSpell extends Component {
+const poisonConstructor = (power) => ({
+  name: 'Poison',
+  duration: 15,
+  power,
+  colour: '#BA8CE8',
+  tickRate: 5,
+  type: 'DAMAGE_FRIENDLY_TARGET'
+})
+
+class BossSpell extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -42,6 +51,14 @@ class PlayerSpell extends Component {
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Feed':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
+      case 'Regenerate':
+        dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor})
+        return dispatch({type: 'HEAL_BOSS', power})
+      case 'Seep':
+        dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Poison':
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
       default: return
     }
   }
@@ -136,4 +153,4 @@ const mapStateToProps = ({started, player, boss, party, friendlyTarget}) => {
   }
 }
 
-export default connect(mapStateToProps)(PlayerSpell)
+export default connect(mapStateToProps)(BossSpell)
