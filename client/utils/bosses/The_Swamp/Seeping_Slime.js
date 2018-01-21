@@ -1,29 +1,29 @@
 export default {
   name: 'Seeping Slime',
-  level: 1,
+  level: 2,
   initHp: 100,
   hp: 100,
   initPower: 5,
   power: 5,
   initArmor: 10,
   armor: 10,
-  mana: 0,
-  maxMana: 10,
+  mana: 10,
+  maxMana: 30,
   manaRegen: 1,
   armorRegen: 0,
   isCasting: false,
   bossTarget: null,
   description: "As you investigate the off coloured swamp water at the entrance of the swamp, the water starts investigating you.",
   weaponRewards: [],
-  goldReward: 200,
+  goldReward: 250,
   weaponChance: 0.5,
   progress_required: 0,
   spells: [
     {
       name: 'Regenerate',
-      cast: 5,
-      cost: 5,
-      coolDown: 20,
+      cast: 10,
+      cost: 30,
+      coolDown: 30,
       type: 'damage',
       singleTarget: false,
       powerRatio: 10,
@@ -51,7 +51,7 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Apply the Poison Effect to the Boss' Target, Dealing 100% Boss Power as Damage every 5 seconds for 15 seconds"
+      description: "Apply a Poison Effect to the Boss' Target, Dealing 100% Boss Power as Damage every 5 seconds for 15 seconds"
     }
   ]
 }

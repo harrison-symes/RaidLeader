@@ -13,7 +13,7 @@ class SeepingSlime extends BossFrame {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
           case 'Regenerate':
-            return (boss.armor == 0 && boss.health <= 50)
+            return (boss.armor == 0 && boss.hp <= 50)
           case 'Seep': return boss.hp > 10
           case 'Poison': return true
           default: return false
