@@ -19,17 +19,16 @@ class MemberFrame extends Component {
     if (nextProps.member.hp <= 0 && nextProps.member.isAlive) this.props.dispatch({type: 'MEMBER_DIED', target: this.props.member})
   }
   render() {
-    const {member, dispatch, friendlyTarget, boss} = this.props
+    const {member, dispatch, friendlyTarget, boss, party} = this.props
     const {initHp, hp, name, isAlive} = member
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
-        <div className="column is-4"></div>
-        <div className="column is-4">
-          <h1 className="title is-3" style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} the {member.heroClass}</h1>
+        <div className="column is-6">
+          <h1 className={`subtitle is-${party.length + 1}`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} the {member.heroClass}</h1>
         </div>
-        <div className="column is-4">
-          <div className=""><p className="title is-4">Power: {member.power}</p></div>
-          <div className=""><p className="title is-4">Speed: {member.speed}</p></div>
+        <div className="column is-6">
+          <div className=""><p className={`subtitle is-${party.length + 2} `}>Power: {member.power}</p></div>
+          <div className=""><p className={`subtitle is-${party.length + 2}`}>Speed: {member.speed}</p></div>
         </div>
       </div>
       <HealthBar maxHP={initHp} hp={hp} />
