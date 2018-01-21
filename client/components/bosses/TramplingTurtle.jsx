@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/bossStateMap'
 import BossFrame from '../frames/BossFrame'
 
-class Spit extends BossFrame {
+class TramplingTurtle extends BossFrame {
   constructor(props) {
     super(props)
   }
@@ -12,9 +12,10 @@ class Spit extends BossFrame {
     let castSpell = spells.filter(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
-          case 'Feed': return true
-          case 'Swipe': return true
-          case 'Spit': return true
+          case 'Protect':
+            return (boss.armor <= boss.initArmor - spell.powerRatio)
+            case 'Swipe': return this.props.party.find(member => member.isAlive)
+          case 'Trample': return true
           default: return false
         }
       } else return false
@@ -23,4 +24,4 @@ class Spit extends BossFrame {
   }
 }
 
-export default connect(mapStateToProps)(Spit)
+export default connect(mapStateToProps)(TramplingTurtle)
