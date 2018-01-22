@@ -66,7 +66,7 @@ export default {
       singleTarget: false,
       onCooldown: false,
       power: -1,
-      description: "Damage all enemy characters for 100% Boss Power, lose 1 Power"
+      description: "Damage all enemy characters for 100% Boss Power, lose 1 Power if enemy party is still alive"
     }
   ]
 }
