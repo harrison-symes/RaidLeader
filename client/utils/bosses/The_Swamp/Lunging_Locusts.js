@@ -1,6 +1,6 @@
 export default {
   name: 'Lunging Locusts',
-  level: 1,
+  level: 2,
   initHp: 200,
   hp: 200,
   initPower: 5,

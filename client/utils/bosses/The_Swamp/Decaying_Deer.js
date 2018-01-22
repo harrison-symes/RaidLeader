@@ -1,6 +1,6 @@
 export default {
   name: 'Decaying Deer',
-  level: 1,
+  level: 2,
   initHp: 100,
   hp: 40,
   initPower: 5,
