@@ -1,4 +1,43 @@
 module.exports = {
+  ['Training Staff']: (level, id) => ({
+    name: 'Training Staff',
+    type: 'Weapon',
+    level,
+    id,
+    hp: ((level * 2) + 1) * 50,
+    power: 2 * level,
+    mana: 50 + (50 * level),
+    manaRegen: 1
+    class: 'Player',
+    description: 'It comes with a note attached; "Hitting your Recruits with this will NOT heal them!"',
+    bonusEffect: null
+  }),
+  ['Cursed Staff of the Wilds']: (level, id) => ({
+    name: 'Cursed Staff of the WIlds',
+    type: 'Weapon',
+    level,
+    id,
+    hp: ((level * 2) + 1) * 35,
+    power: 3 * level,
+    mana: 120,
+    manaRegen: 1,
+    class: 'Player',
+    description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.'
+    bonusEffect: null
+  })
+  ['Staff of the Wilds']: (level, id) => ({
+    name: 'Staff of the WIlds',
+    type: 'Weapon',
+    level,
+    id,
+    hp: ((level * 2) + 1) * 50,
+    power: 3 * level,
+    mana: 60,
+    manaRegen: 1.5,
+    class: 'Player',
+    description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.'
+    bonusEffect: null
+  }),
   ['Dragon Scale']: (level, id) => ({
     name: 'Dragon Scale',
     type: 'Weapon',

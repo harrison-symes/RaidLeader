@@ -15,6 +15,24 @@ const testPlayer = {
   spells: []
 }
 
+const createPlayer = ({hp, mana, manaRegen, power}, name) => (
+  {
+    id: 0,
+    name,
+    initHp: hp,
+    hp,
+    initPower: power,
+    power,
+    maxMana: mana,
+    mana,
+    manaRegen,
+    isCasting: false,
+    isAlive: true,
+    spells: []
+  }
+)
+
+
 export default function player (state = testPlayer, action) {
   let newState = {...state}
   switch (action.type) {
