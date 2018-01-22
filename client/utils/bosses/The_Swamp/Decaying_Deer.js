@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "You find the corpse of a deer. So sad... and then it starts moving...",
   weaponRewards: [],
-  goldReward: 100,
+  goldReward: 300,
   weaponChance: 0.5,
   progress_required: 0,
   spells: [

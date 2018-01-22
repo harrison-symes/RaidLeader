@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
   weaponRewards: ['Bear Fangs', 'Bear Heart'],
-  goldReward: 100,
+  goldReward: 150,
   weaponChance: 0.5,
   progress_required: 0,
   spells: [
