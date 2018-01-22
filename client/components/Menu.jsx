@@ -39,7 +39,7 @@ class Menu extends React.Component {
     this.props.dispatch(getWeapons())
   }
   loadGame() {
-    let {playerParty, playerSpells, weapons} = this.props
+    let {playerParty, playerSpells, weapons, playerWeapon, auth} = this.props
     playerParty = playerParty.map(recruit => {
       if (recruit.weapon_id) {
         let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
@@ -55,11 +55,11 @@ class Menu extends React.Component {
       }
       return recruit
     })
-    this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells})
+    this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells, playerWeapon, name: auth.user.user_name})
   }
   renderStartGameButton () {
-    const {playerParty, playerSpells, boss} = this.props
-    if (!playerParty.length == 0 && !playerSpells.length == 0 && boss) return <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
+    const {playerParty, playerSpells, boss, playerWeapon} = this.props
+    if (!playerParty.length == 0 && !playerSpells.length == 0 && boss && playerWeapon) return <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
     else return <Link disabled className="button is-large is-danger" to="/game">Start Game</Link>
   }
   renderMenuLink (path, display) {
@@ -168,7 +168,7 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({showWelcome, playerParty, playerSpells, location, boss, gold, weapons, recruits}) => {
+const mapStateToProps = ({auth, showWelcome, playerParty, playerSpells, location, boss, gold, weapons, recruits, playerWeapon}) => {
   return {
     showWelcome,
     playerParty,
@@ -177,7 +177,9 @@ const mapStateToProps = ({showWelcome, playerParty, playerSpells, location, boss
     boss,
     gold,
     weapons,
-    recruits
+    recruits,
+    playerWeapon,
+    auth
   }
 }
 

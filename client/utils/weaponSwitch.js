@@ -4,7 +4,7 @@ module.exports = {
     type: 'Weapon',
     level,
     id,
-    hp: ((level * 2) + 1) * 50,
+    hp: (level + 1) * 50,
     power: 2 * level,
     mana: 50 + (50 * level),
     manaRegen: 1,
