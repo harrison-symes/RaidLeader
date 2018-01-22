@@ -35,7 +35,7 @@ export default {
       name: 'Spread Plague',
       cost: 0,
       cast: 5,
-      coolDown: 0,
+      coolDown: 10,
       powerRatio: 1,
       type: 'damage',
       singleTarget: false,
