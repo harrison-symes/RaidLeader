@@ -89,7 +89,7 @@ class TrainingCentre extends Component {
             : <div className="has-text-centered">
               <p className="title is-1">Welcome to the Training Centre</p>
               <p className="subtitle is-1">Here you can spend your Gold to increase the Levels of your Recruits</p>
-              <p className="subtitle is-1">Higher Level Recruits have more Power and Health:</p>
+              <p className="subtitle is-1">Higher Level Recruits have more Power and Health</p>
             </div>
           }
         </section>
