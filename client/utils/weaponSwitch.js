@@ -25,7 +25,7 @@ module.exports = {
     description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.'
     bonusEffect: null
   })
-  ['Staff of the Wilds']: (level, id) => ({
+  ['Cleansed Staff of the Wilds']: (level, id) => ({
     name: 'Staff of the WIlds',
     type: 'Weapon',
     level,

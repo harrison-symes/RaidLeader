@@ -4,7 +4,7 @@ import {withRouter} from 'react-router'
 
 import BossPreview from './BossPreview'
 
-
+import weaponSwitch from '../../utils/weaponSwitch'
 import {earnGold} from '../../actions/gold'
 import {completeDungeon} from '../../actions/dungeons'
 
@@ -13,7 +13,8 @@ class DungeonRewards extends Component {
     super(props)
     this.state = {
       showRewards: false,
-      loot: null
+      goldReward: props.currentLocation.goldReward,
+      weaponReward: this.solveWeaponReward()
     }
     this.showRewards = this.showRewards.bind(this)
     this.returnToTown = this.returnToTown.bind(this)
@@ -22,9 +23,35 @@ class DungeonRewards extends Component {
     this.props.dispatch({type: 'TRAVEL_TO_TOWN'})
     this.props.history.push('/')
   }
+  solveWeaponReward() {
+    const {currentLocation} = this.props
+    const weapons = currentLocation.weaponRewards
+    // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
+    let reward = weapons[Math.floor(Math.random() * weapons.length)]
+    reward = weaponSwitch[reward](boss.level)
+    return reward
+  }
+  weaponInfo(weapon) {
+    return <div className="">
+      <p className="title is-3">You found a Weapon!</p>
+      <hr />
+      <div className="box">
+        <h1 className="title is-3">{weapon.name}</h1>
+        <div className="title is-4">{weapon.class} Weapon!</div>
+        <div className="subtitle is-5">{weapon.description}</div>
+        <div className="columns is-multiline">
+          <div className="column subtitle is-4">Health: {weapon.hp}</div>
+          <div className="column subtitle is-4">Power: {weapon.power}</div>
+          {weapon.class != 'Player' && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
+          {weapon.class == 'Player' && <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} per second)</div>}
+        </div>
+        {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+      </div>
+    </div>
+  }
   renderRewardsModal() {
     const {currentLocation} = this.props
-    const {loot, showRewards} = this.state
+    const {weaponReward, showRewards} = this.state
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
@@ -35,9 +62,7 @@ class DungeonRewards extends Component {
             ? <div>
               <p className="title is-2">Rewards:</p>
               <p className="title is-3">Gold: {currentLocation.gold_reward}</p>
-              {loot && <div>
-                <p className="title is-3">{loot}</p>
-              </div>}
+              {weaponReward && this.weaponInfo(weaponReward)}
             </div>
             : <button className="button is-primary is-fullwidth is-large" onClick={this.showRewards}>Open Chest</button>
           }
@@ -50,12 +75,9 @@ class DungeonRewards extends Component {
   }
   showRewards() {
     const {currentLocation} = this.props
-    this.props.dispatch(earnGold(currentLocation.gold_reward))
-    let loot = JSON.parse(currentLocation.rewards)
-    loot = loot[Math.floor(Math.random() * loot.length)]
-    this.setState({showRewards: true, loot})
     this.props.dispatch({type: 'DUNGEON_CHEST_OPENED'})
     this.props.dispatch(completeDungeon(currentLocation))
+    this.setState({showRewards: true})
   }
   render() {
     const {currentLocation} = this.props
