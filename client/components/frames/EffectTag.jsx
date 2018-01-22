@@ -7,16 +7,13 @@ class EffectTag extends Component {
     this.state = {
       currentDuration: 0,
       maxDuration: props.effect.duration,
-      interval: null,
-      ticks: 0
+      interval: null
     }
   }
   tickSecond() {
     const {effect, target} = this.props
     const currentDuration = this.state.currentDuration + 1
     if (currentDuration % effect.tickRate === 0) {
-      // this.setState({ticks: this.state.ticks+1})
-      console.log("TICK EFFECT", effect)
       this.props.dispatch({type: effect.type, target, power: effect.power})
     }
     if (currentDuration >= this.state.maxDuration) {

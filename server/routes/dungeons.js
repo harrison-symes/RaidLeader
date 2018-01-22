@@ -22,7 +22,6 @@ router.get('/', decode, (req, res) => {
 })
 
 router.post('/complete', decode, (req, res) => {
-  console.log(req.body);
   dungeonsDb.dungeonComplete(req.user.user_id, req.body.dungeon_id)
     .then(() => res.sendStatus(201))
 })

@@ -92,7 +92,6 @@ class RecruitModal extends Component {
 }
 
 const mapStateToProps = ({playerParty, weapons, recruits}) => {
-  console.log({weapons})
   return {
     playerParty,
     weapons,

@@ -11,7 +11,6 @@ router.get('/gold', decode, (req, res) => {
 })
 
 router.put('/gold', decode, (req, res) => {
-  console.log(req.body);
   playerDb.getPlayerGold(req.user.user_id)
     .then(({gold}) => {
       playerDb.updatePlayerGold(req.user.user_id, gold + req.body.gold)
@@ -30,10 +29,8 @@ router.get('/weapons', decode, (req, res) => {
 })
 
 router.post('/getStarted', decode, (req, res) => {
-  console.log(req.body);
   addRecruit(req.user.user_id, req.body.name, 1, 'Paladin')
     .then(recruit => {
-      console.log({recruit});
       addSpell(req.user.user_id, 'Lesser Heal')
         .then(spell => res.json({recruit, spell}))
     })

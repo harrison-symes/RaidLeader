@@ -27,7 +27,6 @@ class BossSpell extends Component {
   castSwitch() {
     const {spell, dispatch, boss, party} = this.props
     const power = boss.power * spell.powerRatio
-    console.log({target}, spell.name);
     let target = boss.bossTarget
     switch(spell.name) {
       case 'Roar':

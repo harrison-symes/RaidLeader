@@ -15,7 +15,6 @@ class TrainingCentre extends Component {
     this.renderRecruit = this.renderRecruit.bind(this)
   }
   setLevel(e) {
-    console.log(e.target.value);
     this.setState({levelUpgrade: e.target.value || null})
   }
   upgradeRecruit(recruit) {

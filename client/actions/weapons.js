@@ -2,7 +2,6 @@ import request from '../utils/api'
 import weaponSwitch from '../utils/weaponSwitch'
 
 export function receiveWeapons(weapons) {
-  console.log({weapons});
   return {
     type: 'RECEIVE_WEAPONS',
     weapons: weapons.map(({name, level, id}) => weaponSwitch[name](level, id))
@@ -31,7 +30,6 @@ export function addWeapon (weapon) {
 }
 
 export function recruitEquipWeaponAction (recruit, weapon_id) {
-  console.log({recruit, weapon_id});
   return {
     type: 'RECRUIT_EQUIP_WEAPON',
     recruit,

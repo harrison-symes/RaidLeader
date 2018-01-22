@@ -23,7 +23,6 @@ export function earnGoldAction (gold) {
 
 export function earnGold (gold) {
   return dispatch => {
-    console.log({gold});
     dispatch(earnGoldAction(gold))
     request('put', 'player/gold', {gold})
   }

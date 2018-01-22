@@ -14,7 +14,6 @@ class RecruitmentCentre extends Component {
       offeredSpells: JSON.parse(get('offeredSpells')) || [],
       selectedSpell: null
     }
-    console.log(this.state);
     this.showOptions = this.showOptions.bind(this)
   }
   solveOptions() {
