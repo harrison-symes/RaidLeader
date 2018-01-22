@@ -35,7 +35,7 @@ export function addRecruit (recruit) {
 export function updateRecruitAction (recruit) {
   return {
     type: 'UPDATE_RECRUIT',
-    recruit
+    recruit: createClass(recruit)
   }
 }
 
