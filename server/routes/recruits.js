@@ -10,7 +10,6 @@ router.get('/', decode, (req, res) => {
 
 router.post('/', decode, (req, res) => {
   const {name, heroClass} = req.body
-  console.log(req.body);
   recruitsDb.addRecruit(req.user.user_id, name, 1, heroClass)
     .then(recruit => res.json(recruit))
 })
@@ -21,7 +20,7 @@ router.put('/weapons', decode, (req, res) => {
 })
 
 router.put('/level', decode, (req, res) => {
-  recruitsDb.levelUpRecruit(req.body.id, req.body.level)
+  recruitsDb.levelUpRecruit(req.body.id, req.body.level )
     .then(recruit => res.json(recruit))
 })
 

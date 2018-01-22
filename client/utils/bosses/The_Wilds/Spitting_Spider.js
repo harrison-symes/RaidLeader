@@ -1,4 +1,3 @@
-
 export default {
   name: 'Spitting Spider',
   level: 1,
@@ -44,7 +43,7 @@ export default {
     },
     {
       name: 'Spit',
-      cast: 2,
+      cast: 3,
       cost: 0,
       coolDown: 0,
       type: 'damage',

@@ -117,8 +117,28 @@ class BossSpell extends Component {
     clearInterval(this.props.castInterval)
     this.setState({currentCd: 0, currentCastTime: 0, castInterval: null, onCooldown: false})
   }
+  componentDidMount() {
+    this.setState({
+      onCooldown: false,
+      currentCD: 0,
+      cooldownInterval: null,
+      castInterval: null,
+      currentCastTime: 0,
+      target: null
+    })
+  }
   componentWillReceiveProps(nextProps) {
     const {spell, started, boss} = nextProps
+    if (nextProps.spell != this.props.spell) {
+      this.setState({
+        onCooldown: false,
+        currentCD: 0,
+        cooldownInterval: null,
+        castInterval: null,
+        currentCastTime: 0,
+        target: null
+      })
+    }
     if (!nextProps.started && this.props.started) {
       clearInterval(this.state.castInterval)
       clearInterval(this.state.cooldownInterval)

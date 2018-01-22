@@ -18,7 +18,7 @@ class TrainingCentre extends Component {
     this.setState({levelUpgrade: e.target.value})
   }
   upgradeRecruit(recruit) {
-    this.props.dispatch(earnGold((recruit.level) * 500))
+    this.props.dispatch(earnGold((recruit.level) * -500))
     this.props.dispatch(levelUpRecruit(recruit.level + 1, recruit.id))
   }
   renderLevelOption(requires, level) {
