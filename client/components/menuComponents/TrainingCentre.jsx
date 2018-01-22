@@ -7,6 +7,10 @@ class TrainingCentre extends Component {
     this.state = {
       levelUpgrade: null
     }
+    this.setLevel = this.setLevel.bind(this)
+  }
+  setLevel(e) {
+    this.setState({levelUpgrade: e.target.value})
   }
   renderLevelOption(requires, level) {
     const {dungeons} = this.props
@@ -16,7 +20,7 @@ class TrainingCentre extends Component {
   }
   renderLevelOptions() {
     const {levelUpgrade} = this.state
-    return <select className="input is-large" name="levelUpgrade" value={levelUpgrade}>
+    return <select className="input is-large" name="levelUpgrade" value={levelUpgrade} onChange={this.setLevel}>
       <option value={null}>Train to Which Level?</option>
       {this.renderLevelOption('The Cursed Wilds', 2)}
       {this.renderLevelOption('The Swamp', 3)}
@@ -24,6 +28,17 @@ class TrainingCentre extends Component {
       {this.renderLevelOption('The Foundry', 5)}
       {this.renderLevelOption('The Lair', 6)}
     </select>
+  }
+  renderRecruits() {
+    const {levelUpgrade} = this.state
+    const {recruits} = this.props
+    console.log({recruits});
+    return <div>
+      <hr />
+      {recruits.filter(recruit => recruit.level == levelUpgrade - 1).map(recruit => <div key={`level-up-recruit-${recruit.name}`} className="box">
+        <div className="title is-3">{recruit.name} the {recruit.heroClass}</div>
+      </div>)}
+    </div>
   }
   render() {
     const {close} = this.props
@@ -36,6 +51,7 @@ class TrainingCentre extends Component {
         </header>
         <section className="modal-card-body">
           {this.renderLevelOptions()}
+          {this.state.levelUpgrade && this.renderRecruits()}
         </section>
         <footer className="modal-card-foot">
           <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Leave</button>
@@ -45,9 +61,10 @@ class TrainingCentre extends Component {
   }
 }
 
-const mapStateToProps = ({dungeons}) => {
+const mapStateToProps = ({dungeons, recruits}) => {
   return {
-    dungeons
+    dungeons,
+    recruits
   }
 }
 
