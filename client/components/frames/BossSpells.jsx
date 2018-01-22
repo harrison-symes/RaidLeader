@@ -71,6 +71,14 @@ class BossSpell extends Component {
           dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(power)})
           return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
         }
+      case 'Ravage':
+        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+      case 'Ingest Plague':
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+      case 'Spread Plague':
+        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(power)})
       default: return
     }
   }
