@@ -5,6 +5,7 @@ import {withRouter} from 'react-router'
 import BossPreview from './BossPreview'
 
 import weaponSwitch from '../../utils/weaponSwitch'
+import {addWeapon} from '../../actions/weapons'
 import {earnGold} from '../../actions/gold'
 import {completeDungeon} from '../../actions/dungeons'
 
@@ -25,10 +26,15 @@ class DungeonRewards extends Component {
   }
   solveWeaponReward() {
     const {currentLocation} = this.props
-    const weapons = currentLocation.weaponRewards
+    const weapons = JSON.parse(currentLocation.rewards)
+    const roll = Math.random()
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
-    let reward = weapons[Math.floor(Math.random() * weapons.length)]
-    reward = weaponSwitch[reward](boss.level)
+    let reward = null
+    weapons.forEach(weapon => {
+      console.log({weapons, roll});
+      if (weapon.min <= roll && weapon.max > roll) reward = weaponSwitch[weapon.name](currentLocation.level)
+    })
+    console.log({reward});
     return reward
   }
   weaponInfo(weapon) {
@@ -75,8 +81,11 @@ class DungeonRewards extends Component {
   }
   showRewards() {
     const {currentLocation} = this.props
+    const {goldReward, weaponReward} = this.state
     this.props.dispatch({type: 'DUNGEON_CHEST_OPENED'})
     this.props.dispatch(completeDungeon(currentLocation))
+    this.props.dispatch(earnGold(goldReward))
+    if (weaponReward) this.props.dispatch(addWeapon(weaponReward))
     this.setState({showRewards: true})
   }
   render() {

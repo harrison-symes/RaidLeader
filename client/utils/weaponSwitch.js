@@ -7,13 +7,13 @@ module.exports = {
     hp: ((level * 2) + 1) * 50,
     power: 2 * level,
     mana: 50 + (50 * level),
-    manaRegen: 1
+    manaRegen: 1,
     class: 'Player',
     description: 'It comes with a note attached; "Hitting your Recruits with this will NOT heal them!"',
     bonusEffect: null
   }),
   ['Cursed Staff of the Wilds']: (level, id) => ({
-    name: 'Cursed Staff of the WIlds',
+    name: 'Cursed Staff of the Wilds',
     type: 'Weapon',
     level,
     id,
@@ -22,9 +22,9 @@ module.exports = {
     mana: 120,
     manaRegen: 1,
     class: 'Player',
-    description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.'
+    description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.',
     bonusEffect: null
-  })
+  }),
   ['Cleansed Staff of the Wilds']: (level, id) => ({
     name: 'Staff of the WIlds',
     type: 'Weapon',
@@ -35,7 +35,7 @@ module.exports = {
     mana: 60,
     manaRegen: 1.5,
     class: 'Player',
-    description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.'
+    description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.',
     bonusEffect: null
   }),
   ['Dragon Scale']: (level, id) => ({
