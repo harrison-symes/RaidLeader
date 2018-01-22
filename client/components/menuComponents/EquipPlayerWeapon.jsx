@@ -26,6 +26,9 @@ const getListStyle = (isDraggingOver, isFull) => ({
 class PlayerWeapon extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      weapon: null
+    }
     this.onDragEnd = this.onDragEnd.bind(this);
   }
   moveToBar(weapon) {
@@ -38,12 +41,42 @@ class PlayerWeapon extends React.Component {
     else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
     else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon: null})
   }
+  viewWeapon(weapon) {
+    this.setState({weapon})
+  }
+  WeaponModal() {
+    const {weapon} = this.state
+    return <div className="modal is-active">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title is-1">{weapon.name}</p>
+          <button onClick={() => this.viewWeapon(null)} className="delete" aria-label="close"></button>
+        </header>
+        <section className="modal-card-body">
+          <p className="title is-1">{weapon.name} (Level {weapon.level})</p>
+          <hr />
+          <p className="subtitle is-5">{weapon.description}</p>
+          <div className="columns is-multiline">
+            <div className="column subtitle is-4">Health: {weapon.hp}</div>
+            <div className="column subtitle is-4">Power: {weapon.power}</div>
+            <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} p/s)</div>
+          </div>
+          {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={() => this.viewWeapon(null)} className="button is-large is-info is-outlined is-fullwidth">Close</button>
+        </footer>
+      </div>
+    </div>
+  }
   render() {
     const {weapons, playerWeapon, currentLocation} = this.props
     const available = weapons.filter(weapon => weapon.class == "Player" && (!playerWeapon || weapon.id != playerWeapon.id))
     const isFull = !!playerWeapon
-    console.log({weapons, available, playerWeapon});
+    console.log(this.state);
     return <div className="has-text-centered">
+      {this.state.weapon && this.WeaponModal()}
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
           <Droppable droppableId="weapons">
@@ -59,7 +92,7 @@ class PlayerWeapon extends React.Component {
                   <Draggable key={weapon.id} draggableId={weapon.id}>
                     {(provided, snapshot) => (
                       <div>
-                        <div className="box has-text-centered"
+                        <table className="table has-text-centered"
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -68,7 +101,8 @@ class PlayerWeapon extends React.Component {
                           {...provided.dragHandleProps}
                           >
                           <p className="title is-4">{weapon.name}</p>
-                        </div>
+                          <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
+                        </table>
                         {provided.placeholder}
                       </div>
                     )}
@@ -85,13 +119,13 @@ class PlayerWeapon extends React.Component {
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
-                <h1 className="subtitle is-2">Your Weapon ({playerWeapon ? '1' : '0'}/1)</h1>
+                <h1 className="subtitle is-3">Equipped ({playerWeapon ? '1' : '0'}/1)</h1>
                 <hr />
                   {playerWeapon && <Draggable key={playerWeapon.id} draggableId={playerWeapon.id}>
                     {(provided, snapshot) => (
                       <div>
-                        <div
-                          className="box has-text-centered"
+                        <table
+                          className="table has-text-centered"
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -100,7 +134,8 @@ class PlayerWeapon extends React.Component {
                           {...provided.dragHandleProps}
                           >
                           <p className="title is-4">{playerWeapon.name}</p>
-                        </div>
+                          <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
+                        </table>
                         {provided.placeholder}
                       </div>
                     )}
