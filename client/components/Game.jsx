@@ -64,7 +64,7 @@ class Game extends Component {
   render () {
     const {started, boss, player, party} = this.props
     const {loseModal, winModal} = this.state
-    if (player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered">
+    if (!player || player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered">
       <div className="hero">
         <h1 className="title is-1">Game not ready</h1><br />
         <Link to="/" className="button is-large is-success">Return to Menu</Link>

@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import Welcome from './Welcome'
 
 import Spellbook from './menuComponents/Spellbook'
+import EquipPlayerWeapon from './menuComponents/EquipPlayerWeapon'
 import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 import Dungeons from './menuComponents/Dungeons'
@@ -38,7 +39,7 @@ class Menu extends React.Component {
     this.props.dispatch(getWeapons())
   }
   loadGame() {
-    let {playerParty, playerSpells, weapons} = this.props
+    let {playerParty, playerSpells, weapons, playerWeapon, auth} = this.props
     playerParty = playerParty.map(recruit => {
       if (recruit.weapon_id) {
         let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
@@ -54,11 +55,11 @@ class Menu extends React.Component {
       }
       return recruit
     })
-    this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells})
+    this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells, playerWeapon, name: auth.user.user_name})
   }
   renderStartGameButton () {
-    const {playerParty, playerSpells, boss} = this.props
-    if (!playerParty.length == 0 && !playerSpells.length == 0 && boss) return <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
+    const {playerParty, playerSpells, boss, playerWeapon} = this.props
+    if (!playerParty.length == 0 && !playerSpells.length == 0 && boss && playerWeapon) return <Link className="button is-large is-info" onClick={this.loadGame} to="/game">Start Game</Link>
     else return <Link disabled className="button is-large is-danger" to="/game">Start Game</Link>
   }
   renderMenuLink (path, display) {
@@ -106,6 +107,7 @@ class Menu extends React.Component {
           </div>
           <p className="title is-3">Gold: {gold}</p>
           <div className="level-right">
+            {this.renderMenuLink('/playerweapon', 'Player')}
             {this.renderMenuLink('/party', 'Assemble Party')}
             {this.renderMenuLink('/spellbook', 'Spell Book')}
             {this.renderStartGameButton()}
@@ -156,6 +158,7 @@ class Menu extends React.Component {
                 <Route path="/spellbook" component={Spellbook} />
                 <Route path="/party" component={Party} />
                 <Route path="/inventory" component={Inventory} />
+                <Route path="/playerWeapon" component={EquipPlayerWeapon} />
               </div>}
             </div>
           </Router>
@@ -165,7 +168,7 @@ class Menu extends React.Component {
   }
 }
 
-const mapStateToProps = ({showWelcome, playerParty, playerSpells, location, boss, gold, weapons, recruits}) => {
+const mapStateToProps = ({auth, showWelcome, playerParty, playerSpells, location, boss, gold, weapons, recruits, playerWeapon}) => {
   return {
     showWelcome,
     playerParty,
@@ -174,7 +177,9 @@ const mapStateToProps = ({showWelcome, playerParty, playerSpells, location, boss
     boss,
     gold,
     weapons,
-    recruits
+    recruits,
+    playerWeapon,
+    auth
   }
 }
 

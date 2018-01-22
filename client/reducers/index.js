@@ -16,6 +16,7 @@ import location from './location'
 import gold from './gold'
 import weapons from './weapons'
 import showWelcome from './showWelcome'
+import playerWeapon from './playerWeapon'
 
 export default combineReducers({
   auth,
@@ -33,5 +34,6 @@ export default combineReducers({
   dungeons,
   location,
   gold,
-  weapons
+  weapons,
+  playerWeapon
 })

@@ -54,9 +54,10 @@ class BossRewardsModal extends Component {
         <div className="columns is-multiline">
           <div className="column subtitle is-4">Health: {weapon.hp}</div>
           <div className="column subtitle is-4">Power: {weapon.power}</div>
-          <div className="column subtitle is-4">Speed: {weapon.speed}</div>
-          {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+          {weapon.class != 'Player' && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
+          {weapon.class == 'Player' && <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} per second)</div>}
         </div>
+        {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
       </div>
     </div>
   }

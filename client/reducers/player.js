@@ -15,7 +15,25 @@ const testPlayer = {
   spells: []
 }
 
-export default function player (state = testPlayer, action) {
+const createPlayer = ({hp, mana, manaRegen, power}, name) => (
+  {
+    id: 0,
+    name,
+    initHp: hp,
+    hp,
+    initPower: power,
+    power,
+    maxMana: mana,
+    mana,
+    manaRegen,
+    isCasting: false,
+    isAlive: true,
+    spells: []
+  }
+)
+
+
+export default function player (state = null, action) {
   let newState = {...state}
   switch (action.type) {
     case 'RETURN_TO_MENU':
@@ -33,6 +51,8 @@ export default function player (state = testPlayer, action) {
       newState.mana = newState.maxMana
       return newState
     case 'LOAD_GAME':
+    console.log({action});
+      newState = createPlayer(action.playerWeapon, action.name)
       newState.spells = [...action.playerSpells]
       return newState
     case 'TICK_ONE_SECOND':
