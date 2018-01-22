@@ -20,4 +20,9 @@ router.put('/weapons', decode, (req, res) => {
     .then(() => res.sendStatus(200))
 })
 
+router.put('/level', decode, (req, res) => {
+  recruitsDb.levelUpRecruit(req.body.id, req.body.level)
+    .then(recruit => res.json(recruit))
+})
+
 module.exports = router

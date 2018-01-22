@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import createClass from '../../utils/createClass'
 import {earnGold} from '../../actions/gold'
+import {levelUpRecruit} from '../../actions/recruits'
 
 class TrainingCentre extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class TrainingCentre extends Component {
   }
   upgradeRecruit(recruit) {
     this.props.dispatch(earnGold((recruit.level) * 500))
+    this.props.dispatch(levelUpRecruit(recruit.level + 1, recruit.id))
   }
   renderLevelOption(requires, level) {
     const {dungeons} = this.props

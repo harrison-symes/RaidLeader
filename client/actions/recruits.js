@@ -30,3 +30,18 @@ export function addRecruit (recruit) {
       .then(res => dispatch(addRecruitAction(res.body)))
   }
 }
+
+
+export function updateRecruitAction (recruit) {
+  return {
+    type: 'UPDATE_RECRUIT',
+    recruit
+  }
+}
+
+export function levelUpRecruit (level, id) {
+  return dispatch => {
+    request('put', 'recruits/level', {level, id})
+      .then(res => dispatch(updateRecruitAction(res.body)))
+  }
+}
