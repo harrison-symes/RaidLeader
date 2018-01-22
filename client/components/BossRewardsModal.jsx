@@ -26,7 +26,6 @@ class BossRewardsModal extends Component {
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward = weapons[Math.floor(Math.random() * weapons.length)]
     reward = weaponSwitch[reward](boss.level)
-    console.log({reward, weapons});
     return reward
   }
   componentDidMount() {

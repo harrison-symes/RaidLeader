@@ -14,7 +14,6 @@ class RecruitmentCentre extends Component {
       offeredSpells: JSON.parse(get('offeredSpells')) || [],
       selectedSpell: null
     }
-    console.log(this.state);
     this.showOptions = this.showOptions.bind(this)
   }
   solveOptions() {
@@ -32,7 +31,7 @@ class RecruitmentCentre extends Component {
     this.setState({selectedSpell})
   }
   showOptions() {
-    this.props.dispatch(earnGold(-1 * this.props.spellBook.length * 300))
+    this.props.dispatch(earnGold(-1 * this.props.spellBook.length * 200))
     const offeredSpells = this.solveOptions()
     set('offeredSpells', JSON.stringify(offeredSpells))
     this.setState({showChoices: true, offeredSpells})
@@ -45,7 +44,7 @@ class RecruitmentCentre extends Component {
   render() {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell} = this.state
-    const spellCost = spellBook.length * 300
+    const spellCost = spellBook.length * 200
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">

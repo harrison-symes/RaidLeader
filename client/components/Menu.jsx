@@ -96,7 +96,6 @@ class Menu extends React.Component {
   render() {
     const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome} = this.props
     const {townTravelModal} = this.state
-    console.log({boss});
     if (showWelcome) return <Welcome />
     return <div className="section has-text-centered">
       {townTravelModal && this.renderTownConfirmModal()}

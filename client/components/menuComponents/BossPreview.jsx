@@ -17,7 +17,6 @@ class BossPreview extends React.Component {
     const {boss} = this.state
     const {bosses} = this.props.currentLocation
     const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
-    console.log({defeatedBossCount, boss});
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     if (boss == this.props.targetBoss) colour='is-primary'
     const renderStat = (text) => <li className="column is-6 has-text-centered"><p className="subtitle is-4">{text}</p></li>
@@ -79,14 +78,13 @@ class BossPreview extends React.Component {
     this.setState({showModal, boss})
   }
   componentDidMount() {
-    document.getElementById('bossModalID').addEventListener('keyPress', (e) => console.log("key pressed", e))
+    // document.getElementById('bossModalID').addEventListener('keyPress', (e) => console.log("key pressed", e))
   }
   render() {
     const {bosses} = this.props.currentLocation
     const {showModal} = this.state
     const {boss} = this.props
     const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
-    console.log({defeatedBossCount, boss});
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     return <div>
       {showModal && this.renderBossModal()}

@@ -11,7 +11,6 @@ class PlaguePiltherer extends BossFrame {
   solveSpell(spells, boss) {
     let castSpell = spells.find(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
-        console.log({boss})
         switch (spell.name) {
           case 'Ingest Plague': return boss.power == 0
           case 'Spread Plague': return boss.power == 5 && this.props.party.filter(member => member.isAlive).length > 0

@@ -17,7 +17,6 @@ class PlayerFrame extends Component {
     const {player, friendlyTarget} = this.props
     const {initHp, hp, maxMana, mana, spells, power, name} = player
     const playerTargeted = friendlyTarget && friendlyTarget.id == player.id
-    console.log({friendlyTarget});
     return <div className="section PlayerFrame">
       <div className="columns">
         <div

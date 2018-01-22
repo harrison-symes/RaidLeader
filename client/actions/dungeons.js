@@ -21,7 +21,6 @@ export function getDungeons () {
 }
 
 export function completeDungeonAction(dungeon) {
-  console.log({dungeon});
   return {
     type: "DUNGEON_COMPLETE",
     dungeon

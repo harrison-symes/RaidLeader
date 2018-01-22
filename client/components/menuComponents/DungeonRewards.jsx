@@ -59,10 +59,8 @@ class DungeonRewards extends Component {
   }
   render() {
     const {currentLocation} = this.props
-    console.log({currentLocation});
     const bossesDefeated = currentLocation.bosses.filter(boss => boss.isDefeated)
     const {showRewards} = this.state
-    console.log({bossesDefeated, currentLocation});
     return <div className="has-text-centered">
       <p className="title is-3">Dungeon Progress:</p>
       <hr />

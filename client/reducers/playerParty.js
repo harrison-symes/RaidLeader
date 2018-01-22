@@ -9,7 +9,6 @@ export default function (state = [], action) {
       return newState
     case 'RETURN_TO_MENU':
       newState = newState.map((member) => createClass(member))
-      console.log({newState});
       return newState
     case 'TRAVEL_TO_TOWN':
       return []
