@@ -34,16 +34,15 @@ class PlayerWeapon extends React.Component {
   onDragEnd(result) {
     const {source, destination} = result
     const weapon = this.props.weapons.find(weapon => weapon.id == result.draggableId)
-    // if (!source || !destination) return
-    // else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar' && this.props.playerSpells.length >= this.props.currentLocation.max_spells) this.props.dispatch({type: 'REPLACE_SPELL_IN_BAR', idx: destination.index, spell})
-    // else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar') this.props.dispatch({type: 'ADD_SPELL_TO_BAR', spell, idx: destination.index})
-    // else if (source.droppableId == 'spellBar' && destination.droppableId == 'spellBook') this.props.dispatch({type: 'REMOVE_SPELL_FROM_BAR', spell})
-    // else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
+    if (!source || !destination) return
+    else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
+    else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon: null})
   }
   render() {
     const {weapons, playerWeapon, currentLocation} = this.props
-    const available = weapons.filter(weapon => weapon.heroClass == "Player")
+    const available = weapons.filter(weapon => weapon.class == "Player" && (!playerWeapon || weapon.id != playerWeapon.id))
     const isFull = !!playerWeapon
+    console.log({weapons, available, playerWeapon});
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns">
@@ -60,7 +59,7 @@ class PlayerWeapon extends React.Component {
                   <Draggable key={weapon.id} draggableId={weapon.id}>
                     {(provided, snapshot) => (
                       <div>
-                        <table className="table has-text-centered"
+                        <div className="box has-text-centered"
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -68,9 +67,8 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <p>{weapon.name}</p>
-                          {/* <SpellFrame key={`weapon-${weapon.id}`} weapon={weapon} /> */}
-                        </table>
+                          <p className="title is-4">{weapon.name}</p>
+                        </div>
                         {provided.placeholder}
                       </div>
                     )}
@@ -80,7 +78,7 @@ class PlayerWeapon extends React.Component {
               </div>
               )}
           </Droppable>
-          <Droppable droppableId="weaponBar">
+          <Droppable droppableId="playerWeapon">
             {(provided, snapshot) => (
               <div
                 className="SpellBar"
@@ -92,8 +90,8 @@ class PlayerWeapon extends React.Component {
                   {playerWeapon && <Draggable key={playerWeapon.id} draggableId={playerWeapon.id}>
                     {(provided, snapshot) => (
                       <div>
-                        <table
-                          className="table has-text-centered"
+                        <div
+                          className="box has-text-centered"
                           ref={provided.innerRef}
                           style={getItemStyle(
                             provided.draggableStyle,
@@ -101,9 +99,8 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          {/* <SpellFrame key={`weapon-${weapon.id}`} weapon={weapon} /> */}
-                          <p>{PlayerWeapon.name}</p>
-                        </table>
+                          <p className="title is-4">{playerWeapon.name}</p>
+                        </div>
                         {provided.placeholder}
                       </div>
                     )}
