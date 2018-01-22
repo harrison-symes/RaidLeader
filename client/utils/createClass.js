@@ -20,7 +20,7 @@ const createPaladin = (name, level, id, weapon_id) => createMember(name, level, 
 
 const createPriest = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Priest', (level + 1) * 3, level, 5)
 
-const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 5, level, 1)
+const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 5, level, 0)
 
 const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 3, level, 3 + level)
 

@@ -17,6 +17,7 @@ export default function boss (state = null, action) {
       return newState
     case 'BOSS_GAIN_POWER':
       newState.power+=action.amount
+      if (newState.power < 0) newState.power = 0 
       return newState
     case 'HEAL_BOSS':
       newState.hp += action.power

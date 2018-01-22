@@ -1,12 +1,12 @@
 export default {
   name: 'Decaying Deer',
-  level: 1,
+  level: 2,
   initHp: 100,
-  hp: 40,
+  hp: 70,
   initPower: 5,
   power: 5,
-  initArmor: 50,
-  armor: 30,
+  initArmor: 100,
+  armor: 80,
   mana: 5,
   maxMana: 5,
   manaRegen: 1,
@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "You find the corpse of a deer. So sad... and then it starts moving...",
   weaponRewards: [],
-  goldReward: 100,
+  goldReward: 300,
   weaponChance: 0.5,
   progress_required: 0,
   spells: [
@@ -28,9 +28,9 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       armor: 10,
-      health: 10,
+      health: 20,
       onCooldown: false,
-      description: 'Gain 10 Armor and 10 Health. (Only used when below 90 Health)'
+      description: 'Gain 10 Armor and 20 Health. (Only used when below 90 Health)'
     },
     {
       name: 'Feed',

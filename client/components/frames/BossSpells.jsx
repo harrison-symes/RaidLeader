@@ -25,10 +25,10 @@ class BossSpell extends Component {
     this.tickCD = this.tickCD.bind(this)
   }
   castSwitch() {
-    const {spell, dispatch, boss} = this.props
+    const {spell, dispatch, boss, party} = this.props
     const power = boss.power * spell.powerRatio
     console.log({target}, spell.name);
-    const target = boss.bossTarget
+    let target = boss.bossTarget
     switch(spell.name) {
       case 'Roar':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
@@ -62,6 +62,23 @@ class BossSpell extends Component {
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
       case 'Poison':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
+      case 'Overwhelm':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Lunge':
+        let aliveTargets = party.filter(member => member.isAlive)
+        if (aliveTargets.length) {
+          target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(power)})
+          return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        }
+      case 'Ravage':
+        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+      case 'Ingest Plague':
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+      case 'Spread Plague':
+        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(power)})
       default: return
     }
   }

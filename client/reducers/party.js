@@ -97,6 +97,7 @@ export default function party (state = [], action) {
       if (!target) return newState
       target.hp = 0
       target.isAlive = false
+      target.effects = []
       return newState
     default: return state
   }
