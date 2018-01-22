@@ -36,8 +36,8 @@ class Welcome extends Component {
     return <div className="section has-text-centered">
       <p className="title is-1">Great News!</p>
       <p className="content is-large">"{paladinName}" the Paladin wants to join your party!</p>
-      <p className="content is-large">He will help you on your journey, but first you must help him SLAY A DRAGON!</p>
-      <p className="content is-large"></p>
+      <p className="content is-large">He will help you on your journey, but first you must help him!</p>
+      <p className="content is-large">"{paladinName}" has found a injured Dragon, and if you can sate the beast, there will be a great reward!</p>
       <button className="button is-large is-success" onClick={this.nextStage}>Great!</button>
     </div>
   }
@@ -45,12 +45,21 @@ class Welcome extends Component {
     const {paladinName} = this.state
     return <div className="section has-text-centered">
       <p className="title is-1">{paladinName} the Paladin joins your party!</p>
-      <p className="content is-large">"{paladinName}" is going to help you defeat the Dragon, but they are going to take quite a beating.</p>
+      <p className="content is-large">Having party members is great, but you can't just sit back and let them do all the work</p>
+      <p className="content is-large">So you're going to need a weapon yourself. A weapon fit for a Magi like yourself</p>
+      <button className="button is-large is-success" onClick={this.nextStage}>Gimme!</button>
+    </div>
+  }
+  stageFour() {
+    const {paladinName} = this.state
+    return <div className="section has-text-centered">
+      <p className="title is-1">Received Weapon: "Training Staff"</p>
+      <p className="content is-large">Now, "{paladinName}" is going to help you defeat the Dragon, but they are going to take quite a beating.</p>
       <p className="content is-large">So I'm going to teach you a spell, "Lesser Heal" to help keep them alive</p>
       <button className="button is-large is-success" onClick={this.nextStage}>Cool! Thanks!</button>
     </div>
   }
-  stageFour() {
+  stageFive() {
     return <div className="section has-text-centered">
       <p className="title is-1">You learned the spell "Lesser Heal"!</p>
       <p className="content is-large">...And that's all you need to get started!</p>
@@ -67,6 +76,7 @@ class Welcome extends Component {
       case 2: return this.stageTwo()
       case 3: return this.stageThree()
       case 4: return this.stageFour()
+      case 5: return this.stageFive()
     }
   }
   render() {

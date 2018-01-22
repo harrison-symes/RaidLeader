@@ -32,7 +32,12 @@ router.post('/getStarted', decode, (req, res) => {
   addRecruit(req.user.user_id, req.body.name, 1, 'Paladin')
     .then(recruit => {
       addSpell(req.user.user_id, 'Lesser Heal')
-        .then(spell => res.json({recruit, spell}))
+        .then(spell => {
+          playerDb.addWeapon(req.user.user_id, 'Training Staff', 1)
+            .then(weapon => {
+              res.json({recruit, spell, weapon})
+            })
+        })
     })
 })
 
