@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import Welcome from './Welcome'
 
 import Spellbook from './menuComponents/Spellbook'
+import EquipPlayerWeapon from './menuComponents/EquipPlayerWeapon'
 import Party from './menuComponents/Party'
 import Inventory from './menuComponents/Inventory'
 import Dungeons from './menuComponents/Dungeons'
@@ -106,6 +107,7 @@ class Menu extends React.Component {
           </div>
           <p className="title is-3">Gold: {gold}</p>
           <div className="level-right">
+            {this.renderMenuLink('/playerweapon', 'Player')}
             {this.renderMenuLink('/party', 'Assemble Party')}
             {this.renderMenuLink('/spellbook', 'Spell Book')}
             {this.renderStartGameButton()}
@@ -156,6 +158,7 @@ class Menu extends React.Component {
                 <Route path="/spellbook" component={Spellbook} />
                 <Route path="/party" component={Party} />
                 <Route path="/inventory" component={Inventory} />
+                <Route path="/playerWeapon" component={EquipPlayerWeapon} />
               </div>}
             </div>
           </Router>
