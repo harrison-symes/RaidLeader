@@ -11,10 +11,9 @@ class EffectTag extends Component {
     }
   }
   tickSecond() {
-    const {effect, target} = this.props
+    const {party, effect, target} = this.props
     const currentDuration = this.state.currentDuration + 1
-    console.log({effect});
-    if (!effect) return
+    if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
     if (currentDuration % effect.tickRate === 0) {
       this.props.dispatch({type: effect.type, target, power: effect.power})
     }
@@ -26,7 +25,8 @@ class EffectTag extends Component {
     }
   }
   startSecond() {
-    if (this.props.effect) setTimeout(() => this.tickSecond(), 1000)
+    const {party, target, effect} = this.props
+    if (party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) setTimeout(() => this.tickSecond(), 1000)
   }
   startEffect() {
     this.startSecond()
@@ -54,4 +54,6 @@ class EffectTag extends Component {
   }
 }
 
-export default connect()(EffectTag)
+const mapStateToProps = ({party}) => ({party})
+
+export default connect(mapStateToProps)(EffectTag)
