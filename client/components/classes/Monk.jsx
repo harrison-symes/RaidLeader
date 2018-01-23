@@ -9,7 +9,7 @@ class Monk extends PartyMemberFrame {
   finishCast() {
     if (this.props.started && this.props.member.isAlive) {
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
-      this.props.dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.member.power})
+      this.props.dispatch({type: 'LEVEL_HEAL_ALL_FRIENDLY'})
       this.startCast()
     }
   }

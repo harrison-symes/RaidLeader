@@ -19,7 +19,7 @@ export function classTraits(heroClass) {
     case 'Warrior': return "The Warrior's attacks deal Critical Damage while the Boss is below (25%) HP. (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
     case 'Priest': return "The Priest heals a Damaged Party Member instead of Attacking the Boss. (If no Party Member is Damaged, the Priest will attack the Boss instead)"
     case 'Rogue': return "All attacks have a (20%) chance to deal Critical Damage (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
-    case 'Monk': return "Whenever the Monk attacks, all Party Members are healed for (100%) of the damage Dealt"
+    case 'Monk': return "Whenever the Monk attacks, all Party Members are healed (Healing = Party Member's own Level)"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take Damage (Damage = Party Member's own Level)"
     default: return null
   }
