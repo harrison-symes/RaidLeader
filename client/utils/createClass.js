@@ -1,4 +1,4 @@
-const createMember = (name, level, id, weapon_id, heroClass, hp, power, speed) => (
+  const createMember = (name, level, id, weapon_id, heroClass, hp, power, speed) => (
   {
     name,
     level,
