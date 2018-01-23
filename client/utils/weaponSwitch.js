@@ -200,7 +200,7 @@ module.exports = {
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
-  ['Plagued Libram']: (level, id) => ({
+  ['Glowing Libram']: (level, id) => ({
     name: 'Plagued Libram',
     type: 'Weapon',
     level,
@@ -210,8 +210,8 @@ module.exports = {
     speed: 3,
     class: 'Priest',
     description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
-    bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    bonusEffect: 'curePoison',
+    effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`
   }),
   ['Plagued Staff of the Swamp']: (level, id) => ({
     name: 'Plagued Staff of the Swamp',
