@@ -26,7 +26,7 @@ module.exports = {
     bonusEffect: null
   }),
   ['Cleansed Staff of the Wilds']: (level, id) => ({
-    name: 'Cleansed Staff of the WIlds',
+    name: 'Cleansed Staff of the Wilds',
     type: 'Weapon',
     level,
     id,

@@ -14,7 +14,7 @@ class DungeonRewards extends Component {
     super(props)
     this.state = {
       showRewards: false,
-      goldReward: props.currentLocation.goldReward,
+      goldReward: props.currentLocation.gold_reward,
       weaponReward: this.solveWeaponReward()
     }
     this.showRewards = this.showRewards.bind(this)

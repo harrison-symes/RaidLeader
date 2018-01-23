@@ -14,9 +14,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "This Turtle has a strong shell. Really strong. Like, REALLY strong",
-  goldReward: 200,
+  goldReward: 300,
   weaponRewards: ['Ancient Pearls', 'Turtle Shell'],
-  weaponChance: 0.5,
+  weaponChance: 1,
   progress_required: 1,
   spells: [
     {
