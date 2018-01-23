@@ -32,8 +32,8 @@ module.exports = {
     id,
     hp: ((level * 2) + 1) * 50,
     power: 3 * level,
-    mana: 60,
-    manaRegen: 1.5,
+    mana: 50,
+    manaRegen: 2,
     class: 'Player',
     description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.',
     bonusEffect: null
@@ -219,13 +219,13 @@ module.exports = {
     level,
     id,
     hp: (level) * 50,
-    power: 4 * level,
-    mana: 50 + (25 * level),
-    manaRegen: 1,
+    power: 3 * level,
+    mana: (100 * level),
+    manaRegen: 0,
     class: 'Player',
     description: 'The staff resonates great power, but something about it feels so wrong.',
     bonusEffect: 'poison',
-    effectDescription: `Your targetted heals Poison the target for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `Your targeted heals Poison the target for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({
     name: 'Cleansed Staff of the Woods',
@@ -233,12 +233,12 @@ module.exports = {
     level,
     id,
     hp: (level + 1) * 50,
-    power: 3 * level,
+    power: 2 * level,
     mana: 20 + (30 * level),
     manaRegen: 2,
     class: 'Player',
     description: 'Made from a powerful Oak Tree. A small artifact of purity from the Woods that used to be...',
     bonusEffect: 'curePoison',
-    effectDescription: "Your targetted heals remove any Poison effect from the target"
+    effectDescription: "Your targeted heals remove any Poison effect from the target"
   })
 }

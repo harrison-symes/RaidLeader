@@ -36,12 +36,10 @@ export default function player (state = null, action) {
       newState.mana = newState.maxMana
       return newState
     case 'LOAD_GAME':
-    console.log({action});
       newState = createPlayer(action.playerWeapon, action.name)
       newState.spells = [...action.playerSpells]
       return newState
     case 'TICK_ONE_SECOND':
-    
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
       return newState

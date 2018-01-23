@@ -8,7 +8,6 @@ import PlayerFrame from './frames/PlayerFrame'
 import PartyFrame from './frames/PartyFrame'
 import BossRewardsModal from './BossRewardsModal'
 
-
 class Game extends Component {
   constructor(props) {
     super(props)
