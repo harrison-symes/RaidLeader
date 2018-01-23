@@ -13,24 +13,31 @@ class EffectTag extends Component {
   tickSecond() {
     const {effect, target} = this.props
     const currentDuration = this.state.currentDuration + 1
+    console.log({effect});
+    if (!effect) return
     if (currentDuration % effect.tickRate === 0) {
       this.props.dispatch({type: effect.type, target, power: effect.power})
     }
     if (currentDuration >= this.state.maxDuration) {
-      clearInterval(this.state.interval)
       this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
-    } else this.setState({currentDuration})
+    } else {
+      this.startSecond()
+      this.setState({currentDuration})
+    }
+  }
+  startSecond() {
+    if (this.props.effect) setTimeout(() => this.tickSecond(), 1000)
   }
   startEffect() {
-    if (this.state.interval) clearInterval(this.state.interval)
-    let interval = setInterval(() => this.tickSecond(), 1000)
-    this.setState({currentDuration: 0, interval, ticks: 0})
+    this.startSecond()
+    this.setState({currentDuration: 0, ticks: 0})
   }
   componentDidMount() {
     this.startEffect()
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.effect != nextProps.effect) {
+    console.log("effect", nextProps.effect);
+    if (this.props.effect != nextProps.effect && nextProps.effect) {
       let {maxDuration, currentDuration} = this.state
       maxDuration+= nextProps.effect.duration
       if (maxDuration > nextProps.effect.duration * 1.5) maxDuration = Math.floor(nextProps.effect.duration * 1.5)

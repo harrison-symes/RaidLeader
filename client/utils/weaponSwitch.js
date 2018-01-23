@@ -133,7 +133,7 @@ module.exports = {
     class: 'Paladin',
     description: 'A lost shield from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -146,7 +146,7 @@ module.exports = {
     class: 'Warrior',
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Blade',
@@ -159,7 +159,7 @@ module.exports = {
     class: 'Rogue',
     description: 'A lost pair of Daggers from a fallen adventurer. "Joe Van Boe" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Scythe']: (level, id) => ({
     name: 'Plagued Scythe',
@@ -172,7 +172,7 @@ module.exports = {
     class: 'Warlock',
     description: 'A lost weapon from a fallen adventurer. "A A. Ron" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Stave']: (level, id) => ({
     name: 'Plagued Stave',
@@ -185,7 +185,7 @@ module.exports = {
     class: 'Monk',
     description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Wand']: (level, id) => ({
     name: 'Plagued Wand',
@@ -198,7 +198,7 @@ module.exports = {
     class: 'Mage',
     description: 'A lost weapon from a fallen adventurer. "Jazz Man" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Libram']: (level, id) => ({
     name: 'Plagued Libram',
@@ -211,7 +211,7 @@ module.exports = {
     class: 'Priest',
     description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Plagued Staff of the Swamp']: (level, id) => ({
     name: 'Plagued Staff of the Swamp',
@@ -224,7 +224,7 @@ module.exports = {
     manaRegen: 0,
     class: 'Player',
     description: 'The staff resonates great power, but something about it feels so wrong.',
-    bonusEffect: 'poison',
+    bonusEffect: 'Poison',
     effectDescription: `Your targeted heals Poison the target for ${level * 2} damage every 5 seconds for 15 seconds`
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({

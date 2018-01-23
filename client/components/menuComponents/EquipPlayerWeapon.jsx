@@ -100,7 +100,7 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <p className="title is-4">{weapon.name}</p>
+                          <p className="title is-4">{weapon.name} ({weapon.level})</p>
                           <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
                         </table>
                         {provided.placeholder}
@@ -133,7 +133,7 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <p className="title is-4">{playerWeapon.name}</p>
+                          <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
                           <button onClick={() => this.viewWeapon(playerWeapon)} className="button">Show More</button>
                         </table>
                         {provided.placeholder}
