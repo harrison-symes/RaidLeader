@@ -14,9 +14,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "As you explore deeper into the Swamp, you see less life around you, and a soft buzzing sound starts getting louder... and louder...",
-  weaponRewards: [],
+  weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Sword', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp'],
   goldReward: 500,
-  weaponChance: 0.5,
+  weaponChance: 1,
   progress_required: 0,
   spells: [
     {

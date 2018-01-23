@@ -14,9 +14,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "As you investigate the off coloured swamp water at the entrance of the swamp, the water starts investigating you.",
-  weaponRewards: [],
+  weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Sword', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp'],
   goldReward: 400,
-  weaponChance: 0.5,
+  weaponChance: 1,
   progress_required: 0,
   spells: [
     {

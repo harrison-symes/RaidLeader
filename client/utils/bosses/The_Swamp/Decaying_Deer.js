@@ -14,9 +14,9 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "You find the corpse of a deer. So sad... and then it starts moving...",
-  weaponRewards: [],
+  weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Sword', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp'],
   goldReward: 500,
-  weaponChance: 0.5,
+  weaponChance: 1,
   progress_required: 0,
   spells: [
     {

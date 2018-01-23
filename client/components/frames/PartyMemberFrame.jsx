@@ -22,7 +22,7 @@ class MemberFrame extends Component {
     const {started, member, dispatch} = this.props
     if (isAlive && started) setTimeout(() => {
       if (isAlive && started) {
-        if (member.weapon_effect == 'selfPoison' && Math.random() < 0.5 / member.speed) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor(member.weapon_level * 2)})
+        if (member.weapon_effect == 'selfPoison' && Math.random() < 1 / member.speed) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor(member.weapon_level)})
         this.finishCast(power)
       }
     }, 10000 / speed)
