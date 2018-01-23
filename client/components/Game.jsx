@@ -26,10 +26,7 @@ class Game extends Component {
   }
   endOneSecond() {
     this.props.dispatch({type: 'TICK_ONE_SECOND'})
-    console.log("tick second");
-
     if (this.props.started) this.startOneSecond()
-
   }
   startOneSecond() {
     setTimeout(() => this.endOneSecond(), 1000)
