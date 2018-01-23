@@ -26,16 +26,18 @@ class Game extends Component {
     if (nextProps.player.spells.length == 0 || nextProps.party.length == 0 || !nextProps.boss) return this.props.location.push
   }
   endOneSecond() {
-    if (this.props.started) {
-      this.props.dispatch({type: 'TICK_ONE_SECOND'})
-      this.startOneSecond()
-    }
+    this.props.dispatch({type: 'TICK_ONE_SECOND'})
+    console.log("tick second");
+
+    if (this.props.started) this.startOneSecond()
+
   }
   startOneSecond() {
-    if (this.props.started) setTimeout(() => this.endOneSecond(), 1000)
+    setTimeout(() => this.endOneSecond(), 1000)
   }
   startGame () {
     this.props.dispatch({type: 'START'})
+    this.startOneSecond()
   }
   renderStartModal() {
     return <div className="modal is-active">

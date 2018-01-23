@@ -1,21 +1,4 @@
-const testPlayer = {
-  id: 0,
-  name: 'Harrison',
-  initHp: 100,
-  hp: 100,
-  initPower: 2,
-  power: 2,
-  initArmor: 1,
-  armor: 1,
-  maxMana: 100,
-  mana: 100,
-  manaRegen: 1,
-  isCasting: false,
-  isAlive: true,
-  spells: []
-}
-
-const createPlayer = ({hp, mana, manaRegen, power}, name) => (
+const createPlayer = ({hp, mana, manaRegen, power, bonusEffect, level}, name) => (
   {
     id: 0,
     name,
@@ -28,7 +11,9 @@ const createPlayer = ({hp, mana, manaRegen, power}, name) => (
     manaRegen,
     isCasting: false,
     isAlive: true,
-    spells: []
+    spells: [],
+    bonusEffect,
+    level
   }
 )
 
@@ -56,6 +41,7 @@ export default function player (state = null, action) {
       newState.spells = [...action.playerSpells]
       return newState
     case 'TICK_ONE_SECOND':
+    
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
       return newState
