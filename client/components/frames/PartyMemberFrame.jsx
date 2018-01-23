@@ -4,15 +4,27 @@ import {connect} from 'react-redux'
 import HealthBar from './HealthBar'
 import EffectTag from './EffectTag'
 
+const poisonConstructor = (power) => ({
+  name: 'Poison',
+  duration: 15,
+  power,
+  colour: '#BA8CE8',
+  tickRate: 5,
+  type: 'DAMAGE_FRIENDLY_TARGET'
+})
+
 class MemberFrame extends Component {
   constructor(props) {
     super(props)
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
-    const {started} = this.props
+    const {started, member, dispatch} = this.props
     if (isAlive && started) setTimeout(() => {
-      if (isAlive && started) this.finishCast(power)
+      if (isAlive && started) {
+        if (member.weapon_effect == 'selfPoison' && Math.random() < 0.5 / member.speed) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor(member.weapon_level * 2)})
+        this.finishCast(power)
+      }
     }, 10000 / speed)
   }
   componentWillReceiveProps(nextProps) {

@@ -8,7 +8,6 @@ import PlayerFrame from './frames/PlayerFrame'
 import PartyFrame from './frames/PartyFrame'
 import BossRewardsModal from './BossRewardsModal'
 
-
 class Game extends Component {
   constructor(props) {
     super(props)
@@ -23,14 +22,18 @@ class Game extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.started && nextProps.boss.hp <= 0) this.gameWon()
     else if (this.props.started && nextProps.player.hp <= 0) this.gameLost()
-    if (nextProps.player.spells.length == 0 || nextProps.party.length == 0 || !nextProps.boss) return this.props.location.push('/')
-    if (!this.props.started && nextProps.started) {
-      let interval = setInterval(() => this.props.dispatch({type: 'TICK_ONE_SECOND'}), 1000)
-      this.setState({interval})
-    }
+    if (nextProps.player.spells.length == 0 || nextProps.party.length == 0 || !nextProps.boss) return this.props.location.push
+  }
+  endOneSecond() {
+    this.props.dispatch({type: 'TICK_ONE_SECOND'})
+    if (this.props.started) this.startOneSecond()
+  }
+  startOneSecond() {
+    setTimeout(() => this.endOneSecond(), 1000)
   }
   startGame () {
     this.props.dispatch({type: 'START'})
+    this.startOneSecond()
   }
   renderStartModal() {
     return <div className="modal is-active">

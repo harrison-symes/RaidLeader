@@ -62,7 +62,7 @@ class PlayerWeapon extends React.Component {
             <div className="column subtitle is-4">Power: {weapon.power}</div>
             <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} p/s)</div>
           </div>
-          {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+          {weapon.bonusEffect && <div className="subtitle is-3">{weapon.effectDescription}</div>}
         </section>
         <footer className="modal-card-foot">
           <button onClick={() => this.viewWeapon(null)} className="button is-large is-info is-outlined is-fullwidth">Close</button>
@@ -100,7 +100,7 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <p className="title is-4">{weapon.name}</p>
+                          <p className="title is-4">{weapon.name} ({weapon.level})</p>
                           <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
                         </table>
                         {provided.placeholder}
@@ -133,8 +133,8 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <p className="title is-4">{playerWeapon.name}</p>
-                          <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
+                          <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
+                          <button onClick={() => this.viewWeapon(playerWeapon)} className="button">Show More</button>
                         </table>
                         {provided.placeholder}
                       </div>

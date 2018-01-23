@@ -3,8 +3,8 @@ export default {
   level: 2,
   initHp: 100,
   hp: 70,
-  initPower: 5,
-  power: 5,
+  initPower: 3,
+  power: 3,
   initArmor: 100,
   armor: 80,
   mana: 5,
@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "You find the corpse of a deer. So sad... and then it starts moving...",
   weaponRewards: [],
-  goldReward: 300,
+  goldReward: 500,
   weaponChance: 0.5,
   progress_required: 0,
   spells: [
@@ -23,14 +23,14 @@ export default {
       name: 'Regenerate',
       cast: 5,
       cost: 3,
-      coolDown: 5,
+      coolDown: 10,
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
       armor: 10,
-      health: 20,
+      health: 10,
       onCooldown: false,
-      description: 'Gain 10 Armor and 20 Health. (Only used when below 90 Health)'
+      description: 'Gain 10 Armor and 10 Health. (Only used when below 90 Health)'
     },
     {
       name: 'Feed',

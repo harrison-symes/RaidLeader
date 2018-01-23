@@ -50,6 +50,8 @@ class Menu extends React.Component {
         recruit.initSpeed += weapon.speed
         recruit.speed += weapon.speed
         recruit.weapon_name = weapon.name
+        recruit.weapon_level = weapon.level
+        recruit.weapon_effect = weapon.bonusEffect
       } else {
         recruit.weapon_name = null
       }

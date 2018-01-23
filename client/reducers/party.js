@@ -54,6 +54,13 @@ export default function party (state = [], action) {
         return member
       })
       return newState
+    case 'LEVEL_HEAL_ALL_FRIENDLY':
+      newState = newState.map(member => {
+        if (member.isAlive) member.hp+=member.level
+        if (member.hp > member.initHp) member.hp = member.iniHp
+        return member
+      })
+      return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
       target = newState.find(member => member == action.target)

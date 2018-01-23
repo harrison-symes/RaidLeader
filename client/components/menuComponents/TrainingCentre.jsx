@@ -24,7 +24,7 @@ class TrainingCentre extends Component {
   renderLevelOption(requires, level) {
     const {dungeons} = this.props
     return dungeons.find(dungeon => dungeon.name == requires && dungeon.isCompleted)
-      ? <option value={2}>Train Recruits to Level 2</option>
+      ? <option value={level}>Train Recruits to Level {level}</option>
       : <option value={2} disabled>Complete "{requires}" to Unlock Level {level} Training</option>
   }
   renderLevelOptions() {

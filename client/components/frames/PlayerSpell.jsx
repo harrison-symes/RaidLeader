@@ -10,6 +10,15 @@ const renewConstructor = (power) => ({
   type: 'HEAL_FRIENDLY_TARGET'
 })
 
+const poisonConstructor = (power) => ({
+  name: 'Poison',
+  duration: 15,
+  power,
+  colour: '#BA8CE8',
+  tickRate: 5,
+  type: 'DAMAGE_FRIENDLY_TARGET'
+})
+
 class PlayerSpell extends Component {
   constructor(props) {
     super(props)
@@ -25,9 +34,13 @@ class PlayerSpell extends Component {
     this.tickCD = this.tickCD.bind(this)
   }
   castSwitch(target) {
-    const {spell, dispatch} = this.props
+    const {spell, dispatch, player} = this.props
     const power = this.props.player.power * spell.powerRatio
     if (!this.props.started) return
+    console.log({player});
+    if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
+    if (player.bonusEffect == 'poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(player.level * 2)})
+
     switch(spell.name) {
       case 'Heal':
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
