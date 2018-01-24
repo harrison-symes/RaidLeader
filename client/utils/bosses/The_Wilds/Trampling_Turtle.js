@@ -1,10 +1,10 @@
 export default {
   name: 'Trampling Turtle',
   level: 1,
-  initHp: 20,
-  hp: 20,
-  initPower: 2,
-  power: 2,
+  initHp: 30,
+  hp: 30,
+  initPower: 3,
+  power: 3,
   initArmor: 30,
   armor: 30,
   mana: 0,
@@ -21,14 +21,14 @@ export default {
   spells: [
     {
       name: 'Protect',
-      cast: 5,
-      cost: 10,
-      coolDown: 0,
+      cast: 3,
+      cost: 5,
+      coolDown: 10,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 10,
+      powerRatio: 5,
       onCooldown: false,
-      description: "Gain 10 ARMOR"
+      description: "Gain 5 ARMOR"
     },
     {
       name: 'Swipe',

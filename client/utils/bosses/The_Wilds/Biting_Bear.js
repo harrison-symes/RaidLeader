@@ -1,11 +1,11 @@
 export default {
   name: 'Biting Bear',
   level: 1,
-  initHp: 40,
-  hp: 40,
-  initPower: 3,
-  power: 3,
-  initArmor: 15,
+  initHp: 50,
+  hp: 50,
+  initPower: 5,
+  power: 5,
+  initArmor: 20,
   armor: 20,
   mana: 5,
   maxMana: 5,
@@ -23,7 +23,7 @@ export default {
       name: 'Swipe',
       cast: 5,
       cost: 2,
-      coolDown: 10,
+      coolDown: 5,
       type: 'damage',
       singleTarget: false,
       powerRatio: 1,
@@ -37,9 +37,9 @@ export default {
       coolDown: 1,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 1,
+      powerRatio: 5,
       onCooldown: false,
-      description: 'Gain 1 ARMOR'
+      description: 'Gain 5 ARMOR'
     },
     {
       name: 'Bite',
