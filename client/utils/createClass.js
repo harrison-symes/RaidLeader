@@ -18,15 +18,15 @@
 
 const createPaladin = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Paladin', (level + 1) * 10, ((level + 1) * 2), 2)
 
-const createPriest = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Priest', (level + 1) * 6, level, 4 + level)
+const createPriest = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Priest', (level + 1) * 7, level, 4 + level)
 
-const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 10, (level*2) + 2, 0.5)
+const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 9, (level*2) + 2, 0.5)
 
-const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 6 , level, 4 + level)
+const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 8, level, 4 + level)
 
-const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 6, (level + 1) * 3, 2)
+const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 7, (level + 1) * 3, 2)
 
-const createWarrior = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warrior', (level + 1) * 10, level * 3, 2.5)
+const createWarrior = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warrior', (level + 1) * 9, level * 3, 2.5)
 
 const createWarlock = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warlock', (level + 1) * 10, level * 3, 3)
 
