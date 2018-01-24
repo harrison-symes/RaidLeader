@@ -3,8 +3,8 @@ export default {
   level: 2,
   initHp: 200,
   hp: 200,
-  initPower: 5,
-  power: 5,
+  initPower: 4,
+  power: 4,
   initArmor: 0,
   armor: 0,
   mana: 0,
@@ -46,13 +46,13 @@ export default {
     {
       name: 'Lunge',
       cost: 0,
-      cast: 3,
-      coolDown: 3,
+      cast: 5,
+      coolDown: 5,
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage a Random enemy party member for 100% Boss Power and add a Poison Effect to that target for 100% Boss Power as Damage every 5 seconds for 15 seconds"
+      description: "Poison a random (non poisoned) enemy recruit for 100% Boss Power as Damage every 5 seconds for 15 seconds"
     }
   ]
 }
