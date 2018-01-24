@@ -6,9 +6,13 @@ import mapStateToProps from './utils/classStateMap'
 
 class Priest extends PartyMemberFrame {
   finishCast(power, target) {
-    if (!this.props.started || !this.props.member.isAlive) return
-    if (!target) this.props.dispatch({type: 'SPECIAL_ATTACK_BOSS', power: power * 2})
-    else this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+    const {started, member, dispatch} = this.props
+    if (!started || !member.isAlive) return
+    if (!target) dispatch({type: 'SPECIAL_ATTACK_BOSS', power: power * 2})
+    else {
+      if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
+      dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+    }
     this.startCast()
   }
   startCast() {
