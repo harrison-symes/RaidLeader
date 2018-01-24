@@ -1,8 +1,8 @@
 export default {
   name: 'Lunging Locusts',
   level: 2,
-  initHp: 200,
-  hp: 200,
+  initHp: 300,
+  hp: 300,
   initPower: 4,
   power: 4,
   initArmor: 0,
@@ -33,8 +33,8 @@ export default {
     {
       name: 'Regenerate',
       cast: 5,
-      cost: 5,
-      coolDown: 10,
+      cost: 0,
+      coolDown: 5,
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
@@ -46,8 +46,8 @@ export default {
     {
       name: 'Lunge',
       cost: 0,
-      cast: 5,
-      coolDown: 5,
+      cast: 3,
+      coolDown: 3,
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,

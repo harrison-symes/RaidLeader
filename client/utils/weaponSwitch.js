@@ -44,8 +44,8 @@ module.exports = {
     level,
     id,
     hp: 3 * level,
-    power: 2 * level,
-    speed: -1,
+    power: -2 * level,
+    speed: 2,
     class: 'Paladin',
     description: 'A Scale from a Dragon, this should make a good shield',
     bonusEffect: null
