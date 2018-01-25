@@ -13,7 +13,7 @@ class BitingBear extends BossFrame {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
           case 'Protect':
-            return (boss.armor < boss.initArmor - 1)
+            return (boss.armor < boss.initArmor)
           case 'Swipe': return this.props.party.filter(member => member.isAlive).length > 0
           case 'Bite': return true
           default: return false

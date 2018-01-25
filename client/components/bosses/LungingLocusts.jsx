@@ -14,7 +14,7 @@ class LungingLocusts extends BossFrame {
         switch (spell.name) {
           case 'Overwhelm': return true
           case 'Regenerate':
-            return (boss.hp <= 190)
+            return (boss.hp <= boss.initHp - spell.health)
           case 'Lunge': return true
           default: return false
         }

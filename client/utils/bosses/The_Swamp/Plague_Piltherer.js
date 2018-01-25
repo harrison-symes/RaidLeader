@@ -1,12 +1,12 @@
 export default {
   name: 'Plague Piltherer',
   level: 2,
-  initHp: 100,
-  hp: 100,
+  initHp: 1000,
+  hp: 1000,
   initPower: 0,
   power: 0,
-  initArmor: 100,
-  armor: 100,
+  initArmor: 1000,
+  armor: 1000,
   mana: 10,
   maxMana: 10,
   manaRegen: 1,
@@ -27,9 +27,9 @@ export default {
       type: 'damage',
       singleTarget: false,
       powerRatio: 0,
-      power: 5,
+      power: 50,
       onCooldown: false,
-      description: 'Gain 5 Power. (Only usable when at 0 Power)',
+      description: 'Gain 50 Power. (Only usable when at 0 Power)',
     },
     {
       name: 'Spread Plague',
@@ -40,8 +40,8 @@ export default {
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
-      power: -1,
-      description: "Poison All enemy party members for 100% Boss Power every 3 seconds for 15 seconds. Lose 1 Power. (Only useable at 5 Power)"
+      power: -10,
+      description: "Poison All enemy party members for 100% Boss Power every 3 seconds for 15 seconds. Lose 10 Power. (Only useable at 50 Power)"
     },
     {
       name: 'Regenerate',
@@ -51,10 +51,10 @@ export default {
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
-      armor: 10,
-      health: 10,
+      armor: 100,
+      health: 100,
       onCooldown: false,
-      description: 'Gain 10 ARMOR and 10 Health'
+      description: 'Gain 100 ARMOR and 100 Health'
     },
     {
       name: 'Ravage',

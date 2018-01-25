@@ -13,7 +13,7 @@ class DecayingDeer extends BossFrame {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
           case 'Regenerate':
-            return (boss.hp <= 90)
+            return (boss.hp <= boss.initHp - spell.health)
           case 'Feed': return true
           case 'Plague Bite': return true
           default: return false

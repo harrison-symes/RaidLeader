@@ -14,7 +14,7 @@ class PlaguePiltherer extends BossFrame {
         switch (spell.name) {
           case 'Ingest Plague': return boss.power == 0
           case 'Spread Plague': return boss.power == 5 && this.props.party.filter(member => member.isAlive).length > 0
-          case 'Regenerate': return boss.hp < 90 || boss.armor < 90
+          case 'Regenerate': return boss.hp < boss.initHp - spell.health || boss.armor < boss.initArmor - spell.armor
           case 'Ravage': return true
           default: return false
         }

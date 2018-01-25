@@ -1,10 +1,10 @@
 export default {
   name: 'Lunging Locusts',
   level: 2,
-  initHp: 300,
-  hp: 300,
-  initPower: 4,
-  power: 4,
+  initHp: 3000,
+  hp: 3000,
+  initPower: 40,
+  power: 40,
   initArmor: 0,
   armor: 0,
   mana: 0,
@@ -39,9 +39,9 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       armor: 0,
-      health: 20,
+      health: 200,
       onCooldown: false,
-      description: 'Gain 20 Health'
+      description: 'Gain 200 Health'
     },
     {
       name: 'Lunge',
