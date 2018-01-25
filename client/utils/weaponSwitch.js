@@ -5,7 +5,7 @@ module.exports = {
     level,
     id,
     hp: (level + 1) * 1000,
-    power: 40 * level,
+    power: 20 * level,
     mana: 50 + (50 * level),
     manaRegen: 1,
     class: 'Player',

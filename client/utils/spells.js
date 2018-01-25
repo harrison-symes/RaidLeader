@@ -7,25 +7,25 @@ module.exports = {
     coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
-    powerRatio: 1,
-    description: 'Heal a Friendly Target for (100%) of Player Power'
+    powerRatio: 0.5,
+    description: 'Heal a Friendly Target for (50%) of Player Power'
   },
   'Heal': {
     id: 2,
     name: 'Heal',
-    cast: 3,
-    cost: 5,
+    cast: 2.5,
+    cost: 10,
     coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
     powerRatio: 2,
-    description: 'Heal a Friendly Target for (200%) of Player Power'
+    description: 'Heal a Friendly Target for (100%) of Player Power'
   },
   'Greater Heal': {
     id: 3,
     name: 'Greater Heal',
     cast: 5,
-    cost: 5,
+    cost: 7,
     coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
@@ -35,7 +35,7 @@ module.exports = {
   'Healing Ring': {
     id: 4,
     name: 'Healing Ring',
-    cast: 0,
+    cast: 1,
     cost: 10,
     coolDown: 5,
     type: 'heal',
@@ -47,7 +47,7 @@ module.exports = {
     id: 5,
     name: 'Bind',
     cast: 0,
-    cost: 10,
+    cost: 15,
     coolDown: 10,
     type: 'heal',
     singleTarget: true,
