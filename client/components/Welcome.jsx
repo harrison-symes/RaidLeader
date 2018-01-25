@@ -55,13 +55,13 @@ class Welcome extends Component {
     return <div className="section has-text-centered">
       <p className="title is-1">Received Weapon: "Training Staff"</p>
       <p className="content is-large">Now, "{paladinName}" is going to help you defeat the Dragon, but they are going to take quite a beating.</p>
-      <p className="content is-large">So I'm going to teach you a spell, "Lesser Heal" to help keep them alive</p>
+      <p className="content is-large">So I'm going to teach you a spell, "Heal" to help keep them alive</p>
       <button className="button is-large is-success" onClick={this.nextStage}>Cool! Thanks!</button>
     </div>
   }
   stageFive() {
     return <div className="section has-text-centered">
-      <p className="title is-1">You learned the spell "Lesser Heal"!</p>
+      <p className="title is-1">You learned the spell "Heal"!</p>
       <p className="content is-large">...And that's all you need to get started!</p>
       <p className="content is-large">I will drop you off in "Town".</p>
       <p className="content is-large">From there, open up your "Dungeon Map" and Travel to "The Hunt" for your first encounter.</p>
