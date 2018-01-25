@@ -77,7 +77,7 @@ export default function party (state = [], action) {
       if (!action.target) return newState
       target = newState.find(member => member == action.target)
       if (!target) return newState
-      let bonusHp = newState.filter(member => member != action.target).length * target.level
+      let bonusHp = newState.filter(member => member != action.target).length * target.level * 10
       target.initHp += bonusHp
       target.hp += bonusHp
       return newState
@@ -92,8 +92,8 @@ export default function party (state = [], action) {
     case 'WARRIOR_START_BUFF':
       newState = newState.map(member => {
         if (member != action.target) {
-          member.initPower += member.level
-          member.power += member.level
+          member.initPower += member.level * 10
+          member.power += member.level * 10
         }
         return member
       })

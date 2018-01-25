@@ -33,10 +33,10 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
       case 'Weakened Bite':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
-        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 10})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 100})
       case 'Feeble Fire':
         dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
-        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 20})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 200})
       case 'Bite':
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':

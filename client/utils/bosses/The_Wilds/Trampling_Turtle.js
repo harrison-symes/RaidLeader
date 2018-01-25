@@ -1,12 +1,12 @@
 export default {
   name: 'Trampling Turtle',
   level: 1,
-  initHp: 30,
-  hp: 30,
-  initPower: 3,
-  power: 3,
-  initArmor: 30,
-  armor: 30,
+  initHp: 300,
+  hp: 300,
+  initPower: 30,
+  power: 30,
+  initArmor: 300,
+  armor: 300,
   mana: 0,
   maxMana: 20,
   manaRegen: 1,
@@ -26,9 +26,9 @@ export default {
       coolDown: 10,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 5,
+      powerRatio: 50,
       onCooldown: false,
-      description: "Gain 5 ARMOR"
+      description: "Gain 50 ARMOR"
     },
     {
       name: 'Swipe',

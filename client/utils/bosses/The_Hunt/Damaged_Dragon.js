@@ -1,11 +1,11 @@
 export default {
   name: 'Damaged Dragon',
   level: 1,
-  initHp: 1000,
-  hp: 200,
-  initPower: 100,
-  power: 60,
-  initArmor: 500,
+  initHp: 10000,
+  hp: 2000,
+  initPower: 1000,
+  power: 600,
+  initArmor: 5000,
   armor: 0,
   mana: 0,
   maxMana: 1000,
@@ -26,9 +26,9 @@ export default {
       coolDown: 20,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 20,
+      powerRatio: 200,
       onCooldown: false,
-      description: 'Gain 20 Power',
+      description: 'Gain 200 Power',
     },
     {
       name: 'Feeble Fire',
@@ -39,7 +39,7 @@ export default {
       singleTarget: false,
       powerRatio: 0.10,
       onCooldown: false,
-      description: 'Damage ALL enemy characters for 10% BOSS POWER, lose 20 health',
+      description: 'Damage ALL enemy characters for 10% BOSS POWER, lose 200 health',
     },
     {
       name: 'Weakened Bite',
@@ -50,7 +50,7 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the TARGET for 10% of BOSS POWER, lose 10 health"
+      description: "Damage the TARGET for 10% of BOSS POWER, lose 100 health"
     }
   ]
 }
