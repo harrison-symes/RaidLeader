@@ -28,7 +28,7 @@ class Priest extends PartyMemberFrame {
   }
   startFighting () {
     const {heroClass, power, speed, initHp} = this.props.member
-    this.props.dispatch({type: 'PRIEST_START_BUFF', hp: initHp / 2})
+    this.props.dispatch({type: 'PRIEST_START_BUFF', hp: initHp / 2, target: this.props.member})
     this.startCast();
   }
 }
