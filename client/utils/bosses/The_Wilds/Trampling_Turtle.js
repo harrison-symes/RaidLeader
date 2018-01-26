@@ -1,12 +1,12 @@
 export default {
   name: 'Trampling Turtle',
   level: 1,
-  initHp: 300,
-  hp: 300,
+  initHp: 150,
+  hp: 150,
   initPower: 30,
-  power: 30,
-  initArmor: 300,
-  armor: 300,
+  power: 25,
+  initArmor: 250,
+  armor: 250,
   mana: 0,
   maxMana: 20,
   manaRegen: 1,
@@ -50,7 +50,7 @@ export default {
       singleTarget: true,
       powerRatio: 3,
       onCooldown: false,
-      description: "Damage the enemy TARGET and the PLAYER for 500% BOSS POWER"
+      description: "Damage the enemy TARGET and the PLAYER for 300% BOSS POWER"
     }
   ]
 }
