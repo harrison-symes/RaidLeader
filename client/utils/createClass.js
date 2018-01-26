@@ -24,7 +24,7 @@ const createMonk = (name, level, id, weapon_id) => createMember(name, level, id,
 
 const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 40, level * 10, 4 + level)
 
-const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 30, (level + 1) * 30, 2)
+const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 30, level * 30, 2)
 
 const createWarrior = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warrior', (level + 1) * 50, level * 30, 2.5)
 
