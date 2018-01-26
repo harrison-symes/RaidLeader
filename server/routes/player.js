@@ -7,13 +7,14 @@ const {decode} = require('../auth/token')
 
 router.get('/gold', decode, (req, res) => {
   playerDb.getPlayerGold(req.user.user_id)
-    .then(({gold}) => res.json(gold))
+    .then((user) => res.json(user.gold))
 })
 
 router.put('/gold', decode, (req, res) => {
+  console.log(req.user);
   playerDb.getPlayerGold(req.user.user_id)
-    .then(({gold}) => {
-      playerDb.updatePlayerGold(req.user.user_id, gold + req.body.gold)
+    .then((user) => {
+      playerDb.updatePlayerGold(req.user.user_id, user.gold + req.body.gold)
         .then(() => res.sendStatus(200))
     })
 })
@@ -31,10 +32,13 @@ router.get('/weapons', decode, (req, res) => {
 router.post('/getStarted', decode, (req, res) => {
   addRecruit(req.user.user_id, req.body.name, 1, 'Paladin')
     .then(recruit => {
+      console.log({recruit})
       addSpell(req.user.user_id, 'Heal')
         .then(spell => {
+          console.log({spell})
           playerDb.addWeapon(req.user.user_id, 'Training Staff', 1)
             .then(weapon => {
+              console.log({weapon})
               res.json({recruit, spell, weapon})
             })
         })
