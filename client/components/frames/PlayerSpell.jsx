@@ -66,10 +66,10 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Life Tap':
-        dispatch({type: 'PLAYER_GAIN_MANA', power})
-        return dispatch({type: 'DAMAGE_PLAYER', power})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.initHp * 0.05)})
+        return dispatch({type: 'DAMAGE_PLAYER', power: Math.round(player.initHp * 0.05)})
       case 'Evocate':
-        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.powerRatio})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana / 100 * spell.powerRatio)})
       case 'Drain Soul':
         dispatch({type: 'PLAYER_GAIN_MANA', power: 3})
         dispatch({type: 'HEAL_PLAYER', power})

@@ -25,17 +25,17 @@ module.exports = {
     id: 3,
     name: 'Greater Heal',
     cast: 5,
-    cost: 7,
+    cost: 10,
     coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
     powerRatio: 3,
-    description: 'Heal a Friendly Target for (300%) of Player Power'
+    description: 'Heal a Friendly Target for (200%) of Player Power'
   },
   'Healing Ring': {
     id: 4,
     name: 'Healing Ring',
-    cast: 1,
+    cast: 3,
     cost: 10,
     coolDown: 5,
     type: 'heal',
@@ -96,7 +96,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 3,
-    description: 'Damage the Player for (%300) Player Power, gain Mana equal to the damage taken'
+    description: 'Lose (5%) hp, gain Mana equal to the damage taken'
   },
   'Evocate': {
     id: 10,
@@ -107,7 +107,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
-    description: 'Gain 10 Mana'
+    description: 'Restore 10% Mana'
   },
   'Drain Life': {
     id: 11,
