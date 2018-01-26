@@ -1,7 +1,6 @@
 import request from '../utils/api'
 
 export function receivePlayerGold (gold) {
-  console.log({gold});
   return {
     type: 'RECEIVE_PLAYER_GOLD',
     gold

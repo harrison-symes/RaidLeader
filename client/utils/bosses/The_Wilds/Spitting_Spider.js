@@ -1,12 +1,12 @@
 export default {
   name: 'Spitting Spider',
   level: 1,
-  initHp: 50,
-  hp: 50,
-  initPower: 1,
-  power: 1,
-  initArmor: 50,
-  armor: 50,
+  initHp: 1000,
+  hp: 1000,
+  initPower: 30,
+  power: 30,
+  initArmor: 100,
+  armor: 100,
   mana: 0,
   maxMana: 10,
   manaRegen: 1,
@@ -26,9 +26,9 @@ export default {
       coolDown: 10,
       type: 'special',
       singleTarget: false,
-      powerRatio: 1,
+      powerRatio: 5,
       onCooldown: false,
-      description: "Gain +1 POWER"
+      description: "Gain +5 POWER"
     },
     {
       name: 'Swipe',
@@ -45,12 +45,12 @@ export default {
       name: 'Spit',
       cast: 3,
       cost: 0,
-      coolDown: 0,
+      coolDown: 3,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 3,
+      powerRatio: 2,
       onCooldown: false,
-      description: "Damage the PLAYER for 300% BOSS POWER"
+      description: "Damage the PLAYER for 200% BOSS POWER"
     },
   ]
 }

@@ -6,25 +6,41 @@ import Home from './Home'
 import Game from './Game'
 import Menu from './Menu'
 
-const App = ({auth}) => (
-  <Router>
-    <div className='app-container'>
-      {auth.isAuthenticated
-        ? <Switch>
-          <Route path="/game" component={Game} />
-          <Route path='/' component={Menu} />
-        </Switch>
-        : <div>
-          <Home />
-        </div>
-      }
-    </div>
-  </Router>
-)
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      game: (props) => <Game {...props} />
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.started && !nextProps.started){
+      this.setState({game: (props) => <Game {...props} />})
+    }
+  }
+  render() {
+    const {auth} = this.props
+    const {game} = this.state
+    return <Router>
+      <div className='app-container'>
+        {auth.isAuthenticated
+          ? <Switch>
+            <Route path="/game" component={Game} />
+            <Route path='/' component={Menu} />
+          </Switch>
+          : <div>
+            <Home />
+          </div>
+        }
+      </div>
+    </Router>
+  }
+}
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({auth, started}) => {
   return {
-    auth
+    auth,
+    started
   }
 }
 

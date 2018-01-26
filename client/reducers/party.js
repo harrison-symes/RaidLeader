@@ -48,6 +48,12 @@ export default function party (state = [], action) {
         return member
       })
       return newState
+    case 'WARLOCK_DAMAGE_ALL':
+      newState = newState.map(member => {
+        if (member.isAlive) member.hp-=Math.round(member.initHp * 0.05)
+        return member
+      })
+      return newState
     case 'LEVEL_DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=member.level
@@ -69,7 +75,7 @@ export default function party (state = [], action) {
       return newState
     case 'PRIEST_START_BUFF':
       newState = newState.map(member => {
-        member.initHp+= Math.round(action.hp)
+        if (member.id  != action.target.id) member.initHp+= Math.round(member.initHp * 0.1)
         return member
       })
       return newState
@@ -77,7 +83,7 @@ export default function party (state = [], action) {
       if (!action.target) return newState
       target = newState.find(member => member == action.target)
       if (!target) return newState
-      let bonusHp = newState.filter(member => member != action.target).length * target.level
+      let bonusHp = Math.round(newState.filter(member => member != action.target).length * (target.initHp * 0.03))
       target.initHp += bonusHp
       target.hp += bonusHp
       return newState
@@ -92,8 +98,8 @@ export default function party (state = [], action) {
     case 'WARRIOR_START_BUFF':
       newState = newState.map(member => {
         if (member != action.target) {
-          member.initPower += member.level
-          member.power += member.level
+          member.initPower += Math.round(member.initPower * 0.1)
+          member.power += Math.round(member.power * 0.1)
         }
         return member
       })

@@ -37,7 +37,6 @@ class PlayerSpell extends Component {
     const {spell, dispatch, player} = this.props
     const power = this.props.player.power * spell.powerRatio
     if (!this.props.started) return
-    console.log({player});
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     if (player.bonusEffect == 'poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(player.level * 2)})
 
@@ -66,12 +65,12 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Life Tap':
-        dispatch({type: 'PLAYER_GAIN_MANA', power})
-        return dispatch({type: 'DAMAGE_PLAYER', power})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana * 0.1)})
+        return dispatch({type: 'DAMAGE_PLAYER', power: Math.round(player.initHp * 0.05)})
       case 'Evocate':
-        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.powerRatio})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana / 100 * spell.powerRatio)})
       case 'Drain Soul':
-        dispatch({type: 'PLAYER_GAIN_MANA', power: 3})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana * 0.03)})
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Renew':

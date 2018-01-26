@@ -14,8 +14,8 @@ class LungingLocusts extends BossFrame {
         switch (spell.name) {
           case 'Overwhelm': return true
           case 'Regenerate':
-            return (boss.hp <= 190)
-          case 'Lunge': return true
+            return (boss.hp <= boss.initHp - spell.health)
+          case 'Lunge': return this.props.party.find(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
           default: return false
         }
       } else return false

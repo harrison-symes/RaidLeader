@@ -36,7 +36,6 @@ class EffectTag extends Component {
     this.startEffect()
   }
   componentWillReceiveProps(nextProps) {
-    console.log("effect", nextProps.effect);
     if (this.props.effect != nextProps.effect && nextProps.effect) {
       let {maxDuration, currentDuration} = this.state
       maxDuration+= nextProps.effect.duration

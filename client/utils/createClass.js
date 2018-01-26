@@ -16,19 +16,19 @@
   }
 )
 
-const createPaladin = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Paladin', (level + 1) * 5, ((level + 1) * 2), 2)
+const createPaladin = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Paladin', (level + 1) * 40, (level + 1) * 15, 2)
 
-const createPriest = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Priest', (level + 1) * 3, level, 4 + level)
+const createPriest = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Priest', (level + 1) * 30, level * 5, 4 + level)
 
-const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 5, (level*2) + 2, 0.5)
+const createMonk = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Monk', (level + 1) * 35, (level*20) + 20, 0.5)
 
-const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 3 , level, 4 + level)
+const createRogue = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Rogue', (level + 1) * 35, level * 10, 4 + level)
 
-const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 3, (level + 1) * 3, 2)
+const createMage = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Mage', (level + 1) * 30, level * 30, 2)
 
-const createWarrior = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warrior', (level + 1) * 5, level * 3, 2.5)
+const createWarrior = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warrior', (level + 1) * 40, level * 30, 2.5)
 
-const createWarlock = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warlock', (level + 1) * 3, level * 3, 3)
+const createWarlock = (name, level, id, weapon_id) => createMember(name, level, id, weapon_id, 'Warlock', (level + 1) * 35, level * 30, 3)
 
 
 module.exports = ({name, heroClass, level, id, weapon_id}) => {

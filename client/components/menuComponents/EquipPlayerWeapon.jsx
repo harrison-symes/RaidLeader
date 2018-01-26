@@ -74,7 +74,6 @@ class PlayerWeapon extends React.Component {
     const {weapons, playerWeapon, currentLocation} = this.props
     const available = weapons.filter(weapon => weapon.class == "Player" && (!playerWeapon || weapon.id != playerWeapon.id))
     const isFull = !!playerWeapon
-    console.log(this.state);
     return <div className="has-text-centered">
       {this.state.weapon && this.WeaponModal()}
       <DragDropContext onDragEnd={this.onDragEnd}>

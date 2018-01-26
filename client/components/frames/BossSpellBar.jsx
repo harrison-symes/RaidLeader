@@ -3,11 +3,12 @@ import {connect} from 'react-redux'
 
 import BossSpells from './BossSpells'
 
-const BossSpellBar = ({spells, dispatch}) => {
+const BossSpellBar = ({spells, dispatch, bossCount}) => {
   return <div className="columns PlayerSpellBar has-text-centered">
-    {spells.map((spell, i) => <BossSpells key={`boss-spell-bar-item-${i}`} spell={spell} />)}
+    {spells.map((spell, i) => <BossSpells key={`${i}_${bossCount}`} spell={spell} />)}
   </div>
 }
 
+const mapStateToProps = ({bossCount}) => ({bossCount})
 
-export default connect()(BossSpellBar)
+export default connect(mapStateToProps)(BossSpellBar)

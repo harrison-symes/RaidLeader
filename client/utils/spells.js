@@ -3,23 +3,23 @@ module.exports = {
     id: 1,
     name: 'Lesser Heal',
     cast: 1,
+    cost: 5,
+    coolDown: 0.5,
+    type: 'heal',
+    singleTarget: true,
+    powerRatio: 0.5,
+    description: 'Heal a Friendly Target for (50%) of Player Power'
+  },
+  'Heal': {
+    id: 2,
+    name: 'Heal',
+    cast: 2,
     cost: 10,
     coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
     powerRatio: 1,
     description: 'Heal a Friendly Target for (100%) of Player Power'
-  },
-  'Heal': {
-    id: 2,
-    name: 'Heal',
-    cast: 3,
-    cost: 10,
-    coolDown: 0.5,
-    type: 'heal',
-    singleTarget: true,
-    powerRatio: 2,
-    description: 'Heal a Friendly Target for (200%) of Player Power'
   },
   'Greater Heal': {
     id: 3,
@@ -30,13 +30,13 @@ module.exports = {
     type: 'heal',
     singleTarget: true,
     powerRatio: 3,
-    description: 'Heal a Friendly Target for (300%) of Player Power'
+    description: 'Heal a Friendly Target for (200%) of Player Power'
   },
   'Healing Ring': {
     id: 4,
     name: 'Healing Ring',
-    cast: 0,
-    cost: 15,
+    cast: 3,
+    cost: 10,
     coolDown: 5,
     type: 'heal',
     singleTarget: false,
@@ -47,7 +47,7 @@ module.exports = {
     id: 5,
     name: 'Bind',
     cast: 0,
-    cost: 10,
+    cost: 15,
     coolDown: 10,
     type: 'heal',
     singleTarget: true,
@@ -58,7 +58,7 @@ module.exports = {
     id: 6,
     name: 'Fireball',
     cast: 5,
-    cost: 15,
+    cost: 10,
     coolDown: 5,
     type: 'damage',
     singleTarget: false,
@@ -69,7 +69,7 @@ module.exports = {
     id: 7,
     name: 'Fireblast',
     cast: 2.5,
-    cost: 15,
+    cost: 10,
     coolDown: 5,
     type: 'damage',
     singleTarget: false,
@@ -80,7 +80,7 @@ module.exports = {
     id: 8,
     name: 'Flash Fire',
     cast: 0,
-    cost: 15,
+    cost: 10,
     coolDown: 10,
     type: 'damage',
     singleTarget: false,
@@ -96,7 +96,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 3,
-    description: 'Damage the Player for (%300) Player Power, gain Mana equal to the damage taken'
+    description: 'Lose (5%) hp, restore (10%) mana'
   },
   'Evocate': {
     id: 10,
@@ -107,7 +107,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
-    description: 'Gain 10 Mana'
+    description: 'Restore 10% Mana'
   },
   'Drain Life': {
     id: 11,
@@ -140,28 +140,28 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 2,
-    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3 Mana to the Player'
+    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player'
   },
   'Renew': {
     id: 14,
     name: 'Renew',
     cast: 0,
     cost: 5,
-    coolDown: 3,
+    coolDown: 0.5,
     type: 'healing',
     singleTarget: true,
-    powerRatio: 1,
-    description: 'Place a Healing over Time effect on a friendly target, healing them for 100% of Player Power every 3 seconds for 9 seconds'
+    powerRatio: 0.5,
+    description: 'Place a Healing over Time effect on a friendly target, healing them for 50% of Player Power every 3 seconds for 9 seconds'
   },
   'Greater Renew': {
     id: 15,
     name: 'Greater Renew',
     cast: 3,
     cost: 15,
-    coolDown: 10,
+    coolDown: 7,
     type: 'healing',
-    powerRatio: 1,
+    powerRatio: 0.5,
     singleTarget: false,
-    description: 'Place a Healing over Time effect on each friendly party member, healing them for 100% of Player Power every 3 seconds for 9 seconds'
+    description: 'Place a Healing over Time effect on each friendly party member, healing them for 50% of Player Power every 3 seconds for 9 seconds'
   }
 }

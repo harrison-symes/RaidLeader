@@ -33,10 +33,10 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
       case 'Weakened Bite':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
-        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 10})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 100})
       case 'Feeble Fire':
         dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
-        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 20})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 200})
       case 'Bite':
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':
@@ -65,9 +65,9 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
         let aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
-        console.log({aliveTargets});
         if (aliveTargets.length) {
           target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+          dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(power)})
         }
       case 'Ravage':
@@ -128,7 +128,7 @@ class BossSpell extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const {spell, started, boss} = nextProps
-    if (nextProps.spell != this.props.spell) {
+    if (nextProps.spell !== this.props.spell) {
       this.setState({
         onCooldown: false,
         currentCD: 0,
@@ -145,7 +145,10 @@ class BossSpell extends Component {
     }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.state.castInterval) this.stopCasting()
     else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+      console.log("start casting", this.props, nextProps);
       this.startCasting()
+    } else {
+      console.log("not casting", this.props, nextProps);
     }
   }
   render() {
