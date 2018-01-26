@@ -53,7 +53,20 @@ const names = [
   'Callan',
   'Yaz',
   'Skye',
-  'Rich John'
+  'Rich John',
+  'Hayden',
+  'Melanie',
+  'Maia',
+  'Edi',
+  'Jessica',
+  'Nick',
+  'Phuong',
+  'Kubo',
+  'Mix',
+  'Piet',
+  'Tony',
+  'Silvia',
+  'Guy'
 ]
 
 module.exports = () => {
