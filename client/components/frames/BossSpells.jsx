@@ -151,6 +151,7 @@ class BossSpell extends Component {
   render() {
     const {spell, dispatch, boss} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
+    console.log({spell}, this.state);
     const spellColour = onCooldown || boss.mana < spell.cost ? 'is-loading is-danger' : castInterval ? 'is-info' : 'is-success'
     return <div
       className={`PlayerSpell button ${spellColour}`}>

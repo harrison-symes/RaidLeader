@@ -13,12 +13,12 @@ module.exports = {
   'Heal': {
     id: 2,
     name: 'Heal',
-    cast: 2.5,
+    cast: 2,
     cost: 10,
     coolDown: 0.5,
     type: 'heal',
     singleTarget: true,
-    powerRatio: 2,
+    powerRatio: 1,
     description: 'Heal a Friendly Target for (100%) of Player Power'
   },
   'Greater Heal': {
@@ -96,7 +96,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 3,
-    description: 'Lose (5%) hp, gain Mana equal to the damage taken'
+    description: 'Lose (5%) hp, restore (10%) mana'
   },
   'Evocate': {
     id: 10,
@@ -140,28 +140,28 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 2,
-    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3 Mana to the Player'
+    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player'
   },
   'Renew': {
     id: 14,
     name: 'Renew',
     cast: 0,
     cost: 5,
-    coolDown: 3,
+    coolDown: 0.5,
     type: 'healing',
     singleTarget: true,
-    powerRatio: 1,
-    description: 'Place a Healing over Time effect on a friendly target, healing them for 100% of Player Power every 3 seconds for 9 seconds'
+    powerRatio: 0.5,
+    description: 'Place a Healing over Time effect on a friendly target, healing them for 50% of Player Power every 3 seconds for 9 seconds'
   },
   'Greater Renew': {
     id: 15,
     name: 'Greater Renew',
     cast: 3,
     cost: 15,
-    coolDown: 10,
+    coolDown: 7,
     type: 'healing',
-    powerRatio: 1,
+    powerRatio: 0.5,
     singleTarget: false,
-    description: 'Place a Healing over Time effect on each friendly party member, healing them for 100% of Player Power every 3 seconds for 9 seconds'
+    description: 'Place a Healing over Time effect on each friendly party member, healing them for 50% of Player Power every 3 seconds for 9 seconds'
   }
 }
