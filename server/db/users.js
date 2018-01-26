@@ -5,7 +5,7 @@ function createUser (user_name, password, db) {
     hash.generate(password, (err, hash) => {
       if (err) reject(err)
       db('users')
-        .insert({user_name, hash})
+        .insert({user_name, hash}, 'user_id')
         .then(user_id => resolve(user_id))
     })
 
