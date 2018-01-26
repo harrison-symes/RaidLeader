@@ -1,10 +1,10 @@
 export default {
   name: 'Lunging Locusts',
   level: 2,
-  initHp: 3000,
-  hp: 3000,
-  initPower: 40,
-  power: 40,
+  initHp: 2000,
+  hp: 2000,
+  initPower: 30,
+  power: 30,
   initArmor: 0,
   armor: 0,
   mana: 0,
@@ -21,7 +21,7 @@ export default {
   spells: [
     {
       name: 'Overwhelm',
-      cast: 10,
+      cast: 20,
       cost: 100,
       coolDown: 0,
       type: 'damage',
@@ -39,20 +39,20 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       armor: 0,
-      health: 200,
+      health: 100,
       onCooldown: false,
-      description: 'Gain 200 Health'
+      description: 'Gain 100 Health'
     },
     {
       name: 'Lunge',
       cost: 0,
-      cast: 3,
-      coolDown: 3,
+      cast: 4,
+      coolDown: 4,
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Poison a random (non poisoned) enemy recruit for 100% Boss Power as Damage every 5 seconds for 15 seconds"
+      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power, Poison that recruit for 100% Boss Power as Damage every 5 seconds for 15 seconds"
     }
   ]
 }
