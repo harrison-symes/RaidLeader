@@ -11,7 +11,7 @@ router.get('/gold', decode, (req, res) => {
 })
 
 router.put('/gold', decode, (req, res) => {
-  console.log({req.user});
+  console.log(req.user);
   playerDb.getPlayerGold(req.user.user_id)
     .then((user) => {
       playerDb.updatePlayerGold(req.user.user_id, user.gold + req.body.gold)
