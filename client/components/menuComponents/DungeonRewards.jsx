@@ -31,10 +31,8 @@ class DungeonRewards extends Component {
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward = null
     weapons.forEach(weapon => {
-      console.log({weapons, roll});
       if (weapon.min <= roll && weapon.max > roll) reward = weaponSwitch[weapon.name](currentLocation.level)
     })
-    console.log({reward});
     return reward
   }
   weaponInfo(weapon) {

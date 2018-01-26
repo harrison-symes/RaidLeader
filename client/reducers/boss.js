@@ -6,6 +6,10 @@ export default function boss (state = null, action) {
     case 'TRAVEL_TO_TOWN':
       return null
     case 'TARGET_BOSS':
+      action.boss.spells.map(spell => {
+        spell.onCooldown = false
+        return spell
+      })
       return {...action.boss}
     case 'BOSS_GAIN_ARMOR':
       newState.armor+=action.amount
@@ -17,7 +21,7 @@ export default function boss (state = null, action) {
       return newState
     case 'BOSS_GAIN_POWER':
       newState.power+=action.amount
-      if (newState.power < 0) newState.power = 0 
+      if (newState.power < 0) newState.power = 0
       return newState
     case 'HEAL_BOSS':
       newState.hp += action.power

@@ -128,7 +128,7 @@ class BossSpell extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const {spell, started, boss} = nextProps
-    if (nextProps.spell != this.props.spell) {
+    if (nextProps.spell !== this.props.spell) {
       this.setState({
         onCooldown: false,
         currentCD: 0,
@@ -145,13 +145,15 @@ class BossSpell extends Component {
     }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.state.castInterval) this.stopCasting()
     else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+      console.log("start casting", this.props, nextProps);
       this.startCasting()
+    } else {
+      console.log("not casting", this.props, nextProps);
     }
   }
   render() {
     const {spell, dispatch, boss} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
-    console.log({spell}, this.state);
     const spellColour = onCooldown || boss.mana < spell.cost ? 'is-loading is-danger' : castInterval ? 'is-info' : 'is-success'
     return <div
       className={`PlayerSpell button ${spellColour}`}>

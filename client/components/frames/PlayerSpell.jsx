@@ -37,7 +37,6 @@ class PlayerSpell extends Component {
     const {spell, dispatch, player} = this.props
     const power = this.props.player.power * spell.powerRatio
     if (!this.props.started) return
-    console.log({player});
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     if (player.bonusEffect == 'poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(player.level * 2)})
 
