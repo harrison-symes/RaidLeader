@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments('id')
     table.string('name')
     table.string('description')
-    table.integer('requires_complete').defaultTo(null)
+    table.string('requires_complete').defaultTo(null)
     table.integer('max_party')
     table.integer('max_spells')
     table.integer('level').defaultTo(1)
