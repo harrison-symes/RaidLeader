@@ -65,9 +65,9 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
         let aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
-        console.log({aliveTargets});
         if (aliveTargets.length) {
           target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+          dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(power)})
         }
       case 'Ravage':
