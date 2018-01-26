@@ -50,7 +50,7 @@ export default function party (state = [], action) {
       return newState
     case 'WARLOCK_DAMAGE_ALL':
       newState = newState.map(member => {
-        if (member.isAlive) member.hp-=Math.round(member.maxHp * 0.05)
+        if (member.isAlive) member.hp-=Math.round(member.initHp * 0.05)
         return member
       })
       return newState
