@@ -27,9 +27,9 @@ export default {
       type: 'damage',
       singleTarget: false,
       powerRatio: 0,
-      power: 50,
+      power: 40,
       onCooldown: false,
-      description: 'Gain 50 Power. (Only usable when at 0 Power)',
+      description: 'Gain 40 Power. (Only usable when at 0 Power)',
     },
     {
       name: 'Spread Plague',
@@ -40,8 +40,8 @@ export default {
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
-      power: -10,
-      description: "Poison All enemy party members for 100% Boss Power every 3 seconds for 15 seconds. Lose 10 Power. (Only useable at 50 Power)"
+      power: -20,
+      description: "Poison All enemy party members for 100% Boss Power every 3 seconds for 15 seconds. Lose 20 Power. (Only useable at 50 Power)"
     },
     {
       name: 'Regenerate',
@@ -60,13 +60,13 @@ export default {
       name: 'Ravage',
       cost: 0,
       cast: 3,
-      coolDown: 0,
+      coolDown: 1,
       powerRatio: 1,
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
-      power: -1,
-      description: "Damage all enemy characters for 100% Boss Power, lose 1 Power if enemy party is still alive"
+      power: -5,
+      description: "Damage all enemy characters for 100% Boss Power, lose 5 Power if enemy party is still alive"
     }
   ]
 }
