@@ -145,10 +145,8 @@ class BossSpell extends Component {
     }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.state.castInterval) this.stopCasting()
     else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
-      console.log("start casting", this.props, nextProps);
       this.startCasting()
     } else {
-      console.log("not casting", this.props, nextProps);
     }
   }
   render() {
