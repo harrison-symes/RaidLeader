@@ -153,8 +153,10 @@ class BossSpell extends Component {
     const {spell, dispatch, boss} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || boss.mana < spell.cost ? 'is-loading is-danger' : castInterval ? 'is-info' : 'is-success'
+    let width = 600 / boss.spells.length
+    if (width > 200) width = 200
     return <div
-      className={`PlayerSpell button ${spellColour}`}>
+      className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
       <table className="table">
         <thead className='thead has-text-centered'>
           <th className="th subtitle is-5 has-text-centered">({spell.name} ({spell.cost})</th>

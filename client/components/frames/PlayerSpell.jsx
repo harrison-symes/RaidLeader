@@ -123,9 +123,12 @@ class PlayerSpell extends Component {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    let width = 1000 / player.spells.length
+    if (width > 200) width = 200
     return <div
       className={`PlayerSpell button ${spellColour}`}
-      onClick={() => this.clickSpell()}>
+      onClick={() => this.clickSpell()}
+      style={{width: `${width}px`}}>
       <table className="table">
         <thead className='thead has-text-centered'>
           <th className="th subtitle is-5 has-text-centered">({idx}) {spell.name}</th>
