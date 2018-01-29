@@ -43,10 +43,10 @@ class Menu extends React.Component {
     playerParty = playerParty.map(recruit => {
       if (recruit.weapon_id) {
         let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
-        recruit.initHp += weapon.hp
-        recruit.hp += weapon.hp
-        recruit.initPower += weapon.power
-        recruit.power += weapon.power
+        recruit.initHp += recruit.initHp * weapon.hp
+        recruit.hp += recruit.hp * weapon.hp
+        recruit.initPower += recruit.initPower * weapon.power
+        recruit.power += recruit.power * weapon.power
         recruit.initSpeed += weapon.speed
         recruit.speed += weapon.speed
         recruit.weapon_name = weapon.name

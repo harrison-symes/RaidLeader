@@ -28,9 +28,9 @@ class RecruitModal extends Component {
           <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
-            {weapon.hp != 0 && <div className="column subtitle is-4">Health: {weapon.hp}</div>}
-            {weapon.power != 0 && <div className="column subtitle is-4">Power: {weapon.power}</div>}
-            {weapon.speed !== 0 && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
+            {weapon.hp != 0 && <div className="column subtitle is-4">Health: {weapon.hp > 0 ? "+": ""}{weapon.hp * 100}%</div>}
+            {weapon.power != 0 && <div className="column subtitle is-4">Power: {weapon.power > 0 ? "+": ""}{weapon.power * 100}%</div>}
+            {weapon.speed !== 0 && <div className="column subtitle is-4">Speed: {weapon.speed > 0 ? "+": ""}{weapon.speed}</div>}
             {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
           </div>
         </div>
@@ -43,9 +43,9 @@ class RecruitModal extends Component {
           {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon.id)} key={`available-weapon-${i}`} className="box">
             <p className="title is-4">{weapon.name} ({weapon.level})</p>
             <ul className="">
-              {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp}</li>}
-              {weapon.power != 0 && <li className="subtitle is-4">Power: {weapon.power}</li>}
-              {weapon.speed != 0 && <li className="subtitle is-4">Speed: {weapon.speed}</li>}
+              {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp > 0 ? "+": ""}{weapon.hp * 100}%</li>}
+              {weapon.power != 0 && <li className="subtitle is-4">Power: {weapon.power > 0 ? "+": ""}{weapon.power * 100}%</li>}
+              {weapon.speed != 0 && <li className="subtitle is-4">Speed: {weapon.speed > 0 ? "+": ""} {weapon.speed}</li>}
             </ul>
             {weapon.bonusEffect && <p className="subtitle is-6">{weapon.bonusEffect}</p>}
           </div>)}
