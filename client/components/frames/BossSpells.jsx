@@ -157,9 +157,9 @@ class BossSpell extends Component {
     if (width > 200) width = 200
     return <div
       className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
-      <table className="table">
+      <table className="table is-fullwidth">
         <thead className='thead has-text-centered'>
-          <th className="th subtitle is-5 has-text-centered">({spell.name} ({spell.cost})</th>
+          <th className="th subtitle is-6 has-text-centered">({spell.name} ({spell.cost})</th>
         </thead>
         {(onCooldown || castInterval) &&
           <tfoot className="tfoot">
