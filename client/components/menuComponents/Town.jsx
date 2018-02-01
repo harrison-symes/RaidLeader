@@ -74,7 +74,7 @@ class Town extends Component {
       </div>
       {this.modalSwitch()}
       <div className="Town-Buttons has-text-centered">
-        <button onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidth">Travel</button>
+        <button onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidt">Travel</button>
 
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Recruitment Centre', 'ra-crossed-swords')}

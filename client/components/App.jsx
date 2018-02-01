@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 import Home from './Home'
 import Game from './Game'
 import Menu from './Menu'
+import Town from './menuComponents/Town'
+import Welcome from './Welcome'
 
 class App extends React.Component {
   constructor(props) {
@@ -19,28 +21,32 @@ class App extends React.Component {
     }
   }
   render() {
-    const {auth} = this.props
+    const {auth, currentLocation, showWelcome} = this.props
     const {game} = this.state
     return <Router>
       <div className='app-container'>
         {auth.isAuthenticated
           ? <Switch>
             <Route path="/game" component={Game} />
-            <Route path='/' component={Menu} />
+            {showWelcome && <Route path='/' component={Welcome} />}
+            {currentLocation.name == 'Town'
+              ? <Route exact path='/' component={Town} />
+              : <Route path='/' component={Menu} />
+            }
           </Switch>
-          : <div>
-            <Home />
-          </div>
+          : <Home />
         }
       </div>
     </Router>
   }
 }
 
-const mapStateToProps = ({auth, started}) => {
+const mapStateToProps = ({auth, started, location, showWelcome}) => {
   return {
     auth,
-    started
+    started,
+    currentLocation: location,
+    showWelcome
   }
 }
 

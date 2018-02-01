@@ -99,10 +99,9 @@ class Menu extends React.Component {
   render() {
     const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome} = this.props
     const {townTravelModal} = this.state
-    if (showWelcome) return <Welcome />
     return <div className="Menu has-text-centered">
       {townTravelModal && this.renderTownConfirmModal()}
-      {currentLocation.name != 'Town' && <div>
+      <div>
         <div className="level">
           <div className="level-left">
             {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
@@ -116,27 +115,23 @@ class Menu extends React.Component {
           </div>
         </div>
         <hr />
-      </div>}
+      </div>
       <div className="columns">
-        {currentLocation.name != 'Town'
-          && <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
-            <p className="title is-1">{currentLocation && currentLocation.name}</p>
-            <hr/>
-            <DungeonRewards />
-            {boss != null && <div className="has-text-centered">
-              <p className="title is-3">Target:</p>
-              <BossPreview i={0} boss={boss} />
-              <hr />
-            </div>}
-            <BossSelection />
-          </div>
-
-        }
+        <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+          <p className="title is-1">{currentLocation && currentLocation.name}</p>
+          <hr/>
+          <DungeonRewards />
+          {boss != null && <div className="has-text-centered">
+            <p className="title is-3">Target:</p>
+            <BossPreview i={0} boss={boss} />
+            <hr />
+          </div>}
+          <BossSelection />
+        </div>
         <div className="column">
           <Router>
             <div>
-              {currentLocation.name == 'Town' && <Route exact path='/' component={Town} /> }
-              {currentLocation.name != 'Town' && <div>
+              <div>
                 {this.props.location.pathname == '/' && <div>
                   <div className="has-text-centered">
                     <p className="subtitle is-1">Your Party: ({playerParty.length}/{currentLocation.max_party})</p>
@@ -161,7 +156,7 @@ class Menu extends React.Component {
                 <Route path="/party" component={Party} />
                 <Route path="/inventory" component={Inventory} />
                 <Route path="/playerWeapon" component={EquipPlayerWeapon} />
-              </div>}
+              </div>
             </div>
           </Router>
         </div>
