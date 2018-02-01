@@ -3,9 +3,24 @@ import {connect} from 'react-redux'
 
 import Dungeon from './Dungeon'
 
+
+import {getRecruits} from '../../actions/recruits'
+import {getSpells} from '../../actions/spells'
+import {getDungeons} from '../../actions/dungeons'
+import {getPlayerGold} from '../../actions/gold'
+import {getWeapons} from '../../actions/weapons'
+
 class Dungeons extends Component {
+  componentDidMount() {
+    this.props.dispatch(getRecruits())
+    this.props.dispatch(getSpells())
+    this.props.dispatch(getDungeons())
+    this.props.dispatch(getPlayerGold())
+    this.props.dispatch(getWeapons())
+  }
   render() {
     const {dungeons, playerParty, close} = this.props
+    console.log({dungeons});
     return <div className="modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
