@@ -93,7 +93,12 @@ class TrainingCentre extends Component {
           }
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Leave</button>
+          <a onClick={close} className="button is-large is-dark is-outlined is-fullwidth">
+            <span>Leave&nbsp;</span>
+            <span className="icon is-large">
+              <i className={`ra ra-bottom-right ra-2x` }></i>
+            </span>
+          </a>
         </footer>
       </div>
     </div>

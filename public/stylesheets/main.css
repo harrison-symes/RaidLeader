@@ -56,6 +56,21 @@ body {
       @media (orientation: portrait) {
         .Town .Town-Buttons .button .icon {
           display: none; } }
+  .Town .Modal .modal-card-body {
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
+  .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
+  .Town .Modal .button {
+    font-size: 2rem;
+    background-color: #b88e69;
+    color: black;
+    height: 10vh;
+    border: 2px solid black; }
+    @media (orientation: portrait) {
+      .Town .Modal .button .icon {
+        display: none; } }
 
 .app {
   height: 100vh; }

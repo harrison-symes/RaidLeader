@@ -74,6 +74,29 @@ body {
     }
 
   }
+  
+  .Modal {
+    .modal-card-body {
+      background-color: #b88e69;
+      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+    }
+    .modal-card-head, .modal-card-foot {
+      background-color: #b88e69;
+      background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    }
+    .button {
+      font-size: 2rem;
+      background-color: #b88e69;
+      color: black;
+      height: 10vh;
+      border: 2px solid black;
+      @media (orientation: portrait) {
+        .icon {
+          display: none;
+        }
+      }
+    }
+  }
 
 }
 
