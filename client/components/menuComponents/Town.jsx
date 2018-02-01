@@ -74,7 +74,15 @@ class Town extends Component {
       </div>
       {this.modalSwitch()}
       <div className="Town-Buttons has-text-centered">
-        <button onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidt">Travel</button>
+        <a onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidt">
+          <span className="icon is-large">
+            <i className={`ra ra-forward ra-2x` }></i>
+          </span>
+          <span>&nbsp;Travel&nbsp;</span>
+          <span className="icon is-large">
+            <i className={`ra ra-forward ra-2x` }></i>
+          </span>
+        </a>
 
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Recruitment Centre', 'ra-crossed-swords')}
@@ -85,7 +93,15 @@ class Town extends Component {
           <button disabled className="column is-6 button is-large is-dark is-fullwidth is-outlined">Store (WIP)</button>
         </div>
         <div className="columns Town-Button-Div">
-          <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
+          <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
+            <span className="icon is-large">
+              <i className={`ra ra-turd ra-2x` }></i>
+            </span>
+            <span>&nbsp;Logout&nbsp;</span>
+            <span className="icon is-large">
+              <i className={`ra ra-turd ra-2x` }></i>
+            </span>
+          </Link>
           <div disabled className="button is-large is-fullwidth is-dark is-outlined">Profile (WIP)</div>
         </div>
       </div>
