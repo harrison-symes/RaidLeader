@@ -38,7 +38,7 @@ class PlayerSpell extends Component {
     const power = this.props.player.power * spell.powerRatio
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    if (player.bonusEffect == 'poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(player.level * 2)})
+    if (player.bonusEffect == 'poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(Math.round(target.initHp / 20))})
 
     switch(spell.name) {
       case 'Heal':
@@ -123,9 +123,12 @@ class PlayerSpell extends Component {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    let width = 1000 / player.spells.length
+    if (width > 200) width = 200
     return <div
       className={`PlayerSpell button ${spellColour}`}
-      onClick={() => this.clickSpell()}>
+      onClick={() => this.clickSpell()}
+      style={{width: `${width}px`}}>
       <table className="table">
         <thead className='thead has-text-centered'>
           <th className="th subtitle is-5 has-text-centered">({idx}) {spell.name}</th>

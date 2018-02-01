@@ -16,11 +16,6 @@ import SpellFrame from './menuComponents/SpellFrame'
 import BossPreview from './menuComponents/BossPreview'
 import DungeonRewards from './menuComponents/DungeonRewards'
 
-import {getRecruits} from '../actions/recruits'
-import {getSpells} from '../actions/spells'
-import {getDungeons} from '../actions/dungeons'
-import {getPlayerGold} from '../actions/gold'
-import {getWeapons} from '../actions/weapons'
 
 class Menu extends React.Component {
   constructor(props) {
@@ -31,22 +26,15 @@ class Menu extends React.Component {
     this.loadGame = this.loadGame.bind(this)
     this.goToTown = this.goToTown.bind(this)
   }
-  componentDidMount() {
-    this.props.dispatch(getRecruits())
-    this.props.dispatch(getSpells())
-    this.props.dispatch(getDungeons())
-    this.props.dispatch(getPlayerGold())
-    this.props.dispatch(getWeapons())
-  }
   loadGame() {
     let {playerParty, playerSpells, weapons, playerWeapon, auth} = this.props
     playerParty = playerParty.map(recruit => {
       if (recruit.weapon_id) {
         let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
-        recruit.initHp += weapon.hp
-        recruit.hp += weapon.hp
-        recruit.initPower += weapon.power
-        recruit.power += weapon.power
+        recruit.initHp += recruit.initHp * weapon.hp
+        recruit.hp += recruit.hp * weapon.hp
+        recruit.initPower += recruit.initPower * weapon.power
+        recruit.power += recruit.power * weapon.power
         recruit.initSpeed += weapon.speed
         recruit.speed += weapon.speed
         recruit.weapon_name = weapon.name
@@ -99,10 +87,9 @@ class Menu extends React.Component {
   render() {
     const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome} = this.props
     const {townTravelModal} = this.state
-    if (showWelcome) return <Welcome />
-    return <div className="section has-text-centered">
+    return <div className="Menu has-text-centered">
       {townTravelModal && this.renderTownConfirmModal()}
-      {currentLocation.name != 'Town' && <div>
+      <div>
         <div className="level">
           <div className="level-left">
             {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
@@ -116,27 +103,23 @@ class Menu extends React.Component {
           </div>
         </div>
         <hr />
-      </div>}
+      </div>
       <div className="columns">
-        {currentLocation.name != 'Town'
-          && <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
-            <p className="title is-1">{currentLocation && currentLocation.name}</p>
-            <hr/>
-            <DungeonRewards />
-            {boss != null && <div className="has-text-centered">
-              <p className="title is-3">Target:</p>
-              <BossPreview i={0} boss={boss} />
-              <hr />
-            </div>}
-            <BossSelection />
-          </div>
-
-        }
+        <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
+          <p className="title is-1">{currentLocation && currentLocation.name}</p>
+          <hr/>
+          <DungeonRewards />
+          {boss != null && <div className="has-text-centered">
+            <p className="title is-3">Target:</p>
+            <BossPreview i={0} boss={boss} />
+            <hr />
+          </div>}
+          <BossSelection />
+        </div>
         <div className="column">
           <Router>
             <div>
-              {currentLocation.name == 'Town' && <Route exact path='/' component={Town} /> }
-              {currentLocation.name != 'Town' && <div>
+              <div>
                 {this.props.location.pathname == '/' && <div>
                   <div className="has-text-centered">
                     <p className="subtitle is-1">Your Party: ({playerParty.length}/{currentLocation.max_party})</p>
@@ -161,7 +144,7 @@ class Menu extends React.Component {
                 <Route path="/party" component={Party} />
                 <Route path="/inventory" component={Inventory} />
                 <Route path="/playerWeapon" component={EquipPlayerWeapon} />
-              </div>}
+              </div>
             </div>
           </Router>
         </div>

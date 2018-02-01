@@ -10,8 +10,6 @@ import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import WeaponStore from './WeaponStore'
 
-const buttonStyle = {height: '14vh', width: '45vw', margin: '1vw'}
-
 class Town extends Component {
   constructor(props) {
     super(props)
@@ -35,40 +33,76 @@ class Town extends Component {
       default: return null
     }
   }
-  renderTownMenuButton (name) {
-    return <button onClick={() => this.toggleModal(name)} style={buttonStyle} className="column is-6 button is-large is-success is-fullwidth is-outlined is-inverted ">{name}</button>
+  renderTownMenuButton (name, icon) {
+    return <a onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-dark">
+      <span className="icon is-large">
+        <i className={`ra ${icon} ra-2x`}></i>
+      </span>
+      <span className="content is-large"> &nbsp;{name}&nbsp;</span>
+      <span className="icon is-large">
+        <i className={`ra ${icon} ra-2x` }></i>
+      </span>
+    </a>
   }
   render() {
     const {gold, recruits, spellBook} = this.props
     const {showRecruitmentModal} = this.state
-    return <div style={{height: '89vh', margin: '0'}} className="hero is-bold is-primary">
-      <div className="hero-head has-text-centered">
-        <p className="title is-1">Town</p>
-        <div className="columns">
-          <div className="column is-4">
-            <p className="subtitle is-2">Spells Learnt: {spellBook.length}</p>
+    return <div className="Town">
+      <div className="has-text-centered Town-Banner">
+          <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
+        <div className="level has-text-centered Resources">
+          <div className=" is-4">
+            <div className="tooltip">
+              <span className="tooltiptext">You have learned {spellBook.length} Spells</span>
+              <p className="subtitle is-2">{spellBook.length}<i className="ra ra-book icon-large" /></p>
+            </div>
           </div>
-          <div className="column is-4">
-            <p className="subtitle is-2">Gold: {gold}</p>
+          <div className=" is-4">
+            <div className="tooltip">
+              <span className="tooltiptext">You have {gold} Gold</span>
+              <p className="subtitle is-2">{gold} <i className="ra ra-gold-bar icon-large" /></p>
+            </div>
           </div>
-          <div className="column is-4">
-            <p className="subtitle is-2">Recuits: {recruits.length}</p>
+          <div className=" is-4">
+            <div className="tooltip">
+              <span className="tooltiptext">You have Recruited {recruits.length} Recruits</span>
+              <p className="subtitle is-2">{recruits.length} <i className="ra ra-double-team icon-large" /></p>
+            </div>
           </div>
         </div>
 
       </div>
       {this.modalSwitch()}
-      <div className="hero-body is-fullheight has-text-centered">
-        <button onClick={() => this.toggleModal('Dungeon Map')} style={{height: '15vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-outlined is-warning">Travel</button>
-        <div className="columns is-multiline">
-          {this.renderTownMenuButton('Recruitment Centre')}
-          {this.renderTownMenuButton('Library')}
-          {/* <button disabled style={buttonStyle} className="column is-6 button is-large is-success is-fullwidth is-outlined is-inverted ">Training (WIP)</button> */}
-          {this.renderTownMenuButton('Training Centre')}
-          <button disabled style={buttonStyle} className="column is-6 button is-large is-success is-fullwidth is-outlined is-inverted ">Store (WIP)</button>
-          {/* {this.renderTownMenuButton('Weapon Store')} */}
-          <Link to="/" style={buttonStyle} className="button is-large is-fullwidth is-danger is-outlined is-inverted" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
-          <div style={buttonStyle} disabled className="button is-large is-fullwidth is-primary is-outlined is-inverted">Profile (WIP)</div>
+      <div className="Town-Buttons has-text-centered">
+        <a onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidt">
+          <span className="icon is-large">
+            <i className={`ra ra-forward ra-2x` }></i>
+          </span>
+          <span>&nbsp;Travel&nbsp;</span>
+          <span className="icon is-large">
+            <i className={`ra ra-forward ra-2x` }></i>
+          </span>
+        </a>
+
+        <div className="columns Town-Button-Div">
+          {this.renderTownMenuButton('Recruitment Centre', 'ra-crossed-swords')}
+          {this.renderTownMenuButton('Library', 'ra-crystal-ball')}
+        </div>
+        <div className="columns Town-Button-Div">
+          {this.renderTownMenuButton('Training Centre', 'ra-muscle-up')}
+          <button disabled className="column is-6 button is-large is-dark is-fullwidth is-outlined">Store (WIP)</button>
+        </div>
+        <div className="columns Town-Button-Div">
+          <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
+            <span className="icon is-large">
+              <i className={`ra ra-turd ra-2x` }></i>
+            </span>
+            <span>&nbsp;Logout&nbsp;</span>
+            <span className="icon is-large">
+              <i className={`ra ra-turd ra-2x` }></i>
+            </span>
+          </Link>
+          <div disabled className="button is-large is-fullwidth is-dark is-outlined">Profile (WIP)</div>
         </div>
       </div>
     </div>

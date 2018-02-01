@@ -47,7 +47,7 @@ class TrainingCentre extends Component {
     const powerDiff = nextLevel.power - recruit.power
     const healthDiff = nextLevel.hp - recruit.hp
     const cost = recruit.level * 500
-    return <div key={`level-up-recruit-${recruit.name}-${i}`} style={{backgroundColor: '#A9A9A9'}} className="box">
+    return <div key={`level-up-recruit-${recruit.name}-${i}`} style={{}} className="box">
       <div className="subtitle is-3">{recruit.name} the {recruit.heroClass}</div>
       <div className="columns">
         <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp} {healthDiff ? `(+${healthDiff})` : ""}</p></div>
@@ -75,12 +75,12 @@ class TrainingCentre extends Component {
     const {levelUpgrade} = this.state
     return <div className="modal is-active">
       <div className="modal-background"></div>
-      <div className="modal-card">
+      <div className="modal-card Modal">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Training Centre</p>
+          <p className="modal-card-title is-1"><i className="icon ra ra-muscle-up ra-fw" />Training Centre<i className="icon ra ra-muscle-up ra-fw" /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
-        <section className="modal-card-body" style={{backgroundColor: '#A9A9A9'}}>
+        <section className="modal-card-body">
           {this.renderLevelOptions()}
           <hr />
           {this.state.levelUpgrade != 0

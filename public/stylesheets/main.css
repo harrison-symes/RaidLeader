@@ -1,0 +1,112 @@
+body {
+  min-height: 100vh;
+  background-color: #8f7651;
+  background-repeat: repeat;
+  background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png"); }
+
+.Town {
+  min-height: 100vh;
+  padding-top: 2%;
+  margin: auto; }
+  .Town .Town-Banner {
+    border: 2px solid black;
+    padding: 1%;
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
+    .Town .Town-Banner .title {
+      text-decoration: underline;
+      font-size: 5rem;
+      color: black; }
+    .Town .Town-Banner .subtitle {
+      font-size: 3rem;
+      color: black; }
+  .Town .Resources {
+    width: 50vw;
+    margin: auto; }
+    .Town .Resources .tooltip {
+      cursor: context-menu; }
+  .Town .Town-Buttons {
+    min-width: '90%';
+    min-height: 60vh;
+    border: 2px solid black;
+    padding: 5%;
+    margin: auto;
+    margin-top: 0;
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
+    .Town .Town-Buttons .Town-Button-Div {
+      margin: auto;
+      margin-bottom: 2vw; }
+      @media (orientation: portrait) {
+        .Town .Town-Buttons .Town-Button-Div {
+          margin: auto;
+          width: 100%; } }
+    .Town .Town-Buttons .Travel-Button {
+      height: 10vh;
+      width: 45vw;
+      margin: auto;
+      margin-bottom: 2vw;
+      border: 2px solid black; }
+    .Town .Town-Buttons .button {
+      font-size: 2rem;
+      background-color: #b88e69;
+      color: black;
+      height: 10vh;
+      border: 2px solid black; }
+      @media (orientation: portrait) {
+        .Town .Town-Buttons .button .icon {
+          display: none; } }
+
+.app {
+  height: 100vh; }
+
+.Game {
+  height: 100vh; }
+
+.BossFrame {
+  height: 30%; }
+
+.PartyFrame {
+  height: 33%; }
+
+.PlayerFrame {
+  height: 25%; }
+
+.PlayerSpellBar {
+  height: 20vh; }
+
+.MemberFrame {
+  height: 15vh; }
+
+.PlayerSpell {
+  height: 80px; }
+
+.SpellCooldDown {
+  width: 10vw; }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  cursor: 'pointer'; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  cursor: 'pointer';
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  cursor: 'pointer'; }
+
+/*# sourceMappingURL=main.css.map */

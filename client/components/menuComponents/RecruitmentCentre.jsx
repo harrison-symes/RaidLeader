@@ -79,7 +79,7 @@ class RecruitmentCentre extends Component {
           <p className="modal-card-title is-1">Recruitment Centre</p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
-        <section style={{backgroundColor: '#A9A9A9'}} className="modal-card-body">
+        <section className="modal-card-body">
           <p className="title is-1">Welcome to the Recruitment Centre!</p>
           <p className="subtitle is-3">Here you can recruit new members to join your party in Dungeons</p>
           <p className="subtitle is-3">It costs 500 Gold to recruit a new Level 1 member</p>

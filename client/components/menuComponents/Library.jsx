@@ -52,7 +52,7 @@ class RecruitmentCentre extends Component {
           <p className="modal-card-title is-1">The Library</p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
-        <section style={{backgroundColor: '#A9A9A9'}} className="modal-card-body">
+        <section className="modal-card-body">
           <p className="title is-1">Welcome to The Library!</p>
           <p className="subtitle is-3">Here you can learn new spells to support your party in Dungeons</p>
           {!showChoices

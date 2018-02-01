@@ -15,6 +15,7 @@ router.get('/', decode, (req, res) => {
               dungeon.isCompleted = !!completed.find(complete => complete.dungeon_id == dungeon.id)
               return dungeon
             })
+            console.log({dungeons, completed, bosses});
             res.json(dungeons)
           })
         })

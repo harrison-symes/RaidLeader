@@ -145,21 +145,21 @@ class BossSpell extends Component {
     }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.state.castInterval) this.stopCasting()
     else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
-      console.log("start casting", this.props, nextProps);
       this.startCasting()
     } else {
-      console.log("not casting", this.props, nextProps);
     }
   }
   render() {
     const {spell, dispatch, boss} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || boss.mana < spell.cost ? 'is-loading is-danger' : castInterval ? 'is-info' : 'is-success'
+    let width = 600 / boss.spells.length
+    if (width > 200) width = 200
     return <div
-      className={`PlayerSpell button ${spellColour}`}>
-      <table className="table">
+      className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
+      <table className="table is-fullwidth">
         <thead className='thead has-text-centered'>
-          <th className="th subtitle is-5 has-text-centered">({spell.name} ({spell.cost})</th>
+          <th className="th subtitle is-6 has-text-centered">({spell.name} ({spell.cost})</th>
         </thead>
         {(onCooldown || castInterval) &&
           <tfoot className="tfoot">
