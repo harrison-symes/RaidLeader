@@ -72,7 +72,7 @@ class RecruitmentCentre extends Component {
   render() {
     const {close, gold} = this.props
     const {offeredRecruits, showChoices, selectedRecruit} = this.state
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
@@ -105,7 +105,12 @@ class RecruitmentCentre extends Component {
           }
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Leave</button>
+          <a onClick={close} className="button is-large is-dark is-outlined is-fullwidth">
+            <span>Leave&nbsp;</span>
+            <span className="icon is-large">
+              <i className={`ra ra-bottom-right ra-2x` }></i>
+            </span>
+          </a>
         </footer>
       </div>
     </div>

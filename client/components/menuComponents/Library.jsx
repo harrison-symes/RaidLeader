@@ -19,8 +19,8 @@ class RecruitmentCentre extends Component {
   solveOptions() {
     const offeredSpells = []
     const spellNames = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell))
-    if (spellNames.length < 3) return spellNames.map(name => spells[name])
-    while (offeredSpells.length < 3)  {
+    if (spellNames.length < 4) return spellNames.map(name => spells[name])
+    while (offeredSpells.length < 4)  {
       let idx = Math.floor(Math.random() * spellNames.length)
       let spell = spells[spellNames[idx]]
       if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
@@ -45,7 +45,7 @@ class RecruitmentCentre extends Component {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell} = this.state
     const spellCost = spellBook.length * 200
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
@@ -96,7 +96,12 @@ class RecruitmentCentre extends Component {
           }
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Leave</button>
+          <a onClick={close} className="button is-large is-dark is-outlined is-fullwidth">
+            <span>Leave&nbsp;</span>
+            <span className="icon is-large">
+              <i className={`ra ra-bottom-right ra-2x` }></i>
+            </span>
+          </a>
         </footer>
       </div>
     </div>
