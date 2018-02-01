@@ -7,7 +7,6 @@ body {
 .Town {
   min-height: 100vh;
   padding-top: 2%;
-  padding-bottom: 2%;
   margin: auto; }
   .Town .Town-Banner {
     border: 2px solid black;
@@ -23,12 +22,6 @@ body {
   .Town .Resources {
     width: 50vw;
     margin: auto; }
-  .Town .Travel-Button {
-    height: 10vh;
-    width: 45vw;
-    margin: auto;
-    margin-bottom: 2vw;
-    border: 2px solid black; }
   .Town .Town-Buttons {
     min-width: '90%';
     min-height: 60vh;
@@ -45,10 +38,21 @@ body {
         .Town .Town-Buttons .Town-Button-Div {
           margin: auto;
           width: 100%; } }
+    .Town .Town-Buttons .Travel-Button {
+      height: 10vh;
+      width: 45vw;
+      margin: auto;
+      margin-bottom: 2vw;
+      border: 2px solid black; }
     .Town .Town-Buttons .button {
-      background-color: inherit;
+      font-size: 2rem;
+      background-color: #b88e69;
       color: black;
-      height: 10vh; }
+      height: 10vh;
+      border: 2px solid black; }
+      @media (orientation: portrait) {
+        .Town .Town-Buttons .button .icon {
+          display: none; } }
 
 .app {
   height: 100vh; }

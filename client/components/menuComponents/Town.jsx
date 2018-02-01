@@ -34,7 +34,7 @@ class Town extends Component {
     }
   }
   renderTownMenuButton (name, icon) {
-    return <a onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-fullwidth">
+    return <a onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-dark">
       <span className="icon is-large">
         <i className={`ra ${icon} ra-2x`}></i>
       </span>
@@ -74,7 +74,7 @@ class Town extends Component {
       </div>
       {this.modalSwitch()}
       <div className="Town-Buttons has-text-centered">
-        <button onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large">Travel</button>
+        <button onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidth">Travel</button>
 
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Recruitment Centre', 'ra-crossed-swords')}

@@ -8,7 +8,6 @@ body {
 .Town {
   min-height: 100vh;
   padding-top: 2%;
-  padding-bottom: 2%;
   margin: auto;
 
   .Town-Banner {
@@ -31,13 +30,6 @@ body {
     margin: auto;
   }
 
-  .Travel-Button {
-    height: 10vh;
-    width: 45vw;
-    margin: auto;
-    margin-bottom: 2vw;
-    border: 2px solid black;
-  }
 
   .Town-Buttons {
     min-width: '90%';
@@ -57,10 +49,24 @@ body {
         width: 100%;
       }
     }
+    .Travel-Button {
+      height: 10vh;
+      width: 45vw;
+      margin: auto;
+      margin-bottom: 2vw;
+      border: 2px solid black;
+    }
     .button {
-      background-color: inherit;
+      font-size: 2rem;
+      background-color: #b88e69;
       color: black;
       height: 10vh;
+      border: 2px solid black;
+      @media (orientation: portrait) {
+        .icon {
+          display: none;
+        }
+      }
     }
 
   }
