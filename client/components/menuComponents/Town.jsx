@@ -43,16 +43,16 @@ class Town extends Component {
     const {showRecruitmentModal} = this.state
     return <div style={{margin: '0'}}>
       <div className="hero-head has-text-centered">
-        <p className="title is-1">Town</p>
-        <div className="columns">
-          <div className="column is-4">
-            <p className="subtitle is-4">Spells Learnt: {spellBook.length}</p>
+          <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
+        <div className="level has-text-centered" style={{width: '50vw', margin: 'auto'}}>
+          <div className=" is-4">
+            <p className="subtitle is-3">{spellBook.length}<i className="ra ra-book icon-large" /></p>
           </div>
-          <div className="column is-4">
-            <p className="subtitle is-4">Gold: {gold}</p>
+          <div className=" is-4">
+            <p className="subtitle is-3">{gold} <i className="ra ra-gold-bar icon-large" /></p>
           </div>
-          <div className="column is-4">
-            <p className="subtitle is-4">Recuits: {recruits.length}</p>
+          <div className=" is-4">
+            <p alt={`${recruits.length} recruits`} className="subtitle is-3">{recruits.length} <i className="ra ra-double-team icon-large" /></p>
           </div>
         </div>
 
