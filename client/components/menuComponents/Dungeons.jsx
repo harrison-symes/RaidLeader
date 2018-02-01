@@ -21,7 +21,7 @@ class Dungeons extends Component {
   render() {
     const {dungeons, playerParty, close} = this.props
     console.log({dungeons});
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
@@ -34,7 +34,12 @@ class Dungeons extends Component {
           </div>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Stay in Town</button>
+          <a onClick={close} className="button is-large is-dark is-outlined is-fullwidth">
+            <span>Stay in Town&nbsp;</span>
+            <span className="icon is-large">
+              <i className={`ra ra-bottom-right ra-2x` }></i>
+            </span>
+          </a>
         </footer>
       </div>
     </div>
