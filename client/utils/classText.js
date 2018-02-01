@@ -24,3 +24,15 @@ export function classTraits(heroClass) {
     default: return null
   }
 }
+
+export function classIcons (heroClass) {
+  switch(heroClass) {
+    case 'Paladin': return 'ra-heavy-shield'
+    case 'Mage': return 'ra-frostfire'
+    case 'Priest': return 'ra-health-increase'
+    case 'Warlock': return 'ra-scythe'
+    case 'Rogue': return 'ra-dripping-knife'
+    case 'Monk': return 'ra-incense'
+    case 'Warrior': return 'ra-knight-helmet'
+  }
+}

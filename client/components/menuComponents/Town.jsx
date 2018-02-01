@@ -43,7 +43,7 @@ class Town extends Component {
     const {showRecruitmentModal} = this.state
     return <div style={{height: '89vh', margin: '0'}} className="hero is-bold is-primary">
       <div className="hero-head has-text-centered">
-        <p className="title is-1">Town</p>
+        <p className="title is-1">Town</p><i className="ra-heavy-shield"></i>
         <div className="columns">
           <div className="column is-4">
             <p className="subtitle is-2">Spells Learnt: {spellBook.length}</p>
