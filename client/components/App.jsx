@@ -8,12 +8,25 @@ import Menu from './Menu'
 import Town from './menuComponents/Town'
 import Welcome from './Welcome'
 
+import {getRecruits} from '../actions/recruits'
+import {getSpells} from '../actions/spells'
+import {getDungeons} from '../actions/dungeons'
+import {getPlayerGold} from '../actions/gold'
+import {getWeapons} from '../actions/weapons'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       game: (props) => <Game {...props} />
     }
+  }
+  componentDidMount() {
+    this.props.dispatch(getRecruits())
+    this.props.dispatch(getSpells())
+    this.props.dispatch(getDungeons())
+    this.props.dispatch(getPlayerGold())
+    this.props.dispatch(getWeapons())
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.started && !nextProps.started){
