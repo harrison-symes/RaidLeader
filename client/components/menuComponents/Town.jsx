@@ -49,7 +49,7 @@ class Town extends Component {
   render() {
     const {gold, recruits, spellBook} = this.props
     const {showRecruitmentModal} = this.state
-    return <div style={{margin: '0'}}>
+    return <div className="Town">
       <div className="hero-head has-text-centered">
           <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
         <div className="level has-text-centered" style={{width: '50vw', margin: 'auto'}}>
@@ -75,7 +75,7 @@ class Town extends Component {
 
       </div>
       {this.modalSwitch()}
-      <div className="hero-body is-fullheight has-text-centered">
+      <div className="Town-Buttons has-text-centered">
         <button onClick={() => this.toggleModal('Dungeon Map')} style={{height: '10vh', width: '45vw', margin: 'auto', marginBottom: '2vw'}} className="button is-large is-fullwidth is-inverted is-light">Travel</button>
 
         <div className="columns">

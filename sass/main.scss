@@ -1,3 +1,26 @@
+body {
+  min-height: 100vh;
+  background-color: #8f7651;
+  background-repeat: repeat;
+  background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
+}
+
+.Town {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin: auto;
+}
+.Town-Buttons {
+  width: 80%;
+  border: 2px solid black;
+  padding: 5%;
+  margin: auto;
+  margin-top: 2%;
+  background-color: #b88e69;
+background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+}
+
+
 
 .app {
   height: 100vh;
