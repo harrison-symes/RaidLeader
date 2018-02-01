@@ -75,7 +75,7 @@ class TrainingCentre extends Component {
     const {levelUpgrade} = this.state
     return <div className="modal is-active">
       <div className="modal-background"></div>
-      <div className="modal-card">
+      <div className="modal-card Modal">
         <header className="modal-card-head">
           <p className="modal-card-title is-1"><i className="icon ra ra-muscle-up ra-fw" />Training Centre<i className="icon ra ra-muscle-up ra-fw" /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
