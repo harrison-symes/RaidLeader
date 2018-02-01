@@ -10,8 +10,6 @@ import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import WeaponStore from './WeaponStore'
 
-const buttonStyle = {height: '10vh'}
-
 class Town extends Component {
   constructor(props) {
     super(props)
@@ -36,7 +34,7 @@ class Town extends Component {
     }
   }
   renderTownMenuButton (name, icon) {
-    return <a onClick={() => this.toggleModal(name)} style={buttonStyle} className="column is-6 button is-large is-fullwidth ">
+    return <a onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-fullwidth">
       <span className="icon is-large">
         <i className={`ra ${icon} ra-2x`}></i>
       </span>
@@ -50,7 +48,7 @@ class Town extends Component {
     const {gold, recruits, spellBook} = this.props
     const {showRecruitmentModal} = this.state
     return <div className="Town">
-      <div className="hero-head has-text-centered">
+      <div className="has-text-centered Town-Banner">
           <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
         <div className="level has-text-centered Resources">
           <div className=" is-4">
@@ -84,11 +82,11 @@ class Town extends Component {
         </div>
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Training Centre', 'ra-muscle-up')}
-          <button disabled style={buttonStyle} className="column is-6 button is-large is-dark is-fullwidth is-outlined">Store (WIP)</button>
+          <button disabled className="column is-6 button is-large is-dark is-fullwidth is-outlined">Store (WIP)</button>
         </div>
         <div className="columns Town-Button-Div">
-          <Link to="/" style={buttonStyle} className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
-          <div style={buttonStyle} disabled className="button is-large is-fullwidth is-dark is-outlined">Profile (WIP)</div>
+          <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>Logout</Link>
+          <div disabled className="button is-large is-fullwidth is-dark is-outlined">Profile (WIP)</div>
         </div>
       </div>
     </div>

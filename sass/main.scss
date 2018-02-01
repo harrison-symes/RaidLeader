@@ -10,6 +10,21 @@ body {
   padding-bottom: 2%;
   margin: auto;
 
+  .Town-Banner {
+    .title {
+      text-decoration: underline;
+      font-size: 5rem;
+    }
+    .subtitle {
+      font-size: 3rem;
+      color: black;
+    }
+    border: 2px solid black;
+    padding: 1%;
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  }
+
   .Resources {
     width: 50vw;
     margin: auto;
@@ -20,6 +35,7 @@ body {
     width: 45vw;
     margin: auto;
     margin-bottom: 2vw;
+    border: 2px solid black;
   }
 
   .Town-Buttons {
@@ -28,7 +44,7 @@ body {
     border: 2px solid black;
     padding: 5%;
     margin: auto;
-    margin-top: 2%;
+    margin-top: 0;
     background-color: #b88e69;
     background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
 
@@ -40,10 +56,13 @@ body {
         width: 100%;
       }
     }
+    .button {
+      background-color: inherit;
+      color: black;
+      height: 10vh;
+    }
+
   }
-
-
-
 
 }
 

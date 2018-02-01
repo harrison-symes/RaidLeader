@@ -8,6 +8,17 @@ body {
   padding-top: 2%;
   padding-bottom: 2%;
   margin: auto; }
+  .Town .Town-Banner {
+    border: 2px solid black;
+    padding: 1%;
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
+    .Town .Town-Banner .title {
+      text-decoration: underline;
+      font-size: 5rem; }
+    .Town .Town-Banner .subtitle {
+      font-size: 3rem;
+      color: black; }
   .Town .Resources {
     width: 50vw;
     margin: auto; }
@@ -15,14 +26,15 @@ body {
     height: 10vh;
     width: 45vw;
     margin: auto;
-    margin-bottom: 2vw; }
+    margin-bottom: 2vw;
+    border: 2px solid black; }
   .Town .Town-Buttons {
     min-width: '90%';
     min-height: 60vh;
     border: 2px solid black;
     padding: 5%;
     margin: auto;
-    margin-top: 2%;
+    margin-top: 0;
     background-color: #b88e69;
     background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
     .Town .Town-Buttons .Town-Button-Div {
@@ -32,6 +44,10 @@ body {
         .Town .Town-Buttons .Town-Button-Div {
           margin: auto;
           width: 100%; } }
+    .Town .Town-Buttons .button {
+      background-color: inherit;
+      color: black;
+      height: 10vh; }
 
 .app {
   height: 100vh; }
