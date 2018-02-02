@@ -97,7 +97,9 @@ body {
         color: black;
       }
       .Info-Button {
-        height: 50px;
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        height: 3rem;
         width: 10vw;
         font-size: 1.5rem;
       }
@@ -107,6 +109,10 @@ body {
         option {
           color: black;
         }
+      }
+      .box {
+        background-color: #f7c48c;
+background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
       }
 
 

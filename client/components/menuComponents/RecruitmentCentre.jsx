@@ -87,7 +87,7 @@ class RecruitmentCentre extends Component {
               <hr />
               <p className="title is-3">Choose a Recruit:</p>
               <br />
-              {offeredRecruits.map((recruit, i) => <div>
+              {offeredRecruits.map((recruit, i) => <div className="box">
                 <div key={`offered-recruit-${i}`} className="level">
                   <p className="title is-3">{recruit.name} the {recruit.heroClass}</p>
                   {selectedRecruit != recruit
@@ -100,8 +100,8 @@ class RecruitmentCentre extends Component {
               </div>)}
             </div>
             : (gold >= 500
-              ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (-500 &nbsp; (<i className="ra ra-gold-bar icon" />)</button>
-              : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp; (<i className="ra ra-gold-bar icon" /></button>
+              ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (-500 &nbsp; <i className="ra ra-gold-bar icon" />)</button>
+              : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<i className="ra ra-gold-bar icon" /></button>
             )
           }
         </section>

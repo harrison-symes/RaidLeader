@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import createClass from '../../utils/createClass'
 import {earnGold} from '../../actions/gold'
 import {levelUpRecruit} from '../../actions/recruits'
+import {classIcons} from '../../utils/classText'
 
 class TrainingCentre extends Component {
   constructor(props) {
@@ -54,15 +55,15 @@ class TrainingCentre extends Component {
     const powerDiff = nextLevel.power - recruit.power
     const healthDiff = nextLevel.hp - recruit.hp
     const cost = recruit.level * 500
-    return <div key={`level-up-recruit-${recruit.name}-${i}`} style={{}} className="box">
-      <div className="subtitle is-3">{recruit.name} the {recruit.heroClass}</div>
+    return <div key={`level-up-recruit-${recruit.name}-${i}`} className="box">
+      <div className="subtitle is-3">{recruit.name} &nbsp;<i className={`icon ra ra-fw ${classIcons(recruit.heroClass)}`} /></div>
       <div className="columns">
         <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp} {healthDiff ? `(+${healthDiff})` : ""}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power} {powerDiff ? `(+${powerDiff})` : ""}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Speed: {recruit.speed} {speedDiff ? `(+${speedDiff})` : ""}</p></div>
       </div>
       {gold >= cost
-        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-large">Upgrade to Level {this.state.levelUpgrade} (-{cost} Gold)</button>
+        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-outlined is-large">Upgrade to Level {this.state.levelUpgrade} (-{cost} Gold)</button>
         : <button disabled className="button is-danger is-large">Insufficient Funds (Costs {cost} Gold)</button>
       }
     </div>

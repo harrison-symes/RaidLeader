@@ -74,7 +74,9 @@ body {
       .Town .Modal .modal-card-body .subtitle {
         color: black; }
       .Town .Modal .modal-card-body .Info-Button {
-        height: 50px;
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        height: 3rem;
         width: 10vw;
         font-size: 1.5rem; }
       .Town .Modal .modal-card-body select {
@@ -82,6 +84,9 @@ body {
         color: black; }
         .Town .Modal .modal-card-body select option {
           color: black; }
+      .Town .Modal .modal-card-body .box {
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png"); }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }

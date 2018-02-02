@@ -64,7 +64,7 @@ class RecruitmentCentre extends Component {
             ? (<div>
               <p className="title is-3">Choose a Spell:</p>
               <br />
-              {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="">
+              {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
                 <div className="columns">
                   <div className="column is-3"></div>
                   <div className="column is-6 has-text-centered">
