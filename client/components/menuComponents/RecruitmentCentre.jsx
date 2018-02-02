@@ -64,7 +64,7 @@ class RecruitmentCentre extends Component {
         <div className="column is-4"><p className="subtitle is-4">Speed: {moreInfo.speed}</p></div>
       </div>
       <br />
-      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}" &nbsp; (500<i className="ra ra-gold-bar icon" />)</button>
+      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"</button>
       <hr />
     </div>
   }
@@ -84,6 +84,7 @@ class RecruitmentCentre extends Component {
           <p className="content is-large">It costs 500 Gold to recruit a new Level 1 member</p>
           {showChoices
             ? <div>
+              <hr />
               <p className="title is-3">Choose a Recruit:</p>
               <br />
               {offeredRecruits.map((recruit, i) => <div>
@@ -99,8 +100,8 @@ class RecruitmentCentre extends Component {
               </div>)}
             </div>
             : (gold >= 500
-              ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (-500 Gold)</button>
-              : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough Gold</button>
+              ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (-500 &nbsp; (<i className="ra ra-gold-bar icon" />)</button>
+              : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp; (<i className="ra ra-gold-bar icon" /></button>
             )
           }
         </section>
