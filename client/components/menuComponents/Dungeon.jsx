@@ -33,7 +33,7 @@ class Dungeon extends React.Component {
       <div onClick={this.toggleShow} style={{cursor: 'pointer'}} className="level">
         <p  className="title is-2">{dungeon.name} </p>
         {dungeon.isCompleted
-          ? <span className="icon is-large has-text-success"><i className="ra ra-3x ra-skull-trophy" /></span>
+          ? <span className={`icon is-large has-text-${dungeon.is_repeatable ? 'success' : 'dark'}` }><i className="ra ra-3x ra-skull-trophy" /></span>
           : !levelRestrict
             ? <span className="icon is-large has-text-dark">
               <i className="ra ra-monster-skull ra-3x" />
