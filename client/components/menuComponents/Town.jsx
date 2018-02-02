@@ -85,7 +85,7 @@ class Town extends Component {
         </a>
 
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Recruitment Centre', 'ra-crossed-swords')}
+          {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower')}
           {this.renderTownMenuButton('Library', 'ra-crystal-ball')}
         </div>
         <div className="columns Town-Button-Div">

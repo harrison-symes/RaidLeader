@@ -75,7 +75,7 @@ class RecruitmentCentre extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Recruitment Centre</p>
+          <p className="modal-card-title is-1"><i className="icon ra ra-guarded-tower"/>&nbsp;Recruitment Centre&nbsp;<icon className="icon ra ra-guarded-tower ra-fw" /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
