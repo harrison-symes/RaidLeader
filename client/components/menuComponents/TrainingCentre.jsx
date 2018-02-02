@@ -24,19 +24,36 @@ class TrainingCentre extends Component {
   renderLevelOption(requires, level) {
     const {dungeons} = this.props
     return dungeons.find(dungeon => dungeon.name == requires && dungeon.isCompleted)
-      ? <option value={level}>Train Recruits to Level {level}</option>
-      : <option value={2} disabled>Complete "{requires}" to Unlock Level {level} Training</option>
+      ? <div className="option has-icons-left">
+        <option value={level}>
+          <span className="content">Train Recruits to Level {level}</span>
+        </option>
+        <span className="icon is-left">
+          <i className="icon ra ra-sword" />
+        </span>
+      </div>
+      : <option value={2} disabled className="content">
+        Complete "{requires}" to Unlock Level {level} Training
+      </option>
+
   }
   renderLevelOptions() {
     const {levelUpgrade} = this.state
-    return <select className="input is-large" name="levelUpgrade" value={levelUpgrade || null} onChange={this.setLevel}>
-      <option value={0}>Train to Which Level?</option>
-      {this.renderLevelOption('The Cursed Wilds', 2)}
-      {this.renderLevelOption('The Swamp', 3)}
-      {this.renderLevelOption('The Armory', 4)}
-      {this.renderLevelOption('The Foundry', 5)}
-      {this.renderLevelOption('The Lair', 6)}
-    </select>
+    return <div className="control has-icons-left">
+      <p className="select is-large is-rounded is-dark">
+        <select className="" name="levelUpgrade" value={levelUpgrade || null} onChange={this.setLevel}>
+          <option value={0}>Train to Which Level?</option>
+          {this.renderLevelOption('The Cursed Wilds', 2)}
+          {this.renderLevelOption('The Swamp', 3)}
+          {this.renderLevelOption('The Armory', 4)}
+          {this.renderLevelOption('The Foundry', 5)}
+          {this.renderLevelOption('The Lair', 6)}
+        </select>
+        <span className="icon is-left is-dark">
+          <i className="ra ra-fall-down ra-fw" />
+        </span>
+      </p>
+    </div>
   }
   renderRecruit(recruit, i) {
     const {gold} = this.props
@@ -87,8 +104,8 @@ class TrainingCentre extends Component {
             ? this.renderRecruits()
             : <div className="has-text-centered">
               <p className="title is-1">Welcome to the Training Centre</p>
-              <p className="subtitle is-1">Here you can spend your Gold to increase the Levels of your Recruits</p>
-              <p className="subtitle is-1">Higher Level Recruits have more Power and Health</p>
+              <p className="content is-large">Here you can spend your Gold to increase the Levels of your Recruits</p>
+              <p className="content is-large">Higher Level Recruits have more Power and Health</p>
             </div>
           }
         </section>

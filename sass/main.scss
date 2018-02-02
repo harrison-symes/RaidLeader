@@ -101,13 +101,21 @@ body {
         width: 10vw;
         font-size: 1.5rem;
       }
+      select {
+        background-color: #b88e69;
+        color: black;
+        option {
+          color: black;
+        }
+      }
+
 
     }
     .modal-card-head, .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     }
-    .button {
+    .button, .input {
       font-size: 2rem;
       background-color: #b88e69;
       color: black;

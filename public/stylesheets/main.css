@@ -77,19 +77,24 @@ body {
         height: 50px;
         width: 10vw;
         font-size: 1.5rem; }
+      .Town .Modal .modal-card-body select {
+        background-color: #b88e69;
+        color: black; }
+        .Town .Modal .modal-card-body select option {
+          color: black; }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
-    .Town .Modal .button {
+    .Town .Modal .button, .Town .Modal .input {
       font-size: 2rem;
       background-color: #b88e69;
       color: black;
       height: 10vh;
       border: 2px solid black; }
       @media (max-width: 900px) {
-        .Town .Modal .button {
+        .Town .Modal .button, .Town .Modal .input {
           font-size: 1rem; }
-          .Town .Modal .button .icon {
+          .Town .Modal .button .icon, .Town .Modal .input .icon {
             font-size: 0.5rem; } }
 
 .app {
