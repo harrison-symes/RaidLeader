@@ -78,9 +78,30 @@ body {
 
   .Modal {
     text-align: center;
+    .title {
+      color: black;
+      text-decoration: underline;
+    }
+    .modal-card-title{
+      color: black;
+      font-size: 3rem;
+    }
     .modal-card-body {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      color: black;
+      hr {
+        background-color: #b88e69;
+      }
+      .subtitle {
+        color: black;
+      }
+      .Info-Button {
+        height: 50px;
+        width: 10vw;
+        font-size: 1.5rem;
+      }
+
     }
     .modal-card-head, .modal-card-foot {
       background-color: #b88e69;
@@ -92,9 +113,11 @@ body {
       color: black;
       height: 10vh;
       border: 2px solid black;
-      @media (orientation: portrait) {
+      @media (max-width: 900px) {
+        font-size: 1rem;
         .icon {
-          display: none;
+          // display: none;
+          font-size: 0.5rem;
         }
       }
     }

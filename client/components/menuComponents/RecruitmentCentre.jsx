@@ -49,23 +49,22 @@ class RecruitmentCentre extends Component {
     return <div>
       <div className="has-text-centered">
         <p className="title is-5">Starting Buff</p>
-        <p className="subtitle is-5">{startingBuff(moreInfo.heroClass)}</p>
+        <p className="content is-large">{startingBuff(moreInfo.heroClass)}</p>
       </div>
-      <hr />
+      <br />
       <div className="has-text-centered">
         <p className="title is-5">Class Traits:</p>
-        <p className="subtitle is-5">{classTraits(moreInfo.heroClass)}</p>
+        <p className="content is-large">{classTraits(moreInfo.heroClass)}</p>
       </div>
-      <hr />
+      <br />
       <div className="title is-4">Stats</div>
-      <hr />
       <div className="columns">
         <div className="column is-4"><p className="subtitle is-4">Health: {moreInfo.hp}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Power: {moreInfo.power}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Speed: {moreInfo.speed}</p></div>
       </div>
-      <hr />
-      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit {recruit.name} (-500 Gold)</button>
+      <br />
+      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}" &nbsp; (500<i className="ra ra-gold-bar icon" />)</button>
       <hr />
     </div>
   }
@@ -80,22 +79,23 @@ class RecruitmentCentre extends Component {
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <p className="title is-1">Welcome to the Recruitment Centre!</p>
-          <p className="subtitle is-3">Here you can recruit new members to join your party in Dungeons</p>
-          <p className="subtitle is-3">It costs 500 Gold to recruit a new Level 1 member</p>
+          <p className="title is-3">Welcome to the Recruitment Centre!</p>
+          <p className="content is-large">Here you can recruit new members to join your party in Dungeons</p>
+          <p className="content is-large">It costs 500 Gold to recruit a new Level 1 member</p>
           {showChoices
             ? <div>
               <p className="title is-3">Choose a Recruit:</p>
-              <hr />
+              <br />
               {offeredRecruits.map((recruit, i) => <div>
                 <div key={`offered-recruit-${i}`} className="level">
-                  <p className="title is-4">{recruit.name} the {recruit.heroClass}</p>
+                  <p className="title is-3">{recruit.name} the {recruit.heroClass}</p>
                   {selectedRecruit != recruit
-                    ? <button onClick={() => this.selectRecruit(recruit)} className="button is-success">Show More</button>
-                    : <button onClick={() => this.selectRecruit(null)} className="button is-warning">Show Less</button>
+                    ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show More</button>
+                    : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
                   }
                 </div>
                 {selectedRecruit == recruit && this.showMore(recruit)}
+                <br />
               </div>)}
             </div>
             : (gold >= 500

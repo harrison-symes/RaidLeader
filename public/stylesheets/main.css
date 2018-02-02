@@ -59,9 +59,24 @@ body {
           display: none; } }
   .Town .Modal {
     text-align: center; }
+    .Town .Modal .title {
+      color: black;
+      text-decoration: underline; }
+    .Town .Modal .modal-card-title {
+      color: black;
+      font-size: 3rem; }
     .Town .Modal .modal-card-body {
       background-color: #b88e69;
-      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
+      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      color: black; }
+      .Town .Modal .modal-card-body hr {
+        background-color: #b88e69; }
+      .Town .Modal .modal-card-body .subtitle {
+        color: black; }
+      .Town .Modal .modal-card-body .Info-Button {
+        height: 50px;
+        width: 10vw;
+        font-size: 1.5rem; }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
@@ -71,9 +86,11 @@ body {
       color: black;
       height: 10vh;
       border: 2px solid black; }
-      @media (orientation: portrait) {
-        .Town .Modal .button .icon {
-          display: none; } }
+      @media (max-width: 900px) {
+        .Town .Modal .button {
+          font-size: 1rem; }
+          .Town .Modal .button .icon {
+            font-size: 0.5rem; } }
 
 .app {
   height: 100vh; }
