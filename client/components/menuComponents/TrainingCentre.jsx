@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import createClass from '../../utils/createClass'
 import {earnGold} from '../../actions/gold'
 import {levelUpRecruit} from '../../actions/recruits'
+import {classIcons} from '../../utils/classText'
 
 class TrainingCentre extends Component {
   constructor(props) {
@@ -24,19 +25,26 @@ class TrainingCentre extends Component {
   renderLevelOption(requires, level) {
     const {dungeons} = this.props
     return dungeons.find(dungeon => dungeon.name == requires && dungeon.isCompleted)
-      ? <option value={level}>Train Recruits to Level {level}</option>
-      : <option value={2} disabled>Complete "{requires}" to Unlock Level {level} Training</option>
+      ? <option value={level}>
+        <span className="content">Train Recruits to Level {level}</span>
+      </option>
+      : <option value={2} disabled className="content">
+        Complete "{requires}" to Unlock Level {level} Training
+      </option>
+
   }
   renderLevelOptions() {
     const {levelUpgrade} = this.state
-    return <select className="input is-large" name="levelUpgrade" value={levelUpgrade || null} onChange={this.setLevel}>
-      <option value={0}>Train to Which Level?</option>
-      {this.renderLevelOption('The Cursed Wilds', 2)}
-      {this.renderLevelOption('The Swamp', 3)}
-      {this.renderLevelOption('The Armory', 4)}
-      {this.renderLevelOption('The Foundry', 5)}
-      {this.renderLevelOption('The Lair', 6)}
-    </select>
+    return <p className="select is-large is-rounded is-info is-focused">
+      <select className="" name="levelUpgrade" value={levelUpgrade || null} onChange={this.setLevel}>
+        <option value={0}>Train to Which Level?</option>
+        {this.renderLevelOption('The Cursed Wilds', 2)}
+        {this.renderLevelOption('The Swamp', 3)}
+        {this.renderLevelOption('The Armory', 4)}
+        {this.renderLevelOption('The Foundry', 5)}
+        {this.renderLevelOption('The Lair', 6)}
+      </select>
+    </p>
   }
   renderRecruit(recruit, i) {
     const {gold} = this.props
@@ -47,15 +55,15 @@ class TrainingCentre extends Component {
     const powerDiff = nextLevel.power - recruit.power
     const healthDiff = nextLevel.hp - recruit.hp
     const cost = recruit.level * 500
-    return <div key={`level-up-recruit-${recruit.name}-${i}`} style={{}} className="box">
-      <div className="subtitle is-3">{recruit.name} the {recruit.heroClass}</div>
+    return <div key={`level-up-recruit-${recruit.name}-${i}`} className="box">
+      <div className="subtitle is-3">{recruit.name} &nbsp;<i className={`icon ra ra-fw ${classIcons(recruit.heroClass)}`} /></div>
       <div className="columns">
         <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp} {healthDiff ? `(+${healthDiff})` : ""}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power} {powerDiff ? `(+${powerDiff})` : ""}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Speed: {recruit.speed} {speedDiff ? `(+${speedDiff})` : ""}</p></div>
       </div>
       {gold >= cost
-        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-large">Upgrade to Level {this.state.levelUpgrade} (-{cost} Gold)</button>
+        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-outlined is-large">Upgrade to Level {this.state.levelUpgrade} (-{cost} Gold)</button>
         : <button disabled className="button is-danger is-large">Insufficient Funds (Costs {cost} Gold)</button>
       }
     </div>
@@ -86,9 +94,9 @@ class TrainingCentre extends Component {
           {this.state.levelUpgrade != 0
             ? this.renderRecruits()
             : <div className="has-text-centered">
-              <p className="title is-1">Welcome to the Training Centre</p>
-              <p className="subtitle is-1">Here you can spend your Gold to increase the Levels of your Recruits</p>
-              <p className="subtitle is-1">Higher Level Recruits have more Power and Health</p>
+              <p className="title is-3">Welcome to the Training Centre</p>
+              <p className="content is-large">Here you can spend your Gold to increase the Levels of your Recruits</p>
+              <p className="content is-large">Higher Level Recruits have more Power and Health</p>
             </div>
           }
         </section>

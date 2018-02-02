@@ -48,6 +48,7 @@ body {
       margin-bottom: 2vw;
       border: 2px solid black; }
     .Town .Town-Buttons .button {
+      border-radius: 100px;
       font-size: 2rem;
       background-color: #b88e69;
       color: black;
@@ -58,21 +59,48 @@ body {
           display: none; } }
   .Town .Modal {
     text-align: center; }
+    .Town .Modal .title {
+      color: black;
+      text-decoration: underline; }
+    .Town .Modal .modal-card-title {
+      color: black;
+      font-size: 3rem; }
     .Town .Modal .modal-card-body {
       background-color: #b88e69;
-      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
+      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      color: black; }
+      .Town .Modal .modal-card-body hr {
+        background-color: #b88e69; }
+      .Town .Modal .modal-card-body .subtitle {
+        color: black; }
+      .Town .Modal .modal-card-body .Info-Button {
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        height: 3rem;
+        width: 10vw;
+        font-size: 1.5rem; }
+      .Town .Modal .modal-card-body select {
+        background-color: #b88e69;
+        color: black; }
+        .Town .Modal .modal-card-body select option {
+          color: black; }
+      .Town .Modal .modal-card-body .box {
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png"); }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
-    .Town .Modal .button {
+    .Town .Modal .button, .Town .Modal .input {
       font-size: 2rem;
       background-color: #b88e69;
       color: black;
       height: 10vh;
       border: 2px solid black; }
-      @media (orientation: portrait) {
-        .Town .Modal .button .icon {
-          display: none; } }
+      @media (max-width: 900px) {
+        .Town .Modal .button, .Town .Modal .input {
+          font-size: 1rem; }
+          .Town .Modal .button .icon, .Town .Modal .input .icon {
+            font-size: 0.5rem; } }
 
 .app {
   height: 100vh; }

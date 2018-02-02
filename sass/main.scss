@@ -61,6 +61,7 @@ body {
       border: 2px solid black;
     }
     .button {
+      border-radius: 100px;
       font-size: 2rem;
       background-color: #b88e69;
       color: black;
@@ -77,23 +78,60 @@ body {
 
   .Modal {
     text-align: center;
+    .title {
+      color: black;
+      text-decoration: underline;
+    }
+    .modal-card-title{
+      color: black;
+      font-size: 3rem;
+    }
     .modal-card-body {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      color: black;
+      hr {
+        background-color: #b88e69;
+      }
+      .subtitle {
+        color: black;
+      }
+      .Info-Button {
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        height: 3rem;
+        width: 10vw;
+        font-size: 1.5rem;
+      }
+      select {
+        background-color: #b88e69;
+        color: black;
+        option {
+          color: black;
+        }
+      }
+      .box {
+        background-color: #f7c48c;
+background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+      }
+
+
     }
     .modal-card-head, .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     }
-    .button {
+    .button, .input {
       font-size: 2rem;
       background-color: #b88e69;
       color: black;
       height: 10vh;
       border: 2px solid black;
-      @media (orientation: portrait) {
+      @media (max-width: 900px) {
+        font-size: 1rem;
         .icon {
-          display: none;
+          // display: none;
+          font-size: 0.5rem;
         }
       }
     }

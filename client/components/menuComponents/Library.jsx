@@ -49,21 +49,22 @@ class RecruitmentCentre extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">The Library</p>
+          <p className="modal-card-title is-1">
+            <i className="icon ra ra-crystal-ball" />&nbsp;The Library&nbsp;<i className="icon ra ra-crystal-ball" /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <p className="title is-1">Welcome to The Library!</p>
-          <p className="subtitle is-3">Here you can learn new spells to support your party in Dungeons</p>
+          <p className="title is-3">Welcome to The Library!</p>
+          <p className="content is-large">Here you can learn new spells to support your party in Dungeons</p>
           {!showChoices
-            ? <p className="subtitle is-3">It will cost {spellCost} Gold for your next Spell</p>
-            : <p className="subtitle is-3">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
+            ? <p className="content is-large">It will cost {spellCost} <i className="ra ra-gold-bar icon" /> for your next Spell</p>
+            : <p className="content is-large">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
           }
           {showChoices
             ? (<div>
               <p className="title is-3">Choose a Spell:</p>
-              <hr />
-              {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="">
+              <br />
+              {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
                 <div className="columns">
                   <div className="column is-3"></div>
                   <div className="column is-6 has-text-centered">
@@ -83,16 +84,16 @@ class RecruitmentCentre extends Component {
                     <div className="column is-4"><p className="subtitle is-4">Cost: {spell.cost} s</p></div>
                     <div className="column is-4"><p className="subtitle is-4">Cooldown: {spell.coolDown} s</p></div>
                   </div>
-                  <button onClick={() => this.learnSpell(spell)} className="button is-success is-large">Learn</button>
+                  <button onClick={() => this.learnSpell(spell)} className="button is-success is-large">Learn (-{spellCost})</button>
                 </div>}
                 <hr />
               </div>)}
             </div>)
             : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
               ? gold >= spellCost
-                ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} Gold)</button>
-                : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough Gold</button>
-              : <button disabled className="is-danger is-large button is-fullwidth">There are no more spells for you to learn!</button>
+                ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} &nbsp; <i className="ra ra-gold-bar icon" />)</button>
+                : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp; <i className="ra ra-gold-bar icon" /></button>
+              : <button disabled className="is-danger is-large button is-fullwidth">You have learned every spell!</button>
           }
         </section>
         <footer className="modal-card-foot">

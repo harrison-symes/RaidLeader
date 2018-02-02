@@ -30,8 +30,8 @@ export function classIcons (heroClass) {
     case 'Paladin': return 'ra-heavy-shield'
     case 'Mage': return 'ra-frostfire'
     case 'Priest': return 'ra-health-increase'
-    case 'Warlock': return 'ra-scythe'
-    case 'Rogue': return 'ra-dripping-knife'
+    case 'Warlock': return 'ra-flaming-claw'
+    case 'Rogue': return ' ra-hood'
     case 'Monk': return 'ra-incense'
     case 'Warrior': return 'ra-knight-helmet'
   }
