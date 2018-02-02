@@ -8,7 +8,7 @@ import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
 
 import createClass from '../../utils/createClass'
-import {classTraits, startingBuff} from '../../utils/classText'
+import {classTraits, startingBuff, classIcons} from '../../utils/classText'
 
 class RecruitmentCentre extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class RecruitmentCentre extends Component {
         <div className="column is-4"><p className="subtitle is-4">Speed: {moreInfo.speed}</p></div>
       </div>
       <br />
-      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"</button>
+      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"&nbsp;<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></button>
       <hr />
     </div>
   }
@@ -89,7 +89,7 @@ class RecruitmentCentre extends Component {
               <br />
               {offeredRecruits.map((recruit, i) => <div className="box">
                 <div key={`offered-recruit-${i}`} className="level">
-                  <p className="title is-3">{recruit.name} the {recruit.heroClass}</p>
+                  <p className="title is-3">{recruit.name} the {recruit.heroClass}<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></p>
                   {selectedRecruit != recruit
                     ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show More</button>
                     : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
