@@ -65,17 +65,14 @@ class RecruitmentCentre extends Component {
               <p className="title is-3">Choose a Spell:</p>
               <br />
               {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
-                <div className="columns">
-                  <div className="column is-3"></div>
-                  <div className="column is-6 has-text-centered">
-                    <p className="title is-4">{spell.name}</p>
-                  </div>
-                  <div className="column is-3">
-                    {selectedSpell != spell
-                      ? <button onClick={() => this.selectSpell(spell)} className="button is-success">View More</button>
-                      : <button onClick={() => this.selectSpell(null)} className="button is-warning">Show Less</button>
-                    }
-                  </div>
+                <div className="level">
+                  <p className="title is-3">{spell.name}
+                    &nbsp;<i className={`icon ra ${spell.icon}`} />
+                  </p>
+                  {selectedSpell != spell
+                    ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
+                    : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
+                  }
                 </div>
                 {selectedSpell == spell && <div className="has-text-centered">
                   <div className="subtitle is-5">{spell.description}</div>
@@ -84,7 +81,8 @@ class RecruitmentCentre extends Component {
                     <div className="column is-4"><p className="subtitle is-4">Cost: {spell.cost} s</p></div>
                     <div className="column is-4"><p className="subtitle is-4">Cooldown: {spell.coolDown} s</p></div>
                   </div>
-                  <button onClick={() => this.learnSpell(spell)} className="button is-success is-large">Learn (-{spellCost})</button>
+                  <button onClick={() => this.learnSpell(spell)} className="button is-success is-large">Learn {spell.name}
+                    &nbsp;<i className={`icon ra ${spell.icon}`} /> </button>
                 </div>}
                 <hr />
               </div>)}

@@ -56,7 +56,12 @@ class TrainingCentre extends Component {
     const healthDiff = nextLevel.hp - recruit.hp
     const cost = recruit.level * 500
     return <div key={`level-up-recruit-${recruit.name}-${i}`} className="box">
-      <div className="subtitle is-3">{recruit.name} &nbsp;<i className={`icon ra ra-fw ${classIcons(recruit.heroClass)}`} /></div>
+      <div className="subtitle is-3">{recruit.name} &nbsp;
+        <span className="tooltip">
+          <span className="tooltiptext">{recruit.heroClass}</span>
+          <i className={`icon ra ra-fw ${classIcons(recruit.heroClass)}`} />
+        </span>
+      </div>
       <div className="columns">
         <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp} {healthDiff ? `(+${healthDiff})` : ""}</p></div>
         <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power} {powerDiff ? `(+${powerDiff})` : ""}</p></div>

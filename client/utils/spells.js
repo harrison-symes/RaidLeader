@@ -8,7 +8,9 @@ module.exports = {
     type: 'heal',
     singleTarget: true,
     powerRatio: 0.5,
-    description: 'Heal a Friendly Target for (50%) of Player Power'
+    description: 'Heal a Friendly Target for (50%) of Player Power',
+    icon: 'ra-health',
+    iconColor: 'black'
   },
   'Heal': {
     id: 2,
@@ -19,7 +21,9 @@ module.exports = {
     type: 'heal',
     singleTarget: true,
     powerRatio: 1,
-    description: 'Heal a Friendly Target for (100%) of Player Power'
+    description: 'Heal a Friendly Target for (100%) of Player Power',
+    icon: 'ra-health',
+    iconColor: 'black'
   },
   'Greater Heal': {
     id: 3,
@@ -30,7 +34,9 @@ module.exports = {
     type: 'heal',
     singleTarget: true,
     powerRatio: 3,
-    description: 'Heal a Friendly Target for (200%) of Player Power'
+    description: 'Heal a Friendly Target for (200%) of Player Power',
+    icon: 'ra-health',
+    iconColor: 'black'
   },
   'Healing Ring': {
     id: 4,
@@ -41,7 +47,9 @@ module.exports = {
     type: 'heal',
     singleTarget: false,
     powerRatio: 1,
-    description: "Heal ALL Friendly Characters for (100%) of Player Power"
+    description: "Heal ALL Friendly Characters for (100%) of Player Power",
+    icon: 'ra-level-four-advanced',
+    iconColor: 'black'
   },
   'Bind': {
     id: 5,
@@ -52,7 +60,9 @@ module.exports = {
     type: 'heal',
     singleTarget: true,
     powerRatio: 2,
-    description: 'Heal a Friendly Character and the Player for (200%) of Player Power'
+    description: 'Heal a Friendly Character and the Player for (200%) of Player Power',
+    icon: 'ra-level-two',
+    iconColor: 'black'
   },
   'Fireball': {
     id: 6,
@@ -63,7 +73,9 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 3,
-    description: "Damage the Boss for (300%) of Player Power"
+    description: "Damage the Boss for (300%) of Player Power",
+    icon: 'ra-burning-meteor',
+    iconColor: 'black'
   },
   'Fireblast': {
     id: 7,
@@ -74,7 +86,9 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 2,
-    description: 'Damage the Boss for (%200) of Player Power'
+    description: 'Damage the Boss for (%200) of Player Power',
+    icon: 'ra-blaster',
+    iconColor: 'black'
   },
   'Flash Fire': {
     id: 8,
@@ -85,7 +99,9 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 1,
-    description: 'Damage the Boss for (%100) of Player Power'
+    description: 'Damage the Boss for (%100) of Player Power',
+    icon: 'ra-explosion',
+    iconColor: 'black'
   },
   'Life Tap': {
     id: 9,
@@ -96,7 +112,9 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 3,
-    description: 'Lose (5%) hp, restore (10%) mana'
+    description: 'Lose (5%) hp, restore (10%) mana',
+    icon: 'ra-doubled',
+    iconColor: 'black'
   },
   'Evocate': {
     id: 10,
@@ -107,7 +125,9 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
-    description: 'Restore 10% Mana'
+    description: 'Restore 10% Mana',
+    icon: 'ra-player-teleport',
+    iconColor: 'black'
   },
   'Drain Life': {
     id: 11,
@@ -118,7 +138,9 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 1,
-    description: "Damage the Boss for (%100) of Player Power, Heal the Player for (%200) of Damage done"
+    description: "Damage the Boss for (%100) of Player Power, Heal the Player for (%200) of Damage done",
+    icon: 'ra-droplet',
+    iconColor: 'black'
   },
   'Harvest Life': {
     id: 12,
@@ -129,7 +151,9 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 3,
-    description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done'
+    description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done',
+    icon: 'ra-defibrilate',
+    iconColor: 'purple'
   },
   'Drain Soul': {
     id: 13,
@@ -140,7 +164,9 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 2,
-    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player'
+    description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player',
+    icon: 'ra-bleeding-hearts',
+    iconColor: 'black'
   },
   'Renew': {
     id: 14,
@@ -151,7 +177,9 @@ module.exports = {
     type: 'healing',
     singleTarget: true,
     powerRatio: 0.5,
-    description: 'Place a Healing over Time effect on a friendly target, healing them for 50% of Player Power every 3 seconds for 9 seconds'
+    description: 'Place a Healing over Time effect on a friendly target, healing them for 50% of Player Power every 3 seconds for 9 seconds',
+    icon: 'ra-health-increase',
+    iconColor: 'black'
   },
   'Greater Renew': {
     id: 15,
@@ -162,6 +190,8 @@ module.exports = {
     type: 'healing',
     powerRatio: 0.5,
     singleTarget: false,
-    description: 'Place a Healing over Time effect on each friendly party member, healing them for 50% of Player Power every 3 seconds for 9 seconds'
+    description: 'Place a Healing over Time effect on each friendly party member, healing them for 50% of Player Power every 3 seconds for 9 seconds',
+    icon: 'ra-sunbeams',
+    iconColor: 'black'
   }
 }
