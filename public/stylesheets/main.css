@@ -1,10 +1,8 @@
-body {
+.Town {
   min-height: 100vh;
   background-color: #8f7651;
   background-repeat: repeat;
-  background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png"); }
-
-.Town {
+  background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
   min-height: 100vh;
   padding-top: 2%;
   margin: auto; }
