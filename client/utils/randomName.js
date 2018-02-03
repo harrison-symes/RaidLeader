@@ -51,7 +51,7 @@ const names = [
   'Don',
   "Rajal",
   'Callan',
-  'Yaz',
+  'Daz',
   'Skye',
   'Rich John',
   'Hayden',

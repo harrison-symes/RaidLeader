@@ -17,7 +17,7 @@ export default {
   goldReward: 300,
   weaponRewards: ['Ancient Pearls', 'Turtle Shell'],
   weaponChance: 1,
-  progress_required: 1,
+  progress_required: 0,
   spells: [
     {
       name: 'Protect',
