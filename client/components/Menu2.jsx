@@ -27,7 +27,7 @@ class Menu extends React.Component {
     this.goToTown = this.goToTown.bind(this)
   }
   readyRecruits(recruits) {
-    return playerParty.map(recruit => {
+    return recruits.map(recruit => {
       if (recruit.weapon_id) {
         let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
         recruit.initHp += recruit.initHp * weapon.hp
