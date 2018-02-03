@@ -68,8 +68,8 @@ class RecruitmentCentre extends Component {
               {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
                 <div className="level">
                   <p className="title is-3">{spell.name}
-                    &nbsp;<i className={`icon ra ${spell.icon}`} />
                   </p>
+                  &nbsp;<i className={`icon ra-3x ra ${spell.icon}`} />
                   {selectedSpell != spell
                     ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
                     : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
