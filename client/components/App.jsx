@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 import Home from './Home'
 import Game from './Game'
-import Menu from './Menu'
+import Menu from './Menu2'
 import Town from './menuComponents/Town'
 import Welcome from './Welcome'
 
