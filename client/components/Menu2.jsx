@@ -91,11 +91,11 @@ class Menu extends React.Component {
     const {pathname} = this.props.location
     return <a onClick={() => this.showModal(name)} className="button is-fullwidth is-large is-warning is-outlined">
       <span className="icon is-large">
-        <i className={`ra ra-sword ra-2x`}></i>
+        <i className={`ra ${icon} ra-2x`}></i>
       </span>
       <span className="content is-large"> &nbsp;{name}&nbsp;</span>
       <span className="icon is-large">
-        <i className={`ra ra-sword ra-2x` }></i>
+        <i className={`ra ${icon} ra-2x` }></i>
       </span>
     </a>
   }
@@ -123,25 +123,25 @@ class Menu extends React.Component {
         </div>
         <br />
         <div className="columns">
-          {(playerWeapon != null || boss != null || playerParty.length > 0 || playerSpells.length > 0) && <div className="column">
-            <p className="title is-3">Done:</p>
-            {boss != null && <span className="level">
-              {this.renderMenuLink('Boss Selection')}
-              <BossPreview i={0} boss={boss} />
-            </span>}
-            {playerWeapon && this.renderMenuLink('Equip Player Weapon')}
-            {playerParty.length > 0 && this.renderMenuLink('Select Spells')}
-            {playerSpells.length > 0 && this.renderMenuLink('Assemble Party')}
-          </div>}
           {(!boss || !playerWeapon || !playerParty.length > 0 || !playerSpells > 0)
             && <div className="column">
               <p className="title is-3">To Do:</p>
-              {!boss && this.renderMenuLink('Boss Selection')}
-              {!playerWeapon && this.renderMenuLink('Equip Player Weapon')}
-              {this.renderMenuLink('Assemble Party')}
-              {this.renderMenuLink('Select Spells')}
+              {!boss && this.renderMenuLink('Boss Selection', ' ra-on-target')}
+              {!playerWeapon && this.renderMenuLink('Equip Player Weapon', 'ra-crystal-wand')}
+              {!playerParty.length > 0 && this.renderMenuLink('Assemble Party', 'ra-podium')}
+              {!playerSpells.length > 0 && this.renderMenuLink('Select Spells', 'ra-scroll-unfurled')}
             </div>
           }
+          {(playerWeapon != null || boss != null || playerSpells.length > 0 || playerParty.length > 0) && <div className="column">
+            <p className="title is-3">Done:</p>
+            {boss != null && <span className="level">
+              {this.renderMenuLink('Boss Selection', 'ra-on-target')}
+              <BossPreview i={0} boss={boss} />
+            </span>}
+            {playerWeapon && this.renderMenuLink('Equip Player Weapon', 'ra-crystal-wand')}
+            {playerParty.length > 0 && this.renderMenuLink('Assemble Party', 'ra-podium')}
+            {playerSpells.length > 0 && this.renderMenuLink('Select Spells', 'ra-scroll-unfurled')}
+          </div>}
         </div>
       </div>
     </div>
