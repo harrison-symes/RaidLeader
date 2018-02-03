@@ -29,7 +29,7 @@ export function classIcons (heroClass) {
   switch(heroClass) {
     case 'Paladin': return 'ra-heavy-shield'
     case 'Mage': return 'ra-frostfire'
-    case 'Priest': return 'ra-health-increase'
+    case 'Priest': return 'ra-angel-wings'
     case 'Warlock': return 'ra-flaming-claw'
     case 'Rogue': return ' ra-hood'
     case 'Monk': return 'ra-incense'
