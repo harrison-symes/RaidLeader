@@ -22,7 +22,7 @@ class SpellFrame extends React.Component {
           <p className="modal-card-title">{spell.name}</p>
           <button onClick={this.toggleShow} className="delete" aria-label="close"></button>
         </header>
-        <div className="modal-card-body has-text-centered">
+        <section className="modal-card-body has-text-centered">
           <p className="title is-1">{spell.name} ({spell.type})</p>
           <hr />
           <div className="columns">
@@ -31,14 +31,18 @@ class SpellFrame extends React.Component {
             <div className="column is-4"><p className="subtitle is-3">CD: {spell.coolDown} s</p></div>
           </div>
           <p className="box subtitle is-2">{spell.description}</p>
-        </div>
-        <footer className="modal-card-footer">
-          <button onClick={this.toggleShow} className="modal-close is-large" aria-label="close">Close</button>
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={this.toggleShow} className="button is-large is-fullwidth">Close</button>
         </footer>
       </div>
     </div>
     return <div>
-      <p className="subtitle is-4">{spell.name}</p>
+      <p className="subtitle is-4">
+        {spell.name}
+        &nbsp; <i className={`subtitle is-4 icon ra ${spell.icon}`}>
+        </i>
+      </p>
       <button onClick={this.toggleShow} className="button">Show More</button>
       {showMore && modal()}
     </div>
