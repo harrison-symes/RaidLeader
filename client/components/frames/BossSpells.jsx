@@ -26,7 +26,7 @@ class BossSpell extends Component {
   }
   castSwitch() {
     const {spell, dispatch, boss, party} = this.props
-    const power = boss.power * spell.powerRatio
+    let power = boss.power * spell.powerRatio
     let target = boss.bossTarget
     let aliveTargets = party.filter(member => member.isAlive)
     if (aliveTargets.length == 0) power*=2
