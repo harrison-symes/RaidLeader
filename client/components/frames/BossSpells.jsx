@@ -28,6 +28,8 @@ class BossSpell extends Component {
     const {spell, dispatch, boss, party} = this.props
     const power = boss.power * spell.powerRatio
     let target = boss.bossTarget
+    let aliveTargets = party.filter(member => member.isAlive)
+    if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
       case 'Roar':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
@@ -64,7 +66,7 @@ class BossSpell extends Component {
       case 'Overwhelm':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
-        let aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
+        aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
         if (aliveTargets.length) {
           target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
           dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
