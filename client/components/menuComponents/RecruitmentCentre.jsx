@@ -6,6 +6,7 @@ import randomName from '../../utils/randomName'
 import {earnGold} from '../../actions/gold'
 import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
+import {PowerIcon, SpeedIcon, HealthIcon} from '../icons/StatIcons'
 
 import createClass from '../../utils/createClass'
 import {classTraits, startingBuff, classIcons} from '../../utils/classText'
@@ -59,9 +60,9 @@ class RecruitmentCentre extends Component {
       <br />
       <div className="title is-4">Stats</div>
       <div className="columns">
-        <div className="column is-4"><p className="subtitle is-4">Health: {moreInfo.hp}</p></div>
-        <div className="column is-4"><p className="subtitle is-4">Power: {moreInfo.power}</p></div>
-        <div className="column is-4"><p className="subtitle is-4">Speed: {moreInfo.speed}</p></div>
+        <div className="column is-4"><p className="subtitle is-4">{moreInfo.hp}<HealthIcon /></p></div>
+        <div className="column is-4"><p className="subtitle is-4">{moreInfo.power}<PowerIcon /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"> {moreInfo.speed}<SpeedIcon /></p></div>
       </div>
       <br />
       <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"&nbsp;<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></button>

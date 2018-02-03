@@ -113,7 +113,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 3,
     description: 'Lose (5%) hp, restore (10%) mana',
-    icon: 'ra-doubled',
+    icon: 'ra-cut-palm',
     iconColor: 'black'
   },
   'Evocate': {
