@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import RecruitModal from './RecruitModal'
+import {classIcons} from '../../utils/classText'
 
 class RecruitFrame extends React.Component {
   constructor(props) {
@@ -18,36 +19,16 @@ class RecruitFrame extends React.Component {
     const {recruit} = this.props
     const {showMore} = this.state
     return <tbody className="tbody">
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Name:</p>
-        </th>
-        <td className="td">
+      {/* <tr className="tr has-text-centered">
+        <td className="td level"> */}
           <p className="subtitle is-4">
             {recruit.name}
+            &nbsp; <i className={`subtitle is-4 icon ra ${classIcons(recruit.heroClass)}`}>
+            </i>
+            &nbsp; (Level {recruit.level})
           </p>
-        </td>
-      </tr>
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Class:</p>
-        </th>
-        <td className="td">
-          <p className="subtitle is-4">
-            {recruit.heroClass}
-          </p>
-        </td>
-      </tr>
-      <tr className="tr">
-        <th className="th">
-          <p className="subtitle is-4">Level:</p>
-        </th>
-        <td className="td">
-          <p className="subtitle is-4">
-            {recruit.level}
-          </p>
-        </td>
-      </tr>
+        {/* </td>
+      </tr> */}
       {showMore && <RecruitModal recruit={recruit} close={this.toggleShow} />}
       {!showMore && <tr className="tr has-text-centered">
         <button onClick={this.toggleShow} className="button">{showMore ? 'Show Less' : 'Show More'}</button>
