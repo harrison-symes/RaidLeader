@@ -17,7 +17,7 @@ export default {
   weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Sword', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp'],
   goldReward: 500,
   weaponChance: 1,
-  progress_required: 0,
+  progress_required: 1,
   spells: [
     {
       name: 'Regenerate',

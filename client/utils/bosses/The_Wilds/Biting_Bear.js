@@ -4,7 +4,7 @@ export default {
   initHp: 500,
   hp: 500,
   initPower: 30,
-  power: 30,
+  power: 25,
   initArmor: 200,
   armor: 200,
   mana: 25,
@@ -17,7 +17,7 @@ export default {
   weaponRewards: ['Bear Fangs', 'Bear Heart'],
   goldReward: 200,
   weaponChance: 1,
-  progress_required: 0,
+  progress_required: 1,
   spells: [
     {
       name: 'Swipe',
