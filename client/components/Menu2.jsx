@@ -123,7 +123,7 @@ class Menu extends React.Component {
         </div>
         <br />
         <div className="columns">
-          {(!boss || !playerWeapon || !playerParty.length > 0 || !playerSpells > 0)
+          {(!boss || !playerWeapon || playerParty.length == 0 || playerSpells == 0)
             && <div className="column">
               <p className="title is-3">To Do:</p>
               {!boss && this.renderMenuLink('Boss Selection', ' ra-on-target')}
@@ -145,69 +145,6 @@ class Menu extends React.Component {
         </div>
       </div>
     </div>
-    // return <div className="Menu has-text-centered">
-    //   {townTravelModal && this.renderTownConfirmModal()}
-    //   <div>
-    //     <div className="level">
-    //       <div className="level-left">
-    //         {currentLocation.name != 'Town' && <button className="button is-info is-large is-outlined" onClick={() => this.setTownModalState(true)}>Travel to Town</button>}
-    //       </div>
-    //       <p className="title is-3">Gold: {gold}</p>
-    //       <div className="level-right">
-    //         {this.renderMenuLink('/playerweapon', 'Player')}
-    //         {this.renderMenuLink('/party', 'Assemble Party')}
-    //         {this.renderMenuLink('/spellbook', 'Spell Book')}
-    //         {this.renderStartGameButton()}
-    //       </div>
-    //     </div>
-    //     <hr />
-    //   </div>
-    //   <div className="columns">
-    //     <div className="column" style={{overflowY: 'scroll', maxHeight: '80vh'}}>
-    //       <p className="title is-1">{currentLocation && currentLocation.name}</p>
-    //       <hr/>
-    //       <DungeonRewards />
-    //       {boss != null && <div className="has-text-centered">
-    //         <p className="title is-3">Target:</p>
-    //         <BossPreview i={0} boss={boss} />
-    //         <hr />
-    //       </div>}
-    //       <BossSelection />
-    //     </div>
-    //     <div className="column">
-    //       <Router>
-    //         <div>
-    //           <div>
-    //             {this.props.location.pathname == '/' && <div>
-                  // <div className="has-text-centered">
-                  //   <p className="subtitle is-1">Your Party: ({playerParty.length}/{currentLocation.max_party})</p>
-                  //   <div className="columns is-multiline" style={{overflowX:'scroll'}}>
-                  //     {playerParty.map((recruit, i) => <table key={`recruit-in-party-main-${i}`} className="column is-4 table box">
-                  //       <RecruitFrame recruit={recruit}  />
-                  //     </table>)}
-                  //   </div>
-                  //   <hr />
-                  // </div>
-    //               <div className="has-text-centered">
-    //                 <p className="subtitle is-1">Your Spells: ({playerSpells.length}/{currentLocation.max_spells})</p>
-    //                 <div className="columns is-multiline">
-    //                   {playerSpells.map((spell, i) => <table key={`spell-in-bar-main-${i}`} className="column is-4 table box">
-    //                     <SpellFrame spell={spell}  />
-    //                   </table>)}
-    //                 </div>
-    //                 <hr />
-    //               </div>
-    //             </div>}
-    //             <Route path="/spellbook" component={Spellbook} />
-    //             <Route path="/party" component={Party} />
-    //             <Route path="/inventory" component={Inventory} />
-    //             <Route path="/playerWeapon" component={EquipPlayerWeapon} />
-    //           </div>
-    //         </div>
-    //       </Router>
-    //     </div>
-    //   </div>
-    // </div>
   }
 }
 
