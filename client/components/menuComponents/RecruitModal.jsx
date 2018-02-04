@@ -76,12 +76,12 @@ class RecruitModal extends Component {
             <div className="columns">
               <div className="column has-text-centered">
                 <p className="title is-4">Starting Buff</p>
-                <p className="subtitle is-4">{startingBuff(recruit.heroClass)}</p>
+                <p className="content is-large">{startingBuff(recruit.heroClass)}</p>
               </div>
               <hr />
               <div className="column has-text-centered">
                 <p className="title is-4">Class Traits:</p>
-                <p className="subtitle is-4">{classTraits(recruit.heroClass)}</p>
+                <p className="content is-large">{classTraits(recruit.heroClass)}</p>
               </div>
             </div>
           </div>
