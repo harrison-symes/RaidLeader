@@ -1,22 +1,25 @@
 import React from 'react'
 
-export function HealthIcon () {
+export function HealthIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Health</span>
+    <span className="tooltiptext">{value} Health</span>
+    {value}
     <i className="ra ra-fw ra-two-hearts icon-large" />
   </div>
 }
 
-export function SpeedIcon () {
+export function SpeedIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Speed</span>
+    <span className="tooltiptext">{value} Speed</span>
+    {value}
     <i className="ra ra-fw ra-lightning-bolt icon-large" />
   </div>
 }
 
-export function PowerIcon () {
+export function PowerIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Power</span>
+    <span className="tooltiptext">{value} Power</span>
+    {value}
     <i className="ra ra-fw ra-axe-swing icon-large" />
   </div>
 }
