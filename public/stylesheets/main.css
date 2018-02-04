@@ -88,15 +88,18 @@
         background-color: #f7c48c;
         background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png"); }
       .Town .Modal .modal-card-body .table .tbody {
-        background-color: #f7c48c;
-        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
         background-color: #b88e69;
+        background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+        cursor: move; }
+      .Town .Modal .modal-card-body .table .tbody:hover {
+        background-color: #f7c48c;
         background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"); }
       .Town .Modal .modal-card-body .table .button {
         background-color: #f7c48c;
         width: 50%;
         height: 5vh;
-        font-size: 1rem; }
+        font-size: 1rem;
+        cursor: "pointer"; }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }

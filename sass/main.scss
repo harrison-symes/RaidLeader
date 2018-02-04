@@ -120,9 +120,12 @@ body {
       }
       .table {
         .tbody {
-          background-color: #f7c48c;
-          background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
           background-color: #b88e69;
+          background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+          cursor: move;
+        }
+        .tbody:hover {
+          background-color: #f7c48c;
           background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
         }
         .button {
@@ -130,6 +133,7 @@ body {
           width: 50%;
           height: 5vh;
           font-size: 1rem;
+          cursor: 'pointer'
         }
       }
 
