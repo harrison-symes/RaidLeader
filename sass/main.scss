@@ -15,6 +15,14 @@ body {
       text-decoration: underline;
       font-size: 4rem;
       color: black;
+      @media (max-width: 900px) {
+        i {
+          display: none;
+        }
+        .title {
+          font-size: 0.5rem;
+        }
+      }
     }
     .subtitle {
       font-size: 3rem;
