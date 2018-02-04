@@ -57,7 +57,7 @@ class DungeonRewards extends Component {
   renderRewardsModal() {
     const {currentLocation} = this.props
     const {weaponReward, showRewards} = this.state
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <section className="modal-card-body">
