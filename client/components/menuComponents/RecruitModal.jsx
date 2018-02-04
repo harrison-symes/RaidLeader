@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import {recruitEquipWeapon} from '../../actions/weapons'
 import {startingBuff, classTraits} from '../../utils/classText'
+import {HealthIcon, PowerIcon, SpeedIcon} from '../icons/StatIcons'
+
 
 class RecruitModal extends Component {
   constructor(props) {
@@ -28,9 +30,9 @@ class RecruitModal extends Component {
           <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
-            {weapon.hp != 0 && <div className="column subtitle is-4">Health: {weapon.hp > 0 ? "+": ""}{weapon.hp * 100}%</div>}
-            {weapon.power != 0 && <div className="column subtitle is-4">Power: {weapon.power > 0 ? "+": ""}{weapon.power * 100}%</div>}
-            {weapon.speed !== 0 && <div className="column subtitle is-4">Speed: {weapon.speed > 0 ? "+": ""}{weapon.speed}</div>}
+            {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": "-"}${weapon.hp * 100}%`}/></div>}
+            {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": "-"}${weapon.power * 100}%`} /></div>}
+            {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": "-"}${weapon.speed}`}/> </div>}
             {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
           </div>
         </div>

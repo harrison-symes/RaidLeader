@@ -31,7 +31,7 @@ class RecruitFrame extends React.Component {
       </tr> */}
       {showMore && <RecruitModal recruit={recruit} close={this.toggleShow} />}
       {!showMore && <tr className="tr has-text-centered">
-        <button onClick={this.toggleShow} className="button">{showMore ? 'Show Less' : 'Show More'}</button>
+        <button onClick={this.toggleShow} className="Table-Button button">{showMore ? 'Show Less' : 'Show More'}</button>
       </tr>}
     </tbody>
   }
