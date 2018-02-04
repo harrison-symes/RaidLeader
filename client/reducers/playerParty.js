@@ -24,6 +24,7 @@ export default function (state = [], action) {
     case 'REPLACE_RECRUIT_IN_PARTY':
       newState = newState.filter(recruit => recruit.id != action.recruit.id)
       newState.splice(action.idx, 1, action.recruit)
+      if (newState.length > state.length) newState.pop()
       return newState
     default: return state
   }
