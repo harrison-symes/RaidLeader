@@ -15,6 +15,11 @@
       text-decoration: underline;
       font-size: 4rem;
       color: black; }
+      @media (max-width: 900px) {
+        .Town .Town-Banner .title i {
+          display: none; }
+        .Town .Town-Banner .title .title {
+          font-size: 0.5rem; } }
     .Town .Town-Banner .subtitle {
       font-size: 3rem;
       color: black; }

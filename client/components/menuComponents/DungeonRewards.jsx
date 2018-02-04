@@ -91,14 +91,10 @@ class DungeonRewards extends Component {
     const {currentLocation} = this.props
     const bossesDefeated = currentLocation.bosses.filter(boss => boss.isDefeated)
     const {showRewards} = this.state
-    return <div className="has-text-centered">
-      <p className="title is-3">Dungeon Progress:</p>
-      <hr />
-      <p className="subtitle is-3">Bosses Defeated: {bossesDefeated.length} / {currentLocation.bosses.length}</p>
+    return <span className=" is-large">
+      {currentLocation.bosses.map((boss, i) => <i className={`title has-text-${i + 1 <= bossesDefeated.length ? 'success' : 'danger'} is-2 icon ${i + 1 <= bossesDefeated.length ? 'ra-broken-skull' : 'ra-skull'} ra ra-fw`} />)}
       {bossesDefeated.length == currentLocation.bosses.length && this.renderRewardsModal()}
-      {bossesDefeated.map(boss => <BossPreview boss={boss} i={0} />)}
-      <hr />
-    </div>
+    </span>
   }
 }
 

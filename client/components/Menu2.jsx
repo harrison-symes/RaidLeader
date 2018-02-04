@@ -119,6 +119,7 @@ class Menu extends React.Component {
       <div className="Town-Buttons Menu-Buttons">
         <div className="columns">
           <button className="button column is-fullwidth is-info is-large is-outlined" onClick={() => this.showModal('Travel To Town')}>Travel to Town</button>
+          <DungeonRewards />
           {this.renderStartGameButton()}
         </div>
         <br />

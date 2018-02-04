@@ -15,6 +15,8 @@ export default function (state = [], action) {
     case 'REPLACE_SPELL_IN_BAR':
       newState = newState.filter(spell => spell != action.spell)
       newState.splice(action.idx, 1, action.spell)
+      if (newState.length > state.length) newState.pop()
+      return newState
     default: return state
   }
 }
