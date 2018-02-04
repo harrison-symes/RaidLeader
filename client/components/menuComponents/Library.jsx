@@ -91,11 +91,16 @@ class Library extends Component {
                     <div className="level">
                       <p className="title is-3">{spell.name}
                       </p>
-                      &nbsp;<i className={`icon ra-3x ra ${spell.icon}`} />
-                      {selectedSpell != spell
-                        ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
-                        : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
-                      }
+                      <span>
+                        <i className={`icon ra-3x ra ${spell.icon}`} />
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        {selectedSpell != spell
+                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
+                          : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
+                        }
+                      </span>
                     </div>
                     {selectedSpell == spell && <div className="has-text-centered">
                       <div className="subtitle is-5">{spell.description}</div>
