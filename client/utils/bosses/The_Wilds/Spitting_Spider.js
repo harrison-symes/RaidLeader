@@ -3,8 +3,8 @@ export default {
   level: 1,
   initHp: 1000,
   hp: 1000,
-  initPower: 30,
-  power: 30,
+  initPower: 25,
+  power: 25,
   initArmor: 100,
   armor: 100,
   mana: 0,
@@ -43,14 +43,14 @@ export default {
     },
     {
       name: 'Spit',
-      cast: 3,
+      cast: 2.5,
       cost: 0,
-      coolDown: 3,
+      coolDown: 2.5,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 2,
+      powerRatio: 1,
       onCooldown: false,
-      description: "Damage the PLAYER for 200% BOSS POWER"
+      description: "Damage the PLAYER for 100% BOSS POWER"
     },
   ]
 }
