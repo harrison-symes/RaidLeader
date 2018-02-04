@@ -17,6 +17,7 @@ class Library extends Component {
       learntSpell: null
     }
     this.showOptions = this.showOptions.bind(this)
+    this.reset = this.reset.bind(this)
   }
   solveOptions() {
     const offeredSpells = []
@@ -42,6 +43,9 @@ class Library extends Component {
     this.props.dispatch(addSpell(spell))
     set('offeredSpells', null)
     this.setState({offeredSpells: [], showChoices: null, selectedSpell: null, learntSpell: spell})
+  }
+  reset() {
+    this.setState({offeredSpells: [], showChoices: null, selectSpell: null, learntSpell: null})
   }
   render() {
     const {close, gold, spellBook} = this.props
@@ -70,6 +74,7 @@ class Library extends Component {
                   <div className="column is-4"><p className="subtitle is-4">{learntSpell.coolDown} <CoolDownIcon /></p></div>
                 </div>
               </div>
+              <button onClick={this.reset} className="button is-large is-fullwidth is-info">Learn Another?</button>
             </div>
             : <div>
               <p className="title is-3">Welcome to The Library!</p>
