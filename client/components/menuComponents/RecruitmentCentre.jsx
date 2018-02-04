@@ -111,7 +111,7 @@ class RecruitmentCentre extends Component {
                     <div key={`offered-recruit-${i}`} className="level">
                       <p className="title is-3">{recruit.name} the {recruit.heroClass}<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></p>
                       {selectedRecruit != recruit
-                        ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show More</button>
+                        ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show Details</button>
                         : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
                       }
                     </div>

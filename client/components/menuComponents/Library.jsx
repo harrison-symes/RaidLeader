@@ -97,7 +97,7 @@ class Library extends Component {
                         &nbsp;
                         &nbsp;
                         {selectedSpell != spell
-                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
+                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">Show Details</button>
                           : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
                         }
                       </span>
