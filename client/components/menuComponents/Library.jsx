@@ -7,15 +7,17 @@ import {addSpell} from '../../actions/spells'
 import {get, set} from '../../utils/localstorage'
 import {ManaIcon, CastTimeIcon, CoolDownIcon} from '../icons/StatIcons'
 
-class RecruitmentCentre extends Component {
+class Library extends Component {
   constructor(props) {
     super(props)
     this.state = {
       showChoices: !!JSON.parse(get('offeredSpells')),
       offeredSpells: JSON.parse(get('offeredSpells')) || [],
-      selectedSpell: null
+      selectedSpell: null,
+      learntSpell: null
     }
     this.showOptions = this.showOptions.bind(this)
+    this.reset = this.reset.bind(this)
   }
   solveOptions() {
     const offeredSpells = []
@@ -40,11 +42,14 @@ class RecruitmentCentre extends Component {
   learnSpell(spell) {
     this.props.dispatch(addSpell(spell))
     set('offeredSpells', null)
-    this.setState({offeredSpells: [], showChoices: null, selectedSpell: null})
+    this.setState({offeredSpells: [], showChoices: null, selectedSpell: null, learntSpell: spell})
+  }
+  reset() {
+    this.setState({offeredSpells: [], showChoices: null, selectSpell: null, learntSpell: null})
   }
   render() {
     const {close, gold, spellBook} = this.props
-    const {offeredSpells, showChoices, selectedSpell} = this.state
+    const {offeredSpells, showChoices, selectedSpell, learntSpell} = this.state
     const spellCost = spellBook.length * 200
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
@@ -55,44 +60,64 @@ class RecruitmentCentre extends Component {
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <p className="title is-3">Welcome to The Library!</p>
-          <p className="content is-large">Here you can learn new spells to support your party in Dungeons</p>
-          {!showChoices
-            ? <p className="content is-large">It will cost {spellCost} <i className="ra ra-gold-bar icon" /> for your next Spell</p>
-            : <p className="content is-large">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
-          }
-          {showChoices
-            ? (<div>
-              <p className="title is-3">Choose a Spell:</p>
-              <br />
-              {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
-                <div className="level">
-                  <p className="title is-3">{spell.name}
-                  </p>
-                  &nbsp;<i className={`icon ra-3x ra ${spell.icon}`} />
-                  {selectedSpell != spell
-                    ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
-                    : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
-                  }
+          {learntSpell != null
+            ? <div className="has-text-centered">
+              <p className="title is-3">You Learned a new Spell</p>
+              <div className="box">
+                <p className="title is-3">{learntSpell.name}
+                </p>
+                &nbsp;<i className={`icon ra-3x ra ${learntSpell.icon}`} />
+                <p className="subtitle is-5">{learntSpell.description}</p>
+                <div className="columns">
+                  <div className="column is-4"><p className="subtitle is-4">{learntSpell.cost} <ManaIcon /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4">{learntSpell.cast} <CastTimeIcon /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4">{learntSpell.coolDown} <CoolDownIcon /></p></div>
                 </div>
-                {selectedSpell == spell && <div className="has-text-centered">
-                  <div className="subtitle is-5">{spell.description}</div>
-                  <div className="columns">
-                    <div className="column is-4"><p className="subtitle is-4">{spell.cost} <ManaIcon /></p></div>
-                    <div className="column is-4"><p className="subtitle is-4">{spell.cast} <CastTimeIcon /></p></div>
-                    <div className="column is-4"><p className="subtitle is-4">{spell.coolDown} <CoolDownIcon /></p></div>
-                  </div>
-                  <button onClick={() => this.learnSpell(spell)} className="button is-success is-large">Learn {spell.name}
-                    &nbsp;<i className={`icon ra ${spell.icon}`} /> </button>
-                </div>}
-                <hr />
-              </div>)}
-            </div>)
-            : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
-              ? gold >= spellCost
-                ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} &nbsp; <i className="ra ra-gold-bar icon" />)</button>
-                : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp; <i className="ra ra-gold-bar icon" /></button>
-              : <button disabled className="is-danger is-large button is-fullwidth">You have learned every spell!</button>
+              </div>
+              <button onClick={this.reset} className="button is-large is-fullwidth is-info">Learn Another?</button>
+            </div>
+            : <div>
+              <p className="title is-3">Welcome to The Library!</p>
+              <p className="content is-large">Here you can learn new spells to support your party in Dungeons</p>
+              {!showChoices
+                ? <p className="content is-large">It will cost {spellCost} <i className="ra ra-gold-bar icon" /> for your next Spell</p>
+                : <p className="content is-large">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
+              }
+              {showChoices
+                ? (<div>
+                  <p className="title is-3">Choose a Spell:</p>
+                  <br />
+                  {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
+                    <div className="level">
+                      <p className="title is-3">{spell.name}
+                      </p>
+                      &nbsp;<i className={`icon ra-3x ra ${spell.icon}`} />
+                      {selectedSpell != spell
+                        ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">View More</button>
+                        : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
+                      }
+                    </div>
+                    {selectedSpell == spell && <div className="has-text-centered">
+                      <div className="subtitle is-5">{spell.description}</div>
+                      <div className="columns">
+                        <div className="column is-4"><p className="subtitle is-4">{spell.cost} <ManaIcon /></p></div>
+                        <div className="column is-4"><p className="subtitle is-4">{spell.cast} <CastTimeIcon /></p></div>
+                        <div className="column is-4"><p className="subtitle is-4">{spell.coolDown} <CoolDownIcon /></p></div>
+                      </div>
+                      <button onClick={() => this.learnSpell(spell)} className="button is-success is-large">Learn {spell.name}
+                        &nbsp;<i className={`icon ra ${spell.icon}`} /> </button>
+                      </div>}
+                      <hr />
+                    </div>)}
+                  </div>)
+                  : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
+                  ? gold >= spellCost
+                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} &nbsp; <i className="ra ra-gold-bar icon" />)</button>
+                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp; <i className="ra ra-gold-bar icon" /></button>
+                  : <button disabled className="is-danger is-large button is-fullwidth">You have learned every spell!</button>
+                }
+
+          </div>
           }
         </section>
         <footer className="modal-card-foot">
@@ -115,4 +140,4 @@ const mapStateToProps = ({gold, spellBook}) => {
   }
 }
 
-export default connect(mapStateToProps)(RecruitmentCentre)
+export default connect(mapStateToProps)(Library)
