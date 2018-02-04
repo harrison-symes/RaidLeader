@@ -64,9 +64,9 @@ class RecruitmentCentre extends Component {
       <br />
       <div className="title is-4">Stats</div>
       <div className="columns">
-        <div className="column is-4"><p className="subtitle is-4">{moreInfo.hp}<HealthIcon /></p></div>
-        <div className="column is-4"><p className="subtitle is-4">{moreInfo.power}<PowerIcon /></p></div>
-        <div className="column is-4"><p className="subtitle is-4"> {moreInfo.speed}<SpeedIcon /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={moreInfo.hp} /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={moreInfo.power} /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={moreInfo.speed} /></p></div>
       </div>
       <br />
       <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"&nbsp;<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></button>
