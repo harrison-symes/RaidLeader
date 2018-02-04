@@ -24,29 +24,33 @@ export function PowerIcon ({value}) {
   </div>
 }
 
-export function CastTimeIcon () {
+export function CastTimeIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Cast Time (s)</span>
+    <span className="tooltiptext">{value} Cast Time</span>
+    {value}
     <i className="ra ra-fw ra-stopwatch icon-large" />
   </div>
 }
 
-export function CoolDownIcon () {
+export function CoolDownIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Cool Down (s)</span>
+    <span className="tooltiptext">{value} Cool Down </span>
+    {value}
     <i className="ra ra-fw ra-hourglass icon-large" />
   </div>
 }
 
-export function ManaIcon () {
+export function ManaIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Mana</span>
+    <span className="tooltiptext">{value} Mana</span>
+    {value}
     <i className="ra ra-fw ra-crystals icon-large" />
   </div>
 }
-export function ManaRegenIcon () {
+export function ManaRegenIcon ({value}) {
   return <div className="tooltip">
-    <span className="tooltiptext">Mana Regen (per s)</span>
+    <span className="tooltiptext">{value} Mana Regen (per s)</span>
+    {value}
     <i className="ra ra-fw ra-cycle icon-large" />
   </div>
 }
