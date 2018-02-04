@@ -26,8 +26,6 @@
   .Town .Resources {
     width: 50vw;
     margin: auto; }
-    .Town .Resources .tooltip {
-      cursor: context-menu; }
   .Town .Town-Buttons {
     min-width: '90%';
     min-height: 60vh;
@@ -89,6 +87,19 @@
       .Town .Modal .modal-card-body .box {
         background-color: #f7c48c;
         background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png"); }
+      .Town .Modal .modal-card-body .table .tbody {
+        background-color: #b88e69;
+        background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+        cursor: move; }
+      .Town .Modal .modal-card-body .table .tbody:hover {
+        background-color: #f7c48c;
+        background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"); }
+      .Town .Modal .modal-card-body .table .Table-Button {
+        background-color: #f7c48c;
+        width: 50%;
+        height: 5vh;
+        font-size: 1rem;
+        cursor: "pointer"; }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }
@@ -134,26 +145,26 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
-  cursor: 'pointer'; }
+  color: black;
+  cursor: context-menu; }
 
 .tooltip .tooltiptext {
+  font-size: 1rem;
   visibility: hidden;
   width: 120px;
   background-color: black;
   color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 10px;
   border-radius: 6px;
-  cursor: 'pointer';
   position: absolute;
   z-index: 1;
   bottom: 100%;
   left: 50%;
-  margin-left: -60px; }
+  margin-left: -60px;
+  cursor: context-menu; }
 
 .tooltip:hover .tooltiptext {
-  visibility: visible;
-  cursor: 'pointer'; }
+  visibility: visible; }
 
 /*# sourceMappingURL=main.css.map */

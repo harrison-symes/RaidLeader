@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import {recruitEquipWeapon} from '../../actions/weapons'
 import {startingBuff, classTraits} from '../../utils/classText'
+import {HealthIcon, PowerIcon, SpeedIcon} from '../icons/StatIcons'
+
 
 class RecruitModal extends Component {
   constructor(props) {
@@ -28,13 +30,13 @@ class RecruitModal extends Component {
           <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
-            {weapon.hp != 0 && <div className="column subtitle is-4">Health: {weapon.hp > 0 ? "+": ""}{weapon.hp * 100}%</div>}
-            {weapon.power != 0 && <div className="column subtitle is-4">Power: {weapon.power > 0 ? "+": ""}{weapon.power * 100}%</div>}
-            {weapon.speed !== 0 && <div className="column subtitle is-4">Speed: {weapon.speed > 0 ? "+": ""}{weapon.speed}</div>}
+            {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></div>}
+            {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`} /></div>}
+            {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed}`}/> </div>}
             {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
           </div>
         </div>
-        : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
+        : <p className="box subtitle is-2">{recruit.name} has no Weapon</p>
       }
       <hr />
       {availableWeapons.length != 0 && <div>
@@ -43,9 +45,9 @@ class RecruitModal extends Component {
           {availableWeapons.map((weapon, i) => <div onClick={() => this.equip(weapon.id)} key={`available-weapon-${i}`} className="box">
             <p className="title is-4">{weapon.name} ({weapon.level})</p>
             <ul className="">
-              {weapon.hp != 0 && <li className="subtitle is-4">Health: {weapon.hp > 0 ? "+": ""}{weapon.hp * 100}%</li>}
-              {weapon.power != 0 && <li className="subtitle is-4">Power: {weapon.power > 0 ? "+": ""}{weapon.power * 100}%</li>}
-              {weapon.speed != 0 && <li className="subtitle is-4">Speed: {weapon.speed > 0 ? "+": ""} {weapon.speed}</li>}
+              {weapon.hp != 0 && <li className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></li>}
+              {weapon.power != 0 && <li className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`}/></li>}
+              {weapon.speed != 0 && <li className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed}`} /></li>}
             </ul>
             {weapon.bonusEffect && <p className="subtitle is-6">{weapon.bonusEffect}</p>}
           </div>)}
@@ -63,22 +65,25 @@ class RecruitModal extends Component {
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <div className="has-text-centered box">
-            <p className="title is-4">Starting Buff</p>
-            <p className="subtitle is-4">{startingBuff(recruit.heroClass)}</p>
-          </div>
-          <hr />
-          <div className="has-text-centered box">
-            <p className="title is-4">Class Traits:</p>
-            <p className="subtitle is-4">{classTraits(recruit.heroClass)}</p>
-          </div>
-          <hr />
-          <div className="title is-4">Stats</div>
-          <hr />
-          <div className="columns">
-            <div className="column is-4"><p className="subtitle is-4">Health: {recruit.hp}</p></div>
-            <div className="column is-4"><p className="subtitle is-4">Power: {recruit.power}</p></div>
-            <div className="column is-4"><p className="subtitle is-4">Speed: {recruit.speed}</p></div>
+          <div className="box">
+            <div className="title is-4">Stats</div>
+            <hr />
+            <div className="columns">
+              <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruit.hp}/></p></div>
+              <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
+              <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
+            </div>
+            <div className="columns">
+              <div className="column has-text-centered">
+                <p className="title is-4">Starting Buff</p>
+                <p className="content is-large">{startingBuff(recruit.heroClass)}</p>
+              </div>
+              <hr />
+              <div className="column has-text-centered">
+                <p className="title is-4">Class Traits:</p>
+                <p className="content is-large">{classTraits(recruit.heroClass)}</p>
+              </div>
+            </div>
           </div>
           <hr />
           {this.renderWeaponFrame()}

@@ -11,7 +11,6 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   margin: `5%`,
   width: '90%',
   background: isDragging ? 'lightgreen' : 'white',
-  cursor: 'pointer',
   ...draggableStyle,
 });
 const getListStyle = (isDraggingOver, isFull) => ({
@@ -19,7 +18,8 @@ const getListStyle = (isDraggingOver, isFull) => ({
   padding: grid,
   width: '50%',
   maxHeight: '80vh',
-  overflow: 'scroll'
+  overflow: 'scroll',
+  cursor: isFull ? 'no-drop' : 'auto'
 });
 
 class Party extends React.Component {

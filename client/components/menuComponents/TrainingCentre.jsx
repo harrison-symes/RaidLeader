@@ -64,9 +64,9 @@ class TrainingCentre extends Component {
         </span>
       </div>
       <div className="columns">
-        <div className="column is-4"><p className="subtitle is-4"><HealthIcon />{recruit.hp} {healthDiff ? `(+${healthDiff})` : ""}</p></div>
-        <div className="column is-4"><p className="subtitle is-4"><PowerIcon />{recruit.power} {powerDiff ? `(+${powerDiff})` : ""}</p></div>
-        <div className="column is-4"><p className="subtitle is-4"><SpeedIcon /> {recruit.speed} {speedDiff ? `(+${speedDiff})` : ""}</p></div>
+        <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={`${recruit.hp} ${healthDiff ? `(+${healthDiff})` : ""}`}/></p></div>
+        <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={`${recruit.power} ${powerDiff ? `(+${powerDiff})` : ""}`}/></p></div>
+        <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={`${recruit.speed} ${speedDiff ? `(+${speedDiff})` : ""}`}/></p></div>
       </div>
       {gold >= cost
         ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-outlined is-large">Upgrade to Level {this.state.levelUpgrade} (-{cost} Gold)</button>

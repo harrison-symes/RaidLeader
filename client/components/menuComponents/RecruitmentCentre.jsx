@@ -6,7 +6,7 @@ import randomName from '../../utils/randomName'
 import {earnGold} from '../../actions/gold'
 import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
-import {PowerIcon, SpeedIcon, HealthIcon} from '../icons/StatIcons'
+import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon} from '../icons/StatIcons'
 
 import createClass from '../../utils/createClass'
 import {classTraits, startingBuff, classIcons} from '../../utils/classText'
@@ -64,9 +64,9 @@ class RecruitmentCentre extends Component {
       <br />
       <div className="title is-4">Stats</div>
       <div className="columns">
-        <div className="column is-4"><p className="subtitle is-4">{moreInfo.hp}<HealthIcon /></p></div>
-        <div className="column is-4"><p className="subtitle is-4">{moreInfo.power}<PowerIcon /></p></div>
-        <div className="column is-4"><p className="subtitle is-4"> {moreInfo.speed}<SpeedIcon /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={moreInfo.hp} /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={moreInfo.power} /></p></div>
+        <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={moreInfo.speed} /></p></div>
       </div>
       <br />
       <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"&nbsp;<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></button>
@@ -90,9 +90,9 @@ class RecruitmentCentre extends Component {
                 <p className="title is-3">{recruited.name} the {recruited.heroClass}<i className={`icon ra ${classIcons(recruited.heroClass)} ra-fw`} /></p>
                 <p className="subtitle is-1">Has joined your party!</p>
                 <div className="columns">
-                  <div className="column is-4"><p className="subtitle is-4">{recruited.hp}<HealthIcon /></p></div>
-                  <div className="column is-4"><p className="subtitle is-4">{recruited.power}<PowerIcon /></p></div>
-                  <div className="column is-4"><p className="subtitle is-4"> {recruited.speed}<SpeedIcon /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruited.hp} /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruited.power} /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={recruited.speed} /></p></div>
                 </div>
               </div>
               <br />
@@ -101,7 +101,7 @@ class RecruitmentCentre extends Component {
             : <div>
               <p className="title is-3">Welcome to the Recruitment Centre!</p>
               <p className="content is-large">Here you can recruit new members to join your party in Dungeons</p>
-              <p className="content is-large">It costs 500 Gold to recruit a new Level 1 member</p>
+              <p className="content is-large">It costs <GoldIcon value={500} /> to recruit a new Level 1 member</p>
               {showChoices
                 ? <div>
                   <hr />
@@ -111,7 +111,7 @@ class RecruitmentCentre extends Component {
                     <div key={`offered-recruit-${i}`} className="level">
                       <p className="title is-3">{recruit.name} the {recruit.heroClass}<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></p>
                       {selectedRecruit != recruit
-                        ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show More</button>
+                        ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show Details</button>
                         : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
                       }
                     </div>
@@ -120,8 +120,8 @@ class RecruitmentCentre extends Component {
                   </div>)}
                 </div>
                 : (gold >= 500
-                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (-500 &nbsp; <i className="ra ra-gold-bar icon" />)</button>
-                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<i className="ra ra-gold-bar icon" /></button>
+                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
+                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<GoldIcon /></button>
                 )
               }
 
