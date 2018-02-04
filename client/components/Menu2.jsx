@@ -27,6 +27,7 @@ class Menu extends React.Component {
     this.goToTown = this.goToTown.bind(this)
   }
   readyRecruits(recruits) {
+    const {weapons} = this.props
     return recruits.map(recruit => {
       if (recruit.weapon_id) {
         let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
