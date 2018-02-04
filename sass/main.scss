@@ -37,9 +37,6 @@ body {
   .Resources {
     width: 50vw;
     margin: auto;
-    .tooltip {
-      cursor:context-menu;
-    }
   }
 
 
@@ -186,7 +183,7 @@ background-image: url("https://www.transparenttextures.com/patterns/clean-gray-p
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
-  cursor: 'pointer';
+  cursor:context-menu;
 }
 
 .tooltip .tooltiptext {
@@ -203,6 +200,7 @@ background-image: url("https://www.transparenttextures.com/patterns/clean-gray-p
     bottom: 100%;
     left: 50%;
     margin-left: -60px;
+    cursor:context-menu;
 }
 
 .tooltip:hover .tooltiptext {

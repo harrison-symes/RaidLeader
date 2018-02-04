@@ -6,7 +6,7 @@ import randomName from '../../utils/randomName'
 import {earnGold} from '../../actions/gold'
 import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
-import {PowerIcon, SpeedIcon, HealthIcon} from '../icons/StatIcons'
+import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon} from '../icons/StatIcons'
 
 import createClass from '../../utils/createClass'
 import {classTraits, startingBuff, classIcons} from '../../utils/classText'
@@ -90,9 +90,9 @@ class RecruitmentCentre extends Component {
                 <p className="title is-3">{recruited.name} the {recruited.heroClass}<i className={`icon ra ${classIcons(recruited.heroClass)} ra-fw`} /></p>
                 <p className="subtitle is-1">Has joined your party!</p>
                 <div className="columns">
-                  <div className="column is-4"><p className="subtitle is-4">{recruited.hp}<HealthIcon /></p></div>
-                  <div className="column is-4"><p className="subtitle is-4">{recruited.power}<PowerIcon /></p></div>
-                  <div className="column is-4"><p className="subtitle is-4"> {recruited.speed}<SpeedIcon /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruited.hp} /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruited.power} /></p></div>
+                  <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={recruited.speed} /></p></div>
                 </div>
               </div>
               <br />
@@ -101,7 +101,7 @@ class RecruitmentCentre extends Component {
             : <div>
               <p className="title is-3">Welcome to the Recruitment Centre!</p>
               <p className="content is-large">Here you can recruit new members to join your party in Dungeons</p>
-              <p className="content is-large">It costs 500 Gold to recruit a new Level 1 member</p>
+              <p className="content is-large">It costs <GoldIcon value={500} /> to recruit a new Level 1 member</p>
               {showChoices
                 ? <div>
                   <hr />
@@ -120,8 +120,8 @@ class RecruitmentCentre extends Component {
                   </div>)}
                 </div>
                 : (gold >= 500
-                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (-500 &nbsp; <i className="ra ra-gold-bar icon" />)</button>
-                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<i className="ra ra-gold-bar icon" /></button>
+                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
+                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<GoldIcon /></button>
                 )
               }
 

@@ -26,8 +26,6 @@
   .Town .Resources {
     width: 50vw;
     margin: auto; }
-    .Town .Resources .tooltip {
-      cursor: context-menu; }
   .Town .Town-Buttons {
     min-width: '90%';
     min-height: 60vh;
@@ -135,7 +133,7 @@
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
-  cursor: 'pointer'; }
+  cursor: context-menu; }
 
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -150,7 +148,8 @@
   z-index: 1;
   bottom: 100%;
   left: 50%;
-  margin-left: -60px; }
+  margin-left: -60px;
+  cursor: context-menu; }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;

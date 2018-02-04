@@ -47,10 +47,19 @@ export function ManaIcon ({value}) {
     <i className="ra ra-fw ra-crystals icon-large" />
   </div>
 }
+
 export function ManaRegenIcon ({value}) {
   return <div className="tooltip">
     <span className="tooltiptext">{value} Mana Regen (per s)</span>
     {value}
     <i className="ra ra-fw ra-cycle icon-large" />
+  </div>
+}
+
+export function GoldIcon ({value}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{value} Gold</span>
+    {value}
+    <i className="ra ra-fw ra-gold-bar icon-large" />
   </div>
 }

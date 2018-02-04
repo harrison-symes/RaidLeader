@@ -10,6 +10,8 @@ import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import WeaponStore from './WeaponStore'
 
+import {GoldIcon} from '../icons/StatIcons'
+
 class Town extends Component {
   constructor(props) {
     super(props)
@@ -58,10 +60,7 @@ class Town extends Component {
             </div>
           </div>
           <div className=" is-4">
-            <div className="tooltip">
-              <span className="tooltiptext">You have {gold} Gold</span>
-              <p className="subtitle is-2">{gold} <i className="ra ra-gold-bar icon-large" /></p>
-            </div>
+            <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
           <div className=" is-4">
             <div className="tooltip">
