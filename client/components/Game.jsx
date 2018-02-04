@@ -36,7 +36,7 @@ class Game extends Component {
     this.startOneSecond()
   }
   renderStartModal() {
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-content has-text-centered">
         <button onClick={() => this.startGame()} className="button is-large is-fullwidth is-success">START</button>
