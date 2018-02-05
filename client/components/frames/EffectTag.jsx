@@ -38,8 +38,8 @@ class EffectTag extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.effect != nextProps.effect && nextProps.effect) {
       let {maxDuration, currentDuration} = this.state
-      maxDuration+= nextProps.effect.duration
-      if (maxDuration > nextProps.effect.duration * 2) maxDuration = Math.floor(nextProps.effect.duration * 2)
+      maxDuration+=nextProps.effect.duration
+      // if (maxDuration > nextProps.effect.duration * 2) maxDuration = Math.floor(nextProps.effect.duration * 2)
       this.setState({maxDuration})
     }
   }
