@@ -1,23 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-const renewConstructor = (power) => ({
-  name: 'Renew',
-  duration: 9,
-  tickRate: 3,
-  power,
-  colour: '#8CE88C',
-  type: 'HEAL_FRIENDLY_TARGET'
-})
+import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
 
-const poisonConstructor = (perc) => ({
-  name: 'Poison',
-  duration: 15,
-  percentage: perc || 0.1,
-  colour: '#BA8CE8',
-  tickRate: 3,
-  type: 'PERCENT_DAMAGE_FRIENDLY_TARGET'
-})
+
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -74,9 +60,9 @@ class PlayerSpell extends Component {
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Renew':
-        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(power), target})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(), target})
       case 'Greater Renew':
-        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor(power)})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
       default: return
     }
   }

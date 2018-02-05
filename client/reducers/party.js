@@ -83,7 +83,7 @@ export default function party (state = [], action) {
       if (!action.target) return newState
       target = newState.find(member => member == action.target)
       if (!target || !target.isAlive) return newState
-      target.hp+=Math.round(target.initHp * action.percentage)
+      target.hp+=Math.round(target.initHp * action.percentage) 
       if (target.hp > target.initHp) target.hp == target.initHp
       return newState
     case 'PRIEST_START_BUFF':
