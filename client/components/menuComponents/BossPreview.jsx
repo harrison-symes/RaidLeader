@@ -98,11 +98,11 @@ class BossPreview extends React.Component {
           <i className={`has-text-${colour} icon ra ra-fw
           ${targetBoss && targetBoss.name == boss.name
             ? 'ra-archery-target'
-            : defeated
-            ? 'ra-broken-skull'
-            : defeatedBossCount >= boss.progress_required
-            ? 'ra-skull'
-            : 'ra-locked-fortress'}
+            : boss.isDefeated
+              ? 'ra-broken-skull'
+              : defeatedBossCount >= boss.progress_required
+                ? 'ra-skull'
+                : 'ra-locked-fortress'}
             `} />
         </span>
       </button>
