@@ -83,12 +83,25 @@ class BossPreview extends React.Component {
   render() {
     const {bosses} = this.props.currentLocation
     const {showModal} = this.state
-    const {boss} = this.props
+    const {boss, defeated, targetBoss} = this.props
     const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     return <div>
       {showModal && this.renderBossModal()}
-      <button onClick={() => this.changeModal(true, boss)} key={`location-boss-preview-${boss.id}`} className={`is-fullwidth button is-large ${colour}`}>{boss.name}</button>
+      <button onClick={() => this.changeModal(true, boss)} key={`location-boss-preview-${boss.id}`} className={`is-fullwidth button is-large is-outlined ${colour}`}>
+        <span>
+          {boss.name}&nbsp;
+          <i className={`has-text-${colour} icon ra ra-fw
+          ${targetBoss && targetBoss.name == boss.name
+            ? 'ra-archery-target'
+            : defeated
+            ? 'ra-broken-skull'
+            : defeatedBossCount >= boss.progress_required
+            ? 'ra-skull'
+            : 'ra-locked-fortress'}
+            `} />
+        </span>
+      </button>
     </div>
   }
 }
