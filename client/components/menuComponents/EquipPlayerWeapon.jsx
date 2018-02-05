@@ -82,8 +82,8 @@ class PlayerWeapon extends React.Component {
     return <div className="has-text-centered">
       {this.state.weapon && this.WeaponModal()}
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="columns Drag-And-Drop">
-          <span className="has-text-centered" style={{width: '50%'}}>
+        <div className="columns is-mobile Drag-And-Drop">
+          <span className="column has-text-centered" style={{width: '50%'}}>
             <h1 className="DnD-Title title is-3">Weapons</h1>
             <br />
             <Droppable droppableId="weapons">
