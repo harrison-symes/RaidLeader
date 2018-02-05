@@ -13,7 +13,7 @@ class SpellFrame extends React.Component {
     this.setState({showMore: !this.state.showMore})
   }
   render() {
-    const {spell, removeSpell, addSpell, onBar} = this.props
+    const {spell, removeSpell, addSpell, onBar, currentLocation, playerSpells} = this.props
     const {showMore} = this.state
     const modal = () => <div className="modal is-active">
       <div className="modal-background"></div>
@@ -46,11 +46,16 @@ class SpellFrame extends React.Component {
       <div className="level">
         {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}
         <button onClick={this.toggleShow} className="Table-Button is-fullwidth button">Show More</button>
-        {!onBar && <button className="Table-Button button is-fullwidth" onClick={()=>addSpell(spell)}>Add</button>}
+        {!onBar && playerSpells.length < currentLocation.max_spells && <button className="Table-Button button is-fullwidth" onClick={()=>addSpell(spell)}>Add</button>}
       </div>
       {showMore && modal()}
     </tbody>
   }
 }
 
-export default connect()(SpellFrame)
+const mapStateToProps = ({playerSpells, location}) => ({
+  playerSpells,
+  currentLocation: location
+})
+
+export default connect(mapStateToProps)(SpellFrame)
