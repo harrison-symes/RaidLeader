@@ -18,7 +18,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 const getListStyle = (isDraggingOver, isFull) => ({
   background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'inherit',
   padding: grid,
-  width: '50%',
+  width: '50%'
 });
 
 class SpellBook extends React.Component {
@@ -47,7 +47,7 @@ class SpellBook extends React.Component {
     const isFull = playerSpells.length >= currentLocation.max_spells
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="columns Drag-And-Drop">
+        <div className="columns is-mobile Drag-And-Drop">
           <Droppable droppableId="spellBook">
             {(provided, snapshot) => (
               <div
@@ -106,7 +106,7 @@ class SpellBook extends React.Component {
                           {...provided.dragHandleProps}
                           >
                           <SpellFrame
-                          removeFromBar={this.removeFromBar.bind(this)}
+                          removeSpell={this.removeFromBar.bind(this)}
                           onBar={true}
                           key={`spell-${spell.id}`}
                           spell={spell} />

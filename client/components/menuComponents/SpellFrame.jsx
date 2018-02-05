@@ -13,7 +13,7 @@ class SpellFrame extends React.Component {
     this.setState({showMore: !this.state.showMore})
   }
   render() {
-    const {spell} = this.props
+    const {spell, removeSpell, addSpell, onBar} = this.props
     const {showMore} = this.state
     const modal = () => <div className="modal is-active">
       <div className="modal-background"></div>
@@ -43,7 +43,11 @@ class SpellFrame extends React.Component {
         &nbsp; <i className={`subtitle is-4 icon ra ${spell.icon}`}>
         </i>
       </p>
-      <button onClick={this.toggleShow} className="button">Show More</button>
+      <div className="level">
+        {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}
+        <button onClick={this.toggleShow} className="Table-Button is-fullwidth button">Show More</button>
+        {!onBar && <button className="Table-Button button is-fullwidth" onClick={()=>addSpell(spell)}>Add</button>}
+      </div>
       {showMore && modal()}
     </tbody>
   }
