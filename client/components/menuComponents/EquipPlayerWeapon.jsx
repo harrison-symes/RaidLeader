@@ -30,15 +30,18 @@ class PlayerWeapon extends React.Component {
     }
     this.onDragEnd = this.onDragEnd.bind(this);
   }
-  moveToBar(weapon) {
-    // this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
+  addWeapon(weapon) {
+    this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
+  }
+  removeWeapon (weapon) {
+    this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon: null})
   }
   onDragEnd(result) {
     const {source, destination} = result
     const weapon = this.props.weapons.find(weapon => weapon.id == result.draggableId)
     if (!source || !destination) return
-    else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
-    else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon: null})
+    else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.addWeapon(weapon)
+    else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.removeWeapon(weapon)
   }
   viewWeapon(weapon) {
     this.setState({weapon})
@@ -101,7 +104,10 @@ class PlayerWeapon extends React.Component {
                       >
                         <tbody className="tbody box">
                           <p className="title is-4">{weapon.name} ({weapon.level})</p>
-                          <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Show More</button>
+                          <span className="level">
+                            <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Show More</button>
+                            {!playerWeapon && <button onClick={() => this.addWeapon(weapon)} className="button is-fullwdith Table-Button">Equip</button>}
+                          </span>
                         </tbody>
                       </table>
                     {provided.placeholder}
