@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import RecruitModal from './RecruitModal'
-import {classIcons} from '../../utils/classText'
+import {ClassIcon} from '../icons/StatIcons'
 
 class RecruitFrame extends React.Component {
   constructor(props) {
@@ -23,8 +23,8 @@ class RecruitFrame extends React.Component {
         <td className="td level"> */}
           <p className="subtitle is-4">
             {recruit.name}
-            &nbsp; <i className={`subtitle is-4 icon ra ${classIcons(recruit.heroClass)}`}>
-            </i>
+            &nbsp;
+            <ClassIcon heroClass={recruit.heroClass} />
             &nbsp; (Level {recruit.level})
           </p>
         {/* </td>
