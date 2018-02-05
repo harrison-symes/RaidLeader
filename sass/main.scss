@@ -121,12 +121,12 @@ body {
       .table {
         .tbody {
           background-color: #b88e69;
-          background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
           cursor: move;
         }
         .tbody:hover {
           background-color: #f7c48c;
-          background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
         }
         .Table-Button {
           background-color: #f7c48c;
@@ -136,6 +136,18 @@ body {
         }
         .Table-Button:hover {
           background-color: #b88e69;
+        }
+        .Drag-And-Drop {
+          overflow: hidden;
+          max-width: 100%;
+          .DnD-Title {
+            max-height: 15vh;
+          }
+          .Drop-Region {
+            background-color: #f7c48c;
+            background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+          }
+
         }
       }
 

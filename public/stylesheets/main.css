@@ -89,11 +89,11 @@
         background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png"); }
       .Town .Modal .modal-card-body .table .tbody {
         background-color: #b88e69;
-        background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+        background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
         cursor: move; }
       .Town .Modal .modal-card-body .table .tbody:hover {
         background-color: #f7c48c;
-        background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png"); }
+        background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
       .Town .Modal .modal-card-body .table .Table-Button {
         background-color: #f7c48c;
         height: 5vh;
@@ -101,6 +101,14 @@
         font-size: 1rem; }
       .Town .Modal .modal-card-body .table .Table-Button:hover {
         background-color: #b88e69; }
+      .Town .Modal .modal-card-body .table .Drag-And-Drop {
+        overflow: hidden;
+        max-width: 100%; }
+        .Town .Modal .modal-card-body .table .Drag-And-Drop .DnD-Title {
+          max-height: 15vh; }
+        .Town .Modal .modal-card-body .table .Drag-And-Drop .Drop-Region {
+          background-color: #f7c48c;
+          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }

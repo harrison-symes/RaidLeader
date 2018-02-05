@@ -14,11 +14,9 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   ...draggableStyle,
 });
 const getListStyle = (isDraggingOver, isFull) => ({
-  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'lightgrey',
+  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'inherit',
   padding: grid,
   width: '50%',
-  maxHeight: '80vh',
-  overflow: 'scroll',
   cursor: isFull ? 'no-drop' : 'auto'
 });
 
@@ -51,15 +49,15 @@ class Party extends React.Component {
     const isFull = playerParty.length >= currentLocation.max_party
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="columns">
+        <div className="columns is-mobile Drag-And-Drop">
           <Droppable droppableId="recruits">
             {(provided, snapshot) => (
               <div
-                className="Recruits"
+                className="Drop-Region"
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver, false)}
                 >
-                <h1 className="subtitle is-1">Recruits ({roster.length} / {recruits.length})</h1>
+                <h1 className="DnD-Title title is-3">Recruits</h1>
                 <hr />
                 {roster.map(recruit => (
                   <Draggable key={recruit.id} draggableId={recruit.id}>
@@ -89,11 +87,11 @@ class Party extends React.Component {
           <Droppable droppableId="party">
             {(provided, snapshot) => (
               <div
-                className="Party"
+                className="Drop-Region"
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver, isFull)}
                 >
-                <h1 className="subtitle is-1">Party ({playerParty.length} / {currentLocation.max_party})</h1>
+                <h1 className="DnD-Title title is-3">Party ({playerParty.length} / {currentLocation.max_party})</h1>
                 <hr />
                 {playerParty.map(recruit => (
                   <Draggable key={recruit.id} draggableId={recruit.id}>
