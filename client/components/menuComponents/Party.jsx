@@ -10,11 +10,11 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   padding: '5%',
   margin: `5%`,
   width: '90%',
-  background: isDragging ? 'lightgreen' : 'white',
+  background: isDragging ? '#ff6666' : 'white',
   ...draggableStyle,
 });
 const getListStyle = (isDraggingOver, isFull) => ({
-  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'inherit',
+  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : '    #inherit',
   padding: grid,
   width: '50%',
   cursor: isFull ? 'no-drop' : 'auto'

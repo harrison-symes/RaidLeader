@@ -103,12 +103,10 @@
         background-color: #b88e69; }
       .Town .Modal .modal-card-body .table .Drag-And-Drop {
         overflow: hidden;
-        max-width: 100%; }
+        max-width: 100%;
+        background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
         .Town .Modal .modal-card-body .table .Drag-And-Drop .DnD-Title {
           max-height: 15vh; }
-        .Town .Modal .modal-card-body .table .Drag-And-Drop .Drop-Region {
-          background-color: #f7c48c;
-          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }

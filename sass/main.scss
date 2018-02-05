@@ -140,12 +140,11 @@ body {
         .Drag-And-Drop {
           overflow: hidden;
           max-width: 100%;
+          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
           .DnD-Title {
             max-height: 15vh;
           }
           .Drop-Region {
-            background-color: #f7c48c;
-            background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
           }
 
         }
