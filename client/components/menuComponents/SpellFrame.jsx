@@ -37,7 +37,7 @@ class SpellFrame extends React.Component {
         </footer>
       </div>
     </div>
-    return <tbody className="tbody">
+    return <tbody className="tbody box">
       <p className="subtitle is-4">
         {spell.name}
         &nbsp; <i className={`subtitle is-4 icon ra ${spell.icon}`}>

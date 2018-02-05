@@ -18,7 +18,7 @@ class RecruitFrame extends React.Component {
   render() {
     const {recruit, playerParty, currentLocation, addRecruit, removeRecruit, inParty} = this.props
     const {showMore} = this.state
-    return <tbody className="tbody">
+    return <tbody className="tbody box">
       {/* <tr className="tr has-text-centered">
         <td className="td level"> */}
           <p className="subtitle is-4">
