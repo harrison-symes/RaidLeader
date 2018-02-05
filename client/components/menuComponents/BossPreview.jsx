@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon} from '../icons/StatIcons'
+
 class BossPreview extends React.Component {
   constructor(props) {
     super(props)
@@ -38,16 +40,21 @@ class BossPreview extends React.Component {
 
           </div>}
           <hr />
-          <p className="title is-3">Stats</p>
-          <ul className="columns is-multiline">
-            {renderStat(`Health: ${boss.hp} / ${boss.initHp}`)}
-            {renderStat(`Mana: ${boss.mana} / ${boss.maxMana} ${boss.manaRegen != 0 ? `(1 per ${boss.manaRegen} s)` : ''}`)}
-            {renderStat(`Power: ${boss.power}`)}
-            {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 ? `(1 per ${boss.armorRegen} s)` : ''}`)}
-          </ul>
-          <hr />
+          <div className="box">
+            <p className="title is-3">Stats</p>
+            <div className="columns">
+              <li className="column is-4 has-text-centered"><p className="subtitle is-4"><HealthIcon value={`${boss.hp}/${boss.initHp}`} /></p></li>
+              <li className="column is-4 has-text-centered"><p className="subtitle is-4"><ManaIcon value={`${boss.mana}/${boss.maxMana}`} /></p></li>
+              <li className="column is-4 has-text-centered"><p className="subtitle is-4"><ManaRegenIcon value={`${boss.manaRegen}`} /></p></li>
+            </div>
+            <div className="columns">
+              <li className="column is-6 has-text-centered"><p className="subtitle is-4"><PowerIcon value={`${boss.power}`} /></p></li>
+              {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 ? `(1 per ${boss.armorRegen} s)` : ''}`)}
+            </div>
+          </div>
+          <br />
           <p className="title is-4">Boss Abilities:</p>
-          <hr />
+          <br />
           <ul>
             {boss.spells.map(spell => <div className="section box">
               <p className="title is-4" style={{textDecoration: 'underline'}}>{spell.name}</p>
@@ -61,7 +68,8 @@ class BossPreview extends React.Component {
           </ul>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour}`} disabled={colour != 'is-success'}>
+          <button onClick={() => this.changeModal(false, null)} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>
+          <button onClick={() => this.targetBoss(boss)} className={`button is-large is-outlined is-fullwidth ${colour}`} disabled={colour != 'is-success'}>
             {colour != 'is-success'
               ? colour == 'is-danger'
                 ? `Requires ${boss.progress_required - defeatedBossCount} More Boss Defeats`
@@ -69,16 +77,12 @@ class BossPreview extends React.Component {
               : 'Set Target'
             }
           </button>
-          <button onClick={() => this.changeModal(false, null)} className="button is-large">Cancel</button>
         </footer>
       </div>
     </div>
   }
   changeModal (showModal, boss) {
     this.setState({showModal, boss})
-  }
-  componentDidMount() {
-    // document.getElementById('bossModalID').addEventListener('keyPress', (e) => console.log("key pressed", e))
   }
   render() {
     const {bosses} = this.props.currentLocation
