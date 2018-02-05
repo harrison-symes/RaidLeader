@@ -16,7 +16,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 })
 
 const getListStyle = (isDraggingOver, isFull) => ({
-  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'lightgrey',
+  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'inherit',
   padding: grid,
   width: '100%',
   height: '100%'
@@ -76,9 +76,9 @@ class PlayerWeapon extends React.Component {
     return <div className="has-text-centered">
       {this.state.weapon && this.WeaponModal()}
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="columns">
+        <div className="columns Drag-And-Drop">
           <span className="has-text-centered" style={{width: '50%'}}>
-            <h1 className="subtitle is-2">Weapons ({available.length})</h1>
+            <h1 className="DnD-Title title is-3">Weapons</h1>
             <br />
             <Droppable droppableId="weapons">
             {(provided, snapshot) => (
@@ -99,12 +99,12 @@ class PlayerWeapon extends React.Component {
                       )}
                       {...provided.dragHandleProps}
                       >
-                        <tbody className="tbody">
-                        <p className="title is-4">{weapon.name} ({weapon.level})</p>
-                        <button onClick={() => this.viewWeapon(weapon)} className="Table-Button button ">Show More</button>
-                      </tbody>
-                    </table>
-                  {provided.placeholder}
+                        <tbody className="tbody box">
+                          <p className="title is-4">{weapon.name} ({weapon.level})</p>
+                          <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Show More</button>
+                        </tbody>
+                      </table>
+                    {provided.placeholder}
                   </div>)}
                 </Draggable>))}
               {provided.placeholder}
@@ -112,7 +112,7 @@ class PlayerWeapon extends React.Component {
             </Droppable>
           </span>
           <span className="has-text-centered" style={{width: '50%'}}>
-            <h1 className="DnD-Title subtitle is-3">Equipped ({playerWeapon ? '1' : '0'}/1)</h1>
+            <h1 className="DnD-Title title is-3">Equipped ({playerWeapon ? '1' : '0'}/1)</h1>
             <br />
             <Droppable droppableId="playerWeapon">
               {(provided, snapshot) => (
@@ -133,8 +133,10 @@ class PlayerWeapon extends React.Component {
                             )}
                             {...provided.dragHandleProps}
                             >
-                              <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
-                              <button onClick={() => this.viewWeapon(playerWeapon)} className="button">Show More</button>
+                              <tbody className="tbody box">
+                                <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
+                                <button onClick={() => this.viewWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Show More</button>
+                              </tbody>
                             </table>
                             {provided.placeholder}
                           </div>
