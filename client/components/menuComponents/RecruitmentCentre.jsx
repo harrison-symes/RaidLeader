@@ -6,7 +6,7 @@ import randomName from '../../utils/randomName'
 import {earnGold} from '../../actions/gold'
 import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
-import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon} from '../icons/StatIcons'
+import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon, ClassIcon} from '../icons/StatIcons'
 
 import createClass from '../../utils/createClass'
 import {classTraits, startingBuff, classIcons} from '../../utils/classText'
@@ -87,7 +87,7 @@ class RecruitmentCentre extends Component {
           {recruited != null
             ? <div className="has-text-centered box">
               <div>
-                <p className="title is-3">{recruited.name} the {recruited.heroClass}<i className={`icon ra ${classIcons(recruited.heroClass)} ra-fw`} /></p>
+                <p className="title is-3">{recruited.name} the {recruited.heroClass}<ClassIcon heroClass={recruited.heroClass} /></p>
                 <p className="subtitle is-1">Has joined your party!</p>
                 <div className="columns">
                   <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruited.hp} /></p></div>
@@ -109,7 +109,7 @@ class RecruitmentCentre extends Component {
                   <br />
                   {offeredRecruits.map((recruit, i) => <div className="box">
                     <div key={`offered-recruit-${i}`} className="level">
-                      <p className="title is-3">{recruit.name} the {recruit.heroClass}<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></p>
+                      <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /></p>
                       {selectedRecruit != recruit
                         ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show Details</button>
                         : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
