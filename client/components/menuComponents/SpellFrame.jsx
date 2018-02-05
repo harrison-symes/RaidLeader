@@ -37,7 +37,7 @@ class SpellFrame extends React.Component {
         </footer>
       </div>
     </div>
-    return <div>
+    return <tbody className="tbody">
       <p className="subtitle is-4">
         {spell.name}
         &nbsp; <i className={`subtitle is-4 icon ra ${spell.icon}`}>
@@ -45,7 +45,7 @@ class SpellFrame extends React.Component {
       </p>
       <button onClick={this.toggleShow} className="button">Show More</button>
       {showMore && modal()}
-    </div>
+    </tbody>
   }
 }
 
