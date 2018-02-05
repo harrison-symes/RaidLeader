@@ -12,13 +12,13 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   width: '90%',
   background: isDragging ? 'lightgreen' : 'white',
   ...draggableStyle,
-});
+})
+
 const getListStyle = (isDraggingOver, isFull) => ({
-  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'lightgrey',
+  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : '    inherit',
   padding: grid,
-  width: '50%',
-  maxHeight: '80vh',
-  overflow: 'scroll',
+  width: '100%',
+  height: '100%',
   cursor: isFull ? 'no-drop' : 'auto'
 });
 
@@ -30,13 +30,19 @@ class Party extends React.Component {
   moveToParty(recruit) {
     this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
   }
+  addToParty(recruit, idx) {
+    this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: idx || this.props.playerParty.length})
+  }
+  removeFromParty(recruit) {
+    this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
+  }
   onDragEnd(result) {
     const {source, destination} = result
     const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
     if (!source || !destination) return
     else if (source.droppableId == 'recruits' && destination.droppableId == 'party' && this.props.playerParty.length >= this.props.currentLocation.max_party) this.props.dispatch({type: 'REPLACE_RECRUIT_IN_PARTY', idx: destination.index, recruit})
-    else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: destination.index})
-    else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
+    else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.addToParty(recruit, destination.index)
+    else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.removeFromParty(recruit)
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
   }
   render() {
@@ -45,72 +51,75 @@ class Party extends React.Component {
     const isFull = playerParty.length >= currentLocation.max_party
     return <div className="has-text-centered">
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="columns">
-          <Droppable droppableId="recruits">
-            {(provided, snapshot) => (
-              <div
-                className="Recruits"
-                ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver, false)}
-                >
-                <h1 className="subtitle is-1">Recruits ({roster.length} / {recruits.length})</h1>
-                <hr />
-                {roster.map(recruit => (
-                  <Draggable key={recruit.id} draggableId={recruit.id}>
-                    {(provided, snapshot) => (
-                      <div>
-                        <table className="table has-text-centered"
-                          ref={provided.innerRef}
-                          style={getItemStyle(
-                            provided.draggableStyle,
-                            snapshot.isDragging
-                          )}
-                          {...provided.dragHandleProps}
-                          >
-                          <RecruitFrame key={`recruit-${recruit.id}`} recruit={recruit} />
-                        </table>
-                        {provided.placeholder}
-                      </div>
+        <div className="columns is-mobile Drag-And-Drop">
+          <span style={{width: '50%'}}>
+            <h1 className="DnD-Title title is-3">Recruits</h1>
+            <br />
+            <Droppable droppableId="recruits">
+            {(provided, snapshot) => (<div
+              className="Drop-Region"
+              ref={provided.innerRef}
+              style={getListStyle(snapshot.isDraggingOver, false)}
+              >
+              {roster.map(recruit => (
+                <Draggable key={recruit.id} draggableId={recruit.id}>
+                  {(provided, snapshot) => (<div>
+                    <table className="table has-text-centered"
+                    ref={provided.innerRef}
+                    style={getItemStyle(
+                      provided.draggableStyle,
+                      snapshot.isDragging
                     )}
-                  </Draggable>
-                ))}
+                    {...provided.dragHandleProps}
+                    >
+                      <RecruitFrame
+                      addRecruit={this.addToParty.bind(this)}
+                      inParty={false}
+                      key={`recruit-${recruit.id}`}
+                      recruit={recruit} />
+                    </table>
+                    {provided.placeholder}
+                  </div>)}
+                </Draggable>))}
                 {provided.placeholder}
-              </div>
-              )}
-          </Droppable>
-          <Droppable droppableId="party">
-            {(provided, snapshot) => (
-              <div
-                className="Party"
-                ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver, isFull)}
-                >
-                <h1 className="subtitle is-1">Party ({playerParty.length} / {currentLocation.max_party})</h1>
-                <hr />
+              </div>)}
+            </Droppable>
+          </span>
+          <span style={{width: '50%'}} className="has-text-centered">
+            <h1 className="DnD-Title title is-3">Party ({playerParty.length} / {currentLocation.max_party})</h1>
+            <br />
+            <Droppable droppableId="party">
+              {(provided, snapshot) => (<div
+              className="Drop-Region"
+              ref={provided.innerRef}
+              style={getListStyle(snapshot.isDraggingOver, isFull)}
+              >
                 {playerParty.map(recruit => (
-                  <Draggable key={recruit.id} draggableId={recruit.id}>
-                    {(provided, snapshot) => (
-                      <div>
-                        <table
-                          className="table has-text-centered"
-                          ref={provided.innerRef}
-                          style={getItemStyle(
-                            provided.draggableStyle,
-                            snapshot.isDragging
-                          )}
-                          {...provided.dragHandleProps}
-                          >
-                          <RecruitFrame key={`recruit-${recruit.id}`} recruit={recruit} />
-                        </table>
-                        {provided.placeholder}
-                      </div>
+                <Draggable key={recruit.id} draggableId={recruit.id}>
+                  {(provided, snapshot) => (
+                  <div>
+                    <table
+                    className="table has-text-centered"
+                    ref={provided.innerRef}
+                    style={getItemStyle(
+                      provided.draggableStyle,
+                      snapshot.isDragging
                     )}
-                  </Draggable>
-                ))}
+                    {...provided.dragHandleProps}
+                    >
+                      <RecruitFrame
+                      key={`recruit-${recruit.id}`}
+                      removeRecruit={this.removeFromParty.bind(this)}
+                      inParty={true}
+                      recruit={recruit} />
+                    </table>
+                    {provided.placeholder}
+                  </div>)}
+                </Draggable>))}
                 {provided.placeholder}
-              </div>
-              )}
-          </Droppable>
+              </div>)}
+            </Droppable>
+          </span>
         </div>
       </DragDropContext>
     </div>

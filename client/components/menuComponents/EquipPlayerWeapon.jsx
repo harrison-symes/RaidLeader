@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import SpellFrame from './SpellFrame'
 
+import {HealthIcon, PowerIcon, ManaIcon, ManaRegenIcon} from '../icons/StatIcons'
+
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const grid = 8;
@@ -16,11 +18,10 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 })
 
 const getListStyle = (isDraggingOver, isFull) => ({
-  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'lightgrey',
+  background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'inherit',
   padding: grid,
-  width: '50%',
-  maxHeight: '80vh',
-  overflow: 'scroll'
+  width: '100%',
+  height: '100%'
 });
 
 class PlayerWeapon extends React.Component {
@@ -31,15 +32,18 @@ class PlayerWeapon extends React.Component {
     }
     this.onDragEnd = this.onDragEnd.bind(this);
   }
-  moveToBar(weapon) {
-    // this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
+  addWeapon(weapon) {
+    this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
+  }
+  removeWeapon (weapon) {
+    this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon: null})
   }
   onDragEnd(result) {
     const {source, destination} = result
     const weapon = this.props.weapons.find(weapon => weapon.id == result.draggableId)
     if (!source || !destination) return
-    else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
-    else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon: null})
+    else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.addWeapon(weapon)
+    else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.removeWeapon(weapon)
   }
   viewWeapon(weapon) {
     this.setState({weapon})
@@ -58,9 +62,10 @@ class PlayerWeapon extends React.Component {
           <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
-            <div className="column subtitle is-4">Health: {weapon.hp}</div>
-            <div className="column subtitle is-4">Power: {weapon.power}</div>
-            <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} p/s)</div>
+            <div className="column subtitle is-3"><HealthIcon value={weapon.hp} /></div>
+            <div className="column subtitle is-3"><PowerIcon value={weapon.power} /></div>
+            <div className="column subtitle is-3"><ManaIcon value={weapon.mana} /></div>
+            <div className="column subtitle is-3"><ManaRegenIcon value={weapon.manaRegen} /></div>
           </div>
           {weapon.bonusEffect && <div className="subtitle is-3">{weapon.effectDescription}</div>}
         </section>
@@ -77,72 +82,81 @@ class PlayerWeapon extends React.Component {
     return <div className="has-text-centered">
       {this.state.weapon && this.WeaponModal()}
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="columns">
-          <Droppable droppableId="weapons">
+        <div className="columns is-mobile Drag-And-Drop">
+          <span className="column has-text-centered" style={{width: '50%'}}>
+            <h1 className="DnD-Title title is-3">Weapons</h1>
+            <br />
+            <Droppable droppableId="weapons">
             {(provided, snapshot) => (
               <div
-                className="weapons"
-                ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver, false)}
-                >
-                <h1 className="subtitle is-2">Weapons ({available.length})</h1>
-                <hr />
+              className="weapons"
+              ref={provided.innerRef}
+              style={getListStyle(snapshot.isDraggingOver, false)}
+              >
                 {available.map(weapon => (
-                  <Draggable key={weapon.id} draggableId={weapon.id}>
-                    {(provided, snapshot) => (
-                      <div>
-                        <table className="table has-text-centered"
-                          ref={provided.innerRef}
-                          style={getItemStyle(
-                            provided.draggableStyle,
-                            snapshot.isDragging
-                          )}
-                          {...provided.dragHandleProps}
-                          >
-                          <p className="title is-4">{weapon.name} ({weapon.level})</p>
-                          <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
-                        </table>
-                        {provided.placeholder}
-                      </div>
+                <Draggable key={weapon.id} draggableId={weapon.id}>
+                  {(provided, snapshot) => (
+                  <div>
+                    <table className="table has-text-centered"
+                    ref={provided.innerRef}
+                    style={getItemStyle(
+                      provided.draggableStyle,
+                      snapshot.isDragging
                     )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-              )}
-          </Droppable>
-          <Droppable droppableId="playerWeapon">
-            {(provided, snapshot) => (
-              <div
-                className="SpellBar"
-                ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver, isFull)}
-                >
-                <h1 className="subtitle is-3">Equipped ({playerWeapon ? '1' : '0'}/1)</h1>
-                <hr />
-                  {playerWeapon && <Draggable key={playerWeapon.id} draggableId={playerWeapon.id}>
-                    {(provided, snapshot) => (
-                      <div>
-                        <table
-                          className="table has-text-centered"
-                          ref={provided.innerRef}
-                          style={getItemStyle(
-                            provided.draggableStyle,
-                            snapshot.isDragging
-                          )}
-                          {...provided.dragHandleProps}
-                          >
-                          <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
-                          <button onClick={() => this.viewWeapon(playerWeapon)} className="button">Show More</button>
-                        </table>
-                        {provided.placeholder}
-                      </div>
-                    )}
-                  </Draggable>}
-                {provided.placeholder}
-              </div>
-              )}
-          </Droppable>
+                    {...provided.dragHandleProps}
+                    >
+                    <tbody className="tbody box">
+                      <p className="title is-4">{weapon.name} ({weapon.level})</p>
+                      <span className="level">
+                        <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Show More</button>
+                        {!playerWeapon && <button onClick={() => this.addWeapon(weapon)} className="button is-fullwdith Table-Button">Equip</button>}
+                      </span>
+                    </tbody>
+                  </table>
+                  {provided.placeholder}
+                </div>)}
+              </Draggable>))}
+              {provided.placeholder}
+              </div>)}
+            </Droppable>
+          </span>
+          <span className="has-text-centered" style={{width: '50%'}}>
+            <h1 className="DnD-Title title is-3">Equipped ({playerWeapon ? '1' : '0'}/1)</h1>
+            <br />
+            <Droppable droppableId="playerWeapon">
+              {(provided, snapshot) => (
+                <div
+                  className="SpellBar"
+                  ref={provided.innerRef}
+                  style={getListStyle(snapshot.isDraggingOver, isFull)}
+                  >
+                    {playerWeapon && <Draggable key={playerWeapon.id} draggableId={playerWeapon.id}>
+                      {(provided, snapshot) => (
+                        <div>
+                          <table
+                            className="table has-text-centered"
+                            ref={provided.innerRef}
+                            style={getItemStyle(
+                              provided.draggableStyle,
+                              snapshot.isDragging
+                            )}
+                            {...provided.dragHandleProps}
+                            >
+                              <tbody className="tbody box">
+                                <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
+                                <button onClick={() => this.viewWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Show More</button>
+                              </tbody>
+                            </table>
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Draggable>}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+
+          </span>
         </div>
       </DragDropContext>
     </div>
