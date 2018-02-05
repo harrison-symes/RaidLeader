@@ -66,13 +66,7 @@ class RecruitModal extends Component {
         </header>
         <section className="modal-card-body">
           <div className="box">
-            <div className="title is-4">Stats</div>
             <hr />
-            <div className="columns">
-              <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruit.hp}/></p></div>
-              <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
-              <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
-            </div>
             <div className="columns">
               <div className="column has-text-centered">
                 <p className="title is-4">Starting Buff</p>
@@ -83,6 +77,12 @@ class RecruitModal extends Component {
                 <p className="title is-4">Class Traits:</p>
                 <p className="content is-large">{classTraits(recruit.heroClass)}</p>
               </div>
+            </div>
+            <div className="title is-4">Stats</div>
+            <div className="columns">
+              <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruit.hp}/></p></div>
+              <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
+              <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
             </div>
           </div>
           <hr />

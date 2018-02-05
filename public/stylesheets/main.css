@@ -107,7 +107,9 @@
         max-width: 100%;
         background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png"); }
         .Town .Modal .modal-card-body .table .Drag-And-Drop .DnD-Title {
-          max-height: 15vh; }
+          max-height: 15vh;
+          position: fixed;
+          top: 0; }
     .Town .Modal .modal-card-head, .Town .Modal .modal-card-foot {
       background-color: #b88e69;
       background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); }

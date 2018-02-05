@@ -32,9 +32,9 @@ class RecruitFrame extends React.Component {
       {showMore && <RecruitModal recruit={recruit} close={this.toggleShow} />}
       <div className="level">
         {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}
-        {!showMore && <tr className="tr has-text-centered">
+        {!showMore &&
           <button onClick={this.toggleShow} className="Table-Button  button is-fullwidth">Details</button>
-        </tr>}
+        }
         {playerParty.length < currentLocation.max_party && !inParty && <button className="Table-Button button is-fullwidth" onClick={() => addRecruit(recruit)}>Add</button>}
       </div>
     </tbody>
