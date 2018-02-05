@@ -32,7 +32,7 @@ export function classIcons (heroClass) {
     case 'Priest': return 'ra-angel-wings'
     case 'Warlock': return 'ra-flaming-claw'
     case 'Rogue': return ' ra-hood'
-    case 'Monk': return 'ra-incense'
+    case 'Monk': return 'ra-doubled'
     case 'Warrior': return 'ra-knight-helmet'
   }
 }

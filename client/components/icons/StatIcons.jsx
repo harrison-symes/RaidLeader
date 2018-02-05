@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {classIcons} from '../../utils/classText'
+
 export function HealthIcon ({value}) {
   return <div className="tooltip">
     <span className="tooltiptext">{value} Health</span>
@@ -62,4 +64,20 @@ export function GoldIcon ({value}) {
     {value}
     <i className="ra ra-fw ra-gold-bar icon-large" />
   </div>
+}
+
+export function ArmorIcon ({value}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{value} Armor</span>
+    {value}
+    <i className="ra ra-fw ra-heavy-shield icon-large" />
+  </div>
+}
+
+export function ClassIcon ({heroClass}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{heroClass}</span>
+      <i className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
+    </div>
+
 }
