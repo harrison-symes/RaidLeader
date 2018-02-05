@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon} from '../icons/StatIcons'
+import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon, ArmorIcon} from '../icons/StatIcons'
 
 class BossPreview extends React.Component {
   constructor(props) {
@@ -42,15 +42,15 @@ class BossPreview extends React.Component {
           <hr />
           <div className="box">
             <p className="title is-3">Stats</p>
-            <div className="columns">
-              <li className="column is-4 has-text-centered"><p className="subtitle is-4"><HealthIcon value={`${boss.hp}/${boss.initHp}`} /></p></li>
-              <li className="column is-4 has-text-centered"><p className="subtitle is-4"><ManaIcon value={`${boss.mana}/${boss.maxMana}`} /></p></li>
-              <li className="column is-4 has-text-centered"><p className="subtitle is-4"><ManaRegenIcon value={`${boss.manaRegen}`} /></p></li>
+            <div className="columns has-text-centered">
+              <li className="column is-6 has-text-centered"><p className="subtitle is-2"><HealthIcon value={`${boss.hp}/${boss.initHp}`} /></p></li>
+              <li className="column is-6 has-text-centered"><p className="subtitle is-2"><ArmorIcon value={`${boss.armor}/${boss.initArmor}`} /></p></li>
             </div>
             <div className="columns">
-              <li className="column is-6 has-text-centered"><p className="subtitle is-4"><PowerIcon value={`${boss.power}`} /></p></li>
-              {renderStat(`Armor: ${boss.armor} / ${boss.initArmor} ${boss.armorRegen != 0 ? `(1 per ${boss.armorRegen} s)` : ''}`)}
-            </div>
+              <li className="column is-4 has-text-centered"><p className="subtitle is-3"><PowerIcon value={`${boss.power}`} /></p></li>
+              <li className="column is-4 has-text-centered"><p className="subtitle is-3"><ManaIcon value={`${boss.mana}/${boss.maxMana}`} /></p></li>
+              <li className="column is-4 has-text-centered"><p className="subtitle is-3"><ManaRegenIcon value={`${boss.manaRegen}`} /></p></li>
+              </div>
           </div>
           <br />
           <p className="title is-4">Boss Abilities:</p>

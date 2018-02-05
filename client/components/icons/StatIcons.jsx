@@ -63,3 +63,11 @@ export function GoldIcon ({value}) {
     <i className="ra ra-fw ra-gold-bar icon-large" />
   </div>
 }
+
+export function ArmorIcon ({value}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{value} Armor</span>
+    {value}
+    <i className="ra ra-fw ra-heavy-shield icon-large" />
+  </div>
+}
