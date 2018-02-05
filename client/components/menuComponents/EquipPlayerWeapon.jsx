@@ -99,8 +99,10 @@ class PlayerWeapon extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <p className="title is-4">{weapon.name} ({weapon.level})</p>
-                          <button onClick={() => this.viewWeapon(weapon)} className="button">Show More</button>
+                          <tbody className="tbody">
+                            <p className="title is-4">{weapon.name} ({weapon.level})</p>
+                            <button onClick={() => this.viewWeapon(weapon)} className="Table-Button button ">Show More</button>
+                          </tbody>
                         </table>
                         {provided.placeholder}
                       </div>

@@ -16,7 +16,7 @@ class RecruitFrame extends React.Component {
     this.setState({showMore: !this.state.showMore})
   }
   render() {
-    const {recruit, playerParty, currentLocation} = this.props
+    const {recruit, playerParty, currentLocation, addRecruit, removeRecruit, inParty} = this.props
     const {showMore} = this.state
     return <tbody className="tbody">
       {/* <tr className="tr has-text-centered">
@@ -31,10 +31,11 @@ class RecruitFrame extends React.Component {
       </tr> */}
       {showMore && <RecruitModal recruit={recruit} close={this.toggleShow} />}
       <div className="level">
+        {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}
         {!showMore && <tr className="tr has-text-centered">
-          <button onClick={this.toggleShow} className="Table-Button  button">Details</button>
+          <button onClick={this.toggleShow} className="Table-Button  button is-fullwidth">Details</button>
         </tr>}
-        {playerParty.length < currentLocation.max_party && <button className="Table-Button  button">Add</button>}
+        {playerParty.length < currentLocation.max_party && !inParty && <button className="Table-Button button is-fullwidth" onClick={() => addRecruit(recruit)}>Add</button>}
       </div>
     </tbody>
   }

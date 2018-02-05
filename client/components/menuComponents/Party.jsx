@@ -33,13 +33,16 @@ class Party extends React.Component {
   addToParty(recruit, idx) {
     this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit, idx: idx || this.props.playerParty.length})
   }
+  removeFromParty(recruit) {
+    this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
+  }
   onDragEnd(result) {
     const {source, destination} = result
     const recruit = this.props.recruits.find(recruit => recruit.id == result.draggableId)
     if (!source || !destination) return
     else if (source.droppableId == 'recruits' && destination.droppableId == 'party' && this.props.playerParty.length >= this.props.currentLocation.max_party) this.props.dispatch({type: 'REPLACE_RECRUIT_IN_PARTY', idx: destination.index, recruit})
     else if (source.droppableId == 'recruits' && destination.droppableId == 'party') this.addToParty(recruit, destination.index)
-    else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.props.dispatch({type: 'REMOVE_RECRUIT_FROM_PARTY', recruit})
+    else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.removeFromParty(recruit)
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
   }
   render() {
@@ -70,7 +73,9 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <RecruitFrame key={`recruit-${recruit.id}`} recruit={recruit} />
+                          <RecruitFrame addRecruit={this.addToParty.bind(this)}
+                          inParty={false}
+                          key={`recruit-${recruit.id}`} recruit={recruit} />
                         </table>
                         {provided.placeholder}
                       </div>
@@ -103,7 +108,10 @@ class Party extends React.Component {
                           )}
                           {...provided.dragHandleProps}
                           >
-                          <RecruitFrame key={`recruit-${recruit.id}`} recruit={recruit} />
+                          <RecruitFrame key={`recruit-${recruit.id}`}
+                          removeRecruit={this.removeFromParty.bind(this)}
+                          inParty={true}
+                          recruit={recruit} />
                         </table>
                         {provided.placeholder}
                       </div>
