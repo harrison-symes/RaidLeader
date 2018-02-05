@@ -6,22 +6,25 @@ class EffectTag extends Component {
     super(props)
     this.state = {
       currentDuration: 0,
-      maxDuration: props.effect.duration,
+      remaining: props.effect.duration,
+      ticks: 0,
       interval: null
     }
   }
   tickSecond() {
     const {party, effect, target} = this.props
-    const currentDuration = this.state.currentDuration + 1
+    const remaining = this.state.remaining -1
     if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
-    if (currentDuration % effect.tickRate === 0) {
-      this.props.dispatch({type: effect.type, target, power: effect.power})
+    if (this.state.ticks == effect.tickRate) {
+      console.log("tick");
+      this.props.dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
+      this.setState({ticks: 0})
     }
-    if (currentDuration >= this.state.maxDuration) {
+    if (remaining <= 0) {
       this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
     } else {
       this.startSecond()
-      this.setState({currentDuration})
+      this.setState({remaining, ticks: this.state.ticks + 1})
     }
   }
   startSecond() {
@@ -30,25 +33,28 @@ class EffectTag extends Component {
   }
   startEffect() {
     this.startSecond()
-    this.setState({currentDuration: 0, ticks: 0})
+    this.setState({currentDuration: 0, remaining: this.props.effect.duration, ticks: 0})
   }
   componentDidMount() {
     this.startEffect()
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.effect != nextProps.effect && nextProps.effect) {
-      let {maxDuration, currentDuration} = this.state
-      maxDuration+=nextProps.effect.duration
+      let {maxDuration, currentDuration, remaining, ticks} = this.state
+      remaining+=nextProps.effect.duration
+      if (remaining > nextProps.effect.duration * 2) {
+        remaining = nextProps.effect.duration * 2
+      }
       // if (maxDuration > nextProps.effect.duration * 2) maxDuration = Math.floor(nextProps.effect.duration * 2)
-      this.setState({maxDuration})
+      this.setState({remaining})
     }
   }
   render() {
     const {effect, target} = this.props
     const {name, duration, colour} = effect
-    const {currentDuration, maxDuration} = this.state
+    const {currentDuration, maxDuration, remaining} = this.state
     return <div>
-      <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium">{name} ({maxDuration - Math.floor(currentDuration)})</div>
+      <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium">{name} ({remaining})</div>
     </div>
   }
 }

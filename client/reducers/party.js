@@ -73,6 +73,13 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.hp-=Math.round(action.power)
       return newState
+    case 'PERCENT_DAMAGE_FRIENDLY_TARGET':
+      console.log({action});
+      if (!action.target) return newState
+      target = newState.find(member => member == action.target)
+      if (!target || !target.isAlive) return newState
+      target.hp-=Math.round(target.initHp * action.percentage)
+      return newState
     case 'PRIEST_START_BUFF':
       newState = newState.map(member => {
         if (member.id  != action.target.id) member.initHp+= Math.round(member.initHp * 0.1)

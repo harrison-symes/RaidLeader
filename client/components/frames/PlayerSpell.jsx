@@ -10,13 +10,13 @@ const renewConstructor = (power) => ({
   type: 'HEAL_FRIENDLY_TARGET'
 })
 
-const poisonConstructor = (power) => ({
+const poisonConstructor = (perc) => ({
   name: 'Poison',
   duration: 15,
-  power,
+  percentage: perc || 0.1,
   colour: '#BA8CE8',
-  tickRate: 5,
-  type: 'DAMAGE_FRIENDLY_TARGET'
+  tickRate: 3,
+  type: 'PERCENT_DAMAGE_FRIENDLY_TARGET'
 })
 
 class PlayerSpell extends Component {
@@ -38,7 +38,7 @@ class PlayerSpell extends Component {
     const power = this.props.player.power * spell.powerRatio
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(Math.round(target.initHp / 20))})
+    if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
 
     switch(spell.name) {
       case 'Heal':
