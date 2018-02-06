@@ -20,7 +20,8 @@ var colors = {
   medYellow: '#EEEE00',
   lightYellow: '#FFF68F',
   darkYellow: '#FFD700',
-  medGrey: '#AAAAAA'
+  medGrey: '#AAAAAA',
+  faintPink: '#DDA0DD'
 }
 
 module.exports = {
@@ -156,7 +157,7 @@ module.exports = {
     description: 'Lose (5%) hp, restore (10%) mana',
     icon: 'ra-cut-palm',
     color: colors.darkPurple,
-    background: colors.medGrey,
+    background: colors.faintPink,
     element: 'Fire'
   },
   'Evocate': {
@@ -170,8 +171,8 @@ module.exports = {
     powerRatio: 10,
     description: 'Restore 10% Mana',
     icon: 'ra-player-teleport',
-    color: 'black',
-    background: '',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
     element: 'Arcane'
   },
   'Drain Life': {
@@ -185,8 +186,8 @@ module.exports = {
     powerRatio: 1,
     description: "Damage the Boss for (%100) of Player Power, Heal the Player for (%200) of Damage done",
     icon: 'ra-droplet',
-    color: 'black',
-    background: '',
+    color: colors.darkPurple,
+    background: colors.faintPink,
     element: 'Shadow'
   },
   'Harvest Life': {
@@ -200,8 +201,8 @@ module.exports = {
     powerRatio: 3,
     description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done',
     icon: 'ra-defibrilate',
-    color: 'purple',
-    background: '',
+    color: colors.darkPurple,
+    background: colors.faintPink,
     element: 'Shadow'
   },
   'Drain Soul': {
@@ -215,8 +216,8 @@ module.exports = {
     powerRatio: 2,
     description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player',
     icon: 'ra-bleeding-hearts',
-    color: 'black',
-    background: '',
+    color: colors.darkPurple,
+    background: colors.faintPink,
     element: 'Shadow'
   },
   'Renew': {
