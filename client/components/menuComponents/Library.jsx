@@ -68,7 +68,14 @@ class Library extends Component {
                 </p>
                 &nbsp;<i className={`icon ra-3x ra ${learntSpell.icon}`} />
                 <p className="subtitle is-5">{learntSpell.description}</p>
-                <p className="subtitle is-2"><TargetTypeIcon singleTarget={learntSpell.singleTarget}/></p>
+                <div className="columns">
+                  <div className="column is-6">
+                    <p className="subtitle is-2"><TargetTypeIcon singleTarget={learntSpell.singleTarget}/></p>
+                  </div>
+                  <div className="column is-6">
+                    <p className="subtitle is-2"><SpellElementIcon element={learntSpell.element}/></p>
+                  </div>
+                </div>
                 <div className="columns">
                   <div className="column is-4"><p className="subtitle is-4"><ManaIcon value={learntSpell.cost} /></p></div>
                   <div className="column is-4"><p className="subtitle is-4"><CastTimeIcon value={learntSpell.cast + 's'} /></p></div>
