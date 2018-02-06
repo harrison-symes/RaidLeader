@@ -79,5 +79,12 @@ export function ClassIcon ({heroClass}) {
     <span className="tooltiptext">{heroClass}</span>
       <i className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
     </div>
+}
+
+export function TargetTypeIcon ({singleTarget}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{singleTarget ? "Requires Friendly Target" : "No Target Needed"}</span>
+      <i className={`ra ra-fw ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
+    </div>
 
 }

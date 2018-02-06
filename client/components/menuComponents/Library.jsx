@@ -5,7 +5,7 @@ import spells from '../../utils/spells'
 import {earnGold} from '../../actions/gold'
 import {addSpell} from '../../actions/spells'
 import {get, set} from '../../utils/localstorage'
-import {ManaIcon, CastTimeIcon, CoolDownIcon} from '../icons/StatIcons'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon} from '../icons/StatIcons'
 
 class Library extends Component {
   constructor(props) {
@@ -68,6 +68,7 @@ class Library extends Component {
                 </p>
                 &nbsp;<i className={`icon ra-3x ra ${learntSpell.icon}`} />
                 <p className="subtitle is-5">{learntSpell.description}</p>
+                <p className="subtitle is-2"><TargetTypeIcon singleTarget={learntSpell.singleTarget}/></p>
                 <div className="columns">
                   <div className="column is-4"><p className="subtitle is-4"><ManaIcon value={learntSpell.cost} /></p></div>
                   <div className="column is-4"><p className="subtitle is-4"><CastTimeIcon value={learntSpell.cast + 's'} /></p></div>
@@ -97,13 +98,14 @@ class Library extends Component {
                         &nbsp;
                         &nbsp;
                         {selectedSpell != spell
-                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">Show Details</button>
-                          : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
+                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">Details</button>
+                          : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Hide</button>
                         }
                       </span>
                     </div>
                     {selectedSpell == spell && <div className="has-text-centered">
                       <div className="subtitle is-5">{spell.description}</div>
+                      <p className="subtitle is-2"><TargetTypeIcon singleTarget={spell.singleTarget}/></p>
                       <div className="columns">
                         <div className="column is-4"><p className="subtitle is-4"><ManaIcon value={spell.cost} /></p></div>
                         <div className="column is-4"><p className="subtitle is-4"><CastTimeIcon value={spell.cast + 's'} /></p></div>
