@@ -45,7 +45,7 @@ class SpellFrame extends React.Component {
       </p>
       <div className="level">
         {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}
-        <button onClick={this.toggleShow} className="Table-Button is-fullwidth button">Show More</button>
+        <button onClick={this.toggleShow} className="Table-Button is-fullwidth button">Details</button>
         {!onBar && playerSpells.length < currentLocation.max_spells && <button className="Table-Button button is-fullwidth" onClick={()=>addSpell(spell)}>Add</button>}
       </div>
       {showMore && modal()}

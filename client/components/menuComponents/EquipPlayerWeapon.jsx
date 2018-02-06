@@ -110,7 +110,7 @@ class PlayerWeapon extends React.Component {
                     <tbody className="tbody box">
                       <p className="title is-4">{weapon.name} ({weapon.level})</p>
                       <span className="level">
-                        <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Show More</button>
+                        <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Details</button>
                         {!playerWeapon && <button onClick={() => this.addWeapon(weapon)} className="button is-fullwdith Table-Button">Equip</button>}
                       </span>
                     </tbody>
@@ -146,7 +146,10 @@ class PlayerWeapon extends React.Component {
                             >
                               <tbody className="tbody box">
                                 <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
-                                <button onClick={() => this.viewWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Show More</button>
+                                <div className="level">
+                                  <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
+                                  <button onClick={() => this.viewWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
+                                </div>
                               </tbody>
                             </table>
                             {provided.placeholder}
