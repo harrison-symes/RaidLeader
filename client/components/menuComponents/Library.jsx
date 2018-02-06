@@ -5,7 +5,7 @@ import spells from '../../utils/spells'
 import {earnGold} from '../../actions/gold'
 import {addSpell} from '../../actions/spells'
 import {get, set} from '../../utils/localstorage'
-import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon} from '../icons/StatIcons'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon} from '../icons/StatIcons'
 
 class Library extends Component {
   constructor(props) {
@@ -105,7 +105,14 @@ class Library extends Component {
                     </div>
                     {selectedSpell == spell && <div className="has-text-centered">
                       <div className="subtitle is-5">{spell.description}</div>
-                      <p className="subtitle is-2"><TargetTypeIcon singleTarget={spell.singleTarget}/></p>
+                      <div className="columns">
+                        <div className="column is-6">
+                          <p className="subtitle is-2"><TargetTypeIcon singleTarget={spell.singleTarget}/></p>
+                        </div>
+                        <div className="column is-6">
+                          <p className="subtitle is-2"><SpellElementIcon element={spell.element}/></p>
+                        </div>
+                      </div>
                       <div className="columns">
                         <div className="column is-4"><p className="subtitle is-4"><ManaIcon value={spell.cost} /></p></div>
                         <div className="column is-4"><p className="subtitle is-4"><CastTimeIcon value={spell.cast + 's'} /></p></div>
