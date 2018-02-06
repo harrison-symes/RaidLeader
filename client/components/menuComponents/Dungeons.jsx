@@ -11,6 +11,17 @@ import {getPlayerGold} from '../../actions/gold'
 import {getWeapons} from '../../actions/weapons'
 
 class Dungeons extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selected: null,
+      allowed: false
+    }
+    this.selectDungeon = this.selectDungeon.bind(this)
+  }
+  selectDungeon(selected, allowed) {
+    this.setState({selected, allowed})
+  }
   componentDidMount() {
     this.props.dispatch(getRecruits())
     this.props.dispatch(getSpells())
@@ -18,9 +29,12 @@ class Dungeons extends Component {
     this.props.dispatch(getPlayerGold())
     this.props.dispatch(getWeapons())
   }
+  travel() {
+    this.props.dispatch({type: 'TRAVEL_TO_DUNGEON', dungeon: this.state.selected})
+  }
   render() {
     const {dungeons, playerParty, close} = this.props
-    console.log({dungeons});
+    const {selected, allowed} = this.state
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
@@ -30,7 +44,7 @@ class Dungeons extends Component {
         </header>
         <section className="modal-card-body">
           <div className="has-text-centered">
-            {dungeons.map((dungeon, i) => <Dungeon dungeon={dungeon} key={`dungeon-${i}`} />)}
+            {dungeons.map((dungeon, i) => <Dungeon selected={this.state.selected} selectDungeon={this.selectDungeon} dungeon={dungeon} key={`dungeon-${i}`} />)}
           </div>
         </section>
         <footer className="modal-card-foot">
@@ -40,6 +54,7 @@ class Dungeons extends Component {
               <i className={`ra ra-bottom-right ra-2x` }></i>
             </span>
           </a>
+          {selected && allowed && <a onClick={()=>this.travel()} className="button is-large is-outlined is-primary is-fullwidth">Travel to {selected.name}</a>}
         </footer>
       </div>
     </div>
