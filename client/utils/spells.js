@@ -4,7 +4,23 @@ var colors = {
   darkGreen: '#008B45',
   lightOlive: '#C0FF3E',
   darkOlive: '#6E8B3D',
-  medOlive: '#A2CD5A'
+  medOlive: '#A2CD5A',
+  medOrange: '#FFA500',
+  darkOrange: '#FF7F24',
+  lightRed: '#EE5C42',
+  medRed: '#EE4000',
+  darkRed: '#EE4000',
+  lightOrange: '#FFC125',
+  medBlue: '#7171C6',
+  darkBlue: '#00688B',
+  lightBlue: '#7D9EC0',
+  lightPurple: '#9370DB',
+  darkPurple: '#7D26CD',
+  medPurple: '#6A5ACD',
+  medYellow: '#EEEE00',
+  lightYellow: '#FFF68F',
+  darkYellow: '#FFD700',
+  medGrey: '#AAAAAA'
 }
 
 module.exports = {
@@ -94,8 +110,8 @@ module.exports = {
     powerRatio: 3,
     description: "Damage the Boss for (300%) of Player Power",
     icon: 'ra-burning-meteor',
-    color: 'black',
-    background: '',
+    color: colors.darkRed,
+    background: colors.lightOrange,
     element: 'Fire'
   },
   'Fireblast': {
@@ -109,8 +125,8 @@ module.exports = {
     powerRatio: 2,
     description: 'Damage the Boss for (%200) of Player Power',
     icon: 'ra-blaster',
-    color: 'black',
-    background: '',
+    color: colors.darkRed,
+    background: colors.lightOrange,
     element: 'Fire'
   },
   'Flash Fire': {
@@ -124,8 +140,8 @@ module.exports = {
     powerRatio: 1,
     description: 'Damage the Boss for (%100) of Player Power',
     icon: 'ra-explosion',
-    color: 'black',
-    background: '',
+    color: colors.darkRed,
+    background: colors.lightOrange,
     element: 'Fire'
   },
   'Life Tap': {
@@ -139,8 +155,8 @@ module.exports = {
     powerRatio: 3,
     description: 'Lose (5%) hp, restore (10%) mana',
     icon: 'ra-cut-palm',
-    color: 'black',
-    background: '',
+    color: colors.darkPurple,
+    background: colors.medGrey,
     element: 'Fire'
   },
   'Evocate': {
