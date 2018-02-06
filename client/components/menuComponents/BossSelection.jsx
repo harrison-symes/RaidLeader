@@ -3,15 +3,15 @@ import {connect} from 'react-redux'
 
 import BossPreview from './BossPreview'
 
-const BossSelection = ({currentLocation}) => {
+const BossSelection = ({currentLocation, close}) => {
   const defeated = currentLocation.bosses.filter(boss => boss.isDefeated)
   const bosses = currentLocation.bosses.filter(boss => !boss.isDefeated)
   return <div className={`Modal modal is-active`} >
     <div className="modal-background"></div>
     <div className="modal-card">
       <header className="modal-card-head">
-        <p className="modal-card-title">{this.state.modalView}</p>
-        <button onClick={() => this.showModal(null)} className="delete" aria-label="close"></button>
+        <p className="modal-card-title">Select Encounter</p>
+        <button onClick={close} className="delete" aria-label="close"></button>
       </header>
       <section className="modal-card-body">
         <div className="has-text-centered" id="bossModalID">
@@ -26,7 +26,7 @@ const BossSelection = ({currentLocation}) => {
         </div>
       </section>
       <footer className="modal-card-foot">
-        <button onClick={() => this.showModal(null)} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+        <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
       </footer>
     </div>
   </div>
