@@ -25,6 +25,7 @@ class Menu extends React.Component {
     }
     this.loadGame = this.loadGame.bind(this)
     this.goToTown = this.goToTown.bind(this)
+    this.close = this.close.bind(this)
   }
   readyRecruits(recruits) {
     const {weapons} = this.props
@@ -60,33 +61,18 @@ class Menu extends React.Component {
     console.log({modalView});
     this.setState({modalView})
   }
+  close () {
+    this.setState({modalView: null})
+  }
   modalSwitch() {
-    const switcher = () => {
-      switch(this.state.modalView) {
-        case 'Boss Selection': return <BossSelection />
-        case 'Travel To Town': return this.renderTownConfirmModal()
-        case 'Equip Player Weapon': return <EquipPlayerWeapon />
-        case 'Assemble Party': return <Party />
-        case 'Select Spells': return <Spellbook />
-        default: return null
-      }
+    switch(this.state.modalView) {
+      case 'Boss Selection': return <BossSelection close={this.close} />
+      case 'Travel To Town': return this.renderTownConfirmModal()
+      case 'Equip Player Weapon': return <EquipPlayerWeapon close={this.close} />
+      case 'Assemble Party': return <Party close={this.close} />
+      case 'Select Spells': return <Spellbook close={this.close} />
+      default: return null
     }
-    if (!this.state.modalView) return null
-    return <div className={`Modal modal is-active`} >
-      <div className="modal-background"></div>
-      <div className="modal-card">
-        <header className="modal-card-head">
-          <p className="modal-card-title">{this.state.modalView}</p>
-          <button onClick={() => this.showModal(null)} className="delete" aria-label="close"></button>
-        </header>
-        <section className="modal-card-body">
-          {switcher()}
-        </section>
-        <footer className="modal-card-foot">
-          <button onClick={() => this.showModal(null)} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
-        </footer>
-      </div>
-    </div>
   }
   renderMenuLink (name, icon) {
     const {pathname} = this.props.location
@@ -104,9 +90,23 @@ class Menu extends React.Component {
     this.props.dispatch({type: "TRAVEL_TO_TOWN"})
   }
   renderTownConfirmModal() {
-    return <div className="has-text-centered">
-      <p className="subtitle is-4">If you travel to Town, you will lose all progress for your current dungeon</p>
-      <Link to="/" onClick={this.goToTown} className="button is-warning is-outlined is-large">Travel Anyway</Link>
+    return <div className={`Modal modal is-active`} >
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">{this.state.modalView}</p>
+          <button onClick={() => this.showModal(null)} className="delete" aria-label="close"></button>
+        </header>
+        <section className="modal-card-body">
+          <div className="has-text-centered">
+            <p className="subtitle is-4">If you travel to Town, you will lose all progress for your current dungeon</p>
+            <Link to="/" onClick={this.goToTown} className="button is-warning is-outlined is-large">Travel Anyway</Link>
+          </div>
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={() => this.showModal(null)} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+        </footer>
+      </div>
     </div>
   }
   render() {

@@ -43,7 +43,7 @@ class SpellBook extends React.Component {
     else if (source.droppableId == 'spellBar' && destination.droppableId == 'spellBook') this.removeFromBar(spell)
     else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
   }
-  render() {
+  renderContent() {
     const {spellBook, playerSpells, currentLocation} = this.props
     const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
     const isFull = playerSpells.length >= currentLocation.max_spells
@@ -128,6 +128,23 @@ class SpellBook extends React.Component {
           </span>
         </div>
       </DragDropContext>
+    </div>
+  }
+  render() {
+    return <div className={`Modal modal is-active`} >
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Pick Your Spells</p>
+          <button onClick={this.props.close} className="delete" aria-label="close"></button>
+        </header>
+        <section className="modal-card-body">
+          {this.renderContent()}
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={this.props.close} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+        </footer>
+      </div>
     </div>
   }
 }

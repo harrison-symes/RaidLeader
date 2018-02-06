@@ -46,7 +46,7 @@ class Party extends React.Component {
     else if (source.droppableId == 'party' && destination.droppableId == 'recruits') this.removeFromParty(recruit)
     else if (destination.droppableId == 'party') this.props.dispatch({type: 'SHIFT_PARTY_INDEX', recruit, idx: destination.index})
   }
-  render() {
+  renderContent() {
     const {recruits, playerParty, currentLocation} = this.props
     const roster = recruits.filter(recruit => !playerParty.find(party => recruit.id == party.id))
     const isFull = playerParty.length >= currentLocation.max_party
@@ -123,6 +123,23 @@ class Party extends React.Component {
           </span>
         </div>
       </DragDropContext>
+    </div>
+  }
+  render() {
+    return <div className={`Modal modal is-active`} >
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Assemble Party</p>
+          <button onClick={this.props.close} className="delete" aria-label="close"></button>
+        </header>
+        <section className="modal-card-body">
+          {this.renderContent()}
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={this.props.close} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+        </footer>
+      </div>
     </div>
   }
 }
