@@ -10,7 +10,8 @@ module.exports = {
     powerRatio: 0.5,
     description: 'Heal a Friendly Target for (50%) of Player Power',
     icon: 'ra-flower',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   },
   'Heal': {
     id: 2,
@@ -23,7 +24,8 @@ module.exports = {
     powerRatio: 1,
     description: 'Heal a Friendly Target for (100%) of Player Power',
     icon: 'ra-daisy',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   },
   'Greater Heal': {
     id: 3,
@@ -36,7 +38,8 @@ module.exports = {
     powerRatio: 3,
     description: 'Heal a Friendly Target for (200%) of Player Power',
     icon: 'ra-flowers',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   },
   'Healing Ring': {
     id: 4,
@@ -49,7 +52,8 @@ module.exports = {
     powerRatio: 1,
     description: "Heal ALL Friendly Characters for (100%) of Player Power",
     icon: 'ra-grass-patch',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   },
   'Bind': {
     id: 5,
@@ -62,7 +66,8 @@ module.exports = {
     powerRatio: 2,
     description: 'Heal a Friendly Character and the Player for (200%) of Player Power',
     icon: 'ra-level-two',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   },
   'Fireball': {
     id: 6,
@@ -75,7 +80,8 @@ module.exports = {
     powerRatio: 3,
     description: "Damage the Boss for (300%) of Player Power",
     icon: 'ra-burning-meteor',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Fire'
   },
   'Fireblast': {
     id: 7,
@@ -88,7 +94,8 @@ module.exports = {
     powerRatio: 2,
     description: 'Damage the Boss for (%200) of Player Power',
     icon: 'ra-blaster',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Fire'
   },
   'Flash Fire': {
     id: 8,
@@ -101,7 +108,8 @@ module.exports = {
     powerRatio: 1,
     description: 'Damage the Boss for (%100) of Player Power',
     icon: 'ra-explosion',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Fire'
   },
   'Life Tap': {
     id: 9,
@@ -114,7 +122,8 @@ module.exports = {
     powerRatio: 3,
     description: 'Lose (5%) hp, restore (10%) mana',
     icon: 'ra-cut-palm',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Fire'
   },
   'Evocate': {
     id: 10,
@@ -127,7 +136,8 @@ module.exports = {
     powerRatio: 10,
     description: 'Restore 10% Mana',
     icon: 'ra-player-teleport',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Arcane'
   },
   'Drain Life': {
     id: 11,
@@ -140,7 +150,8 @@ module.exports = {
     powerRatio: 1,
     description: "Damage the Boss for (%100) of Player Power, Heal the Player for (%200) of Damage done",
     icon: 'ra-droplet',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Shadow'
   },
   'Harvest Life': {
     id: 12,
@@ -153,7 +164,8 @@ module.exports = {
     powerRatio: 3,
     description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done',
     icon: 'ra-defibrilate',
-    iconColor: 'purple'
+    iconColor: 'purple',
+    element: 'Shadow'
   },
   'Drain Soul': {
     id: 13,
@@ -166,7 +178,8 @@ module.exports = {
     powerRatio: 2,
     description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player',
     icon: 'ra-bleeding-hearts',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Shadow'
   },
   'Renew': {
     id: 14,
@@ -179,7 +192,8 @@ module.exports = {
     powerRatio: 0.5,
     description: 'Place a Healing over Time effect on a friendly target, healing them for 60% of their Max Health over 15 seconds',
     icon: 'ra-sprout',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   },
   'Greater Renew': {
     id: 15,
@@ -192,6 +206,7 @@ module.exports = {
     singleTarget: false,
     description: 'Place a Healing over Time effect on each friendly party member, healing them for 60% of their Max Health over 15 seconds',
     icon: 'ra-sprout-emblem',
-    iconColor: 'black'
+    iconColor: 'black',
+    element: 'Life'
   }
 }
