@@ -49,7 +49,6 @@ class BossSelection extends React.Component {
   }
   render() {
     const {selectedBoss} = this.state
-    console.log(this.state);
     return selectedBoss
       ? <BossPreview back={this.back} boss={selectedBoss} showMore={true} close={this.props.close} />
       : this.renderContent()

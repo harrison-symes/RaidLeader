@@ -97,7 +97,6 @@ class BossPreview extends React.Component {
     </div>
   }
   render() {
-    console.log(this.props);
     const {showMore} = this.props
     return showMore
       ? this.renderBossModal()
