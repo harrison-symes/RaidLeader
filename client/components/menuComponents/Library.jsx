@@ -66,7 +66,7 @@ class Library extends Component {
               <div className="box">
                 <p className="title is-3">{learntSpell.name}
                 </p>
-                &nbsp;<SpellIcon name={learntSpell.name} icon={learntSpell.icon} isLarge={true}/>
+                &nbsp;<SpellIcon spell={learntSpell} isLarge={true}/>
                 <p className="subtitle is-5">{learntSpell.description}</p>
                 <div className="columns">
                   <div className="column is-6">
@@ -100,7 +100,7 @@ class Library extends Component {
                       <p className="title is-3">{spell.name}
                       </p>
                       <span>
-                        <SpellIcon name={spell.name} icon={spell.icon} isLarge={true} />
+                        <SpellIcon spell={spell} isLarge={true} />
                         &nbsp;
                         &nbsp;
                         &nbsp;

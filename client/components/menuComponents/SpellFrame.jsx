@@ -25,7 +25,7 @@ class SpellFrame extends React.Component {
         </header>
         <section className="modal-card-body has-text-centered">
           <br />
-          <SpellIcon name={spell.name} icon={spell.icon} isLarge={true} />
+          <SpellIcon spell={spell} isLarge={true} />
           <p className="box subtitle is-2">{spell.description}</p>
           <div className="box">
             <div className="columns">
@@ -52,7 +52,7 @@ class SpellFrame extends React.Component {
     return <tbody className="tbody box">
       <p className="subtitle is-4">
         {/* {spell.name} */}
-        &nbsp; <SpellIcon icon={spell.icon} name={spell.name} isLarge={true}/>
+        &nbsp; <SpellIcon spell={spell} isLarge={true}/>
       </p>
       <div className="level">
         {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}
