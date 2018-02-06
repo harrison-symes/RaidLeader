@@ -178,7 +178,7 @@
   @media (max-width: 900px) {
     .tooltip .tooltiptext {
       visibility: visible;
-      width: 200px;
+      min-width: 200px;
       margin-left: -100px;
       border-radius: 1px;
       padding: auto;

@@ -240,7 +240,7 @@ body {
   opacity: 0.7;
   @media (max-width: 900px) {
     visibility:visible;
-    width: 200px;
+    min-width: 200px;
     margin-left: -100px;
     // height: 10px;
     border-radius: 1px;
