@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
 
-
+import CircularProgressbar from 'react-circular-progressbar'
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -109,6 +109,8 @@ class PlayerSpell extends Component {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    var cdPercentage = currentCD / spell.coolDown * 100
+    var castPercentage = currentCastTime / spell.cast * 100
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <div
@@ -122,9 +124,19 @@ class PlayerSpell extends Component {
         {(onCooldown || castInterval) &&
           <tfoot className="tfoot">
             <tr>
-              <td>
-                {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-                {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
+              <td style={{width: '50%', height: '50%'}}>
+                <CircularProgressbar
+                  percentage={castPercentage}
+                  // background={true}
+                  counterClockwise={!onCooldown}
+                  styles={{
+                    path: onCooldown
+                      ? {stroke: `rgba(62, 152, 199, ${castPercentage / 100})`}
+                      : {stroke: `rgba(62, 152, 199, ${1 - cdPercentage / 100})`}
+                  }}
+                />
+                {/* {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
+                {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />} */}
               </td>
             </tr>
           </tfoot>
