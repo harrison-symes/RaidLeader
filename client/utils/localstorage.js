@@ -12,5 +12,5 @@ export function set (key, value) {
 }
 
 export function clear () {
-  localstorage.clear()
+  localStorage.clear()
 }

@@ -10,7 +10,7 @@ function requestLogout () {
 
 function receiveLogout () {
   return {
-    type: 'LOGOUT_SUCCESS',
+    type: 'LOGOUT',
     isFetching: false,
     isAuthenticated: false
   }
