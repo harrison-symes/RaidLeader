@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon} from '../icons/StatIcons'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon} from '../icons/StatIcons'
 
 class SpellFrame extends React.Component {
   constructor(props) {
@@ -24,8 +24,8 @@ class SpellFrame extends React.Component {
           <button onClick={this.toggleShow} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body has-text-centered">
-          <p className="title is-1">{spell.name} ({spell.type})</p>
-          <hr />
+          <br />
+          <SpellIcon name={spell.name} icon={spell.icon} isLarge={true} />
           <p className="box subtitle is-2">{spell.description}</p>
           <div className="box">
             <div className="columns">
@@ -51,9 +51,8 @@ class SpellFrame extends React.Component {
     </div>
     return <tbody className="tbody box">
       <p className="subtitle is-4">
-        {spell.name}
-        &nbsp; <i className={`subtitle is-4 icon ra ${spell.icon}`}>
-        </i>
+        {/* {spell.name} */}
+        &nbsp; <SpellIcon icon={spell.icon} name={spell.name} isLarge={true}/>
       </p>
       <div className="level">
         {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}

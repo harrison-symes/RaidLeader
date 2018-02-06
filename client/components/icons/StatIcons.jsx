@@ -104,10 +104,10 @@ export function SpellElementIcon ({element}) {
     </div>
 }
 
-export function SpellIcon ({name, icon}) {
-  return <div className="tooltip">
+export function SpellIcon ({name, icon, isLarge}) {
+  return <div className="tooltip box">
     <span className="tooltiptext">{name}</span>
-    <i className={`ra ra-3x ${icon} icon-large`} />
+    <i className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
   </div>
 
 }
