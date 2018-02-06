@@ -77,7 +77,7 @@ class PlayerWeapon extends React.Component {
       </div>
     </div>
   }
-  render() {
+  renderContent() {
     const {weapons, playerWeapon, currentLocation} = this.props
     const available = weapons.filter(weapon => weapon.class == "Player" && (!playerWeapon || weapon.id != playerWeapon.id))
     const isFull = !!playerWeapon
@@ -164,6 +164,23 @@ class PlayerWeapon extends React.Component {
           </span>
         </div>
       </DragDropContext>
+    </div>
+  }
+  render() {
+    return <div className={`Modal modal is-active`} >
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Choose Your Weapon</p>
+          <button onClick={this.props.close} className="delete" aria-label="close"></button>
+        </header>
+        <section className="modal-card-body">
+          {this.renderContent()}
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={this.props.close} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+        </footer>
+      </div>
     </div>
   }
 }
