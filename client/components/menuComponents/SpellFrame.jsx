@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon} from '../icons/StatIcons'
 
 class SpellFrame extends React.Component {
   constructor(props) {
@@ -25,12 +26,23 @@ class SpellFrame extends React.Component {
         <section className="modal-card-body has-text-centered">
           <p className="title is-1">{spell.name} ({spell.type})</p>
           <hr />
-          <div className="columns">
-            <div className="column is-4"><p className="subtitle is-3">Cost: {spell.cost} mana</p></div>
-            <div className="column is-4"><p className="subtitle is-3">Cast: {spell.cast} s</p></div>
-            <div className="column is-4"><p className="subtitle is-3">CD: {spell.coolDown} s</p></div>
-          </div>
           <p className="box subtitle is-2">{spell.description}</p>
+          <div className="box">
+            <div className="columns">
+              <div className="column is-6">
+                <p className="subtitle is-2"><TargetTypeIcon singleTarget={spell.singleTarget}/></p>
+              </div>
+              <div className="column is-6">
+                <p className="subtitle is-2"><SpellElementIcon element={spell.element}/></p>
+              </div>
+            </div>
+            <div className="columns">
+              <div className="column is-4"><p className="subtitle is-3"><ManaIcon value={spell.cost} /></p></div>
+              <div className="column is-4"><p className="subtitle is-3"><CastTimeIcon value={spell.cast + 's'} /></p></div>
+              <div className="column is-4"><p className="subtitle is-3"><CoolDownIcon value={spell.coolDown + 's'} /></p></div>
+            </div>
+
+          </div>
         </section>
         <footer className="modal-card-foot">
           <button onClick={this.toggleShow} className="button is-large is-fullwidth">Close</button>

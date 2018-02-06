@@ -5,7 +5,7 @@ import spells from '../../utils/spells'
 import {earnGold} from '../../actions/gold'
 import {addSpell} from '../../actions/spells'
 import {get, set} from '../../utils/localstorage'
-import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon} from '../icons/StatIcons'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon} from '../icons/StatIcons'
 
 class Library extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class Library extends Component {
               <div className="box">
                 <p className="title is-3">{learntSpell.name}
                 </p>
-                &nbsp;<i className={`icon ra-3x ra ${learntSpell.icon}`} />
+                &nbsp;<SpellIcon name={learntSpell.name} icon={learntSpell.icon}/>
                 <p className="subtitle is-5">{learntSpell.description}</p>
                 <div className="columns">
                   <div className="column is-6">
@@ -100,7 +100,7 @@ class Library extends Component {
                       <p className="title is-3">{spell.name}
                       </p>
                       <span>
-                        <i className={`icon ra-3x ra ${spell.icon}`} />
+                        <SpellIcon name={spell.name} icon={spell.icon} />
                         &nbsp;
                         &nbsp;
                         &nbsp;

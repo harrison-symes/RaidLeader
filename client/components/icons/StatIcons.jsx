@@ -90,7 +90,6 @@ export function TargetTypeIcon ({singleTarget}) {
 }
 
 export function SpellElementIcon ({element}) {
-  console.log({element});
   let icon
   switch(element) {
     case 'Life': icon = 'ra-zigzag-leaf'; break;
@@ -103,4 +102,12 @@ export function SpellElementIcon ({element}) {
     <span className="tooltiptext">{element} Spell</span>
       <i className={`ra ra-fw ${icon} icon-large`} />
     </div>
+}
+
+export function SpellIcon ({name, icon}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{name}</span>
+    <i className={`ra ra-3x ${icon} icon-large`} />
+  </div>
+
 }
