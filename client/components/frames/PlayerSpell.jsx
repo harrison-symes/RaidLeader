@@ -109,37 +109,30 @@ class PlayerSpell extends Component {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
-    var cdPercentage = currentCD / spell.coolDown * 100
+    var cdPercentage = (spell.coolDown - currentCD) / spell.coolDown * 100
     var castPercentage = currentCastTime / spell.cast * 100
+    let perc = onCooldown ? cdPercentage : castPercentage
+    var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <div
       className={`PlayerSpell button ${spellColour}`}
       onClick={() => this.clickSpell()}
       style={{width: `${width}px`}}>
-      <table className="table">
-        <thead className='thead has-text-centered'>
-          <th className="th subtitle is-5 has-text-centered">({idx}) {spell.name}</th>
-        </thead>
+      <table className="box">
+        <h1 className="subtitle is-5 has-text-centered">({idx}) {spell.name}</h1>
         {(onCooldown || castInterval) &&
-          <tfoot className="tfoot">
-            <tr>
-              <td style={{width: '50%', height: '50%'}}>
-                <CircularProgressbar
-                  percentage={castPercentage}
-                  // background={true}
-                  counterClockwise={!onCooldown}
-                  styles={{
-                    path: onCooldown
-                      ? {stroke: `rgba(62, 152, 199, ${castPercentage / 100})`}
-                      : {stroke: `rgba(62, 152, 199, ${1 - cdPercentage / 100})`}
-                  }}
-                />
-                {/* {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-                {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />} */}
-              </td>
-            </tr>
-          </tfoot>
+        <div style={{width: '50px', height: '50px', margin: 'auto'}} className="has-text-centered">
+          <CircularProgressbar
+            percentage={perc}
+            counterClockwise={!onCooldown}
+            textForPercentage={(p) => `${text}`}
+            styles={{
+              path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
+              margin: 'auto'
+            }}
+          />
+        </div>
         }
       </table>
     </div>
