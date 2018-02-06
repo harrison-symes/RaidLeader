@@ -5,11 +5,11 @@ module.exports = {
     cast: 1,
     cost: 5,
     coolDown: 0.5,
-    type: 'heal',
+    type: 'Heal',
     singleTarget: true,
     powerRatio: 0.5,
     description: 'Heal a Friendly Target for (50%) of Player Power',
-    icon: 'ra-health',
+    icon: 'ra-flower',
     iconColor: 'black'
   },
   'Heal': {
@@ -22,7 +22,7 @@ module.exports = {
     singleTarget: true,
     powerRatio: 1,
     description: 'Heal a Friendly Target for (100%) of Player Power',
-    icon: 'ra-health',
+    icon: 'ra-daisy',
     iconColor: 'black'
   },
   'Greater Heal': {
@@ -35,7 +35,7 @@ module.exports = {
     singleTarget: true,
     powerRatio: 3,
     description: 'Heal a Friendly Target for (200%) of Player Power',
-    icon: 'ra-health',
+    icon: 'ra-flowers',
     iconColor: 'black'
   },
   'Healing Ring': {
@@ -48,7 +48,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 1,
     description: "Heal ALL Friendly Characters for (100%) of Player Power",
-    icon: 'ra-level-four-advanced',
+    icon: 'ra-grass-patch',
     iconColor: 'black'
   },
   'Bind': {
@@ -177,8 +177,8 @@ module.exports = {
     type: 'healing',
     singleTarget: true,
     powerRatio: 0.5,
-    description: 'Place a Healing over Time effect on a friendly target, healing them for 50% of Player Power every 3 seconds for 9 seconds',
-    icon: 'ra-health-increase',
+    description: 'Place a Healing over Time effect on a friendly target, healing them for 60% of their Max Health over 15 seconds',
+    icon: 'ra-sprout',
     iconColor: 'black'
   },
   'Greater Renew': {
@@ -190,8 +190,8 @@ module.exports = {
     type: 'healing',
     powerRatio: 0.5,
     singleTarget: false,
-    description: 'Place a Healing over Time effect on each friendly party member, healing them for 50% of Player Power every 3 seconds for 9 seconds',
-    icon: 'ra-sunbeams',
+    description: 'Place a Healing over Time effect on each friendly party member, healing them for 60% of their Max Health over 15 seconds',
+    icon: 'ra-sprout-emblem',
     iconColor: 'black'
   }
 }
