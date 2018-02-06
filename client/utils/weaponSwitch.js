@@ -4,9 +4,9 @@ module.exports = {
     type: 'Weapon',
     level,
     id,
-    hp: (level) * 1000,
-    power: 20 * level,
-    mana: 50 + (50 * level),
+    hp: 1000,
+    power: 20,
+    mana: 100,
     manaRegen: 1,
     class: 'Player',
     description: 'It comes with a note attached; "Hitting your Recruits with this will NOT heal them!"',
@@ -17,8 +17,8 @@ module.exports = {
     type: 'Weapon',
     level,
     id,
-    hp: ((level * 2) + 1) * 350,
-    power: (level * 30),
+    hp: 1200,
+    power: 30,
     mana: 120,
     manaRegen: 1,
     class: 'Player',
@@ -30,13 +30,41 @@ module.exports = {
     type: 'Weapon',
     level,
     id,
-    hp: (level + 1) * 500,
-    power: 40 * level,
-    mana: 50,
+    hp: 1200,
+    power: 30,
+    mana: 60,
     manaRegen: 2,
     class: 'Player',
     description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.',
     bonusEffect: null
+  }),
+  ['Plagued Staff of the Swamp']: (level, id) => ({
+    name: 'Plagued Staff of the Swamp',
+    type: 'Weapon',
+    level,
+    id,
+    hp: 1000,
+    power: 40,
+    mana: 200,
+    manaRegen: 0,
+    class: 'Player',
+    description: 'The staff resonates great power, but something about it feels so wrong.',
+    bonusEffect: 'Poison',
+    effectDescription: `Your targeted heals Poison the target for 20% of target's hp as damage every 5 seconds for 15 seconds`
+  }),
+  ['Cleansed Staff of the Woods']: (level, id) => ({
+    name: 'Cleansed Staff of the Woods',
+    type: 'Weapon',
+    level,
+    id,
+    hp: 1500,
+    power: 35,
+    mana: 100,
+    manaRegen: 2,
+    class: 'Player',
+    description: 'Made from a powerful Oak Tree. A small artifact of purity from the Woods that used to be...',
+    bonusEffect: 'curePoison',
+    effectDescription: "Your targeted heals remove any Poison effect from the target"
   }),
   ['Dragon Scale']: (level, id) => ({
     name: 'Dragon Scale',
@@ -133,7 +161,7 @@ module.exports = {
     class: 'Paladin',
     description: 'A lost shield from a fallen adventurer. "A. Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 20% hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -146,7 +174,7 @@ module.exports = {
     class: 'Warrior',
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 20% hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Daggers',
@@ -159,7 +187,7 @@ module.exports = {
     class: 'Rogue',
     description: 'A lost pair of Daggers from a fallen adventurer. "Joe Van Boe" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 20% hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
   }),
   ['Plagued Scythe']: (level, id) => ({
     name: 'Plagued Scythe',
@@ -172,7 +200,7 @@ module.exports = {
     class: 'Warlock',
     description: 'A lost weapon from a fallen adventurer. "A A. Ron" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 20% hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
   }),
   ['Plagued Stave']: (level, id) => ({
     name: 'Plagued Stave',
@@ -185,7 +213,7 @@ module.exports = {
     class: 'Monk',
     description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 20% hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
   }),
   ['Plagued Wand']: (level, id) => ({
     name: 'Plagued Wand',
@@ -198,7 +226,7 @@ module.exports = {
     class: 'Mage',
     description: 'A lost weapon from a fallen adventurer. "Jazz Man" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 20% hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
   }),
   ['Glowing Libram']: (level, id) => ({
     name: 'Glowing Libram',
@@ -212,33 +240,5 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`
-  }),
-  ['Plagued Staff of the Swamp']: (level, id) => ({
-    name: 'Plagued Staff of the Swamp',
-    type: 'Weapon',
-    level,
-    id,
-    hp: (level) * 500,
-    power: 30 * level,
-    mana: (100 * level),
-    manaRegen: 0,
-    class: 'Player',
-    description: 'The staff resonates great power, but something about it feels so wrong.',
-    bonusEffect: 'Poison',
-    effectDescription: `Your targeted heals Poison the target for 20% of target's hp as damage every 5 seconds for 15 seconds`
-  }),
-  ['Cleansed Staff of the Woods']: (level, id) => ({
-    name: 'Cleansed Staff of the Woods',
-    type: 'Weapon',
-    level,
-    id,
-    hp: (level + 1) * 500,
-    power: 20 * level,
-    mana: (50 * level),
-    manaRegen: 2,
-    class: 'Player',
-    description: 'Made from a powerful Oak Tree. A small artifact of purity from the Woods that used to be...',
-    bonusEffect: 'curePoison',
-    effectDescription: "Your targeted heals remove any Poison effect from the target"
   })
 }

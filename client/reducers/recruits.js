@@ -1,6 +1,7 @@
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'LOGOUT': return []
     case 'RECEIVE_RECRUITS':
       return action.recruits
     case 'ADD_RECRUIT':

@@ -22,6 +22,9 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    this.requestData()
+  }
+  requestData() {
     this.props.dispatch(getRecruits())
     this.props.dispatch(getSpells())
     this.props.dispatch(getDungeons())
@@ -32,19 +35,22 @@ class App extends React.Component {
     if (this.props.started && !nextProps.started){
       this.setState({game: (props) => <Game {...props} />})
     }
+    if (!this.props.auth.isAuthenticated && nextProps.auth.isAuthenticated) this.requestData()
   }
   render() {
     const {auth, currentLocation, showWelcome} = this.props
     const {game} = this.state
+    console.log({showWelcome});
     return <Router>
       <div className='app-container'>
         {auth.isAuthenticated
           ? <Switch>
             <Route path="/game" component={Game} />
-            {showWelcome && <Route path='/' component={Welcome} />}
-            {currentLocation.name == 'Town'
-              ? <Route exact path='/' component={Town} />
-              : <Route path='/' component={Menu} />
+            {showWelcome
+              ? <Route path='/' component={Welcome} />
+              : currentLocation.name == 'Town'
+                ? <Route exact path='/' component={Town} />
+                : <Route path='/' component={Menu} />
             }
           </Switch>
           : <Home />

@@ -1,3 +1,29 @@
+var colors = {
+  lightGreen: '#00FF7F',
+  medGreen: '#00C957',
+  darkGreen: '#008B45',
+  lightOlive: '#C0FF3E',
+  darkOlive: '#6E8B3D',
+  medOlive: '#A2CD5A',
+  medOrange: '#FFA500',
+  darkOrange: '#FF7F24',
+  lightRed: '#EE5C42',
+  medRed: '#EE4000',
+  darkRed: '#EE4000',
+  lightOrange: '#FFC125',
+  medBlue: '#7171C6',
+  darkBlue: '#00688B',
+  lightBlue: '#7D9EC0',
+  lightPurple: '#9370DB',
+  darkPurple: '#7D26CD',
+  medPurple: '#6A5ACD',
+  medYellow: '#EEEE00',
+  lightYellow: '#FFF68F',
+  darkYellow: '#FFD700',
+  medGrey: '#AAAAAA',
+  faintPink: '#DDA0DD'
+}
+
 module.exports = {
   'Lesser Heal': {
     id: 1,
@@ -10,7 +36,9 @@ module.exports = {
     powerRatio: 0.5,
     description: 'Heal a Friendly Target for (50%) of Player Power',
     icon: 'ra-flower',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   },
   'Heal': {
     id: 2,
@@ -23,7 +51,9 @@ module.exports = {
     powerRatio: 1,
     description: 'Heal a Friendly Target for (100%) of Player Power',
     icon: 'ra-daisy',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   },
   'Greater Heal': {
     id: 3,
@@ -36,7 +66,9 @@ module.exports = {
     powerRatio: 3,
     description: 'Heal a Friendly Target for (200%) of Player Power',
     icon: 'ra-flowers',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   },
   'Healing Ring': {
     id: 4,
@@ -49,7 +81,9 @@ module.exports = {
     powerRatio: 1,
     description: "Heal ALL Friendly Characters for (100%) of Player Power",
     icon: 'ra-grass-patch',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   },
   'Bind': {
     id: 5,
@@ -62,7 +96,9 @@ module.exports = {
     powerRatio: 2,
     description: 'Heal a Friendly Character and the Player for (200%) of Player Power',
     icon: 'ra-level-two',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   },
   'Fireball': {
     id: 6,
@@ -75,7 +111,9 @@ module.exports = {
     powerRatio: 3,
     description: "Damage the Boss for (300%) of Player Power",
     icon: 'ra-burning-meteor',
-    iconColor: 'black'
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
   },
   'Fireblast': {
     id: 7,
@@ -88,7 +126,9 @@ module.exports = {
     powerRatio: 2,
     description: 'Damage the Boss for (%200) of Player Power',
     icon: 'ra-blaster',
-    iconColor: 'black'
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
   },
   'Flash Fire': {
     id: 8,
@@ -101,7 +141,9 @@ module.exports = {
     powerRatio: 1,
     description: 'Damage the Boss for (%100) of Player Power',
     icon: 'ra-explosion',
-    iconColor: 'black'
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
   },
   'Life Tap': {
     id: 9,
@@ -114,7 +156,9 @@ module.exports = {
     powerRatio: 3,
     description: 'Lose (5%) hp, restore (10%) mana',
     icon: 'ra-cut-palm',
-    iconColor: 'black'
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Fire'
   },
   'Evocate': {
     id: 10,
@@ -127,7 +171,9 @@ module.exports = {
     powerRatio: 10,
     description: 'Restore 10% Mana',
     icon: 'ra-player-teleport',
-    iconColor: 'black'
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   },
   'Drain Life': {
     id: 11,
@@ -140,7 +186,9 @@ module.exports = {
     powerRatio: 1,
     description: "Damage the Boss for (%100) of Player Power, Heal the Player for (%200) of Damage done",
     icon: 'ra-droplet',
-    iconColor: 'black'
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   },
   'Harvest Life': {
     id: 12,
@@ -153,7 +201,9 @@ module.exports = {
     powerRatio: 3,
     description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done',
     icon: 'ra-defibrilate',
-    iconColor: 'purple'
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   },
   'Drain Soul': {
     id: 13,
@@ -166,7 +216,9 @@ module.exports = {
     powerRatio: 2,
     description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 3% Mana to the Player',
     icon: 'ra-bleeding-hearts',
-    iconColor: 'black'
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   },
   'Renew': {
     id: 14,
@@ -179,7 +231,9 @@ module.exports = {
     powerRatio: 0.5,
     description: 'Place a Healing over Time effect on a friendly target, healing them for 60% of their Max Health over 15 seconds',
     icon: 'ra-sprout',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   },
   'Greater Renew': {
     id: 15,
@@ -192,6 +246,8 @@ module.exports = {
     singleTarget: false,
     description: 'Place a Healing over Time effect on each friendly party member, healing them for 60% of their Max Health over 15 seconds',
     icon: 'ra-sprout-emblem',
-    iconColor: 'black'
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   }
 }

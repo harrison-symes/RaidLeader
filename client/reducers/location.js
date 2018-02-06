@@ -1,4 +1,4 @@
-import {set, get} from '../utils/localstorage'
+import {set, get, clear} from '../utils/localstorage'
 
 const town = {
   name: 'Town',
@@ -12,6 +12,9 @@ if (initialState && initialState.inGame) initialState = null
 export default function (state = initialState || town, action) {
   let newState = {...state}
   switch (action.type) {
+    case 'LOGOUT':
+      clear()
+      return town
     case 'START':
       newState.inGame = true
       set('location', JSON.stringify(newState))

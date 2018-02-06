@@ -5,7 +5,7 @@ import spells from '../../utils/spells'
 import {earnGold} from '../../actions/gold'
 import {addSpell} from '../../actions/spells'
 import {get, set} from '../../utils/localstorage'
-import {ManaIcon, CastTimeIcon, CoolDownIcon} from '../icons/StatIcons'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon} from '../icons/StatIcons'
 
 class Library extends Component {
   constructor(props) {
@@ -66,8 +66,16 @@ class Library extends Component {
               <div className="box">
                 <p className="title is-3">{learntSpell.name}
                 </p>
-                &nbsp;<i className={`icon ra-3x ra ${learntSpell.icon}`} />
+                &nbsp;<SpellIcon spell={learntSpell} isLarge={true}/>
                 <p className="subtitle is-5">{learntSpell.description}</p>
+                <div className="columns">
+                  <div className="column is-6">
+                    <p className="subtitle is-2"><TargetTypeIcon singleTarget={learntSpell.singleTarget}/></p>
+                  </div>
+                  <div className="column is-6">
+                    <p className="subtitle is-2"><SpellElementIcon element={learntSpell.element}/></p>
+                  </div>
+                </div>
                 <div className="columns">
                   <div className="column is-4"><p className="subtitle is-4"><ManaIcon value={learntSpell.cost} /></p></div>
                   <div className="column is-4"><p className="subtitle is-4"><CastTimeIcon value={learntSpell.cast + 's'} /></p></div>
@@ -92,18 +100,26 @@ class Library extends Component {
                       <p className="title is-3">{spell.name}
                       </p>
                       <span>
-                        <i className={`icon ra-3x ra ${spell.icon}`} />
+                        <SpellIcon spell={spell} isLarge={true} />
                         &nbsp;
                         &nbsp;
                         &nbsp;
                         {selectedSpell != spell
-                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">Show Details</button>
-                          : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Show Less</button>
+                          ? <button onClick={() => this.selectSpell(spell)} className="button Info-Button is-success">Details</button>
+                          : <button onClick={() => this.selectSpell(null)} className="button Info-Button is-warning">Hide</button>
                         }
                       </span>
                     </div>
                     {selectedSpell == spell && <div className="has-text-centered">
                       <div className="subtitle is-5">{spell.description}</div>
+                      <div className="columns">
+                        <div className="column is-6">
+                          <p className="subtitle is-2"><TargetTypeIcon singleTarget={spell.singleTarget}/></p>
+                        </div>
+                        <div className="column is-6">
+                          <p className="subtitle is-2"><SpellElementIcon element={spell.element}/></p>
+                        </div>
+                      </div>
                       <div className="columns">
                         <div className="column is-4"><p className="subtitle is-4"><ManaIcon value={spell.cost} /></p></div>
                         <div className="column is-4"><p className="subtitle is-4"><CastTimeIcon value={spell.cast + 's'} /></p></div>

@@ -21,6 +21,7 @@ const createPlayer = ({hp, mana, manaRegen, power, bonusEffect, level}, name) =>
 export default function player (state = null, action) {
   let newState = {...state}
   switch (action.type) {
+    case 'LOGOUT': return null
     case 'RETURN_TO_MENU':
       newState.hp = newState.initHp
       newState.power = newState.initPower

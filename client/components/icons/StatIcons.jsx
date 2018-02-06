@@ -79,5 +79,35 @@ export function ClassIcon ({heroClass}) {
     <span className="tooltiptext">{heroClass}</span>
       <i className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
     </div>
+}
 
+export function TargetTypeIcon ({singleTarget}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{singleTarget ? "Requires Friendly Target" : "No Target Needed"}</span>
+      <i className={`ra ra-fw ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
+    </div>
+
+}
+
+export function SpellElementIcon ({element}) {
+  let icon
+  switch(element) {
+    case 'Life': icon = 'ra-zigzag-leaf'; break;
+    case 'Fire': icon = 'ra-fire'; break;
+    case 'Shadow': icon = 'ra-bleeding-eye'; break;
+    case 'Arcane': icon = 'ra-crystal-ball'; break;
+    default: icon = 'ra-zigzag-leaf'; break;
+  }
+  return <div className="tooltip">
+    <span className="tooltiptext">{element} Spell</span>
+      <i className={`ra ra-fw ${icon} icon-large`} />
+    </div>
+}
+
+export function SpellIcon ({spell, isLarge}) {
+  const {name, icon, color, background} = spell
+  return <div className="tooltip box">
+    <span className="tooltiptext">{name}</span>
+    <i style={{color: color || 'green', backgroundColor: background || 'white'}} className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
+  </div>
 }

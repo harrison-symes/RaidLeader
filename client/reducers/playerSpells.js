@@ -1,6 +1,7 @@
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'LOGOUT': return []
     case 'TRAVEL_TO_TOWN':
       return []
     case 'ADD_SPELL_TO_BAR':

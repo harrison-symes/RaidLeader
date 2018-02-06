@@ -1,5 +1,6 @@
 export default function (state = null, action) {
   switch(action.type) {
+    case 'LOGOUT': return null
     case 'RETURN_TO_MENU':
       return null
     case 'TRAVEL_TO_TOWN':
