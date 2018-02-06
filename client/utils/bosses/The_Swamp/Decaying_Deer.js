@@ -52,7 +52,7 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 100% of BOSS POWER, Poison the Target for 100% Boss Power as Damage every 5 seconds for 15 seconds"
+      description: "Damage the Boss' TARGET for 100% of BOSS POWER and Poison the Target, dealing 60% of their Max Health over 15 seconds"
     }
   ]
 }

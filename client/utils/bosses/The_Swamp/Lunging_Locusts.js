@@ -52,7 +52,7 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power, Poison that recruit for 100% Boss Power as Damage every 5 seconds for 15 seconds"
+      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power and Poison that Recruit, dealing 60% of their Max Health over 15 seconds"
     }
   ]
 }

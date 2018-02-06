@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-const poisonConstructor = (power) => ({
+const poisonConstructor = (perc) => ({
   name: 'Poison',
   duration: 15,
-  power,
+  percentage: perc || 0.1,
   colour: '#BA8CE8',
-  tickRate: 5,
-  type: 'DAMAGE_FRIENDLY_TARGET'
+  tickRate: 3,
+  type: 'PERCENT_DAMAGE_FRIENDLY_TARGET'
 })
 
 class BossSpell extends Component {
@@ -60,9 +60,9 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Plague Bite':
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
-        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Poison':
-        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(power), target})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Overwhelm':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
@@ -70,7 +70,7 @@ class BossSpell extends Component {
         if (aliveTargets.length) {
           target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
           dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
-          return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(power)})
+          return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }
       case 'Ravage':
         dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
@@ -79,7 +79,7 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
-        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(power)})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
       default: return
     }
   }

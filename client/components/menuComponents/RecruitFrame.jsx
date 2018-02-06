@@ -19,16 +19,12 @@ class RecruitFrame extends React.Component {
     const {recruit, playerParty, currentLocation, addRecruit, removeRecruit, inParty} = this.props
     const {showMore} = this.state
     return <tbody className="tbody box">
-      {/* <tr className="tr has-text-centered">
-        <td className="td level"> */}
-          <p className="subtitle is-4">
-            {recruit.name}
-            &nbsp;
-            <ClassIcon heroClass={recruit.heroClass} />
-            &nbsp; (Level {recruit.level})
-          </p>
-        {/* </td>
-      </tr> */}
+      <p className="subtitle is-4">
+        {recruit.name}
+        &nbsp;
+        <ClassIcon heroClass={recruit.heroClass} />
+        &nbsp; (Level {recruit.level})
+      </p>
       {showMore && <RecruitModal recruit={recruit} close={this.toggleShow} />}
       <div className="level">
         {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}

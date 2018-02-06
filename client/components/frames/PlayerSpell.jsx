@@ -1,23 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-const renewConstructor = (power) => ({
-  name: 'Renew',
-  duration: 9,
-  tickRate: 3,
-  power,
-  colour: '#8CE88C',
-  type: 'HEAL_FRIENDLY_TARGET'
-})
+import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
 
-const poisonConstructor = (power) => ({
-  name: 'Poison',
-  duration: 15,
-  power,
-  colour: '#BA8CE8',
-  tickRate: 5,
-  type: 'DAMAGE_FRIENDLY_TARGET'
-})
+import CircularProgressbar from 'react-circular-progressbar'
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -38,7 +24,7 @@ class PlayerSpell extends Component {
     const power = this.props.player.power * spell.powerRatio
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    if (player.bonusEffect == 'poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor(Math.round(target.initHp / 20))})
+    if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
 
     switch(spell.name) {
       case 'Heal':
@@ -74,9 +60,9 @@ class PlayerSpell extends Component {
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Renew':
-        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(power), target})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(), target})
       case 'Greater Renew':
-        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor(power)})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
       default: return
     }
   }
@@ -123,25 +109,30 @@ class PlayerSpell extends Component {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
     const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    var cdPercentage = (spell.coolDown - currentCD) / spell.coolDown * 100
+    var castPercentage = currentCastTime / spell.cast * 100
+    let perc = onCooldown ? cdPercentage : castPercentage
+    var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <div
-      className={`PlayerSpell button ${spellColour}`}
+      className={`PlayerSpell button`}
       onClick={() => this.clickSpell()}
       style={{width: `${width}px`}}>
-      <table className="table">
-        <thead className='thead has-text-centered'>
-          <th className="th subtitle is-5 has-text-centered">({idx}) {spell.name}</th>
-        </thead>
+      <table className="box">
+        <h1 className="subtitle is-5 has-text-centered">({idx}) {spell.name}</h1>
         {(onCooldown || castInterval) &&
-          <tfoot className="tfoot">
-            <tr>
-              <td>
-                {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-                {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
-              </td>
-            </tr>
-          </tfoot>
+        <div style={{width: '50px', height: '50px', margin: 'auto'}} className="has-text-centered">
+          <CircularProgressbar
+            percentage={perc}
+            counterClockwise={!onCooldown}
+            textForPercentage={(p) => `${text}`}
+            styles={{
+              path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
+              margin: 'auto'
+            }}
+          />
+        </div>
         }
       </table>
     </div>
