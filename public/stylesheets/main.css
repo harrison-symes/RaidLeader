@@ -160,6 +160,7 @@
   cursor: context-menu; }
 
 .tooltip .tooltiptext {
+  visibility: hidden;
   font-size: 1rem;
   width: 120px;
   background-color: black;
@@ -172,7 +173,8 @@
   bottom: 100%;
   left: 50%;
   margin-left: -60px;
-  cursor: context-menu; }
+  cursor: context-menu;
+  opacity: 0.7; }
   @media (max-width: 900px) {
     .tooltip .tooltiptext {
       visibility: visible;
@@ -181,8 +183,7 @@
       border-radius: 1px;
       padding: auto;
       padding-top: 5px;
-      font-size: 2;
-      opacity: 0.7; } }
+      font-size: 2; } }
 
 .tooltip:hover .tooltiptext {
   visibility: visible; }
