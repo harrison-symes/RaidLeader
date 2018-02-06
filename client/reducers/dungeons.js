@@ -1,6 +1,7 @@
 export default function (state = [], action) {
   let newState = [...state]
   switch(action.type) {
+    case 'LOGOUT': return []
     case 'RECEIVE_DUNGEONS':
       return action.dungeons
     case 'DUNGEON_COMPLETE':

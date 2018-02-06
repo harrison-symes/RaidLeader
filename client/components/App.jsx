@@ -41,10 +41,11 @@ class App extends React.Component {
         {auth.isAuthenticated
           ? <Switch>
             <Route path="/game" component={Game} />
-            {showWelcome && <Route path='/' component={Welcome} />}
-            {currentLocation.name == 'Town'
-              ? <Route exact path='/' component={Town} />
-              : <Route path='/' component={Menu} />
+            {showWelcome
+              ? <Route path='/' component={Welcome} />
+              : currentLocation.name == 'Town'
+                ? <Route exact path='/' component={Town} />
+                : <Route path='/' component={Menu} />
             }
           </Switch>
           : <Home />

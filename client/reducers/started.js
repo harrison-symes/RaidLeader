@@ -1,6 +1,7 @@
 
 export default function started (state = false, action) {
   switch(action.type) {
+    case 'LOGOUT': return false
     case 'TRAVEL_TO_TOWN': return false
     case 'START': return true
     case 'STOP': return false

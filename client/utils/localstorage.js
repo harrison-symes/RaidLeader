@@ -10,3 +10,7 @@ export function set (key, value) {
     localStorage.setItem(key, value)
   }
 }
+
+export function clear () {
+  localstorage.clear()
+}
