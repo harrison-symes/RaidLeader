@@ -116,7 +116,7 @@ class PlayerSpell extends Component {
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <div
-      className={`PlayerSpell`}
+      className={`PlayerSpell button`}
       onClick={() => this.clickSpell()}
       style={{width: `${width}px`}}>
       <table className="box">
