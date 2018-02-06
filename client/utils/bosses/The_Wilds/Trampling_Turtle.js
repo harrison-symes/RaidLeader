@@ -48,9 +48,9 @@ export default {
       coolDown: 5,
       type: 'damage',
       singleTarget: true,
-      powerRatio: 3,
+      powerRatio: 2,
       onCooldown: false,
-      description: "Damage the enemy TARGET and the PLAYER for 300% BOSS POWER"
+      description: "Damage the enemy TARGET and the PLAYER for 200% BOSS POWER"
     }
   ]
 }
