@@ -7,11 +7,13 @@ import {HealthIcon, PowerIcon, ManaIcon, ManaRegenIcon} from '../icons/StatIcons
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const grid = 8;
+
 const getItemStyle = (draggableStyle, isDragging) => ({
   userSelect: 'none',
   padding: '5%',
-  margin: `5%`,
-  width: '90%',
+  width: '100%',
+  marginTop: `10%`,
+  margin: 'auto',
   background: isDragging ? 'lightgreen' : 'white',
   cursor: 'pointer',
   ...draggableStyle,

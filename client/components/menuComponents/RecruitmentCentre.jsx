@@ -107,17 +107,26 @@ class RecruitmentCentre extends Component {
                   <hr />
                   <p className="title is-3">Choose a Recruit:</p>
                   <br />
-                  {offeredRecruits.map((recruit, i) => <div className="box">
-                    <div key={`offered-recruit-${i}`} className="level">
-                      <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /></p>
-                      {selectedRecruit != recruit
-                        ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show Details</button>
-                        : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
-                      }
-                    </div>
-                    {selectedRecruit == recruit && this.showMore(recruit)}
-                    <br />
-                  </div>)}
+                  {offeredRecruits.map((recruit, i) => {
+                    recruit.level = 1
+                    return <div className="box">
+                      <div key={`offered-recruit-${i}`} className="level">
+                        <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /></p>
+                        {selectedRecruit != recruit
+                          ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Show Details</button>
+                          : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Show Less</button>
+                        }
+                      </div>
+                      <hr />
+                      {selectedRecruit != recruit && <div className="columns">
+                        <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={createClass(recruit).hp} /></p></div>
+                        <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={createClass(recruit).power} /></p></div>
+                        <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={createClass(recruit).speed} /></p></div>
+                      </div>}
+                      {selectedRecruit == recruit && this.showMore(recruit)}
+                      <br />
+                  </div>
+                })}
                 </div>
                 : (gold >= 500
                   ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
