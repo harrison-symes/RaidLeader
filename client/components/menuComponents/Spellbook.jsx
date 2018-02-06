@@ -26,7 +26,18 @@ const getListStyle = (isDraggingOver, isFull) => ({
 class SpellBook extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      selectedSpell: null
+    }
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.viewSpell = this.viewSpell.bind(this);
+    this.back = this.back.bind(this);
+  }
+  back() {
+    this.setState({selectedSpell: null})
+  }
+  viewSpell(spell) {
+    this.setState({selectedSpell: spell})
   }
   moveToBar(spell, index) {
     this.props.dispatch({type: 'ADD_SPELL_TO_BAR', spell, idx: index || this.props.playerSpells.length})
@@ -72,7 +83,9 @@ class SpellBook extends React.Component {
                             )}
                             {...provided.dragHandleProps}
                             >
-                            <SpellFrame addSpell={this.moveToBar.bind(this)}
+                            <SpellFrame
+                            viewSpell={this.viewSpell}
+                            addSpell={this.moveToBar.bind(this)}
                             onBar={false}
                             key={`spell-${spell.id}`}
                             spell={spell} />
@@ -111,6 +124,7 @@ class SpellBook extends React.Component {
                             {...provided.dragHandleProps}
                             >
                             <SpellFrame
+                            viewSpell={this.viewSpell}
                             removeSpell={this.removeFromBar.bind(this)}
                             onBar={true}
                             key={`spell-${spell.id}`}
@@ -131,6 +145,7 @@ class SpellBook extends React.Component {
     </div>
   }
   render() {
+    if (this.state.selectedSpell) return <SpellFrame showMore={true} spell={this.state.selectedSpell} back={this.back} />
     return <div className={`Modal modal is-active`} >
       <div className="modal-background"></div>
       <div className="modal-card">

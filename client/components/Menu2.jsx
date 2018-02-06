@@ -58,7 +58,6 @@ class Menu extends React.Component {
     else return <a disabled className="button column is-fullwidth is-large is-danger">Start Game</a>
   }
   showModal(modalView) {
-    console.log({modalView});
     this.setState({modalView})
   }
   close () {
