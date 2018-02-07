@@ -138,8 +138,35 @@
 .PartyFrame {
   height: 33%; }
 
-.PlayerFrame {
-  height: 25%; }
+.Game {
+  max-height: 100vh;
+  height: 100vh; }
+  .Game .PlayerFrame {
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    padding-bottom: 5%;
+    height: 30vh;
+    width: 100vw;
+    background-color: #b88e69; }
+    .Game .PlayerFrame .box {
+      background-color: #f7c48c; }
+    .Game .PlayerFrame .PlayerSpellBarContainer {
+      height: 30vh;
+      width: 100%; }
+      .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell {
+        height: 10vw;
+        margin: auto;
+        width: 10vw;
+        background-color: white;
+        border-radius: 10px; }
+    .Game .PlayerFrame .PlayerBox {
+      height: 25vh;
+      width: 100%;
+      margin-bottom: 2.5vh; }
+      @media (max-width: 900px) {
+        .Game .PlayerFrame .PlayerBox .title {
+          font-size: 0.3rem; } }
 
 .PlayerSpellBar {
   height: 20vh; }

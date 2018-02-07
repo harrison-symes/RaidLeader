@@ -194,9 +194,55 @@ body {
   height: 33%;
 }
 
-.PlayerFrame {
-  height: 25%;
+.Game {
+  max-height: 100vh;
+  height: 100vh;
+  .PlayerFrame {
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    padding-bottom: 5%;
+    height: 30vh;
+    width: 100vw;
+    background-color: #b88e69;
+    // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    .box {
+      background-color: #f7c48c;
+      // background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+    }
+    .PlayerSpellBarContainer {
+      height: 30vh;
+      width: 100%;
+      .PlayerSpell {
+        height: 10vw;
+        margin: auto;
+        width: 10vw;
+        background-color: white;
+        border-radius: 10px;
+
+      }
+    }
+    .PlayerBox {
+      height: 25vh;
+      width: 100%;
+      margin-bottom: 2.5vh;
+      @media (max-width: 900px) {
+        .title {
+          font-size: 0.3rem;
+        }
+      }
+    }
+    .HealthBar {
+      // width: 100%;
+      // height: 50%;
+    }
+    .PlayerBarContainer {
+      // margin-bottom:
+    }
+  }
+
 }
+
 
 .PlayerSpellBar {
   height: 20vh;

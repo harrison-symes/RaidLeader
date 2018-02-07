@@ -116,25 +116,23 @@ class PlayerSpell extends Component {
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <div
-      className={`PlayerSpell button`}
-      onClick={() => this.clickSpell()}
-      style={{width: `${width}px`}}>
-      <table className="box">
-        <h1 className="subtitle is-5 has-text-centered">({idx}) {spell.name}</h1>
-        {(onCooldown || castInterval) &&
-        <div style={{width: '50px', height: '50px', margin: 'auto'}} className="has-text-centered">
+    className={`PlayerSpell box ${spellColour} has-text-centered`}
+    style={{width: `${width}px`}}>
+      {/* <SpellIcon spell={spell} isLarge={true} /> */}
+      <div style={{position: 'relative'}}>
+        <i onClick={() => this.clickSpell()} style={{position: 'absolute', color: spell.color || 'green', backgroundColor: spell.background || 'white'}} className={`ra ra-5x ${spell.icon} icon-large`} />
+        {(onCooldown || castInterval) && <div className="has-text-centered" style={{position: 'absolute'}}>
           <CircularProgressbar
-            percentage={perc}
-            counterClockwise={!onCooldown}
-            textForPercentage={(p) => `${text}`}
-            styles={{
-              path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
-              margin: 'auto'
-            }}
+          percentage={perc}
+          counterClockwise={!onCooldown}
+          textForPercentage={(p) => `${text}`}
+          styles={{
+            path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
+            margin: 'auto'
+          }}
           />
-        </div>
-        }
-      </table>
+        </div>}
+      </div>
     </div>
   }
 }
