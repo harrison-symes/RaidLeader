@@ -121,6 +121,7 @@ export function WeaponAvailableIcon ({amount, hasWeapon}) {
 
 export function WeaponIcon ({name, level}) {
   const weapon = weaponSwitch[name](level)
+  console.log({weapon});
   return <span className="tooltip">
     <span className="tooltiptext">
       <p>{name}</p>

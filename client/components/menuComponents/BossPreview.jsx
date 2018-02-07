@@ -29,10 +29,8 @@ class BossPreview extends React.Component {
           <hr />
           <p className="title is-2">Rewards:</p>
           <p className="title is-4">{boss.goldReward} Gold</p>
-          {boss.weaponRewards.length > 0 && <div>
-            {/* <p className="title is-4">{boss.weaponChance * 100}% Chance:</p> */}
-            {boss.weaponRewards.map((reward, i) => <p className="subtitle is-3"><WeaponIcon name={reward} level={boss.level} /></p>)}
-
+          {boss.weaponRewards.length > 0 && <div className="columns is-multiline">
+            {boss.weaponRewards.map((reward, i) => <span className="column is-3"><p className="subtitle is-3"><WeaponIcon name={reward} level={boss.level} /></p></span>)}
           </div>}
           <hr />
           <div className="box">
