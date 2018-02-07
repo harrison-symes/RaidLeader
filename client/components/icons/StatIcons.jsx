@@ -90,8 +90,14 @@ export function TargetTypeIcon ({singleTarget}) {
 
 export function WeaponAvailableIcon ({amount, hasWeapon}) {
   return <div className="tooltip">
-    <span className="tooltiptext">{amount} Weapon{amount > 1 ? 's':''} Available</span>
-      <i style={{color: hasWeapon ? 'lightgreen' : 'orange'}} className={`ra ra-fw ${hasWeapon ? 'ra-all-for-one' : 'ra-hand'} icon-large`} />
+    <span className="tooltiptext">
+      {hasWeapon && <span>
+        <p>{hasWeapon.name}</p>
+        <hr />
+      </span>}
+      <p>{amount} Weapon{amount != 1 ? 's':''} Available</p>
+    </span>
+      <i style={{color: amount > 0 ? hasWeapon ? 'lightgreen' : 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? 'ra-all-for-one' : 'ra-hand'} icon-large`} />
     </div>
 }
 

@@ -34,7 +34,7 @@ class RecruitFrame extends React.Component {
         &nbsp;
         <ClassIcon heroClass={recruit.heroClass} />
         &nbsp; (Level {recruit.level})
-        {availableWeapons.length > 0 && <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={!!weapon} />}
+        <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
       </p>
       <div className="level">
         {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}
