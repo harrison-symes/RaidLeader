@@ -17,15 +17,12 @@ class RecruitFrame extends React.Component {
   }
   render() {
     const {recruit, playerParty, currentLocation, addRecruit, removeRecruit, inParty, showMore, selectRecruit, back, weapons, recruits} = this.props
-
     let weapon
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     const availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
       return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
     })
-    console.log({availableWeapons});
-
     return showMore
       ? <RecruitModal recruit={recruit} close={back} />
       : <tbody className="tbody box">

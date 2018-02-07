@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon, ArmorIcon} from '../icons/StatIcons'
+import weaponSwitch from '../../utils/weaponSwitch'
+import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon, ArmorIcon, WeaponIcon} from '../icons/StatIcons'
 
 class BossPreview extends React.Component {
   targetBoss(boss) {
@@ -15,6 +16,7 @@ class BossPreview extends React.Component {
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     if (boss == this.props.targetBoss) colour='is-primary'
     const renderStat = (text) => <li className="column is-6 has-text-centered"><p className="subtitle is-4">{text}</p></li>
+    console.log({boss});
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
@@ -28,8 +30,8 @@ class BossPreview extends React.Component {
           <p className="title is-2">Rewards:</p>
           <p className="title is-4">{boss.goldReward} Gold</p>
           {boss.weaponRewards.length > 0 && <div>
-            <p className="title is-4">{boss.weaponChance * 100}% Chance:</p>
-            {boss.weaponRewards.map((reward, i) => <p className="title is-5">{i == boss.weaponRewards.length - 1 && boss.weaponRewards.length > 1 ? "or " : ""}{reward}</p>)}
+            {/* <p className="title is-4">{boss.weaponChance * 100}% Chance:</p> */}
+            {boss.weaponRewards.map((reward, i) => <p className="subtitle is-3"><WeaponIcon name={reward} level={boss.level} /></p>)}
 
           </div>}
           <hr />

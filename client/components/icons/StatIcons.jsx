@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {classIcons} from '../../utils/classText'
+import weaponSwitch from '../../utils/weaponSwitch'
 
 export function HealthIcon ({value}) {
   return <div className="tooltip">
@@ -116,6 +117,18 @@ export function WeaponAvailableIcon ({amount, hasWeapon}) {
     </span>
       <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon : 'ra-hand'} icon-large`} />
     </div>
+}
+
+export function WeaponIcon ({name, level}) {
+  const weapon = weaponSwitch[name](level)
+  return <span className="tooltip">
+    <span className="tooltiptext">
+      <p>{name}</p>
+      <hr />
+      <p>{weapon.class} Weapon</p>
+    </span>
+      <i className={`ra ra-fw ${weapon.icon} icon-large`} />
+    </span>
 }
 
 
