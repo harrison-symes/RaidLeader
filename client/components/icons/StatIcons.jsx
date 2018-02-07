@@ -86,7 +86,13 @@ export function TargetTypeIcon ({singleTarget}) {
     <span className="tooltiptext">{singleTarget ? "Requires Friendly Target" : "No Target Needed"}</span>
       <i className={`ra ra-fw ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
     </div>
+}
 
+export function WeaponAvailableIcon ({amount, hasWeapon}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">{amount} Weapon{amount > 1 ? 's':''} Available</span>
+      <i style={{color: hasWeapon ? 'lightgreen' : 'orange'}} className={`ra ra-fw ${hasWeapon ? 'ra-all-for-one' : 'ra-hand'} icon-large`} />
+    </div>
 }
 
 export function SpellElementIcon ({element}) {

@@ -7,9 +7,6 @@ import {HealthIcon, PowerIcon, SpeedIcon} from '../icons/StatIcons'
 
 
 class RecruitModal extends Component {
-  constructor(props) {
-    super(props)
-  }
   equip(id) {
     const {recruit} = this.props
     this.props.dispatch(recruitEquipWeapon(recruit, id))
@@ -27,7 +24,6 @@ class RecruitModal extends Component {
         ? <div className="box">
           <p className="title is-3">Weapon: {weapon.name} ({weapon.level})</p>
           <button onClick={() => this.equip(null)} className="delete" aria-label="close"></button>
-          <hr />
           <p className="subtitle is-5">{weapon.description}</p>
           <div className="columns is-multiline">
             {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></div>}
@@ -57,7 +53,7 @@ class RecruitModal extends Component {
   }
   render() {
     const {recruit, close, weapons} = this.props
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">

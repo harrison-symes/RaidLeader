@@ -6,6 +6,8 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('inventory').insert([
         {name: 'Dragon Scale', level: 1, is_weapon: true, user_id: 1},
+        {name: 'Dragon Scale', level: 1, is_weapon: true, user_id: 1},
+        {name: 'Dragon Scale', level: 1, is_weapon: true, user_id: 1},
         {name: 'Bear Fangs', level: 1, is_weapon: true, user_id: 1},
         {name: 'Training Staff', level: 1, is_weapon: true, user_id: 1},
         {name: 'Plagued Staff of the Swamp', level: 2, is_weapon: true, user_id: 1},
