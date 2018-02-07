@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import RecruitModal from './RecruitModal'
-import {ClassIcon, WeaponAvailableIcon} from '../icons/StatIcons'
+import {ClassIcon, WeaponAvailableIcon, LevelIcon} from '../icons/StatIcons'
 
 class RecruitFrame extends React.Component {
   constructor(props) {
@@ -33,8 +33,10 @@ class RecruitFrame extends React.Component {
         {recruit.name}
         &nbsp;
         <ClassIcon heroClass={recruit.heroClass} />
-        &nbsp; (Level {recruit.level})
-        <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
+        <span className="is-pulled-right">
+          <LevelIcon level={recruit.level} />
+          <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
+         </span>
       </p>
       <div className="level">
         {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}

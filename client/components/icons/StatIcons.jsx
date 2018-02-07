@@ -88,18 +88,36 @@ export function TargetTypeIcon ({singleTarget}) {
     </div>
 }
 
+export function LevelIcon ({level}) {
+  let num
+  switch(level) {
+    case 1: num = 'one'; break;
+    case 2: num = 'two'; break;
+    case 3: num = 'three'; break;
+    case 4: num = 'four'; break;
+    case 5: num = 'five'; break;
+    case 6: num = 'six'; break;
+  }
+  return <div className="tooltip">
+    <span className="tooltiptext">Level {level}</span>
+      <i style={{color: 'white', backgroundColor: 'black'}} className={`ra ra-fw ra-dice-${num} icon-large`} />
+    </div>
+}
+
 export function WeaponAvailableIcon ({amount, hasWeapon}) {
   return <div className="tooltip">
     <span className="tooltiptext">
-      {hasWeapon && <span>
-        <p>{hasWeapon.name}</p>
-        <hr />
-      </span>}
-      <p>{amount} Weapon{amount != 1 ? 's':''} Available</p>
+      {hasWeapon
+        ? <span>
+          <p>{hasWeapon.name}</p>
+        </span>
+        : <p>{amount} Weapon{amount != 1 ? 's':''} Available</p>
+      }
     </span>
-      <i style={{color: amount > 0 ? hasWeapon ? 'lightgreen' : 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? 'ra-all-for-one' : 'ra-hand'} icon-large`} />
+      <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon : 'ra-hand'} icon-large`} />
     </div>
 }
+
 
 export function SpellElementIcon ({element}) {
   let icon

@@ -10,7 +10,8 @@ module.exports = {
     manaRegen: 1,
     class: 'Player',
     description: 'It comes with a note attached; "Hitting your Recruits with this will NOT heal them!"',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-crystal-wand'
   }),
   ['Cursed Staff of the Wilds']: (level, id) => ({
     name: 'Cursed Staff of the Wilds',
@@ -23,7 +24,8 @@ module.exports = {
     manaRegen: 1,
     class: 'Player',
     description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-pine-tree'
   }),
   ['Cleansed Staff of the Wilds']: (level, id) => ({
     name: 'Cleansed Staff of the Wilds',
@@ -36,7 +38,8 @@ module.exports = {
     manaRegen: 2,
     class: 'Player',
     description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-pine-tree'
   }),
   ['Plagued Staff of the Swamp']: (level, id) => ({
     name: 'Plagued Staff of the Swamp',
@@ -50,7 +53,8 @@ module.exports = {
     class: 'Player',
     description: 'The staff resonates great power, but something about it feels so wrong.',
     bonusEffect: 'Poison',
-    effectDescription: `Your targeted heals Poison the target for 20% of target's hp as damage every 5 seconds for 15 seconds`
+    effectDescription: `Your targeted heals Poison the target for 20% of target's hp as damage every 5 seconds for 15 seconds`,
+    icon: 'ra-biohazard'
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({
     name: 'Cleansed Staff of the Woods',
@@ -64,7 +68,8 @@ module.exports = {
     class: 'Player',
     description: 'Made from a powerful Oak Tree. A small artifact of purity from the Woods that used to be...',
     bonusEffect: 'curePoison',
-    effectDescription: "Your targeted heals remove any Poison effect from the target"
+    effectDescription: "Your targeted heals remove any Poison effect from the target",
+    icon: 'ra-sprout'
   }),
   ['Dragon Scale']: (level, id) => ({
     name: 'Dragon Scale',
@@ -76,7 +81,8 @@ module.exports = {
     speed: 2,
     class: 'Paladin',
     description: 'A Scale from a Dragon, this should make a good shield',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-cracked-shield'
   }),
   ['Bear Fangs']: (level, id) => ({
     name: 'Bear Fangs',
@@ -88,7 +94,8 @@ module.exports = {
     speed: -1,
     class: 'Rogue',
     description: 'A set of Bear Fangs. Good for stabbing, not very good for blocking',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-alligator-clip'
   }),
   ['Bear Heart']: (level, id) => ({
     name: 'Bear Heart',
@@ -100,10 +107,11 @@ module.exports = {
     speed: -1,
     class: 'Warlock',
     description: 'The heart still beats, only a true sadist would find this useful',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-bleeding-hearts'
   }),
-  ['Turtle Shell']: (level, id) => ({
-    name: 'Turtle Shell',
+  ['Massive Shell']: (level, id) => ({
+    name: 'Massive Shell',
     type: 'Weapon',
     level,
     id,
@@ -112,7 +120,8 @@ module.exports = {
     speed: 0,
     class: 'Warrior',
     description: 'A shell so heavy only a Warrior can weild it, not good for hitting things with, but great for not dying!',
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-spiral-shell'
   }),
   ['Ancient Pearls']: (level, id) => ({
     name: 'Ancient Pearls',
@@ -124,7 +133,8 @@ module.exports = {
     speed: 1,
     class: 'Monk',
     description: "Strange, the Turtle was growing Pearls under it's shell",
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-gem'
   }),
   ['Fine Silk']: (level, id) => ({
     name: 'Fine Silk',
@@ -136,7 +146,9 @@ module.exports = {
     speed: 1,
     class: 'Priest',
     description: "The Spider had spun some amazing silk. Very light, with",
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-incense'
+
   }),
   ['Spider Eye Wand']: (level, id) => ({
     name: 'Spider Eye Wand',
@@ -148,7 +160,8 @@ module.exports = {
     speed: -1,
     class: 'Mage',
     description: "It's a stick with a Spider Eye on the end, so obviously it's magical",
-    bonusEffect: null
+    bonusEffect: null,
+    icon: 'ra-eyeball'
   }),
   ['Plagued Aegis']: (level, id) => ({
     name: 'Plagued Aegis',
@@ -161,7 +174,8 @@ module.exports = {
     class: 'Paladin',
     description: 'A lost shield from a fallen adventurer. "A. Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-poison-cloud'
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -174,7 +188,8 @@ module.exports = {
     class: 'Warrior',
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-poison-cloud'
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Daggers',
@@ -187,7 +202,8 @@ module.exports = {
     class: 'Rogue',
     description: 'A lost pair of Daggers from a fallen adventurer. "Joe Van Boe" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-poison-cloud'
   }),
   ['Plagued Scythe']: (level, id) => ({
     name: 'Plagued Scythe',
@@ -200,7 +216,8 @@ module.exports = {
     class: 'Warlock',
     description: 'A lost weapon from a fallen adventurer. "A A. Ron" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-poison-cloud'
   }),
   ['Plagued Stave']: (level, id) => ({
     name: 'Plagued Stave',
@@ -213,7 +230,8 @@ module.exports = {
     class: 'Monk',
     description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-poison-cloud'
   }),
   ['Plagued Wand']: (level, id) => ({
     name: 'Plagued Wand',
@@ -226,7 +244,8 @@ module.exports = {
     class: 'Mage',
     description: 'A lost weapon from a fallen adventurer. "Jazz Man" is engraved on the back',
     bonusEffect: 'selfPoison',
-    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-poison-cloud'
   }),
   ['Glowing Libram']: (level, id) => ({
     name: 'Glowing Libram',
@@ -239,6 +258,7 @@ module.exports = {
     class: 'Priest',
     description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'curePoison',
-    effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`
+    effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
+    icon: 'ra-book'
   })
 }
