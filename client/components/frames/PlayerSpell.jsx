@@ -108,7 +108,7 @@ class PlayerSpell extends Component {
   render() {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
-    const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    const spellColour = onCooldown || player.mana < spell.cost ? 'is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
     var cdPercentage = (spell.coolDown - currentCD) / spell.coolDown * 100
     var castPercentage = currentCastTime / spell.cast * 100
     let perc = onCooldown ? cdPercentage : castPercentage
@@ -116,23 +116,22 @@ class PlayerSpell extends Component {
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <button
-    className={`PlayerSpell ${spellColour} has-text-centered`}
-    style={{width: `${width}px`}} onClick={() => this.clickSpell()}>
+    className={`PlayerSpell button ${spellColour} has-text-centered`}
+    onClick={() => this.clickSpell()} style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
       {/* <SpellIcon spell={spell} isLarge={true} /> */}
-      <div style={{}}>
-        <i  style={{color: spell.color || 'green', backgroundColor: spell.background || 'white'}} className={`ra ra-5x ${spell.icon} icon-large`} />
-        {(onCooldown || castInterval) && <div className="has-text-centered" style={{}}>
-          <CircularProgressbar
-          percentage={perc}
-          counterClockwise={!onCooldown}
-          textForPercentage={(p) => `${text}`}
-          styles={{
-            path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
-            margin: 'auto'
-          }}
-          />
-        </div>}
-      </div>
+      <i style={{position: 'absolute', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+      <span style={{position:'absolute'}}>
+        <CircularProgressbar
+        percentage={perc}
+        className="ProgressBar"
+        counterClockwise={!onCooldown}
+        textForPercentage={null}
+        styles={{
+          path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
+          margin: 'auto'
+        }}
+        />
+      </span>
     </button>
   }
 }

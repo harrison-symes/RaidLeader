@@ -182,10 +182,6 @@ body {
   height: 100vh;
 }
 
-.Game {
-  height: 100vh;
-}
-
 .BossFrame {
   height: 30%;
 }
@@ -213,10 +209,16 @@ body {
     .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
-      .PlayerSpell {
-        height: 10vw;
+      .PlayerSpell button {
+        .icon {
+          font-size: 2rem;
+        }
+        .ProgressBar {
+          z-index: 1;  
+        }
+        height: 100px;
         margin: auto;
-        width: 10vw;
+        width: 100px;
         background-color: white;
         border-radius: 10px;
 

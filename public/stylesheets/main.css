@@ -129,9 +129,6 @@
 .app {
   height: 100vh; }
 
-.Game {
-  height: 100vh; }
-
 .BossFrame {
   height: 30%; }
 
@@ -154,12 +151,16 @@
     .Game .PlayerFrame .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%; }
-      .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell {
-        height: 10vw;
+      .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell button {
+        height: 100px;
         margin: auto;
-        width: 10vw;
+        width: 100px;
         background-color: white;
         border-radius: 10px; }
+        .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell button .icon {
+          font-size: 2rem; }
+        .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell button .ProgressBar {
+          z-index: 1; }
     .Game .PlayerFrame .PlayerBox {
       height: 25vh;
       width: 100%;
