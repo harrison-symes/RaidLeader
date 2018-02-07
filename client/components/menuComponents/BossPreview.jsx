@@ -4,30 +4,23 @@ import {connect} from 'react-redux'
 import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon, ArmorIcon} from '../icons/StatIcons'
 
 class BossPreview extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showModal: false,
-      boss: null
-    }
-  }
   targetBoss(boss) {
-    this.setState({showModal: false, boss})
+    this.props.close()
     this.props.dispatch({type: "TARGET_BOSS", boss})
   }
   renderBossModal () {
-    const {boss} = this.state
+    const {boss, back} = this.props
     const {bosses} = this.props.currentLocation
     const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     if (boss == this.props.targetBoss) colour='is-primary'
     const renderStat = (text) => <li className="column is-6 has-text-centered"><p className="subtitle is-4">{text}</p></li>
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title title is-2">{boss.name}</p>
-          <button onClick={() => this.changeModal(false, null)} className="delete" aria-label="close"></button>
+          <button onClick={back} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
           <p className="subtitle is-5">{boss.description}</p>
@@ -68,7 +61,7 @@ class BossPreview extends React.Component {
           </ul>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={() => this.changeModal(false, null)} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>
+          <button onClick={back} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>
           <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour == 'is-success' ? 'is-outlined' : ''} is-fullwidth ${colour}`} disabled={colour != 'is-success'}>
             {colour != 'is-success'
               ? colour == 'is-danger'
@@ -81,18 +74,13 @@ class BossPreview extends React.Component {
       </div>
     </div>
   }
-  changeModal (showModal, boss) {
-    this.setState({showModal, boss})
-  }
-  render() {
+  renderPreview() {
     const {bosses} = this.props.currentLocation
-    const {showModal} = this.state
-    const {boss, defeated, targetBoss} = this.props
+    const {boss, defeated, targetBoss, selectBoss} = this.props
     const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     return <div>
-      {showModal && this.renderBossModal()}
-      <button onClick={() => this.changeModal(true, boss)} key={`location-boss-preview-${boss.id}`} className={`is-fullwidth button is-large is-outlined ${colour}`}>
+      <button onClick={() => selectBoss(boss)} key={`location-boss-preview-${boss.id}`} className={`is-fullwidth button is-large is-outlined ${colour}`}>
         <span>
           {boss.name}&nbsp;
           <i className={`has-text-${colour} icon ra ra-fw
@@ -107,6 +95,12 @@ class BossPreview extends React.Component {
         </span>
       </button>
     </div>
+  }
+  render() {
+    const {showMore} = this.props
+    return showMore
+      ? this.renderBossModal()
+      : this.renderPreview()
   }
 }
 
