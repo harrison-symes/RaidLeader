@@ -115,13 +115,13 @@ class PlayerSpell extends Component {
     var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
-    return <div
-    className={`PlayerSpell box ${spellColour} has-text-centered`}
-    style={{width: `${width}px`}}>
+    return <button
+    className={`PlayerSpell ${spellColour} has-text-centered`}
+    style={{width: `${width}px`}} onClick={() => this.clickSpell()}>
       {/* <SpellIcon spell={spell} isLarge={true} /> */}
-      <div style={{position: 'relative'}}>
-        <i onClick={() => this.clickSpell()} style={{position: 'absolute', color: spell.color || 'green', backgroundColor: spell.background || 'white'}} className={`ra ra-5x ${spell.icon} icon-large`} />
-        {(onCooldown || castInterval) && <div className="has-text-centered" style={{position: 'absolute'}}>
+      <div style={{}}>
+        <i  style={{color: spell.color || 'green', backgroundColor: spell.background || 'white'}} className={`ra ra-5x ${spell.icon} icon-large`} />
+        {(onCooldown || castInterval) && <div className="has-text-centered" style={{}}>
           <CircularProgressbar
           percentage={perc}
           counterClockwise={!onCooldown}
@@ -133,7 +133,7 @@ class PlayerSpell extends Component {
           />
         </div>}
       </div>
-    </div>
+    </button>
   }
 }
 
