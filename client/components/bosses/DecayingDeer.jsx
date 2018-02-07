@@ -12,6 +12,7 @@ class DecayingDeer extends BossFrame {
     let castSpell = spells.filter(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch (spell.name) {
+          case 'Decay': return (boss.hp > boss.power)
           case 'Regenerate':
             return (boss.hp <= boss.initHp - spell.health)
           case 'Feed': return true

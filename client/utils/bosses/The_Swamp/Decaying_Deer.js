@@ -1,12 +1,12 @@
 export default {
   name: 'Decaying Deer',
   level: 2,
-  initHp: 1000,
-  hp: 700,
-  initPower: 30,
-  power: 30,
+  initHp: 1500,
+  hp: 1400,
+  initPower: 50,
+  power: 50,
   initArmor: 1000,
-  armor: 800,
+  armor: 900,
   mana: 5,
   maxMana: 5,
   manaRegen: 1,
@@ -17,8 +17,19 @@ export default {
   weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Blade', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp'],
   goldReward: 500,
   weaponChance: 1,
-  progress_required: 1,
+  progress_required: 0,
   spells: [
+    {
+      name: 'Decay',
+      cast: 1,
+      cost: 0,
+      coolDown: 15,
+      singleTarget: false,
+      onCooldown: false,
+      health: -50,
+      powerRatio: 1,
+      description: "Poison ALL enemy RECRUITS for 60% of their Max Health over 15 seconds, lose Health equal to BOSS Power"
+    },
     {
       name: 'Regenerate',
       cast: 5,
@@ -28,9 +39,9 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       armor: 100,
-      health: 100,
+      health: 200,
       onCooldown: false,
-      description: 'Gain 100 Armor and 100 Health.'
+      description: 'Gain 100 Armor and 200 Health.'
     },
     {
       name: 'Feed',
