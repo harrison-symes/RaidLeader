@@ -30,9 +30,18 @@ class PlayerWeapon extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      weapon: null
+      weapon: null,
+      selectedWeapon: null
     }
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.selectWeapon = this.selectWeapon.bind(this);
+    this.back = this.back.bind(this);
+  }
+  selectWeapon(weapon) {
+    this.setState({selectedWeapon: weapon})
+  }
+  back() {
+    this.setState({selectedWeapon: null})
   }
   addWeapon(weapon) {
     this.props.dispatch({type: 'EQUIP_PLAYER_WEAPON', weapon})
@@ -47,32 +56,31 @@ class PlayerWeapon extends React.Component {
     else if (source.droppableId == 'weapons' && destination.droppableId == 'playerWeapon') this.addWeapon(weapon)
     else if (source.droppableId == 'playerWeapon' && destination.droppableId == 'weapons') this.removeWeapon(weapon)
   }
-  viewWeapon(weapon) {
-    this.setState({weapon})
-  }
   WeaponModal() {
-    const {weapon} = this.state
-    return <div className="modal is-active">
+    const {selectedWeapon} = this.state
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">{weapon.name}</p>
-          <button onClick={() => this.viewWeapon(null)} className="delete" aria-label="close"></button>
+          <p className="modal-card-title is-1">{selectedWeapon.name}</p>
+          <button onClick={this.back} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          <p className="title is-1">{weapon.name} (Level {weapon.level})</p>
-          <hr />
-          <p className="subtitle is-5">{weapon.description}</p>
-          <div className="columns is-multiline">
-            <div className="column subtitle is-3"><HealthIcon value={weapon.hp} /></div>
-            <div className="column subtitle is-3"><PowerIcon value={weapon.power} /></div>
-            <div className="column subtitle is-3"><ManaIcon value={weapon.mana} /></div>
-            <div className="column subtitle is-3"><ManaRegenIcon value={weapon.manaRegen} /></div>
+          {/* <p className="subtitle is-1">Level {selectedWeapon.level}</p> */}
+          <br />
+          <p className="content is-large box">{selectedWeapon.description}</p>
+          <div className="box">
+            <div className="columns is-multiline">
+              <div className="column subtitle is-3"><HealthIcon value={selectedWeapon.hp} /></div>
+              <div className="column subtitle is-3"><PowerIcon value={selectedWeapon.power} /></div>
+              <div className="column subtitle is-3"><ManaIcon value={selectedWeapon.mana} /></div>
+              <div className="column subtitle is-3"><ManaRegenIcon value={selectedWeapon.manaRegen} /></div>
+            </div>
+            {selectedWeapon.bonusEffect && <div className="subtitle is-3">{selectedWeapon.effectDescription}</div>}
           </div>
-          {weapon.bonusEffect && <div className="subtitle is-3">{weapon.effectDescription}</div>}
         </section>
         <footer className="modal-card-foot">
-          <button onClick={() => this.viewWeapon(null)} className="button is-large is-info is-outlined is-fullwidth">Close</button>
+          <button onClick={this.back} className="button is-large is-info is-outlined is-fullwidth">Back</button>
         </footer>
       </div>
     </div>
@@ -82,7 +90,6 @@ class PlayerWeapon extends React.Component {
     const available = weapons.filter(weapon => weapon.class == "Player" && (!playerWeapon || weapon.id != playerWeapon.id))
     const isFull = !!playerWeapon
     return <div className="has-text-centered">
-      {this.state.weapon && this.WeaponModal()}
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns is-mobile Drag-And-Drop">
           <span className="column has-text-centered" style={{width: '50%'}}>
@@ -110,7 +117,7 @@ class PlayerWeapon extends React.Component {
                     <tbody className="tbody box">
                       <p className="title is-4">{weapon.name} ({weapon.level})</p>
                       <span className="level">
-                        <button onClick={() => this.viewWeapon(weapon)} className="Table-Button is-fullwidth button ">Details</button>
+                        <button onClick={() => this.selectWeapon(weapon)} className="Table-Button is-fullwidth button ">Details</button>
                         {!playerWeapon && <button onClick={() => this.addWeapon(weapon)} className="button is-fullwdith Table-Button">Equip</button>}
                       </span>
                     </tbody>
@@ -148,7 +155,7 @@ class PlayerWeapon extends React.Component {
                                 <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
                                 <div className="level">
                                   <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
-                                  <button onClick={() => this.viewWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
+                                  <button onClick={() => this.selectWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
                                 </div>
                               </tbody>
                             </table>
@@ -167,7 +174,10 @@ class PlayerWeapon extends React.Component {
     </div>
   }
   render() {
-    return <div className={`Modal modal is-active`} >
+    const {selectedWeapon} = this.state
+    return selectedWeapon
+      ? this.WeaponModal()
+      : <div className={`Modal modal is-active`} >
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">

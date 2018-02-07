@@ -26,7 +26,18 @@ const getListStyle = (isDraggingOver, isFull) => ({
 class Party extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      selectedRecruit: null
+    }
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.selectRecruit = this.selectRecruit.bind(this);
+    this.back = this.back.bind(this);
+  }
+  selectRecruit(selectedRecruit) {
+    this.setState({selectedRecruit})
+  }
+  back() {
+    this.setState({selectedRecruit: null})
   }
   moveToParty(recruit) {
     this.props.dispatch({type: 'ADD_RECRUIT_TO_PARTY', recruit})
@@ -74,6 +85,8 @@ class Party extends React.Component {
                     {...provided.dragHandleProps}
                     >
                       <RecruitFrame
+                        selectRecruit={this.selectRecruit}
+
                       addRecruit={this.addToParty.bind(this)}
                       inParty={false}
                       key={`recruit-${recruit.id}`}
@@ -109,6 +122,7 @@ class Party extends React.Component {
                     {...provided.dragHandleProps}
                     >
                       <RecruitFrame
+                        selectRecruit={this.selectRecruit}
                       key={`recruit-${recruit.id}`}
                       removeRecruit={this.removeFromParty.bind(this)}
                       inParty={true}
@@ -126,7 +140,10 @@ class Party extends React.Component {
     </div>
   }
   render() {
-    return <div className={`Modal modal is-active`} >
+    const {selectedRecruit} = this.state
+    return selectedRecruit
+      ? <RecruitFrame showMore={true} recruit={selectedRecruit} back={this.back} />
+      : <div className={`Modal modal is-active`} >
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">

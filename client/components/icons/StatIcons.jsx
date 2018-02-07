@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {classIcons} from '../../utils/classText'
+import weaponSwitch from '../../utils/weaponSwitch'
 
 export function HealthIcon ({value}) {
   return <div className="tooltip">
@@ -86,8 +87,51 @@ export function TargetTypeIcon ({singleTarget}) {
     <span className="tooltiptext">{singleTarget ? "Requires Friendly Target" : "No Target Needed"}</span>
       <i className={`ra ra-fw ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
     </div>
-
 }
+
+export function LevelIcon ({level}) {
+  let num
+  switch(level) {
+    case 1: num = 'one'; break;
+    case 2: num = 'two'; break;
+    case 3: num = 'three'; break;
+    case 4: num = 'four'; break;
+    case 5: num = 'five'; break;
+    case 6: num = 'six'; break;
+  }
+  return <div className="tooltip">
+    <span className="tooltiptext">Level {level}</span>
+      <i style={{color: 'white', backgroundColor: 'black'}} className={`ra ra-fw ra-dice-${num} icon-large`} />
+    </div>
+}
+
+export function WeaponAvailableIcon ({amount, hasWeapon}) {
+  return <div className="tooltip">
+    <span className="tooltiptext">
+      {hasWeapon
+        ? <span>
+          <p>{hasWeapon.name}</p>
+        </span>
+        : <p>{amount} Weapon{amount != 1 ? 's':''} Available</p>
+      }
+    </span>
+      <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon : 'ra-hand'} icon-large`} />
+    </div>
+}
+
+export function WeaponIcon ({name, level}) {
+  const weapon = weaponSwitch[name](level)
+  console.log({weapon});
+  return <span className="tooltip">
+    <span className="tooltiptext">
+      <p>{name}</p>
+      <hr />
+      <p>{weapon.class} Weapon</p>
+    </span>
+      <i className={`ra ra-fw ${weapon.icon} icon-large`} />
+    </span>
+}
+
 
 export function SpellElementIcon ({element}) {
   let icon
