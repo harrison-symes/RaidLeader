@@ -46,7 +46,7 @@ class MemberFrame extends Component {
           {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
         </div>
       </div>
-      <RecruitHealthBar recruit={member}  />
+      <RecruitHealthBar recruit={{...member}}  />
     </div>
   }
 }
