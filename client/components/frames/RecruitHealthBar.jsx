@@ -5,8 +5,8 @@ import {HealthIcon, SpeedIcon, PowerIcon} from '../icons/StatIcons'
 
 const RecruitHealthBar = ({recruit}) => {
   let {hp, initHp, power, speed} = recruit
-  // initHp = Math.round(initHp)
-  // hp = Math.round(hp)
+  initHp = Math.round(initHp)
+  hp = Math.round(hp)
   const percent = hp/initHp * 100
   const colourClass = percent > 1/3*100
     ? percent > 2/3*100
