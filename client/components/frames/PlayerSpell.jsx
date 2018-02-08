@@ -120,15 +120,16 @@ class PlayerSpell extends Component {
     className={`PlayerSpell ${spellColour}`}
     style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
       {(onCooldown || currentCastTime > 0)
-        ? <span style={{position: 'relative', width, height: width}} className="">
+        ? <span style={{position: 'relative', width, height: width, backgroundColor: spell.background}} className="">
           <Progress
             type="circle"
             percent={Math.round(perc)}
             width={width * 0.9}
             symbolClassName={`ra ${spell.icon}`}
             status={onCooldown ?'danger' : 'success'}
+            strokeWidth={10}
             theme={{
-              success: {color: 'lightgreen'},
+              success: {color: spell.background},
               danger: {color: 'red'}
             }}
           />
