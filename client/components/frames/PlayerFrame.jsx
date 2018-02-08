@@ -19,23 +19,27 @@ class PlayerFrame extends Component {
     const playerTargeted = friendlyTarget && friendlyTarget.id == player.id
     return <div className="section PlayerFrame">
       <div className="columns">
-        <div
-          style={{cursor: 'pointer', backgroundColor: playerTargeted ? 'green' : 'white'}}
-          className="column is-3 box"
-          onClick={this.targetPlayer}>
-          <p className="title is-3">{name}</p>
-          <p className="title is-4">Power: {power}</p>
+        <div className="column is-4">
+          <div
+            style={{cursor: 'pointer', backgroundColor: playerTargeted ? 'lightgreen' : 'white'}}
+            className="PlayerBox box"
+            onClick={this.targetPlayer}>
+            <div className="level">
+              <p className="title is-3">{name}</p>
+              <p className="title is-4">Power: {power}</p>
+            </div>
+            <div className="columns">
+              <div className="column is-6">
+                <HealthBar hp={hp} maxHP={initHp} />
+              </div>
+              <div className="column is-6">
+                <ManaBar mana={mana} maxMana={maxMana} />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="column is-9">
-          <PlayerSpellBar spells={spells}/>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column is-6">
-          <HealthBar hp={hp} maxHP={initHp} />
-        </div>
-        <div className="column is-6">
-          <ManaBar mana={mana} maxMana={maxMana} />
+        <div className="column is-8">
+            <PlayerSpellBar spells={spells}/>
         </div>
       </div>
     </div>

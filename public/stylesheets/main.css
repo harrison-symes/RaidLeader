@@ -129,17 +129,49 @@
 .app {
   height: 100vh; }
 
-.Game {
-  height: 100vh; }
-
 .BossFrame {
   height: 30%; }
 
 .PartyFrame {
   height: 33%; }
 
-.PlayerFrame {
-  height: 25%; }
+.Game {
+  max-height: 100vh;
+  height: 100vh; }
+  .Game .PlayerFrame {
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    padding-bottom: 5%;
+    height: 30vh;
+    width: 100vw;
+    background-color: #b8b8b8;
+    background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
+    .Game .PlayerFrame .box {
+      background-color: #b8b8b8;
+      background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
+    .Game .PlayerFrame .PlayerSpellBarContainer {
+      height: 30vh;
+      width: 100%;
+      background-color: #b8b8b8;
+      background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
+      .Game .PlayerFrame .PlayerSpellBarContainer button:focus {
+        outline: 0; }
+      .Game .PlayerFrame .PlayerSpellBarContainer .is-success {
+        background-color: lightgreen;
+        opacity: 0.8; }
+        .Game .PlayerFrame .PlayerSpellBarContainer .is-success :hover {
+          opacity: 1; }
+      .Game .PlayerFrame .PlayerSpellBarContainer .is-danger {
+        opacity: 0.5; }
+      .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell {
+        cursor: pointer; }
+    .Game .PlayerFrame .PlayerBox {
+      height: 25vh;
+      width: 100%; }
+      @media (max-width: 900px) {
+        .Game .PlayerFrame .PlayerBox .title {
+          font-size: 0.3rem; } }
 
 .PlayerSpellBar {
   height: 20vh; }

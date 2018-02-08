@@ -5,7 +5,7 @@ import PlayerSpell from './PlayerSpell'
 
 const PlayerSpellBar = ({spells, selectedSpell, dispatch}) => {
 
-  return <div className="columns is-multiline PlayerSpellBar has-text-centered">
+  return <div className="columns is-multiline is-mobile PlayerSpellBarContainer has-text-centered">
     {spells.map((spell, i) => <PlayerSpell key={`spell-bar-item-${i}`} spell={spell} idx={i + 1}/>)}
   </div>
 }

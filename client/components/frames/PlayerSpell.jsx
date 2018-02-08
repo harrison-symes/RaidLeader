@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
 
 import CircularProgressbar from 'react-circular-progressbar'
+import { Progress } from 'react-sweet-progress';
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -108,34 +109,34 @@ class PlayerSpell extends Component {
   render() {
     const {spell, selectedSpell, dispatch, idx, player} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
-    const spellColour = onCooldown || player.mana < spell.cost ? 'is-loading is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
+    const spellColour = onCooldown || player.mana < spell.cost ? 'is-danger' : selectedSpell == spell ? 'is-info' : 'is-success'
     var cdPercentage = (spell.coolDown - currentCD) / spell.coolDown * 100
     var castPercentage = currentCastTime / spell.cast * 100
     let perc = onCooldown ? cdPercentage : castPercentage
     var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
-    return <div
-      className={`PlayerSpell button`}
-      onClick={() => this.clickSpell()}
-      style={{width: `${width}px`}}>
-      <table className="box">
-        <h1 className="subtitle is-5 has-text-centered">({idx}) {spell.name}</h1>
-        {(onCooldown || castInterval) &&
-        <div style={{width: '50px', height: '50px', margin: 'auto'}} className="has-text-centered">
-          <CircularProgressbar
-            percentage={perc}
-            counterClockwise={!onCooldown}
-            textForPercentage={(p) => `${text}`}
-            styles={{
-              path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
-              margin: 'auto'
+    return <button
+    className={`PlayerSpell ${spellColour}`}
+    style={{position: 'relative', width, height: width}}>
+      {(onCooldown || currentCastTime > 0)
+        ? <span style={{position: 'relative', width, height: width}} className="CastProgress">
+          <Progress
+            type="circle"
+            percent={Math.round(perc)}
+            width={width * 0.9}
+            symbolClassName={`ra ${spell.icon}`}
+            status={onCooldown ?'danger' : 'success'}
+            strokeWidth={10}
+            theme={{
+              success: {symbol: null, color: spell.background},
+              danger: {symbol: null, color: 'red'}
             }}
           />
-        </div>
-        }
-      </table>
-    </div>
+        </span>
+        : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+      }
+    </button>
   }
 }
 
