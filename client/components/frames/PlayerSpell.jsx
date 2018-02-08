@@ -118,7 +118,7 @@ class PlayerSpell extends Component {
     if (width > 200) width = 200
     return <div
     className={`PlayerSpell ${spellColour} has-text-centered`}
-    onClick={() => this.clickSpell()} style={{width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
+    onClick={() => this.clickSpell()} style={{position: 'relative',width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
       {/* <SpellIcon spell={spell} isLarge={true} /> */}
       <i style={{position: 'absolute', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
         {(onCooldown || currentCastTime > 0)&&
