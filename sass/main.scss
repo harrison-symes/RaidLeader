@@ -186,14 +186,13 @@ body {
   height: 30%;
 }
 
-.PartyFrame {
-  height: 33%;
-}
-
 .Game {
   max-height: 100vh;
   height: 100vh;
+  background-color: white;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
   .PlayerFrame {
+    border-top: 10px white;
     position: fixed;
     bottom: 0;
     margin: auto;
@@ -235,7 +234,7 @@ body {
       height: 25vh;
       // margin: auto;
       width: 100%;
-      // margin-bottom: 2.5vh;
+      margin-bottom: 10%;
       // padding: 10%;
       @media (max-width: 900px) {
         .title {
@@ -252,24 +251,37 @@ body {
     }
   }
 
+  .PartyFrame {
+    height: 30vh;
+    width: 100vw;
+    bottom: 0;
+    border: 10px black;
+    margin: auto;
+    .is-target {
+      border: 5px green;
+      background-color: lightgreen;
+    }
+    .box {
+      border: none;
+      .is-success {
+        border: 5px black;
+      }
+    }
+    .MemberFrame {
+      height: 90%;
+      margin: 5%;
+      border: 5px black;
+      .is-target {
+        border: 5px green;
+        background-color: lightgreen;
+      }
+    }
+  }
 }
 
-
-.PlayerSpellBar {
-  height: 20vh;
-}
-
-.MemberFrame {
-  height: 15vh;
-}
-
-.PlayerSpell {
-  height: 80px;
-}
-
-.SpellCooldDown {
-  width: 10vw;
-}
+// .SpellCooldDown {
+//   width: 10vw;
+// }
 
 .tooltip {
   position: relative;

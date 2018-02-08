@@ -11,9 +11,11 @@ const HealthBar = ({maxHP, hp}) => {
         : 'is-success'
       : 'is-warning'
     : 'is-danger'
-  return <div className="HealthBar has-text-centered box">
+  return <div className="HealthBar has-text-centered">
     <p className="subtitle is-4"><HealthIcon value={`${hp} / ${maxHP}`} /></p>
-    <progress className={`ProgressBar progress ${colourClass}`} max="100" value={percent}>{percent}%</progress>
+    <div className="box">
+      <progress className={`ProgressBar progress ${colourClass}`} max="100" value={percent}>{percent}%</progress>
+    </div>
   </div>
 }
 
