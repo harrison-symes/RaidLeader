@@ -200,18 +200,36 @@ body {
     padding-bottom: 5%;
     height: 30vh;
     width: 100vw;
-    // background-color: #b88e69;
-    // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     .box {
       background-color: #f7c48c;
-      // background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
     }
     .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
-      .PlayerSpell button {
+      .PlayerSpell {
+        cursor: pointer;
         .icon {
+          cursor: pointer;
           // font-size: 2rem;
+        }
+        button {
+          cursor: pointer;
+          .is-success {
+            background-color: lightgreen;
+          }
+          .is-danger {
+            opacity: 0.5;
+            background-color: grey;
+          }
+          button:hover {
+            .is-success {
+              opacity: 1
+
+            }
+          }
         }
         // height: 100px;
         // margin: auto;
@@ -223,8 +241,10 @@ body {
     }
     .PlayerBox {
       height: 25vh;
+      margin: auto;
       width: 100%;
-      margin-bottom: 2.5vh;
+      // margin-bottom: 2.5vh;
+      padding: 10%;
       @media (max-width: 900px) {
         .title {
           font-size: 0.3rem;

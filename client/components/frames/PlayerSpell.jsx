@@ -116,11 +116,11 @@ class PlayerSpell extends Component {
     var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
-    return <div
+    return <button
     className={`PlayerSpell ${spellColour}`}
-    style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
+    style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.4: 0.8}}>
       {(onCooldown || currentCastTime > 0)
-        ? <span style={{position: 'relative', width, height: width, backgroundColor: spell.background}} className="">
+        ? <span style={{position: 'relative', width, height: width}} className="CastProgress">
           <Progress
             type="circle"
             percent={Math.round(perc)}
@@ -129,14 +129,14 @@ class PlayerSpell extends Component {
             status={onCooldown ?'danger' : 'success'}
             strokeWidth={10}
             theme={{
-              success: {color: spell.background},
-              danger: {color: 'red'}
+              success: {symbol: null, color: spell.background},
+              danger: {symbol: null, color: 'red'}
             }}
           />
         </span>
         : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
       }
-    </div>
+    </button>
   }
 }
 
