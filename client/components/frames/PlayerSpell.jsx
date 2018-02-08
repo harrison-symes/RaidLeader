@@ -117,12 +117,10 @@ class PlayerSpell extends Component {
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
     return <div
-    className={`PlayerSpell ${spellColour} has-text-centered`}
-    onClick={() => this.clickSpell()} style={{position: 'relative',width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
-      {/* <SpellIcon spell={spell} isLarge={true} /> */}
-      <i style={{position: 'absolute', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
-        {(onCooldown || currentCastTime > 0)&&
-          <span style={{position: 'absolute', width, height: width}} className="has-text-centered">
+    className={`PlayerSpell ${spellColour}`}
+    style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
+      {(onCooldown || currentCastTime > 0)
+        ? <span style={{position: 'relative', width, height: width}} className="">
           <Progress
             type="circle"
             percent={Math.round(perc)}
@@ -135,7 +133,8 @@ class PlayerSpell extends Component {
             }}
           />
         </span>
-        }
+        : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+      }
     </div>
   }
 }
