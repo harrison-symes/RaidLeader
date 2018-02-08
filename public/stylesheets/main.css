@@ -144,23 +144,12 @@
     margin: auto;
     padding-bottom: 5%;
     height: 30vh;
-    width: 100vw;
-    background-color: #b88e69; }
+    width: 100vw; }
     .Game .PlayerFrame .box {
       background-color: #f7c48c; }
     .Game .PlayerFrame .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%; }
-      .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell button {
-        height: 100px;
-        margin: auto;
-        width: 100px;
-        background-color: white;
-        border-radius: 10px; }
-        .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell button .icon {
-          font-size: 2rem; }
-        .Game .PlayerFrame .PlayerSpellBarContainer .PlayerSpell button .ProgressBar {
-          z-index: 1; }
     .Game .PlayerFrame .PlayerBox {
       height: 25vh;
       width: 100%;

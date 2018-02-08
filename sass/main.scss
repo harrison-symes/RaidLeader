@@ -200,7 +200,7 @@ body {
     padding-bottom: 5%;
     height: 30vh;
     width: 100vw;
-    background-color: #b88e69;
+    // background-color: #b88e69;
     // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     .box {
       background-color: #f7c48c;
@@ -211,16 +211,13 @@ body {
       width: 100%;
       .PlayerSpell button {
         .icon {
-          font-size: 2rem;
+          // font-size: 2rem;
         }
-        .ProgressBar {
-          z-index: 1;  
-        }
-        height: 100px;
-        margin: auto;
-        width: 100px;
-        background-color: white;
-        border-radius: 10px;
+        // height: 100px;
+        // margin: auto;
+        // width: 100px;
+        // background-color: white;
+        // border-radius: 10px;
 
       }
     }

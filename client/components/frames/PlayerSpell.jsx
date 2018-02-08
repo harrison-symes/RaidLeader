@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
 
 import CircularProgressbar from 'react-circular-progressbar'
+import { Progress } from 'react-sweet-progress';
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -115,24 +116,27 @@ class PlayerSpell extends Component {
     var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
     let width = 1000 / player.spells.length
     if (width > 200) width = 200
-    return <button
-    className={`PlayerSpell button ${spellColour} has-text-centered`}
-    onClick={() => this.clickSpell()} style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
+    return <div
+    className={`PlayerSpell ${spellColour} has-text-centered`}
+    onClick={() => this.clickSpell()} style={{width, height: width, opacity: spellColour == 'is-danger' ? 0.5: 1.0}}>
       {/* <SpellIcon spell={spell} isLarge={true} /> */}
       <i style={{position: 'absolute', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
-      <span style={{position:'absolute'}}>
-        <CircularProgressbar
-        percentage={perc}
-        className="ProgressBar"
-        counterClockwise={!onCooldown}
-        textForPercentage={null}
-        styles={{
-          path: {stroke: `rgba(62, 152, 199, ${perc / 100 + 0.1})`},
-          margin: 'auto'
-        }}
-        />
-      </span>
-    </button>
+        {(onCooldown || currentCastTime > 0)&&
+          <span style={{position: 'absolute', width, height: width}} className="has-text-centered">
+          <Progress
+            type="circle"
+            percent={Math.round(perc)}
+            width={width * 0.9}
+            symbolClassName={`ra ${spell.icon}`}
+            status={onCooldown ?'danger' : 'success'}
+            theme={{
+              success: {color: 'lightgreen'},
+              danger: {color: 'red'}
+            }}
+          />
+        </span>
+        }
+    </div>
   }
 }
 
