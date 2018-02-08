@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import HealthBar from './HealthBar'
+import RecruitHealthBar from './RecruitHealthBar'
 import EffectTag from './EffectTag'
+import {ClassIcon, SpeedIcon, PowerIcon} from '../icons/StatIcons'
 
 const poisonConstructor = (perc) => ({
   name: 'Poison',
@@ -34,22 +35,18 @@ class MemberFrame extends Component {
   render() {
     const {member, dispatch, friendlyTarget, boss, party} = this.props
     const {initHp, hp, name, isAlive, effects} = member
-    return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : 'is-light'}`} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
+    let width = 90 / party.length
+    if (width > 20) width = 20
+    return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{width: `${width}vw`, border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
-        <div className="column is-4">
-          <h1 className={`subtitle is-4`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} the {member.heroClass}</h1>
+        <div className="column">
+          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon heroClass={member.heroClass} /></h1>
         </div>
-        <div className="column is-4">
-          <div className=""><p className={`subtitle is-5`}>Power: {member.power}</p></div>
-          <div className=""><p className={`subtitle is-5`}>Speed: {member.speed}</p></div>
-        </div>
-        <div className="column is-4">
-          <div className="tags">
-            {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
-          </div>
+        <div className="tags">
+          {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
         </div>
       </div>
-      <HealthBar maxHP={initHp} hp={hp} />
+      <RecruitHealthBar recruit={{...member}}  />
     </div>
   }
 }

@@ -132,13 +132,13 @@
 .BossFrame {
   height: 30%; }
 
-.PartyFrame {
-  height: 33%; }
-
 .Game {
   max-height: 100vh;
-  height: 100vh; }
+  height: 100vh;
+  background-color: white;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
   .Game .PlayerFrame {
+    border-top: 10px white;
     position: fixed;
     bottom: 0;
     margin: auto;
@@ -168,22 +168,31 @@
         cursor: pointer; }
     .Game .PlayerFrame .PlayerBox {
       height: 25vh;
-      width: 100%; }
+      width: 100%;
+      margin-bottom: 10%; }
       @media (max-width: 900px) {
         .Game .PlayerFrame .PlayerBox .title {
           font-size: 0.3rem; } }
-
-.PlayerSpellBar {
-  height: 20vh; }
-
-.MemberFrame {
-  height: 15vh; }
-
-.PlayerSpell {
-  height: 80px; }
-
-.SpellCooldDown {
-  width: 10vw; }
+  .Game .PartyFrame {
+    height: 30vh;
+    width: 100vw;
+    bottom: 0;
+    border: 10px black;
+    margin: auto; }
+    .Game .PartyFrame .is-target {
+      border: 5px green;
+      background-color: lightgreen; }
+    .Game .PartyFrame .box {
+      border: none; }
+      .Game .PartyFrame .box .is-success {
+        border: 5px black; }
+    .Game .PartyFrame .MemberFrame {
+      height: 90%;
+      margin: 5%;
+      border: 5px black; }
+      .Game .PartyFrame .MemberFrame .is-target {
+        border: 5px green;
+        background-color: lightgreen; }
 
 .tooltip {
   position: relative;
