@@ -118,7 +118,7 @@ class PlayerSpell extends Component {
     if (width > 200) width = 200
     return <button
     className={`PlayerSpell ${spellColour}`}
-    style={{position: 'relative', width, height: width, opacity: spellColour == 'is-danger' ? 0.4: 0.8}}>
+    style={{position: 'relative', width, height: width}}>
       {(onCooldown || currentCastTime > 0)
         ? <span style={{position: 'relative', width, height: width}} className="CastProgress">
           <Progress

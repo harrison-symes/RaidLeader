@@ -200,51 +200,43 @@ body {
     padding-bottom: 5%;
     height: 30vh;
     width: 100vw;
-    background-color: #b88e69;
-    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    background-color: #b8b8b8;
+    // background-color: #b88e69;
+    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+    // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     .box {
-      background-color: #f7c48c;
-      background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      background-color: #b8b8b8;
+      // background-color: #f7c48c;
+      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+      // background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
     }
     .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
+      background-color: #b8b8b8;
+      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+      button:focus {outline:0;}
+      .is-success {
+        background-color: lightgreen;
+        opacity: 0.8;
+        :hover {
+          opacity: 1;
+        }
+      }
+      .is-danger {
+        opacity: 0.5
+      }
       .PlayerSpell {
         cursor: pointer;
-        .icon {
-          cursor: pointer;
-          // font-size: 2rem;
-        }
-        button {
-          cursor: pointer;
-          .is-success {
-            background-color: lightgreen;
-          }
-          .is-danger {
-            opacity: 0.5;
-            background-color: grey;
-          }
-          button:hover {
-            .is-success {
-              opacity: 1
-
-            }
-          }
-        }
-        // height: 100px;
-        // margin: auto;
-        // width: 100px;
-        // background-color: white;
-        // border-radius: 10px;
-
       }
+
     }
     .PlayerBox {
       height: 25vh;
-      margin: auto;
+      // margin: auto;
       width: 100%;
       // margin-bottom: 2.5vh;
-      padding: 10%;
+      // padding: 10%;
       @media (max-width: 900px) {
         .title {
           font-size: 0.3rem;
