@@ -1,4 +1,4 @@
-export zodiacs = [
+const zodiacs = [
   'Aries',
   'Taurus',
   'Gemini',
@@ -12,6 +12,10 @@ export zodiacs = [
   'Aquarius',
   'Pisces'
 ]
+
+export function getZodiacs() {
+  return zodiacs
+}
 
 const zodiacData = {
   Aries: {
@@ -76,6 +80,6 @@ const zodiacData = {
   }
 }
 
-export function zodiacData (zodiac) {
+export function getZodiacData (zodiac) {
   return zodiacData[zodiac]
 }
