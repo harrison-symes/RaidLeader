@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import weaponSwitch from '../../utils/weaponSwitch'
-import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon, ArmorIcon, WeaponIcon} from '../icons/StatIcons'
+import {HealthIcon, ManaIcon, ManaRegenIcon, PowerIcon, ArmorIcon, WeaponIcon, SpellIcon, CastTimeIcon, CoolDownIcon} from '../icons/StatIcons'
 
 class BossPreview extends React.Component {
   targetBoss(boss) {
@@ -50,13 +50,19 @@ class BossPreview extends React.Component {
           <br />
           <ul>
             {boss.spells.map(spell => <div className="section box">
-              <p className="title is-4" style={{textDecoration: 'underline'}}>{spell.name}</p>
-              <div className="columns">
-                <p className="subtitle column is-4">Cast: {spell.cast} s</p>
-                <p className="subtitle column is-4">Cost: {spell.cost} mana</p>
-                <p className="subtitle column is-4">CD: {spell.coolDown} s</p>
+              <div className="">
+                <span>
+                  <p className="title is-3">{spell.name}</p>
+                  <SpellIcon spell={spell} isLarge={true} />
+                </span>
+                <br />
+                <p className="content is-large">{spell.description}</p>
               </div>
-              <p className="content subtitle is-5">{spell.description}</p>
+              <div className="columns">
+                <p className="subtitle column is-4"><ManaIcon value={spell.cost} /></p>
+                <p className="subtitle column is-4"><CastTimeIcon value={`${spell.cast}s`} /></p>
+                <p className="subtitle column is-4"><CoolDownIcon value={`${spell.coolDown}s`} /></p>
+              </div>
             </div>)}
           </ul>
         </section>
