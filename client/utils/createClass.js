@@ -3,9 +3,9 @@ import {getZodiacData} from './zodiacs'
 const createMember = (name, level, id, weapon_id, zodiac, heroClass, hp, power, speed) => {
   var zData = getZodiacData(zodiac)
   console.log({zData})
-  power+=(power*zData.power)
-  hp+=(hp*zData.health)
-  speed+=(speed*zData.speed)
+  power+=Math.floor(power*zData.power)
+  hp+=Math.floor(hp*zData.health)
+  speed+=Math.floor(speed*zData.speed)
   var member = {
     name,
     level,
@@ -42,13 +42,13 @@ const createWarlock = (name, level, id, weapon_id, zodiac) => createMember(name,
 
 module.exports = ({name, heroClass, level, id, weapon_id, zodiac}) => {
   switch(heroClass) {
-    case 'Paladin': return createPaladin(name, level, id, weapon_id, 'Aries')
-    case 'Priest': return createPriest(name, level, id, weapon_id, 'Aries')
-    case 'Monk': return createMonk(name, level, id, weapon_id, 'Aries')
-    case 'Rogue': return createRogue(name, level, id, weapon_id, 'Aries')
-    case 'Mage': return createMage(name, level, id, weapon_id, 'Aries')
-    case 'Warrior': return createWarrior(name, level, id, weapon_id, 'Aries')
-    case 'Warlock': return createWarlock(name, level, id, weapon_id, 'Aries')
+    case 'Paladin': return createPaladin(name, level, id, weapon_id, 'Scorpio')
+    case 'Priest': return createPriest(name, level, id, weapon_id, 'Scorpio')
+    case 'Monk': return createMonk(name, level, id, weapon_id, 'Scorpio')
+    case 'Rogue': return createRogue(name, level, id, weapon_id, 'Scorpio')
+    case 'Mage': return createMage(name, level, id, weapon_id, 'Scorpio')
+    case 'Warrior': return createWarrior(name, level, id, weapon_id, 'Scorpio')
+    case 'Warlock': return createWarlock(name, level, id, weapon_id, 'Scorpio')
     default: return null
   }
 }
