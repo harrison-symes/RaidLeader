@@ -169,6 +169,10 @@ class BossSpell extends Component {
     return <button
     className={`BossSpell button ${spellColour} has-text-centered`}
     style={{position: 'relative', width, height}}>
+      <span className="tooltip">
+        <span className="tooltiptext">
+          <p>{spell.name}</p>
+        </span>
       {(onCooldown || currentCastTime > 0)
         ? <span style={{position: 'relative', width, height}} className="CastProgress has-text-centered">
           <Progress
@@ -184,11 +188,9 @@ class BossSpell extends Component {
             }}
           />
         </span>
-        : <span className="tooltip">
-          <p className="tooltiptext">{spell.name}</p>
-          <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
-        </span>
+        : <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
       }
+    </span>
     </button>
     // return <div
     //   className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
