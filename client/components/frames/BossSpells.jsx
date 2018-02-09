@@ -167,7 +167,7 @@ class BossSpell extends Component {
     var castPercentage = currentCastTime / spell.cast * 100
     let perc = onCooldown ? cdPercentage : castPercentage
     return <button
-    className={`PlayerSpell ${spellColour} has-text-centered`}
+    className={`PlayerSpell button ${spellColour} has-text-centered`}
     style={{position: 'relative', width, height}}>
       {(onCooldown || currentCastTime > 0)
         ? <span style={{position: 'relative', width, height}} className="CastProgress has-text-centered">

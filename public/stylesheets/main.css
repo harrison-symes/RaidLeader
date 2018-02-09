@@ -172,13 +172,17 @@
           font-size: 0.3rem; } }
   .Game .BossFrame {
     height: 35vh;
-    background-color: #EE5C42;
+    background-color: #D46A6A;
     border-bottom: 5px black; }
     .Game .BossFrame .BossSpellBar {
-      height: 50%;
+      background-color: #FFAAAA;
+      border: 5px black;
+      height: 100%;
       margin-bottom: 5%; }
+      .Game .BossFrame .BossSpellBar button {
+        cursor: not-allowed; }
     .Game .BossFrame .BossHealthBar {
-      height: 50%; }
+      height: 100%; }
   .Game .PartyFrame {
     height: 30vh;
     width: 100vw;

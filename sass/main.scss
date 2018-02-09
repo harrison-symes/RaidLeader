@@ -250,14 +250,19 @@ body {
 
   .BossFrame {
     height: 35vh;
-    background-color: #EE5C42;
+    background-color: #D46A6A;
     border-bottom: 5px black;
     .BossSpellBar {
-      height: 50%;
+      background-color: #FFAAAA;
+      border: 5px black;
+      height: 100%;
       margin-bottom: 5%;
+      button {
+        cursor:not-allowed;
+      }
     }
     .BossHealthBar {
-      height: 50%;
+      height: 100%;
     }
   }
   .PartyFrame {
