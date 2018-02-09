@@ -184,7 +184,8 @@ class BossSpell extends Component {
             }}
           />
         </span>
-        : <span>
+        : <span className="tooltip">
+          <p className="tooltiptext">{spell.name}</p>
           <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
         </span>
       }

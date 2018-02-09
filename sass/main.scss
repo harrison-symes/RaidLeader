@@ -184,10 +184,12 @@ body {
 
 
 .Game {
+  background-color: #f7c48c;
+  background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
   max-height: 100vh;
   height: 100vh;
-  background-color: white;
-  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  // background-color: white;
+  // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
   .PlayerFrame {
     border-top: 10px white;
     position: fixed;
@@ -196,9 +198,9 @@ body {
     padding-bottom: 5%;
     height: 30vh;
     width: 100vw;
-    background-color: #b8b8b8;
-    // background-color: #b88e69;
-    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+    // background-color: #b8b8b8;
+    // // background-color: #b88e69;
+    // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
     // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     .box {
       background-color: #b8b8b8;
@@ -263,7 +265,7 @@ body {
       }
       .BossSpell {
         margin-left: 5%;
-        margin-right: 5%; 
+        margin-right: 5%;
       }
     }
     .BossHealthBar {
@@ -276,10 +278,6 @@ body {
     bottom: 0;
     border: 10px black;
     margin: auto;
-    .is-target {
-      border: 5px green;
-      background-color: lightgreen;
-    }
     .box {
       border: none;
       .is-success {

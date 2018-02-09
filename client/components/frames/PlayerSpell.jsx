@@ -134,7 +134,10 @@ class PlayerSpell extends Component {
             }}
           />
         </span>
-        : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+        : <span className="tooltip" style={{cursor: 'pointer'}}>
+          <p className="tooltiptext">{spell.name}</p>
+          <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+        </span>
       }
     </button>
   }
