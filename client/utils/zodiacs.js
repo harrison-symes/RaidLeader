@@ -1,4 +1,4 @@
-export zodicas = [
+export zodiacs = [
   'Aries',
   'Taurus',
   'Gemini',
@@ -77,5 +77,5 @@ const zodiacData = {
 }
 
 export function zodiacData (zodiac) {
-
+  return zodiacData[zodiac]
 }
