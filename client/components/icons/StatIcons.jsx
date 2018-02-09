@@ -157,7 +157,7 @@ export function SpellIcon ({spell, isLarge}) {
   </div>
 }
 
-export function ZodiacIcon ({zodiac}) {
+export function ZodiacIcon ({zodiac, isLarge}) {
   let data = getZodiacData(zodiac)
   console.log({data, zodiac});
   const translatePerc = (val) => `${val < 0 ? '': '+'}${val * 100}%`
@@ -169,6 +169,6 @@ export function ZodiacIcon ({zodiac}) {
       {data.power != 0 && <p>{translatePerc(data.power)} Power</p>}
       {data.speed != 0 && <p>{translatePerc(data.speed)} Speed</p>}
     </span>
-    <i className={`ra ra-fw ${data.icon}`} />
+    <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
   </div>
 }

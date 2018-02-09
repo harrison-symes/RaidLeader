@@ -9,7 +9,7 @@ import {get, set} from '../../utils/localstorage'
 import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon, ClassIcon, ZodiacIcon} from '../icons/StatIcons'
 
 import createClass from '../../utils/createClass'
-import {classTraits, startingBuff, classIcon} from '../../utils/classText'
+import {classTraits, startingBuff, classIcons} from '../../utils/classText'
 import {getZodiacs} from '../../utils/zodiacs'
 
 class RecruitmentCentre extends Component {
