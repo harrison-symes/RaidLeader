@@ -76,14 +76,6 @@ class BossFrame extends Component {
         </div>
       </div>
       <BossHealthBar boss={{...boss}} />
-        {/* <div className="column is-4 has-text-centered">
-          <ManaBar mana={mana} maxMana={maxMana} />
-          <div className="level">
-            <h1 className="title is-4">Armor: {armor}/{initArmor}</h1>
-            <h1 className="title is-4">Power: {power}</h1>
-          </div>
-        </div> */}
-      {/* <HealthBar hp={hp} maxHP={initHp} /> */}
     </div>
   }
 }

@@ -129,9 +129,6 @@
 .app {
   height: 100vh; }
 
-.BossFrame {
-  height: 30%; }
-
 .Game {
   max-height: 100vh;
   height: 100vh;
@@ -173,6 +170,15 @@
       @media (max-width: 900px) {
         .Game .PlayerFrame .PlayerBox .title {
           font-size: 0.3rem; } }
+  .Game .BossFrame {
+    height: 35vh;
+    background-color: #EE5C42;
+    border-bottom: 5px black; }
+    .Game .BossFrame .BossSpellBar {
+      height: 50%;
+      margin-bottom: 5%; }
+    .Game .BossFrame .BossHealthBar {
+      height: 50%; }
   .Game .PartyFrame {
     height: 30vh;
     width: 100vw;

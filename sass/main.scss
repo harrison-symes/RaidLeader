@@ -182,9 +182,6 @@ body {
   height: 100vh;
 }
 
-.BossFrame {
-  height: 30%;
-}
 
 .Game {
   max-height: 100vh;
@@ -251,6 +248,18 @@ body {
     }
   }
 
+  .BossFrame {
+    height: 35vh;
+    background-color: #EE5C42;
+    border-bottom: 5px black;
+    .BossSpellBar {
+      height: 50%;
+      margin-bottom: 5%;
+    }
+    .BossHealthBar {
+      height: 50%;
+    }
+  }
   .PartyFrame {
     height: 30vh;
     width: 100vw;

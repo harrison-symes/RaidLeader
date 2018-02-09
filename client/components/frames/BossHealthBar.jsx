@@ -12,9 +12,9 @@ const healthBar = (current, max) => {
       : 'is-warning'
     : 'is-danger'
   return <div className="column">
-    <p className="subtitle is-4"><HealthIcon value={`${current} / ${max}`} /></p>
     <div className="box">
-      <progress className={`ProgressBar progress ${colourClass}`} max="100" value={percent}>{percent}%</progress>
+      <progress className={`ProgressBar progress is-small ${colourClass}`} max="100" value={percent}>{percent}%</progress>
+      <p className="subtitle is-5"><HealthIcon value={`${current} / ${max}`} /></p>
     </div>
   </div>
 }
@@ -22,9 +22,9 @@ const healthBar = (current, max) => {
 const armorBar = (current, max) => {
   const percent = Math.round(current/max * 100)
   return <div className="column">
-    <p className="subtitle is-4"><ArmorIcon value={`${current} / ${max}`} /></p>
     <div className="box">
-      <progress className={`ProgressBar progress ArmorBar`} max="100" value={percent}>{percent}%</progress>
+      <progress className={`ProgressBar progress is-small ArmorBar`} max="100" value={percent}>{percent}%</progress>
+      <p className="subtitle is-5"><ArmorIcon value={`${current} / ${max}`} /></p>
     </div>
   </div>
 }
@@ -33,9 +33,9 @@ const manaBar = (current, max) =>{
   const percent = current/max * 100
   const colourClass = percent > 1/3*100 ? 'is-info' : 'is-warning'
   return <div className="column is-4 ManaBar has-text-centered">
-    <p className="subtitle is-4"><ManaIcon value={`${current}/${max}`} /></p>
     <div className="box">
-      <progress className={`ProgressBar progress ${colourClass}`} max="100" value={percent}>{percent}%</progress>
+      <progress className={`ProgressBar progress is-small ${colourClass}`} max="100" value={percent}>{percent}%</progress>
+      <p className="subtitle is-5"><ManaIcon value={`${current}/${max}`} /></p>
     </div>
   </div>
 }
