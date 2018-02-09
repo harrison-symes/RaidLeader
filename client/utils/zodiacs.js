@@ -70,7 +70,7 @@ const zodiacData = {
     health: 0.1,
     power: -0.2,
     speed: 0.1,
-    icon: 'ra-saggitarius'
+    icon: 'ra-sagittarius'
   },
   Capricorn: {
     health: -0.1,
