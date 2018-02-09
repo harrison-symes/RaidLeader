@@ -129,7 +129,7 @@ class PlayerSpell extends Component {
             status={onCooldown ?'danger' : 'success'}
             strokeWidth={10}
             theme={{
-              success: {symbol: null, color: 'green'},
+              success: {symbol: null, color: 'blue'},
               danger: {symbol: null, color: 'red'}
             }}
           />
