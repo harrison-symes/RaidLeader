@@ -18,6 +18,7 @@ export default {
   weaponRewards: ['Fine Silk', 'Spider Eye Wand'],
   weaponChance: 1,
   progress_required: 2,
+  icon: 'ra-spider-face',
   spells: [
     {
       name: 'Feed',
@@ -39,7 +40,8 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       onCooldown: false,
-      description: "Damage ALL enemy characters for 100% BOSS POWER"
+      description: "Damage ALL enemy characters for 100% BOSS POWER",
+      icon: 'ra-bird-claw'
     },
     {
       name: 'Spit',
@@ -50,7 +52,8 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       onCooldown: false,
-      description: "Damage the PLAYER for 100% BOSS POWER"
+      description: "Damage the PLAYER for 100% BOSS POWER",
+      icon: 'ra-player-thunder-struck'
     },
   ]
 }

@@ -18,6 +18,7 @@ export default {
   weaponRewards: ['Ancient Pearls', 'Massive Shell'],
   weaponChance: 1,
   progress_required: 0,
+  icon: 'ra-spiral-shell'
   spells: [
     {
       name: 'Protect',
@@ -28,7 +29,8 @@ export default {
       singleTarget: false,
       powerRatio: 50,
       onCooldown: false,
-      description: "Gain 50 ARMOR"
+      description: "Gain 50 ARMOR",
+      icon: 'ra-eye-shield'
     },
     {
       name: 'Swipe',
@@ -39,7 +41,8 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       onCooldown: false,
-      description: "Damage ALL enemy characters for 100% BOSS POWER"
+      description: "Damage ALL enemy characters for 100% BOSS POWER",
+      icon: 'ra-bird-claw'
     },
     {
       name: 'Trample',
@@ -50,7 +53,8 @@ export default {
       singleTarget: true,
       powerRatio: 2,
       onCooldown: false,
-      description: "Damage the enemy TARGET and the PLAYER for 200% BOSS POWER"
+      description: "Damage the enemy TARGET and the PLAYER for 200% BOSS POWER",
+      icon: 'ra-player-pain'
     }
   ]
 }
