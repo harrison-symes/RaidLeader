@@ -159,7 +159,7 @@ class BossSpell extends Component {
   render() {
     const {spell, dispatch, boss} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
-    const spellColour = onCooldown || boss.mana < spell.cost ? 'is-danger' : castInterval ? 'is-info' : 'is-success'
+    const spellColour = onCooldown || boss.mana < spell.cost ? 'is-danger' : castInterval ? 'is-primary' : 'is-success'
     let width = 600 / boss.spells.length
     if (width > 150) width = 150
     let height= width
@@ -167,7 +167,7 @@ class BossSpell extends Component {
     var castPercentage = currentCastTime / spell.cast * 100
     let perc = onCooldown ? cdPercentage : castPercentage
     return <button
-    className={`PlayerSpell button ${spellColour} has-text-centered`}
+    className={`BossSpell button ${spellColour} has-text-centered`}
     style={{position: 'relative', width, height}}>
       {(onCooldown || currentCastTime > 0)
         ? <span style={{position: 'relative', width, height}} className="CastProgress has-text-centered">

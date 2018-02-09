@@ -250,15 +250,20 @@ body {
 
   .BossFrame {
     height: 35vh;
-    background-color: #D46A6A;
+    background-color: #b88d8d;
+    background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
     border-bottom: 5px black;
     .BossSpellBar {
-      background-color: #FFAAAA;
-      border: 5px black;
+      // background-color: #b88d8d;
+      // background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
       height: 100%;
       margin-bottom: 5%;
       button {
         cursor:not-allowed;
+      }
+      .BossSpell {
+        margin-left: 5%;
+        margin-right: 5%; 
       }
     }
     .BossHealthBar {

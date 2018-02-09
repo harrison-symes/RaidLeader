@@ -172,15 +172,17 @@
           font-size: 0.3rem; } }
   .Game .BossFrame {
     height: 35vh;
-    background-color: #D46A6A;
+    background-color: #b88d8d;
+    background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
     border-bottom: 5px black; }
     .Game .BossFrame .BossSpellBar {
-      background-color: #FFAAAA;
-      border: 5px black;
       height: 100%;
       margin-bottom: 5%; }
       .Game .BossFrame .BossSpellBar button {
         cursor: not-allowed; }
+      .Game .BossFrame .BossSpellBar .BossSpell {
+        margin-left: 5%;
+        margin-right: 5%; }
     .Game .BossFrame .BossHealthBar {
       height: 100%; }
   .Game .PartyFrame {
