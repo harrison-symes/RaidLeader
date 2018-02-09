@@ -87,7 +87,7 @@ class TrainingCentre extends Component {
   render() {
     const {close} = this.props
     const {levelUpgrade} = this.state
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card Modal">
         <header className="modal-card-head">

@@ -70,6 +70,8 @@ class BossFrame extends Component {
       <div className="columns">
         <div className="column is-3 has-text-centered">
           <h1 className="title is-2">{name}</h1>
+          <br />
+          <p className="subtitle is-1"><i style={{color: 'black'}} className={`icon ra ra-3x ${boss.icon}`} /></p>
         </div>
         <div className="column is-5">
           <BossSpellBar spells={spells}/>

@@ -6,10 +6,11 @@ import randomName from '../../utils/randomName'
 import {earnGold} from '../../actions/gold'
 import {addRecruit} from '../../actions/recruits'
 import {get, set} from '../../utils/localstorage'
-import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon, ClassIcon} from '../icons/StatIcons'
+import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon, ClassIcon, ZodiacIcon} from '../icons/StatIcons'
 
 import createClass from '../../utils/createClass'
 import {classTraits, startingBuff, classIcons} from '../../utils/classText'
+import {getZodiacs} from '../../utils/zodiacs'
 
 class RecruitmentCentre extends Component {
   constructor(props) {
@@ -23,11 +24,13 @@ class RecruitmentCentre extends Component {
     this.showOptions = this.showOptions.bind(this)
   }
   solveOptions() {
+    const zodiacs = getZodiacs()
     const classes = ['Paladin', 'Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior']
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
-      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name: randomName(), heroClass})
+      let zodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
+      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name: randomName(), heroClass, zodiac})
     }
     return offeredRecruits
   }
@@ -111,7 +114,7 @@ class RecruitmentCentre extends Component {
                     recruit.level = 1
                     return <div className="box">
                       <div key={`offered-recruit-${i}`} className="level">
-                        <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /></p>
+                        <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /><ZodiacIcon zodiac={recruit.zodiac} /></p>
                         {selectedRecruit != recruit
                           ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Details</button>
                           : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Hide</button>

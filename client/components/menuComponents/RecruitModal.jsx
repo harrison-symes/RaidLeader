@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {recruitEquipWeapon} from '../../actions/weapons'
 import {startingBuff, classTraits} from '../../utils/classText'
-import {HealthIcon, PowerIcon, SpeedIcon} from '../icons/StatIcons'
+import {HealthIcon, PowerIcon, SpeedIcon, ZodiacIcon, LevelIcon} from '../icons/StatIcons'
 
 
 class RecruitModal extends Component {
@@ -57,11 +57,18 @@ class RecruitModal extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">{recruit.name} the {recruit.heroClass} (Level {recruit.level})</p>
+          <p className="modal-card-title is-1">{recruit.name} the {recruit.heroClass} <LevelIcon level={recruit.level} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
           <div className="box">
+            <div className="title is-4">Stats</div>
+            <div className="columns">
+              <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruit.hp}/></p></div>
+              <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
+              <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
+            </div>
+            <p className="subtitle is-1"><ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/></p>
             <hr />
             <div className="columns">
               <div className="column has-text-centered">
@@ -73,12 +80,6 @@ class RecruitModal extends Component {
                 <p className="title is-4">Class Traits:</p>
                 <p className="content is-large">{classTraits(recruit.heroClass)}</p>
               </div>
-            </div>
-            <div className="title is-4">Stats</div>
-            <div className="columns">
-              <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruit.hp}/></p></div>
-              <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
-              <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
             </div>
           </div>
           <hr />

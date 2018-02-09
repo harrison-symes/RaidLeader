@@ -2,6 +2,7 @@ import React from 'react'
 
 import {classIcons} from '../../utils/classText'
 import weaponSwitch from '../../utils/weaponSwitch'
+import {getZodiacData} from '../../utils/zodiacs'
 
 export function HealthIcon ({value}) {
   return <div className="tooltip">
@@ -152,6 +153,22 @@ export function SpellIcon ({spell, isLarge}) {
   const {name, icon, color, background} = spell
   return <div className="tooltip box">
     <span className="tooltiptext">{name}</span>
-    <i style={{color: color || 'green', backgroundColor: background || 'white'}} className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
+    <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
+  </div>
+}
+
+export function ZodiacIcon ({zodiac, isLarge}) {
+  let data = getZodiacData(zodiac)
+  console.log({data, zodiac});
+  const translatePerc = (val) => `${val < 0 ? '': '+'}${val * 100}%`
+  return <div className="tooltip">
+    <span className="tooltiptext">
+      <p>{zodiac}</p>
+      <hr/>
+      {data.health != 0 &&<p>{translatePerc(data.health)} Health</p>}
+      {data.power != 0 && <p>{translatePerc(data.power)} Power</p>}
+      {data.speed != 0 && <p>{translatePerc(data.speed)} Speed</p>}
+    </span>
+    <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
   </div>
 }

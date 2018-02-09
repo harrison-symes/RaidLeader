@@ -48,7 +48,7 @@ class Game extends Component {
     this.props.history.push('/')
   }
   loseModal() {
-    return <div className="modal is-active">
+    return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-content has-text-centered">
         <h1 className="title">You Died</h1>

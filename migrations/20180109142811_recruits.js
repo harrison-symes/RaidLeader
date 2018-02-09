@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.integer('level').defaultTo(1)
     table.integer('weapon_id').defaultTo(null)
     table.integer('user_id')
+    table.string('zodiac').defaultTo('Aries')
   })
 };
 
