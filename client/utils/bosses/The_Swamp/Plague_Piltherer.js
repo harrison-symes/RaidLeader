@@ -30,6 +30,7 @@ export default {
       power: 30,
       onCooldown: false,
       description: 'Gain 30 Power. (Only usable when at 0 Power)',
+      icon: 'ra-potion'
     },
     {
       name: 'Spread Plague',
@@ -40,7 +41,8 @@ export default {
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
-      description: "Poison All enemy recruits, dealing 60% of their Max Health over 15 seconds"
+      description: "Poison All enemy recruits, dealing 60% of their Max Health over 15 seconds",
+      icon: 'ra-biohazard'
     },
     {
       name: 'Regenerate',
@@ -53,7 +55,8 @@ export default {
       armor: 100,
       health: 100,
       onCooldown: false,
-      description: 'Gain 100 ARMOR and 100 Health'
+      description: 'Gain 100 ARMOR and 100 Health',
+      icon: 'ra-regeneration'
     },
     {
       name: 'Ravage',
@@ -65,7 +68,8 @@ export default {
       singleTarget: false,
       onCooldown: false,
       power: -10,
-      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power if enemy party is still alive"
+      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power if enemy party is still alive",
+      icon: 'ra-slash-ring'
     }
   ]
 }

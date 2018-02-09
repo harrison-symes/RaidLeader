@@ -30,7 +30,7 @@ export default {
       powerRatio: 50,
       onCooldown: false,
       description: 'Gain 50 Power',
-      icon: 'ra-monster-skull'
+      icon: 'ra-wolf-howl'
     },
     {
       name: 'Feeble Fire',

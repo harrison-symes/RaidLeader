@@ -18,7 +18,7 @@ export default {
   weaponRewards: ['Ancient Pearls', 'Massive Shell'],
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-spiral-shell'
+  icon: 'ra-spiral-shell',
   spells: [
     {
       name: 'Protect',
@@ -54,7 +54,7 @@ export default {
       powerRatio: 2,
       onCooldown: false,
       description: "Damage the enemy TARGET and the PLAYER for 200% BOSS POWER",
-      icon: 'ra-player-pain'
+      icon: 'ra-footprint'
     }
   ]
 }

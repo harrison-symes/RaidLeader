@@ -175,7 +175,7 @@ class BossSpell extends Component {
             type="circle"
             percent={Math.round(perc)}
             width={width * 0.9}
-            symbolClassName={`ra ra-sword`}
+            symbolClassName={`ra ${spell.icon}`}
             status={onCooldown ?'danger' : 'success'}
             strokeWidth={10}
             theme={{
@@ -185,7 +185,7 @@ class BossSpell extends Component {
           />
         </span>
         : <span>
-          <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ra-sword icon icon-large`} />
+          <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
         </span>
       }
     </button>

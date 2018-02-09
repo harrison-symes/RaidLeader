@@ -29,7 +29,8 @@ export default {
       singleTarget: false,
       powerRatio: 5,
       onCooldown: false,
-      description: "Gain +5 POWER"
+      description: "Gain +5 POWER",
+      icon: 'ra-knife-fork'
     },
     {
       name: 'Swipe',

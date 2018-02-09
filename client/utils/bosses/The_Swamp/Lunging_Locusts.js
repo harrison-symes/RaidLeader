@@ -18,6 +18,7 @@ export default {
   goldReward: 500,
   weaponChance: 1,
   progress_required: 1,
+  icon: ' ra-butterfly',
   spells: [
     {
       name: 'Overwhelm',
@@ -29,6 +30,7 @@ export default {
       powerRatio: 100,
       onCooldown: false,
       description: 'Damage ALL enemy characters for 10000% BOSS POWER',
+      icon: 'ra-food-chain'
     },
     {
       name: 'Regenerate',
@@ -41,7 +43,8 @@ export default {
       armor: 0,
       health: 100,
       onCooldown: false,
-      description: 'Gain 100 Health'
+      description: 'Gain 100 Health',
+      icon: 'ra-regeneration'
     },
     {
       name: 'Lunge',
@@ -52,7 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power and Poison that Recruit, dealing 60% of their Max Health over 15 seconds"
+      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      icon: 'ra-overhead'
     }
   ]
 }
