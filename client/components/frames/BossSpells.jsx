@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import { Progress } from 'react-sweet-progress';
+
 const poisonConstructor = (perc) => ({
   name: 'Poison',
   duration: 15,
@@ -157,27 +159,57 @@ class BossSpell extends Component {
   render() {
     const {spell, dispatch, boss} = this.props
     const {onCooldown, currentCD, currentCastTime, castInterval} = this.state
-    const spellColour = onCooldown || boss.mana < spell.cost ? 'is-loading is-danger' : castInterval ? 'is-info' : 'is-success'
+    const spellColour = onCooldown || boss.mana < spell.cost ? 'is-danger' : castInterval ? 'is-primary' : 'is-success'
     let width = 600 / boss.spells.length
-    if (width > 200) width = 200
-    return <div
-      className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
-      <table className="table is-fullwidth">
-        <thead className='thead has-text-centered'>
-          <th className="th subtitle is-6 has-text-centered">({spell.name} ({spell.cost})</th>
-        </thead>
-        {(onCooldown || castInterval) &&
-          <tfoot className="tfoot">
-            <tr>
-              <td>
-                {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-                {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
-              </td>
-            </tr>
-          </tfoot>
-        }
-      </table>
-    </div>
+    if (width > 150) width = 150
+    let height= width
+    var cdPercentage = (spell.coolDown - currentCD) / spell.coolDown * 100
+    var castPercentage = currentCastTime / spell.cast * 100
+    let perc = onCooldown ? cdPercentage : castPercentage
+    return <button
+    className={`BossSpell button ${spellColour} has-text-centered`}
+    style={{position: 'relative', width, height}}>
+      <span className="tooltip">
+        <span className="tooltiptext">
+          <p>{spell.name}</p>
+        </span>
+      {(onCooldown || currentCastTime > 0)
+        ? <span style={{position: 'relative', width, height}} className="CastProgress has-text-centered">
+          <Progress
+            type="circle"
+            percent={Math.round(perc)}
+            width={width * 0.9}
+            symbolClassName={`ra ${spell.icon}`}
+            status={onCooldown ?'danger' : 'success'}
+            strokeWidth={10}
+            theme={{
+              success: {symbol: null, color: 'yellow'},
+              danger: {symbol: null, color: 'red'}
+            }}
+          />
+        </span>
+        : <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+      }
+    </span>
+    </button>
+    // return <div
+    //   className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
+    //   <table className="table is-fullwidth">
+    //     <thead className='thead has-text-centered'>
+    //       <th className="th subtitle is-6 has-text-centered">({spell.name} ({spell.cost})</th>
+    //     </thead>
+    //     {(onCooldown || castInterval) &&
+    //       <tfoot className="tfoot">
+    //         <tr>
+    //           <td>
+    //             {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
+    //             {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
+    //           </td>
+    //         </tr>
+    //       </tfoot>
+    //     }
+    //   </table>
+    // </div>
   }
 }
 

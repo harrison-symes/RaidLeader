@@ -18,6 +18,7 @@ export default {
   goldReward: 200,
   weaponChance: 1,
   progress_required: 1,
+  icon: 'ra-pawprint',
   spells: [
     {
       name: 'Swipe',
@@ -29,6 +30,7 @@ export default {
       powerRatio: 1,
       onCooldown: false,
       description: 'Damage ALL enemy characters for 100% BOSS POWER',
+      icon: 'ra-bird-claw'
     },
     {
       name: 'Protect',
@@ -39,7 +41,8 @@ export default {
       singleTarget: false,
       powerRatio: 25,
       onCooldown: false,
-      description: 'Gain 25 ARMOR'
+      description: 'Gain 25 ARMOR',
+      icon: 'ra-eye-shield'
     },
     {
       name: 'Bite',
@@ -50,7 +53,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 200% of BOSS POWER"
+      description: "Damage the Boss' TARGET for 200% of BOSS POWER",
+      icon: 'ra-alligator-clip'
     }
   ]
 }

@@ -18,6 +18,7 @@ export default {
   goldReward: 500,
   weaponChance: 1,
   progress_required: 0,
+  icon: ' ra-desert-skull',
   spells: [
     {
       name: 'Decay',
@@ -28,7 +29,8 @@ export default {
       onCooldown: false,
       health: -50,
       powerRatio: 1,
-      description: "Poison ALL enemy RECRUITS for 60% of their Max Health over 15 seconds, lose Health equal to BOSS Power"
+      description: "Poison ALL enemy RECRUITS for 60% of their Max Health over 15 seconds, lose Health equal to BOSS Power",
+      icon: 'ra-desert-skull'
     },
     {
       name: 'Regenerate',
@@ -41,7 +43,8 @@ export default {
       armor: 100,
       health: 200,
       onCooldown: false,
-      description: 'Gain 100 Armor and 200 Health.'
+      description: 'Gain 100 Armor and 200 Health.',
+      icon: 'ra-regeneration'
     },
     {
       name: 'Feed',
@@ -53,6 +56,7 @@ export default {
       powerRatio: 10,
       onCooldown: false,
       description: 'Gain 10 Power',
+      icon: 'ra-knife-fork'
     },
     {
       name: 'Plague Bite',
@@ -63,7 +67,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 100% of BOSS POWER and Poison the Target, dealing 60% of their Max Health over 15 seconds"
+      description: "Damage the Boss' TARGET for 100% of BOSS POWER and Poison the Target, dealing 60% of their Max Health over 15 seconds",
+      icon: 'ra-bone-bite'
     }
   ]
 }

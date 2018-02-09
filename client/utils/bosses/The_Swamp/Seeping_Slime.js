@@ -18,6 +18,7 @@ export default {
   goldReward: 400,
   weaponChance: 1,
   progress_required: 0,
+  icon: 'ra-ocean-emblem',
   spells: [
     {
       name: 'Regenerate',
@@ -31,6 +32,7 @@ export default {
       health: 500,
       onCooldown: false,
       description: 'Restore 500 Health. (Only usable when below 500 Health)',
+      icon: 'ra-regeneration'
     },
     {
       name: 'Seep',
@@ -41,7 +43,8 @@ export default {
       singleTarget: true,
       powerRatio: 1,
       onCooldown: false,
-      description: 'Damage All enemy characters for 100% Boss Power. This spell also damages the caster for 100% Power'
+      description: 'Damage All enemy characters for 100% Boss Power. This spell also damages the caster for 100% Power',
+      icon: 'ra-bleeding-hearts'
     },
     {
       name: 'Poison',
@@ -52,7 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Poison the Target, dealing 60% of their Max Health over 15 seconds"
+      description: "Poison the Target, dealing 60% of their Max Health over 15 seconds",
+      icon: 'ra-poison-cloud'
     }
   ]
 }

@@ -129,14 +129,11 @@
 .app {
   height: 100vh; }
 
-.BossFrame {
-  height: 30%; }
-
 .Game {
+  background-color: #f7c48c;
+  background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
   max-height: 100vh;
-  height: 100vh;
-  background-color: white;
-  background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
+  height: 100vh; }
   .Game .PlayerFrame {
     border-top: 10px white;
     position: fixed;
@@ -144,9 +141,7 @@
     margin: auto;
     padding-bottom: 5%;
     height: 30vh;
-    width: 100vw;
-    background-color: #b8b8b8;
-    background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
+    width: 100vw; }
     .Game .PlayerFrame .box {
       background-color: #b8b8b8;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
@@ -173,15 +168,27 @@
       @media (max-width: 900px) {
         .Game .PlayerFrame .PlayerBox .title {
           font-size: 0.3rem; } }
+  .Game .BossFrame {
+    height: 35vh;
+    background-color: #b88d8d;
+    background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
+    border-bottom: 5px black; }
+    .Game .BossFrame .BossSpellBar {
+      height: 100%;
+      margin-bottom: 5%; }
+      .Game .BossFrame .BossSpellBar button {
+        cursor: not-allowed; }
+      .Game .BossFrame .BossSpellBar .BossSpell {
+        margin-left: 5%;
+        margin-right: 5%; }
+    .Game .BossFrame .BossHealthBar {
+      height: 100%; }
   .Game .PartyFrame {
     height: 30vh;
     width: 100vw;
     bottom: 0;
     border: 10px black;
     margin: auto; }
-    .Game .PartyFrame .is-target {
-      border: 5px green;
-      background-color: lightgreen; }
     .Game .PartyFrame .box {
       border: none; }
       .Game .PartyFrame .box .is-success {

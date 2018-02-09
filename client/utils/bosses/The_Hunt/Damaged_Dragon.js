@@ -18,6 +18,7 @@ export default {
   goldReward: 500,
   weaponChance: 1,
   progress_required: 0,
+  icon: 'ra-dragon',
   spells: [
     {
       name: 'Roar',
@@ -29,6 +30,7 @@ export default {
       powerRatio: 50,
       onCooldown: false,
       description: 'Gain 50 Power',
+      icon: 'ra-wolf-howl'
     },
     {
       name: 'Feeble Fire',
@@ -40,6 +42,7 @@ export default {
       powerRatio: 0.15,
       onCooldown: false,
       description: 'Damage ALL enemy characters for 15% BOSS POWER, lose 200 health',
+      icon: 'ra-dragon-breath'
     },
     {
       name: 'Weakened Bite',
@@ -50,7 +53,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the TARGET for 10% of BOSS POWER, lose 100 health"
+      description: "Damage the TARGET for 10% of BOSS POWER, lose 100 health",
+      icon: 'ra-tooth'
     }
   ]
 }

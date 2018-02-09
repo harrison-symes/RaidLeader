@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import BossSpells from './BossSpells'
 
 const BossSpellBar = ({spells, dispatch, bossCount}) => {
-  return <div className="columns PlayerSpellBar has-text-centered">
+  return <div className="columns BossSpellBar has-text-centered">
     {spells.map((spell, i) => <BossSpells key={`${i}_${bossCount}`} spell={spell} />)}
   </div>
 }
