@@ -21,10 +21,11 @@ class BossPreview extends React.Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title title is-2">{boss.name}</p>
+          <p className="modal-card-title title is-2"><i className={`icon ra ra-fw ${boss.icon}`} />{boss.name}<i className={`icon ra ra-fw ${boss.icon}`} /></p>
           <button onClick={back} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
+
           <p className="subtitle is-5">{boss.description}</p>
           <hr />
           <p className="title is-2">Rewards:</p>
