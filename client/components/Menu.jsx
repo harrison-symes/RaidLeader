@@ -64,7 +64,7 @@ class Menu extends React.Component {
     this.setState({townTravelModal})
   }
   renderTownConfirmModal() {
-    return <div className={`modal is-active`} >
+    return <div className={`Modal modal is-active`} >
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
