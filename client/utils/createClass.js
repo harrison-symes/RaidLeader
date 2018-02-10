@@ -41,7 +41,7 @@ const createWarrior = (name, level, id, weapon_id, zodiac) => createMember(name,
 
 const createWarlock = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Warlock', (level + 1) * 35, level * 30, 30)
 
-const createHunter = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Hunter', (level + 1) * 35, level * 20, 30)
+const createHunter = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Hunter', (level + 1) * 35, level * 15, 30)
 
 
 module.exports = ({name, heroClass, level, id, weapon_id, zodiac}) => {
