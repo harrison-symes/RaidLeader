@@ -8,6 +8,7 @@ import Mage from '../classes/Mage'
 import Warlock from '../classes/Warlock'
 import Priest from '../classes/Priest'
 import Monk from '../classes/Monk'
+import Hunter from '../classes/Hunter'
 
 class PartyFrame extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class PartyFrame extends Component {
       case 'Warlock': return <Warlock member={member} key={`member-${i}`} />
       case 'Priest': return <Priest member={member} key={`member-${i}`} />
       case 'Monk': return <Monk member={member} key={`member-${i}`} />
+      case 'Hunter': return <Hunter member={member} key={`member-${i}`} />
       default: return
     }
   }
