@@ -30,7 +30,7 @@ class BossPreview extends React.Component {
           <p className="title is-2">Rewards:</p>
           <p className="title is-4">{boss.goldReward} Gold</p>
           {boss.weaponRewards.length > 0 && <div className="columns is-multiline">
-            {boss.weaponRewards.map((reward, i) => <span className="column is-3"><p className="subtitle is-3"><WeaponIcon name={reward} level={boss.level} /></p></span>)}
+            {boss.weaponRewards.map((reward, i) => <span key={i} className="column is-3"><p className="subtitle is-3"><WeaponIcon name={reward} level={boss.level} /></p></span>)}
           </div>}
           <hr />
           <div className="box">
@@ -49,7 +49,7 @@ class BossPreview extends React.Component {
           <p className="title is-4">Boss Abilities:</p>
           <br />
           <ul>
-            {boss.spells.map(spell => <div className="section box">
+            {boss.spells.map(spell => <div key={spell.name} className="section box">
               <div className="">
                 <span>
                   <p className="title is-3">{spell.name}</p>
