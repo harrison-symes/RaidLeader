@@ -13,8 +13,8 @@ export default function (state = [], action) {
     case 'UPDATE_RECRUIT':
       if (!action.recruit) return newState
       newState = newState.map(recruit => {
-        if (recruit.id == action.recruit.id) return action.recruit
-        else return recruit
+        if (recruit.id == action.recruit.id) return {...action.recruit}
+        else return {...recruit}
       })
       return newState
     default: return state
