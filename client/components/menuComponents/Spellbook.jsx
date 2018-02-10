@@ -75,14 +75,14 @@ class SpellBook extends React.Component {
                     <Draggable key={spell.id} draggableId={spell.id}>
                       {(provided, snapshot) => (
                         <div>
-                          <table className="table has-text-centered"
-                            ref={provided.innerRef}
-                            style={getItemStyle(
-                              provided.draggableStyle,
-                              snapshot.isDragging
-                            )}
-                            {...provided.dragHandleProps}
-                            >
+                          <table className="table has-text-centered is-fullwidth"
+                          ref={provided.innerRef}
+                          style={getItemStyle(
+                            provided.draggableStyle,
+                            snapshot.isDragging
+                          )}
+                          {...provided.dragHandleProps}
+                          >
                             <SpellFrame
                             viewSpell={this.viewSpell}
                             addSpell={this.moveToBar.bind(this)}
@@ -115,14 +115,14 @@ class SpellBook extends React.Component {
                       {(provided, snapshot) => (
                         <div>
                           <table
-                            className="table has-text-centered"
-                            ref={provided.innerRef}
-                            style={getItemStyle(
-                              provided.draggableStyle,
-                              snapshot.isDragging
-                            )}
-                            {...provided.dragHandleProps}
-                            >
+                          className="table has-text-centered"
+                          ref={provided.innerRef}
+                          style={getItemStyle(
+                            provided.draggableStyle,
+                            snapshot.isDragging
+                          )}
+                          {...provided.dragHandleProps}
+                          >
                             <SpellFrame
                             viewSpell={this.viewSpell}
                             removeSpell={this.removeFromBar.bind(this)}
