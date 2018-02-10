@@ -16,7 +16,7 @@ class DecayingDeer extends BossFrame {
           case 'Regenerate':
             return (boss.hp <= boss.initHp - spell.health)
           case 'Feed': return true
-          case 'Plague Bite': return true
+          case 'Bite': return true
           default: return false
         }
       } else return false
