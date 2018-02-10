@@ -7,6 +7,8 @@ import ManaBar from './ManaBar'
 import BossSpellBar from './BossSpellBar'
 import BossHealthBar from './BossHealthBar'
 
+import {PowerIcon} from '../icons/StatIcons'
+
 class BossFrame extends Component {
   constructor(props) {
     super(props)
@@ -68,10 +70,14 @@ class BossFrame extends Component {
     const {name, hp, initHp, mana, maxMana, armor, initArmor, spells, power} = boss
     return <div className="section BossFrame">
       <div className="columns">
-        <div className="column is-3 has-text-centered">
-          <h1 className="title is-2">{name}</h1>
+        <div className="column is-3 has-text-centered box">
+          <h1 className="title is-3">{name}</h1>
           <br />
-          <p className="subtitle is-1"><i style={{color: 'black'}} className={`icon ra ra-3x ${boss.icon}`} /></p>
+          <div className="level">
+            <p className="subtitle is-1">&nbsp;&nbsp;&nbsp;<i style={{color: 'black'}} className={`icon ra ra-2x ${boss.icon}`}/></p>
+            <p className="subtitle is-1"><PowerIcon value={boss.power} /></p>
+
+          </div>
         </div>
         <div className="column is-5">
           <BossSpellBar spells={spells}/>
