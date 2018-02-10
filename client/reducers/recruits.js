@@ -12,9 +12,10 @@ export default function (state = [], action) {
       return newState
     case 'UPDATE_RECRUIT':
       if (!action.recruit) return newState
-      let idx = newState.findIndex(recruit => recruit.id == action.recruit.id)
-      if (!idx) return newState
-      newState[idx] = action.recruit
+      newState = newState.map(recruit => {
+        if (recruit.id == action.recruit.id) return {...action.recruit}
+        else return {...recruit}
+      })
       return newState
     default: return state
   }

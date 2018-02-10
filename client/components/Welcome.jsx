@@ -10,7 +10,6 @@ import {getZodiacs} from '../utils/zodiacs'
 class Welcome extends Component {
   constructor(props) {
     super(props)
-    console.log(getZodiacs());
     this.state = {
       stage: 1,
       paladinName: randomName(),
@@ -23,7 +22,6 @@ class Welcome extends Component {
     this.setState({stage: this.state.stage + 1})
   }
   getStarted() {
-    console.log(this.state, 'start');
     this.props.dispatch(getStarted({name: this.state.paladinName, heroClass: 'Paladin', zodiac: this.state.zodiac}))
   }
   stageOne() {

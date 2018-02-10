@@ -16,6 +16,12 @@ import SpellFrame from './menuComponents/SpellFrame'
 import BossPreview from './menuComponents/BossPreview'
 import DungeonRewards from './menuComponents/DungeonRewards'
 
+import {getRecruits} from '../actions/recruits'
+import {getSpells} from '../actions/spells'
+import {getDungeons} from '../actions/dungeons'
+import {getPlayerGold} from '../actions/gold'
+import {getWeapons} from '../actions/weapons'
+
 
 class Menu extends React.Component {
   constructor(props) {
@@ -26,6 +32,15 @@ class Menu extends React.Component {
     this.loadGame = this.loadGame.bind(this)
     this.goToTown = this.goToTown.bind(this)
     this.close = this.close.bind(this)
+  }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.dispatch(getRecruits())
+      this.props.dispatch(getSpells())
+      this.props.dispatch(getDungeons())
+      this.props.dispatch(getPlayerGold())
+      this.props.dispatch(getWeapons())
+    } else this.props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
   }
   readyRecruits(recruits) {
     const {weapons} = this.props
@@ -44,14 +59,12 @@ class Menu extends React.Component {
       } else {
         recruit.weapon_name = null
       }
-      console.log({recruit});
       return recruit
     })
   }
   loadGame() {
     let {playerParty, playerSpells, weapons, playerWeapon, auth} = this.props
     playerParty = this.readyRecruits(playerParty)
-    console.log({playerParty});
     this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells, playerWeapon, name: auth.user.user_name})
   }
   renderStartGameButton () {
@@ -112,7 +125,6 @@ class Menu extends React.Component {
   }
   render() {
     const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome, playerWeapon} = this.props
-    console.log({playerWeapon});
     return <div className="Town Menu has-text-centered">
       <div className="has-text-centered Town-Banner Menu-Banner">
         <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> {currentLocation.name} <i className="ra ra-heart-tower ra-fw" /></p>

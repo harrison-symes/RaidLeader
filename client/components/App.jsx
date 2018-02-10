@@ -25,11 +25,13 @@ class App extends React.Component {
     this.requestData()
   }
   requestData() {
-    this.props.dispatch(getRecruits())
-    this.props.dispatch(getSpells())
-    this.props.dispatch(getDungeons())
-    this.props.dispatch(getPlayerGold())
-    this.props.dispatch(getWeapons())
+    if (this.props.auth.isAuthenticated) {
+      this.props.dispatch(getRecruits())
+      this.props.dispatch(getSpells())
+      this.props.dispatch(getDungeons())
+      this.props.dispatch(getPlayerGold())
+      this.props.dispatch(getWeapons())
+    } else this.props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.started && !nextProps.started){
@@ -40,7 +42,6 @@ class App extends React.Component {
   render() {
     const {auth, currentLocation, showWelcome} = this.props
     const {game} = this.state
-    console.log({showWelcome});
     return <Router>
       <div className='app-container'>
         {auth.isAuthenticated

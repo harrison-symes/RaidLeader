@@ -115,11 +115,13 @@ class PlayerWeapon extends React.Component {
                     {...provided.dragHandleProps}
                     >
                     <tbody className="tbody box">
-                      <p className="title is-4">{weapon.name} ({weapon.level})</p>
-                      <span className="level">
-                        <button onClick={() => this.selectWeapon(weapon)} className="Table-Button is-fullwidth button ">Details</button>
-                        {!playerWeapon && <button onClick={() => this.addWeapon(weapon)} className="button is-fullwdith Table-Button">Equip</button>}
-                      </span>
+                      <tr><td className="has-text-centered title is-4">{weapon.name} ({weapon.level})</td></tr>
+                      <tr>
+                        <td className="level">
+                          <button onClick={() => this.selectWeapon(weapon)} className="Table-Button is-fullwidth button ">Details</button>
+                          {!playerWeapon && <button onClick={() => this.addWeapon(weapon)} className="button is-fullwdith Table-Button">Equip</button>}
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                   {provided.placeholder}
@@ -152,11 +154,13 @@ class PlayerWeapon extends React.Component {
                             {...provided.dragHandleProps}
                             >
                               <tbody className="tbody box">
-                                <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
-                                <div className="level">
-                                  <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
-                                  <button onClick={() => this.selectWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
-                                </div>
+                                <tr><td className="title is-4">{playerWeapon.name} ({playerWeapon.level})</td></tr>
+                                <tr>
+                                  <td className="level">
+                                    <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
+                                    <button onClick={() => this.selectWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
+                                  </td>
+                                </tr>
                               </tbody>
                             </table>
                             {provided.placeholder}

@@ -112,8 +112,8 @@ class RecruitmentCentre extends Component {
                   <br />
                   {offeredRecruits.map((recruit, i) => {
                     recruit.level = 1
-                    return <div className="box">
-                      <div key={`offered-recruit-${i}`} className="level">
+                    return <div key={`offered-recruit-${i}`} className="box">
+                      <div className="level">
                         <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /><ZodiacIcon zodiac={recruit.zodiac} /></p>
                         {selectedRecruit != recruit
                           ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Details</button>

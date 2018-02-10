@@ -68,7 +68,7 @@ class RecruitModal extends Component {
               <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
               <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
             </div>
-            <p className="subtitle is-1"><ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/></p>
+            <span className="subtitle is-1"><ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/></span>
             <hr />
             <div className="columns">
               <div className="column has-text-centered">

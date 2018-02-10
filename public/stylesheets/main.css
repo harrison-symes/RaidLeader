@@ -181,6 +181,8 @@
       .Game .BossFrame .BossSpellBar .BossSpell {
         margin-left: 5%;
         margin-right: 5%; }
+        .Game .BossFrame .BossSpellBar .BossSpell .tooltip .tooltiptext {
+          visibility: visible; }
     .Game .BossFrame .BossHealthBar {
       height: 100%; }
   .Game .PartyFrame {

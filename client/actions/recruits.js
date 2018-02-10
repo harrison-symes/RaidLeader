@@ -2,7 +2,6 @@ import request from '../utils/api'
 import createClass from '../utils/createClass'
 
 export function receiveRecruitsAction (recruits) {
-  console.log({recruits});
   return {
     type: "RECEIVE_RECRUITS",
     recruits: recruits.map(recruit => createClass(recruit))
@@ -18,6 +17,7 @@ export function getRecruits () {
 }
 
 export function addRecruitAction (recruit) {
+  console.log("Add Recruit", {recruit, other: createClass(recruit)});
   return {
     type: 'ADD_RECRUIT',
     recruit: createClass(recruit)
@@ -32,6 +32,7 @@ export function addRecruit (recruit) {
 }
 
 export function updateRecruitAction (recruit) {
+  console.log('Update recruit', {recruit, up: createClass(recruit)});
   return {
     type: 'UPDATE_RECRUIT',
     recruit: createClass(recruit)

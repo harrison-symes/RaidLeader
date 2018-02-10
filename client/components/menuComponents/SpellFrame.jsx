@@ -41,15 +41,18 @@ function SpellFrame (props) {
   return showMore
     ? modal()
     : <tbody className="tbody box">
-      <p className="subtitle is-4">
-        {/* {spell.name} */}
-        &nbsp; <SpellIcon spell={spell} isLarge={true}/>
-      </p>
-      <div className="level">
-        {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}
-        <button onClick={() => viewSpell(spell)} className="Table-Button is-fullwidth button">Details</button>
-        {!onBar && playerSpells.length < currentLocation.max_spells && <button className="Table-Button button is-fullwidth" onClick={()=>addSpell(spell)}>Add</button>}
-      </div>
+      <tr className="has-text-centered">
+        <td className="subtitle is-4 has-text-centered">
+          &nbsp; <SpellIcon spell={spell} isLarge={true}/>
+        </td>
+      </tr>
+      <tr>
+        <td className="level">
+          {onBar && <button className="Table-Button button is-fullwidth" onClick={()=>removeSpell(spell)}>Remove</button>}
+          <button onClick={() => viewSpell(spell)} className="Table-Button is-fullwidth button">Details</button>
+          {!onBar && playerSpells.length < currentLocation.max_spells && <button className="Table-Button button is-fullwidth" onClick={()=>addSpell(spell)}>Add</button>}
+        </td>
+      </tr>
     </tbody>
 }
 

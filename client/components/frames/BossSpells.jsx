@@ -188,40 +188,13 @@ class BossSpell extends Component {
             }}
           />
         </span>
-        : <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '100%', height: '100%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
+        : <i style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width, height: width, margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
       }
     </span>
     </button>
-    // return <div
-    //   className={`PlayerSpell button ${spellColour}`} style={{width: `${width}px`}}>
-    //   <table className="table is-fullwidth">
-    //     <thead className='thead has-text-centered'>
-    //       <th className="th subtitle is-6 has-text-centered">({spell.name} ({spell.cost})</th>
-    //     </thead>
-    //     {(onCooldown || castInterval) &&
-    //       <tfoot className="tfoot">
-    //         <tr>
-    //           <td>
-    //             {onCooldown && <CoolDownBar spell={spell} currentCD={currentCD} />}
-    //             {castInterval && <CastBar spell={spell} currentCastTime={currentCastTime} />}
-    //           </td>
-    //         </tr>
-    //       </tfoot>
-    //     }
-    //   </table>
-    // </div>
   }
 }
 
-function CoolDownBar ({spell, currentCD}) {
-  const percent = 100 - (currentCD / spell.coolDown * 100)
-  return <progress className={`SpellCooldDown is-large progress is-danger`} max="100" value={percent}>{percent}%</progress>
-}
-
-function CastBar ({spell, currentCastTime}) {
-  const percent = (currentCastTime / spell.cast * 100)
-  return <progress className={`SpellCooldDown is-large progress is-primary`} max="100" value={percent}>{percent}%</progress>
-}
 
 const mapStateToProps = ({started, player, boss, party, friendlyTarget}) => {
   return {

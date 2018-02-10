@@ -85,8 +85,7 @@ class Party extends React.Component {
                     {...provided.dragHandleProps}
                     >
                       <RecruitFrame
-                        selectRecruit={this.selectRecruit}
-
+                      selectRecruit={this.selectRecruit}
                       addRecruit={this.addToParty.bind(this)}
                       inParty={false}
                       key={`recruit-${recruit.id}`}

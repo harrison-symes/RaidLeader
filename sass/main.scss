@@ -1,6 +1,3 @@
-body {
-}
-
 .Town {
   min-height: 100vh;
   background-color: #8f7651;
@@ -266,6 +263,9 @@ body {
       .BossSpell {
         margin-left: 5%;
         margin-right: 5%;
+        .tooltip .tooltiptext {
+          visibility: visible;
+        }
       }
     }
     .BossHealthBar {

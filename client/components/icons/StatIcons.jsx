@@ -5,89 +5,89 @@ import weaponSwitch from '../../utils/weaponSwitch'
 import {getZodiacData} from '../../utils/zodiacs'
 
 export function HealthIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Health</span>
     {value}
     <i className="ra ra-fw ra-two-hearts icon-large" />
-  </div>
+  </span>
 }
 
 export function SpeedIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Speed</span>
     {value}
     <i className="ra ra-fw ra-lightning-bolt icon-large" />
-  </div>
+  </span>
 }
 
 export function PowerIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Power</span>
     {value}
     <i className="ra ra-fw ra-axe-swing icon-large" />
-  </div>
+  </span>
 }
 
 export function CastTimeIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Cast Time</span>
     {value}
     <i className="ra ra-fw ra-stopwatch icon-large" />
-  </div>
+  </span>
 }
 
 export function CoolDownIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Cool Down </span>
     {value}
     <i className="ra ra-fw ra-hourglass icon-large" />
-  </div>
+  </span>
 }
 
 export function ManaIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Mana</span>
     {value}
     <i className="ra ra-fw ra-crystals icon-large" />
-  </div>
+  </span>
 }
 
 export function ManaRegenIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Mana Regen (per s)</span>
     {value}
     <i className="ra ra-fw ra-cycle icon-large" />
-  </div>
+  </span>
 }
 
 export function GoldIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Gold</span>
     {value}
     <i className="ra ra-fw ra-gold-bar icon-large" />
-  </div>
+  </span>
 }
 
 export function ArmorIcon ({value}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{value} Armor</span>
     {value}
     <i className="ra ra-fw ra-heavy-shield icon-large" />
-  </div>
+  </span>
 }
 
 export function ClassIcon ({heroClass}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{heroClass}</span>
       <i className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
-    </div>
+    </span>
 }
 
 export function TargetTypeIcon ({singleTarget}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{singleTarget ? "Requires Friendly Target" : "No Target Needed"}</span>
       <i className={`ra ra-fw ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
-    </div>
+    </span>
 }
 
 export function LevelIcon ({level}) {
@@ -100,34 +100,31 @@ export function LevelIcon ({level}) {
     case 5: num = 'five'; break;
     case 6: num = 'six'; break;
   }
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">Level {level}</span>
       <i style={{color: 'white', backgroundColor: 'black'}} className={`ra ra-fw ra-dice-${num} icon-large`} />
-    </div>
+    </span>
 }
 
 export function WeaponAvailableIcon ({amount, hasWeapon}) {
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">
       {hasWeapon
-        ? <span>
-          <p>{hasWeapon.name}</p>
-        </span>
-        : <p>{amount} Weapon{amount != 1 ? 's':''} Available</p>
+        ? `${hasWeapon.name}`
+        : `${amount} Weapon${amount != 1 ? 's':''} Available`
       }
     </span>
       <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon : 'ra-hand'} icon-large`} />
-    </div>
+    </span>
 }
 
 export function WeaponIcon ({name, level}) {
   const weapon = weaponSwitch[name](level)
-  console.log({weapon});
   return <span className="tooltip">
     <span className="tooltiptext">
-      <p>{name}</p>
+      <span>{name}</span>
       <hr />
-      <p>{weapon.class} Weapon</p>
+      <span>{weapon.class} Weapon</span>
     </span>
       <i className={`ra ra-fw ${weapon.icon} icon-large`} />
     </span>
@@ -143,32 +140,31 @@ export function SpellElementIcon ({element}) {
     case 'Arcane': icon = 'ra-crystal-ball'; break;
     default: icon = 'ra-zigzag-leaf'; break;
   }
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">{element} Spell</span>
       <i className={`ra ra-fw ${icon} icon-large`} />
-    </div>
+    </span>
 }
 
 export function SpellIcon ({spell, isLarge}) {
   const {name, icon, color, background} = spell
-  return <div className="tooltip box">
+  return <span className="tooltip box">
     <span className="tooltiptext">{name}</span>
     <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
-  </div>
+  </span>
 }
 
 export function ZodiacIcon ({zodiac, isLarge}) {
   let data = getZodiacData(zodiac)
-  console.log({data, zodiac});
   const translatePerc = (val) => `${val < 0 ? '': '+'}${val * 100}%`
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">
-      <p>{zodiac}</p>
+      <span>{zodiac}</span>
       <hr/>
-      {data.health != 0 &&<p>{translatePerc(data.health)} Health</p>}
-      {data.power != 0 && <p>{translatePerc(data.power)} Power</p>}
-      {data.speed != 0 && <p>{translatePerc(data.speed)} Speed</p>}
+      {data.health != 0 &&<span>{translatePerc(data.health)} Health</span>}
+      {data.power != 0 && <span>{translatePerc(data.power)} Power</span>}
+      {data.speed != 0 && <span>{translatePerc(data.speed)} Speed</span>}
     </span>
     <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
-  </div>
+  </span>
 }
