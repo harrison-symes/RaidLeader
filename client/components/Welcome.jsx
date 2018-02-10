@@ -5,13 +5,16 @@ import randomName from '../utils/randomName'
 
 import createClass from '../utils/createClass'
 import {getStarted} from '../actions/welcome'
+import {getZodiacs} from '../utils/zodiacs'
 
 class Welcome extends Component {
   constructor(props) {
     super(props)
+    console.log(getZodiacs());
     this.state = {
       stage: 1,
-      paladinName: randomName()
+      paladinName: randomName(),
+      zodiac: getZodiacs()[Math.floor(Math.random() * getZodiacs().length)]
     }
     this.nextStage = this.nextStage.bind(this)
     this.getStarted = this.getStarted.bind(this)
@@ -20,7 +23,8 @@ class Welcome extends Component {
     this.setState({stage: this.state.stage + 1})
   }
   getStarted() {
-    this.props.dispatch(getStarted({name: this.state.paladinName, heroClass: 'Paladin'}))
+    console.log(this.state, 'start');
+    this.props.dispatch(getStarted({name: this.state.paladinName, heroClass: 'Paladin', zodiac: this.state.zodiac}))
   }
   stageOne() {
     return <div className="section has-text-centered">
