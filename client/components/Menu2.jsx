@@ -44,14 +44,12 @@ class Menu extends React.Component {
       } else {
         recruit.weapon_name = null
       }
-      console.log({recruit});
       return recruit
     })
   }
   loadGame() {
     let {playerParty, playerSpells, weapons, playerWeapon, auth} = this.props
     playerParty = this.readyRecruits(playerParty)
-    console.log({playerParty});
     this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells, playerWeapon, name: auth.user.user_name})
   }
   renderStartGameButton () {
@@ -112,7 +110,6 @@ class Menu extends React.Component {
   }
   render() {
     const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome, playerWeapon} = this.props
-    console.log({playerWeapon});
     return <div className="Town Menu has-text-centered">
       <div className="has-text-centered Town-Banner Menu-Banner">
         <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> {currentLocation.name} <i className="ra ra-heart-tower ra-fw" /></p>

@@ -16,7 +16,6 @@ class BossPreview extends React.Component {
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
     if (boss == this.props.targetBoss) colour='is-primary'
     const renderStat = (text) => <li className="column is-6 has-text-centered"><p className="subtitle is-4">{text}</p></li>
-    console.log({boss});
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">

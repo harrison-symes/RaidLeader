@@ -122,7 +122,6 @@ export function WeaponAvailableIcon ({amount, hasWeapon}) {
 
 export function WeaponIcon ({name, level}) {
   const weapon = weaponSwitch[name](level)
-  console.log({weapon});
   return <span className="tooltip">
     <span className="tooltiptext">
       <p>{name}</p>
@@ -159,7 +158,6 @@ export function SpellIcon ({spell, isLarge}) {
 
 export function ZodiacIcon ({zodiac, isLarge}) {
   let data = getZodiacData(zodiac)
-  console.log({data, zodiac});
   const translatePerc = (val) => `${val < 0 ? '': '+'}${val * 100}%`
   return <div className="tooltip">
     <span className="tooltiptext">

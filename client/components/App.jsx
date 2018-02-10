@@ -40,7 +40,6 @@ class App extends React.Component {
   render() {
     const {auth, currentLocation, showWelcome} = this.props
     const {game} = this.state
-    console.log({showWelcome});
     return <Router>
       <div className='app-container'>
         {auth.isAuthenticated

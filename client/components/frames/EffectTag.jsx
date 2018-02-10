@@ -16,7 +16,6 @@ class EffectTag extends Component {
     const remaining = this.state.remaining -1
     if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
     if (this.state.ticks == effect.tickRate) {
-      console.log("tick");
       this.props.dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
       this.setState({ticks: 0})
     }

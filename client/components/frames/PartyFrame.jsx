@@ -29,7 +29,6 @@ class PartyFrame extends Component {
   }
   render() {
     const {party} = this.props
-    console.log({party});
     return <div className="section PartyFrame">
       <div className="columns">
         {party.map((member, i) => this.classSwitch(member, i))}
