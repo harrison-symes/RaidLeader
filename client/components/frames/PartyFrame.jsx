@@ -29,6 +29,7 @@ class PartyFrame extends Component {
   }
   render() {
     const {party} = this.props
+    console.log({party});
     return <div className="section PartyFrame">
       <div className="columns">
         {party.map((member, i) => this.classSwitch(member, i))}
@@ -43,10 +44,4 @@ const mapStateToProps = ({party}) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PartyFrame)
+export default connect(mapStateToProps)(PartyFrame)
