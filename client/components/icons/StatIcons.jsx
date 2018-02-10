@@ -123,6 +123,7 @@ export function WeaponIcon ({name, level}) {
   return <span className="tooltip">
     <span className="tooltiptext">
       <span>{name}</span>
+      <hr />
       <span>{weapon.class} Weapon</span>
     </span>
       <i className={`ra ra-fw ${weapon.icon} icon-large`} />
@@ -159,6 +160,7 @@ export function ZodiacIcon ({zodiac, isLarge}) {
   return <span className="tooltip">
     <span className="tooltiptext">
       <span>{zodiac}</span>
+      <hr/>
       {data.health != 0 &&<span>{translatePerc(data.health)} Health</span>}
       {data.power != 0 && <span>{translatePerc(data.power)} Power</span>}
       {data.speed != 0 && <span>{translatePerc(data.speed)} Speed</span>}
