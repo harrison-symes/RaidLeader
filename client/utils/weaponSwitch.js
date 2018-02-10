@@ -110,6 +110,19 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-bleeding-hearts'
   }),
+  ['Bear Claw Arrows']: (level, id) => ({
+    name: 'Bear Claw Arrows',
+    type: 'Weapon',
+    level,
+    id,
+    hp: 0.1,
+    power: 0.33,
+    speed: -1,
+    class: 'Hunter',
+    description: "There are Ten arrows, but they seem sturdy enough to reuse.",
+    bonusEffect: null,
+    icon: 'ra-arrow-cluster'
+  }),
   ['Massive Shell']: (level, id) => ({
     name: 'Massive Shell',
     type: 'Weapon',
@@ -204,6 +217,20 @@ module.exports = {
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
     icon: 'ra-poison-cloud'
+  }),
+  ['Plagued Arrows']: (level, id) => ({
+    name: 'Plagued Arrows',
+    type: 'Weapon',
+    level,
+    id,
+    hp: -0.3,
+    power: -0.5,
+    speed: 3,
+    class: 'Hunter',
+    description: 'A lost Quiver of Arrows from a fallen adventurer. "Joe Van Boe" is engraved on the back',
+    bonusEffect: 'selfPoison',
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-chemical-arrow'
   }),
   ['Plagued Scythe']: (level, id) => ({
     name: 'Plagued Scythe',
