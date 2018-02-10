@@ -66,7 +66,8 @@ class BossSpell extends Component {
       case 'Decay':
         dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      case 'Poison':
+      case 'Sludge Bomb':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Overwhelm':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})

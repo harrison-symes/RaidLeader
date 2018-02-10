@@ -15,7 +15,7 @@ class SeepingSlime extends BossFrame {
           case 'Regenerate':
             return (boss.hp <= boss.initHp - spell.health)
           case 'Seep': return boss.hp > 10
-          case 'Poison': return true
+          case 'Sludge Bomb': return true
           default: return false
         }
       } else return false

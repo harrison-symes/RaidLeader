@@ -59,7 +59,7 @@ export default {
       icon: 'ra-knife-fork'
     },
     {
-      name: 'Plague Bite',
+      name: 'Bite',
       cast: 5,
       cost: 2,
       coolDown: 5,
@@ -67,8 +67,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 100% of BOSS POWER and Poison the Target, dealing 60% of their Max Health over 15 seconds",
-      icon: 'ra-bone-bite'
+      description: "Damage the Boss' TARGET for 100% of BOSS POWER",
+      icon: 'ra-alligator-clip'
     }
   ]
 }

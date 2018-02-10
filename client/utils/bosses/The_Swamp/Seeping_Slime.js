@@ -22,7 +22,7 @@ export default {
   spells: [
     {
       name: 'Regenerate',
-      cast: 10,
+      cast: 5,
       cost: 20,
       coolDown: 20,
       type: 'damage',
@@ -47,15 +47,15 @@ export default {
       icon: 'ra-bleeding-hearts'
     },
     {
-      name: 'Poison',
-      cost: 0,
-      cast: 2,
-      coolDown: 5,
+      name: 'Sludge Bomb',
+      cost: 2,
+      cast: 3,
+      coolDown: 7,
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Poison the Target, dealing 60% of their Max Health over 15 seconds",
+      description: "Damage the Boss's target for 100% Boss Power, Poison the Target dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-poison-cloud'
     }
   ]
