@@ -7,7 +7,7 @@ export default function party (state = [], action) {
     case 'TRAVEL_TO_TOWN':
       return []
     case 'LOAD_GAME':
-      return [...action.playerParty]
+      return action.playerParty.map(recruit => {...recruit})
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       let target = newState.find(member => member == action.target)

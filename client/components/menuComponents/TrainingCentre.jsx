@@ -52,9 +52,9 @@ class TrainingCentre extends Component {
     let nextLevel = {...recruit}
     nextLevel.level++
     nextLevel = createClass(nextLevel)
-    const speedDiff = nextLevel.speed - recruit.speed
-    const powerDiff = nextLevel.power - recruit.power
-    const healthDiff = nextLevel.hp - recruit.hp
+    const speedDiff = Math.round((nextLevel.speed - recruit.speed) * 10) / 10
+    const powerDiff = Math.round(nextLevel.power - recruit.power)
+    const healthDiff = Math.round(nextLevel.hp - recruit.hp)
     const cost = recruit.level * 500
     return <div key={`level-up-recruit-${recruit.name}-${i}`} className="box">
       <div className="subtitle is-3">{recruit.name} &nbsp;
