@@ -29,7 +29,7 @@ router.get('/weapons', decode, (req, res) => {
 })
 
 router.post('/getStarted', decode, (req, res) => {
-  addRecruit(req.user.user_id, req.body.name, 1, 'Paladin')
+  addRecruit(req.user.user_id, req.body.name, 1, 'Paladin', req.body.zodiac)
     .then(recruit => {
       addSpell(req.user.user_id, 'Heal')
         .then(spell => {
