@@ -16,7 +16,7 @@ class Hunter extends PartyMemberFrame {
     }
   }
   startFighting () {
-    this.props.dispatch({type: 'HUNTER_START_BUFF'})
+    this.props.dispatch({type: 'HUNTER_START_BUFF', target: this.props.member})
     this.startCast()
   }
 }
