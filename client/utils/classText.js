@@ -22,7 +22,7 @@ export function classTraits(heroClass) {
     case 'Rogue': return "All attacks have a (20%) chance to deal Critical Damage (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
     case 'Monk': return "Whenever the Monk attacks, all Party Members are healed for (+10%) of their hp"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"
-    case 'Hunter': return "The Hunter's deals Critical Damage while below 50%, and these attacks also heal the Hunter for 10% of Max Health"
+    case 'Hunter': return "The Hunter's deals Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
     default: return null
   }
 }
