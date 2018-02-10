@@ -148,16 +148,16 @@ export function SpellElementIcon ({element}) {
 
 export function SpellIcon ({spell, isLarge}) {
   const {name, icon, color, background} = spell
-  return <div className="tooltip box">
+  return <span className="tooltip box">
     <span className="tooltiptext">{name}</span>
     <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
-  </div>
+  </span>
 }
 
 export function ZodiacIcon ({zodiac, isLarge}) {
   let data = getZodiacData(zodiac)
   const translatePerc = (val) => `${val < 0 ? '': '+'}${val * 100}%`
-  return <div className="tooltip">
+  return <span className="tooltip">
     <span className="tooltiptext">
       <span>{zodiac}</span>
       <hr/>
@@ -166,5 +166,5 @@ export function ZodiacIcon ({zodiac, isLarge}) {
       {data.speed != 0 && <span>{translatePerc(data.speed)} Speed</span>}
     </span>
     <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
-  </div>
+  </span>
 }

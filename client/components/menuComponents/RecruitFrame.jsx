@@ -25,21 +25,25 @@ class RecruitFrame extends React.Component {
     })
     return showMore
       ? <RecruitModal recruit={recruit} close={back} />
-      : <tbody className="tbody box">
-      <p className="subtitle is-4">
-        {recruit.name}
-        &nbsp;
-        <ClassIcon heroClass={recruit.heroClass} />
-        <span className="is-pulled-right">
-          <LevelIcon level={recruit.level} />
-          <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
-         </span>
-      </p>
-      <div className="level">
-        {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}
-        <button onClick={() => selectRecruit(recruit)} className="Table-Button  button is-fullwidth">Details</button>
-        {playerParty.length < currentLocation.max_party && !inParty && <button className="Table-Button button is-fullwidth" onClick={() => addRecruit(recruit)}>Add</button>}
-      </div>
+      : <tbody className="tbody box has-text-centered">
+        <tr>
+          <td className="subtitle is-4">
+            {recruit.name}
+            &nbsp;
+            <ClassIcon heroClass={recruit.heroClass} />
+            <span className="is-pulled-right">
+              <LevelIcon level={recruit.level} />
+              <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
+            </span>
+          </td>
+        </tr>
+      <tr>
+        <td className="level">
+          {inParty && <button className="Table-Button button is-fullwidth" onClick={()=>removeRecruit(recruit)}>Remove</button>}
+          <button onClick={() => selectRecruit(recruit)} className="Table-Button  button is-fullwidth">Details</button>
+          {playerParty.length < currentLocation.max_party && !inParty && <button className="Table-Button button is-fullwidth" onClick={() => addRecruit(recruit)}>Add</button>}
+        </td>
+      </tr>
     </tbody>
   }
 }

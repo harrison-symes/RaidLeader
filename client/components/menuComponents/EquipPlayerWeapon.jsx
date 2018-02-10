@@ -154,10 +154,12 @@ class PlayerWeapon extends React.Component {
                             {...provided.dragHandleProps}
                             >
                               <tbody className="tbody box">
-                                <p className="title is-4">{playerWeapon.name} ({playerWeapon.level})</p>
-                                <tr className="level">
-                                  <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
-                                  <button onClick={() => this.selectWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
+                                <tr><td className="title is-4">{playerWeapon.name} ({playerWeapon.level})</td></tr>
+                                <tr>
+                                  <td className="level">
+                                    <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
+                                    <button onClick={() => this.selectWeapon(playerWeapon)} className="Table-Button is-fullwidth button">Details</button>
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
