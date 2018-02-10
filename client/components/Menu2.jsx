@@ -44,12 +44,14 @@ class Menu extends React.Component {
       } else {
         recruit.weapon_name = null
       }
+      console.log({recruit});
       return recruit
     })
   }
   loadGame() {
     let {playerParty, playerSpells, weapons, playerWeapon, auth} = this.props
     playerParty = this.readyRecruits(playerParty)
+    console.log({playerParty});
     this.props.dispatch({type: 'LOAD_GAME', playerParty, playerSpells, playerWeapon, name: auth.user.user_name})
   }
   renderStartGameButton () {
