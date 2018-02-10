@@ -266,6 +266,9 @@ body {
       .BossSpell {
         margin-left: 5%;
         margin-right: 5%;
+        .tooltip .tooltiptext {
+          visibility: visible;
+        }
       }
     }
     .BossHealthBar {
