@@ -20,6 +20,7 @@ router.put('/weapons', decode, (req, res) => {
 })
 
 router.put('/level', decode, (req, res) => {
+  console.log(req.body);
   recruitsDb.levelUpRecruit(req.body.id, req.body.level )
     .then(recruit => res.json(recruit))
 })

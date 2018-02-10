@@ -32,6 +32,7 @@ export function addRecruit (recruit) {
 }
 
 export function updateRecruitAction (recruit) {
+  console.log('Update recruit', {recruit, up: createClass(recruit)});
   return {
     type: 'UPDATE_RECRUIT',
     recruit: createClass(recruit)

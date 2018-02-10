@@ -16,6 +16,12 @@ import SpellFrame from './menuComponents/SpellFrame'
 import BossPreview from './menuComponents/BossPreview'
 import DungeonRewards from './menuComponents/DungeonRewards'
 
+import {getRecruits} from '../actions/recruits'
+import {getSpells} from '../actions/spells'
+import {getDungeons} from '../actions/dungeons'
+import {getPlayerGold} from '../actions/gold'
+import {getWeapons} from '../actions/weapons'
+
 
 class Menu extends React.Component {
   constructor(props) {
@@ -26,6 +32,15 @@ class Menu extends React.Component {
     this.loadGame = this.loadGame.bind(this)
     this.goToTown = this.goToTown.bind(this)
     this.close = this.close.bind(this)
+  }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.dispatch(getRecruits())
+      this.props.dispatch(getSpells())
+      this.props.dispatch(getDungeons())
+      this.props.dispatch(getPlayerGold())
+      this.props.dispatch(getWeapons())
+    } else this.props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
   }
   readyRecruits(recruits) {
     const {weapons} = this.props
