@@ -35,7 +35,7 @@ export default {
     {
       name: 'Spread Plague',
       cost: 0,
-      cast: 5,
+      cast: 2,
       coolDown: 15,
       powerRatio: 1,
       type: 'damage',
@@ -68,7 +68,7 @@ export default {
       singleTarget: false,
       onCooldown: false,
       power: -10,
-      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power if enemy party is still alive",
+      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power",
       icon: 'ra-slash-ring'
     }
   ]
