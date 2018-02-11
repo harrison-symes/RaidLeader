@@ -185,7 +185,8 @@ module.exports = {
     singleTarget: false,
     isChanneled: true,
     ticks: 3,
-    powerRatio: 0.5,
+    tickPower: 0.5,
+    powerRatio: 1,
     description: "Damage the Boss for (%50) of Player Power and Heal the Player for (%100) of Damage done. Occurs 3 times during spell cast",
     icon: 'ra-droplet',
     color: colors.darkPurple,
@@ -259,7 +260,8 @@ module.exports = {
     cost: 10,
     coolDown: 10,
     type: 'healing',
-    powerRatio: 2,
+    powerRatio: 4,
+    tickPower: 2 / 3,
     ticks: 3,
     singleTarget: false,
     isChanneled: true,
@@ -268,5 +270,23 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
+  },
+  'Tranquility': {
+    id: 17,
+    name: 'Tranquility',
+    cast: 10,
+    cost: 25,
+    coolDown: 30,
+    type: 'healing',
+    powerRatio: 1,
+    tickPower: 0.5,
+    ticks: 10,
+    singleTarget: false,
+    isChanneled: true,
+    description: 'Heal ALL friendly characters for 500% Player Power over 10 seconds. When the cast is finished, Heal All friendly characters for 100% Player Power and remove ALL effects from ALL friendly recruits',
+    icon: 'ra-fairy',
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   }
 }

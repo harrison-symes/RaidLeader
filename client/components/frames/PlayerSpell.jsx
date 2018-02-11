@@ -23,13 +23,15 @@ class PlayerSpell extends Component {
   }
   tickSwitch() {
     const {spell, dispatch, player} = this.props
-    const power = this.props.player.power * spell.powerRatio
+    const power = this.props.player.power * spell.tickPower
     switch(spell.name) {
       case 'Drain Life':
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
         return dispatch({type: 'HEAL_PLAYER', power: power * 2})
       case 'Siphon Life':
-        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: 2 * player.power / spell.ticks})
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Tranquility':
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       default: return
     }
   }
@@ -78,6 +80,9 @@ class PlayerSpell extends Component {
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
       case 'Siphon Life':
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power: player.power * 4})
+      case 'Tranquility':
+        dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       default: return
     }
   }
