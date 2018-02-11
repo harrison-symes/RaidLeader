@@ -1,4 +1,3 @@
-
 export function startingBuff (heroClass) {
   switch(heroClass) {
     case 'Paladin': return 'The Paladin gains (+3%) HP for each other Party Member'
@@ -9,6 +8,7 @@ export function startingBuff (heroClass) {
     case 'Mage': return "The Mage increases the Player's Mana by (20%)"
     case 'Monk': return "The Monk gains (1) speed for each other Party Member"
     case 'Hunter': return "The Hunter increases the speed of all other party members by 10%"
+    case 'Shaman' return "The Shaman reduces the Cast Time of all Player Spells by 10%"
     default: return null
   }
 }
@@ -22,7 +22,8 @@ export function classTraits(heroClass) {
     case 'Rogue': return "All attacks have a (20%) chance to deal Critical Damage (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
     case 'Monk': return "Whenever the Monk attacks, all Party Members are healed for (+10%) of their hp"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"
-    case 'Hunter': return "The Hunter's deals Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
+    case 'Hunter': return "The Hunter's attacks deal Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
+    case 'Shaman': return "The Shaman's attacks also place a Renew effect on the most damaged friendly target, healing for 60% of Target's Max Health over 15 seconds"
     default: return null
   }
 }
@@ -37,5 +38,6 @@ export function classIcons (heroClass) {
     case 'Monk': return 'ra-doubled'
     case 'Warrior': return 'ra-knight-helmet'
     case 'Hunter': return 'ra-archer'
+    case 'Shaman' return 'ra-gem-pendant'
   }
 }
