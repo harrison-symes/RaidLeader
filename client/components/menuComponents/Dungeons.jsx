@@ -54,7 +54,7 @@ class Dungeons extends Component {
               <i className={`ra ra-bottom-right ra-lg` }></i>
             </span>
           </a>
-          {selected && allowed && <a onClick={()=>this.travel()} className="button is-large is-outlined is-primary is-fullwidth">Travel Here</a>}
+          {selected && allowed && <a onClick={()=>this.travel()} className="button is-large is-outlined is-primary is-fullwidth">Travel Here&nbsp;<i className="icon ra ra-compass" /></a>}
         </footer>
       </div>
     </div>

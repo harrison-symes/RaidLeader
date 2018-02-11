@@ -40,7 +40,7 @@ class Town extends Component {
       <span className="icon is-large">
         <i className={`ra ${icon} ra-lg`}></i>
       </span>
-      <span className="content is-large"> &nbsp;{name}&nbsp;</span>
+      &nbsp;{name}&nbsp;
       <span className="icon is-large">
         <i className={`ra ${icon} ra-lg` }></i>
       </span>
@@ -73,7 +73,7 @@ class Town extends Component {
       </div>
       {this.modalSwitch()}
       <div className="Town-Buttons has-text-centered">
-        <a onClick={() => this.toggleModal('Dungeon Map')}  className="Travel-Button button is-large is-fullwidth is-primary is-outlined">
+        <a onClick={() => this.toggleModal('Dungeon Map')} className="Travel-Button button is-large is-fullwidth is-primary is-outlined">
           <span className="icon is-large">
             <i className={`ra ra-forward ra-lg` }></i>
           </span>
