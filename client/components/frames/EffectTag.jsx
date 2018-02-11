@@ -12,19 +12,22 @@ class EffectTag extends Component {
     }
   }
   tickSecond() {
-    const {party, effect, target} = this.props
-    const remaining = this.state.remaining -1
-    if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
-    if (this.state.ticks == effect.tickRate) {
-      this.props.dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
-      this.setState({ticks: 0})
-    }
-    if (remaining <= 0) {
-      this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
-    } else {
-      this.startSecond()
-      this.setState({remaining, ticks: this.state.ticks + 1})
-    }
+    const {party, effect, target, started} = this.props
+    if (started && target.isAlive) {
+      const remaining = this.state.remaining -1
+      if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
+      if (this.state.ticks == effect.tickRate) {
+        this.props.dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
+        this.setState({ticks: 0})
+      }
+      if (remaining <= 0) {
+        this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
+      } else {
+        this.startSecond()
+        this.setState({remaining, ticks: this.state.ticks + 1})
+      }
+    } else this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
+
   }
   startSecond() {
     const {party, target, effect} = this.props
@@ -58,6 +61,6 @@ class EffectTag extends Component {
   }
 }
 
-const mapStateToProps = ({party}) => ({party})
+const mapStateToProps = ({party, started}) => ({party, started})
 
 export default connect(mapStateToProps)(EffectTag)

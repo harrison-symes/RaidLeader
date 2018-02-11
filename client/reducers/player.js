@@ -38,7 +38,7 @@ export default function player (state = null, action) {
       return newState
     case 'LOAD_GAME':
       newState = createPlayer(action.playerWeapon, action.name)
-      newState.spells = [...action.playerSpells]
+      newState.spells = action.playerSpells.map(spell => ({...spell}))
       return newState
     case 'TICK_ONE_SECOND':
       newState.mana+=newState.manaRegen
@@ -79,6 +79,13 @@ export default function player (state = null, action) {
     case 'MAGE_START_BUFF':
       newState.mana = Math.round(newState.mana * 1.2)
       newState.maxMana = Math.round(newState.maxMana * 1.2)
+      return newState
+    case 'SHAMAN_START_BUFF':
+      newState.spells = newState.spells.map(spell => {
+        spell.cast-= spell.cast * 0.1
+        spell.coolDown -= spell.coolDown * 0.1
+        return spell
+      })
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
