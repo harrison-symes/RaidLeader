@@ -92,11 +92,11 @@ class Menu extends React.Component {
     const {pathname} = this.props.location
     return <a onClick={() => this.showModal(name)} className="button is-fullwidth is-large is-warning is-outlined">
       <span className="icon">
-        <i className={`ra ${icon} ra-fw`}></i>
+        <i className={`ra ${icon} ra-lg`}></i>
       </span>
       <span className="content is-large"> &nbsp;{name}&nbsp;</span>
       <span className="icon">
-        <i className={`ra ${icon} ra-fw` }></i>
+        <i className={`ra ${icon} ra-lg` }></i>
       </span>
     </a>
   }
