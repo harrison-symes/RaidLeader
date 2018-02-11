@@ -9,7 +9,7 @@ class Mage extends PartyMemberFrame {
     const {member, started, player, dispatch} = this.props
     if (started && member.isAlive) {
       if (player.mana / player.maxMana * 100 < 30) power*2
-      dispatch({type: 'SPECIAL_ATTACK_BOSS', power})
+      dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       this.startCast()
     }
   }

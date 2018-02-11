@@ -6,7 +6,7 @@ export function startingBuff (heroClass) {
     case 'Warrior': return "The Warrior increases the Power of each other Party Member by (+10%)"
     case 'Warlock': return "The Warlock removes armor from the Boss (Armor removed = (300%) of Warlock's Power)"
     case 'Mage': return "The Mage increases the Player's Mana by (20%)"
-    case 'Monk': return "The Monk gains (1) speed for each other Party Member"
+    case 'Monk': return "The Monk gains (50%) more speed for each other Party Member"
     case 'Hunter': return "The Hunter increases the speed of all other party members by 10%"
     case 'Shaman': return "The Shaman reduces the Cast Time and Cool Down of all Player Spells by 10%"
     default: return null
@@ -18,7 +18,7 @@ export function classTraits(heroClass) {
     case 'Paladin': return "The Paladin's attacks heal the Paladin for (50%) of the Damage dealt. These attacks also force the Boss to target the Paladin"
     case 'Mage': return "The Mage deals (100%) more damage while the Player is below (30%) Mana"
     case 'Warrior': return "The Warrior's attacks deal Critical Damage while the Boss is below (25%) HP. (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
-    case 'Priest': return "The Priest heals a Damaged Party Member instead of Attacking the Boss. (If no Party Member is Damaged, the Priest will attack the Boss instead)"
+    case 'Priest': return "The Priest heals a Damaged Party Member instead of Attacking the Boss. (Any excess healing will be dealt as damage to the Boss)"
     case 'Rogue': return "All attacks have a (20%) chance to deal Critical Damage (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
     case 'Monk': return "Whenever the Monk attacks, all Party Members are healed for (+10%) of their hp"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"

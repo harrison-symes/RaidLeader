@@ -133,7 +133,8 @@ module.exports = {
     speed: 0,
     class: 'Warrior',
     description: 'A shell so heavy only a Warrior can weild it, not good for hitting things with, but great for not dying!',
-    bonusEffect: null,
+    bonusEffect: 'taunt',
+    effectDescription: "The Warrior's Attacks now force the Boss to target the Warrior"
     icon: 'ra-spiral-shell'
   }),
   ['Ancient Pearls']: (level, id) => ({
