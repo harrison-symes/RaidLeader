@@ -17,6 +17,7 @@ class RecruitModal extends Component {
   equip(id) {
     const {recruit} = this.props
     this.props.dispatch(recruitEquipWeapon(recruit, id))
+    this.setState({weaponFrame: false})
   }
   toggleWeaponFrame() {
     this.setState({weaponFrame: !this.state.weaponFrame})
@@ -29,34 +30,43 @@ class RecruitModal extends Component {
       if (other == weapon) return false
       return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
     })
-    return <div className="box">
-      {weapon
-        ? <div>
-          <p className="title is-3">Equipped: {weapon.name}</p>
-          <button onClick={() => this.equip(null)} className="delete" aria-label="close"></button>
-          <p className="subtitle is-5">{weapon.description}</p>
-          <div className="columns is-multiline">
-            {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></div>}
-            {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`} /></div>}
-            {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed * 100}%`}/> </div>}
-            {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+    return <div className="">
+      <div className="box">
+        {weapon
+          ? <div className="">
+            <p className="title is-3">Equipped: {weapon.name}</p>
+            <button onClick={() => this.equip(null)} className="delete" aria-label="close"></button>
+            <p className="subtitle is-5">{weapon.description}</p>
+            <div className="columns is-multiline">
+              {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></div>}
+              {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`} /></div>}
+              {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed * 100}%`}/> </div>}
+              {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+            </div>
           </div>
-        </div>
-        : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
-      }
-      {availableWeapons.length != 0 && <button className="button is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>}
+          : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
+        }
+        {availableWeapons.length != 0 && <button className="button is-small is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>}
+      </div>
+      <hr />
+      {this.state.weaponFrame && this.weaponFrame()}
     </div>
   }
   weaponFrame() {
-    const {recruit, weapons, recruits} = this.props
+    let {recruit, weapons, recruits} = this.props
     let weapon
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
-    const availableWeapons = weapons.filter(other => {
+    let availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
       return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
     })
+    let dup = availableWeapons.reduce((obj, weapon) => {
+      obj[weapon.name] = weapon
+      return obj
+    }, {})
+    availableWeapons=Object.keys(dup).map(key => dup[key])
     return <div>
-      <p className="title is-4">Avaiable Weapons</p>
+      <p className="title is-4">Avaiable Weapon{availableWeapons.length > 1 ? 's' : ''}</p>
       <div className="columns is-multiline">
         {availableWeapons.map((weapon, i) => <div key={`available-weapon-${i}`} className="box column">
           <p className="title is-4">{weapon.name}</p>
@@ -92,7 +102,7 @@ class RecruitModal extends Component {
             <hr />
             {this.renderWeaponFrame()}
             {!this.state.weaponFrame
-              ? <div className="columns">
+              && <div className="columns">
                 <div className="column has-text-centered">
                   <p className="title is-4">Starting Buff</p>
                   <p className="content is-large">{startingBuff(recruit.heroClass)}</p>
@@ -102,9 +112,7 @@ class RecruitModal extends Component {
                   <p className="title is-4">Class Traits:</p>
                   <p className="content is-large">{classTraits(recruit.heroClass)}</p>
                 </div>
-              </div>
-              : this.weaponFrame()
-            }
+              </div>            }
           </div>
         </section>
         <footer className="modal-card-foot">
