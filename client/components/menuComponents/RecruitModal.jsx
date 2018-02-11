@@ -28,7 +28,7 @@ class RecruitModal extends Component {
           <div className="columns is-multiline">
             {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></div>}
             {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`} /></div>}
-            {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed}`}/> </div>}
+            {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed * 100}%`}/> </div>}
             {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
           </div>
         </div>
@@ -43,7 +43,7 @@ class RecruitModal extends Component {
             <ul className="">
               {weapon.hp != 0 && <li className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></li>}
               {weapon.power != 0 && <li className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`}/></li>}
-              {weapon.speed != 0 && <li className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed}`} /></li>}
+              {weapon.speed != 0 && <li className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed * 100}%`} /></li>}
             </ul>
             {weapon.bonusEffect && <p className="subtitle is-6">{weapon.bonusEffect}</p>}
           </div>)}
