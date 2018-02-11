@@ -180,10 +180,10 @@ class BossSpell extends Component {
             percent={Math.round(perc)}
             width={width * 0.9}
             symbolClassName={`ra ${spell.icon}`}
-            status={onCooldown ?'danger' : 'success'}
+            status={onCooldown ?'danger' : 'casting'}
             strokeWidth={10}
             theme={{
-              success: {symbol: null, color: 'yellow'},
+              casting: {symbol: null, color: 'yellow'},
               danger: {symbol: null, color: 'red'}
             }}
           />

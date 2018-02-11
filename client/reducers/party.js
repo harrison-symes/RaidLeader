@@ -43,6 +43,11 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
       return newState
+    case 'REMOVE_EFFECTS_FROM_ALL':
+      return newState.map(member => {
+        member.effects = []
+        return member
+      })
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=Math.round(action.power)

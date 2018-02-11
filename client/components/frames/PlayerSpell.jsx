@@ -15,10 +15,28 @@ class PlayerSpell extends Component {
       cooldownInterval: null,
       castInterval: null,
       currentCastTime: 0,
-      target: null
+      target: null,
+      ticks: 0
     }
     this.tickCast = this.tickCast.bind(this)
     this.tickCD = this.tickCD.bind(this)
+  }
+  tickSwitch() {
+    const {spell, dispatch, player} = this.props
+    const power = this.props.player.power * spell.tickPower
+    switch(spell.name) {
+      case 'Drain Life':
+        dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+        return dispatch({type: 'HEAL_PLAYER', power: power * 2})
+      case 'Siphon Life':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Tranquility':
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+      case 'Ring of Fire':
+        dispatch({type: 'DAMAGE_PLAYER', power})
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      default: return
+    }
   }
   castSwitch(target) {
     const {spell, dispatch, player} = this.props
@@ -46,8 +64,7 @@ class PlayerSpell extends Component {
       case 'Flash Fire':
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Drain Life':
-        dispatch({type: 'PLAYER_ATTACK_BOSS', power})
-        return dispatch({type: 'HEAL_PLAYER', power: power * 2})
+        return
       case 'Harvest Life':
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
@@ -64,6 +81,13 @@ class PlayerSpell extends Component {
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: renewConstructor(), target})
       case 'Greater Renew':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
+      case 'Siphon Life':
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power: player.power * 4})
+      case 'Tranquility':
+        dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+      case 'Ring of Fire':
+        return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       default: return
     }
   }
@@ -83,15 +107,25 @@ class PlayerSpell extends Component {
   }
   tickCast() {
     if (!this.props.started) return
-    let {currentCastTime, target, castInterval} = this.state
-    currentCastTime+= 0.1
-    if (currentCastTime >= this.props.spell.cast) {
+    let {currentCastTime, target, castInterval, ticks} = this.state
+    const {spell, dispatch} = this.props
+    let newCastTime = currentCastTime + 0.1
+    if (spell.isChanneled) {
+      let tickInterval = spell.cast / spell.ticks
+      let newTickTIme = tickInterval * (ticks + 1)
+      if (currentCastTime < newTickTIme && newCastTime >= newTickTIme) {
+        this.setState({ticks: ticks + 1})
+        this.tickSwitch()
+        console.log("tick", {tickInterval, newTickTIme, currentCastTime, newCastTime})
+      }
+    }
+    if (newCastTime >= spell.cast) {
       this.castSwitch(target)
-      this.props.dispatch({type: 'CAST_SPELL', spell: this.props.spell, target})
+      dispatch({type: 'CAST_SPELL', spell: spell, target})
       clearInterval(castInterval)
-      this.setState({currentCD: 0, currentCastTime: 0, castInterval: null, onCooldown: true})
+      this.setState({currentCD: 0, ticks: 0, currentCastTime: 0, castInterval: null, onCooldown: true})
       this.startCooldown()
-    } else this.setState({currentCastTime})
+    } else this.setState({currentCastTime: newCastTime})
   }
   startCasting() {
     if (!this.props.started) return
@@ -118,36 +152,27 @@ class PlayerSpell extends Component {
     if (width > 200) width = 200
     return <button
     className={`PlayerSpell ${spellColour}`}
-    style={{position: 'relative', width, height: width}}>
+    style={{position: 'relative', width, height: width}}
+    >
       {(onCooldown || currentCastTime > 0)
-        ? <span style={{position: 'relative', width, height: width}} className="CastProgress">
-          <Progress
-            type="circle"
-            percent={Math.round(perc)}
-            width={width * 0.9}
-            symbolClassName={`ra ${spell.icon}`}
-            status={onCooldown ?'danger' : 'success'}
-            strokeWidth={10}
-            theme={{
-              success: {symbol: null, color: 'blue'},
-              danger: {symbol: null, color: 'red'}
-            }}
-          />
-        </span>
-        : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`} />
-      }
+      ? <span style={{position: 'relative', width, height: width}} className="CastProgress">
+        <Progress
+          type="circle"
+          percent={Math.round(perc)}
+          width={width * 0.9}
+          symbolClassName={`ra ${spell.icon}`}
+          status={onCooldown ? 'danger' : 'casting'}
+          strokeWidth={10}
+          theme={{
+            casting: {symbol: null, color: 'blue'},
+            danger: {symbol: null, color: 'red'}
+          }}
+        />
+      </span>
+      : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`}
+      />}
     </button>
   }
-}
-
-function CoolDownBar ({spell, currentCD}) {
-  const percent = 100 - (currentCD / spell.coolDown * 100)
-  return <progress className={`SpellCooldDown is-large progress is-danger`} max="100" value={percent}>{percent}%</progress>
-}
-
-function CastBar ({spell, currentCastTime}) {
-  const percent = (currentCastTime / spell.cast * 100)
-  return <progress className={`SpellCooldDown is-large progress is-primary`} max="100" value={percent}>{percent}%</progress>
 }
 
 const mapStateToProps = ({started, player, selectedSpell, friendlyTarget}) => {
