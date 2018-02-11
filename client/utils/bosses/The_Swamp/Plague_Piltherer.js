@@ -17,7 +17,8 @@ export default {
   weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Blade', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp', 'Plagued Arrows'],
   goldReward: 500,
   weaponChance: 1,
-  progress_required: 2,
+  progress_required: 0,
+  icon: 'ra-radioactive'
   spells: [
     {
       name: 'Ingest Plague',
@@ -46,7 +47,7 @@ export default {
     },
     {
       name: 'Regenerate',
-      cast: 3,
+      cast: 2,
       cost: 3,
       coolDown: 10,
       type: 'armor',
@@ -61,8 +62,8 @@ export default {
     {
       name: 'Ravage',
       cost: 0,
-      cast: 5,
-      coolDown: 1,
+      cast: 3,
+      coolDown: 0,
       powerRatio: 1,
       type: 'damage',
       singleTarget: false,

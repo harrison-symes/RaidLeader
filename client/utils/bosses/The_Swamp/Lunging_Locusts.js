@@ -17,7 +17,7 @@ export default {
   weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Blade', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp', 'Plagued Arrows'],
   goldReward: 500,
   weaponChance: 1,
-  progress_required: 1,
+  progress_required: 0,
   icon: ' ra-butterfly',
   spells: [
     {
