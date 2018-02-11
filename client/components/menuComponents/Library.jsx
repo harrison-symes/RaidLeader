@@ -5,7 +5,7 @@ import spells from '../../utils/spells'
 import {earnGold} from '../../actions/gold'
 import {addSpell} from '../../actions/spells'
 import {get, set} from '../../utils/localstorage'
-import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon} from '../icons/StatIcons'
+import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon, GoldIcon} from '../icons/StatIcons'
 
 class Library extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class Library extends Component {
   render() {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell, learntSpell} = this.state
-    const spellCost = spellBook.length * 200
+    const spellCost = 50 + (spellBook.length * 150)
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
@@ -88,9 +88,10 @@ class Library extends Component {
               <p className="title is-3">Welcome to The Library!</p>
               <p className="content is-large">Here you can learn new spells to support your party in Dungeons</p>
               {!showChoices
-                ? <p className="content is-large">It will cost {spellCost} <i className="ra ra-gold-bar icon" /> for your next Spell</p>
-                : <p className="content is-large">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
+                ? <span className="content is-large">It will cost <GoldIcon value={spellCost} /> for your next spell</span>
+                : <p className="title is-3">Thank you for donating to the library, please pick one of these {offeredSpells.length} spells</p>
               }
+              <hr />
               {showChoices
                 ? (<div>
                   <p className="title is-3">Choose a Spell:</p>
@@ -133,8 +134,8 @@ class Library extends Component {
                   </div>)
                   : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
                   ? gold >= spellCost
-                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (-{spellCost} &nbsp; <i className="ra ra-gold-bar icon" />)</button>
-                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp; <i className="ra ra-gold-bar icon" /></button>
+                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (<GoldIcon value={-1 * spellCost} />)</button>
+                  : <button className="is-danger is-large button is-fullwidth" disabled><GoldIcon value={`Not Enough`} /></button>
                   : <button disabled className="is-danger is-large button is-fullwidth">You have learned every spell!</button>
                 }
 
@@ -145,7 +146,7 @@ class Library extends Component {
           <a onClick={close} className="button is-large is-dark is-outlined is-fullwidth">
             <span>Leave&nbsp;</span>
             <span className="icon is-large">
-              <i className={`ra ra-bottom-right ra-2x` }></i>
+              <i className={`ra ra-bottom-right ra-lg` }></i>
             </span>
           </a>
         </footer>

@@ -52,7 +52,7 @@ class Menu extends React.Component {
         recruit.initPower += recruit.initPower * weapon.power
         recruit.power += recruit.power * weapon.power
         recruit.initSpeed += weapon.speed
-        recruit.speed += weapon.speed
+        recruit.speed += recruit.speed * weapon.speed
         recruit.weapon_name = weapon.name
         recruit.weapon_level = weapon.level
         recruit.weapon_effect = weapon.bonusEffect
@@ -91,12 +91,12 @@ class Menu extends React.Component {
   renderMenuLink (name, icon) {
     const {pathname} = this.props.location
     return <a onClick={() => this.showModal(name)} className="button is-fullwidth is-large is-warning is-outlined">
-      <span className="icon is-large">
-        <i className={`ra ${icon} ra-2x`}></i>
+      <span className="icon">
+        <i className={`ra ${icon} ra-lg`}></i>
       </span>
       <span className="content is-large"> &nbsp;{name}&nbsp;</span>
-      <span className="icon is-large">
-        <i className={`ra ${icon} ra-2x` }></i>
+      <span className="icon">
+        <i className={`ra ${icon} ra-lg` }></i>
       </span>
     </a>
   }

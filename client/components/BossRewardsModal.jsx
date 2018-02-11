@@ -6,6 +6,7 @@ import weaponSwitch from '../utils/weaponSwitch'
 
 import {earnGold} from '../actions/gold'
 import {addWeapon} from '../actions/weapons'
+import {HealthIcon, PowerIcon, ManaIcon, SpeedIcon, ManaRegenIcon, GoldIcon} from './icons/StatIcons'
 
 class BossRewardsModal extends Component {
   constructor(props) {
@@ -48,15 +49,21 @@ class BossRewardsModal extends Component {
       <p className="title is-3">You found a Weapon!</p>
       <hr />
       <div className="box">
-        <h1 className="title is-3">{weapon.name}</h1>
+        <h1 className="title is-3">{weapon.name} <i className={`icon ra ra-fw ${weapon.icon}`} /></h1>
         <div className="title is-4">{weapon.class} Weapon!</div>
         <div className="subtitle is-5">{weapon.description}</div>
-        <div className="columns is-multiline">
-          <div className="column subtitle is-4">Health: {weapon.health > 0 ? "+" : ""}{weapon.hp * 100}%</div>
-          <div className="column subtitle is-4">Power: {weapon.power > 0 ? "+" : ""}{weapon.power * 100}%</div>
-          {weapon.class != 'Player' && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
-          {weapon.class == 'Player' && <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} per second)</div>}
-        </div>
+        {weapon.class == 'Player'
+          ? <div className="columns is-multiline">
+            <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={weapon.hp} /></span></div>
+            <div className="column is-4"><span className="subtitle is-4"><ManaIcon value={weapon.mana} /></span></div>
+            <div className="column is-4"><span className="subtitle is-4"><ManaRegenIcon value={weapon.manaRegen} /></span></div>
+          </div>
+          : <div className="columns is-multiline">
+            <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? '+' : ''}${weapon.hp * 100}%`} /></span></div>
+            <div className="column is-4"><span className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? '+' : ''}${weapon.power * 100}%`} /></span></div>
+            <div className="column is-4"><span className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? '+' : ''}${weapon.speed * 100}%`} /></span></div>
+          </div>
+        }
         {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.effectDescription}</div>}
       </div>
     </div>
@@ -74,11 +81,11 @@ class BossRewardsModal extends Component {
           {showRewards
             ? <div className="has-text-centered">
               <p className="title is-2">Your Rewards</p>
-              <p className="subtitle is-1">{goldReward} Gold</p>
+              <span className="subtitle is-1"><GoldIcon value={goldReward} /></span>
               {weaponReward && this.weaponInfo(weaponReward)}
               <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
             </div>
-            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success">Collect Rewards</button>
+            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="fas fas-gift" /></button>
           }
         </section>
         <footer className="modal-card-foot">
