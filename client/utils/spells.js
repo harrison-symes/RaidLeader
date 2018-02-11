@@ -251,5 +251,22 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
+  },
+  'Siphon Life': {
+    id: 16,
+    name: 'Siphon Life',
+    cast: 3,
+    cost: 10,
+    coolDown: 10,
+    type: 'healing',
+    powerRatio: 2,
+    ticks: 3,
+    singleTarget: false,
+    isChanneled: true,
+    description: 'Damage ALL friendly characters for 200% Player Power over 3 seconds, then heal ALL friendly characters for 400% Player Power',
+    icon: 'ra-player-lift',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   }
 }
