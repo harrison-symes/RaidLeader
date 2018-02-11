@@ -91,12 +91,12 @@ class Menu extends React.Component {
   renderMenuLink (name, icon) {
     const {pathname} = this.props.location
     return <a onClick={() => this.showModal(name)} className="button is-fullwidth is-large is-warning is-outlined">
-      <span className="icon is-large">
-        <i className={`ra ${icon} ra-2x`}></i>
+      <span className="icon">
+        <i className={`ra ${icon} ra-fw`}></i>
       </span>
-      <span className="content is-large"> &nbsp;{name}&nbsp;</span>
-      <span className="icon is-large">
-        <i className={`ra ${icon} ra-2x` }></i>
+      <span className="subtitle is-1"> &nbsp;{name}&nbsp;</span>
+      <span className="icon">
+        <i className={`ra ${icon} ra-fw` }></i>
       </span>
     </a>
   }
