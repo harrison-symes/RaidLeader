@@ -61,7 +61,7 @@ class BossRewardsModal extends Component {
           : <div className="columns is-multiline">
             <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? '+' : ''}${weapon.hp * 100}%`} /></span></div>
             <div className="column is-4"><span className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? '+' : ''}${weapon.power * 100}%`} /></span></div>
-            <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={`${weapon.speed > 0 ? '+' : ''}${weapon.speed}`} /></span></div>
+            <div className="column is-4"><span className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? '+' : ''}${weapon.speed}`} /></span></div>
           </div>
         }
         {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.effectDescription}</div>}
