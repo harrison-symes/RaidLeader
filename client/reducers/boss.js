@@ -39,7 +39,7 @@ export default function boss (state = null, action) {
       }
       newState.hp-= damage
       return newState
-    case 'SPECIAL_ATTACK_BOSS':
+    case 'PHYSICAL_ATTACK_BOSS':
       damage = Math.round(action.power)
       if (newState.armor == 0) {
         damage*=1.5
