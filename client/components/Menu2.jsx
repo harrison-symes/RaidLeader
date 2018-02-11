@@ -52,7 +52,7 @@ class Menu extends React.Component {
         recruit.initPower += recruit.initPower * weapon.power
         recruit.power += recruit.power * weapon.power
         recruit.initSpeed += weapon.speed
-        recruit.speed += weapon.speed
+        recruit.speed += recruit.speed * weapon.speed
         recruit.weapon_name = weapon.name
         recruit.weapon_level = weapon.level
         recruit.weapon_effect = weapon.bonusEffect
