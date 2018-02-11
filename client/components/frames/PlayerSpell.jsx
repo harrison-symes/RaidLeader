@@ -126,10 +126,10 @@ class PlayerSpell extends Component {
             percent={Math.round(perc)}
             width={width * 0.9}
             symbolClassName={`ra ${spell.icon}`}
-            status={onCooldown ?'danger' : 'success'}
+            status={onCooldown ? 'danger' : 'casting'}
             strokeWidth={10}
             theme={{
-              success: {symbol: null, color: 'blue'},
+              casting: {symbol: null, color: 'blue'},
               danger: {symbol: null, color: 'red'}
             }}
           />
