@@ -93,9 +93,9 @@ class RecruitmentCentre extends Component {
                 <p className="title is-3">{recruited.name} the {recruited.heroClass}<ClassIcon heroClass={recruited.heroClass} /></p>
                 <p className="subtitle is-1">Has joined your party!</p>
                 <div className="columns">
-                  <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={recruited.hp} /></p></div>
-                  <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruited.power} /></p></div>
-                  <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={recruited.speed} /></p></div>
+                  <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={recruited.hp} /></span></div>
+                  <div className="column is-4"><span className="subtitle is-4"><PowerIcon value={recruited.power} /></span></div>
+                  <div className="column is-4"><span className="subtitle is-4"> <SpeedIcon value={recruited.speed} /></span></div>
                 </div>
               </div>
               <br />
@@ -114,7 +114,7 @@ class RecruitmentCentre extends Component {
                     recruit.level = 1
                     return <div key={`offered-recruit-${i}`} className="box">
                       <div className="level">
-                        <p className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /><ZodiacIcon zodiac={recruit.zodiac} /></p>
+                        <span className="title is-3">{recruit.name} <ClassIcon heroClass={recruit.heroClass} /><ZodiacIcon zodiac={recruit.zodiac} /></span>
                         {selectedRecruit != recruit
                           ? <button onClick={() => this.selectRecruit(recruit)} className="button Info-Button is-success is-focused">Details</button>
                           : <button onClick={() => this.selectRecruit(null)} className="button Info-Button is-warning is-focused">Hide</button>

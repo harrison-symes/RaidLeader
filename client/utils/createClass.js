@@ -2,10 +2,12 @@ import {getZodiacData} from './zodiacs'
 
 const createMember = (name, level, id, weapon_id, zodiac, heroClass, hp, power, speed) => {
   var zData = getZodiacData(zodiac)
-  power+=(Math.floor(10 * power*zData.power)/10)
-  hp+=(Math.floor(10 * hp*zData.health)/10)
+  power+=(Math.floor(10 * power*zData.power))
+  hp+=(Math.floor(10 * hp*zData.health))
   speed+=Math.floor(speed*zData.speed)
   speed= speed/10
+  hp = hp/10
+  power = power/10
   var member = {
     name,
     level,

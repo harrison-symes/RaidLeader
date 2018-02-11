@@ -161,8 +161,8 @@ export function ZodiacIcon ({zodiac, isLarge}) {
     <span className="tooltiptext">
       <span>{zodiac}</span>
       <hr/>
-      {data.health != 0 &&<span>{translatePerc(data.health)} Health</span>}
-      {data.power != 0 && <span>{translatePerc(data.power)} Power</span>}
+      {data.health != 0 &&<span>{translatePerc(data.health)} Health<br /></span>}
+      {data.power != 0 && <span>{translatePerc(data.power)} Power<br/></span>}
       {data.speed != 0 && <span>{translatePerc(data.speed)} Speed</span>}
     </span>
     <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
