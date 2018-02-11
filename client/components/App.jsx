@@ -22,22 +22,22 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    this.requestData()
+    this.requestData(this.props)
   }
-  requestData() {
-    if (this.props.auth.isAuthenticated) {
+  requestData(props) {
+    if (props.auth.isAuthenticated) {
       this.props.dispatch(getRecruits())
       this.props.dispatch(getSpells())
       this.props.dispatch(getDungeons())
       this.props.dispatch(getPlayerGold())
       this.props.dispatch(getWeapons())
-    } else this.props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
+    } else props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.started && !nextProps.started){
       this.setState({game: (props) => <Game {...props} />})
     }
-    if (!this.props.auth.isAuthenticated && nextProps.auth.isAuthenticated) this.requestData()
+    if (!this.props.auth.isAuthenticated && nextProps.auth.isAuthenticated) this.requestData(nextProps)
   }
   render() {
     const {auth, currentLocation, showWelcome} = this.props
