@@ -288,5 +288,23 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
-  }
+  },
+  'Ring of Fire': {
+    id: 18,
+    name: 'Ring of Fire',
+    cast: 3,
+    cost: 10,
+    coolDown: 10,
+    type: 'damage',
+    powerRatio: 2,
+    tickPower: 1 / 3,
+    ticks: 3,
+    singleTarget: false,
+    isChanneled: true,
+    description: 'Damage ALL characters for 100% Player Power over 3 seconds, then Damage the Boss for 200% Player Power',
+    icon: 'ra-fire-ring',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
+  },
 }

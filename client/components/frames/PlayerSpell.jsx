@@ -32,6 +32,9 @@ class PlayerSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Tranquility':
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+      case 'Ring of Fire':
+        dispatch({type: 'DAMAGE_PLAYER', power})
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       default: return
     }
   }
@@ -83,6 +86,8 @@ class PlayerSpell extends Component {
       case 'Tranquility':
         dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+      case 'Ring of Fire':
+        return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       default: return
     }
   }
