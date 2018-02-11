@@ -13,7 +13,7 @@ class EffectTag extends Component {
   }
   tickSecond() {
     const {party, effect, target, started} = this.props
-    if (started) {
+    if (started && target.isAlive) {
       const remaining = this.state.remaining -1
       if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
       if (this.state.ticks == effect.tickRate) {
