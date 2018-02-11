@@ -94,7 +94,7 @@ class Menu extends React.Component {
       <span className="icon">
         <i className={`ra ${icon} ra-fw`}></i>
       </span>
-      <span className="subtitle is-1"> &nbsp;{name}&nbsp;</span>
+      <span className="content is-large"> &nbsp;{name}&nbsp;</span>
       <span className="icon">
         <i className={`ra ${icon} ra-fw` }></i>
       </span>
