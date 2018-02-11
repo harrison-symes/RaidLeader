@@ -49,7 +49,7 @@ class BossRewardsModal extends Component {
       <p className="title is-3">You found a Weapon!</p>
       <hr />
       <div className="box">
-        <h1 className="title is-3">{weapon.name}</h1>
+        <h1 className="title is-3">{weapon.name} <i className={`icon ra ra-fw ${weapon.icon}`} /></h1>
         <div className="title is-4">{weapon.class} Weapon!</div>
         <div className="subtitle is-5">{weapon.description}</div>
         {weapon.class == 'Player'
