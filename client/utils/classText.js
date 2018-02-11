@@ -8,7 +8,7 @@ export function startingBuff (heroClass) {
     case 'Mage': return "The Mage increases the Player's Mana by (20%)"
     case 'Monk': return "The Monk gains (1) speed for each other Party Member"
     case 'Hunter': return "The Hunter increases the speed of all other party members by 10%"
-    case 'Shaman' return "The Shaman reduces the Cast Time of all Player Spells by 10%"
+    case 'Shaman': return "The Shaman reduces the Cast Time of all Player Spells by 10%"
     default: return null
   }
 }
@@ -38,6 +38,6 @@ export function classIcons (heroClass) {
     case 'Monk': return 'ra-doubled'
     case 'Warrior': return 'ra-knight-helmet'
     case 'Hunter': return 'ra-archer'
-    case 'Shaman' return 'ra-gem-pendant'
+    case 'Shaman': return 'ra-gem-pendant'
   }
 }
