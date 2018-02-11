@@ -84,7 +84,6 @@ class BossSpell extends Component {
       case 'Ingest Plague':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
-        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
       default: return
     }
