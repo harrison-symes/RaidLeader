@@ -149,6 +149,19 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-gem'
   }),
+  ['Glowing Pearl Talisman']: (level, id) => ({
+    name: 'Glowing Pearl Talisman',
+    type: 'Weapon',
+    level,
+    id,
+    hp: 0,
+    power: -0.5,
+    speed: 1,
+    class: 'Shaman',
+    description: "Strange, the Turtle was growing Pearls under it's shell",
+    bonusEffect: null,
+    icon: 'ra-ball'
+  }),
   ['Fine Silk']: (level, id) => ({
     name: 'Fine Silk',
     type: 'Weapon',
@@ -273,6 +286,20 @@ module.exports = {
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
     icon: 'ra-poison-cloud'
+  }),
+  ['The Antidote']: (level, id) => ({
+    name: 'The Antidote',
+    type: 'Weapon',
+    level,
+    id,
+    hp: 0.3,
+    power: -1,
+    speed: 2,
+    class: 'Shaman',
+    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
+    bonusEffect: 'curePoison',
+    effectDescription: `When the Shaman casts Renew on a target, the target is cured of any Poison Effect`,
+    icon: 'ra-heart-bottle'
   }),
   ['Glowing Libram']: (level, id) => ({
     name: 'Glowing Libram',
