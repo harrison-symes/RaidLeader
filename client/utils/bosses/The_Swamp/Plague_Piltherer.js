@@ -18,7 +18,7 @@ export default {
   goldReward: 500,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-radioactive'
+  icon: 'ra-radioactive',
   spells: [
     {
       name: 'Ingest Plague',
