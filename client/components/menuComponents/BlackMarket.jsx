@@ -1,18 +1,22 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+import BlackMarketSpells from './BlackMarketSpells'
+import BlackMarketRecruits from './BlackMarketRecruits'
+import BlackMarketWeapons from './BlackMarketWeapons'
+
 class BlackMarket extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      buyType: null
+      sellType: null
     }
   }
-  switchType(buyType) {
-    this.setState({buyType})
+  switchType(sellType) {
+    this.setState({sellType})
   }
-  renderNavButton(buyType) {
-    return <button className={`button is-fullwidth is-outlined ${buyType == this.state.buyType ? "is-focus is-success" : 'is-info'}`} onClick={()=>this.switchType(buyType)}>{buyType}</button>
+  renderNavButton(sellType) {
+    return <button className={`button is-fullwidth is-outlined ${sellType == this.state.sellType ? "is-focus is-success" : 'is-info'}`} onClick={()=>this.switchType(sellType)}>{sellType}</button>
   }
   renderNavMenu() {
     return <div className="level">
@@ -20,6 +24,14 @@ class BlackMarket extends Component {
       {this.renderNavButton('Spells')}
       {this.renderNavButton('Weapons')}
     </div>
+  }
+  renderSellContent() {
+    switch(this.state.sellType) {
+      case 'Recruits': return <BlackMarketRecruits />
+      case 'Spells': return <BlackMarketSpells />
+      case 'Weapons': return <BlackMarketWeapons />
+      default: return null
+    }
   }
   render() {
     const {close} = this.props
@@ -34,6 +46,7 @@ class BlackMarket extends Component {
         <section className="modal-card-body">
           <div className="has-text-centered">
             {this.renderNavMenu()}
+            {this.renderSellContent()}
             {/* {isSell
               ? <button onClick={this.switch} className="button is-large is-info is-fullwidth is-inverted">Buy Items</button>
               : <button onClick={this.switch}  className="button is-large is-info is-fullwidth is-inverted">Sell Items</button>
