@@ -16,10 +16,10 @@ class BlackMarketWeapons extends Component {
   }
   sellWeapon() {
     const {selected, equippedBy} = this.state
-    let owner = equippedBy.find(recruit => recruit.weapon_id == selected.id)
-    if (owner) this.props.dispatch(recruitEquipWeapon(owner, null))
     this.props.dispatch(sellWeapon(selected.id, selected.value))
-    console.log({selected, owner});
+  }
+  unEquip(recruit) {
+    this.props.dispatch(recruitEquipWeapon(recruit, null))
   }
   selectWeapon(selected, equippedBy = []) {
     if (this.state.selected == selected) selected = null
@@ -91,7 +91,13 @@ class BlackMarketWeapons extends Component {
             {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
             {(weapon.class == 'Player' && this.props.weapons.filter(weapon => weapon.class == 'Player').length < 2)
               ? <button disabled className="button is-danger">This is your last Player Weapon</button>
-              :<button onClick={this.sellWeapon} className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
+              : equippedBy.length == quantity
+                ? <div>
+                  <span className="title is-4">All copies of this Weapon are equipped</span>
+                  <hr />
+                  {equippedBy.map(recruit => <button onClick={()=>this.unEquip(recruit)} className="button is-fullwidth is-warning is-outlined">Unequip from {recruit.name}</button>)}
+                </div>
+                : <button onClick={this.sellWeapon} className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
             }
           </div>}
         </div>)}
