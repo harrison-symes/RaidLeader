@@ -9,19 +9,19 @@ class BlackMarketWeapons extends Component {
     }
   }
   solveWeaponDuplicates() {
-    const {weapons} = this.props
+    const {weapons, recruits} = this.props
     let solved = weapons.reduce((obj, weapon) => {
       obj[weapon.name] = weapon
       return obj
     }, {})
-    solved = Object.keys(solved).map(key => {
+    return Object.keys(solved).map(key => {
       console.log({key, solved});
       return {
         weapon: solved[key],
-        quantity: weapons.filter(weapon => weapon.name == key).length
+        quantity: weapons.filter(weapon => weapon.name == key).length,
+        equipped: weapons.filter(weapon => weapon.name == key).filter(weapon => recruits.find(recruit => recruit.weapon_id == weapon.id)).length
       }
     })
-    console.log({solved});
   }
   render() {
     {this.solveWeaponDuplicates()}
@@ -32,7 +32,7 @@ class BlackMarketWeapons extends Component {
   }
 }
 
-const mapStateToProps = ({weapons}) => ({weapons})
+const mapStateToProps = ({weapons, recruits}) => ({weapons, recruits})
 
 
 export default connect(mapStateToProps)(BlackMarketWeapons)
