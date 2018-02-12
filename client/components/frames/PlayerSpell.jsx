@@ -41,7 +41,7 @@ class PlayerSpell extends Component {
   castSwitch(target) {
     const {spell, dispatch, player, party} = this.props
     const power = this.props.player.power * spell.powerRatio
-    target = party.find(other => other.id == target.id)
+    if (target) target = party.find(other => other.id == target.id)
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
