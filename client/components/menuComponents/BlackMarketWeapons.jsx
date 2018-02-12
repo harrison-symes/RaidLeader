@@ -3,16 +3,27 @@ import {connect} from 'react-redux'
 
 import {QuantityIcon, WeaponEquippedByIcon, ClassIcon, HealthIcon, PowerIcon, SpeedIcon, ManaIcon, ManaRegenIcon, GoldIcon} from '../icons/StatIcons'
 
+import {sellWeapon, recruitEquipWeapon} from '../../actions/weapons'
+
 class BlackMarketWeapons extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: null
+      selected: null,
+      equippedBy: []
     }
+    this.sellWeapon = this.sellWeapon.bind(this)
   }
-  selectWeapon(selected) {
+  sellWeapon() {
+    const {selected, equippedBy} = this.state
+    let owner = equippedBy.find(recruit => recruit.weapon_id == selected.id)
+    if (owner) this.props.dispatch(recruitEquipWeapon(owner, null))
+    this.props.dispatch(sellWeapon(selected.id, selected.value))
+    console.log({selected, owner});
+  }
+  selectWeapon(selected, equippedBy = []) {
     if (this.state.selected == selected) selected = null
-    this.setState({selected})
+    this.setState({selected, equippedBy})
   }
   solveWeaponDuplicates() {
     const {weapons, recruits} = this.props
@@ -21,7 +32,6 @@ class BlackMarketWeapons extends Component {
       return obj
     }, {})
     return Object.keys(solved).map(key => {
-      console.log({key, solved})
       return {
         weapon: solved[key],
         quantity: weapons.filter(weapon => weapon.name == key).length,
@@ -33,8 +43,6 @@ class BlackMarketWeapons extends Component {
     })
   }
   render() {
-    console.log((this.solveWeaponDuplicates()));
-    // {this.solveWeaponDuplicates()}
     const weapons = this.solveWeaponDuplicates()
     const {selected} = this.state
     return <div className="has-text-centered">
@@ -52,7 +60,7 @@ class BlackMarketWeapons extends Component {
               </span>
             </span>
             <span className="column is-4">
-              <button onClick={()=>this.selectWeapon(weapon)} className={`button Info-Button ${selected == weapon ? 'is-warning is-focus' : 'is-info'} `}>{selected == weapon ? 'Hide' : 'Details'}</button>
+              <button onClick={()=>this.selectWeapon(weapon, equippedBy)} className={`button Info-Button ${selected == weapon ? 'is-warning is-focus' : 'is-info'} `}>{selected == weapon ? 'Hide' : 'Details'}</button>
             </span>
             <span className=" column is-4">
               <span className="is-pulled-right subtitle is-4">
@@ -78,7 +86,7 @@ class BlackMarketWeapons extends Component {
               </div>
             }
             {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
-            <button className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value || 200}`} /></button>
+            <button onClick={this.sellWeapon} className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
           </div>}
         </div>)}
       </div>

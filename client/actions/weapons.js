@@ -1,6 +1,8 @@
 import request from '../utils/api'
 import weaponSwitch from '../utils/weaponSwitch'
 
+import {getPlayerGold} from './gold'
+
 export function receiveWeapons(weapons) {
   return {
     type: 'RECEIVE_WEAPONS',
@@ -41,5 +43,16 @@ export function recruitEquipWeapon (recruit, id) {
   return dispatch => {
     request('put', 'recruits/weapons', {id: recruit.id, weapon_id: id})
       .then(() => dispatch(recruitEquipWeaponAction(recruit, id)))
+  }
+}
+
+export function sellWeapon (id, value) {
+  return dispatch => {
+    console.log({id, value});
+    request('delete', 'player/weapons', {id, value})
+      .then(() => {
+        dispatch(getWeapons())
+        dispatch(getPlayerGold())
+      })
   }
 }
