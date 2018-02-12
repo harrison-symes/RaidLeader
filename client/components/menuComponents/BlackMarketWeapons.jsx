@@ -15,16 +15,20 @@ class BlackMarketWeapons extends Component {
       return obj
     }, {})
     return Object.keys(solved).map(key => {
-      console.log({key, solved});
+      console.log({key, solved})
       return {
         weapon: solved[key],
         quantity: weapons.filter(weapon => weapon.name == key).length,
-        equipped: weapons.filter(weapon => weapon.name == key).filter(weapon => recruits.find(recruit => recruit.weapon_id == weapon.id)).length
+        equipped: weapons.filter(weapon => weapon.name == key).filter(weapon => recruits.find(recruit => recruit.weapon_id == weapon.id)).length,
+        equippedBy: recruits.filter(recruit => recruit.weapon_id
+          ? weapons.find(weapon => weapon.name == key && weapon.id == recruit.weapon_id)
+          : false)
       }
     })
   }
   render() {
-    {this.solveWeaponDuplicates()}
+    console.log((this.solveWeaponDuplicates()));
+    // {this.solveWeaponDuplicates()}
     return <div className="has-text-centered">
 
       <span className="title is-3">Sell Weapons</span>
