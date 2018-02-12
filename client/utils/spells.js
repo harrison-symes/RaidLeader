@@ -338,3 +338,21 @@ module.exports = {
     element: 'Life'
   }
 }
+
+// 'Guardian Angel': {
+//   id: 21,
+//   name: 'Guardian Angel',
+//   cast: 5,
+//   cost: 10,
+//   coolDown: 20,
+//   type: 'support',
+//   powerRatio: 2,
+//   tickPower: 2,
+//   ticks: 10,
+//   singleTarget: true,
+//   description: 'Set your focus on a recruit. If the recruit dies during the spell cast, return it to life with Health equal to (200%) Player Power. If the Recruit is still alive at the end of the cast, heal the recruit for (200%) Player Power',
+//   icon: 'ra-angel-wings',
+//   color: colors.lightOlive,
+//   background: colors.darkGreen,
+//   element: 'Life'
+// }

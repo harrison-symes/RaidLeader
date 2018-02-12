@@ -21,9 +21,18 @@ class PlayerSpell extends Component {
     this.tickCast = this.tickCast.bind(this)
     this.tickCD = this.tickCD.bind(this)
   }
+  componentWillReceiveProps(nextProps) {
+    const {target, spell} = this.props
+    if (target && target.isAlive && !nextProps.friendlyTarget && spell.name == "Guardian Angel" && this.state.currentCastTime !== 0) {
+      console.log({nextProps});
+      this.setState({currentCastTime:spell.cast})
+      this.props.dispatch({type: 'RESURRECT_TARGET', target, health: power})
+    }
+  }
   tickSwitch() {
-    const {spell, dispatch, player} = this.props
+    let {spell, dispatch, player, party, target} = this.props
     const power = this.props.player.power * spell.tickPower
+    if (target) target = party.find(other => other.id == target.id)
     switch(spell.name) {
       case 'Drain Life':
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
@@ -37,6 +46,12 @@ class PlayerSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Restore':
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', power, target})
+      case 'Guardian Angel':
+        if (!target.isAlive) {
+          this.setState({currentCastTime:spell.cast})
+          dispatch({type: 'RESURRECT_TARGET', target, health: power})
+        }
+        return
       default: return
     }
   }
@@ -96,6 +111,9 @@ class PlayerSpell extends Component {
         return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET', target})
       case 'Restore':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
+      case 'Guardian Angel':
+        if (target.isALive) dispatch({type: 'HEAL_FRIENDLY_TARGET', power})
+        return
       default: return
     }
   }

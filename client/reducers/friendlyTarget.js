@@ -1,5 +1,6 @@
 
 export default function (state = null, action) {
+  const newState = {...state}
   switch(action.type) {
     case 'LOGOUT': return null
     case 'RETURN_TO_MENU':
@@ -10,7 +11,8 @@ export default function (state = null, action) {
       if (action.target.isAlive) return action.target
       else return state
     case 'MEMBER_DIED':
-      if (action.target == state) return null
+      if (action.target.id == state.id) newState.isAlive = false
+      return newState
     default:
       return state
   }

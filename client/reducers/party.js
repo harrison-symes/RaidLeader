@@ -43,6 +43,14 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
       return newState
+    case 'RESURRECT_TARGET':
+      if (!action.target) return newState
+      target = newState.find(member => member == action.target)
+      if (!target || target.isAlive) return newState
+      target.isAlive = true
+      target.hp = action.health
+      console.log({action});
+      return newState
     case 'REMOVE_EFFECTS_FROM_ALL':
       return newState.map(member => {
         member.effects = []
