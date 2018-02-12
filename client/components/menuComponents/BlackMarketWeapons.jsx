@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {QuantityIcon, WeaponEquippedByIcon, ClassIcon} from '../icons/StatIcons'
+import {QuantityIcon, WeaponEquippedByIcon, ClassIcon, HealthIcon, PowerIcon, SpeedIcon, ManaIcon, ManaRegenIcon, GoldIcon} from '../icons/StatIcons'
 
 class BlackMarketWeapons extends Component {
   constructor(props) {
@@ -64,6 +64,22 @@ class BlackMarketWeapons extends Component {
               </span>
             </span>
           </div>
+          {selected == weapon && <div>
+            {weapon.class == 'Player'
+              ? <div className="columns is-multiline">
+                <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={weapon.hp} /></span></div>
+                <div className="column is-4"><span className="subtitle is-4"><ManaIcon value={weapon.mana} /></span></div>
+                <div className="column is-4"><span className="subtitle is-4"><ManaRegenIcon value={weapon.manaRegen} /></span></div>
+              </div>
+              : <div className="columns is-multiline">
+                <div className="column is-4"><span className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? '+' : ''}${weapon.hp * 100}%`} /></span></div>
+                <div className="column is-4"><span className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? '+' : ''}${weapon.power * 100}%`} /></span></div>
+                <div className="column is-4"><span className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? '+' : ''}${weapon.speed * 100}%`} /></span></div>
+              </div>
+            }
+            {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
+            <button className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value || 200}`} /></button>
+          </div>}
         </div>)}
       </div>
     </div>
