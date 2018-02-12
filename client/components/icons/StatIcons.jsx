@@ -168,3 +168,24 @@ export function ZodiacIcon ({zodiac, isLarge}) {
     <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
   </span>
 }
+
+export function QuantityIcon ({quantity}) {
+  return <span className="tooltip">
+    <span className="tooltiptext">Quantity: {quantity}</span>
+    <i className={`ra ra-lg ra-all-for-one icon-large`} />{quantity}
+  </span>
+}
+
+export function WeaponEquippedByIcon ({equippedBy}) {
+  return <span className="tooltip">
+    <span className="tooltiptext">
+      <p>{equippedBy.length} Equipped</p>
+      <br />
+      {equippedBy.map(recruit => <span key={recruit.id}>
+        <hr />
+        <p>{recruit.name} the {recruit.heroClass}</p>
+      </span>)}
+    </span>
+    <i className={`ra ra-lg ra-hand-emblem icon-large`} />{equippedBy.length}
+  </span>
+}
