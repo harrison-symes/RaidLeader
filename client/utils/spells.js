@@ -307,4 +307,19 @@ module.exports = {
     background: colors.lightOrange,
     element: 'Fire'
   },
+  'Purge': {
+    id: 19,
+    name: 'Purge',
+    cast: 1,
+    cost: 5,
+    coolDown: 5,
+    type: 'support',
+    powerRatio: 0,
+    singleTarget: true,
+    description: 'Remove ALL effects from a friendly Recruit, restore 10 mana for each Effect removed',
+    icon: 'ra-cancel',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
+  }
 }
