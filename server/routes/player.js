@@ -28,6 +28,18 @@ router.get('/weapons', decode, (req, res) => {
     .then(weapons => res.json(weapons))
 })
 
+router.delete('/weapons', decode, (req, res) => {
+  console.log(req.body);
+  playerDb.delWeapon(req.body.id)
+    .then(() => {
+      playerDb.getPlayerGold(req.user.user_id)
+      .then((user) => {
+        playerDb.updatePlayerGold(req.user.user_id, user.gold + req.body.value)
+        .then(() => res.sendStatus(200))
+      })
+    })
+})
+
 router.post('/getStarted', decode, (req, res) => {
   addRecruit(req.user.user_id, req.body.name, 1, 'Paladin', req.body.zodiac)
     .then(recruit => {

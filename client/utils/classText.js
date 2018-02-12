@@ -39,5 +39,6 @@ export function classIcons (heroClass) {
     case 'Warrior': return 'ra-knight-helmet'
     case 'Hunter': return 'ra-archer'
     case 'Shaman': return 'ra-gem-pendant'
+    case 'Player': return 'ra-player-king'
   }
 }

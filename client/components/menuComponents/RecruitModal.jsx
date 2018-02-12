@@ -41,8 +41,8 @@ class RecruitModal extends Component {
               {weapon.hp != 0 && <div className="column subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></div>}
               {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`} /></div>}
               {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed * 100}%`}/> </div>}
-              {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
             </div>
+            {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
           </div>
           : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
         }
