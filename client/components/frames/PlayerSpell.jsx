@@ -39,8 +39,9 @@ class PlayerSpell extends Component {
     }
   }
   castSwitch(target) {
-    const {spell, dispatch, player} = this.props
+    const {spell, dispatch, player, party} = this.props
     const power = this.props.player.power * spell.powerRatio
+    target = party.find(other => other.id == target.id)
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
@@ -88,6 +89,9 @@ class PlayerSpell extends Component {
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Ring of Fire':
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
+      case 'Purge':
+        if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: 10 * target.effects.length})
+        return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET'})
       default: return
     }
   }
@@ -175,12 +179,13 @@ class PlayerSpell extends Component {
   }
 }
 
-const mapStateToProps = ({started, player, selectedSpell, friendlyTarget}) => {
+const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget}) => {
   return {
     started,
     player,
     selectedSpell,
-    friendlyTarget
+    friendlyTarget,
+    party
   }
 }
 

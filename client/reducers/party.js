@@ -48,6 +48,12 @@ export default function party (state = [], action) {
         member.effects = []
         return member
       })
+    case 'REMOVE_EFFECTS_FROM_TARGET':
+      if (!action.target) return newState
+      target = newState.find(member => member == action.target)
+      if (!target || !target.isAlive) return newState
+      target.effects = [])
+      return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=Math.round(action.power)
