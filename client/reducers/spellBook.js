@@ -5,6 +5,8 @@ export default function (state = [], action) {
       return action.spells
     case 'ADD_SPELL':
       return [...state, action.spell]
+    case 'DELETE_SPELL':
+      return [...state].filter(spell => spell.name != action.name)
     default: return state
   }
 }

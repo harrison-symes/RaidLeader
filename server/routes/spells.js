@@ -13,4 +13,10 @@ router.post('/', decode, (req, res) => {
     .then(spell => res.json(spell))
 })
 
+router.delete('/', decode, (req, res) => {
+  console.log(req.body);
+  spellsDb.deleteSpell(req.user.user_id, req.body.name)
+    .then(spell => res.sendStatus(200))
+})
+
 module.exports = router

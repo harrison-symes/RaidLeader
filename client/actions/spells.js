@@ -1,6 +1,8 @@
 import request from '../utils/api'
 import spellBook from '../utils/spells'
 
+import {earnGold} from './gold'
+
 export function receiveSpellsAction (spells) {
   return {
     type: "RECEIVE_SPELLS",
@@ -27,5 +29,20 @@ export function addSpell (spell) {
   return dispatch => {
     request('post', 'spells', spell)
       .then(res => dispatch(addSpellAction(spell)))
+  }
+}
+
+export function deleteSpellAction (name) {
+  return {
+    type: 'DELETE_SPELL',
+    name
+  }
+}
+
+export function sellSpell (name, value) {
+  return dispatch => {
+    dispatch(earnGold(value))
+    request('delete', 'spells', {name})
+      .then(res => dispatch(deleteSpellAction(name)))
   }
 }
