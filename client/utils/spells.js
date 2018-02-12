@@ -198,11 +198,11 @@ module.exports = {
     name: 'Harvest Life',
     cast: 5,
     cost: 20,
-    coolDown: 20,
+    coolDown: 15,
     type: 'damage',
     singleTarget: false,
-    powerRatio: 3,
-    description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done',
+    powerRatio: 2,
+    description: 'Damage the Boss for (%200) of Player Power, Heal ALL Friendly Characters for (%200) of Player Power',
     icon: 'ra-defibrilate',
     color: colors.darkPurple,
     background: colors.faintPink,
@@ -321,5 +321,53 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Restore': {
+    id: 20,
+    name: "Restore",
+    cast: 3,
+    cost: 15,
+    coolDown: 15,
+    type: 'healing',
+    powerRatio: 1,
+    tickPower: 0.5,
+    description: "Heal a friendly target for (150%) Player Power over 3 seconds, and then apply a Renew effect to the Target (if the target is a recruit). (Renew restores 60% of the target's Max Health over 15 seconds)",
+    icon: 'ra-crowned-heart',
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
+  },
+  'Calibrate': {
+    id: 21,
+    name: 'Calibrate',
+    cast: 2,
+    cost: 0,
+    coolDown: 10,
+    type: 'support',
+    powerRatio: 1,
+    singleTarget: false,
+    description: "Set the % Health of ALL recruits to the average % Health of your Party",
+    icon: 'ra-circle-of-circles',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
+
+// 'Guardian Angel': {
+//   id: 21,
+//   name: 'Guardian Angel',
+//   cast: 5,
+//   cost: 10,
+//   coolDown: 20,
+//   type: 'support',
+//   powerRatio: 2,
+//   tickPower: 2,
+//   ticks: 10,
+//   singleTarget: true,
+//   description: 'Set your focus on a recruit. If the recruit dies during the spell cast, return it to life with Health equal to (200%) Player Power. If the Recruit is still alive at the end of the cast, heal the recruit for (200%) Player Power',
+//   icon: 'ra-angel-wings',
+//   color: colors.lightOlive,
+//   background: colors.darkGreen,
+//   element: 'Life'
+// }
