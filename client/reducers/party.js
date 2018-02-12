@@ -52,7 +52,7 @@ export default function party (state = [], action) {
       if (!action.target) return newState
       target = newState.find(member => member == action.target)
       if (!target || !target.isAlive) return newState
-      target.effects = [])
+      target.effects = []
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
