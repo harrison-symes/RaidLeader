@@ -40,11 +40,17 @@ class BlackMarket extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Weapon Store</p>
+          <p className="modal-card-title is-1">BlackMarket</p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
           <div className="has-text-centered">
+            {this.state.sellType == null && <span>
+              <h1 className="title is-3">Welcome to the Black Market</h1>
+              <p className="content is-large">Here you can sell off any unwanted Spells, Recruits and Weapons</p>
+              <hr />
+            </span>}
+            <p className="subtitle is-3">What are you wanting to sell?</p>
             {this.renderNavMenu()}
             {this.renderSellContent()}
             {/* {isSell
