@@ -91,7 +91,7 @@ class PlayerSpell extends Component {
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Purge':
         if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: 10 * target.effects.length})
-        return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET'})
+        return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET', target})
       default: return
     }
   }
