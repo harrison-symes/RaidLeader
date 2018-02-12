@@ -8,8 +8,25 @@ class BlackMarketWeapons extends Component {
 
     }
   }
+  solveWeaponDuplicates() {
+    const {weapons} = this.props
+    let solved = weapons.reduce((obj, weapon) => {
+      obj[weapon.name] = weapon
+      return obj
+    }, {})
+    solved = Object.keys(solved).map(key => {
+      console.log({key, solved});
+      return {
+        weapon: solved[key],
+        quantity: weapons.filter(weapon => weapon.name == key).length
+      }
+    })
+    console.log({solved});
+  }
   render() {
+    {this.solveWeaponDuplicates()}
     return <div className="has-text-centered">
+
       <span className="title is-3">Sell Weapons</span>
     </div>
   }
