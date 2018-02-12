@@ -336,6 +336,21 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
+  },
+  'Calibrate': {
+    id: 21,
+    name: 'Calibrate',
+    cast: 2,
+    cost: 0,
+    coolDown: 10,
+    type: 'support',
+    powerRatio: 1,
+    singleTarget: false,
+    description: "Set the % Health of ALL recruits to the average % Health of your Party",
+    icon: 'ra-circle-of-circles',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
 

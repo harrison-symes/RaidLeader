@@ -62,6 +62,12 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.effects = []
       return newState
+    case 'SET_RECRUIT_PERCENTAGE':
+      newState=  newState.map(member => {
+        member.hp = (member.initHp * (action.percentage / 100))
+        return member
+      })
+      return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=Math.round(action.power)

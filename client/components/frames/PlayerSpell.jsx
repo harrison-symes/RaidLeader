@@ -114,6 +114,14 @@ class PlayerSpell extends Component {
       case 'Guardian Angel':
         if (target.isALive) dispatch({type: 'HEAL_FRIENDLY_TARGET', power})
         return
+      case 'Calibrate':
+        let percentage = party.reduce((perc, member) => {
+          if (member.isAlive) perc += ((member.hp / member.initHp) * 100)
+          return perc
+        }, 0)
+        percentage = percentage / party.filter(member => member.isAlive).length
+        console.log({percentage});
+        return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage})
       default: return
     }
   }
