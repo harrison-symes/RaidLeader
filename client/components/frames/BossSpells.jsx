@@ -3,14 +3,7 @@ import {connect} from 'react-redux'
 
 import { Progress } from 'react-sweet-progress';
 
-const poisonConstructor = (perc) => ({
-  name: 'Poison',
-  duration: 15,
-  percentage: perc || 0.1,
-  colour: '#BA8CE8',
-  tickRate: 3,
-  type: 'PERCENT_DAMAGE_FRIENDLY_TARGET'
-})
+import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
 
 class BossSpell extends Component {
   constructor(props) {
@@ -21,10 +14,21 @@ class BossSpell extends Component {
       cooldownInterval: null,
       castInterval: null,
       currentCastTime: 0,
-      target: null
+      target: null,
+      ticks: 0
     }
     this.tickCast = this.tickCast.bind(this)
     this.tickCD = this.tickCD.bind(this)
+  }
+  tickSwitch() {
+    let {spell, dispatch, party, boss} = this.props
+    const power = boss.power * spell.tickPower
+    let target = party.find(other => other.id == boss.bossTarget.id)
+
+    switch(spell.name) {
+
+      default: return
+    }
   }
   castSwitch() {
     const {spell, dispatch, boss, party} = this.props
@@ -104,14 +108,23 @@ class BossSpell extends Component {
   }
   tickCast() {
     let {currentCastTime, target, castInterval} = this.state
-    currentCastTime+= 0.1
-    if (currentCastTime >= this.props.spell.cast) {
+    let newCastTime = currentCastTime + 0.1
+    if (spell.isChanneled) {
+      let tickInterval = spell.cast / spell.ticks
+      let newTickTIme = tickInterval * (ticks + 1)
+      if (currentCastTime < newTickTIme && newCastTime >= newTickTIme) {
+        this.setState({ticks: ticks + 1})
+        this.tickSwitch()
+        console.log("tick", {tickInterval, newTickTIme, currentCastTime, newCastTime})
+      }
+    }
+    if (newCastTime >= this.props.spell.cast) {
       this.castSwitch(target)
       this.props.dispatch({type: 'BOSS_FINISH_CASTING', spell: this.props.spell, target})
       clearInterval(castInterval)
       this.setState({currentCD: 0, currentCastTime: 0, castInterval: null, onCooldown: true})
       this.startCooldown()
-    } else this.setState({currentCastTime})
+    } else this.setState({currentCastTime: newCastTime})
   }
   startCasting() {
     this.props.dispatch({type: 'BOSS_START_CASTING', spell: this.props.spell})
