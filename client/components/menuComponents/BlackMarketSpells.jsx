@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon, GoldIcon} from '../icons/StatIcons'
 
+import {sellSpell} from '../../actions/spells'
+
 class BlackMarketSpells extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +17,8 @@ class BlackMarketSpells extends Component {
     this.setState({selected})
   }
   sellSpell() {
-
+    console.log("sell spell");
+    this.props.dispatch(sellSpell(this.state.selected.name, this.props.spells.length * 100))
   }
   render() {
     const {spells} = this.props
@@ -55,7 +58,7 @@ class BlackMarketSpells extends Component {
           <hr />
           {spell.name == 'Heal'
             ? <button disabled className="button is-fullwidth is-danger">You can't sell this!</button>
-            : <button onClick={this.sellSpell} className="button is-fullwidth is-outlined is-success">Sell &nbsp; <GoldIcon value={`+${200}`} /></button>
+            : <button onClick={this.sellSpell} className="button is-fullwidth is-outlined is-success">Sell &nbsp; <GoldIcon value={`+${((this.props.spells.length * 150) + 50) / 2}`} /></button>
           }
         </div>}
       </div>)}
