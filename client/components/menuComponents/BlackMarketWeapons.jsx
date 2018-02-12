@@ -28,7 +28,9 @@ class BlackMarketWeapons extends Component {
   solveWeaponDuplicates() {
     const {weapons, recruits} = this.props
     let solved = weapons.reduce((obj, weapon) => {
-      obj[weapon.name] = weapon
+      if (obj.hasOwnProperty(weapon.name)) {
+        if (!recruits.find(recruit => recruit.weapon_id == weapon.id)) obj[weapon.name] = weapon
+      } else obj[weapon.name] = weapon
       return obj
     }, {})
     return Object.keys(solved).map(key => {
@@ -44,6 +46,7 @@ class BlackMarketWeapons extends Component {
   }
   render() {
     const weapons = this.solveWeaponDuplicates()
+    console.log({weapons});
     const {selected} = this.state
     return <div className="has-text-centered">
       <span className="title is-3">Sell Weapons</span>
