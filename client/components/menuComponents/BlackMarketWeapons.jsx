@@ -45,14 +45,14 @@ class BlackMarketWeapons extends Component {
     })
   }
   render() {
-    const weapons = this.solveWeaponDuplicates()
-    console.log({weapons});
+    const sortedWeapons = this.solveWeaponDuplicates()
+    console.log({sortedWeapons});
     const {selected} = this.state
     return <div className="has-text-centered">
       <span className="title is-3">Sell Weapons</span>
       <hr />
       <div className="has-text centered section">
-        {weapons.map(({weapon, equippedBy, quantity}, i) => <div className='box'>
+        {sortedWeapons.map(({weapon, equippedBy, quantity}, i) => <div className='box'>
           <span className="subtitle is-3">{weapon.name}</span>
           <hr />
           <div className="columns">
@@ -89,7 +89,10 @@ class BlackMarketWeapons extends Component {
               </div>
             }
             {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
-            <button onClick={this.sellWeapon} className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
+            {(weapon.class == 'Player' && this.props.weapons.filter(weapon => weapon.class == 'Player').length < 2)
+              ? <button disabled className="button is-danger">This is your last Player Weapon</button>
+              :<button onClick={this.sellWeapon} className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
+            }
           </div>}
         </div>)}
       </div>
