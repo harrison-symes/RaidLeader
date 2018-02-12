@@ -8,7 +8,7 @@ import RecruitmentCentre from './RecruitmentCentre'
 import Library from './Library'
 import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
-import WeaponStore from './WeaponStore'
+import BlackMarket from './BlackMarket'
 
 import {GoldIcon} from '../icons/StatIcons'
 
@@ -30,7 +30,7 @@ class Town extends Component {
       case 'Recruitment Centre': return <RecruitmentCentre close={close} />
       case 'Library': return <Library close={close} />
       case 'Training Centre': return <TrainingCentre close={close} />
-      case 'Weapon Store': return <WeaponStore close={close} />
+      case 'Black Market': return <BlackMarket close={close} />
       case 'Dungeon Map': return <Dungeons close={close} />
       default: return null
     }
@@ -89,7 +89,7 @@ class Town extends Component {
         </div>
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Training Centre', 'ra-muscle-up')}
-          <button disabled className="column is-6 button is-large is-dark is-fullwidth is-outlined">Store (WIP)</button>
+          {this.renderTownMenuButton('Black Market', 'ra-sword')}
         </div>
         <div className="columns Town-Button-Div">
           <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
