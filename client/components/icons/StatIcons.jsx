@@ -179,13 +179,16 @@ export function QuantityIcon ({quantity}) {
 export function WeaponEquippedByIcon ({equippedBy}) {
   return <span className="tooltip">
     <span className="tooltiptext">
-      <p>{equippedBy.length} Equipped</p>
+      {equippedBy.length == 0
+        ? <p>Not Equipped</p>
+        : <p>{equippedBy.length} Equipped</p>
+      }
       <br />
       {equippedBy.map(recruit => <span key={recruit.id}>
         <hr />
         <p>{recruit.name} the {recruit.heroClass}</p>
       </span>)}
     </span>
-    <i className={`ra ra-lg ra-hand-emblem icon-large`} />{equippedBy.length}
+    <i className={`ra ra-lg ${equippedBy.length == 0 ? 'ra-hand': 'ra-hand-emblem'} icon-large`} />{equippedBy.length}
   </span>
 }

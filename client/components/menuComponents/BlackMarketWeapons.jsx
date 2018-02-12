@@ -1,14 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {QuantityIcon, WeaponEquippedByIcon} from '../icons/StatIcons'
+import {QuantityIcon, WeaponEquippedByIcon, ClassIcon} from '../icons/StatIcons'
 
 class BlackMarketWeapons extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      selected: null
     }
+  }
+  selectWeapon(selected) {
+    if (this.state.selected == selected) selected = null
+    this.setState({selected})
   }
   solveWeaponDuplicates() {
     const {weapons, recruits} = this.props
@@ -32,6 +36,7 @@ class BlackMarketWeapons extends Component {
     console.log((this.solveWeaponDuplicates()));
     // {this.solveWeaponDuplicates()}
     const weapons = this.solveWeaponDuplicates()
+    const {selected} = this.state
     return <div className="has-text-centered">
       <span className="title is-3">Sell Weapons</span>
       <hr />
@@ -40,15 +45,22 @@ class BlackMarketWeapons extends Component {
           <span className="subtitle is-3">{weapon.name}</span>
           <hr />
           <div className="columns">
-            <span className="column is-8">
-              <i className={`is-pulled-left subtitle is-3 icon ra ra-lg ${weapon.icon}`} />
+            <span className="column is-4">
+              <span className="is-pulled-left subtitle is-3">
+                <i className={`icon ra ra-fw ${weapon.icon}`} />
+                <ClassIcon heroClass={weapon.class} />
+              </span>
             </span>
-            <span className="is-pulled right column is-4">
-              <span className="subtitle is-4">
-                <QuantityIcon quantity={quantity} />
-                {equippedBy.length > 0 &&
+            <span className="column is-4">
+              <button onClick={()=>this.selectWeapon(weapon)} className={`button Info-Button ${selected == weapon ? 'is-warning is-focus' : 'is-info'} `}>{selected == weapon ? 'Hide' : 'Details'}</button>
+            </span>
+            <span className=" column is-4">
+              <span className="is-pulled-right subtitle is-4">
+                {weapon.class != 'Player' && <span>
                   <WeaponEquippedByIcon equippedBy={equippedBy} />
-                }
+                  &nbsp;
+                </span>}
+                <QuantityIcon quantity={quantity} />
               </span>
             </span>
           </div>
