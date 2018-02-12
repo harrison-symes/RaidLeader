@@ -198,11 +198,11 @@ module.exports = {
     name: 'Harvest Life',
     cast: 5,
     cost: 20,
-    coolDown: 20,
+    coolDown: 15,
     type: 'damage',
     singleTarget: false,
-    powerRatio: 3,
-    description: 'Damage the Boss for (%300) of Player Power, Heal ALL Friendly Characters for (%100) of the Damage done',
+    powerRatio: 2,
+    description: 'Damage the Boss for (%200) of Player Power, Heal ALL Friendly Characters for (%200) of Player Power',
     icon: 'ra-defibrilate',
     color: colors.darkPurple,
     background: colors.faintPink,
@@ -321,5 +321,20 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Restore': {
+    id: 20,
+    name: "Restore",
+    cast: 3,
+    cost: 15,
+    coolDown: 15,
+    type: 'healing',
+    powerRatio: 1,
+    tickPower: 0.5,
+    description: "Heal a friendly target for (150%) Player Power over 3 seconds, and then apply a Renew effect to the Target (if the target is a recruit). (Renew restores 60% of the target's Max Health over 15 seconds)",
+    icon: 'ra-crowned-heart',
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   }
 }

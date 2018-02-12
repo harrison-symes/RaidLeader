@@ -35,6 +35,8 @@ class PlayerSpell extends Component {
       case 'Ring of Fire':
         dispatch({type: 'DAMAGE_PLAYER', power})
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Restore':
+        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power, target})
       default: return
     }
   }
@@ -92,6 +94,8 @@ class PlayerSpell extends Component {
       case 'Purge':
         if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: 10 * target.effects.length})
         return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET', target})
+      case 'Restore':
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
       default: return
     }
   }
