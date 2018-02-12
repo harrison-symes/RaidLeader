@@ -22,9 +22,10 @@ class BossSpell extends Component {
   }
   tickSwitch() {
     let {spell, dispatch, party, boss} = this.props
-    const power = boss.power * spell.tickPower
+    let power = boss.power * spell.tickPower
     let target = party.find(other => other.id == boss.bossTarget.id)
-
+    let aliveTargets = party.filter(member => member.isAlive)
+    if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
 
       default: return
