@@ -190,7 +190,7 @@
   .PlayerFrame {
     border-top: 10px white;
     position: fixed;
-    bottom: 0;
+    bottom: 2vh;
     margin: auto;
     padding-bottom: 5%;
     height: 30vh;
@@ -208,6 +208,7 @@
     .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
+      margin-bottom: 10px;
       background-color: #b8b8b8;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png");
       button:focus {outline:0;}
@@ -230,7 +231,7 @@
       height: 25vh;
       // margin: auto;
       width: 100%;
-      margin-bottom: 10%;
+      margin-bottom: 10px;
       // padding: 10%;
       @media (max-width: 900px) {
         .title {
@@ -278,20 +279,28 @@
     bottom: 0;
     border: 10px black;
     margin: auto;
-    .box {
+    .button {
       border: none;
       .is-success {
         border: 5px black;
       }
     }
     .MemberFrame {
-      height: 90%;
-      margin: 5%;
+      height: 15vh;
+      max-height: 150px;
+      margin: none;
       border: 5px black;
       .is-target {
         border: 5px green;
         background-color: lightgreen;
       }
+      .RecruitHealthBar {
+        height: 5vh;
+      }
+    }
+    .button {
+      margin: 5%;
+      padding: none;
     }
   }
 }

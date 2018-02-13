@@ -11,8 +11,7 @@ export default function (state = null, action) {
       if (action.target.isAlive) return action.target
       else return state
     case 'MEMBER_DIED':
-      if (action.target.id == state.id) newState.isAlive = false
-      return newState
+      return null
     default:
       return state
   }
