@@ -42,9 +42,6 @@ class MemberFrame extends Component {
         <div className="column">
           <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon heroClass={member.heroClass} /></h1>
         </div>
-        <div className="tags">
-          {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
-        </div>
       </div>
       <RecruitHealthBar recruit={{...member}}  />
     </div>
