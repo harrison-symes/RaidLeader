@@ -109,6 +109,7 @@ class BossSpell extends Component {
   }
   tickCast() {
     let {currentCastTime, target, castInterval} = this.state
+    const {spell} = this.props
     let newCastTime = currentCastTime + 0.1
     if (spell.isChanneled) {
       let tickInterval = spell.cast / spell.ticks
