@@ -44,7 +44,7 @@ class MemberFrame extends Component {
         </div>
         {effects.length > 0
           ? <div className="column is-6 tags">
-            {effects.map(effect => <EffectTag key={`effect-${effect.name}-${recruit.name}`} effect={effect} target={recruit} />)}
+            {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
           </div>
           : <div className="column is-pulled-right">
               <p className="subtitle is-4"><PowerIcon value={Math.round(power * 10) / 10} />&nbsp;<SpeedIcon value={Math.round(speed * 10) /10} /></p>
