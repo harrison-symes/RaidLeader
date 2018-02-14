@@ -12,10 +12,10 @@ const RecruitHealthBar = ({recruit}) => {
   const colourClass = percent > 1/3*100
     ? percent > 2/3*100
       ? percent == 100
-        ? 'blue'
-        : 'lightgreen'
-      : 'yellow'
-    : 'red'
+        ? 'hsl(171, 100%, 41%)'
+        : 'hsl(141, 71%, 48%)'
+      : 'hsl(48, 100%, 67%)'
+    : 'hsl(348, 100%, 61%)'
   return <div className="RecruitHealthBar has-text-centered">
     <div className="">
       <div className="columns">
