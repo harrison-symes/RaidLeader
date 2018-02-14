@@ -109,6 +109,12 @@ export default function boss (state = null, action) {
     case 'MEMBER_DIED':
       if (action.target == newState.bossTarget) newState.bossTarget.isAlive = false
       return newState
+    case 'BOSS_CHANGE_STAGE':
+      console.log({action});
+      for (let key in action.stage) {
+        newState[key] = action.stage[key]
+      }
+      return newState
     default: return state
   }
 }

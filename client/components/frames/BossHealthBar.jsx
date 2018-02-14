@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {HealthIcon, ArmorIcon, ManaIcon} from '../icons/StatIcons'
 import { Line, Circle } from 'rc-progress';
 
-
 const healthBar = (current, max) => {
   const percent = Math.round(current/max * 100)
   const colourClass = percent > 1/3*100
@@ -16,7 +15,6 @@ const healthBar = (current, max) => {
   return <div className="column">
     <div className="">
       <Line percent={percent} strokeWidth="6" strokeColor={colourClass} strokeLineCap="square" trailWidth="6"/>
-      {/* <progress className={`ProgressBar progress is-small ${colourClass}`} max="100" value={percent}>{percent}%</progress> */}
     </div>
     <p className="subtitle is-5"><HealthIcon value={`${current} / ${max}`} /></p>
   </div>

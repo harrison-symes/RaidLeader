@@ -27,7 +27,14 @@ class BossSpell extends Component {
     let aliveTargets = party.filter(member => member.isAlive)
     if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
-
+      case 'Boil':
+        let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+        console.log({randomTarget});
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
+      case 'Unleash Flames':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Exhaust Heat':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       default: return
     }
   }
@@ -90,6 +97,14 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
+      case 'Heat Up':
+        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+        return dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana})
+      case 'Unleash Flames':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss.stageTwo})
+      case 'Flame':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
+        return dispatch({type: 'DAMAGE_PLAYER', power})
       default: return
     }
   }
@@ -108,7 +123,7 @@ class BossSpell extends Component {
     this.setState({cooldownInterval: interval})
   }
   tickCast() {
-    let {currentCastTime, target, castInterval} = this.state
+    let {currentCastTime, target, castInterval, ticks} = this.state
     const {spell} = this.props
     let newCastTime = currentCastTime + 0.1
     if (spell.isChanneled) {
@@ -124,7 +139,7 @@ class BossSpell extends Component {
       this.castSwitch(target)
       this.props.dispatch({type: 'BOSS_FINISH_CASTING', spell: this.props.spell, target})
       clearInterval(castInterval)
-      this.setState({currentCD: 0, currentCastTime: 0, castInterval: null, onCooldown: true})
+      this.setState({currentCD: 0, currentCastTime: 0, ticks: 0, castInterval: null, onCooldown: true})
       this.startCooldown()
     } else this.setState({currentCastTime: newCastTime})
   }

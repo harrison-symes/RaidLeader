@@ -8,6 +8,7 @@ import SeepingSlime from '../SeepingSlime'
 import DecayingDeer from '../DecayingDeer'
 import LungingLocusts from '../LungingLocusts'
 import PlaguePiltherer from '../PlaguePiltherer'
+import FlamingFurnace from '../FlamingFurnace'
 
 export default function (boss) {
   switch(boss.name) {
@@ -19,6 +20,7 @@ export default function (boss) {
     case 'Decaying Deer': return <DecayingDeer boss={boss} />
     case 'Lunging Locusts': return <LungingLocusts boss={boss} />
     case 'Plague Piltherer': return <PlaguePiltherer boss={boss} />
+    case 'Flaming Furnace': return <FlamingFurnace boss={boss} />
     default: return null
   }
 }
