@@ -57,6 +57,7 @@
     "knex": "^0.13.0",
     "passport": "^0.4.0",
     "pg": "^6.2.3",
+    "rc-progress": "^2.2.5",
     "react": "^15.5.4",
     "react-beautiful-dnd": "^3.0.0",
     "react-dom": "^15.5.4",

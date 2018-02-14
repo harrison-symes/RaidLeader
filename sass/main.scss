@@ -190,7 +190,7 @@
   .PlayerFrame {
     border-top: 10px white;
     position: fixed;
-    bottom: 0;
+    bottom: 2vh;
     margin: auto;
     padding-bottom: 5%;
     height: 30vh;
@@ -200,6 +200,7 @@
     // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
     // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     .box {
+      margin-bottom: 10%;
       background-color: #b8b8b8;
       // background-color: #f7c48c;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png");
@@ -208,6 +209,7 @@
     .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
+      margin-bottom: 10px;
       background-color: #b8b8b8;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png");
       button:focus {outline:0;}
@@ -230,13 +232,19 @@
       height: 25vh;
       // margin: auto;
       width: 100%;
-      margin-bottom: 10%;
+      margin-bottom: 10px;
       // padding: 10%;
       @media (max-width: 900px) {
         .title {
           font-size: 0.3rem;
         }
       }
+    }
+    .p {
+      margin-bottom: 0;
+    }
+    .level {
+      margin-bottom: 0;
     }
     .HealthBar {
       // width: 100%;
@@ -278,20 +286,29 @@
     bottom: 0;
     border: 10px black;
     margin: auto;
-    .box {
+    .button {
       border: none;
       .is-success {
         border: 5px black;
       }
     }
     .MemberFrame {
-      height: 90%;
-      margin: 5%;
+      height: 15vh;
+      min-height: 150px;
+      max-height: 150px;
+      margin: none;
       border: 5px black;
       .is-target {
         border: 5px green;
         background-color: lightgreen;
       }
+      .RecruitHealthBar {
+        height: 5vh;
+      }
+    }
+    .button {
+      margin: 5%;
+      padding: none;
     }
   }
 }
@@ -339,4 +356,8 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.BossTooltip .tooltiptext {
+  bottom: 0;
 }

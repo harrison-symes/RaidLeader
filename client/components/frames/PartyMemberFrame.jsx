@@ -34,17 +34,23 @@ class MemberFrame extends Component {
   }
   render() {
     const {member, dispatch, friendlyTarget, boss, party} = this.props
-    const {initHp, hp, name, isAlive, effects} = member
+    const {initHp, hp, name, isAlive, effects, power, speed} = member
     let width = 90 / party.length
     if (width > 20) width = 20
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{width: `${width}vw`, border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
-        <div className="column">
+        <div className="column is-6">
           <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon heroClass={member.heroClass} /></h1>
         </div>
-        <div className="tags">
-          {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
-        </div>
+        {effects.length > 0
+          ? <div className="column is-6 tags">
+            {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
+          </div>
+          : <div className="column is-pulled-right">
+              <p className="subtitle is-4"><PowerIcon value={Math.round(power * 10) / 10} />&nbsp;<SpeedIcon value={Math.round(speed * 10) /10} /></p>
+              <p className="subtitle is-4"></p>
+          </div>
+        }
       </div>
       <RecruitHealthBar recruit={{...member}}  />
     </div>

@@ -137,17 +137,19 @@
   .Game .PlayerFrame {
     border-top: 10px white;
     position: fixed;
-    bottom: 0;
+    bottom: 2vh;
     margin: auto;
     padding-bottom: 5%;
     height: 30vh;
     width: 100vw; }
     .Game .PlayerFrame .box {
+      margin-bottom: 10%;
       background-color: #b8b8b8;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
     .Game .PlayerFrame .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
+      margin-bottom: 10px;
       background-color: #b8b8b8;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
       .Game .PlayerFrame .PlayerSpellBarContainer button:focus {
@@ -164,10 +166,14 @@
     .Game .PlayerFrame .PlayerBox {
       height: 25vh;
       width: 100%;
-      margin-bottom: 10%; }
+      margin-bottom: 10px; }
       @media (max-width: 900px) {
         .Game .PlayerFrame .PlayerBox .title {
           font-size: 0.3rem; } }
+    .Game .PlayerFrame .p {
+      margin-bottom: 0; }
+    .Game .PlayerFrame .level {
+      margin-bottom: 0; }
   .Game .BossFrame {
     height: 35vh;
     background-color: #b88d8d;
@@ -191,17 +197,24 @@
     bottom: 0;
     border: 10px black;
     margin: auto; }
-    .Game .PartyFrame .box {
+    .Game .PartyFrame .button {
       border: none; }
-      .Game .PartyFrame .box .is-success {
+      .Game .PartyFrame .button .is-success {
         border: 5px black; }
     .Game .PartyFrame .MemberFrame {
-      height: 90%;
-      margin: 5%;
+      height: 15vh;
+      min-height: 150px;
+      max-height: 150px;
+      margin: none;
       border: 5px black; }
       .Game .PartyFrame .MemberFrame .is-target {
         border: 5px green;
         background-color: lightgreen; }
+      .Game .PartyFrame .MemberFrame .RecruitHealthBar {
+        height: 5vh; }
+    .Game .PartyFrame .button {
+      margin: 5%;
+      padding: none; }
 
 .tooltip {
   position: relative;
@@ -238,5 +251,8 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible; }
+
+.BossTooltip .tooltiptext {
+  bottom: 0; }
 
 /*# sourceMappingURL=main.css.map */

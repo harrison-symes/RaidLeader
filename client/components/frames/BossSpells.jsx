@@ -184,7 +184,7 @@ class BossSpell extends Component {
     return <button
     className={`BossSpell button ${spellColour} has-text-centered`}
     style={{position: 'relative', width, height}}>
-      <span className="tooltip">
+      <span className="BossTooltip tooltip">
         <span className="tooltiptext">
           <p>{spell.name}</p>
         </span>
