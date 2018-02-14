@@ -143,6 +143,7 @@
     height: 30vh;
     width: 100vw; }
     .Game .PlayerFrame .box {
+      margin-bottom: 10%;
       background-color: #b8b8b8;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png"); }
     .Game .PlayerFrame .PlayerSpellBarContainer {
@@ -169,6 +170,10 @@
       @media (max-width: 900px) {
         .Game .PlayerFrame .PlayerBox .title {
           font-size: 0.3rem; } }
+    .Game .PlayerFrame .p {
+      margin-bottom: 0; }
+    .Game .PlayerFrame .level {
+      margin-bottom: 0; }
   .Game .BossFrame {
     height: 35vh;
     background-color: #b88d8d;
@@ -246,5 +251,8 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible; }
+
+.BossTooltip .tooltiptext {
+  bottom: 0; }
 
 /*# sourceMappingURL=main.css.map */

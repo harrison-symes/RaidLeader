@@ -200,6 +200,7 @@
     // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
     // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
     .box {
+      margin-bottom: 10%;
       background-color: #b8b8b8;
       // background-color: #f7c48c;
       background-image: url("https://www.transparenttextures.com/patterns/arches.png");
@@ -238,6 +239,12 @@
           font-size: 0.3rem;
         }
       }
+    }
+    .p {
+      margin-bottom: 0;
+    }
+    .level {
+      margin-bottom: 0;
     }
     .HealthBar {
       // width: 100%;
@@ -349,4 +356,8 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.BossTooltip .tooltiptext {
+  bottom: 0;
 }
