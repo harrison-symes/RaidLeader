@@ -19,7 +19,7 @@ const RecruitHealthBar = ({recruit}) => {
   return <div className="RecruitHealthBar has-text-centered">
     <div className="">
       <div className="columns">
-        <div className="column is-9">
+        <div className="column is-9" style={{heigth: '15px'}}>
           {/* <progress className={`ProgressBar progress ${colourClass}`} max="100" value={percent}>{percent}%</progress> */}
           <Line percent={percent} strokeWidth="4" strokeColor={colourClass} strokeLineCap="square" />
         </div>
