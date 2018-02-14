@@ -6,7 +6,7 @@ export default {
   initPower: 0,
   power: 0,
   initArmor: 2000,
-  armor: 0,
+  armor: 2000,
   mana: 0,
   maxMana: 1000,
   manaRegen: 0,
@@ -43,8 +43,8 @@ export default {
       type: 'damage',
       singleTarget: false,
       powerRatio: 50,
-      power: 10,
-      mana: 10,
+      power: 5,
+      mana: 5,
       onCooldown: false,
       description: 'Gain 5 Power and 5 Mana',
       icon: 'ra-heartburn'
@@ -80,7 +80,7 @@ export default {
         power: 10,
         mana: 10,
         onCooldown: false,
-        description: 'Gain 20 Power and 20 Mana',
+        description: 'Gain 10 Power and 10 Mana',
         icon: 'ra-heartburn'
       },
       {
@@ -107,8 +107,9 @@ export default {
         type: 'damage',
         singleTarget: true,
         powerRatio: 0.5,
+        power: 5,
         onCooldown: false,
-        description: "Damage the Boss' Target and the Player for (100%) Boss Power.",
+        description: "Damage the Boss' Target and the Player for (100%) Boss Power. Lose 5 Power",
         icon: 'ra-burning-meteor'
       }
     ]

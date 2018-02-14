@@ -104,6 +104,7 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss.stageTwo})
       case 'Flame':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
+        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
       default: return
     }
