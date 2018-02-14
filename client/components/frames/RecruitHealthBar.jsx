@@ -20,7 +20,6 @@ const RecruitHealthBar = ({recruit}) => {
     <div className="">
       <div className="columns">
         <div className="column is-9" style={{heigth: '15px'}}>
-          {/* <progress className={`ProgressBar progress ${colourClass}`} max="100" value={percent}>{percent}%</progress> */}
           <Line percent={percent} strokeWidth="4" strokeColor={colourClass} strokeLineCap="square"  trailWidth="4"/>
         </div>
         <div className="column is-3"><p className="subtitle is-4"><HealthIcon value={`${Math.round(hp * 10) /10} / ${Math.round(initHp * 10) /10}`} /></p></div>

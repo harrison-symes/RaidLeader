@@ -6,6 +6,7 @@ import Seeping_Slime from './The_Swamp/Seeping_Slime'
 import Decaying_Deer from './The_Swamp/Decaying_Deer'
 import Lunging_Locusts from './The_Swamp/Lunging_Locusts'
 import Plague_Piltherer from './The_Swamp/Plague_Piltherer'
+import Flaming_Furnace from './The_Foundry/Flaming_Furnace'
 
 export default function (bossName) {
   switch(bossName) {
@@ -17,6 +18,7 @@ export default function (bossName) {
     case 'Decaying Deer': return Decaying_Deer
     case 'Lunging Locusts': return Lunging_Locusts
     case 'Plague Piltherer': return Plague_Piltherer
+    case 'Flaming Furnace': return Flaming_Furnace
     default: return null
   }
 }
