@@ -33,7 +33,7 @@ export default {
       ticks: 5,
       onCooldown: false,
       description: "Useable when at 0 Armor: Damage ALL enemy recruits for (50%) Boss Power over the duration of the cast. Change to Stage 2",
-      icon: 'ra-lava'
+      icon: ' ra-fire-shield'
     },
     {
       name: 'Heat Up',
@@ -47,7 +47,7 @@ export default {
       mana: 10,
       onCooldown: false,
       description: 'Gain 5 Power and 5 Mana',
-      icon: 'ra-lava'
+      icon: 'ra-heartburn'
     },
     {
       name: 'Boil',
@@ -62,11 +62,11 @@ export default {
       isChanneled: true,
       tickPower: 1,
       description: 'Damage a Random Enemy Recruit for 100% Boss Power 5 times over the duration of the cast',
-      icon: 'ra-lava'
+      icon: 'ra-hot-surface'
     },
   ],
   stageTwo: {
-    description: 'Enters Stage 2 after casting "Unleash Flames" at 0 Armor',
+    description: 'Enters Stage 2 after casting "Unleash Flames" at 0 Armor. During Stage 2 the Flaming Furnace will regenerate mana over time, and has a new set of spells.',
     manaRegen: 1,
     spells: [
       {
@@ -81,7 +81,7 @@ export default {
         mana: 10,
         onCooldown: false,
         description: 'Gain 20 Power and 20 Mana',
-        icon: 'ra-lava'
+        icon: 'ra-heartburn'
       },
       {
         name: 'Exhaust Heat',
@@ -108,7 +108,8 @@ export default {
         singleTarget: true,
         powerRatio: 0.5,
         onCooldown: false,
-        description: "Damage the Boss' Target and the Player for (100%) Boss Power."
+        description: "Damage the Boss' Target and the Player for (100%) Boss Power.",
+        icon: 'ra-burning-meteor'
       }
     ]
   }
