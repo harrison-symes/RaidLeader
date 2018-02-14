@@ -6,7 +6,7 @@ import mapStateToProps from './utils/classStateMap'
 
 class Priest extends PartyMemberFrame {
   finishCast(power) {
-    const {started, member, dispatch} = this.props
+    const {started, member, dispatch, party} = this.props
     if (!started || !member.isAlive) return
 
     let target = null
