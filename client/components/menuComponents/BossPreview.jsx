@@ -65,6 +65,28 @@ class BossPreview extends React.Component {
               </div>
             </div>)}
           </ul>
+          {boss.hasOwnProperty('stageTwo') && <div>
+            <hr/>
+            <p className="title is-3">Stage Two</p>
+            <p className="content is-large">{boss.stageTwo.description}</p>
+            <ul>
+              {boss.stageTwo.spells.map(spell => <div key={spell.name} className="section box">
+                <div className="">
+                  <span>
+                    <p className="title is-3">{spell.name}</p>
+                    <SpellIcon spell={spell} isLarge={true} />
+                  </span>
+                  <br />
+                  <p className="content is-large">{spell.description}</p>
+                </div>
+                <div className="columns">
+                  <p className="subtitle column is-4"><ManaIcon value={spell.cost} /></p>
+                  <p className="subtitle column is-4"><CastTimeIcon value={`${spell.cast}s`} /></p>
+                  <p className="subtitle column is-4"><CoolDownIcon value={`${spell.coolDown}s`} /></p>
+                </div>
+              </div>)}
+            </ul>
+          </div>}
         </section>
         <footer className="modal-card-foot">
           <button onClick={back} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>
