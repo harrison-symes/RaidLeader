@@ -7,11 +7,9 @@ import { Line, Circle } from 'rc-progress';
 
 const HealthBar = ({maxHP, hp}) => {
   const percent = hp/maxHP * 100
-  const colourClass = percent > 1/3*100
-    ? percent > 2/3*100
-      ? percent == 100
-        ? 'hsl(171, 100%, 41%)'
-        : 'hsl(141, 71%, 48%)'
+  const colourClass = percent >= 25
+    ? percent >= 50
+      ? 'hsl(171, 100%, 41%)'
       : 'hsl(48, 100%, 67%)'
     : 'hsl(348, 100%, 61%)'
   return <div className="HealthBar has-text-centered box">

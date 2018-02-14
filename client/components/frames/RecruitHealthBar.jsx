@@ -8,21 +8,19 @@ import { Line, Circle } from 'rc-progress';
 
 const RecruitHealthBar = ({recruit}) => {
   let {hp, initHp, power, speed, effects} = recruit
-    const percent = hp/initHp * 100
-  const colourClass = percent > 1/3*100
-    ? percent > 2/3*100
-      ? percent == 100
-        ? 'hsl(171, 100%, 41%)'
-        : 'hsl(141, 71%, 48%)'
+  const percent = hp/initHp * 100
+  const colourClass = percent >= 25
+    ? percent >= 50
+      ? 'hsl(171, 100%, 41%)'
       : 'hsl(48, 100%, 67%)'
     : 'hsl(348, 100%, 61%)'
   return <div className="RecruitHealthBar has-text-centered">
     <div className="">
       <div className="columns">
-        <div className="column is-9" style={{heigth: '15px'}}>
+        <div className="column is-6" style={{heigth: '15px'}}>
           <Line percent={percent} strokeWidth="4" strokeColor={colourClass} strokeLineCap="square"  trailWidth="4"/>
         </div>
-        <div className="column is-3"><p className="subtitle is-4"><HealthIcon value={`${Math.round(hp * 10) /10} / ${Math.round(initHp * 10) /10}`} /></p></div>
+        <div className="column is-6"><p className="subtitle is-5"><HealthIcon value={`${Math.round(hp * 10) /10} / ${Math.round(initHp * 10) /10}`} /></p></div>
       </div>
     </div>
   </div>
