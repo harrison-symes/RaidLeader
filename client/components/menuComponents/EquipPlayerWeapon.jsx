@@ -66,7 +66,6 @@ class PlayerWeapon extends React.Component {
           <button onClick={this.back} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
-          {/* <p className="subtitle is-1">Level {selectedWeapon.level}</p> */}
           <br />
           <p className="content is-large box">{selectedWeapon.description}</p>
           <div className="box">
@@ -115,7 +114,7 @@ class PlayerWeapon extends React.Component {
                     {...provided.dragHandleProps}
                     >
                     <tbody className="tbody box">
-                      <tr><td className="has-text-centered title is-4">{weapon.name} ({weapon.level})</td></tr>
+                      <tr><td className="has-text-centered title is-4">{weapon.name}</td></tr>
                       <tr>
                         <td className="level">
                           <button onClick={() => this.selectWeapon(weapon)} className="Table-Button is-fullwidth button ">Details</button>
@@ -154,7 +153,7 @@ class PlayerWeapon extends React.Component {
                             {...provided.dragHandleProps}
                             >
                               <tbody className="tbody box">
-                                <tr><td className="title is-4">{playerWeapon.name} ({playerWeapon.level})</td></tr>
+                                <tr><td className="title is-4">{playerWeapon.name}</td></tr>
                                 <tr>
                                   <td className="level">
                                     <button onClick={() => this.removeWeapon(playerWeapon)} className="button is-fullwdith Table-Button">Remove</button>
