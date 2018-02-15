@@ -61,6 +61,7 @@
     "rc-tooltip": "^3.7.0",
     "react": "^15.5.4",
     "react-beautiful-dnd": "^3.0.0",
+    "react-circular-progressbar": "^0.8.0",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router": "^4.2.0",
