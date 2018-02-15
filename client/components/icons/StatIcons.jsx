@@ -255,3 +255,13 @@ export function RecruitCountIcon ({amount}) {
     </p>
   )
 }
+
+export function SpellCountIcon ({amount}) {
+  return toolTipGenerator(
+    <p>You know {amount} Spell{amount > 1 ? 's' : ''}</p>,
+    <p>
+      {amount}
+      <i className="ra ra-book icon-large" />
+    </p>
+  )
+}
