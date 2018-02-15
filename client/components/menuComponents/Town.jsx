@@ -10,7 +10,7 @@ import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import BlackMarket from './BlackMarket'
 
-import {GoldIcon} from '../icons/StatIcons'
+import {GoldIcon, RecruitCountIcon} from '../icons/StatIcons'
 
 class Town extends Component {
   constructor(props) {
@@ -63,10 +63,13 @@ class Town extends Component {
             <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
           <div className=" is-4">
-            <div className="tooltip">
+            <p className="subtitle is-2">
+              <RecruitCountIcon amount={recruits.length} />
+            </p>
+            {/* <div className="tooltip">
               <span className="tooltiptext">You have Recruited {recruits.length} Recruits</span>
               <p className="subtitle is-2">{recruits.length} <i className="ra ra-double-team icon-large" /></p>
-            </div>
+            </div> */}
           </div>
         </div>
 

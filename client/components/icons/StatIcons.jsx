@@ -245,3 +245,13 @@ export function WeaponEquippedByIcon ({equippedBy}) {
     </p>
   )
 }
+
+export function RecruitCountIcon ({amount}) {
+  return toolTipGenerator(
+    <p>You have {amount} Recruit{amount > 1 ? 's' : ''}</p>,
+    <p>
+      {amount}
+      <i className="ra ra-double-team icon-large" />
+    </p>
+  )
+}
