@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {HealthIcon, ArmorIcon, ManaIcon} from '../icons/StatIcons'
 import { Line, Circle } from 'rc-progress';
 
-const healthBar = (current, max) => {
+const healthBar = (current, max, armor) => {
   const percent = Math.round(current/max * 100)
   const colourClass = percent > 1/3*100
     ? percent > 2/3*100
@@ -14,7 +14,7 @@ const healthBar = (current, max) => {
     : 'hsl(348, 100%, 61%)'
   return <div className="column">
     <div className="">
-      <Line percent={percent} strokeWidth="6" strokeColor={colourClass} strokeLineCap="square" trailWidth="6"/>
+      <Line percent={percent} strokeWidth={armor == 0 ? '3' : '6'} strokeColor={colourClass} strokeLineCap="square" trailWidth="6"/>
     </div>
     <p className="subtitle is-5"><HealthIcon value={`${current} / ${max}`} /></p>
   </div>
@@ -54,7 +54,7 @@ const BossHealthBar = ({boss}) => {
       : 'is-warning'
     : 'is-danger'
     return <div className="BossHealthBar columns has-text-centered">
-      {healthBar(hp, initHp)}
+      {healthBar(hp, initHp, armor)}
       {armor > 0 && armorBar(armor, initArmor)}
       {manaBar(mana, maxMana)}
     </div>

@@ -27,11 +27,13 @@ class Menu extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      modalView: null
+      modalView: null,
+      bossPreview: false
     }
     this.loadGame = this.loadGame.bind(this)
     this.goToTown = this.goToTown.bind(this)
     this.close = this.close.bind(this)
+    this.togglePreview = this.togglePreview.bind(this)
   }
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -41,6 +43,9 @@ class Menu extends React.Component {
       this.props.dispatch(getPlayerGold())
       this.props.dispatch(getWeapons())
     } else this.props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
+  }
+  togglePreview() {
+    this.setState({bossPreview: !this.state.bossPreview})
   }
   readyRecruits(recruits) {
     const {weapons} = this.props
@@ -151,7 +156,7 @@ class Menu extends React.Component {
             <p className="title is-3">Done:</p>
             {boss != null && <span className="level">
               {this.renderMenuLink('Boss Selection', 'ra-on-target')}
-              <BossPreview i={0} boss={boss} />
+              <BossPreview i={0} boss={boss} showMore={this.state.bossPreview} close={this.togglePreview} selectBoss={this.togglePreview} back={this.togglePreview}/>
             </span>}
             {playerWeapon && this.renderMenuLink('Equip Player Weapon', 'ra-crystal-wand')}
             {playerParty.length > 0 && this.renderMenuLink('Assemble Party', 'ra-podium')}

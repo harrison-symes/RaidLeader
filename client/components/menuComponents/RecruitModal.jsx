@@ -42,7 +42,7 @@ class RecruitModal extends Component {
               {weapon.power != 0 && <div className="column subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`} /></div>}
               {weapon.speed !== 0 && <div className="column subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""}${weapon.speed * 100}%`}/> </div>}
             </div>
-            {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+            {weapon.bonusEffect && <div className="content is-large box">Bonus: {weapon.effectDescription}</div>}
           </div>
           : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
         }
@@ -75,7 +75,7 @@ class RecruitModal extends Component {
             {weapon.power != 0 && <li className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`}/></li>}
             {weapon.speed != 0 && <li className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed * 100}%`} /></li>}
           </ul>
-          {weapon.bonusEffect && <p className="subtitle is-6">{weapon.bonusEffect}</p>}
+          {weapon.bonusEffect && <p className="content is-large box">{weapon.effectDescription}</p>}
           <button className="button is-success" onClick={() => this.equip(weapon.id)}>Equip</button>
         </div>)}
       </div>

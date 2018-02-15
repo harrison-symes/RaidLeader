@@ -10,7 +10,7 @@ class BossPreview extends React.Component {
     this.props.dispatch({type: "TARGET_BOSS", boss})
   }
   renderBossModal () {
-    const {boss, back} = this.props
+    const {boss, back, targetBoss} = this.props
     const {bosses} = this.props.currentLocation
     const defeatedBossCount = bosses.filter(boss => boss.isDefeated).length
     let colour = !boss.isDefeated ? defeatedBossCount >= boss.progress_required ? 'is-success' : 'is-danger' : 'is-dark'
@@ -91,11 +91,13 @@ class BossPreview extends React.Component {
         <footer className="modal-card-foot">
           <button onClick={back} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>
           <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour == 'is-success' ? 'is-outlined' : ''} is-fullwidth ${colour}`} disabled={colour != 'is-success'}>
-            {colour != 'is-success'
-              ? colour == 'is-danger'
-                ? `${boss.progress_required - defeatedBossCount} More Defeat${boss.progress_required - defeatedBossCount < 2 ? "": "s"}`
-                : 'Already Defeated'
-              : 'Set Target'
+            {targetBoss != boss
+              ? colour != 'is-success'
+                ? colour == 'is-danger'
+                  ? `${boss.progress_required - defeatedBossCount} More Defeat${boss.progress_required - defeatedBossCount < 2 ? "": "s"}`
+                  : 'Already Defeated'
+                : 'Set Target'
+              : 'Targeted'
             }
           </button>
         </footer>

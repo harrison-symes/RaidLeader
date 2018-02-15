@@ -5,7 +5,7 @@ import createClass from '../../utils/createClass'
 import {earnGold} from '../../actions/gold'
 import {levelUpRecruit} from '../../actions/recruits'
 import {classIcons} from '../../utils/classText'
-import {PowerIcon, SpeedIcon, HealthIcon} from '../icons/StatIcons'
+import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon} from '../icons/StatIcons'
 
 class TrainingCentre extends Component {
   constructor(props) {
@@ -41,8 +41,8 @@ class TrainingCentre extends Component {
         <option value={0}>Train to Which Level?</option>
         {this.renderLevelOption('The Cursed Wilds', 2)}
         {this.renderLevelOption('The Swamp', 3)}
-        {this.renderLevelOption('The Armory', 4)}
-        {this.renderLevelOption('The Foundry', 5)}
+        {this.renderLevelOption('The Foundry', 4)}
+        {this.renderLevelOption('The Armory', 5)}
         {this.renderLevelOption('The Lair', 6)}
       </select>
     </p>
@@ -69,8 +69,8 @@ class TrainingCentre extends Component {
         <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={`${recruit.speed} ${speedDiff ? `(+${speedDiff})` : ""}`}/></p></div>
       </div>
       {gold >= cost
-        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-outlined is-large">Upgrade to Level {this.state.levelUpgrade} (-{cost} Gold)</button>
-        : <button disabled className="button is-danger is-large">Insufficient Funds (Costs {cost} Gold)</button>
+        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-outlined is-large">Upgrade to Level {this.state.levelUpgrade} (<GoldIcon value={`-${cost}`} />)</button>
+        : <button disabled className="button is-danger is-large">Insufficient Funds (<GoldIcon value={-1 * cost} />)</button>
       }
     </div>
   }

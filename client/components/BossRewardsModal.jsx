@@ -64,7 +64,7 @@ class BossRewardsModal extends Component {
             <div className="column is-4"><span className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? '+' : ''}${weapon.speed * 100}%`} /></span></div>
           </div>
         }
-        {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.effectDescription}</div>}
+        {weapon.bonusEffect && <div className="box content is-large">Bonus: {weapon.effectDescription}</div>}
       </div>
     </div>
   }

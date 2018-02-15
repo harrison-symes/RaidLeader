@@ -9,6 +9,8 @@ import {addWeapon} from '../../actions/weapons'
 import {earnGold} from '../../actions/gold'
 import {completeDungeon} from '../../actions/dungeons'
 
+import {GoldIcon} from '../icons/StatIcons'
+
 class DungeonRewards extends Component {
   constructor(props) {
     super(props)
@@ -50,7 +52,7 @@ class DungeonRewards extends Component {
           {weapon.class != 'Player' && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
           {weapon.class == 'Player' && <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} per second)</div>}
         </div>
-        {weapon.bonusEffect && <div className="subtitle is-3">Bonus: {weapon.bonusEffect}</div>}
+        {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
       </div>
     </div>
   }
@@ -66,7 +68,7 @@ class DungeonRewards extends Component {
           {showRewards
             ? <div>
               <p className="title is-2">Rewards:</p>
-              <p className="title is-3">Gold: {currentLocation.gold_reward}</p>
+              <p className="title is-3"><GoldIcon value={currentLocation.gold_reward} /></p>
               {weaponReward && this.weaponInfo(weaponReward)}
             </div>
             : <button className="button is-primary is-fullwidth is-large" onClick={this.showRewards}>Open Chest</button>
