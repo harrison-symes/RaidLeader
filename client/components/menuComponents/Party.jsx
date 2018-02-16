@@ -27,11 +27,15 @@ class Party extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedRecruit: null
+      selectedRecruit: null,
+      filterClass: 'All'
     }
     this.onDragEnd = this.onDragEnd.bind(this);
     this.selectRecruit = this.selectRecruit.bind(this);
     this.back = this.back.bind(this);
+  }
+  filterClass(filterClass) {
+    this.setState({filterClass})
   }
   selectRecruit(selectedRecruit) {
     this.setState({selectedRecruit})
@@ -65,7 +69,13 @@ class Party extends React.Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns is-mobile Drag-And-Drop">
           <span style={{width: '50%'}}>
-            <h1 className="DnD-Title title is-3">Recruits</h1>
+            <div className="level">
+              <select className="select is-fullwdith is-large" selected={this.state.filterClass} onChange={(e) => this.filterClass(e.target.value)}>
+                <option value={'All'}>All Classes</option>
+                {['Paladin', 'Warrior', 'Priest', 'Monk', 'Mage', 'Shaman', 'Hunter', 'Rogue', 'Warlock'].map(heroClass => <option value={heroClass}>{heroClass}s</option>)}
+              </select>
+              <h1 className="DnD-Title title is-3">Recruits</h1>
+            </div>
             <br />
             <Droppable droppableId="recruits">
             {(provided, snapshot) => (<div
@@ -73,7 +83,7 @@ class Party extends React.Component {
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver, false)}
               >
-              {roster.map(recruit => (
+              {roster.filter(recruit => this.state.filterClass == 'All' || recruit.heroClass == this.state.filterClass).map(recruit => (
                 <Draggable key={recruit.id} draggableId={recruit.id}>
                   {(provided, snapshot) => (<div>
                     <table className="table has-text-centered"
