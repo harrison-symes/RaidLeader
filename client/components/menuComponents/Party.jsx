@@ -27,11 +27,15 @@ class Party extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedRecruit: null
+      selectedRecruit: null,
+      filterClass: 'All'
     }
     this.onDragEnd = this.onDragEnd.bind(this);
     this.selectRecruit = this.selectRecruit.bind(this);
     this.back = this.back.bind(this);
+  }
+  filterClass(filterClass) {
+    this.setState({filterClass})
   }
   selectRecruit(selectedRecruit) {
     this.setState({selectedRecruit})
@@ -65,7 +69,18 @@ class Party extends React.Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns is-mobile Drag-And-Drop">
           <span style={{width: '50%'}}>
-            <h1 className="DnD-Title title is-3">Recruits</h1>
+            <div className="">
+              <h1 className="DnD-Title title is-3">Recruits</h1>
+              {roster.length > 5 &&
+                <select className="select is-fullwdith is-large" selected={this.state.filterClass} onChange={(e) => this.filterClass(e.target.value)}>
+                  <option value={'All'}>All Classes</option>
+                  {Object.keys(roster.reduce((obj, r) => {
+                    obj[r.heroClass] = r
+                    return obj
+                  },{})).map(heroClass => <option value={heroClass}>{heroClass}s ({roster.filter(r => r.heroClass == heroClass).length})</option>)}
+                </select>
+              }
+            </div>
             <br />
             <Droppable droppableId="recruits">
             {(provided, snapshot) => (<div
@@ -73,7 +88,7 @@ class Party extends React.Component {
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver, false)}
               >
-              {roster.map(recruit => (
+              {roster.filter(recruit => this.state.filterClass == 'All' || recruit.heroClass == this.state.filterClass).map(recruit => (
                 <Draggable key={recruit.id} draggableId={recruit.id}>
                   {(provided, snapshot) => (<div>
                     <table className="table has-text-centered"
