@@ -69,12 +69,17 @@ class Party extends React.Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns is-mobile Drag-And-Drop">
           <span style={{width: '50%'}}>
-            <div className="level">
-              <select className="select is-fullwdith is-large" selected={this.state.filterClass} onChange={(e) => this.filterClass(e.target.value)}>
-                <option value={'All'}>All Classes</option>
-                {['Paladin', 'Warrior', 'Priest', 'Monk', 'Mage', 'Shaman', 'Hunter', 'Rogue', 'Warlock'].map(heroClass => <option value={heroClass}>{heroClass}s</option>)}
-              </select>
+            <div className="">
               <h1 className="DnD-Title title is-3">Recruits</h1>
+              {roster.length > 5 &&
+                <select className="select is-fullwdith is-large" selected={this.state.filterClass} onChange={(e) => this.filterClass(e.target.value)}>
+                  <option value={'All'}>All Classes</option>
+                  {Object.keys(roster.reduce((obj, r) => {
+                    obj[r.heroClass] = r
+                    return obj
+                  },{})).map(heroClass => <option value={heroClass}>{heroClass}s</option>)}
+                </select>
+              }
             </div>
             <br />
             <Droppable droppableId="recruits">
