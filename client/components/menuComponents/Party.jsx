@@ -77,7 +77,7 @@ class Party extends React.Component {
                   {Object.keys(roster.reduce((obj, r) => {
                     obj[r.heroClass] = r
                     return obj
-                  },{})).map(heroClass => <option value={heroClass}>{heroClass}s</option>)}
+                  },{})).map(heroClass => <option value={heroClass}>{heroClass}s ({roster.filter(r => r.heroClass == heroClass).length})</option>)}
                 </select>
               }
             </div>
