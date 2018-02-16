@@ -27,11 +27,15 @@ class SpellBook extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedSpell: null
+      selectedSpell: null,
+      filterType: 'All'
     }
     this.onDragEnd = this.onDragEnd.bind(this);
     this.viewSpell = this.viewSpell.bind(this);
     this.back = this.back.bind(this);
+  }
+  selectType(filterType) {
+    this.setState({filterType})
   }
   back() {
     this.setState({selectedSpell: null})
@@ -63,6 +67,13 @@ class SpellBook extends React.Component {
         <div className="columns is-mobile Drag-And-Drop">
           <span style={{width: '100%'}} className="has-text-centered">
             <h1 className="title is-3 DnD-Title">Spellbook</h1>
+            {available.length >= 5 && <select onChange={e=>this.selectType(e.target.value)} className="select is-large is-fullwidth">
+              <option value="All">All Types</option>
+              {Object.keys(available.reduce((obj, s) => {
+                obj[s.element] = s
+                return obj
+              },{})).map(type => <option value={type}>{type} Spells ({available.filter(s => s.element == type).length})</option>)}
+            </select>}
             <br />
             <Droppable droppableId="spellBook">
               {(provided, snapshot) => (
@@ -71,7 +82,7 @@ class SpellBook extends React.Component {
                   ref={provided.innerRef}
                   style={getListStyle(snapshot.isDraggingOver, false)}
                   >
-                  {available.map(spell => (
+                  {available.filter(s => this.state.filterType =='All' || s.element == this.state.filterType).map(spell => (
                     <Draggable key={spell.id} draggableId={spell.id}>
                       {(provided, snapshot) => (
                         <div>
