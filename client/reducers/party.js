@@ -32,8 +32,10 @@ export default function party (state = [], action) {
       return newState
     case 'ADD_EFFECT_TO_ALL_FRIENDLY':
       newState = newState.map(target => {
-        target.effects = target.effects.filter(effect => effect.name != action.effect.name)
-        target.effects.push({...action.effect})
+        if (target.isAlive) {
+          target.effects = target.effects.filter(effect => effect.name != action.effect.name)
+          target.effects.push({...action.effect})
+        }
         return target
       })
       return newState
@@ -99,6 +101,12 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.hp-=Math.round(action.power)
       return newState
+    case 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY':
+      newState = newState.map(member => {
+        if (member.isAlive) member.hp-=Math.round(member.initHp * action.percentage)
+        if (member.hp > member.initHp) member.hp = member.initHp
+        return member
+      })
     case 'PERCENT_DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
       target = newState.find(member => member == action.target)

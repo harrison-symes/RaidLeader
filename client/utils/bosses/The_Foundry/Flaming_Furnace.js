@@ -1,12 +1,12 @@
 export default {
   name: 'Flaming Furnace',
   level: 3,
-  initHp: 2000,
-  hp: 2000,
+  initHp: 1500,
+  hp: 1500,
   initPower: 0,
   power: 0,
-  initArmor: 2000,
-  armor: 2000,
+  initArmor: 1500,
+  armor: 1500,
   mana: 0,
   maxMana: 1000,
   manaRegen: 0,
@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "",
-  weaponRewards: [],
+  weaponRewards: ['Curved Chassis', 'Afterburn Arrows', 'Cracked Chassis'],
   goldReward: 1500,
   weaponChance: 1,
   progress_required: 0,
@@ -33,7 +33,7 @@ export default {
       ticks: 5,
       onCooldown: false,
       description: "Useable when at 0 Armor: Damage ALL enemy recruits for (50%) Boss Power over the duration of the cast. Change to Stage 2",
-      icon: ' ra-fire-shield'
+      icon: 'ra-fire-shield'
     },
     {
       name: 'Heat Up',

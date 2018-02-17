@@ -1,13 +1,13 @@
 export default {
   name: 'Decaying Deer',
   level: 2,
-  initHp: 1500,
-  hp: 1500,
+  initHp: 1000,
+  hp: 1000,
   initPower: 50,
   power: 50,
-  initArmor: 1000,
-  armor: 1000,
-  mana: 5,
+  initArmor: 500,
+  armor: 500,
+  mana: 2,
   maxMana: 5,
   manaRegen: 1,
   armorRegen: 0,
@@ -29,7 +29,7 @@ export default {
       onCooldown: false,
       health: -50,
       powerRatio: 1,
-      description: "Poison ALL enemy RECRUITS for 60% of their Max Health over 15 seconds, lose Health equal to BOSS Power",
+      description: "Poison ALL enemy Recruits for 60% of their Max Health over 15 seconds, lose Health equal to 100% Boss Power",
       icon: 'ra-desert-skull'
     },
     {
@@ -41,9 +41,9 @@ export default {
       singleTarget: false,
       powerRatio: 1,
       armor: 100,
-      health: 200,
+      health: 100,
       onCooldown: false,
-      description: 'Gain 100 Armor and 200 Health.',
+      description: 'Gain 100 Armor and 100 Health.',
       icon: 'ra-regeneration'
     },
     {

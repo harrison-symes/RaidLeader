@@ -25,7 +25,7 @@ class BossSpell extends Component {
     let power = boss.power * spell.tickPower
     let target = party.find(other => other.id == boss.bossTarget.id)
     let aliveTargets = party.filter(member => member.isAlive)
-    if (aliveTargets.length == 0) power*=2
+    // if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
       case 'Boil':
         let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
@@ -70,8 +70,9 @@ class BossSpell extends Component {
         dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor})
         return dispatch({type: 'HEAL_BOSS', power: spell.health})
       case 'Seep':
-        dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 0.05})
+        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.05})
+        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
       case 'Plague Bite':
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
@@ -87,13 +88,16 @@ class BossSpell extends Component {
         aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
         if (aliveTargets.length) {
           target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
-          dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+          dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }
       case 'Ravage':
-        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.03})
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Ingest Plague':
+        dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor})
+        dispatch({type: 'HEAL_BOSS', power: spell.health})
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})

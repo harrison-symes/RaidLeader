@@ -3,8 +3,8 @@ export default {
   level: 2,
   initHp: 2000,
   hp: 2000,
-  initPower: 30,
-  power: 30,
+  initPower: 0,
+  power: 0,
   initArmor: 0,
   armor: 0,
   mana: 0,
@@ -55,7 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      percentage: 0.6,
+      description: "Damage a random non-poisoned enemy recruit for (60%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-overhead'
     }
   ]

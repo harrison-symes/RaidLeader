@@ -35,7 +35,7 @@ export default {
     {
       name: 'Swipe',
       cast: 4,
-      cost: 0,
+      cost: 2,
       coolDown: 3,
       type: 'damage',
       singleTarget: false,
