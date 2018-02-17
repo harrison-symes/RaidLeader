@@ -25,7 +25,7 @@ class BossSpell extends Component {
     let power = boss.power * spell.tickPower
     let target = party.find(other => other.id == boss.bossTarget.id)
     let aliveTargets = party.filter(member => member.isAlive)
-    if (aliveTargets.length == 0) power*=2
+    // if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
       case 'Boil':
         let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]

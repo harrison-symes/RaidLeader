@@ -218,7 +218,7 @@ module.exports = {
     type: 'damage',
     singleTarget: false,
     powerRatio: 2,
-    mana: 5
+    mana: 5,
     description: 'Damage the Boss for (100%) of Player Power, Heal the Player for (100%) of the Damage done and restores 5 Mana to the Player',
     icon: 'ra-bleeding-hearts',
     color: colors.darkPurple,

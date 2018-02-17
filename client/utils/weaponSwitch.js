@@ -338,5 +338,50 @@ module.exports = {
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
     icon: 'ra-book'
-  })
+  }),
+  ['Cracked Chassis']: (level, id) => ({
+    name: 'Cracked Chassis',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: -0.5,
+    power: 0,
+    speed: 1,
+    description: "A splinter of the Furnace's iron chassis. You wouldn't want to use this to protect you!",
+    class: 'Paladin',
+    bonusEffect: 'noTaunt',
+    effectDescription: 'The Paladin no longer forces the Boss to attack them',
+    icon: 'ra-cracked-shield'
+  }),
+  ['Curved Chassis']: (level, id) => ({
+    name: 'Curved Chassis',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.5,
+    power: 0,
+    speed: 0,
+    description: "A rounded piece of Iron from the Furnace's outer chassis. This actually seems sturdy enough to wear.",
+    class: 'Monk',
+    bonusEffect: 'taunt',
+    effectDescription: "The Monk's attacks now force the Boss to Target the Monk",
+    icon: 'ra-cracked-helm'
+  }),
+  ['Afterburn Arrows']: (level, id) => ({
+    name: 'Afterburn Arrows',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.5,
+    power: -0.5,
+    speed: 0.5,
+    description: "Splinters of Iron coated in molten metal. These wouldn't just sting once...",
+    class: 'Hunter',
+    bonusEffect: 'taunt',
+    effectDescription: "The Hunter's attacks now force the Boss to Target the Hunter",
+    icon: 'ra-flaming-arrow'
+  }),
 }
