@@ -43,7 +43,8 @@ export default {
       singleTarget: true,
       powerRatio: 1,
       onCooldown: false,
-      description: 'Damage All enemy characters for 100% Boss Power. This spell also damages the caster for 100% Power',
+      percentage: 0.5,
+      description: 'Damage All enemy characters for 50% of their Max Health. This spell also damages the caster for 5% Max Health',
       icon: 'ra-bleeding-hearts'
     },
     {

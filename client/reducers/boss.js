@@ -69,6 +69,9 @@ export default function boss (state = null, action) {
       if (newState.armor < 0) newState.armor = 0
       newState.hp = newState.hp - damage
       return newState
+    case 'PERCENT_DAMAGE_BOSS':
+      newState.hp-= Math.round(newState.hp * action.percentage)
+      return newState
     case 'BOSS_WANTS_TO_CAST':
       newState.wantsToCast = action.spell.name
       return newState
