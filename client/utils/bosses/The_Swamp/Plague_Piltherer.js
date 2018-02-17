@@ -50,8 +50,8 @@ export default {
     {
       name: 'Ravage',
       cost: 0,
-      cast: 5,
-      coolDown: 0.5,
+      cast: 3,
+      coolDown: 2,
       powerRatio: 1,
       type: 'damage',
       singleTarget: false,
@@ -63,7 +63,7 @@ export default {
     },
     {
       name: 'Mad Cackle',
-      cast: 0.5,
+      cast: 1,
       cost: 0,
       coolDown: 0,
       type: 'armor',
