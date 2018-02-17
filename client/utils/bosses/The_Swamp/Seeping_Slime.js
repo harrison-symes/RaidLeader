@@ -44,7 +44,7 @@ export default {
       powerRatio: 1,
       onCooldown: false,
       percentage: 0.5,
-      description: 'Damage All enemy characters for 50% of their Max Health. This spell also damages the caster for 5% Max Health',
+      description: 'Damage All enemy characters for 50% of their Max Health. Lose 5% Health',
       icon: 'ra-bleeding-hearts'
     },
     {

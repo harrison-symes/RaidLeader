@@ -7,8 +7,8 @@ export default {
   power: 0,
   initArmor: 1000,
   armor: 1000,
-  mana: 10,
-  maxMana: 10,
+  mana: 15,
+  maxMana: 15,
   manaRegen: 1,
   armorRegen: 0,
   isCasting: false,
@@ -23,7 +23,7 @@ export default {
     {
       name: 'Ingest Plague',
       cast: 10,
-      cost: 10,
+      cost: 15,
       coolDown: 10,
       type: 'damage',
       singleTarget: false,
@@ -36,7 +36,7 @@ export default {
     {
       name: 'Spread Plague',
       cost: 0,
-      cast: 2,
+      cast: 3,
       coolDown: 15,
       powerRatio: 1,
       type: 'damage',
@@ -44,6 +44,19 @@ export default {
       onCooldown: false,
       description: "Poison All enemy recruits, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-biohazard'
+    },
+    {
+      name: 'Ravage',
+      cost: 0,
+      cast: 5,
+      coolDown: 0,
+      powerRatio: 1,
+      type: 'damage',
+      singleTarget: false,
+      onCooldown: false,
+      power: -10,
+      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power",
+      icon: 'ra-slash-ring'
     },
     {
       name: 'Regenerate',
@@ -58,19 +71,6 @@ export default {
       onCooldown: false,
       description: 'Gain 100 ARMOR and 100 Health',
       icon: 'ra-regeneration'
-    },
-    {
-      name: 'Ravage',
-      cost: 0,
-      cast: 3,
-      coolDown: 0,
-      powerRatio: 1,
-      type: 'damage',
-      singleTarget: false,
-      onCooldown: false,
-      power: -10,
-      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power",
-      icon: 'ra-slash-ring'
     }
   ]
 }
