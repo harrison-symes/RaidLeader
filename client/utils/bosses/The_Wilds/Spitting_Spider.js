@@ -47,7 +47,7 @@ export default {
     {
       name: 'Spit',
       cast: 3,
-      cost: 1,
+      cost: 0,
       coolDown: 3,
       type: 'damage',
       singleTarget: false,
