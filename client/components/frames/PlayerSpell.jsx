@@ -87,12 +87,12 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Life Tap':
-        dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana * 0.1)})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: spell.mana})
         return dispatch({type: 'DAMAGE_PLAYER', power: Math.round(player.initHp * 0.05)})
       case 'Evocate':
         return dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana / 100 * spell.powerRatio)})
       case 'Drain Soul':
-        dispatch({type: 'PLAYER_GAIN_MANA', power: Math.round(player.maxMana * 0.03)})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: spell.mana})
         dispatch({type: 'HEAL_PLAYER', power})
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Renew':
@@ -107,7 +107,7 @@ class PlayerSpell extends Component {
       case 'Ring of Fire':
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Purge':
-        if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: 10 * target.effects.length})
+        if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: spell.mana * target.effects.length})
         return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET', target})
       case 'Restore':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
