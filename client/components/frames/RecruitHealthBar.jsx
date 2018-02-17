@@ -6,7 +6,7 @@ import EffectTag from './EffectTag'
 import { Line, Circle } from 'rc-progress';
 
 
-const RecruitHealthBar = ({recruit}) => {
+const RecruitHealthBar = ({recruit, party}) => {
   let {hp, initHp, power, speed, effects} = recruit
   const percent = hp/initHp * 100
   const colourClass = percent >= 25
@@ -18,7 +18,7 @@ const RecruitHealthBar = ({recruit}) => {
     <div className="">
       <div className="columns">
         <div className="column is-6" style={{heigth: '15px'}}>
-          <Line percent={percent} strokeWidth="4" strokeColor={colourClass} strokeLineCap="square"  trailWidth="4"/>
+          <Line percent={percent} strokeWidth={`${4 * party.length}`} strokeColor={colourClass} strokeLineCap="square"  trailWidth={`${4 * party.length}`}/>
         </div>
         <div className="column is-6"><p className="subtitle is-5"><HealthIcon value={`${Math.round(hp)} / ${Math.round(initHp)}`} /></p></div>
       </div>
@@ -26,4 +26,6 @@ const RecruitHealthBar = ({recruit}) => {
   </div>
 }
 
-export default connect()(RecruitHealthBar)
+const mapStateToProps = ({party}) => ({party})
+
+export default connect(mapStateToProps)(RecruitHealthBar)
