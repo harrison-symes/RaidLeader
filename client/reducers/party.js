@@ -32,8 +32,10 @@ export default function party (state = [], action) {
       return newState
     case 'ADD_EFFECT_TO_ALL_FRIENDLY':
       newState = newState.map(target => {
-        target.effects = target.effects.filter(effect => effect.name != action.effect.name)
-        target.effects.push({...action.effect})
+        if (target.isAlive) {
+          target.effects = target.effects.filter(effect => effect.name != action.effect.name)
+          target.effects.push({...action.effect})
+        }
         return target
       })
       return newState
