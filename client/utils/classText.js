@@ -23,7 +23,7 @@ export function classTraits(heroClass) {
     case 'Monk': return "Whenever the Monk attacks, all Party Members are healed for (+10%) of their hp"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"
     case 'Hunter': return "The Hunter's attacks deal Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
-    case 'Shaman': return "The Shaman's attacks also place a Renew effect on the most damaged friendly target, healing for 60% of Target's Max Health over 15 seconds"
+    case 'Shaman': return "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds"
     default: return null
   }
 }
