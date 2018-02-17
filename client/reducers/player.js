@@ -72,6 +72,9 @@ export default function player (state = null, action) {
     case 'DAMAGE_ALL_FRIENDLY':
       newState.hp-= Math.round(action.power)
       return newState
+    case 'PERCENT_DAMAGE_PLAYER':
+      newState.hp-= Math.round(newState.initHp * action.percentage)
+      return newState
     case 'PLAYER_GAIN_MANA':
       newState.mana += action.power
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana

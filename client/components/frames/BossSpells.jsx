@@ -71,6 +71,7 @@ class BossSpell extends Component {
         return dispatch({type: 'HEAL_BOSS', power: spell.health})
       case 'Seep':
         dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 0.05})
+        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.05})
         return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
       case 'Plague Bite':
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
@@ -91,9 +92,12 @@ class BossSpell extends Component {
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }
       case 'Ravage':
-        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.03})
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Ingest Plague':
+        dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor})
+        dispatch({type: 'HEAL_BOSS', power: spell.health})
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})

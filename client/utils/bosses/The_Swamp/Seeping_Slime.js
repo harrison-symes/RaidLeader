@@ -43,8 +43,8 @@ export default {
       singleTarget: true,
       powerRatio: 1,
       onCooldown: false,
-      percentage: 0.5,
-      description: 'Damage All enemy characters for 50% of their Max Health. Lose 5% Health',
+      percentage: 0.3,
+      description: 'Damage All enemy recruits for 30% of their Max Health. Both the Boss and Player Lose 5% Health',
       icon: 'ra-bleeding-hearts'
     },
     {

@@ -29,8 +29,10 @@ export default {
       singleTarget: false,
       powerRatio: 0,
       power: 30,
+      armor: 100,
+      health: 100,
       onCooldown: false,
-      description: 'Gain 30 Power. (Only usable when at 0 Power)',
+      description: 'Gain 30 Power. Restore 100 Health and Armor. (Only usable when at 0 Power)',
       icon: 'ra-potion'
     },
     {
@@ -42,35 +44,34 @@ export default {
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
-      description: "Poison All enemy recruits, dealing 60% of their Max Health over 15 seconds",
+      description: "(Only Usable at 30 Power), Poison All enemy recruits, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-biohazard'
     },
     {
       name: 'Ravage',
       cost: 0,
       cast: 5,
-      coolDown: 0,
+      coolDown: 0.5,
       powerRatio: 1,
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
       power: -10,
-      description: "Damage all enemy characters for 100% Boss Power, lose 10 Power",
+      percentage: 0.3,
+      description: "Damage each enemy Recruit for 30% of their Max Health, lose 10 Power, Damage the Player for 3% of their Max Health",
       icon: 'ra-slash-ring'
     },
     {
-      name: 'Regenerate',
-      cast: 2,
-      cost: 3,
-      coolDown: 10,
+      name: 'Mad Cackle',
+      cast: 0.5,
+      cost: 0,
+      coolDown: 0,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 1,
-      armor: 100,
-      health: 100,
+      powerRatio: 0,
       onCooldown: false,
-      description: 'Gain 100 ARMOR and 100 Health',
-      icon: 'ra-regeneration'
+      description: 'Does nothing, but it makes you a little scared (or concerned?)',
+      icon: 'ra-player-pyromaniac'
     }
   ]
 }
