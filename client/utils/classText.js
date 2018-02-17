@@ -15,7 +15,7 @@ export function startingBuff (heroClass) {
 
 export function classTraits(heroClass) {
   switch(heroClass) {
-    case 'Paladin': return "The Paladin's attacks heal the Paladin for (50%) of the Damage dealt. These attacks also force the Boss to target the Paladin"
+    case 'Paladin': return "The Paladin's attacks heal the Paladin equal to their Power. These attacks also force the Boss to target the Paladin"
     case 'Mage': return "The Mage deals (100%) more damage while the Player is below (30%) Mana"
     case 'Warrior': return "The Warrior's attacks deal Critical Damage while the Boss is below (25%) HP. (Critical Damage: Deals (100%) bonus Damage and ignores Armor)"
     case 'Priest': return "The Priest heals a Damaged Party Member instead of Attacking the Boss. (Any excess healing will be dealt as damage to the Boss)"
@@ -23,7 +23,7 @@ export function classTraits(heroClass) {
     case 'Monk': return "Whenever the Monk attacks, all Party Members are healed for (+10%) of their hp"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"
     case 'Hunter': return "The Hunter's attacks deal Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
-    case 'Shaman': return "The Shaman's attacks also place a Renew effect on the most damaged friendly target, healing for 60% of Target's Max Health over 15 seconds"
+    case 'Shaman': return "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds"
     default: return null
   }
 }
