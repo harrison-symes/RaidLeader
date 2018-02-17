@@ -87,7 +87,7 @@ class BossSpell extends Component {
         aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
         if (aliveTargets.length) {
           target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
-          dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+          dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }
       case 'Ravage':

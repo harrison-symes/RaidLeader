@@ -55,7 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage a random non-poisoned enemy recruit for (%100) Boss Power and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      percentage: 0.7,
+      description: "Damage a random non-poisoned enemy recruit for (70%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-overhead'
     }
   ]
