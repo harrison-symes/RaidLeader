@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class AttackIcon extends Component {
   constructor(props) {
     super(props)
-    const {startX, startY} = props.svg
+    const {startX, startY, info} = props.svg
     var bossFrame = document.getElementById('BossIcon').getBoundingClientRect()
     this.state = {
       x: startX || 10,
@@ -12,6 +12,7 @@ class AttackIcon extends Component {
       targetY: bossFrame.top,
       speedY: (startY - bossFrame.top) / 50,
       speedX: (startX - bossFrame.left) / 50,
+      rotation: info.rotation
     }
     this.interval = false
   }
@@ -23,7 +24,7 @@ class AttackIcon extends Component {
     this.interval = false
   }
   endTick() {
-    let {y, x, targetY, targetX, speedY, speedX} = this.state
+    let {y, x, targetY, targetX, speedY, speedX, rotation} = this.state
     if (this.interval) {
       if (y > targetY) y-=speedY
       if (x > targetX) x-=speedX
@@ -32,14 +33,15 @@ class AttackIcon extends Component {
       }
       else {
         // this.startTick()
-        this.setState({y, x})
+        if (this.props.svg.info.rotates) rotation+=30
+        this.setState({y, x, rotation})
       }
     }
   }
   render() {
     const {colour, icon} = this.props.svg.info
     console.log({colour, icon});
-    return <i className={`ra ${icon} ra-3x`} style={{color: colour ,position: 'fixed', top: this.state.y, left: this.state.x}} />
+    return <i className={`ra ${icon} ra-2x`} style={{transform: `rotate(${this.state.rotation}deg)`, color: colour, position: 'fixed', top: this.state.y, left: this.state.x}} />
   }
 }
 
