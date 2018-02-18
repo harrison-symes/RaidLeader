@@ -10,7 +10,7 @@ export default function ({maxMana, mana}) {
   return <div className="ManaBar has-text-centered box">
     <div className="" style={{height: '15px'}}>
       <p className="content"><ManaIcon value={`${mana}/${maxMana}`} /></p>
-        <Line percent={percent} strokeWidth="10" strokeColor={colourClass} strokeLineCap="square"  trailWidth="10" />
+        <Line percent={percent} strokeWidth="10" strokeColor={colourClass} strokeLinecap="square"  trailWidth="10" />
     </div>
   </div>
 }

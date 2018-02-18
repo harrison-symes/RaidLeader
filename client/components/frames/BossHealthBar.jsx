@@ -14,7 +14,7 @@ const healthBar = (current, max, armor) => {
     : 'hsl(348, 100%, 61%)'
   return <div className="column">
     <div className="">
-      <Line percent={percent} strokeWidth={armor == 0 ? '3' : '6'} strokeColor={colourClass} strokeLineCap="square" trailWidth="6"/>
+      <Line percent={percent} strokeWidth={armor == 0 ? '3' : '6'} strokeColor={colourClass} strokeLinecap="square" trailWidth="6"/>
     </div>
     <p className="subtitle is-5"><HealthIcon value={`${current} / ${max}`} /></p>
   </div>
@@ -24,7 +24,7 @@ const armorBar = (current, max) => {
   const percent = Math.round(current/max * 100)
   return <div className="column">
     <div className="">
-      <Line percent={percent} strokeWidth="6" strokeColor={'hsl(0, 0%, 48%)'} strokeLineCap="square" trailWidth="6" />
+      <Line percent={percent} strokeWidth="6" strokeColor={'hsl(0, 0%, 48%)'} strokeLinecap="square" trailWidth="6" />
       {/* <progress className={`ProgressBar progress is-small ArmorBar`} max="100" value={percent}>{percent}%</progress> */}
       <p className="subtitle is-5"><ArmorIcon value={`${current} / ${max}`} /></p>
     </div>
@@ -36,7 +36,7 @@ const manaBar = (current, max) =>{
   const colourClass = percent > 1/3*100 ? 'hsl(217, 71%, 53%)' : 'hsl(48, 100%, 67%)'
   return <div className="column is-4 ManaBar has-text-centered">
     <div className="">
-      <Line percent={percent} strokeWidth="6" strokeColor={colourClass} strokeLineCap="square" trailWidth="6" />
+      <Line percent={percent} strokeWidth="6" strokeColor={colourClass} strokeLinecap="square" trailWidth="6" />
       {/* <progress className={`ProgressBar progress is-small ${colourClass}`} max="100" value={percent}>{percent}%</progress> */}
       <p className="subtitle is-5"><ManaIcon value={`${current}/${max}`} /></p>
     </div>
