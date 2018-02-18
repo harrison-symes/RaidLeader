@@ -12,36 +12,32 @@ class AttackIcon extends Component {
       targetY: bossFrame.top,
       speedY: (startY - bossFrame.top) / 30,
       speedX: (startX - bossFrame.left) / 30,
-      show: true
     }
+    this.interval = false
   }
   componentDidMount() {
-    this.startTick()
+    this.interval = setInterval(() => this.endTick(), 10)
   }
-  startTick() {
-    setTimeout(() => this.endTick(), 10)
-  }
-  componentDidUpdate(state) {
-    console.log({state});
-    if (!state.show) this.props.deleteSVG(this.props.svg)
+  componentWillUnmount() {
+    if (this.interval) clearInterval(this.interval)
+    this.interval = false
   }
   endTick() {
-    let {y, x, targetY, targetX, speedY, speedX, show} = this.state
-    if (!show) return
+    let {y, x, targetY, targetX, speedY, speedX} = this.state
+    if (!this.interval) return
     if (y > targetY) y-=speedY
     if (x > targetX) x-=speedX
     if (y <= targetY && x <= targetX) {
       this.setState({show: false})
+      this.props.deleteSVG(this.props.svg)
     }
     else {
-      this.startTick()
+      // this.startTick()
       this.setState({y, x})
     }
   }
   render() {
-    return this.state.show
-      ? <i className={`ra ra-sword`} style={{position: 'fixed', top: this.state.y, left: this.state.x}}/>
-      : null
+    return <i className={`ra ra-sword`} style={{position: 'fixed', top: this.state.y, left: this.state.x}} />
   }
 }
 

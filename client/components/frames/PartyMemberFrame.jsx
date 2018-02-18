@@ -26,9 +26,12 @@ class MemberFrame extends Component {
   deleteSVG(svg) {
     let {attackSVGs} = this.state
     this.setState({attackSVGs: attackSVGs.filter(s => s != svg)})
+    this.finishCast(this.props.member.power)
+  }
+  completeCast() {
+    this.createSVG()
   }
   createSVG() {
-    this.startCast()
     var elemRect = document.getElementById('Recruit-' + this.props.member.id).getBoundingClientRect()
     var startX = elemRect.left
     var startY = elemRect.top
@@ -40,7 +43,7 @@ class MemberFrame extends Component {
     if (isAlive && started) setTimeout(() => {
       if (isAlive && started) {
         if (member.weapon_effect == 'selfPoison' && Math.random() < (1 / member.speed)) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor()})
-        this.finishCast(power)
+        this.completeCast(power)
       }
     }, 10000 / speed)
   }
