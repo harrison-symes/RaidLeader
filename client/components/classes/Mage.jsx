@@ -8,7 +8,6 @@ class Mage extends PartyMemberFrame {
   finishCast(power) {
     const {member, started, player, dispatch} = this.props
     if (started && member.isAlive) {
-      this.createSVG()
       if (player.mana / player.maxMana * 100 < 30) power*2
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       this.startCast()

@@ -7,7 +7,6 @@ import mapStateToProps from './utils/classStateMap'
 class Warlock extends PartyMemberFrame {
   finishCast(power) {
     if (this.props.member.isAlive && this.props.started) {
-      this.createSVG()
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       this.props.dispatch({type: 'WARLOCK_DAMAGE_ALL'})
       this.startCast()

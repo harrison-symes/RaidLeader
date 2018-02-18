@@ -42,3 +42,49 @@ export function classIcons (heroClass) {
     case 'Player': return 'ra-player-king'
   }
 }
+
+export function attackIcons (heroClass) {
+  switch(heroClass) {
+    case 'Paladin': return {
+      colour: 'pink',
+      icon: 'ra-bolt-shield'
+    }
+    case 'Mage': return {
+      colour: 'orange',
+      icon: 'ra-frostfire'
+    }
+    case 'Warlock': return {
+      colour: 'purple',
+      icon: 'ra-beam-wake'
+    }
+    case 'Rogue': return {
+      colour: 'black',
+      icon: 'ra-plain-dagger'
+    }
+    case 'Hunter': return {
+      colour: 'green',
+      icon: 'ra-broadhead-arrow'
+    }
+    case 'Priest': return {
+      colour: 'yellow',
+      icon: 'ra-radial-balance'
+    }
+    case 'Shaman': return {
+      colour: 'blue',
+      icon: ''
+    }
+    case 'Warrior': return {
+      colour: 'red',
+      icon: 'ra-spinning-sword'
+    }
+    case 'Monk': return {
+      colour: 'lightgreen',
+      icon: 'ra-fluffy-swirl'
+    }
+    default: return {
+      icon: 'ra-sword',
+      colour: 'black'
+
+    }
+  }
+}

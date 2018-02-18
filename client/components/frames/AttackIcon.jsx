@@ -10,8 +10,8 @@ class AttackIcon extends Component {
       y: startY || 10,
       targetX: bossFrame.left,
       targetY: bossFrame.top,
-      speedY: (startY - bossFrame.top) / 30,
-      speedX: (startX - bossFrame.left) / 30,
+      speedY: (startY - bossFrame.top) / 50,
+      speedX: (startX - bossFrame.left) / 50,
     }
     this.interval = false
   }
@@ -24,20 +24,22 @@ class AttackIcon extends Component {
   }
   endTick() {
     let {y, x, targetY, targetX, speedY, speedX} = this.state
-    if (!this.interval) return
-    if (y > targetY) y-=speedY
-    if (x > targetX) x-=speedX
-    if (y <= targetY && x <= targetX) {
-      this.setState({show: false})
-      this.props.deleteSVG(this.props.svg)
-    }
-    else {
-      // this.startTick()
-      this.setState({y, x})
+    if (this.interval) {
+      if (y > targetY) y-=speedY
+      if (x > targetX) x-=speedX
+      if (y <= targetY && x <= targetX) {
+        this.props.deleteSVG(this.props.svg)
+      }
+      else {
+        // this.startTick()
+        this.setState({y, x})
+      }
     }
   }
   render() {
-    return <i className={`ra ra-sword`} style={{position: 'fixed', top: this.state.y, left: this.state.x}} />
+    const {colour, icon} = this.props.svg.info
+    console.log({colour, icon});
+    return <i className={`ra ${icon} ra-3x`} style={{color: colour ,position: 'fixed', top: this.state.y, left: this.state.x}} />
   }
 }
 

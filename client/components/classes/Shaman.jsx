@@ -10,7 +10,6 @@ class Shaman extends PartyMemberFrame {
   finishCast(power) {
     const {member, started, player, dispatch, party} = this.props
     if (started && member.isAlive) {
-      this.createSVG()
       var renewTarget = member
       party.forEach(recruit => {
         if ((recruit.initHp / recruit.hp) * 100 < (renewTarget.initHp / renewTarget.hp) * 100) renewTarget = recruit
