@@ -36,7 +36,6 @@ class MemberFrame extends Component {
     var elemRect = document.getElementById('Recruit-' + this.props.member.id).getBoundingClientRect()
     var startX = elemRect.left
     var startY = elemRect.top
-    console.log(attackIcons(this.props.member.heroClass));
     this.setState({attackSVGs: [...this.state.attackSVGs, {startX, startY, info: attackIcons(this.props.member.heroClass)}]})
   }
   startCast() {

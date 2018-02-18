@@ -113,7 +113,6 @@ export default function boss (state = null, action) {
       if (action.target == newState.bossTarget) newState.bossTarget.isAlive = false
       return newState
     case 'BOSS_CHANGE_STAGE':
-      console.log({action});
       for (let key in action.stage) {
         newState[key] = action.stage[key]
       }

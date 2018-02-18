@@ -40,7 +40,6 @@ class AttackIcon extends Component {
   }
   render() {
     const {colour, icon} = this.props.svg.info
-    console.log({colour, icon});
     return <i className={`ra ${icon} ra-2x`} style={{transform: `rotate(${this.state.rotation}deg)`, color: colour, position: 'fixed', top: this.state.y, left: this.state.x}} />
   }
 }
