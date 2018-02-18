@@ -27,6 +27,13 @@ class MemberFrame extends Component {
     let {attackSVGs} = this.state
     this.setState({attackSVGs: attackSVGs.filter(s => s != svg)})
   }
+  createSVG() {
+    this.startCast()
+    var elemRect = document.getElementById('Recruit-' + this.props.member.id).getBoundingClientRect()
+    var startX = elemRect.left
+    var startY = elemRect.top
+    this.setState({attackSVGs: [...this.state.attackSVGs, {startX, startY}]})
+  }
   startCast() {
     const {power, speed, isAlive} = this.props.member
     const {started, member, dispatch} = this.props
