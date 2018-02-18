@@ -6,16 +6,6 @@ import AttackIcon from '../frames/AttackIcon'
 import mapStateToProps from './utils/classStateMap'
 
 class Paladin extends PartyMemberFrame {
-  constructor(props) {
-    super(props)
-    this.state = {
-      attackSVGs: []
-    }
-  }
-  deleteSVG(svg) {
-    let {attackSVGs} = this.state
-    this.setState({attackSVGs: attackSVGs.filter(s => s != svg)})
-  }
   finishCast(power) {
     const {member} = this.props
     if (this.props.started && this.props.member.isAlive) {
@@ -23,7 +13,6 @@ class Paladin extends PartyMemberFrame {
       if (member.weapon_effect != 'noTaunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
       this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target: member, power})
       this.startCast()
-      var bodyRect = document.body.getBoundingClientRect()
       var elemRect = document.getElementById('Recruit-' + member.id).getBoundingClientRect()
       var startX = elemRect.left
       var startY = elemRect.top

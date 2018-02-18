@@ -18,6 +18,14 @@ const poisonConstructor = (perc) => ({
 class MemberFrame extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      attackSVGs: []
+    }
+    this.deleteSVG = this.deleteSVG.bind(this)
+  }
+  deleteSVG(svg) {
+    let {attackSVGs} = this.state
+    this.setState({attackSVGs: attackSVGs.filter(s => s != svg)})
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
@@ -53,7 +61,7 @@ class MemberFrame extends Component {
           </div>
         }
       </div>
-      {this.state.attackSVGs && this.state.attackSVGs.map(svg => <AttackIcon svg={svg} />)}
+      {this.state.attackSVGs && this.state.attackSVGs.map(svg => <AttackIcon svg={svg} deleteSVG={this.deleteSVG} />)}
       <RecruitHealthBar recruit={{...member}}  />
     </div>
   }
