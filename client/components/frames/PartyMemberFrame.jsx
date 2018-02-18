@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import RecruitHealthBar from './RecruitHealthBar'
 import EffectTag from './EffectTag'
 import {ClassIcon, SpeedIcon, PowerIcon} from '../icons/StatIcons'
+import AttackIcon from './AttackIcon'
 
 const poisonConstructor = (perc) => ({
   name: 'Poison',
@@ -40,7 +41,7 @@ class MemberFrame extends Component {
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{width: `${width}vw`, border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
         <div className="column is-6">
-          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon heroClass={member.heroClass} /></h1>
+          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} /></h1>
         </div>
         {effects.length > 0
           ? <div className="column is-6 tags">
@@ -52,6 +53,7 @@ class MemberFrame extends Component {
           </div>
         }
       </div>
+      {this.state.attackSVGs && this.state.attackSVGs.map(svg => <AttackIcon svg={svg} />)}
       <RecruitHealthBar recruit={{...member}}  />
     </div>
   }
