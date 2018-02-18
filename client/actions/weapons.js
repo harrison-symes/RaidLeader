@@ -48,7 +48,6 @@ export function recruitEquipWeapon (recruit, id) {
 
 export function sellWeapon (id, value) {
   return dispatch => {
-    console.log({id, value});
     request('delete', 'player/weapons', {id, value})
       .then(() => {
         dispatch(getWeapons())

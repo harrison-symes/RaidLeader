@@ -1,13 +1,11 @@
 import React from 'react'
 import PartyMemberFrame from '../frames/PartyMemberFrame'
 import {connect} from 'react-redux'
+import AttackIcon from '../frames/AttackIcon'
 
 import mapStateToProps from './utils/classStateMap'
 
 class Paladin extends PartyMemberFrame {
-  constructor(props) {
-    super(props)
-  }
   finishCast(power) {
     const {member} = this.props
     if (this.props.started && this.props.member.isAlive) {

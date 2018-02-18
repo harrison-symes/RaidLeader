@@ -46,7 +46,6 @@ class BlackMarketWeapons extends Component {
   }
   render() {
     const sortedWeapons = this.solveWeaponDuplicates()
-    console.log({sortedWeapons});
     const {selected} = this.state
     return <div className="has-text-centered">
       <span className="title is-3">Sell Weapons</span>

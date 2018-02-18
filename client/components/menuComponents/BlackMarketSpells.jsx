@@ -17,7 +17,6 @@ class BlackMarketSpells extends Component {
     this.setState({selected})
   }
   sellSpell() {
-    console.log("sell spell");
     this.props.dispatch(sellSpell(this.state.selected.name, (this.props.spells.length - 1) * 100))
   }
   render() {

@@ -29,7 +29,6 @@ class BossSpell extends Component {
     switch(spell.name) {
       case 'Boil':
         let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
-        console.log({randomTarget});
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
       case 'Unleash Flames':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
@@ -137,7 +136,6 @@ class BossSpell extends Component {
       if (currentCastTime < newTickTIme && newCastTime >= newTickTIme) {
         this.setState({ticks: ticks + 1})
         this.tickSwitch()
-        console.log("tick", {tickInterval, newTickTIme, currentCastTime, newCastTime})
       }
     }
     if (newCastTime >= this.props.spell.cast) {

@@ -24,7 +24,6 @@ class PlayerSpell extends Component {
   componentWillReceiveProps(nextProps) {
     const {target, spell} = this.props
     if (target && target.isAlive && !nextProps.friendlyTarget && spell.name == "Guardian Angel" && this.state.currentCastTime !== 0) {
-      console.log({nextProps});
       this.setState({currentCastTime:spell.cast})
       this.props.dispatch({type: 'RESURRECT_TARGET', target, health: power})
     }
@@ -120,7 +119,6 @@ class PlayerSpell extends Component {
           return perc
         }, 0)
         percentage = percentage / party.filter(member => member.isAlive).length
-        console.log({percentage});
         return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage})
       default: return
     }
@@ -150,7 +148,6 @@ class PlayerSpell extends Component {
       if (currentCastTime < newTickTIme && newCastTime >= newTickTIme) {
         this.setState({ticks: ticks + 1})
         this.tickSwitch()
-        console.log("tick", {tickInterval, newTickTIme, currentCastTime, newCastTime})
       }
     }
     if (newCastTime >= spell.cast) {

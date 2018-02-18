@@ -51,7 +51,6 @@ export default function party (state = [], action) {
       if (!target || target.isAlive) return newState
       target.isAlive = true
       target.hp = action.health
-      console.log({action});
       return newState
     case 'REMOVE_EFFECTS_FROM_ALL':
       return newState.map(member => {

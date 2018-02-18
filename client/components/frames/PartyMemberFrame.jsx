@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import RecruitHealthBar from './RecruitHealthBar'
 import EffectTag from './EffectTag'
 import {ClassIcon, SpeedIcon, PowerIcon} from '../icons/StatIcons'
+import AttackIcon from './AttackIcon'
+import {attackIcons} from '../../utils/classText'
 
 const poisonConstructor = (perc) => ({
   name: 'Poison',
@@ -17,6 +19,24 @@ const poisonConstructor = (perc) => ({
 class MemberFrame extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      attackSVGs: []
+    }
+    this.deleteSVG = this.deleteSVG.bind(this)
+  }
+  deleteSVG(svg) {
+    let {attackSVGs} = this.state
+    this.setState({attackSVGs: attackSVGs.filter(s => s != svg)})
+    this.finishCast(this.props.member.power)
+  }
+  completeCast() {
+    this.createSVG()
+  }
+  createSVG() {
+    var elemRect = document.getElementById('Recruit-' + this.props.member.id).getBoundingClientRect()
+    var startX = elemRect.left
+    var startY = elemRect.top
+    this.setState({attackSVGs: [...this.state.attackSVGs, {startX, startY, info: attackIcons(this.props.member.heroClass)}]})
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
@@ -24,7 +44,7 @@ class MemberFrame extends Component {
     if (isAlive && started) setTimeout(() => {
       if (isAlive && started) {
         if (member.weapon_effect == 'selfPoison' && Math.random() < (1 / member.speed)) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor()})
-        this.finishCast(power)
+        this.completeCast(power)
       }
     }, 10000 / speed)
   }
@@ -40,7 +60,7 @@ class MemberFrame extends Component {
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{width: `${width}vw`, border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
         <div className="column is-6">
-          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon heroClass={member.heroClass} /></h1>
+          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} /></h1>
         </div>
         {effects.length > 0
           ? <div className="column is-6 tags">
@@ -52,6 +72,7 @@ class MemberFrame extends Component {
           </div>
         }
       </div>
+      {this.state.attackSVGs && this.state.attackSVGs.map(svg => <AttackIcon svg={svg} deleteSVG={this.deleteSVG}/>)}
       <RecruitHealthBar recruit={{...member}}  />
     </div>
   }
