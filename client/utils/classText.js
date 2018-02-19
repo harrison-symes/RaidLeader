@@ -46,19 +46,19 @@ export function classIcons (heroClass) {
 export function attackIcons (heroClass) {
   switch(heroClass) {
     case 'Paladin': return {
-      colour: 'pink',
+      colour: '#DDA0DD',
       rotates: true,
       rotation: 0,
       icon: 'ra-bolt-shield'
     }
     case 'Mage': return {
-      colour: 'orange',
+      colour: '#FF7F24',
       rotates: false,
       rotation: 180,
       icon: 'ra-frostfire'
     }
     case 'Warlock': return {
-      colour: 'purple',
+      colour: '#9370DB',
       rotates: false,
       rotation: 180,
       icon: 'ra-beam-wake'
@@ -70,31 +70,31 @@ export function attackIcons (heroClass) {
       icon: 'ra-plain-dagger'
     }
     case 'Hunter': return {
-      colour: 'green',
+      colour: '#008B45',
       rotates: false,
       rotation: 180,
       icon: 'ra-broadhead-arrow'
     }
     case 'Priest': return {
-      colour: 'yellow',
+      colour: '#C0FF3E',
       rotates: true,
       rotation: 0,
       icon: 'ra-radial-balance'
     }
     case 'Shaman': return {
-      colour: 'blue',
+      colour: '#7171C6',
       rotates: false,
       rotation: 180,
       icon: 'ra-focused-lightning'
     }
     case 'Warrior': return {
-      colour: 'red',
+      colour: '#EE4000',
       rotates: true,
       rotation: 0,
       icon: 'ra-spinning-sword'
     }
     case 'Monk': return {
-      colour: 'lightgreen',
+      colour: '#00FF7F',
       rotates: true,
       rotation: 0,
       icon: 'ra-fluffy-swirl'
