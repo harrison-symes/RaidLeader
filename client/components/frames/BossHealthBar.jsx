@@ -52,7 +52,7 @@ const BossHealthBar = ({boss}) => {
         : 'is-success'
       : 'is-warning'
     : 'is-danger'
-    return <div className="BossHealthBar columns has-text-centered" style={{backgroundColor: 'white', maxHeight: '85px'}}>
+    return <div className="BossHealthBar columns has-text-centered" style={{backgroundColor: 'white', maxHeight: '85px', backgroundImage: 'inherit', margin: 0, padding: 0, left: 0}}>
       {healthBar(hp, initHp, armor)}
       {armor > 0 && armorBar(armor, initArmor)}
       {manaBar(mana, maxMana)}
