@@ -38,7 +38,7 @@ class Town extends Component {
   renderTownMenuButton (name, icon, required) {
     var closed
     if (required) closed = !this.props.dungeons.find(dungeon => dungeon.name == required && dungeon.isCompleted)
-    return <a disabled={closed} title={closed ? `Complete ${required}`: name} onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-warning is-outlined">
+    return <a disabled={closed} title={closed ? `Complete ${required}`: name} onClick={() => closed ? null : this.toggleModal(name)} className="column is-6 button is-large is-warning is-outlined">
       <span className="icon is-large">
         <i className={`ra ${icon} ra-lg`}></i>
       </span>
