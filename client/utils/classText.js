@@ -52,7 +52,7 @@ export function attackIcons (heroClass) {
       icon: 'ra-bolt-shield'
     }
     case 'Mage': return {
-      colour: '#FF7F24',
+      colour: '#FFC125',
       rotates: false,
       rotation: 180,
       icon: 'ra-frostfire'
@@ -70,7 +70,7 @@ export function attackIcons (heroClass) {
       icon: 'ra-plain-dagger'
     }
     case 'Hunter': return {
-      colour: '#008B45',
+      colour: '#00C957',
       rotates: false,
       rotation: 180,
       icon: 'ra-broadhead-arrow'
@@ -88,7 +88,7 @@ export function attackIcons (heroClass) {
       icon: 'ra-focused-lightning'
     }
     case 'Warrior': return {
-      colour: '#EE4000',
+      colour: '#EE5C42',
       rotates: true,
       rotation: 0,
       icon: 'ra-spinning-sword'

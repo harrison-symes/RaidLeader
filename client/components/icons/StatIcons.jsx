@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {classIcons} from '../../utils/classText'
+import {classIcons, attackIcons} from '../../utils/classText'
 import weaponSwitch from '../../utils/weaponSwitch'
 import {getZodiacData} from '../../utils/zodiacs'
 // import 'react-tippy/dist/tippy.css'
@@ -116,7 +116,7 @@ export function ClassIcon ({heroClass, id}) {
   return toolTipGenerator(
     <p>Class: {heroClass}</p>,
     <p>
-      <i id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
+      <i style={{color: attackIcons(heroClass).colour }}id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
     </p>
   )
 }
