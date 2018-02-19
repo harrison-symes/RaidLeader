@@ -35,8 +35,10 @@ class Town extends Component {
       default: return null
     }
   }
-  renderTownMenuButton (name, icon) {
-    return <a onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-warning is-outlined">
+  renderTownMenuButton (name, icon, required) {
+    var closed
+    if (required) closed = !this.props.dungeons.find(dungeon => dungeon.name == required && dungeon.isCompleted)
+    return <a disabled={closed} title={closed ? `Complete ${required}`: name} onClick={() => this.toggleModal(name)} className="column is-6 button is-large is-warning is-outlined">
       <span className="icon is-large">
         <i className={`ra ${icon} ra-lg`}></i>
       </span>
@@ -82,12 +84,12 @@ class Town extends Component {
         </a>
 
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower')}
-          {this.renderTownMenuButton('Library', 'ra-crystal-ball')}
+          {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower', 'The Hunt')}
+          {this.renderTownMenuButton('Library', 'ra-crystal-ball', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Training Centre', 'ra-muscle-up')}
-          {this.renderTownMenuButton('Black Market', 'ra-pawn')}
+          {this.renderTownMenuButton('Training Centre', 'ra-muscle-up', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
         </div>
         <div className="columns Town-Button-Div">
           <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
@@ -107,9 +109,9 @@ class Town extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {gold, recruits, spellBook} = state
+  const {gold, recruits, spellBook, dungeons} = state
   return {
-    gold, recruits, spellBook
+    gold, recruits, spellBook, dungeons
   }
 }
 
