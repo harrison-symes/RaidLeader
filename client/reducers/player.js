@@ -68,15 +68,15 @@ export default function player (state = null, action) {
       return newState
     case 'DAMAGE_PLAYER':
       newState.hp-= Math.round(action.power)
-      if (newState.hp < 0) newState.hp == 0
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
       newState.hp-= Math.round(action.power)
-      if (newState.hp < 0) newState.hp == 0
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PERCENT_DAMAGE_PLAYER':
       newState.hp-= Math.round(newState.initHp * action.percentage)
-      if (newState.hp < 0) newState.hp == 0
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PLAYER_GAIN_MANA':
       newState.mana += action.power
