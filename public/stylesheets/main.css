@@ -673,7 +673,6 @@
   height: 100vh; }
 
 .Game {
-  color:black;
   background-color: #f7c48c;
   background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
   max-height: 100vh;
@@ -720,8 +719,6 @@
       margin-bottom: 0; }
   .Game .BossFrame {
     height: 35vh;
-    background-color: #b88d8d;
-    background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
     border-bottom: 5px black; }
     .Game .BossFrame .BossSpellBar {
       height: 100%;

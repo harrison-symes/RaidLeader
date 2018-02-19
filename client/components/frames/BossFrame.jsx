@@ -8,6 +8,7 @@ import BossSpellBar from './BossSpellBar'
 import BossHealthBar from './BossHealthBar'
 
 import {PowerIcon} from '../icons/StatIcons'
+import {MenuBackground} from '../../utils/dungeonInfo'
 
 class BossFrame extends Component {
   constructor(props) {
@@ -67,8 +68,9 @@ class BossFrame extends Component {
   }
   render() {
     const {boss} = this.props
+    const background = MenuBackground(this.props.currentLocation.name)
     const {name, hp, initHp, mana, maxMana, armor, initArmor, spells, power} = boss
-    return <div className="section BossFrame">
+    return <div className="section BossFrame" style={{backgroundImage: `url(${background.background})`, backgroundColor: background.colour}}>
       <div className="columns">
         <div className="column is-3 has-text-centered box">
           <h1 className="title is-3">{name}</h1>

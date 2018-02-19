@@ -8,6 +8,8 @@ import PlayerFrame from './frames/PlayerFrame'
 import PartyFrame from './frames/PartyFrame'
 import BossRewardsModal from './BossRewardsModal'
 
+import {MenuBackground} from '../utils/dungeonInfo'
+
 class Game extends Component {
   constructor(props) {
     super(props)
@@ -68,7 +70,8 @@ class Game extends Component {
   render () {
     const {started, boss, player, party} = this.props
     const {loseModal, winModal} = this.state
-    if (!player || player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered">
+    const background = MenuBackground(this.props.currentLocation.name)
+    if (!player || player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered" style={{backgroundImage: `url(${background.background})`}}>
       <div className="hero">
         <h1 className="title is-1">Game not ready</h1><br />
         <Link to="/" className="button is-large is-success">Return to Menu</Link>
@@ -85,12 +88,13 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = ({started, boss, player, party}) => {
+const mapStateToProps = ({started, boss, player, party, location}) => {
   return {
     started,
     boss,
     player,
-    party
+    party,
+    currentLocation: location
   }
 }
 
