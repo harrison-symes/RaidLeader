@@ -119,7 +119,7 @@ class BossPreview extends React.Component {
             : boss.isDefeated
               ? 'ra-broken-skull'
               : defeatedBossCount >= boss.progress_required
-                ? 'ra-skull'
+                ? boss.icon
                 : 'ra-locked-fortress'}
             `} />
         </span>

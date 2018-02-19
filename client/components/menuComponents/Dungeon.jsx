@@ -63,7 +63,7 @@ class Dungeon extends React.Component {
         <div className="box" >
           <p className="title is-3">Dungeon Bosses:</p>
           {dungeon.bosses.map((boss, i) => <div className="has-text-centered" key={`dungeon-row-${i}`}>
-            <p className="subtitle is-3">{i+1}: {boss.name}</p>
+            <p className="subtitle is-3">{boss.name} <i className={`ra ra-fw ${boss.icon}`} /></p>
           </div>)}
         </div>
         <hr />
