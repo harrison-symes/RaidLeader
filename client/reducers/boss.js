@@ -38,7 +38,7 @@ export default function boss (state = null, action) {
         newState.armor = 0
       }
       newState.hp-= damage
-      if (newState.hp < 0) newState.hp == 0
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PLAYER_ATTACK_BOSS':
       damage = Math.round(action.power)
@@ -50,14 +50,14 @@ export default function boss (state = null, action) {
         newState.armor = 0
       }
       newState.hp-= damage
-      if (newState.hp < 0) newState.hp == 0
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'CRITICAL_ATTACK_BOSS':
       damage = action.power * 2
       damage = Math.round(damage)
       if (newState.armor < 0) newState.armor = 0
       newState.hp = newState.hp - damage
-      if (newState.hp < 0) newState.hp == 0
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PERCENT_DAMAGE_BOSS':
       newState.hp-= Math.round(newState.hp * action.percentage)
