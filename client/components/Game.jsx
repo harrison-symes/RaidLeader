@@ -22,8 +22,8 @@ class Game extends Component {
     this.startGame = this.startGame.bind(this)
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.started && nextProps.boss.hp <= 0) this.gameWon()
-    else if (this.props.started && nextProps.player.hp <= 0) this.gameLost()
+    if (this.props.started && this.props.boss.hp > 0 && nextProps.boss.hp <= 0) setTimeout(() => this.gameWon(), 500)
+    else if (this.props.started && this.props.player.hp > 0 && nextProps.player.hp <= 0) setTimeout(() => this.gameLost(), 500)
     if (nextProps.player.spells.length == 0 || nextProps.party.length == 0 || !nextProps.boss) return this.props.location.push
   }
   endOneSecond() {
