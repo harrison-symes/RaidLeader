@@ -5,8 +5,8 @@ import { Line, Circle } from 'rc-progress';
 
 const healthBar = (current, max, armor) => {
   const percent = Math.round(current/max * 100)
-  const colourClass = percent > 1/3*100
-    ? percent > 2/3*100
+  const colourClass = percent > 25
+    ? percent > 50
       ? percent == 100
         ? 'hsl(171, 100%, 41%)'
         : 'hsl(141, 71%, 48%)'
@@ -33,10 +33,9 @@ const armorBar = (current, max) => {
 
 const manaBar = (current, max) =>{
   const percent = current/max * 100
-  const colourClass = percent > 1/3*100 ? 'hsl(217, 71%, 53%)' : 'hsl(48, 100%, 67%)'
   return <div className="column is-4 ManaBar has-text-centered">
     <div className="">
-      <Line percent={percent} strokeWidth="6" strokeColor={colourClass} strokeLinecap="square" trailWidth="6" />
+      <Line percent={percent} strokeWidth="6" strokeColor={'hsl(217, 71%, 53%)'} strokeLinecap="square" trailWidth="6" />
       {/* <progress className={`ProgressBar progress is-small ${colourClass}`} max="100" value={percent}>{percent}%</progress> */}
       <p className="subtitle is-5"><ManaIcon value={`${current}/${max}`} /></p>
     </div>

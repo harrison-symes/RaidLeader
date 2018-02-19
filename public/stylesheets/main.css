@@ -673,6 +673,7 @@
   height: 100vh; }
 
 .Game {
+  color:black;
   background-color: #f7c48c;
   background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
   max-height: 100vh;
