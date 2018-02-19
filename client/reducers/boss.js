@@ -38,19 +38,7 @@ export default function boss (state = null, action) {
         newState.armor = 0
       }
       newState.hp-= damage
-      return newState
-    case 'PHYSICAL_ATTACK_BOSS':
-      damage = Math.round(action.power)
-      if (newState.armor == 0) {
-        damage*=1.5
-      } else if (newState.armor >= damage) {
-        newState.armor-=damage
-        damage = 0
-      } else {
-        damage-=newState.armor
-        newState.armor = 0
-      }
-      newState.hp-= damage
+      if (newState.hp < 0) newState.hp == 0
       return newState
     case 'PLAYER_ATTACK_BOSS':
       damage = Math.round(action.power)
@@ -62,15 +50,18 @@ export default function boss (state = null, action) {
         newState.armor = 0
       }
       newState.hp-= damage
+      if (newState.hp < 0) newState.hp == 0
       return newState
     case 'CRITICAL_ATTACK_BOSS':
       damage = action.power * 2
       damage = Math.round(damage)
       if (newState.armor < 0) newState.armor = 0
       newState.hp = newState.hp - damage
+      if (newState.hp < 0) newState.hp == 0
       return newState
     case 'PERCENT_DAMAGE_BOSS':
       newState.hp-= Math.round(newState.hp * action.percentage)
+      if (newState.hp < 0) newState.hp == 0
       return newState
     case 'BOSS_WANTS_TO_CAST':
       newState.wantsToCast = action.spell.name
