@@ -1,9 +1,10 @@
-const mapStateToProps = ({boss, started, party, player}) => {
+const mapStateToProps = ({boss, started, party, player, location}) => {
   return {
     boss,
     started,
     party,
-    player
+    player,
+    currentLocation: location
   }
 }
 
