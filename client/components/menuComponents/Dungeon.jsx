@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {MenuBackground} from '../../utils/dungeonInfo'
+
 class Dungeon extends React.Component {
   constructor(props) {
     super(props)
@@ -11,13 +13,13 @@ class Dungeon extends React.Component {
     this.props.dispatch({type: 'TRAVEL_TO_DUNGEON', dungeon})
   }
   travelButton (levelRestrict) {
-    const {dungeon, location, dungeons, selectDungeon} = this.props
+    const {dungeon, currentLocation, dungeons, selectDungeon} = this.props
     if (levelRestrict) return <p className="button is-danger is-large is-fullwidth" disabled>Complete "{dungeon.requires_complete}" to Unlock</p>
     else if (dungeon.isCompleted && !dungeon.is_repeatable) return <p className="button is-dark is-large is-fullwidth" disabled>Not Repeatable</p>
     else return <p className="button is-primary is-large is-outlined is-fullwidth" onClick={this.travelHere}><i className="icon ra ra-compass" />Travel Here<i className="icon ra ra-compass" /></p>
   }
   clickDungeon() {
-    const {dungeon, location, dungeons, selectDungeon} = this.props
+    const {dungeon, currentLocation, dungeons, selectDungeon} = this.props
     let allowed
     let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (!dungeon.requires_complete) levelRestrict = false
@@ -27,10 +29,11 @@ class Dungeon extends React.Component {
     this.props.selectDungeon(dungeon, allowed)
   }
   render() {
-    const {dungeon, location, dungeons, selectDungeon, selected} = this.props
+    const {dungeon, currentLocation, dungeons, selectDungeon, selected} = this.props
     let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (!dungeon.requires_complete) levelRestrict = false
-    return <div className="box has-text-centered">
+    const background = MenuBackground(dungeon.name)
+    return <div className="box has-text-centered" style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
       <div onClick={()=>this.clickDungeon()} style={{cursor: 'pointer'}} className="level">
         <p  className="title is-2">{dungeon.name} </p>
         {dungeon.isCompleted
@@ -63,7 +66,7 @@ class Dungeon extends React.Component {
 
 const mapStateToProps = ({location, dungeons}) => {
   return {
-    location,
+    currentLocation: location,
     dungeons
   }
 }
