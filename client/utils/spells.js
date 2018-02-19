@@ -180,7 +180,7 @@ module.exports = {
     id: 11,
     name: 'Drain Life',
     cast: 3,
-    cost: 10,
+    cost: 0,
     coolDown: 5,
     type: 'damage',
     singleTarget: false,
