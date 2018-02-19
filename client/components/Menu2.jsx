@@ -22,6 +22,8 @@ import {getDungeons} from '../actions/dungeons'
 import {getPlayerGold} from '../actions/gold'
 import {getWeapons} from '../actions/weapons'
 
+import {MenuBackground} from '../utils/dungeonInfo'
+
 
 class Menu extends React.Component {
   constructor(props) {
@@ -130,7 +132,8 @@ class Menu extends React.Component {
   }
   render() {
     const {playerParty, playerSpells, currentLocation, boss, gold, recruits, showWelcome, playerWeapon} = this.props
-    return <div className="Town Menu has-text-centered">
+    const background = MenuBackground(currentLocation.name)
+    return <div className="Town Menu has-text-centered" style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
       <div className="has-text-centered Town-Banner Menu-Banner">
         <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> {currentLocation.name} <i className="ra ra-heart-tower ra-fw" /></p>
       </div>
