@@ -5,6 +5,8 @@ import HealthBar from './HealthBar'
 import ManaBar from './ManaBar'
 import PlayerSpellBar from './PlayerSpellBar'
 
+import {PowerIcon, PlayerIcon} from '../icons/StatIcons'
+
 class PlayerFrame extends Component {
   constructor(props) {
     super(props)
@@ -25,8 +27,8 @@ class PlayerFrame extends Component {
             className="PlayerBox box"
             onClick={this.targetPlayer}>
             <div className="level">
-              <p className="title is-3">{name}</p>
-              <p className="title is-4">Power: {power}</p>
+              <p className="subtitle is-1"><PowerIcon value={power} /></p>
+              <p className="subtitle is-1"><PlayerIcon name={name} />&nbsp;&nbsp;&nbsp;</p>
             </div>
             <div className="columns">
               <div className="column is-6">
