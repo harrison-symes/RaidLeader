@@ -14,6 +14,8 @@ class Priest extends PartyMemberFrame {
       if (!target) target = member
       else if (target &&( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
     })
+    let overHealing = (target.initHp - target.hp) - member.power
+    if (overHealing < 0) target = null
     this.completeCast(target)
   }
   finishCast(target) {
@@ -21,7 +23,7 @@ class Priest extends PartyMemberFrame {
     const {started, member, dispatch, party} = this.props
     const {power} = member
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    let overHealing = power - (target.initHp - target.hp)
+    let overHealing =(target.initHp - target.hp) - member.power
     if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -2})
     dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
   }
