@@ -14,7 +14,7 @@ class Dungeon extends React.Component {
   }
   travelButton (levelRestrict) {
     const {dungeon, currentLocation, dungeons, selectDungeon} = this.props
-    if (levelRestrict) return <p className="button is-danger is-large is-fullwidth" disabled>Complete "{dungeon.requires_complete}" to Unlock</p>
+    if (levelRestrict) return <p className="button is-danger is-large is-fullwidth" disabled>Complete {dungeon.requires_complete}</p>
     else if (dungeon.isCompleted && !dungeon.is_repeatable) return <p className="button is-dark is-large is-fullwidth" disabled>Not Repeatable</p>
     else return <p className="button is-primary is-large is-outlined is-fullwidth" onClick={this.travelHere}><i className="icon ra ra-compass" />Travel Here<i className="icon ra ra-compass" /></p>
   }
@@ -50,13 +50,15 @@ class Dungeon extends React.Component {
         {selected == dungeon && <p className="delete" onClick={() => selectDungeon(null)} />}
       </div>
       {selected == dungeon && <div>
-        <p className="subtitle is-4">{dungeon.description || 'Mock description goes here'}</p>
+        <p className="subtitle is-4 box" style={{backgroundColor: 'inherit'}}>{dungeon.description || 'Mock description goes here'}</p>
         <hr />
-        <p className="title is-4">Dungeon Level: {dungeon.level}</p>
-        <p className="title is-3">Dungeon Bosses:</p>
-        {dungeon.bosses.map((boss, i) => <div className="has-text-centered" key={`dungeon-row-${i}`}>
-          <p className="subtitle is-3">{i+1}: {boss.name}</p>
-        </div>)}
+        <div className="box" style={{backgroundColor: 'inherit'}}>
+          <p className="title is-4">Dungeon Level: {dungeon.level}</p>
+          <p className="title is-3">Dungeon Bosses:</p>
+          {dungeon.bosses.map((boss, i) => <div className="has-text-centered" key={`dungeon-row-${i}`}>
+            <p className="subtitle is-3">{i+1}: {boss.name}</p>
+          </div>)}
+        </div>
         <hr />
       </div>}
       {selected == dungeon && this.travelButton(levelRestrict)}

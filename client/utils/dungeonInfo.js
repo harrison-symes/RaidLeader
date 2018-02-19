@@ -16,6 +16,14 @@ export function MenuBackground (dungeon) {
       colour: '#c23f18',
       background: 'https://www.transparenttextures.com/patterns/diagmonds.png'
     }
+    case 'The Armory': return {
+      colour: '#302b30',
+      background: 'https://www.transparenttextures.com/patterns/brushed-alum.png'
+    }
+    case 'The Lair': return {
+      colour: '#42520f',
+      background: 'https://www.transparenttextures.com/patterns/pyramid.png'
+    }
     default: return {
       colour: 'white',
       background: ''
