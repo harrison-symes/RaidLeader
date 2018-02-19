@@ -19,7 +19,8 @@ class Dungeon extends React.Component {
     else return <p className="button is-primary is-large is-outlined is-fullwidth" onClick={this.travelHere}><i className="icon ra ra-compass" />Travel Here<i className="icon ra ra-compass" /></p>
   }
   clickDungeon() {
-    const {dungeon, currentLocation, dungeons, selectDungeon} = this.props
+    const {dungeon, currentLocation, dungeons, selectDungeon, selected} = this.props
+    if (selected == dungeon) return this.props.selectDungeon(null)
     let allowed
     let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (!dungeon.requires_complete) levelRestrict = false
@@ -47,13 +48,19 @@ class Dungeon extends React.Component {
         {levelRestrict && <span className="icon is-large has-text-danger">
           <i className="ra ra-3x ra-locked-fortress" aria-hidden="true"></i>
         </span>}
-        {selected == dungeon && <p className="delete" onClick={() => selectDungeon(null)} />}
+        {/* {selected == dungeon && <p className="delete" onClick={() => selectDungeon(null)} />} */}
       </div>
       {selected == dungeon && <div>
-        <p className="subtitle is-4 box" style={{backgroundColor: 'inherit'}}>{dungeon.description || 'Mock description goes here'}</p>
-        <hr />
-        <div className="box" style={{backgroundColor: 'inherit'}}>
+        <div className="box">
           <p className="title is-4">Dungeon Level: {dungeon.level}</p>
+          <div className="level">
+            <div className="column is-6"><p className="subtitle is-3">{dungeon.max_party} Recruit{dungeon.max_party == 1 ? '':'s'}</p></div>
+            <div className="column is-6"><p className="subtitle is-3">{dungeon.max_spells} Spell{dungeon.max_spells == 1 ? '':'s'}</p></div>
+          </div>
+        </div>
+        <p className="subtitle is-4 box">{dungeon.description || 'Mock description goes here'}</p>
+        <hr />
+        <div className="box" >
           <p className="title is-3">Dungeon Bosses:</p>
           {dungeon.bosses.map((boss, i) => <div className="has-text-centered" key={`dungeon-row-${i}`}>
             <p className="subtitle is-3">{i+1}: {boss.name}</p>
