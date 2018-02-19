@@ -10,6 +10,8 @@ export default function (state = null, action) {
     case 'SELECT_FRIENDLY_TARGET':
       if (action.target.isAlive) return action.target
       else return state
+    case 'PALADIN_START_BUFF':
+      return action.target
     case 'MEMBER_DIED':
       return null
     default:
