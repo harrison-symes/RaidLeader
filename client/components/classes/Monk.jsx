@@ -11,7 +11,6 @@ class Monk extends PartyMemberFrame {
       if (member.weapon_effect == 'taunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
       this.props.dispatch({type: 'LEVEL_HEAL_ALL_FRIENDLY'})
-      this.startCast()
     }
   }
   startFighting () {

@@ -17,7 +17,6 @@ class Shaman extends PartyMemberFrame {
       if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', renewTarget, effect: {name: 'Poison'}})
       dispatch({type: 'ADD_EFFECT_TO_TARGET', target: renewTarget, effect: renewConstructor()})
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      this.startCast()
     }
   }
   startFighting () {

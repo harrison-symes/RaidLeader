@@ -13,7 +13,6 @@ class Hunter extends PartyMemberFrame {
         dispatch({type: 'CRITICAL_ATTACK_BOSS', power})
         dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target:member, percentage: 0.1})
       } else dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      this.startCast()
     }
   }
   startFighting () {

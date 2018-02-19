@@ -19,7 +19,6 @@ class Priest extends PartyMemberFrame {
     let overHealing = power - (member.initHp - member.hp)
     if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -2})
     dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-    this.startCast()
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member

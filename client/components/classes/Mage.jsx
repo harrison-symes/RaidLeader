@@ -10,7 +10,6 @@ class Mage extends PartyMemberFrame {
     if (started && member.isAlive) {
       if (player.mana / player.maxMana * 100 < 30) power*2
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      this.startCast()
     }
   }
   startFighting () {
