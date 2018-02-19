@@ -12,7 +12,7 @@ class Shaman extends PartyMemberFrame {
     if (started && member.isAlive) {
       var renewTarget = member
       party.forEach(recruit => {
-        if ((recruit.initHp / recruit.hp) * 100 < (renewTarget.initHp / renewTarget.hp) * 100) renewTarget = recruit
+        if ((recruit.hp / recruit.initHp) * 100 < (renewTarget.hp / renewTarget.initHp) * 100) renewTarget = recruit
       })
       if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', renewTarget, effect: {name: 'Poison'}})
       dispatch({type: 'ADD_EFFECT_TO_TARGET', target: renewTarget, effect: renewConstructor()})
