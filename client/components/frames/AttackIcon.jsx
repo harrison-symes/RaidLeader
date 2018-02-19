@@ -10,8 +10,8 @@ class AttackIcon extends Component {
       y: startY || 10,
       targetX: bossFrame.left,
       targetY: bossFrame.top,
-      speedY: (startY - bossFrame.top) / 50,
-      speedX: (startX - bossFrame.left) / 50,
+      speedY: (startY - bossFrame.top) / 100,
+      speedX: (startX - bossFrame.left) / 100,
       rotation: info.rotation
     }
     this.interval = false
