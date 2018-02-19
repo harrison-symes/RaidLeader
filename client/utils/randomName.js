@@ -89,7 +89,9 @@ const names = [
   'Mitsy'
 ]
 
-module.exports = () => {
-  let idx = Math.floor(Math.random() * names.length)
-  return names[idx]
+module.exports = (taken) => {
+  let options = names
+  if (taken) options = names.filter(name => !taken.find(taken => taken == name))
+  let idx = Math.floor(Math.random() * options.length)
+  return options[idx]
 }
