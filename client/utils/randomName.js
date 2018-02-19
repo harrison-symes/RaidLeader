@@ -66,7 +66,8 @@ const names = [
   'Piet',
   'Tony',
   'Silvia',
-  'Guy'
+  'Guy',
+  'KRANG'
 ]
 
 module.exports = () => {
