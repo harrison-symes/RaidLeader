@@ -12,7 +12,7 @@ class Priest extends PartyMemberFrame {
     let target = null
     party.forEach(member => {
       if (!target) target = member
-      else if (target && member.initHp - member.hp > target.initHp - target.hp) target = member
+      else if (target &&( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
     })
 
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
