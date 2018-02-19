@@ -30,7 +30,8 @@ class RecruitmentCentre extends Component {
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
       let zodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
-      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name: randomName(), heroClass, zodiac})
+      let name = randomName(this.props.recruits.map(recruit => recruit.name))
+      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name, heroClass, zodiac})
     }
     return offeredRecruits
   }
@@ -153,9 +154,10 @@ class RecruitmentCentre extends Component {
   }
 }
 
-const mapStateToProps = ({gold}) => {
+const mapStateToProps = ({gold, recruits}) => {
   return {
-    gold
+    gold,
+    recruits
   }
 }
 

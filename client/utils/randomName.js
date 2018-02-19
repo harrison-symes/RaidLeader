@@ -46,14 +46,14 @@ const names = [
   'Tom',
   'Usha',
   'Harrison',
-  'TASTY SNACK',
+  'TASTYSNACK',
   'Joseph',
   'Don',
   "Rajal",
   'Callan',
   'Daz',
   'Skye',
-  'Rich John',
+  'John',
   'Hayden',
   'Melanie',
   'Maia',
@@ -66,10 +66,32 @@ const names = [
   'Piet',
   'Tony',
   'Silvia',
-  'Guy'
+  'Guy',
+  'KRANG',
+  'Eli',
+  'Payne',
+  'Mischa',
+  'Atlas',
+  'Hermes',
+  'Aries',
+  'Icarus',
+  'Perceus',
+  'Zeus',
+  'Weston',
+  'Max',
+  'Lily',
+  'Xahlia',
+  'Daisy',
+  'Cino',
+  'Rosie',
+  'Pavarotti',
+  'Hutch',
+  'Mitsy'
 ]
 
-module.exports = () => {
-  let idx = Math.floor(Math.random() * names.length)
-  return names[idx]
+module.exports = (taken) => {
+  let options = names
+  if (taken) options = names.filter(name => !taken.find(taken => taken == name))
+  let idx = Math.floor(Math.random() * options.length)
+  return options[idx]
 }

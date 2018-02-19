@@ -5,8 +5,9 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/classStateMap'
 
 class Mage extends PartyMemberFrame {
-  finishCast(power) {
+  finishCast() {
     const {member, started, player, dispatch} = this.props
+    let {power} = member
     if (started && member.isAlive) {
       if (player.mana / player.maxMana * 100 < 30) power*2
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})

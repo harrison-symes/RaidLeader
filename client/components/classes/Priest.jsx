@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/classStateMap'
 
 class Priest extends PartyMemberFrame {
-  finishCast(power) {
+  findTarget() {
     const {started, member, dispatch, party} = this.props
     if (!started || !member.isAlive) return
 
@@ -14,9 +14,16 @@ class Priest extends PartyMemberFrame {
       if (!target) target = member
       else if (target &&( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
     })
-
+    let overHealing = (target.initHp - target.hp) - member.power
+    if (overHealing < 0) target = null
+    this.completeCast(target)
+  }
+  finishCast(target) {
+    console.log({target});
+    const {started, member, dispatch, party} = this.props
+    const {power} = member
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    let overHealing = power - (member.initHp - member.hp)
+    let overHealing =(target.initHp - target.hp) - member.power
     if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -2})
     dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
   }
@@ -24,7 +31,7 @@ class Priest extends PartyMemberFrame {
     const {power, speed, isAlive} = this.props.member
     const {party, started} = this.props
     if (!started) return
-    setTimeout(() => this.finishCast(power), 10000 / speed)
+    setTimeout(() => this.findTarget(), 10000 / speed)
   }
   startFighting () {
     const {heroClass, power, speed, initHp} = this.props.member

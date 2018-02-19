@@ -6,8 +6,9 @@ import AttackIcon from '../frames/AttackIcon'
 import mapStateToProps from './utils/classStateMap'
 
 class Paladin extends PartyMemberFrame {
-  finishCast(power) {
+  finishCast() {
     const {member} = this.props
+    let {power} = member
     if (this.props.started && this.props.member.isAlive) {
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: power})
       if (member.weapon_effect != 'noTaunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})

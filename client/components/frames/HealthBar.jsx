@@ -14,7 +14,7 @@ const HealthBar = ({maxHP, hp}) => {
     : 'hsl(348, 100%, 61%)'
   return <div className="HealthBar has-text-centered box">
     <div className="" style={{height: '15px'}}>
-      <p className="content"><HealthIcon value={`${hp} / ${maxHP}`} /></p>
+      <p className="content"><HealthIcon value={`${Math.round(hp)} / ${Math.round(maxHP)}`} /></p>
       <Line percent={percent} strokeWidth="10" strokeColor={colourClass} strokeLinecap="square" trailWidth="10" />
     </div>
   </div>
