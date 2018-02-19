@@ -16,5 +16,9 @@ export function MenuBackground (dungeon) {
       colour: '#c23f18',
       background: 'https://www.transparenttextures.com/patterns/diagmonds.png'
     }
+    default: return {
+      colour: 'white',
+      background: ''
+    }
   }
 }
