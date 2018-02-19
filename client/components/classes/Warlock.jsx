@@ -9,7 +9,6 @@ class Warlock extends PartyMemberFrame {
     if (this.props.member.isAlive && this.props.started) {
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       this.props.dispatch({type: 'WARLOCK_DAMAGE_ALL'})
-      this.startCast()
     }
   }
   startFighting () {

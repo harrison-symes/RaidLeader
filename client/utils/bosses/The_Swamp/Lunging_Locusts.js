@@ -1,10 +1,10 @@
 export default {
   name: 'Lunging Locusts',
   level: 2,
-  initHp: 2000,
-  hp: 2000,
-  initPower: 0,
-  power: 0,
+  initHp: 1500,
+  hp: 1500,
+  initPower: 1000,
+  power: 1000,
   initArmor: 0,
   armor: 0,
   mana: 0,
@@ -55,8 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      percentage: 0.6,
-      description: "Damage a random non-poisoned enemy recruit for (60%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      percentage: 0.5,
+      description: "Damage a random non-poisoned enemy recruit for (50%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-overhead'
     }
   ]

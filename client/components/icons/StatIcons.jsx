@@ -25,6 +25,15 @@ function toolTipGenerator(text, display) {
   </Tooltip>
 }
 
+export function PlayerIcon ({name}) {
+  return toolTipGenerator(
+    <p>{name}</p>,
+    <p>
+      <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
+    </p>
+  )
+}
+
 export function HealthIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Health</p>,

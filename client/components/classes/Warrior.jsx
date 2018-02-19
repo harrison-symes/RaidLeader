@@ -10,7 +10,6 @@ class Warrior extends PartyMemberFrame {
       if (this.props.member.weapon_effect == 'taunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target:this.props.member})
       if (this.props.boss.hp / this.props.boss.initHp * 100 < 25) this.props.dispatch({type: 'CRITICAL_ATTACK_BOSS', power})
       else this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      this.startCast()
     }
   }
   startFighting () {

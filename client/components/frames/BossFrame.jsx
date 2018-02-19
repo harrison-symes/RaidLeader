@@ -76,8 +76,8 @@ class BossFrame extends Component {
           <h1 className="title is-3">{name}</h1>
           <br />
           <div className="level">
-            <p className="subtitle is-1">&nbsp;&nbsp;&nbsp;<i id="BossIcon" style={{color: 'black'}} className={`icon ra ra-2x ${boss.icon}`}/></p>
             <p className="subtitle is-1"><PowerIcon value={boss.power} /></p>
+            <p className="subtitle is-1"><i id="BossIcon" style={{color: 'black'}} className={`icon ra ra-2x ${boss.icon}`}/>&nbsp;&nbsp;&nbsp;</p>
           </div>
         </div>
         <div className="column is-5">

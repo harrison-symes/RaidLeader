@@ -12,7 +12,6 @@ class Paladin extends PartyMemberFrame {
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: power})
       if (member.weapon_effect != 'noTaunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
       this.props.dispatch({type: 'HEAL_FRIENDLY_TARGET', target: member, power})
-      this.startCast()
     }
   }
   startFighting () {

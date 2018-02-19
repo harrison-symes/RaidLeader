@@ -12,14 +12,13 @@ class Priest extends PartyMemberFrame {
     let target = null
     party.forEach(member => {
       if (!target) target = member
-      else if (target && member.initHp - member.hp > target.initHp - target.hp) target = member
+      else if (target &&( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
     })
 
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     let overHealing = power - (member.initHp - member.hp)
     if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -2})
     dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-    this.startCast()
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member

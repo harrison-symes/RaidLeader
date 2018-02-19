@@ -30,7 +30,10 @@ class MemberFrame extends Component {
     this.finishCast(this.props.member.power)
   }
   completeCast() {
-    if (this.props.member.isAlive) this.createSVG()
+    if (this.props.member.isAlive) {
+      this.createSVG()
+      this.startCast()
+    }
   }
   createSVG() {
     var elemRect = document.getElementById('Recruit-' + this.props.member.id).getBoundingClientRect()
