@@ -5,7 +5,8 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/classStateMap'
 
 class Warlock extends PartyMemberFrame {
-  finishCast(power) {
+  finishCast() {
+    let {power} = this.props.member
     if (this.props.member.isAlive && this.props.started) {
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       this.props.dispatch({type: 'WARLOCK_DAMAGE_ALL'})

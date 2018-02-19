@@ -5,7 +5,8 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/classStateMap'
 
 class Warrior extends PartyMemberFrame {
-  finishCast(power) {
+  finishCast() {
+    let {power} = this.props.member
     if (this.props.member.isAlive && this.props.started) {
       if (this.props.member.weapon_effect == 'taunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target:this.props.member})
       if (this.props.boss.hp / this.props.boss.initHp * 100 < 25) this.props.dispatch({type: 'CRITICAL_ATTACK_BOSS', power})

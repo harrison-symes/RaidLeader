@@ -3,8 +3,11 @@ import React, {Component} from 'react'
 class AttackIcon extends Component {
   constructor(props) {
     super(props)
-    const {startX, startY, info} = props.svg
+    const {startX, startY, info, target} = props.svg
     var bossFrame = document.getElementById('BossIcon').getBoundingClientRect()
+    if (target) bossFrame = document.getElementById(`Recruit-${target.id}`).getBoundingClientRect()
+    console.log({target})
+    console.log({bossFrame});
     this.state = {
       x: startX || 10,
       y: startY || 10,

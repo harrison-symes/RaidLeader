@@ -7,8 +7,9 @@ import mapStateToProps from './utils/classStateMap'
 import {renewConstructor} from '../../utils/effectConstructors'
 
 class Shaman extends PartyMemberFrame {
-  finishCast(power) {
+  finishCast() {
     const {member, started, player, dispatch, party} = this.props
+    let {power} = member
     if (started && member.isAlive) {
       var renewTarget = member
       party.forEach(recruit => {
