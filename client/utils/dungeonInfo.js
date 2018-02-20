@@ -31,10 +31,11 @@ export function MenuBackground (dungeon) {
   }
 }
 
-export default function getDungeonInfo(dungeon, is_complete) {
+export default function getDungeonInfo(dungeon, isCompleted) {
   switch(dungeon) {
     case 'The Hunt': return {
       name: 'The Hunt',
+      isCompleted,
       level: 1,
       is_repeatable: false,
       max_party: 1,
@@ -49,6 +50,7 @@ export default function getDungeonInfo(dungeon, is_complete) {
     }
     case 'The Cursed Wilds': return {
       name: 'The Cursed Wilds',
+      isCompleted,
       level: 1,
       is_repeatable: true,
       max_party: 2,
@@ -75,6 +77,7 @@ export default function getDungeonInfo(dungeon, is_complete) {
     }
     case 'The Swamp': return {
       name: 'The Swamp',
+      isCompleted,
       level: 2,
       is_repeatable: true,
       max_party: 3,
@@ -102,6 +105,7 @@ export default function getDungeonInfo(dungeon, is_complete) {
     }
     case "The Foundry": return {
       name: 'The Foundry',
+      isCompleted,
       level: 3,
       is_repeatable: true,
       max_party: 3,
@@ -114,6 +118,40 @@ export default function getDungeonInfo(dungeon, is_complete) {
       description: "A great Foundry resides within an active Volcano. You're not sure who, what or why, but SOMEONE is definitely doing SOMETHING here for SOME REASON...",
       bosses: [
         "Flaming Furnace"
+      ]
+    }
+    case "The Armory": return {
+      name: 'The Armory',
+      isCompleted,
+      level: 4,
+      is_repeatable: true,
+      max_party: 4,
+      max_spells: 4,
+      requires_complete: 'The Foundry',
+      rewards: [
+
+      ],
+      gold_reward: 2000,
+      description: "I suppose it only makes sense when you think about it. Where else would all these weapons have come from? ... ... ... Except those weapons you extracted from those dead animals earlier, you monster!",
+      bosses: [
+
+      ]
+    }
+    case "The Lair": return {
+      name: 'The Lair',
+      isCompleted,
+      level: 5,
+      is_repeatable: true,
+      max_party: 5,
+      max_spells: 4,
+      requires_complete: 'The Armory',
+      rewards: [
+
+      ],
+      gold_reward: 5000,
+      description: "Hey remember that Dragon you killed a while back? Well, her boyfriend is pretty pissed of at you. So pissed off that he: Cursed the Woods, Plagued a Forest, Turned a Volcano into a Foundry, Used that Foundry to create hundreds of Weapons, and... You get the idea, I suggest being a little terrified!",
+      bosses: [
+        
       ]
     }
   }

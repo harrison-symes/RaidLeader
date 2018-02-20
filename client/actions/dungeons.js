@@ -1,13 +1,19 @@
 import request from '../utils/api'
 import bosses from '../utils/bosses/bosses'
 
+import dungeonInfo from '../utils/dungeonInfo'
+
 export function receiveDungeonsAction (dungeons) {
+  console.log({dungeons});
   return {
     type: "RECEIVE_DUNGEONS",
     dungeons: dungeons.map(dungeon => {
-      dungeon.bosses = dungeon.bosses.map(boss => bosses(boss.name)).filter(boss => boss)
-      dungeon.type = 'Dungeon'
-      return dungeon
+      // dungeon = dungeonInfo(dungeon.name, dungeon.isCompleted)
+      let newDungeon = dungeonInfo(dungeon.name, dungeon.isCompleted)
+      console.log({newDungeon});
+      newDungeon.bosses = newDungeon.bosses.map(boss => bosses(boss))
+      newDungeon.type = 'Dungeon'
+      return newDungeon
     })
   }
 }
