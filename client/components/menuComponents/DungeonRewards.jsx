@@ -29,7 +29,7 @@ class DungeonRewards extends Component {
   solveWeaponReward() {
     const {currentLocation} = this.props
     if (!currentLocation.rewards) return
-    const weapons = JSON.parse(currentLocation.rewards)
+    const weapons = currentLocation.rewards
     const roll = Math.random()
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward = null

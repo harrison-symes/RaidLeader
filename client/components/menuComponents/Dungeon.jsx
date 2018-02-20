@@ -50,7 +50,7 @@ class Dungeon extends React.Component {
         </span>}
         {/* {selected == dungeon && <p className="delete" onClick={() => selectDungeon(null)} />} */}
       </div>
-      {selected == dungeon && <div>
+      {selected == dungeon && !levelRestrict && <div>
         <div className="box">
           <p className="title is-4">Dungeon Level: {dungeon.level}</p>
           <div className="level">
