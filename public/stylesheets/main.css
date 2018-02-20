@@ -731,7 +731,8 @@
         .Game .BossFrame .BossSpellBar .BossSpell .tooltip .tooltiptext {
           visibility: visible; }
     .Game .BossFrame .BossHealthBar {
-      height: 100%; }
+      height: 100%;
+      border-radius: 10%; }
   .Game .PartyFrame {
     height: 30vh;
     width: 100vw;

@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import RecruitHealthBar from './RecruitHealthBar'
 import EffectTag from './EffectTag'
-import {ClassIcon, SpeedIcon, PowerIcon} from '../icons/StatIcons'
+import {ClassIcon, SpeedIcon, PowerIcon, DeadRecruitIcon} from '../icons/StatIcons'
 import AttackIcon from './AttackIcon'
 import {attackIcons} from '../../utils/classText'
 
@@ -63,13 +63,17 @@ class MemberFrame extends Component {
     return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{width: `${width}vw`, border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns has-text-centered">
         <div className="column is-6">
-          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} /></h1>
+          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>
+            {name}
+            <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} />
+            {!member.isAlive && <DeadRecruitIcon name={member.name} />}
+          </h1>
         </div>
         {effects.length > 0
-          ? <div className="column is-6 tags">
+          ? <div className="column tags">
             {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
           </div>
-          : <div className="column is-pulled-right">
+          : <div className="column is-6 is-pulled-right is-desktop-only">
               <p className="subtitle is-4"><PowerIcon value={Math.round(power * 10) / 10} />&nbsp;<SpeedIcon value={Math.round(speed * 10) /10} /></p>
               <p className="subtitle is-4"></p>
           </div>

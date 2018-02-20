@@ -25,6 +25,15 @@ function toolTipGenerator(text, display) {
   </Tooltip>
 }
 
+export function DeadRecruitIcon ({name}) {
+  return toolTipGenerator(
+    <p>{name} has Died</p>,
+    <span>
+      <i style={{color: 'white'}} className="icon ra ra-fw ra-tombstone"></i>
+    </span>
+  )
+}
+
 export function PlayerIcon ({name}) {
   return toolTipGenerator(
     <p>{name}</p>,

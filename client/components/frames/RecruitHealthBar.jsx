@@ -20,7 +20,7 @@ const RecruitHealthBar = ({recruit, party}) => {
         <div className="column is-6" style={{heigth: '15px'}}>
           <Line percent={percent} strokeWidth={`${4 * party.length}`} strokeColor={colourClass} strokeLinecap="square"  trailWidth={`${4 * party.length}`}/>
         </div>
-        <div className="column is-6"><p className="subtitle is-5"><HealthIcon value={`${Math.round(hp)} / ${Math.round(initHp)}`} /></p></div>
+        <div className="column is-desktop-only"><p className="subtitle is-5"><HealthIcon value={`${Math.round(hp)} / ${Math.round(initHp)}`} /></p></div>
       </div>
     </div>
   </div>

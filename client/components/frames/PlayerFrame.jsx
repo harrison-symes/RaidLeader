@@ -20,7 +20,7 @@ class PlayerFrame extends Component {
     const {initHp, hp, maxMana, mana, spells, power, name} = player
     const playerTargeted = friendlyTarget && friendlyTarget.id == player.id
     return <div className="section PlayerFrame">
-      <div className="columns">
+      <div className="columns is-mobile">
         <div className="column is-4">
           <div
             style={{cursor: 'pointer', backgroundColor: playerTargeted ? 'lightgreen' : 'white'}}
@@ -30,7 +30,7 @@ class PlayerFrame extends Component {
               <p className="subtitle is-1"><PowerIcon value={power} /></p>
               <p className="subtitle is-1"><PlayerIcon name={name} />&nbsp;&nbsp;&nbsp;</p>
             </div>
-            <div className="columns">
+            <div className="columns is-mobile">
               <div className="column is-6">
                 <HealthBar hp={hp} maxHP={initHp} />
               </div>
