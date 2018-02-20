@@ -66,10 +66,10 @@ class MemberFrame extends Component {
           <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>{name} <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} /></h1>
         </div>
         {effects.length > 0
-          ? <div className="column is-6 tags">
+          ? <div className="column tags">
             {effects.map(effect => <EffectTag key={`effect-${effect.name}-${member.name}`} effect={effect} target={member} />)}
           </div>
-          : <div className="column is-pulled-right">
+          : <div className="column is-6 is-pulled-right is-desktop-only">
               <p className="subtitle is-4"><PowerIcon value={Math.round(power * 10) / 10} />&nbsp;<SpeedIcon value={Math.round(speed * 10) /10} /></p>
               <p className="subtitle is-4"></p>
           </div>
