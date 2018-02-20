@@ -55,7 +55,8 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 2,
       max_spells: 2,
-      requires_complete: 'The Hunt', rewards: [
+      requires_complete: 'The Hunt',
+      rewards: [
         {
           name: 'Cursed Staff of the Wilds',
           min: 0,
@@ -151,7 +152,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       gold_reward: 5000,
       description: "Hey remember that Dragon you killed a while back? Well, her boyfriend is pretty pissed of at you. So pissed off that he: Cursed the Woods, Plagued a Forest, Turned a Volcano into a Foundry, Used that Foundry to create hundreds of Weapons, and... You get the idea, I suggest being a little terrified!",
       bosses: [
-        
+
       ]
     }
   }
