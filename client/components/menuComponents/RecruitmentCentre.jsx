@@ -31,7 +31,7 @@ class RecruitmentCentre extends Component {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
       let zodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
       let name = randomName(this.props.recruits.map(recruit => recruit.name))
-      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({namel, heroClass, zodiac})
+      if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name, heroClass, zodiac})
     }
     return offeredRecruits
   }

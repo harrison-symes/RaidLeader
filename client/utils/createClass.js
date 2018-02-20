@@ -29,7 +29,7 @@ const createMember = (name, level, id, weapon_id, zodiac, heroClass, hp, power, 
   return member
 }
 
-const createPaladin = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Paladin', (level + 1) * 45, (level + 1) * 10, 20)
+const createPaladin = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Paladin', (level + 1) * 45, (level + 1) * 5, 30)
 
 const createPriest = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Priest', (level + 1) * 30, (level + 1) * 5, 25)
 
