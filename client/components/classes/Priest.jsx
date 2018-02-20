@@ -11,8 +11,8 @@ class Priest extends PartyMemberFrame {
 
     let target = null
     party.forEach(member => {
-      if (!target) target = member
-      else if (target &&( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
+      if (!target && member.isAlive) target = member
+      else if (target && member.isAlive && ( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
     })
     let overHealing = (target.initHp - target.hp) - member.power
     if (overHealing < 0) target = null
