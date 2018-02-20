@@ -13,6 +13,7 @@ export function receiveDungeonsAction (dungeons) {
       console.log({newDungeon});
       newDungeon.bosses = newDungeon.bosses.map(boss => bosses(boss))
       newDungeon.type = 'Dungeon'
+      newDungeon.id = dungeon.id
       return newDungeon
     })
   }
