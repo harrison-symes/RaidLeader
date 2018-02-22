@@ -65,7 +65,7 @@ export default {
         onCooldown: false,
         percentage: 0.3,
         description: 'Set ALL recruits to 30% of their Max Health',
-        icon: ''
+        icon: 'ra-lightning-trio'
       },
       {
         name: 'Discharge',
@@ -156,9 +156,9 @@ export default {
     spells: [
       {
         name: 'Repair',
-        cast: 5,
+        cast: 10,
         cost: 0,
-        coolDown: 20,
+        coolDown: 30,
         type: 'support',
         powerRatio: 1,
         power: 10,
@@ -171,9 +171,9 @@ export default {
       },
       {
         name: 'Discharge',
-        cast: 5,
+        cast: 10,
         cost: 10,
-        coolDown: 15,
+        coolDown: 25,
         type: 'damage',
         isChanneled: true,
         singleTarget: false,
@@ -185,9 +185,9 @@ export default {
       },
       {
         name: 'Power Drill',
-        cast: 5,
+        cast: 10,
         cost: 10,
-        coolDown: 15,
+        coolDown: 25,
         type: 'damage',
         powerRatio: 1,
         tickPower: 0.2,
@@ -196,6 +196,17 @@ export default {
         singleTarget: true,
         description: "Damage the Boss' Target for (100%) Power over the cast",
         icon: 'ra-drill'
+      },
+      {
+        name: 'Speed Up',
+        cast: 5,
+        cost: 0,
+        coolDown: 10,
+        powerRatio: 1,
+        onCooldown: false,
+        singleTarget: false,
+        description: 'Reduce the Cast Time and Cooldown of ALL Boss Spells by 10%',
+        icon: 'ra-recycle'
       }
     ]
   }
