@@ -118,7 +118,8 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       gold_reward: 1500,
       description: "A great Foundry resides within an active Volcano. You're not sure who, what or why, but SOMEONE is definitely doing SOMETHING here for SOME REASON...",
       bosses: [
-        "Flaming Furnace"
+        "Flaming Furnace",
+        "Cycling Conveyer"
       ]
     }
     case "The Armory": return {
