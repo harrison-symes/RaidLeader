@@ -14,30 +14,30 @@ router.put('/gold', decode, (req, res) => {
   playerDb.getPlayerGold(req.user.user_id)
     .then((user) => {
       playerDb.updatePlayerGold(req.user.user_id, user.gold + req.body.gold)
-        .then(() => res.sendStatus(200))
+        .then(() => res.sendStatus(202))
     })
 })
 
 router.post('/weapon', decode, (req, res) => {
   playerDb.addWeapon(req.user.user_id, req.body.name, req.body.level)
-    .then(id => res.json(id[0]))
+    .then(weapon => res.status(201).json(weapon))
 })
 
 router.get('/weapons', decode, (req, res) => {
   playerDb.getWeapons(req.user.user_id)
-    .then(weapons => res.json(weapons))
+    .then(weapons => res.status(200).json(weapons))
 })
 
 router.delete('/weapons', decode, (req, res) => {
-  console.log(req.body);
   playerDb.delWeapon(req.body.id)
     .then(() => {
       playerDb.getPlayerGold(req.user.user_id)
       .then((user) => {
         playerDb.updatePlayerGold(req.user.user_id, user.gold + req.body.value)
-        .then(() => res.sendStatus(200))
+        .then(() => res.sendStatus(202))
       })
     })
+    .catch(err => console.log({err}))
 })
 
 router.post('/getStarted', decode, (req, res) => {
@@ -47,7 +47,7 @@ router.post('/getStarted', decode, (req, res) => {
         .then(spell => {
           playerDb.addWeapon(req.user.user_id, 'Training Staff', 1)
             .then(weapon => {
-              res.json({recruit, spell, weapon})
+              res.status(201).json({recruit, spell, weapon})
             })
         })
     })
