@@ -18,7 +18,7 @@ export default {
   goldReward: 1500,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-lava',
+  icon: ' ra-recycle',
   spells: [
     {
       name: 'Activate',
