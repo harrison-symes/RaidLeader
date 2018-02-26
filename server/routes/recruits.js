@@ -11,18 +11,17 @@ router.get('/', decode, (req, res) => {
 router.post('/', decode, (req, res) => {
   const {name, heroClass, zodiac} = req.body
   recruitsDb.addRecruit(req.user.user_id, name, 1, heroClass, zodiac)
-    .then(recruit => res.json(recruit))
+    .then(recruit => res.status(201).json(recruit))
 })
 
 router.put('/weapons', decode, (req, res) => {
   recruitsDb.equipWeapon(req.body.id, req.body.weapon_id)
-    .then(() => res.sendStatus(200))
+    .then(() => res.sendStatus(202))
 })
 
 router.put('/level', decode, (req, res) => {
-  console.log(req.body);
   recruitsDb.levelUpRecruit(req.body.id, req.body.level )
-    .then(recruit => res.json(recruit))
+    .then(recruit => res.status(200).json(recruit))
 })
 
 module.exports = router
