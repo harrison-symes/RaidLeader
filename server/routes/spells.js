@@ -10,13 +10,13 @@ router.get('/', decode, (req, res) => {
 
 router.post('/', decode, (req, res) => {
   spellsDb.addSpell(req.user.user_id, req.body.name)
-    .then(spell => res.json(spell))
+    .then(spell => res.status(201).json(spell))
+    // .catch(err => console.log({err}))
 })
 
 router.delete('/', decode, (req, res) => {
-  console.log(req.body);
   spellsDb.deleteSpell(req.user.user_id, req.body.name)
-    .then(spell => res.sendStatus(200))
+    .then(() => res.sendStatus(202))
 })
 
 module.exports = router
