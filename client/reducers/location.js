@@ -8,18 +8,13 @@ const town = {
 
 function getLocation () {
   let location = get('location')
-  console.log({location});
   if (!location) return town
   location = JSON.parse(location)
   if (location.inGame == true) return town
   else return location
 }
 
-// let initialState = JSON.parse(get('location'))
-// if (initialState && initialState.inGame) initialState = null
-
 export default function (state = getLocation(), action) {
-  console.log({state});
   let newState = {...state}
   switch (action.type) {
     case 'LOGOUT':

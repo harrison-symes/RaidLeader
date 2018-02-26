@@ -75,3 +75,29 @@ test('GAME_WON', () => {
     ]
   })
 })
+
+test('GAME_LOST', () => {
+  const mockCalls = mockSet.mock.calls.length
+  const actual = reducer(
+    {name: 'FAKE PLACE'},
+    {
+      type: 'GAME_LOST'
+    }
+  )
+
+  expect(actual).toEqual(town)
+  expect(mockSet.mock.calls.length).toBe(mockCalls + 1)
+})
+
+test('TRAVEL_TO_TOWN', () => {
+  const mockCalls = mockSet.mock.calls.length
+  const actual = reducer(
+    {name: 'FAKE PLACE'},
+    {
+      type: 'TRAVEL_TO_TOWN'
+    }
+  )
+
+  expect(actual).toEqual(town)
+  expect(mockSet.mock.calls.length).toBe(mockCalls + 1)
+})
