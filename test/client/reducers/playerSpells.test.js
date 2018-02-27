@@ -25,77 +25,71 @@ test('ADD_SPELL_TO_BAR', () => {
     {id: 2, name: 'Not-Jeff'}
   ]
   const actual = reducer(initial, {
-    type: 'ADD_RECRUIT_TO_PARTY',
+    type: 'ADD_SPELL_TO_BAR',
     idx: 1,
     spell: {id: 3, name: 'Channing Tatum'}
   })
+  expect(actual).toEqual([
+    {id: 1, name: 'Jeff'},
+    {id: 3, name: 'Channing Tatum'},
+    {id: 2, name: 'Not-Jeff'}
+  ])
 })
 
-//   expect(actual).toHaveLength(3)
-//   expect(actual.findIndex(item => item.id == 1)).toBe(0)
-//   expect(actual.findIndex(item => item.id == 2)).toBe(2)
-//   expect(actual.findIndex(item => item.id == 3)).toBe(1)
-//   expect(actual.find(item => item.id == 3 && item.name == 'Channing Tatum')).toBeTruthy()
-// })
-//
-// test('REMOVE_RECRUIT_FROM_PARTY', () => {
-//   const initial = [
-//     {id: 1, name: 'Jeff'},
-//     {id: 2, name: 'Not-Jeff'},
-//     {id: 3, name: 'Channing Tatum'}
-//   ]
-//   const actual = reducer(initial, {
-//     type: 'REMOVE_RECRUIT_FROM_PARTY',
-//     recruit: {id: 2, name: 'Not Jeff'}
-//   })
-//   expect(actual).toHaveLength(2)
-//   expect(actual.findIndex(item => item.id == 1)).toBe(0)
-//   expect(actual.findIndex(item => item.id == 2)).toBe(-1)
-//   expect(actual.findIndex(item => item.id == 3)).toBe(1)
-//   expect(actual.find(item => item.id == 2 && item.name == 'Not Jeff')).toBeFalsy()
-// })
-//
-// test('SHIFT_PARTY_INDEX', () => {
-//   const initial = [
-//     {id: 1, name: 'Jeff'},
-//     {id: 2, name: 'Not-Jeff'},
-//     {id: 3, name: 'Channing Tatum'}
-//   ]
-//   const actual = reducer(initial, {
-//     type: 'SHIFT_PARTY_INDEX',
-//     recruit: {id: 1, name: 'Jeff'},
-//     idx: 2
-//   })
-//   expect(actual).toHaveLength(3)
-//   expect(actual.findIndex(item => item.id == 1)).toBe(2)
-//   expect(actual.findIndex(item => item.id == 2)).toBe(0)
-//   expect(actual.findIndex(item => item.id == 3)).toBe(1)
-//
-//   const actual2 = reducer(actual, {
-//     type: 'SHIFT_PARTY_INDEX',
-//     recruit: {id: 3, name: 'Channing Tatum'},
-//     idx: 0
-//   })
-//   expect(actual2.findIndex(item => item.id == 1)).toBe(2)
-//   expect(actual2.findIndex(item => item.id == 2)).toBe(1)
-//   expect(actual2.findIndex(item => item.id == 3)).toBe(0)
-// })
-//
-// test('REPLACE_RECRUIT_IN_PARTY', () => {
-//   const initial = [
-//     {id: 1, name: 'Jeff'},
-//     {id: 2, name: 'Not-Jeff'},
-//     {id: 3, name: 'Channing Tatum'}
-//   ]
-//   const actual = reducer(initial, {
-//     type: 'REPLACE_RECRUIT_IN_PARTY',
-//     idx: 2,
-//     recruit: {id: 4, name: 'The Real Jeff'}
-//   })
-//   expect(actual).toHaveLength(3)
-//   expect(actual.find(item => item.id == 1)).toBeTruthy()
-//   expect(actual.find(item => item.id == 3)).toBeFalsy()
-//   expect(actual.find(item => item.id == 4)).toBeTruthy()
-//   expect(actual.find(item => item.id == 2)).toBeTruthy()
-//   expect(actual.findIndex(item => item.id == 4 && item.name == 'The Real Jeff')).toBe(2)
-// })
+test('REMOVE_SPELL_FROM_BAR', () => {
+  const initial = [
+    {id: 1, name: 'Jeff'},
+    {id: 2, name: 'Not-Jeff'}
+  ]
+  const actual = reducer(initial,
+  {
+    type: 'REMOVE_SPELL_FROM_BAR',
+    spell: {id: 1, name: 'Jeff'}
+  })
+  expect(actual).toHaveLength(1)
+  expect(actual.find(item => item.id == 1)).toBeFalsy()
+  expect(actual).toEqual([
+    {id: 2, name: 'Not-Jeff'}
+  ])
+})
+
+test('SHIFT_SPELL_INDEX', () => {
+  const initial = [
+    {id: 1, name: 'Jeff'},
+    {id: 3, name: 'Channing Tatum'},
+    {id: 2, name: 'Not-Jeff'}
+  ]
+  const actual = reducer(initial,
+  {
+    type: 'SHIFT_SPELL_INDEX',
+    spell: {id: 1, name: 'Jeff'},
+    idx: 2
+  })
+  expect(actual).toHaveLength(initial.length)
+  expect(actual).toEqual([
+    {id: 3, name: 'Channing Tatum'},
+    {id: 2, name: 'Not-Jeff'},
+    {id: 1, name: 'Jeff'}
+
+  ])
+})
+
+test('REPLACE_SPELL_IN_BAR', () => {
+  const initial = [
+    {id: 1, name: 'Jeff'},
+    {id: 3, name: 'Channing Tatum'},
+    {id: 2, name: 'Not-Jeff'}
+  ]
+  const actual = reducer(initial,
+    {
+      type: 'REPLACE_SPELL_IN_BAR',
+      spell: {id: 4, name: 'Meme Man'},
+      idx: 1
+    })
+  expect(actual).toHaveLength(initial.length)
+  expect(actual).toEqual([
+    {id: 1, name: 'Jeff'},
+    {id: 4, name: 'Meme Man'},
+    {id: 2, name: 'Not-Jeff'}
+  ])
+})

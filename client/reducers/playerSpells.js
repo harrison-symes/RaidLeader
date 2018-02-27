@@ -8,9 +8,9 @@ export default function (state = [], action) {
       newState.splice(action.idx, 0, action.spell)
       return newState
     case 'REMOVE_SPELL_FROM_BAR':
-      return newState.filter(spell => spell != action.spell)
+      return newState.filter(spell => spell.id != action.spell.id)
     case 'SHIFT_SPELL_INDEX':
-      newState = newState.filter(spell => spell != action.spell)
+      newState = newState.filter(spell => spell.id != action.spell.id)
       newState.splice(action.idx, 0, action.spell)
       return newState
     case 'REPLACE_SPELL_IN_BAR':
