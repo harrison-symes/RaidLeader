@@ -330,13 +330,13 @@ test('DAMAGE_FRIENDLY_TARGET (wrong target)', () => {
   expect(actual).toEqual(fakeState)
 })
 
-test('DAMAGE_FRIENDLY_TARGET ()', () => {
+test('DAMAGE_FRIENDLY_TARGET (correct target)', () => {
   const actual = reducer(fakeState, {
     type: 'DAMAGE_FRIENDLY_TARGET',
     target: {
-      id: 0,
-      power: 10
-    }
+      id: 0
+    },
+    power: 10
   })
   const expected = {...fakeState}
   expected.hp -= 10

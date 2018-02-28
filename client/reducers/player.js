@@ -95,7 +95,7 @@ export default function player (state = null, action) {
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
-      if (action.target.name == newState.name) newState.hp-=action.power
+      if (action.target.id == newState.id) newState.hp-=action.power
       return newState
     default: return state
   }
