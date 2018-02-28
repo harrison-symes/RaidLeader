@@ -9,7 +9,7 @@ class Warlock extends PartyMemberFrame {
     let {power} = this.props.member
     if (this.props.member.isAlive && this.props.started) {
       this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      this.props.dispatch({type: 'WARLOCK_DAMAGE_ALL'})
+      this.props.dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: 0.05})
     }
   }
   startFighting () {
