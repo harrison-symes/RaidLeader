@@ -90,7 +90,7 @@ export default function boss (state = null, action) {
       newState.bossTarget = action.target
       return newState
     case 'ROGUE_START_BUFF':
-      newState.hp = Math.round(newState.hp * 0.9)
+      newState.hp = newState.hp * 0.9
       return newState
     case 'WARLOCK_START_BUFF':
       newState.armor-=action.power
@@ -100,7 +100,7 @@ export default function boss (state = null, action) {
       newState.bossTarget = action.target
       return newState
     case 'MEMBER_DIED':
-      if (action.target == newState.bossTarget) newState.bossTarget.isAlive = false
+      if (action.target.id == newState.bossTarget.id) newState.bossTarget.isAlive = false
       return newState
     case 'BOSS_CHANGE_STAGE':
       for (let key in action.stage) {

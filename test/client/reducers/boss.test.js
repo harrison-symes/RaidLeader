@@ -16,6 +16,7 @@ const fakeBoss = {
   initArmor: 50,
   isCasting: false,
   wantsToCast: false,
+  bossTarget: null,
   spells: fakeSpells
 }
 
@@ -324,6 +325,150 @@ test('BOSS_FINISH_CASTING', () => {
   expect(actual).toEqual(expected)
 })
 
-test('BOSS_SPELL_FINISH_COOLDOWN', () => {
-  
+test('BOSS_SPELL_FINISH_COOLDOWN (no spell)', () => {
+  const initial = {...fakeProgressBoss}
+  fakeProgressBoss.spells[0].onCooldown = true
+  const actual = reducer(initial, {
+    type: 'BOSS_SPELL_FINISH_COOLDOWN',
+    spell: null
+  })
+  expect(actual).toEqual(initial)
+})
+
+test('BOSS_SPELL_FINISH_COOLDOWN (wrong spell)', () => {
+  const initial = {...fakeProgressBoss}
+  fakeProgressBoss.spells[0].onCooldown = true
+  const actual = reducer(initial, {
+    type: 'BOSS_SPELL_FINISH_COOLDOWN',
+    spell: {id: 5, name: 'WRONG SPELL'}
+  })
+  expect(actual).toEqual(initial)
+})
+
+test('BOSS_SPELL_FINISH_COOLDOWN (correct)', () => {
+  const initial = {...fakeProgressBoss}
+  fakeProgressBoss.spells[0].onCooldown = true
+  const actual = reducer(initial, {
+    type: 'BOSS_SPELL_FINISH_COOLDOWN',
+    spell: fakeProgressBoss.spells[0]
+  })
+  expect(actual).toEqual(fakeProgressBoss)
+})
+
+test('BOSS_CHANGE_TARGET (no initial target)', () => {
+  const fakeTarget = {id: 2, name: 'Jeff'}
+  const actual = reducer(fakeBoss, {
+    type: 'BOSS_CHANGE_TARGET',
+    target: fakeTarget
+  })
+  expect(actual.bossTarget).toBe(fakeTarget)
+})
+
+test('BOSS_CHANGE_TARGET (with initial target)', () => {
+  const fakeTarget = {id: 2, name: 'Jeff'}
+  const initial = {
+    ...fakeBoss,
+    bossTarget: {
+      id: 3, name:
+      'Not-Jeff'
+    }
+  }
+  const actual = reducer(initial, {
+    type: 'BOSS_CHANGE_TARGET',
+    target: fakeTarget
+  })
+  expect(actual.bossTarget).toBe(fakeTarget)
+})
+
+test('ROGUE_START_BUFF (max hp)', () => {
+  const actual = reducer(fakeBoss, {
+    type: 'ROGUE_START_BUFF'
+  })
+  expect(actual.hp).toBe(fakeBoss.hp * 0.9)
+})
+
+test('ROGUE_START_BUFF (doesnt start at max hp)', () => {
+  const actual = reducer(fakeProgressBoss, {
+    type: 'ROGUE_START_BUFF'
+  })
+  expect(actual.hp).toBe(fakeProgressBoss.hp * 0.9)
+})
+
+test('WARLOCK_START_BUFF (with armor)', () => {
+  const actual = reducer(fakeBoss, {
+    type: 'WARLOCK_START_BUFF',
+    power: 12
+  })
+  const expected = {
+    ...fakeBoss,
+    armor: fakeBoss.armor - 12
+  }
+  expect(actual).toEqual(expected)
+})
+
+test('WARLOCK_START_BUFF (over armor)', () => {
+  const actual = reducer(fakeBoss, {
+    type: 'WARLOCK_START_BUFF',
+    power: 100
+  })
+  const expected = {
+    ...fakeBoss,
+    armor: 0
+  }
+  expect(actual).toEqual(expected)
+})
+
+test('PALADIN_START_BUFF', () => {
+  const paladin = {id: 2, name: 'Jeff'}
+  const actual = reducer(fakeBoss, {
+    type: 'PALADIN_START_BUFF',
+    target: paladin
+  })
+  expect(actual.bossTarget).toBe(paladin)
+})
+
+test('MEMBER_DIED (not target)', () => {
+  const fakeTarget = {id: 2, name: 'Jeff'}
+  const initial = {
+    ...fakeBoss,
+    bossTarget: {id: 3, name: 'Not-Jeff'}
+  }
+  const actual =reducer(initial, {
+    type: 'MEMBER_DIED',
+    target: fakeTarget
+  })
+  expect(actual).toEqual(initial)
+})
+
+test('MEMBER_DIED (bosses target)', () => {
+  const fakeTarget = {id: 3, name: 'Not-Jeff', isAlive: true}
+  const initial = {
+    ...fakeBoss,
+    bossTarget: {id: 3, name: 'Not-Jeff', isAlive: true}
+  }
+  const actual =reducer(initial, {
+    type: 'MEMBER_DIED',
+    target: fakeTarget
+  })
+  const expected = {...initial}
+  expected.bossTarget.isAlive = false
+  expect(actual).toEqual(expected)
+})
+
+test('BOSS_CHANGE_STAGE', () => {
+  const stage = {
+    spells: [
+      {id: 5, name: 'STAGE_SPELL_1'},
+      {id: 6, name: 'STAGE_SPELL_2'},
+    ],
+    manaRegen: 0,
+    name: 'Stage 2'
+  }
+  const actual = reducer(fakeBoss, {
+    type: 'BOSS_CHANGE_STAGE',
+    stage
+  })
+  for (let key in stage) {
+    expect(actual[key]).toEqual(stage[key])
+  }
 })
