@@ -231,7 +231,7 @@ test('SET_RECRUIT_PERCENTAGE', () => {
     type: 'SET_RECRUIT_PERCENTAGE',
     percentage: 10
   })
-  
+
   expect(actual[0].hp / actual[0].initHp * 100).toEqual(10)
   expect(actual[1].hp / actual[1].initHp * 100).toEqual(10)
   expect(actual[2].hp / actual[2].initHp * 100).toEqual(10)
@@ -306,7 +306,7 @@ test('DAMAGE_FRIENDLY_TARGET (no match target)', () => {
   expect(actual).toEqual(fakeParty)
 })
 
-test('PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY (100%)', () => {
+test('PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY)', () => {
   const actual = reducer(clone(fakeParty), {
     type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY',
     percentage: 0.1
@@ -352,4 +352,71 @@ test('PERCENT_DAMAGE_FRIENDLY_TARGET(valid)', () => {
     target: fakeParty[0]
   })
   expect(actual[0].hp).toEqual(fakeParty[0].hp - (fakeParty[0].initHp * 0.1))
+})
+
+test('PERCENT_HEAL_FRIENDLY_TARGET(no match target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PERCENT_HEAL_FRIENDLY_TARGET',
+    percentage: 0.1,
+    target: {id: 0, name: 'Player'}
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('PERCENT_HEAL_FRIENDLY_TARGET(no target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PERCENT_HEAL_FRIENDLY_TARGET',
+    percentage: 0.1,
+    target: null
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('PERCENT_HEAL_FRIENDLY_TARGET(dead target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PERCENT_HEAL_FRIENDLY_TARGET',
+    percentage: 0.1,
+    target: fakeParty[3]
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('PERCENT_HEAL_FRIENDLY_TARGET(valid)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PERCENT_HEAL_FRIENDLY_TARGET',
+    percentage: 0.1,
+    target: fakeParty[0]
+  })
+  expect(actual[0].hp).toEqual(fakeParty[0].hp + (fakeParty[0].initHp * 0.1))
+})
+
+test('PERCENT_HEAL_FRIENDLY_TARGET (overheal)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PERCENT_HEAL_FRIENDLY_TARGET',
+    percentage: 1,
+    target: fakeParty[0]
+  })
+  expect(actual[0].hp).toEqual(fakeParty[0].initHp)
+})
+
+test('PERCENT_HEAL_ALL_FRIENDLY', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PERCENT_HEAL_ALL_FRIENDLY',
+    percentage: 0.2
+  })
+  expect(actual[0].hp).toEqual(fakeParty[0].hp + (fakeParty[0].initHp * 0.2))
+  expect(actual[1].hp).toEqual(60)
+  expect(actual[2].hp).toEqual(70)
+  expect(fakeParty[3].hp).toEqual(0)
+})
+
+test('PRIEST_START_BUFF', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PRIEST_START_BUFF',
+    target: fakeParty[0]
+  })
+  actual.forEach((item,i) => {
+    if (i == 0) expect(item).toEqual(fakeParty[i])
+    else expect(actual[i].initHp).toEqual(fakeParty[i].initHp * 1.1)
+  })
 })

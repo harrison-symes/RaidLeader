@@ -97,7 +97,7 @@ export default function party (state = [], action) {
       return newState
     case 'PERCENT_HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
-      target = newState.find(member => member == action.target)
+      target = newState.find(member => member.id == action.target.id)
       if (!target || !target.isAlive) return newState
       target.hp+=target.initHp * action.percentage
       if (target.hp >= target.initHp) target.hp = target.initHp
