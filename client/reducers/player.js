@@ -46,10 +46,9 @@ export default function player (state = null, action) {
       return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
-      if (action.target.id == newState.id) {
-        newState.hp += action.power
-        if (newState.hp > newState.initHp) newState.hp = newState.initHp
-      }
+      if (action.target.id != newState.id) return state
+      newState.hp += action.power
+      if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'HEAL_ALL_FRIENDLY':
       newState.hp+= action.power
@@ -71,7 +70,7 @@ export default function player (state = null, action) {
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
-      newState.hp-= Math.round(action.power)
+      newState.hp-= action.power
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PERCENT_DAMAGE_PLAYER':

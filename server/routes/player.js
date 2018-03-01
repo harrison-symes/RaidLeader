@@ -37,7 +37,6 @@ router.delete('/weapons', decode, (req, res) => {
         .then(() => res.sendStatus(202))
       })
     })
-    .catch(err => console.log({err}))
 })
 
 router.post('/getStarted', decode, (req, res) => {

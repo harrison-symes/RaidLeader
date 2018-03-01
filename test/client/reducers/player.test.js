@@ -76,6 +76,15 @@ test('RETURN_TO_MENU', () => {
   expect(actual).toEqual(fakeState)
 })
 
+test('TRAVEL_TO_TOWN', () => {
+  const actual = reducer(fakeProgressState, {
+    type: 'TRAVEL_TO_TOWN'
+  })
+  const expected = {...fakeState}
+  fakeState.spells = []
+  expect(actual).toEqual(fakeState)
+})
+
 test('LOAD_GAME', () => {
   const actual = reducer(undefined, {
     type: 'LOAD_GAME',
@@ -109,6 +118,21 @@ test('TICK_ONE_SECOND (max mana)', () => {
     type: 'TICK_ONE_SECOND'
   })
   expect(actual).toEqual(fakeState)
+})
+
+test('HEAL_FRIENDLY_TARGET (no target)', () => {
+  const actual = reducer(fakeProgressState, {
+    type: 'HEAL_FRIENDLY_TARGET'
+  })
+  expect(actual).toEqual(fakeProgressState)
+})
+
+test('HEAL_FRIENDLY_TARGET (no target)', () => {
+  const actual = reducer(fakeProgressState, {
+    type: 'HEAL_FRIENDLY_TARGET',
+    target: {id: 20, name: 'NOT Player'}
+  })
+  expect(actual).toEqual(fakeProgressState)
 })
 
 test('HEAL_FRIENDLY_TARGET (low health)', () => {
@@ -229,6 +253,26 @@ test('DAMAGE_PLAYER (below 0)', () => {
   expect(actual).toEqual(expected)
 })
 
+test('DAMAGE_ALL_FRIENDLY (above 0)', () => {
+  const actual = reducer(fakeProgressState, {
+    type: 'DAMAGE_ALL_FRIENDLY',
+    power: 50
+  })
+  const expected = {...fakeProgressState}
+  expected.hp-= 50
+  expect(actual).toEqual(expected)
+})
+
+test('DAMAGE_ALL_FRIENDLY (below 0)', () => {
+  const actual = reducer(fakeProgressState, {
+    type: 'DAMAGE_ALL_FRIENDLY',
+    power: 500
+  })
+  const expected = {...fakeProgressState}
+  expected.hp = 0
+  expect(actual).toEqual(expected)
+})
+
 test('PERCENT_DAMAGE_PLAYER (above 0)', () => {
   const actual = reducer(fakeProgressState, {
     type: 'PERCENT_DAMAGE_PLAYER',
@@ -318,6 +362,13 @@ test('SHAMAN_START_BUFF', () => {
 
   expect(actual).toEqual(expected)
 
+})
+
+test('DAMAGE_FRIENDLY_TARGET (no target)', () => {
+  const actual = reducer(fakeState, {
+    type: 'DAMAGE_FRIENDLY_TARGET'
+  })
+  expect(actual).toEqual(fakeState)
 })
 
 test('DAMAGE_FRIENDLY_TARGET (wrong target)', () => {
