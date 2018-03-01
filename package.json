@@ -16,9 +16,8 @@
     "h:seed": "heroku run knex seed:run",
     "knex": "knex"
   },
-  "ava": {
-    "require": "babel-register",
-    "babel": "inherit"
+  "jest": {
+    "collectCoverage": true
   },
   "babel": {
     "presets": [

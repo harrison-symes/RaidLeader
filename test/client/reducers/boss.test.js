@@ -42,7 +42,7 @@ test('LOGOUT', () => {
 
 test('RETURN_TO_MENU', () => {
   const actual = reducer(fakeBoss, {
-    type: 'LOGOUT'
+    type: 'RETURN_TO_MENU'
   })
   expect(actual).toBe(null)
 })
@@ -306,6 +306,22 @@ test('BOSS_START_CASTING', () => {
   const expected = {...fakeBoss}
   expected.isCasting = true
   expect(actual).toEqual(expected)
+})
+
+test('BOSS_FINISH_CASTING (no spell)', () => {
+  const actual = reducer(fakeBoss, {
+    type: 'BOSS_FINISH_CASTING',
+    spell: null
+  })
+  expect(actual).toEqual(fakeBoss)
+})
+
+test('BOSS_FINISH_CASTING (wrong spell)', () => {
+  const actual = reducer(fakeBoss, {
+    type: 'BOSS_FINISH_CASTING',
+    spell: {id: 50, name: 'Channing Tatum 2'}
+  })
+  expect(actual).toEqual(fakeBoss)
 })
 
 test('BOSS_FINISH_CASTING', () => {

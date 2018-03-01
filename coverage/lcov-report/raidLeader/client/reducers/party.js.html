@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for raidLeader/client/reducers/party.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">raidLeader/client/reducers</a> party.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.09% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>110/169</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">68.7% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>79/115</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">71.43% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">68.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>82/120</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default function party (state = [], action) {
+  let newState = [...state]
+  switch(action.type) {
+    case 'LOGOUT': return []
+    case 'RETURN_TO_MENU':
+      return []
+    case 'TRAVEL_TO_TOWN':
+      return []
+    case 'LOAD_GAME':
+      return action.playerParty.map(recruit =&gt; ({...recruit}))
+    case 'HEAL_FRIENDLY_TARGET':
+      if (!action.target) return newState
+      let target = newState.find(member =&gt; member.id == action.target.id)
+      if (!target || !target.isAlive) return newState
+      target.hp = target.hp + action.power
+      if (target.hp &gt; target.initHp) target.hp = target.initHp
+      return newState
+    case 'HEAL_ALL_FRIENDLY':
+      newState = newState.map(member =&gt; {
+        if (!member.isAlive) return member
+        member.hp+= action.power
+        if (member.hp &gt; member.initHp) member.hp = member.initHp
+        return member
+      })
+      return newState
+    case 'ADD_EFFECT_TO_TARGET':
+      if (!action.target) return newState
+      target = newState.find(member =&gt; member.id == action.target.id)
+      if (!target || !target.isAlive) return newState
+      target.effects = target.effects.filter(effect =&gt; effect.name != action.effect.name)
+      target.effects.push({...action.effect})
+      return newState
+    case 'ADD_EFFECT_TO_ALL_FRIENDLY':
+      newState = newState.map(target =&gt; {
+        if (target.isAlive) {
+          target.effects = target.effects.filter(effect =&gt; effect.name != action.effect.name)
+          target.effects.push({...action.effect})
+        }
+        return target
+      })
+      return newState
+    case 'REMOVE_EFFECT_FROM_TARGET':
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span>
+      target = newState.find(member =&gt; member == action.target)
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!target || !target.isAlive) <span class="cstat-no" title="statement not covered" >return newState</span>
+      target.effects = target.effects.filter(effect =&gt; effect.name != action.effect.name)
+      return newState
+<span class="branch-9 cbranch-no" title="branch not covered" >    case 'RESURRECT_TARGET':</span>
+<span class="cstat-no" title="statement not covered" >      if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target = newState.find(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member == action.target)</span></span>
+<span class="cstat-no" title="statement not covered" >      if (!target || target.isAlive) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target.isAlive = true</span>
+<span class="cstat-no" title="statement not covered" >      target.hp = action.health</span>
+<span class="cstat-no" title="statement not covered" >      return newState</span>
+    case 'REMOVE_EFFECTS_FROM_ALL':
+      return newState.map(member =&gt; {
+        member.effects = []
+        return member
+      })
+<span class="branch-11 cbranch-no" title="branch not covered" >    case 'REMOVE_EFFECTS_FROM_TARGET':</span>
+<span class="cstat-no" title="statement not covered" >      if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target = newState.find(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member == action.target)</span></span>
+<span class="cstat-no" title="statement not covered" >      if (!target || !target.isAlive) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target.effects = []</span>
+<span class="cstat-no" title="statement not covered" >      return newState</span>
+    case 'SET_RECRUIT_PERCENTAGE':
+      newState=  newState.map(member =&gt; {
+        if (member.isAlive) {
+          member.hp = (member.initHp * (action.percentage / 100))
+        }
+        return member
+      })
+      return newState
+    case 'DAMAGE_ALL_FRIENDLY':
+      newState = newState.map(member =&gt; {
+        if (member.isAlive) member.hp-=action.power
+        return member
+      })
+      return newState
+    case 'DAMAGE_FRIENDLY_TARGET':
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span>
+      target = newState.find(member =&gt; member.id == action.target.id)
+      if (!target || !target.isAlive) return newState
+      target.hp-=action.power
+      return newState
+    case 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY':
+      newState = newState.map(member =&gt; {
+        if (member.isAlive) member.hp-=member.initHp * action.percentage
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (member.hp &gt; member.initHp) <span class="cstat-no" title="statement not covered" >member.hp = member.initHp</span>
+        return member
+      })
+    case 'PERCENT_DAMAGE_FRIENDLY_TARGET':
+      if (!action.target) return newState
+      target = newState.find(member =&gt; member.id == action.target.id)
+      if (!target || !target.isAlive) return newState
+      target.hp-=target.initHp * action.percentage
+      return newState
+    case 'PERCENT_HEAL_FRIENDLY_TARGET':
+      if (!action.target) return newState
+      target = newState.find(member =&gt; member.id == action.target.id)
+      if (!target || !target.isAlive) return newState
+      target.hp+=target.initHp * action.percentage
+      if (target.hp &gt;= target.initHp) target.hp = target.initHp
+      return newState
+    case 'PERCENT_HEAL_ALL_FRIENDLY':
+      newState = newState.map(member =&gt; {
+        if (member.isAlive) {
+          member.hp+=member.initHp * action.percentage
+          if (member.hp &gt;= member.initHp) member.hp = member.initHp
+          return member
+        }
+      })
+      return newState
+    case 'PRIEST_START_BUFF':
+      newState = newState.map(member =&gt; {
+        if (member.id  != action.target.id) member.initHp+= member.initHp * 0.1
+        return member
+      })
+      return newState
+    case 'HUNTER_START_BUFF':
+      newState = newState.map(member =&gt; {
+        if (member.id != action.target  .id) member.speed+= (member.speed * 0.1)
+        return member
+      })
+      return newState
+<span class="branch-21 cbranch-no" title="branch not covered" >    case 'PALADIN_START_BUFF':</span>
+<span class="cstat-no" title="statement not covered" >      if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target = newState.find(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member == action.target)</span></span>
+<span class="cstat-no" title="statement not covered" >      if (!target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+      let bonusHp = <span class="cstat-no" title="statement not covered" >Math.round(newState.filter(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member != action.target)</span>.length * (target.initHp * 0.03))</span>
+<span class="cstat-no" title="statement not covered" >      target.initHp += bonusHp</span>
+<span class="cstat-no" title="statement not covered" >      target.hp += bonusHp</span>
+<span class="cstat-no" title="statement not covered" >      return newState</span>
+<span class="branch-22 cbranch-no" title="branch not covered" >    case 'MONK_START_BUFF':</span>
+<span class="cstat-no" title="statement not covered" >      if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target = newState.find(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member == action.target)</span></span>
+<span class="cstat-no" title="statement not covered" >      if (!target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+      let bonusSpeed = <span class="cstat-no" title="statement not covered" >newState.filter(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member != action.target)</span>.length * 0.5</span>
+<span class="cstat-no" title="statement not covered" >      target.initSpeed += (target.initSpeed * bonusSpeed)</span>
+<span class="cstat-no" title="statement not covered" >      target.speed += (target.speed * bonusSpeed)</span>
+<span class="cstat-no" title="statement not covered" >      return newState</span>
+<span class="branch-23 cbranch-no" title="branch not covered" >    case 'WARRIOR_START_BUFF':</span>
+<span class="cstat-no" title="statement not covered" >      newState = newState.map(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        if (member != action.target) {</span>
+<span class="cstat-no" title="statement not covered" >          member.initPower += Math.round(member.initPower * 0.1)</span>
+<span class="cstat-no" title="statement not covered" >          member.power += Math.round(member.power * 0.1)</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return member</span>
+      })
+<span class="cstat-no" title="statement not covered" >      return newState</span>
+<span class="branch-24 cbranch-no" title="branch not covered" >    case 'MEMBER_DIED':</span>
+<span class="cstat-no" title="statement not covered" >      if (!action.target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target = newState.find(<span class="fstat-no" title="function not covered" >me</span>mber =&gt; <span class="cstat-no" title="statement not covered" >member == action.target)</span></span>
+<span class="cstat-no" title="statement not covered" >      if (!target) <span class="cstat-no" title="statement not covered" >return newState</span></span>
+<span class="cstat-no" title="statement not covered" >      target.hp = 0</span>
+<span class="cstat-no" title="statement not covered" >      target.isAlive = false</span>
+<span class="cstat-no" title="statement not covered" >      target.effects = []</span>
+<span class="cstat-no" title="statement not covered" >      return newState</span>
+    default: return state
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 01 2018 14:46:08 GMT+1300 (NZDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
