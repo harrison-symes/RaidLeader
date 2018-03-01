@@ -40,22 +40,14 @@ export default function party (state = [], action) {
       })
       return newState
     case 'REMOVE_EFFECT_FROM_TARGET':
-      if (!action.target) return newState
+      if (!action.target) return state
       target = newState.find(member => member == action.target)
-      if (!target || !target.isAlive) return newState
+      if (!target) return state
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
       return newState
-    case 'RESURRECT_TARGET':
-      if (!action.target) return newState
-      target = newState.find(member => member == action.target)
-      if (!target || target.isAlive) return newState
-      target.isAlive = true
-      target.hp = action.health
-      return newState
     case 'REMOVE_EFFECTS_FROM_ALL':
-      return newState.map(member => {
+      newState.forEach(member => {
         member.effects = []
-        return member
       })
     case 'REMOVE_EFFECTS_FROM_TARGET':
       if (!action.target) return newState
@@ -124,34 +116,30 @@ export default function party (state = [], action) {
       })
       return newState
     case 'PALADIN_START_BUFF':
-      if (!action.target) return newState
-      target = newState.find(member => member == action.target)
+      if (!action.target) return state
+      target = newState.find(member => member.id == action.target.id)
       if (!target) return newState
-      let bonusHp = Math.round(newState.filter(member => member != action.target).length * (target.initHp * 0.03))
+      let bonusHp = newState.filter(member => member.id != action.target.id).length * (target.initHp * 0.03)
       target.initHp += bonusHp
       target.hp += bonusHp
       return newState
     case 'MONK_START_BUFF':
       if (!action.target) return newState
-      target = newState.find(member => member == action.target)
+      target = newState.find(member => member.id == action.target.id)
       if (!target) return newState
-      let bonusSpeed = newState.filter(member => member != action.target).length * 0.5
-      target.initSpeed += (target.initSpeed * bonusSpeed)
-      target.speed += (target.speed * bonusSpeed)
+      let bonusSpeed = newState.filter(member => member.id != action.target.id).length * 0.5
+      target.initSpeed += bonusSpeed
+      target.speed += bonusSpeed
       return newState
     case 'WARRIOR_START_BUFF':
-      newState = newState.map(member => {
-        if (member != action.target) {
-          member.initPower += Math.round(member.initPower * 0.1)
-          member.power += Math.round(member.power * 0.1)
-        }
+      return newState.map(member => {
+        if (member.id != action.target.id) member.power *= 1.1
         return member
       })
-      return newState
     case 'MEMBER_DIED':
-      if (!action.target) return newState
-      target = newState.find(member => member == action.target)
-      if (!target) return newState
+      if (!action.target) return state
+      target = newState.find(member => member.id == action.target.id)
+      if (!target) return state
       target.hp = 0
       target.isAlive = false
       target.effects = []

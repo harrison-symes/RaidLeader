@@ -2,10 +2,10 @@ import reducer from '../../../client/reducers/party'
 import clone from 'clone'
 
 const template = [
-  {id: 1, effects: [], isAlive: true, name: 'Jeff', initHp: 50, hp: 25, speed: 3},
-  {id: 2, effects: [], isAlive: true, name: 'Not-Jeff', initHp: 60, hp: 51, speed: 4},
-  {id: 3, effects: [], isAlive: true, name: 'Channing Tatum', initHp: 70, hp: 70, speed: 5},
-  {id: 4, effects: [], isAlive: false, name: 'Dead-Jeff', initHp: 60, hp: 0, speed: 6},
+  {id: 1, effects: [], isAlive: true, name: 'Jeff', initHp: 50, hp: 25, power: 10, speed: 3},
+  {id: 2, effects: [], isAlive: true, name: 'Not-Jeff', initHp: 60, hp: 51, power: 15, speed: 4},
+  {id: 3, effects: [], isAlive: true, name: 'Channing Tatum', initHp: 70, hp: 70, power: 8, speed: 5},
+  {id: 4, effects: [], isAlive: false, name: 'Dead-Jeff', initHp: 60, hp: 0, power: 20, speed: 6},
 ]
 
 let fakeParty
@@ -212,6 +212,21 @@ test('REMOVE_EFFECTS_FROM_ALL', () => {
 
 })
 
+test('REMOVE_EFFECT_FROM_TARGET (no target)', () => {
+  const actual = reducer(fakeParty, {
+    type: 'REMOVE_EFFECT_FROM_TARGET'
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('REMOVE_EFFECT_FROM_TARGET (no matching target)', () => {
+  const actual = reducer(fakeParty, {
+    type: 'REMOVE_EFFECT_FROM_TARGET',
+    target: {id: 50, name: 'NOT REAL'}
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
 test('REMOVE_EFFECT_FROM_TARGET', () => {
   const fakeEffect = {other: 1, name: 'TEST EFFECT'}
   const fakeEffectTwo = {other: 2, name: 'TEST_EFFECT_TWO'}
@@ -224,6 +239,7 @@ test('REMOVE_EFFECT_FROM_TARGET', () => {
   })
   expect(actual[0].effects).toHaveLength(0)
   expect(actual[1].effects).toHaveLength(1)
+  expect(actual).not.toBe(fakeParty)
 })
 
 test('SET_RECRUIT_PERCENTAGE', () => {
@@ -430,4 +446,114 @@ test('HUNTER_START_BUFF', () => {
     if (i == 0) expect(item).toEqual(fakeParty[i])
     else expect(actual[i].speed).toEqual((fakeParty[i].speed * 110) / 100 )
   })
+})
+
+test('PALADIN_START_BUFF (no target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PALADIN_START_BUFF'
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('PALADIN_START_BUFF (no matching target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PALADIN_START_BUFF',
+    target: {id: 21, name: 'NOT A PALADIN'}
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('PALADIN_START_BUFF', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'PALADIN_START_BUFF',
+    target: fakeParty[0]
+  })
+  let expected = fakeParty[0].initHp + (fakeParty[0].initHp * 0.03 * (fakeParty.length - 1))
+  expect(actual[0].initHp).toBe(expected )
+})
+
+test('PALADIN_START_BUFF (bigger party)', () => {
+  const initial = clone(fakeParty)
+  initial.push({id: 10, name: 'Another Member'})
+  const actual = reducer(clone(initial), {
+    type: 'PALADIN_START_BUFF',
+    target: initial[1]
+  })
+  let perc = (initial.length - 1) * 0.03
+  let bonusHp = initial[1].initHp * perc
+  let expected = initial[1].initHp + bonusHp
+  expect(actual[1].initHp).toBe(expected )
+})
+
+test('MONK_START_BUFF (no target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'MONK_START_BUFF'
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('MONK_START_BUFF (no matching target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'MONK_START_BUFF',
+    target: {id: 21, name: 'NOT A MONK'}
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('MONK_START_BUFF', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'MONK_START_BUFF',
+    target: fakeParty[0]
+  })
+  let expected = fakeParty[0].speed + (0.5 * (fakeParty.length - 1))
+  expect(actual[0].speed).toBe(expected )
+})
+
+test('MONK_START_BUFF (bigger party)', () => {
+  const initial = clone(fakeParty)
+  initial.push({id: 10, name: 'Another Member'})
+  const actual = reducer(clone(initial), {
+    type: 'MONK_START_BUFF',
+    target: fakeParty[0]
+  })
+  let expected = initial[0].speed + (0.5 * (initial.length - 1))
+  expect(actual[0].speed).toBe(expected )
+})
+
+test('WARRIOR_START_BUFF', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'WARRIOR_START_BUFF',
+    target: fakeParty[0]
+  })
+  actual.forEach((item,i) => {
+    if (i == 0) expect(item).toEqual(fakeParty[i])
+    else expect(actual[i].power).toEqual((fakeParty[i].power * 110) / 100 )
+  })
+})
+
+
+test('MEMBER_DIED (no target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'MEMBER_DIED'
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('MEMBER_DIED (no matching target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'MEMBER_DIED',
+    target: {id: 21, name: 'NOT REALLY DEAD'}
+  })
+  expect(actual).toEqual(fakeParty)
+
+})
+
+test('MEMBER_DIED (no matching target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'MEMBER_DIED',
+    target: fakeParty[0]
+  })
+  expect(actual[0].hp).toBe(0)
+  expect(actual[0].isAlive).toBeFalsy()
+  expect(actual[0].effects).toEqual([])
 })
