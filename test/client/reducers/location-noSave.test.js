@@ -101,3 +101,29 @@ test('TRAVEL_TO_TOWN', () => {
   expect(actual).toEqual(town)
   expect(mockSet.mock.calls.length).toBe(mockCalls + 1)
 })
+
+test('TRAVEL_TO_DUNGEON', () => {
+  const mockCalls = mockSet.mock.calls.length
+  const dungeon = {
+    name: 'TEST DUNGEON',
+    inGame: true,
+    bosses: [
+      {id: 1, name: 'BOSS_ONE', isDefeated: true},
+      {id: 2, name: 'BOSS_TWO', isDefeated: false}
+    ]
+  }
+  const actual = reducer(null, {
+    type: 'TRAVEL_TO_DUNGEON',
+    dungeon
+  })
+  const expected = {
+    ...dungeon,
+    inGame: false,
+    bosses: [
+      {id: 1, name: 'BOSS_ONE', isDefeated: false},
+      {id: 2, name: 'BOSS_TWO', isDefeated: false}
+    ]
+  }
+  expect(actual).toEqual(expected)
+  expect(mockSet.mock.calls.length).toBe(mockCalls + 1)
+})

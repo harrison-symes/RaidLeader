@@ -34,9 +34,8 @@ export default function (state = getLocation(), action) {
       set('location', JSON.stringify(newState))
       return newState
     case 'TRAVEL_TO_DUNGEON':
-      action.dungeon.bosses.map(boss => {
+      action.dungeon.bosses.forEach(boss => {
         boss.isDefeated = false
-        return boss
       })
       action.dungeon.inGame = false
       set('location', JSON.stringify(action.dungeon))
