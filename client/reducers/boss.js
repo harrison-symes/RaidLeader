@@ -9,7 +9,7 @@ export default function boss (state = null, action) {
     case 'TARGET_BOSS':
       action.boss.spells.map(spell => {
         spell.onCooldown = false
-        return spell
+        return {...spell}
       })
       return {...action.boss}
     case 'BOSS_GAIN_ARMOR':
@@ -29,7 +29,7 @@ export default function boss (state = null, action) {
       if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'PHYSICAL_ATTACK_BOSS':
-      let damage = Math.round(action.power)
+      let damage = action.power
       if (newState.armor >= damage) {
         newState.armor-=damage
         damage = 0
@@ -41,7 +41,7 @@ export default function boss (state = null, action) {
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PLAYER_ATTACK_BOSS':
-      damage = Math.round(action.power)
+      damage = action.power
       if (newState.armor >= damage) {
         newState.armor-=damage
         damage = 0
@@ -54,27 +54,26 @@ export default function boss (state = null, action) {
       return newState
     case 'CRITICAL_ATTACK_BOSS':
       damage = action.power * 2
-      damage = Math.round(damage)
-      if (newState.armor < 0) newState.armor = 0
+      damage = damage
       newState.hp = newState.hp - damage
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PERCENT_DAMAGE_BOSS':
-      newState.hp-= Math.round(newState.hp * action.percentage)
-      if (newState.hp < 0) newState.hp == 0
+      newState.hp-= newState.hp * action.percentage
+      if (newState.hp < 0) newState.hp = 0
       return newState
     case 'BOSS_WANTS_TO_CAST':
       newState.wantsToCast = action.spell.name
       return newState
     case 'BOSS_START_CASTING':
       if (!action.spell) return newState
-      let spell = newState.spells.find(bossSpell => bossSpell == action.spell)
+      let spell = newState.spells.find(bossSpell => bossSpell.name == action.spell.name)
       if (!spell) return newState
       newState.isCasting = true
       return newState
     case 'BOSS_FINISH_CASTING':
       if (!action.spell) return newState
-      spell = newState.spells.find(bossSpell => bossSpell == action.spell)
+      spell = newState.spells.find(bossSpell => bossSpell.name == action.spell.name)
       if (!spell) return newState
       newState.isCasting = false
       newState.wantsToCast = null
@@ -91,7 +90,7 @@ export default function boss (state = null, action) {
       newState.bossTarget = action.target
       return newState
     case 'ROGUE_START_BUFF':
-      newState.hp = Math.round(newState.hp * 0.9)
+      newState.hp = newState.hp * 0.9
       return newState
     case 'WARLOCK_START_BUFF':
       newState.armor-=action.power
@@ -101,7 +100,7 @@ export default function boss (state = null, action) {
       newState.bossTarget = action.target
       return newState
     case 'MEMBER_DIED':
-      if (action.target == newState.bossTarget) newState.bossTarget.isAlive = false
+      if (action.target.id == newState.bossTarget.id) newState.bossTarget.isAlive = false
       return newState
     case 'BOSS_CHANGE_STAGE':
       for (let key in action.stage) {

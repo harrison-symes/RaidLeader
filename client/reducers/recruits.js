@@ -7,8 +7,10 @@ export default function (state = [], action) {
     case 'ADD_RECRUIT':
       return [...newState, action.recruit]
     case 'RECRUIT_EQUIP_WEAPON':
+      if (!action.recruit) return state
       let recruit = newState.find(other => other.id == action.recruit.id)
-      if (recruit) recruit.weapon_id = action.weapon_id
+      if (!recruit) return state
+      recruit.weapon_id = action.weapon_id
       return newState
     case 'UPDATE_RECRUIT':
       if (!action.recruit) return newState

@@ -9,6 +9,33 @@ class BossPreview extends React.Component {
     this.props.close()
     this.props.dispatch({type: "TARGET_BOSS", boss})
   }
+  stageData(stage) {
+    const {boss} = this.props
+    const stageData = boss["stage" + stage]
+    console.log({stage, stageData});
+    return <div>
+      <hr/>
+      <p className="title is-3">Stage {stage}</p>
+      <p className="content is-large">{stageData.description}</p>
+      <ul>
+        {stageData.spells.map(spell => <div key={spell.name} className="section box">
+          <div className="">
+            <span>
+              <p className="title is-3">{spell.name}</p>
+              <SpellIcon spell={spell} isLarge={true} />
+            </span>
+            <br />
+            <p className="content is-large">{spell.description}</p>
+          </div>
+          <div className="columns">
+            <p className="subtitle column is-4"><ManaIcon value={spell.cost} /></p>
+            <p className="subtitle column is-4"><CastTimeIcon value={`${spell.cast}s`} /></p>
+            <p className="subtitle column is-4"><CoolDownIcon value={`${spell.coolDown}s`} /></p>
+          </div>
+        </div>)}
+      </ul>
+    </div>
+  }
   renderBossModal () {
     const {boss, back, targetBoss} = this.props
     const {bosses} = this.props.currentLocation
@@ -65,28 +92,9 @@ class BossPreview extends React.Component {
               </div>
             </div>)}
           </ul>
-          {boss.hasOwnProperty('stageTwo') && <div>
-            <hr/>
-            <p className="title is-3">Stage Two</p>
-            <p className="content is-large">{boss.stageTwo.description}</p>
-            <ul>
-              {boss.stageTwo.spells.map(spell => <div key={spell.name} className="section box">
-                <div className="">
-                  <span>
-                    <p className="title is-3">{spell.name}</p>
-                    <SpellIcon spell={spell} isLarge={true} />
-                  </span>
-                  <br />
-                  <p className="content is-large">{spell.description}</p>
-                </div>
-                <div className="columns">
-                  <p className="subtitle column is-4"><ManaIcon value={spell.cost} /></p>
-                  <p className="subtitle column is-4"><CastTimeIcon value={`${spell.cast}s`} /></p>
-                  <p className="subtitle column is-4"><CoolDownIcon value={`${spell.coolDown}s`} /></p>
-                </div>
-              </div>)}
-            </ul>
-          </div>}
+          {boss.hasOwnProperty('stageOne') && this.stageData('One')}
+          {boss.hasOwnProperty('stageTwo') && this.stageData('Two')}
+          {boss.hasOwnProperty('stageThree') && this.stageData('Three')}
         </section>
         <footer className="modal-card-foot">
           <button onClick={back} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>

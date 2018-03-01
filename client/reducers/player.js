@@ -46,13 +46,12 @@ export default function player (state = null, action) {
       return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
-      if (action.target.id == newState.id) {
-        newState.hp += action.power
-        if (newState.hp > newState.initHp) newState.hp = newState.initHp
-      }
+      if (action.target.id != newState.id) return state
+      newState.hp += action.power
+      if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'HEAL_ALL_FRIENDLY':
-      newState.hp+= Math.round(action.power)
+      newState.hp+= action.power
       if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'START_CASTING':
@@ -63,19 +62,19 @@ export default function player (state = null, action) {
       newState.mana-=action.spell.cost
       return newState
     case 'HEAL_PLAYER':
-      newState.hp+= Math.round(action.power)
+      newState.hp+= action.power
       if (newState.hp > newState.initHp) newState.hp = newState.initHp
       return newState
     case 'DAMAGE_PLAYER':
-      newState.hp-= Math.round(action.power)
+      newState.hp-= action.power
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'DAMAGE_ALL_FRIENDLY':
-      newState.hp-= Math.round(action.power)
+      newState.hp-= action.power
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PERCENT_DAMAGE_PLAYER':
-      newState.hp-= Math.round(newState.initHp * action.percentage)
+      newState.hp-= (newState.initHp * action.percentage)
       if (newState.hp < 0) newState.hp = 0
       return newState
     case 'PLAYER_GAIN_MANA':
@@ -83,19 +82,19 @@ export default function player (state = null, action) {
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
     case 'MAGE_START_BUFF':
-      newState.mana = Math.round(newState.mana * 1.2)
-      newState.maxMana = Math.round(newState.maxMana * 1.2)
+      newState.mana += Math.floor(newState.mana * 0.2)
+      newState.maxMana += Math.floor(newState.maxMana * 0.2)
       return newState
     case 'SHAMAN_START_BUFF':
       newState.spells = newState.spells.map(spell => {
         spell.cast-= spell.cast * 0.1
         spell.coolDown -= spell.coolDown * 0.1
-        return spell
+        return {...spell}
       })
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
-      if (action.target.name == newState.name) newState.hp-=Math.round(action.power)
+      if (action.target.id == newState.id) newState.hp-=action.power
       return newState
     default: return state
   }

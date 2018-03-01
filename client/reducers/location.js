@@ -6,10 +6,15 @@ const town = {
   inGame: false
 }
 
-let initialState = JSON.parse(get('location'))
-if (initialState && initialState.inGame) initialState = null
+function getLocation () {
+  let location = get('location')
+  if (!location) return town
+  location = JSON.parse(location)
+  if (location.inGame == true) return town
+  else return location
+}
 
-export default function (state = initialState || town, action) {
+export default function (state = getLocation(), action) {
   let newState = {...state}
   switch (action.type) {
     case 'LOGOUT':
@@ -29,9 +34,8 @@ export default function (state = initialState || town, action) {
       set('location', JSON.stringify(newState))
       return newState
     case 'TRAVEL_TO_DUNGEON':
-      action.dungeon.bosses.map(boss => {
+      action.dungeon.bosses.forEach(boss => {
         boss.isDefeated = false
-        return boss
       })
       action.dungeon.inGame = false
       set('location', JSON.stringify(action.dungeon))

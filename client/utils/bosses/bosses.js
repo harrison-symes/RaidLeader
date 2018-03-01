@@ -7,6 +7,7 @@ import Decaying_Deer from './The_Swamp/Decaying_Deer'
 import Lunging_Locusts from './The_Swamp/Lunging_Locusts'
 import Plague_Piltherer from './The_Swamp/Plague_Piltherer'
 import Flaming_Furnace from './The_Foundry/Flaming_Furnace'
+import Cycling_Conveyer from './The_Foundry/Cycling_Conveyer'
 
 export default function (bossName) {
   switch(bossName) {
@@ -19,6 +20,7 @@ export default function (bossName) {
     case 'Lunging Locusts': return Lunging_Locusts
     case 'Plague Piltherer': return Plague_Piltherer
     case 'Flaming Furnace': return Flaming_Furnace
+    case 'Cycling Conveyer': return Cycling_Conveyer
     default: return null
   }
 }

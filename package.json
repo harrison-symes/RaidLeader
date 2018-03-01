@@ -8,7 +8,7 @@
     "postinstall": "webpack",
     "dev": "nodemon --watch server server/index & webpack --watch & sass --watch sass:public/stylesheets",
     "start": "node server/index",
-    "test": "ava  -v  --serial 'test/**/*.test.js'",
+    "test": "jest --watchAll",
     "watch": "nodemon -e js,jsx -x npm test",
     "h:deploy": "git push heroku master",
     "h:migrate": "heroku run knex migrate:latest",
@@ -16,9 +16,8 @@
     "h:seed": "heroku run knex seed:run",
     "knex": "knex"
   },
-  "ava": {
-    "require": "babel-register",
-    "babel": "inherit"
+  "jest": {
+    "collectCoverage": true
   },
   "babel": {
     "presets": [
@@ -32,6 +31,7 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "enzyme": "^2.8.2",
+    "jest": "^22.4.2",
     "nodemon": "^1.11.0",
     "react-beautiful-dnd": "^3.0.0",
     "sqlite3": "^3.1.8",
@@ -46,6 +46,7 @@
     "babel-register": "^6.24.1",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.15.2",
+    "clone": "^2.1.1",
     "cors": "^2.8.3",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
