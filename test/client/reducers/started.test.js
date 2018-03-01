@@ -28,6 +28,14 @@ test('START', () => {
   expect(actual).toBe(true)
 })
 
+test('STOP', () => {
+  const actual = reducer(true,
+  {
+    type: 'STOP'
+  })
+  expect(actual).toBe(false)
+})
+
 test('GAME_WON', () => {
   const actual = reducer(true,
   {
