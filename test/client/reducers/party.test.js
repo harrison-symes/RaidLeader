@@ -242,6 +242,33 @@ test('REMOVE_EFFECT_FROM_TARGET', () => {
   expect(actual).not.toBe(fakeParty)
 })
 
+test('REMOVE_EFFECTS_FROM_TARGET (no target)', () => {
+  const actual = reducer(fakeParty, {
+    type: 'REMOVE_EFFECTS_FROM_TARGET'
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('REMOVE_EFFECTS_FROM_TARGET (no matching target)', () => {
+  const actual = reducer(fakeParty, {
+    type: 'REMOVE_EFFECTS_FROM_TARGET',
+    target: {id: 50, name: 'NOT REAL'}
+  })
+  expect(actual).toEqual(fakeParty)
+})
+
+test('REMOVE_EFFECTS_FROM_TARGET', () => {
+  const initial = clone(fakeParty)
+  initial[0].effects = [{id: 1}, {id: 2}]
+  const actual = reducer(initial, {
+    type: 'REMOVE_EFFECTS_FROM_TARGET',
+    target: initial[0]
+  })
+  expect(actual[0].effects).toHaveLength(0)
+})
+
+
+
 test('SET_RECRUIT_PERCENTAGE', () => {
   const actual = reducer(clone(fakeParty), {
     type: 'SET_RECRUIT_PERCENTAGE',
@@ -278,6 +305,13 @@ test('DAMAGE_ALL_FRIENDLY', () => {
   expect(actual[1].hp).toEqual(fakeParty[1].hp - 10)
   expect(actual[2].hp).toEqual(fakeParty[2].hp - 10)
   expect(actual[3].hp).toEqual(0)
+})
+
+test('DAMAGE_FRIENDLY_TARGET (no target)', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'DAMAGE_FRIENDLY_TARGET'
+  })
+  expect(actual).toEqual(fakeParty)
 })
 
 test('DAMAGE_FRIENDLY_TARGET (low health)', () => {

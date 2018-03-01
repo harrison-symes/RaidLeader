@@ -51,8 +51,8 @@ export default function party (state = [], action) {
       })
     case 'REMOVE_EFFECTS_FROM_TARGET':
       if (!action.target) return newState
-      target = newState.find(member => member == action.target)
-      if (!target || !target.isAlive) return newState
+      target = newState.find(member => member.id == action.target.id)
+      if (!target) return newState
       target.effects = []
       return newState
     case 'SET_RECRUIT_PERCENTAGE':
@@ -78,7 +78,6 @@ export default function party (state = [], action) {
     case 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=member.initHp * action.percentage
-        if (member.hp > member.initHp) member.hp = member.initHp
         return member
       })
     case 'PERCENT_DAMAGE_FRIENDLY_TARGET':
