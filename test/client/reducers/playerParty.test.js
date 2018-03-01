@@ -14,6 +14,23 @@ test('LOGOUT', () => {
   expect(actual).toEqual(initialState)
 })
 
+test('RECRUIT_EQUIP_WEAPON (no recruit)', () => {
+  const actual = reducer([], {
+    type: 'RECRUIT_EQUIP_WEAPON',
+    recruit: null
+  })
+  expect(actual).toEqual([])
+})
+
+test('RECRUIT_EQUIP_WEAPON (no recruit found)', () => {
+  const initial = [{id: 1}]
+  const actual = reducer(initial, {
+    type: 'RECRUIT_EQUIP_WEAPON',
+    recruit: {id: 2}
+  })
+  expect(actual).toEqual(initial)
+})
+
 test('RECRUIT_EQUIP_WEAPON', () => {
   const actual = reducer(
     [
@@ -138,4 +155,23 @@ test('REPLACE_RECRUIT_IN_PARTY', () => {
   expect(actual.find(item => item.id == 4)).toBeTruthy()
   expect(actual.find(item => item.id == 2)).toBeTruthy()
   expect(actual.findIndex(item => item.id == 4 && item.name == 'The Real Jeff')).toBe(2)
+})
+
+test('REPLACE_RECRUIT_IN_PARTY (place at end)', () => {
+  const initial = [
+    {id: 1, name: 'Jeff'},
+    {id: 2, name: 'Not-Jeff'},
+    {id: 3, name: 'Channing Tatum'}
+  ]
+  const actual = reducer(initial, {
+    type: 'REPLACE_RECRUIT_IN_PARTY',
+    idx: 3,
+    recruit: {id: 4, name: 'The Real Jeff'}
+  })
+  expect(actual).toHaveLength(3)
+  expect(actual.find(item => item.id == 1)).toBeTruthy()
+  expect(actual.find(item => item.id == 3)).toBeTruthy()
+  expect(actual.find(item => item.id == 4)).toBeFalsy()
+  expect(actual.find(item => item.id == 2)).toBeTruthy()
+  expect(actual.findIndex(item => item.id == 4 && item.name == 'The Real Jeff')).toBe(-1)
 })

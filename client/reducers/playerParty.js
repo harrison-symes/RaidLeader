@@ -5,8 +5,10 @@ export default function (state = [], action) {
   switch(action.type) {
     case 'LOGOUT': return []
     case 'RECRUIT_EQUIP_WEAPON':
+      if (!action.recruit) return newState
       let recruit = newState.find(other => other.id == action.recruit.id)
-      if (recruit) recruit.weapon_id = action.weapon_id
+      if (!recruit) return newState
+      recruit.weapon_id = action.weapon_id
       return newState
     case 'RETURN_TO_MENU':
       newState = newState.map((member) => createClass(member))
