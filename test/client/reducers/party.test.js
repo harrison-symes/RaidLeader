@@ -2,10 +2,10 @@ import reducer from '../../../client/reducers/party'
 import clone from 'clone'
 
 const template = [
-  {id: 1, effects: [], isAlive: true, name: 'Jeff', initHp: 50, hp: 25},
-  {id: 2, effects: [], isAlive: true, name: 'Not-Jeff', initHp: 60, hp: 51},
-  {id: 3, effects: [], isAlive: true, name: 'Channing Tatum', initHp: 70, hp: 70},
-  {id: 4, effects: [], isAlive: false, name: 'Dead-Jeff', initHp: 60, hp: 0},
+  {id: 1, effects: [], isAlive: true, name: 'Jeff', initHp: 50, hp: 25, speed: 3},
+  {id: 2, effects: [], isAlive: true, name: 'Not-Jeff', initHp: 60, hp: 51, speed: 4},
+  {id: 3, effects: [], isAlive: true, name: 'Channing Tatum', initHp: 70, hp: 70, speed: 5},
+  {id: 4, effects: [], isAlive: false, name: 'Dead-Jeff', initHp: 60, hp: 0, speed: 6},
 ]
 
 let fakeParty
@@ -418,5 +418,16 @@ test('PRIEST_START_BUFF', () => {
   actual.forEach((item,i) => {
     if (i == 0) expect(item).toEqual(fakeParty[i])
     else expect(actual[i].initHp).toEqual(fakeParty[i].initHp * 1.1)
+  })
+})
+
+test('HUNTER_START_BUFF', () => {
+  const actual = reducer(clone(fakeParty), {
+    type: 'HUNTER_START_BUFF',
+    target: fakeParty[0]
+  })
+  actual.forEach((item,i) => {
+    if (i == 0) expect(item).toEqual(fakeParty[i])
+    else expect(actual[i].speed).toEqual((fakeParty[i].speed * 110) / 100 )
   })
 })

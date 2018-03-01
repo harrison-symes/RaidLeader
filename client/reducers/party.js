@@ -119,7 +119,7 @@ export default function party (state = [], action) {
       return newState
     case 'HUNTER_START_BUFF':
       newState = newState.map(member => {
-        if (member.id != action.target.id) member.speed+= (member.speed / 10)
+        if (member.id != action.target  .id) member.speed+= (member.speed * 0.1)
         return member
       })
       return newState
