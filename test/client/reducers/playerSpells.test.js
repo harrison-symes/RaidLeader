@@ -93,3 +93,19 @@ test('REPLACE_SPELL_IN_BAR', () => {
     {id: 2, name: 'Not-Jeff'}
   ])
 })
+
+test('REPLACE_SPELL_IN_BAR (place at end)', () => {
+  const initial = [
+    {id: 1, name: 'Jeff'},
+    {id: 3, name: 'Channing Tatum'},
+    {id: 2, name: 'Not-Jeff'}
+  ]
+  const actual = reducer(initial,
+    {
+      type: 'REPLACE_SPELL_IN_BAR',
+      spell: {id: 4, name: 'Meme Man'},
+      idx: 3
+    })
+  expect(actual).toHaveLength(initial.length)
+  expect(actual).toEqual(initial)
+})
