@@ -29,6 +29,22 @@ test('ADD_RECRUIT', () => {
   ])
 })
 
+test('RECRUIT_EQUIP_WEAPON (no recruit)', () => {
+  const actual = reducer([], {
+    type: "RECRUIT_EQUIP_WEAPON"
+  })
+  expect(actual).toEqual([])
+})
+
+test('RECRUIT_EQUIP_WEAPON (no match recruit)', () => {
+  const initial = [{id: 1, name: 'Jeff'}]
+  const actual = reducer(initial, {
+    type: "RECRUIT_EQUIP_WEAPON",
+    recruit: {id: 2, name: 'Not-Jeff'}
+  })
+  expect(actual).toEqual(initial)
+})
+
 test('RECRUIT_EQUIP_WEAPON', () => {
   const initial = [
     {id: 1, name: 'Jeff', weapon_id: null},
