@@ -26,6 +26,17 @@ test('getWeaponById', () => {
     })
 })
 
+test('getWeaponById (error)', () => {
+  return playerDb.getWeaponById(1)
+    .then(actual => {
+      expect(actual).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
+    })
+})
+
+
 test('getPlayerGold', () => {
   const expected = {
     gold: 10000
@@ -33,6 +44,16 @@ test('getPlayerGold', () => {
   return playerDb.getPlayerGold(1, testDb)
     .then(actual => {
       expect(actual).toEqual(expected)
+    })
+})
+
+test('getPlayerGold (error)', () => {
+  return playerDb.getPlayerGold(1)
+    .then(actual => {
+      expect(actual).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
     })
 })
 
@@ -48,6 +69,16 @@ test('updatePlayerGold', () => {
       expect(actual).toEqual(expected)
     })
     .catch(err => expect(err).toBeFalsy())
+})
+
+test('updatePlayerGold (error)', () => {
+  return playerDb.updatePlayerGold(1)
+    .then(actual => {
+      expect(actual).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
+    })
 })
 
 test('addWeapon', () => {
@@ -67,6 +98,16 @@ test('addWeapon', () => {
     })
 })
 
+test('addWeapon (error)', () => {
+  return playerDb.addWeapon(1)
+    .then(actual => {
+      expect(actual).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
+    })
+})
+
 test('getWeapons', () => {
   return playerDb.getWeapons(1, testDb)
     .then(actual => {
@@ -78,6 +119,16 @@ test('getWeapons', () => {
     })
 })
 
+test('getWeapons (error)', () => {
+  return playerDb.getWeapons(1)
+    .then(actual => {
+      expect(actual).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
+    })
+})
+
 test('delWeapon', () => {
   return playerDb.delWeapon(1, testDb)
     .then(actual => {
@@ -86,5 +137,15 @@ test('delWeapon', () => {
         .then(actual => {
           expect(actual).toBeFalsy()
         })
+    })
+})
+
+test('delWeapon (error)', () => {
+  return playerDb.delWeapon(1)
+    .then(actual => {
+      expect(actual).toBeFalsy()
+    })
+    .catch(err => {
+      expect(err).toBeTruthy()
     })
 })
