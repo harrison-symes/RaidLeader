@@ -41,5 +41,6 @@ function decode (req, res, next) {
 module.exports = {
   issue,
   createToken,
-  decode
+  decode,
+  getSecret
 }
