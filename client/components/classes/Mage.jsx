@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 import mapStateToProps from './utils/classStateMap'
 
-class Mage extends PartyMemberFrame {
+export class Mage extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
     let {power} = member
