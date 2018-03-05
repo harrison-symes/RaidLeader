@@ -150,66 +150,6 @@ test('Shaman curePoison test', () => {
   })
 
 })
-//
-// test('Shaman attack taunt weapon', () => {
-//   const store = mockStore()
-//   Shaman.prototype.render = () => <div></div>
-//
-//   const fakeMember = {
-//     ...member,
-//     weapon_effect: 'taunt'
-//   }
-//
-//   const wrapper = shallow(<Shaman
-//     member={fakeMember}
-//     boss={boss}
-//     started={true}
-//     dispatch={store.dispatch}
-//   />)
-//   wrapper.instance().finishCast()
-//
-//   const actions = store.getActions()
-//
-//   expect(actions).toHaveLength(2)
-//
-//   expect(actions[0]).toEqual({
-//     type: 'BOSS_CHANGE_TARGET',
-//     target: fakeMember
-//   })
-//
-//   expect(actions[1]).toEqual({
-//     type: 'PHYSICAL_ATTACK_BOSS',
-//     power: 10
-//   })
-// })
-//
-// test('Shaman attack low boss health', () => {
-//   const store = mockStore()
-//   Shaman.prototype.render = () => <div></div>
-//
-//   const fakeBoss = {
-//     ...boss,
-//     hp: 24
-//   }
-//
-//   const wrapper = shallow(<Shaman
-//     member={clone(member)}
-//     boss={fakeBoss}
-//     started={true}
-//     dispatch={store.dispatch}
-//   />)
-//
-//   wrapper.instance().finishCast()
-//
-//   const actions = store.getActions()
-//
-//   expect(actions).toHaveLength(1)
-//
-//   expect(actions[0]).toEqual({
-//     type: 'CRITICAL_ATTACK_BOSS',
-//     power: 10
-//   })
-// })
 
 test('Shaman attack not alive', () => {
   const store = mockStore()
