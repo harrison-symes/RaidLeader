@@ -4,11 +4,10 @@ import {connect} from 'react-redux'
 
 import mapStateToProps from './utils/classStateMap'
 
-class Priest extends PartyMemberFrame {
+export class Priest extends PartyMemberFrame {
   findTarget() {
     const {started, member, dispatch, party} = this.props
     if (!started || !member.isAlive) return
-
     let target = null
     party.forEach(member => {
       if (!target && member.isAlive) target = member
@@ -19,9 +18,9 @@ class Priest extends PartyMemberFrame {
     this.completeCast(target)
   }
   finishCast(target) {
-    console.log({target});
-    const {started, member, dispatch, party} = this.props
+    const {started, member, dispatch} = this.props
     const {power} = member
+    if (!target) return
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     let overHealing =(target.initHp - target.hp) - member.power
     if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -2})
@@ -29,13 +28,14 @@ class Priest extends PartyMemberFrame {
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
-    const {party, started} = this.props
-    if (!started) return
+    const {started} = this.props
+    if (!started || !isAlive) return
     setTimeout(() => this.findTarget(), 10000 / speed)
   }
   startFighting () {
+    const {member, dispatch} = this.props
     const {heroClass, power, speed, initHp} = this.props.member
-    this.props.dispatch({type: 'PRIEST_START_BUFF', hp: initHp / 2, target: this.props.member})
+    dispatch({type: 'PRIEST_START_BUFF', target: member})
     this.startCast();
   }
 }
