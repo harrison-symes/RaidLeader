@@ -6,7 +6,7 @@ import mapStateToProps from './utils/classStateMap'
 
 import {renewConstructor} from '../../utils/effectConstructors'
 
-class Shaman extends PartyMemberFrame {
+export class Shaman extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch, party} = this.props
     let {power} = member
