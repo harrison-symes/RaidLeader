@@ -61,7 +61,7 @@ test('Mage attack low player mana', () => {
 
   const wrapper = shallow(<Mage
     member={clone(member)}
-    player={clone(player)}
+    player={fakePlayer}
     started={true}
     dispatch={store.dispatch}
   />)
@@ -75,5 +75,56 @@ test('Mage attack low player mana', () => {
   expect(actions[0]).toEqual({
     type: 'PHYSICAL_ATTACK_BOSS',
     power: 20
+  })
+})
+
+test('Mage attack not alive', () => {
+  const store = mockStore()
+  Mage.prototype.render = function () {
+    return <div></div>
+  }
+
+  const fakeMember = {
+    ...member,
+    isAlive: false
+  }
+
+  const fakePlayer = {
+    ...player,
+    mana: 29
+  }
+
+  const wrapper = shallow(<Mage
+    member={fakeMember}
+    player={fakePlayer}
+    started={true}
+    dispatch={store.dispatch}
+  />)
+
+  wrapper.instance().finishCast()
+
+  const actions = store.getActions()
+
+  expect(actions).toHaveLength(0)
+})
+
+test('Mage startFighting', () => {
+  const store = mockStore()
+  Mage.prototype.render = () =>  <div></div>
+  Mage.prototype.startCast = () => ({})
+
+  const wrapper = shallow(<Mage
+    started={true}
+    dispatch={store.dispatch}
+  />)
+
+  wrapper.instance().startFighting()
+
+  const actions = store.getActions()
+
+  expect(actions).toHaveLength(1)
+
+  expect(actions[0]).toEqual({
+    type: 'MAGE_START_BUFF'
   })
 })
