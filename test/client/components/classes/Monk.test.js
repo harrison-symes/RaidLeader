@@ -7,11 +7,6 @@ import configureStore from  'redux-mock-store'
 
 const mockStore = configureStore([])
 
-jest.mock('../../../../client/utils/localstorage', () => ({
-  get: () => null,
-  set: () => null
-}))
-
 const member = {
   id: 1,
   isAlive: true,

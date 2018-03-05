@@ -7,27 +7,17 @@ import configureStore from  'redux-mock-store'
 
 const mockStore = configureStore([])
 
-jest.mock('../../../../client/utils/localstorage', () => ({
-  get: () => null,
-  set: () => null
-}))
 
 const member = {
   id: 1,
   isAlive: true,
-  name: 'Jeff',
   power: 10,
-  speed: 5,
-  initHp: 100,
-  hp: 60,
   weapon_effect: null
 }
 
 const boss = {
   bossTarget: member
 }
-
-const dispatch = jest.fn()
 
 test('Paladin attack basic success', () => {
   const store = mockStore()
@@ -36,7 +26,6 @@ test('Paladin attack basic success', () => {
   }
 
   const wrapper = shallow(<Paladin
-    store={store}
     member={clone(member)}
     boss={clone(boss)}
     started={true}
@@ -77,7 +66,6 @@ test('Paladin attack not boss target', () => {
   }
 
   const wrapper = shallow(<Paladin
-    store={store}
     member={clone(member)}
     boss={fakeBoss}
     started={true}
@@ -113,7 +101,6 @@ test('Paladin attack with noTaunt (boss target)', () => {
   }
 
   const wrapper = shallow(<Paladin
-    store={store}
     member={fakeMember}
     boss={clone(boss)}
     started={true}
@@ -154,7 +141,6 @@ test('Paladin attack with noTaunt (boss target)', () => {
   }
 
   const wrapper = shallow(<Paladin
-    store={store}
     member={fakeMember}
     boss={clone(boss)}
     started={true}
