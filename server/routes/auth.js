@@ -10,7 +10,6 @@ function register (req, res, next) {
   userExists(user_name)
     .then(exists => {
       if (exists) return res.status(400).send({message: "User exists"})
-      console.log("creating user");
       createUser(user_name, password)
         .then(() => next())
     })

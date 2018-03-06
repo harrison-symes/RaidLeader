@@ -32,7 +32,6 @@ test('/register', () => {
     .then(res => {
     })
     .catch(err => {
-      console.log({err});
       expect(err).toBeFalsy()
     })
 

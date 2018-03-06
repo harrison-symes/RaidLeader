@@ -40,6 +40,7 @@ export function classIcons (heroClass) {
     case 'Hunter': return 'ra-archer'
     case 'Shaman': return 'ra-gem-pendant'
     case 'Player': return 'ra-player-king'
+    default: return null
   }
 }
 
@@ -99,9 +100,6 @@ export function attackIcons (heroClass) {
       rotation: 0,
       icon: 'ra-fluffy-swirl'
     }
-    default: return {
-      icon: 'ra-sword',
-      colour: 'black'
-    }
+    default: return null
   }
 }

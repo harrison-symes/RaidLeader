@@ -39,7 +39,6 @@ test('createToken', () => {
   }
   const actual = token.createToken(user, secret)
   expect(actual).toBeTruthy()
-  console.log({actual});
   expect(actual).toEqual({
     user,
     secret,
