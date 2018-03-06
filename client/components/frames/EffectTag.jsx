@@ -56,7 +56,7 @@ class EffectTag extends Component {
     const {name, duration, colour} = effect
     const {currentDuration, maxDuration, remaining} = this.state
     return <div>
-      <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium">{name} ({remaining})</div>
+      <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium"><i className={`ra ${effect.icon} ra-fw`} style={{color: 'black'}} />{remaining}</div>
     </div>
   }
 }

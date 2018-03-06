@@ -7,14 +7,7 @@ import {ClassIcon, SpeedIcon, PowerIcon, DeadRecruitIcon} from '../icons/StatIco
 import AttackIcon from './AttackIcon'
 import {attackIcons} from '../../utils/classText'
 
-const poisonConstructor = (perc) => ({
-  name: 'Poison',
-  duration: 15,
-  percentage: perc || 0.1,
-  colour: '#BA8CE8',
-  tickRate: 3,
-  type: 'PERCENT_DAMAGE_FRIENDLY_TARGET'
-})
+import {poisonConstructor} from '../../utils/effectConstructors'
 
 class MemberFrame extends Component {
   constructor(props) {

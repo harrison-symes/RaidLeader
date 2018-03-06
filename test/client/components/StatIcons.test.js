@@ -35,7 +35,6 @@ test('DeadRecruitIcon', () => {
   const wrapper =  mount(<DeadRecruitIcon name="Jeff" />)
 
   expect(wrapper.find('p').text()).toBe('Jeff has Died')
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-tombstone')).toBeTruthy()
 })
@@ -45,7 +44,6 @@ test('PlayerIcon', () => {
 
   expect(wrapper.find('p').text()).toBe('Jeff')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-player-king')).toBeTruthy()
 })
@@ -57,7 +55,6 @@ test('HealthIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('100')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-two-hearts')).toBeTruthy()
 })
@@ -69,7 +66,6 @@ test('SpeedIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('100')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-lightning-bolt')).toBeTruthy()
 })
@@ -81,7 +77,6 @@ test('PowerIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('100')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-axe-swing')).toBeTruthy()
 })
@@ -93,7 +88,6 @@ test('CastTimeIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10s')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-stopwatch')).toBeTruthy()
 })
@@ -105,7 +99,6 @@ test('CoolDownIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10s')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hourglass')).toBeTruthy()
 })
@@ -117,7 +110,6 @@ test('ManaIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-crystals')).toBeTruthy()
 })
@@ -129,7 +121,6 @@ test('ManaRegenIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-cycle')).toBeTruthy()
 })
@@ -141,7 +132,6 @@ test('GoldIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-gold-bar')).toBeTruthy()
 })
@@ -153,7 +143,6 @@ test('ArmorIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-heavy-shield')).toBeTruthy()
 })
@@ -165,7 +154,6 @@ test('ArmorIcon', () => {
 
   expect(wrapper.find('span').text()).toBe('10')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-heavy-shield')).toBeTruthy()
 })
@@ -190,8 +178,7 @@ test('classIcons', () => {
 
     expect(wrapper.find('span').text()).toBe('')
 
-    expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
-    expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+      expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
     expect(wrapper.find('i').hasClass('class-icon-' + heroClass)).toBeTruthy()
   })
 })
@@ -203,7 +190,6 @@ test('TargetTypeIcon (single)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-targeted')).toBeTruthy()
 })
@@ -215,7 +201,6 @@ test('TargetTypeIcon (no target)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-radial-balance')).toBeTruthy()
 })
@@ -227,7 +212,6 @@ test('LevelIcon (1)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-dice-one')).toBeTruthy()
 })
@@ -239,7 +223,6 @@ test('LevelIcon (2)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-dice-two')).toBeTruthy()
 })
@@ -251,7 +234,6 @@ test('LevelIcon (3)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-dice-three')).toBeTruthy()
 })
@@ -263,7 +245,6 @@ test('LevelIcon (4)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-dice-four')).toBeTruthy()
 })
@@ -275,7 +256,6 @@ test('LevelIcon (5)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-dice-five')).toBeTruthy()
 })
@@ -287,7 +267,6 @@ test('LevelIcon (6)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-dice-six')).toBeTruthy()
 })
@@ -299,7 +278,6 @@ test('RecruitCountIcon (multiple)', () => {
 
   expect(wrapper.find('span').text()).toBe('6')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-double-team')).toBeTruthy()
 })
@@ -311,7 +289,6 @@ test('RecruitCountIcon (single)', () => {
 
   expect(wrapper.find('span').text()).toBe('1')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-double-team')).toBeTruthy()
 })
@@ -323,7 +300,6 @@ test('SpellCountIcon (single)', () => {
 
   expect(wrapper.find('span').text()).toBe('1')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-book')).toBeTruthy()
 })
@@ -335,7 +311,6 @@ test('SpellCountIcon (multiple)', () => {
 
   expect(wrapper.find('span').text()).toBe('6')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-book')).toBeTruthy()
 })
@@ -350,7 +325,6 @@ test('WeaponAvailableIcon (hasWeapon multiple available)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
 })
@@ -362,7 +336,6 @@ test('WeaponAvailableIcon (hasWeapon single available)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
 })
@@ -374,7 +347,6 @@ test('WeaponAvailableIcon (no weapon, single available)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
 })
@@ -389,7 +361,6 @@ test('WeaponAvailableIcon (no weapon, multiple available)', () => {
   const style = wrapper.find('i').prop('style')
   expect(style).toHaveProperty('color', 'orange')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
 })
@@ -404,7 +375,6 @@ test('WeaponAvailableIcon (no weapon, none available)', () => {
   const style = wrapper.find('i').prop('style')
   expect(style).toHaveProperty('color', 'black')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
 })
@@ -415,7 +385,6 @@ test('WeaponIcon', () => {
 
   expect(wrapper.find('span').last().text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
 })
@@ -426,7 +395,6 @@ test('SpellElementIcon (none)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-zigzag-leaf')).toBeTruthy()
 })
@@ -437,7 +405,6 @@ test('SpellElementIcon (Life)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-zigzag-leaf')).toBeTruthy()
 })
@@ -448,7 +415,6 @@ test('SpellElementIcon (Fire)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-fire')).toBeTruthy()
 })
@@ -459,7 +425,6 @@ test('SpellElementIcon (Shadow)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-bleeding-eye')).toBeTruthy()
 })
@@ -470,7 +435,6 @@ test('SpellElementIcon (Arcane)', () => {
 
   expect(wrapper.find('span').text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-crystal-ball')).toBeTruthy()
 })
@@ -491,7 +455,6 @@ test('SpellIcon small', () => {
   expect(style).toHaveProperty('color', 'test')
   expect(style).toHaveProperty('backgroundColor', 'othertest')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-fw')).toBeTruthy()
@@ -511,7 +474,6 @@ test('SpellIcon large', () => {
   expect(style).toHaveProperty('color', 'black')
   expect(style).toHaveProperty('backgroundColor', 'white')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-3x')).toBeTruthy()
@@ -524,7 +486,6 @@ test('ZodiacIcon small', () => {
 
   expect(wrapper.find('span').last().text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-fw')).toBeTruthy()
@@ -537,7 +498,6 @@ test('ZodiacIcon large', () => {
 
   expect(wrapper.find('span').last().text()).toBe('')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-lrg')).toBeTruthy()
@@ -550,7 +510,6 @@ test('QuantityIcon', () => {
 
   expect(wrapper.find('span').last().text()).toBe('2')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-all-for-one')).toBeTruthy()
 })
@@ -562,7 +521,6 @@ test('WeaponEquippedByIcon (no recruits)', () => {
 
   expect(wrapper.find('span').last().text()).toBe('0')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
 })
@@ -578,7 +536,6 @@ test('WeaponEquippedByIcon (single recruit)', () => {
 
   expect(wrapper.find('span').last().text()).toBe('1')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand-emblem')).toBeTruthy()
 })
@@ -595,7 +552,6 @@ test('WeaponEquippedByIcon (multi recruits)', () => {
 
   expect(wrapper.find('span').last().text()).toBe('2')
 
-  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand-emblem')).toBeTruthy()
 })
