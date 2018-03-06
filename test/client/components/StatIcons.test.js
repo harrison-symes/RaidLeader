@@ -26,7 +26,7 @@ jest.mock('../../../client/utils/zodiacs', () => ({
   getZodiacData: () => ({
     health: 0.1,
     power: 0.1,
-    speed: 0.1,
+    speed: -0.1,
     icon: 'fake-icon'
   })
 }))
@@ -345,6 +345,9 @@ test('WeaponAvailableIcon (hasWeapon multiple available)', () => {
 
   expect(wrapper.find('p').text()).toBe('Fake Weapon')
 
+  const style = wrapper.find('i').prop('style')
+  expect(style).toHaveProperty('color', 'lightgreen')
+
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
@@ -382,6 +385,24 @@ test('WeaponAvailableIcon (no weapon, multiple available)', () => {
   expect(wrapper.find('p').text()).toBe('2 Weapons Available')
 
   expect(wrapper.find('span').text()).toBe('')
+
+  const style = wrapper.find('i').prop('style')
+  expect(style).toHaveProperty('color', 'orange')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
+})
+
+test('WeaponAvailableIcon (no weapon, none available)', () => {
+  const wrapper =  mount(<WeaponAvailableIcon amount={0} hasWeapon={null}/>)
+
+  expect(wrapper.find('p').text()).toBe('0 Weapons Available')
+
+  expect(wrapper.find('span').text()).toBe('')
+
+  const style = wrapper.find('i').prop('style')
+  expect(style).toHaveProperty('color', 'black')
 
   expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
@@ -457,12 +478,18 @@ test('SpellElementIcon (Arcane)', () => {
 test('SpellIcon small', () => {
   const wrapper =  mount(<SpellIcon spell={{
     name: 'Test Spell',
-    icon: 'fake-icon'
+    icon: 'fake-icon',
+    color: 'test',
+    background: 'othertest'
   }} />)
 
   expect(wrapper.find('p').text()).toBe('Test Spell')
 
   expect(wrapper.find('span').text()).toBe('')
+
+  const style = wrapper.find('i').prop('style')
+  expect(style).toHaveProperty('color', 'test')
+  expect(style).toHaveProperty('backgroundColor', 'othertest')
 
   expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
@@ -470,10 +497,30 @@ test('SpellIcon small', () => {
   expect(wrapper.find('i').hasClass('ra-fw')).toBeTruthy()
 })
 
+test('SpellIcon large', () => {
+  const wrapper =  mount(<SpellIcon spell={{
+    name: 'Test Spell',
+    icon: 'fake-icon'
+  }} isLarge={true}/>)
+
+  expect(wrapper.find('p').text()).toBe('Test Spell')
+
+  expect(wrapper.find('span').text()).toBe('')
+
+  const style = wrapper.find('i').prop('style')
+  expect(style).toHaveProperty('color', 'black')
+  expect(style).toHaveProperty('backgroundColor', 'white')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-3x')).toBeTruthy()
+})
+
 test('ZodiacIcon small', () => {
   const wrapper =  mount(<ZodiacIcon zodiac={'Aries'} />)
 
-  expect(wrapper.find('span').first().text()).toBe('Aries+10% Health+10% Power+10% Speed')
+  expect(wrapper.find('span').first().text()).toBe('Aries+10% Health+10% Power-10% Speed')
 
   expect(wrapper.find('span').last().text()).toBe('')
 
@@ -486,7 +533,7 @@ test('ZodiacIcon small', () => {
 test('ZodiacIcon large', () => {
   const wrapper =  mount(<ZodiacIcon zodiac={'Aries'} isLarge={true} />)
 
-  expect(wrapper.find('span').first().text()).toBe('Aries+10% Health+10% Power+10% Speed')
+  expect(wrapper.find('span').first().text()).toBe('Aries+10% Health+10% Power-10% Speed')
 
   expect(wrapper.find('span').last().text()).toBe('')
 
@@ -518,4 +565,37 @@ test('WeaponEquippedByIcon (no recruits)', () => {
   expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
+})
+
+test('WeaponEquippedByIcon (single recruit)', () => {
+  const wrapper =  mount(<WeaponEquippedByIcon equippedBy={[
+    {id: 1, name: 'Jeff', heroClass: 'Test'}
+  ]} />)
+
+  expect(wrapper.find('span').first().text()).toBe('1 EquippedJeff the Test')
+  expect(wrapper.find('p').first().text()).toBe('1 Equipped')
+  expect(wrapper.find('p').last().text()).toBe('Jeff the Test')
+
+  expect(wrapper.find('span').last().text()).toBe('1')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-hand-emblem')).toBeTruthy()
+})
+
+test('WeaponEquippedByIcon (multi recruits)', () => {
+  const wrapper =  mount(<WeaponEquippedByIcon equippedBy={[
+    {id: 1, name: 'Jeff', heroClass: 'Test'},
+    {id: 2, name: 'Not-Jeff', heroClass: 'Still-Test'}
+  ]} />)
+
+  expect(wrapper.find('span').first().text()).toBe('2 EquippedJeff the TestNot-Jeff the Still-Test')
+  expect(wrapper.find('p').first().text()).toBe('2 Equipped')
+  expect(wrapper.find('p').last().text()).toBe('Not-Jeff the Still-Test')
+
+  expect(wrapper.find('span').last().text()).toBe('2')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-hand-emblem')).toBeTruthy()
 })
