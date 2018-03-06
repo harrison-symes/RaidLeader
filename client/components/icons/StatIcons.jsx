@@ -244,7 +244,7 @@ export function QuantityIcon ({quantity}) {
   return toolTipGenerator(
     <p>Quantity: {quantity}</p>,
     <span>
-      <i className={`ra ra-lg ra-all-for-one icon-large`} />{quantity}
+      <i className={`ra ra-lg ra-all-for-one icon icon-large`} />{quantity}
     </span>
   )
 }
@@ -262,7 +262,7 @@ export function WeaponEquippedByIcon ({equippedBy}) {
       </span>)}
     </span>,
     <span>
-      <i className={`ra ra-lg ${equippedBy.length == 0 ? 'ra-hand': 'ra-hand-emblem'} icon-large`} />{equippedBy.length}
+      <i className={`ra ra-lg icon ${equippedBy.length == 0 ? 'ra-hand': 'ra-hand-emblem'} icon-large`} />{equippedBy.length}
     </span>
   )
 }

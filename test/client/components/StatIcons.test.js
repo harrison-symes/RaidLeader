@@ -399,6 +399,17 @@ test('WeaponIcon', () => {
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
 })
 
+test('SpellElementIcon (none)', () => {
+  const wrapper =  mount(<SpellElementIcon />)
+  expect(wrapper.find('p').text()).toBe(' Spell')
+
+  expect(wrapper.find('span').text()).toBe('')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-zigzag-leaf')).toBeTruthy()
+})
+
 test('SpellElementIcon (Life)', () => {
   const wrapper =  mount(<SpellElementIcon element={'Life'} />)
   expect(wrapper.find('p').text()).toBe('Life Spell')
@@ -483,4 +494,28 @@ test('ZodiacIcon large', () => {
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('fake-icon')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-lrg')).toBeTruthy()
+})
+
+test('QuantityIcon', () => {
+  const wrapper =  mount(<QuantityIcon quantity={2} />)
+
+  expect(wrapper.find('p').first().text()).toBe('Quantity: 2')
+
+  expect(wrapper.find('span').last().text()).toBe('2')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-all-for-one')).toBeTruthy()
+})
+
+test('WeaponEquippedByIcon (no recruits)', () => {
+  const wrapper =  mount(<WeaponEquippedByIcon equippedBy={[]} />)
+
+  expect(wrapper.find('p').first().text()).toBe('Not Equipped')
+
+  expect(wrapper.find('span').last().text()).toBe('0')
+
+  expect(wrapper.find('i').hasClass('icon')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-hand')).toBeTruthy()
 })
