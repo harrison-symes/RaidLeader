@@ -37,19 +37,19 @@ export function DeadRecruitIcon ({name}) {
 export function PlayerIcon ({name}) {
   return toolTipGenerator(
     <p>{name}</p>,
-    <p>
-      <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
-    </p>
+    <span>
+      <i id="PlayerIcon" className="icon ra ra-lg ra-player-king" />
+    </span>
   )
 }
 
 export function HealthIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Health</p>,
-    <p>
+    <span>
       {value}
-      <i className="ra ra-fw ra-two-hearts icon-large" />
-    </p>
+      <i className="icon ra ra-fw ra-two-hearts icon-large" />
+    </span>
   )
 }
 
