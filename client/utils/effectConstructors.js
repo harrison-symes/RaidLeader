@@ -1,6 +1,7 @@
 export function poisonConstructor (perc) {
   return {
     name: 'Poison',
+    icon: 'ra-poison-cloud',
     duration: 15,
     percentage: perc || 0.1,
     colour: '#BA8CE8',
@@ -12,6 +13,7 @@ export function poisonConstructor (perc) {
 export function renewConstructor (perc) {
   return {
     name: 'Renew',
+    icon: 'ra-sprout',
     duration: 15,
     tickRate: 3,
     percentage: perc || 0.1,

@@ -9,7 +9,7 @@ import {
 } from 'react-tippy';
 
 
-function toolTipGenerator(text, display) {
+export function toolTipGenerator(text, display) {
   return <Tooltip
     position="top"
     trigger="mouseenter"
@@ -29,7 +29,7 @@ export function DeadRecruitIcon ({name}) {
   return toolTipGenerator(
     <p>{name} has Died</p>,
     <span>
-      <i style={{color: 'white'}} className="icon ra ra-fw ra-tombstone"></i>
+      <i style={{color: 'white'}} className="ra ra-fw ra-tombstone"></i>
     </span>
   )
 }
@@ -37,114 +37,117 @@ export function DeadRecruitIcon ({name}) {
 export function PlayerIcon ({name}) {
   return toolTipGenerator(
     <p>{name}</p>,
-    <p>
+    <span>
       <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
-    </p>
+    </span>
   )
 }
 
 export function HealthIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Health</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-two-hearts icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function SpeedIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Speed</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-lightning-bolt icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function PowerIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Power</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-axe-swing icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function CastTimeIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Cast Time</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-stopwatch icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function CoolDownIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Cool Down</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-hourglass icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function ManaIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Mana</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-crystals icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function ManaRegenIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Mana Per Second</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-cycle icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function GoldIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Gold</p>,
-    <p>{value}<i className="ra ra-fw ra-gold-bar icon-large" /></p>
+    <span>
+      {value}
+      <i className="ra ra-fw ra-gold-bar icon-large" />
+    </span>
   )
 }
 
 export function ArmorIcon ({value}) {
   return toolTipGenerator(
     <p>{value} Armor</p>,
-    <p>
+    <span>
       {value}
       <i className="ra ra-fw ra-heavy-shield icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function ClassIcon ({heroClass, id}) {
   return toolTipGenerator(
     <p>Class: {heroClass}</p>,
-    <p>
-      <i style={{color: attackIcons(heroClass).colour }}id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
-    </p>
+    <span>
+      <i style={{color: attackIcons(heroClass).colour }} id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
+    </span>
   )
 }
 
 export function TargetTypeIcon ({singleTarget}) {
   return toolTipGenerator(
     <p>{singleTarget ? "Requires Friendly Target" : "No Target Needed"}</p>,
-    <p>
-      <i className={`ra ra-fw ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
-    </p>
+    <span>
+      <i className={`ra ra-fw  ${singleTarget ? "ra-targeted": " ra-radial-balance"} icon-large`} />
+    </span>
   )
 }
 
@@ -160,9 +163,9 @@ export function LevelIcon ({level}) {
   }
   return toolTipGenerator(
     <p>Level {level}</p>,
-    <p>
+    <span>
       <i style={{color: 'white', backgroundColor: 'black'}} className={`ra ra-fw ra-dice-${num} icon-large`} />
-    </p>
+    </span>
   )
 }
 
@@ -172,9 +175,9 @@ export function WeaponAvailableIcon ({amount, hasWeapon}) {
       ? `${hasWeapon.name}`
       : `${amount} Weapon${amount != 1 ? 's':''} Available`
     }</p>,
-    <p>
-      <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon : 'ra-hand'} icon-large`} />
-    </p>
+    <span>
+      <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon: 'ra-hand'} icon-large`} />
+    </span>
   )
 }
 
@@ -182,13 +185,13 @@ export function WeaponIcon ({name, level}) {
   const weapon = weaponSwitch[name](level)
   return toolTipGenerator(
     <span>
-      <span>{name}</span>
+      {name}
       <hr />
-      <span>{weapon.class} Weapon</span>
+      {weapon.class} Weapon
     </span>,
-    <p>
+    <span>
       <i className={`ra ra-fw ${weapon.icon} icon-large`} />
-    </p>
+    </span>
   )
 }
 
@@ -196,17 +199,17 @@ export function WeaponIcon ({name, level}) {
 export function SpellElementIcon ({element}) {
   let icon
   switch(element) {
-    case 'Life': icon = 'ra-zigzag-leaf'; break;
-    case 'Fire': icon = 'ra-fire'; break;
+    case 'Life': icon= 'ra-zigzag-leaf'; break;
+    case 'Fire': icon= 'ra-fire'; break;
     case 'Shadow': icon = 'ra-bleeding-eye'; break;
     case 'Arcane': icon = 'ra-crystal-ball'; break;
     default: icon = 'ra-zigzag-leaf'; break;
   }
   return toolTipGenerator(
     <p>{element} Spell</p>,
-    <p>
+    <span>
       <i className={`ra ra-fw ${icon} icon-large`} />
-    </p>
+    </span>
   )
 }
 
@@ -214,9 +217,9 @@ export function SpellIcon ({spell, isLarge}) {
   const {name, icon, color, background} = spell
   return toolTipGenerator(
     <p>{name}</p>,
-    <p>
-      <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
-    </p>
+    <span>
+      <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw  ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
+    </span>
   )
 }
 
@@ -231,18 +234,18 @@ export function ZodiacIcon ({zodiac, isLarge}) {
       {data.power != 0 && <span>{translatePerc(data.power)} Power<br/></span>}
       {data.speed != 0 && <span>{translatePerc(data.speed)} Speed</span>}
     </span>,
-    <p>
+    <span>
       <i className={`ra ra-${isLarge ? 'lrg' : 'fw'} ${data.icon}`} />
-    </p>
+    </span>
   )
 }
 
 export function QuantityIcon ({quantity}) {
   return toolTipGenerator(
     <p>Quantity: {quantity}</p>,
-    <p>
+    <span>
       <i className={`ra ra-lg ra-all-for-one icon-large`} />{quantity}
-    </p>
+    </span>
   )
 }
 
@@ -258,28 +261,28 @@ export function WeaponEquippedByIcon ({equippedBy}) {
         <p>{recruit.name} the {recruit.heroClass}</p>
       </span>)}
     </span>,
-    <p>
+    <span>
       <i className={`ra ra-lg ${equippedBy.length == 0 ? 'ra-hand': 'ra-hand-emblem'} icon-large`} />{equippedBy.length}
-    </p>
+    </span>
   )
 }
 
 export function RecruitCountIcon ({amount}) {
   return toolTipGenerator(
     <p>You have {amount} Recruit{amount > 1 ? 's' : ''}</p>,
-    <p>
+    <span>
       {amount}
       <i className="ra ra-double-team icon-large" />
-    </p>
+    </span>
   )
 }
 
 export function SpellCountIcon ({amount}) {
   return toolTipGenerator(
     <p>You know {amount} Spell{amount > 1 ? 's' : ''}</p>,
-    <p>
+    <span>
       {amount}
       <i className="ra ra-book icon-large" />
-    </p>
+    </span>
   )
 }

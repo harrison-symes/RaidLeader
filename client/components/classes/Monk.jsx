@@ -5,17 +5,19 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/classStateMap'
 
 
-class Monk extends PartyMemberFrame {
+export class Monk extends PartyMemberFrame {
   finishCast() {
-    if (this.props.started && this.props.member.isAlive) {
-      if (member.weapon_effect == 'taunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
-      this.props.dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: this.props.member.power})
-      this.props.dispatch({type: 'LEVEL_HEAL_ALL_FRIENDLY'})
+    const {started, member, dispatch} = this.props
+    if (started && member.isAlive) {
+      if (member.weapon_effect == 'taunt') dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
+      dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: member.power})
+      dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.1})
     }
   }
   startFighting () {
-    const {power, speed} = this.props.member
-    this.props.dispatch({type: 'MONK_START_BUFF', target: this.props.member})
+    const {member, dispatch} = this.props
+    const {power, speed} = member
+    dispatch({type: 'MONK_START_BUFF', target: member})
     this.startCast()
   }
 }

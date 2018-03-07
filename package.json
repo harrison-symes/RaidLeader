@@ -8,7 +8,9 @@
     "postinstall": "webpack",
     "dev": "nodemon --watch server server/index & webpack --watch & sass --watch sass:public/stylesheets",
     "start": "node server/index",
+    "jest": "jest",
     "test": "jest --watchAll",
+    "test:client": "jest client && exit 0",
     "watch": "nodemon -e js,jsx -x npm test",
     "h:deploy": "git push heroku master",
     "h:migrate": "heroku run knex migrate:latest",
@@ -34,6 +36,7 @@
     "jest": "^22.4.2",
     "nodemon": "^1.11.0",
     "react-beautiful-dnd": "^3.0.0",
+    "redux-mock-store": "^1.5.1",
     "sqlite3": "^3.1.8",
     "supertest": "^3.0.0"
   },

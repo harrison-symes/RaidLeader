@@ -1,20 +1,23 @@
 import React, {Component} from 'react'
 
-class AttackIcon extends Component {
+export class AttackIcon extends Component {
+  getTargetFrame(target) {
+    return document.getElementById(target ? `Recruit-${target.id}`: 'BossIcon' ).getBoundingClientRect()
+
+  }
   constructor(props) {
     super(props)
     const {startX, startY, info, target} = props.svg
-    var bossFrame = document.getElementById('BossIcon').getBoundingClientRect()
-    if (target) bossFrame = document.getElementById(`Recruit-${target.id}`).getBoundingClientRect()
-    console.log({target})
-    console.log({bossFrame});
+
+    var targetFrame = this.getTargetFrame(target)
+
     this.state = {
       x: startX || 10,
       y: startY || 10,
-      targetX: bossFrame.left,
-      targetY: bossFrame.top,
-      speedY: (startY - bossFrame.top) / 100,
-      speedX: (startX - bossFrame.left) / 100,
+      targetX: targetFrame.left,
+      targetY: targetFrame.top,
+      speedY: ((startY || 10) - targetFrame.top) / 100,
+      speedX: ((startX || 10) - targetFrame.left) / 100,
       rotation: info.rotation
     }
     this.interval = false

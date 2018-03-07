@@ -1,6 +1,6 @@
 const knex = require('knex')
 
-const testConfig = require('../../knexfile').test
+const testConfig = require('../../../knexfile').test
 
 module.exports = {
   // Test database connection
@@ -17,6 +17,6 @@ module.exports = {
 
   // Destroy the database connection after each test
   cleanup: (db) => {
-    return db.destroy()
+    return db.migrate.rollback()
   }
 }

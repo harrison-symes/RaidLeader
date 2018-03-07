@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-class EffectTag extends Component {
+export class EffectTag extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,21 +12,25 @@ class EffectTag extends Component {
     }
   }
   tickSecond() {
-    const {party, effect, target, started} = this.props
+    const {party, effect, target, started, dispatch} = this.props
     if (started && target.isAlive) {
       const remaining = this.state.remaining -1
       if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
-      if (this.state.ticks == effect.tickRate) {
-        this.props.dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
-        this.setState({ticks: 0})
-      }
-      if (remaining <= 0) {
-        this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
+      let ticks = this.state.ticks
+      if (ticks == effect.tickRate) {
+        dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
+        ticks = 0
       } else {
-        this.startSecond()
-        this.setState({remaining, ticks: this.state.ticks + 1})
+        ticks++
       }
-    } else this.props.dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
+
+      if (remaining <= 0) {
+        return dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
+      }
+      this.startSecond()
+      this.setState({remaining, ticks: ticks})
+
+    } else dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect})
 
   }
   startSecond() {
@@ -42,25 +46,22 @@ class EffectTag extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.effect != nextProps.effect && nextProps.effect) {
-      let {maxDuration, currentDuration, remaining, ticks} = this.state
+      let {remaining} = this.state
       remaining+=nextProps.effect.duration
       if (remaining > nextProps.effect.duration * 2) {
         remaining = nextProps.effect.duration * 2
       }
-      // if (maxDuration > nextProps.effect.duration * 2) maxDuration = Math.floor(nextProps.effect.duration * 2)
       this.setState({remaining})
     }
   }
   render() {
     const {effect, target} = this.props
-    const {name, duration, colour} = effect
-    const {currentDuration, maxDuration, remaining} = this.state
-    return <div>
-      <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium">{name} ({remaining})</div>
-    </div>
+    const {name, duration, colour, icon} = effect
+    const {remaining} = this.state
+    return <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium"><i className={`ra ${icon} ra-fw`} style={{color: 'black'}} />{remaining}</div>
   }
 }
 
-const mapStateToProps = ({party, started}) => ({party, started})
+export const mapStateToProps = ({party, started}) => ({party, started})
 
 export default connect(mapStateToProps)(EffectTag)
