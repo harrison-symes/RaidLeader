@@ -16,8 +16,8 @@ export class AttackIcon extends Component {
       y: startY || 10,
       targetX: targetFrame.left,
       targetY: targetFrame.top,
-      speedY: (startY - targetFrame.top) / 100,
-      speedX: (startX - targetFrame.left) / 100,
+      speedY: ((startY || 10) - targetFrame.top) / 100,
+      speedX: ((startX || 10) - targetFrame.left) / 100,
       rotation: info.rotation
     }
     this.interval = false
