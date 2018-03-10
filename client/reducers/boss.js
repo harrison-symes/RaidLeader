@@ -106,6 +106,7 @@ export default function boss (state = null, action) {
       return newState
     case 'BOSS_CHANGE_STAGE':
       newState.wantsToCast = null
+      newState.isCasting = false
       for (let key in action.stage) {
         newState[key] = action.stage[key]
       }

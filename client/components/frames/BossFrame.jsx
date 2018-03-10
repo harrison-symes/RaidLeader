@@ -62,6 +62,7 @@ class BossFrame extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const {started, boss} = nextProps
+    console.log({boss});
     if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
     if (started && (!boss.bossTarget || (boss.bossTarget && !boss.bossTarget.isAlive))) this.findTarget(nextProps)
     if (started && !boss.wantsToCast && !boss.isCasting) this.startCast(nextProps)
