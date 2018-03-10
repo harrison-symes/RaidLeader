@@ -1,3 +1,5 @@
+import clone from 'clone'
+
 export default function boss (state = null, action) {
   let newState = {...state}
   switch(action.type) {
@@ -66,24 +68,24 @@ export default function boss (state = null, action) {
       newState.wantsToCast = action.spell.name
       return newState
     case 'BOSS_START_CASTING':
-      if (!action.spell) return newState
+      if (!action.spell) return state
       let spell = newState.spells.find(bossSpell => bossSpell.name == action.spell.name)
-      if (!spell) return newState
+      if (!spell) return state
       newState.isCasting = true
       return newState
     case 'BOSS_FINISH_CASTING':
-      if (!action.spell) return newState
+      if (!action.spell) return state
       spell = newState.spells.find(bossSpell => bossSpell.name == action.spell.name)
-      if (!spell) return newState
+      if (!spell) return state
       newState.isCasting = false
       newState.wantsToCast = null
       newState.mana-=action.spell.cost
       spell.onCooldown = true
       return newState
     case 'BOSS_SPELL_FINISH_COOLDOWN':
-      if (!action.spell) return newState
+      if (!action.spell) return state
       spell = newState.spells.find(bossSpell => bossSpell == action.spell)
-      if (!spell) return newState
+      if (!spell) return state
       spell.onCooldown = false
       return newState
     case 'BOSS_CHANGE_TARGET':
@@ -103,10 +105,12 @@ export default function boss (state = null, action) {
       if (action.target.id == newState.bossTarget.id) newState.bossTarget.isAlive = false
       return newState
     case 'BOSS_CHANGE_STAGE':
+      newState.wantsToCast = null
       for (let key in action.stage) {
         newState[key] = action.stage[key]
       }
-      return newState
+      newState.spells = action.stage.spells.map(spell => ({...spell}))
+      return clone(newState)
     default: return state
   }
 }

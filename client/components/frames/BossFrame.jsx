@@ -81,7 +81,7 @@ class BossFrame extends Component {
           </div>
         </div>
         <div className="column is-5">
-          <BossSpellBar spells={spells}/>
+          <BossSpellBar />
         </div>
       </div>
       <BossHealthBar boss={{...boss}} />

@@ -19,6 +19,7 @@ export default {
   weaponChance: 1,
   progress_required: 0,
   icon: ' ra-recycle',
+  stage: 'stageZero',
   spells: [
     {
       name: 'Activate',
@@ -32,12 +33,14 @@ export default {
       isChanneled: true,
       ticks: 5,
       power: 10,
+      stage: 'stageOne',
       onCooldown: false,
       description: "Start Stage 1, gain 10 Power 5 times during the cast",
       icon: 'ra-lever'
     }
   ],
   stageOne: {
+    stage: 'stageOne',
     description: 'During Stage 1 the Conveyer will gain 1 mana per second and have a new set of spells, these spells are focused on dealing damage to ALL recruits.',
     manaRegen: 1,
     spells: [
@@ -51,7 +54,7 @@ export default {
         powerRatio: 50,
         mana: 10,
         onCooldown: false,
-        description: 'Gain 20 Mana',
+        description: 'Gain 10 Mana',
         icon: 'ra-energise'
       },
       {
@@ -95,6 +98,7 @@ export default {
     ]
   },
   stageTwo: {
+    stage: 'stageTwo',
     description: 'During Stage 2 the Conveyer will cast focused on dealing direct damage',
     manaRegen: 1,
     spells: [
@@ -151,7 +155,8 @@ export default {
     ]
   },
   stageThree: {
-    description: 'During Stage 3 the Conveyer will stop gaining mana every second uses a mix of spells from the previous stages.',
+    stage: 'stageThree',
+    description: 'During Stage 3 the Conveyer will stop gaining mana every second, and will use a mix of spells from the previous stages.',
     manaRegen: 1,
     spells: [
       {
