@@ -74,7 +74,7 @@ export default {
       {
         name: 'Discharge',
         cast: 5,
-        cost: 10,
+        cost: 0,
         coolDown: 60,
         type: 'damage',
         isChanneled: true,

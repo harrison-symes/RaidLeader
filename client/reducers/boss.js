@@ -115,11 +115,13 @@ export default function boss (state = null, action) {
     case 'BOSS_SPELLS_REDUCE_COOLDOWN':
       newState.spells = newState.spells.map(spell => {
         spell.coolDown -= (spell.coolDown * action.percentage)
+        return spell
       })
       return newState
     case 'BOSS_SPELLS_REDUCE_CAST':
       newState.spells = newState.spells.map(spell => {
         spell.cast -= (spell.cast * action.percentage)
+        return spell
       })
       return newState
 
