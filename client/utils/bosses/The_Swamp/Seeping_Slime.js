@@ -37,7 +37,7 @@ export default {
     {
       name: 'Seep',
       cast: 5,
-      cost: 5,
+      cost: 3,
       coolDown: 5,
       type: 'damage',
       singleTarget: true,
@@ -50,7 +50,7 @@ export default {
     {
       name: 'Sludge Bomb',
       cost: 2,
-      cast: 3,
+      cast: 1,
       coolDown: 7,
       powerRatio: 1,
       type: 'damage',

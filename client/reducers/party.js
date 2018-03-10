@@ -82,15 +82,15 @@ export default function party (state = [], action) {
         return member
       })
     case 'PERCENT_DAMAGE_FRIENDLY_TARGET':
-      if (!action.target) return newState
+      if (!action.target) return state
       target = newState.find(member => member.id == action.target.id)
-      if (!target || !target.isAlive) return newState
+      if (!target || !target.isAlive) return state
       target.hp-=target.initHp * action.percentage
       return newState
     case 'PERCENT_HEAL_FRIENDLY_TARGET':
-      if (!action.target) return newState
+      if (!action.target) return state
       target = newState.find(member => member.id == action.target.id)
-      if (!target || !target.isAlive) return newState
+      if (!target || !target.isAlive) return state
       target.hp+=target.initHp * action.percentage
       if (target.hp >= target.initHp) target.hp = target.initHp
       return newState
@@ -99,8 +99,8 @@ export default function party (state = [], action) {
         if (member.isAlive) {
           member.hp+=member.initHp * action.percentage
           if (member.hp >= member.initHp) member.hp = member.initHp
-          return member
         }
+        return member
       })
       return newState
     case 'PRIEST_START_BUFF':
@@ -143,6 +143,7 @@ export default function party (state = [], action) {
       target.hp = 0
       target.isAlive = false
       target.effects = []
+      console.log({newState, action});
       return newState
     default: return state
   }

@@ -399,7 +399,7 @@ module.exports = {
     effectDescription: "The Mage's attacks restore 1 Mana to the Player",
     icon: 'ra-battery'
   }),
-  ['Lightning Rod']: () => ({
+  ['Lightning Rod']: (level, id) => ({
     name: 'Lightning Rod',
     type: 'weapon',
     level,

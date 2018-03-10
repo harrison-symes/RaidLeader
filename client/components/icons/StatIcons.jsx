@@ -134,7 +134,6 @@ export function ArmorIcon ({value}) {
 }
 
 export function ClassIcon ({heroClass, id}) {
-  console.log({heroClass});
   return toolTipGenerator(
     <p>Class: {heroClass}</p>,
     <span>
