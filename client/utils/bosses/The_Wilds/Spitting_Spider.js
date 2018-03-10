@@ -5,10 +5,10 @@ export default {
   hp: 1000,
   initPower: 20,
   power: 20,
-  initArmor: 100,
-  armor: 100,
+  initArmor: 0,
+  armor: 0,
   mana: 0,
-  maxMana: 10,
+  maxMana: 15,
   manaRegen: 1,
   armorRegen: 0,
   isCasting: false,
@@ -29,7 +29,7 @@ export default {
       singleTarget: false,
       powerRatio: 5,
       onCooldown: false,
-      description: "Gain +5 POWER",
+      description: "Gain 5 POWER",
       icon: 'ra-knife-fork'
     },
     {
