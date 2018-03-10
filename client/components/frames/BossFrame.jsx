@@ -49,21 +49,20 @@ class BossFrame extends Component {
   }
   gainMana() {
     if (this.props.started) {
-      this.props.dispatch({type: 'BOSS_GAIN_MANA', amount: 1})
+      if (this.props.boss.manaRegen != 0) this.props.dispatch({type: 'BOSS_GAIN_MANA', amount: 1})
       this.castManaGain()
     }
   }
   castManaGain() {
-    if (this.props.boss.manaRegen) setTimeout(() => this.gainMana(), 1000 * this.props.boss.manaRegen)
+    setTimeout(() => this.gainMana(), 1000 * this.props.boss.manaRegen || 1)
   }
-  startTicking(dispatch) {
+  startTicking() {
     this.castManaGain()
     this.castArmorGain()
   }
   componentWillReceiveProps(nextProps) {
     const {started, boss} = nextProps
-    console.log({boss});
-    if (!this.props.started && nextProps.started) this.startTicking(nextProps.dispatch)
+    if (!this.props.started && nextProps.started) this.startTicking()
     if (started && (!boss.bossTarget || (boss.bossTarget && !boss.bossTarget.isAlive))) this.findTarget(nextProps)
     if (started && !boss.wantsToCast && !boss.isCasting) this.startCast(nextProps)
   }

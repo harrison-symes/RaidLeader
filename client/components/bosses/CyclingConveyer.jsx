@@ -18,16 +18,23 @@ class CyclingConveyer extends BossFrame {
             switch(spell.name) {
               case 'Recharge': return true
               case 'Short Circuit':
-                return true
+                return boss.spells.find(bossSpell => bossSpell.name == 'Recharge').onCooldown
               case 'Discharge':
-                return true
+                return boss.spells.find(bossSpell => bossSpell.name == 'Short Circuit').onCooldown
               case 'Change Gears':
-                return true
+                return boss.spells.find(bossSpell => bossSpell.name == 'Discharge').onCooldown
               default: return null
             }
           case 'stageTwo':
             switch(spell.name) {
-
+              case 'Power Up':
+                return true
+              case 'Payload':
+                return boss.spells.find(bossSpell => bossSpell.name == 'Power Up').onCooldown
+              case 'Power Drill':
+                return boss.spells.find(bossSpell => bossSpell.name == 'Payload').onCooldown
+              case 'Change Gears':
+                return boss.spells.find(bossSpell => bossSpell.name == 'Power Drill').onCooldown
               default: return null
             }
           case 'stageThree':

@@ -331,7 +331,7 @@ test('BOSS_FINISH_CASTING', () => {
   }
   const actual = reducer(initial, {
     type: 'BOSS_FINISH_CASTING',
-    spell: {name: 'FAKE_SPELL_1'}
+    spell: fakeSpells[0]
   })
   const expected = {...fakeBoss}
   expected.isCasting = false
@@ -474,8 +474,8 @@ test('MEMBER_DIED (bosses target)', () => {
 test('BOSS_CHANGE_STAGE', () => {
   const stage = {
     spells: [
-      {id: 5, name: 'STAGE_SPELL_1'},
-      {id: 6, name: 'STAGE_SPELL_2'},
+      {id: 5, name: 'STAGE_SPELL_1', onCooldown: false},
+      {id: 6, name: 'STAGE_SPELL_2', onCooldown: false},
     ],
     manaRegen: 0,
     name: 'Stage 2'

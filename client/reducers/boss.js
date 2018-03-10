@@ -75,7 +75,7 @@ export default function boss (state = null, action) {
       return newState
     case 'BOSS_FINISH_CASTING':
       if (!action.spell) return state
-      spell = newState.spells.find(bossSpell => bossSpell.name == action.spell.name)
+      spell = newState.spells.find(bossSpell => bossSpell == action.spell)
       if (!spell) return state
       newState.isCasting = false
       newState.wantsToCast = null
@@ -110,7 +110,7 @@ export default function boss (state = null, action) {
       for (let key in action.stage) {
         newState[key] = action.stage[key]
       }
-      newState.spells = action.stage.spells.map(spell => ({...spell}))
+      newState.spells = action.stage.spells.map(spell => ({...spell, onCooldown: false}))
       return clone(newState)
     default: return state
   }

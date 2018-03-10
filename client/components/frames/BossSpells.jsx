@@ -114,6 +114,10 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Activate':
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Change Gears':
+        let stage = boss[spell.stage]
+        if (boss.mana == spell.manaRequired) stage = boss['stageThree']
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage})
       default: return
     }
   }

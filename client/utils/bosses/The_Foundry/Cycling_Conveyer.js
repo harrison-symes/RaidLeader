@@ -86,12 +86,14 @@ export default {
       },
       {
         name: 'Change Gears',
+        manaRequired: 200,
         cast: 5,
         cost: 0,
         coolDown: 60,
         onCooldown: false,
         singleTarget: false,
         powerRatio: 1,
+        stage: 'stageTwo',
         description: 'Change to Stage 2. If at 200 Mana, change to Stage 3 instead',
         icon: 'ra-gears'
       }
@@ -103,29 +105,17 @@ export default {
     manaRegen: 1,
     spells: [
       {
-        name: 'Power Up',
+        name: 'Change Gears',
+        manaRequired: 200,
         cast: 5,
         cost: 0,
         coolDown: 60,
-        type: 'damage',
+        onCooldown: false,
         singleTarget: false,
-        powerRatio: 50,
-        power: 10,
-        onCooldown: false,
-        description: 'Gain 20 Power',
-        icon: 'ra-heartburn'
-      },
-      {
-        name: 'Payload',
-        cast: 5,
-        cost: 0,
-        coolDown: 60,
-        type: 'damage',
         powerRatio: 1,
-        onCooldown: false,
-        singleTarget: true,
-        description: "Damage the Boss' Target for (100%) Boss Power",
-        icon: 'ra-robot-arm'
+        stage: 'stageOne',
+        description: 'Change to Stage 1. If at 200 Mana, change to Stage 3 Instead',
+        icon: 'ra-gears'
       },
       {
         name: 'Power Drill',
@@ -142,16 +132,30 @@ export default {
         icon: 'ra-drill'
       },
       {
-        name: 'Change Gears',
+        name: 'Payload',
         cast: 5,
         cost: 0,
         coolDown: 60,
-        onCooldown: false,
-        singleTarget: false,
+        type: 'damage',
         powerRatio: 1,
-        description: 'Change to Stage 1. If at 200 Mana, change to Stage 3 Instead',
-        icon: 'ra-gears'
+        onCooldown: false,
+        singleTarget: true,
+        description: "Damage the Boss' Target for (100%) Boss Power",
+        icon: 'ra-robot-arm'
       },
+      {
+        name: 'Power Up',
+        cast: 5,
+        cost: 0,
+        coolDown: 60,
+        type: 'damage',
+        singleTarget: false,
+        powerRatio: 50,
+        power: 10,
+        onCooldown: false,
+        description: 'Gain 20 Power',
+        icon: 'ra-heartburn'
+      }
     ]
   },
   stageThree: {
