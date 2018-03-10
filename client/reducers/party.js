@@ -56,6 +56,7 @@ export default function party (state = [], action) {
       target.effects = []
       return newState
     case 'SET_RECRUIT_PERCENTAGE':
+      console.log("recruit percentage set");
       newState=  newState.map(member => {
         if (member.isAlive) {
           member.hp = (member.initHp * (action.percentage / 100))

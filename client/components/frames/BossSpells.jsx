@@ -43,6 +43,7 @@ class BossSpell extends Component {
       case 'Discharge':
         return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.tickPercentage})
       case 'Power Drill':
+        console.log("power drill tick", {target, power, ticks: this.state.ticks})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Repair':
         dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana / spell.ticks})
@@ -151,7 +152,7 @@ class BossSpell extends Component {
         //stage 1
       case 'Recharge':
         return dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana})
-      case 'Short Cicuit':
+      case 'Short Circuit':
         return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage: spell.percentage})
 
         //stage 2
