@@ -384,4 +384,49 @@ module.exports = {
     effectDescription: "The Hunter's attacks now force the Boss to Target the Hunter",
     icon: 'ra-flaming-arrow'
   }),
+  ['Polarizing Stick']: (level, id) => ({
+    name: 'Polarizing Stick',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: -0.5,
+    power: 0,
+    speed: 1,
+    description: 'Still warm and crackling, electrically charged on one end, maybe hold it by the other end?',
+    class: 'Mage',
+    bonusEffect: 'charge',
+    effectDescription: "The Mage's attacks restore 1 Mana to the Player",
+    icon: 'ra-battery'
+  }),
+  ['Lightning Rod']: () => ({
+    name: 'Lightning Rod',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 1,
+    power: -0.5,
+    speed: 1,
+    description: "Lightning never strikes the same place twice, confirmation may require further testing",
+    class: 'Warlock',
+    bonusEffect: 'lightningRod',
+    effectDescription: "The Warlock now only damages themselves for 5% of Max Health whenever they attack (instead of damagin ALL party members)",
+    icon: 'ra-battery'
+  }),
+  ['Power Drill']: (level, id) => ({
+    name: 'Power Drill',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.2,
+    power: -0.8,
+    speed: 2,
+    description: "Stealth and Subtlety are cool, but sometimes you just want to get straight to the point",
+    class: 'Rogue',
+    bonusEffect: 'critical',
+    effectDescription: "All of the Rogue's attacks are Critical (Double damage, Ignores armor)",
+    icon: 'ra-battery'
+  })
 }
