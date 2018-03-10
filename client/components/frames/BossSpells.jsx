@@ -28,6 +28,7 @@ class BossSpell extends Component {
     let aliveTargets = party.filter(member => member.isAlive)
     // if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
+      //furnace
       case 'Boil':
         let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
@@ -35,8 +36,18 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Exhaust Heat':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+
+      //conveyer
       case 'Activate':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: 10})
+      case 'Discharge':
+        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.tickPercentage})
+      case 'Power Drill':
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+      case 'Repair':
+        dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana / spell.ticks})
+        dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power / spell.ticks})
+        return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor / spell.ticks})
       default: return
     }
   }
@@ -47,6 +58,7 @@ class BossSpell extends Component {
     let aliveTargets = party.filter(member => member.isAlive)
     if (aliveTargets.length == 0) power*=2
     switch(spell.name) {
+      //Dragon
       case 'Roar':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
       case 'Weakened Bite':
@@ -55,35 +67,49 @@ class BossSpell extends Component {
       case 'Feeble Fire':
         dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 200})
+
+      //Wilds
       case 'Bite':
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Protect':
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.powerRatio})
+
+      //Turtle
       case 'Trample':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
+
+      //Spider
       case 'Spit':
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Feed':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.powerRatio})
+
+      //Swamp
       case 'Regenerate':
         dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor})
         return dispatch({type: 'HEAL_BOSS', power: spell.health})
+
+      //Slime
+      case 'Sludge Bomb':
+      dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
+      return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Seep':
         dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 0.05})
         dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.05})
         return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+
+      //Deer
       case 'Plague Bite':
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Decay':
         dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      case 'Sludge Bomb':
-        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
-        return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
+
+      //Locusts
       case 'Overwhelm':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
@@ -93,6 +119,8 @@ class BossSpell extends Component {
           dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }
+
+      //Piltherer
       case 'Ravage':
         dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.03})
@@ -103,6 +131,8 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
+
+      //Furnace
       case 'Heat Up':
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana})
@@ -112,8 +142,29 @@ class BossSpell extends Component {
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
+
+      //conveyer
+        //stage 0
       case 'Activate':
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+
+        //stage 1
+      case 'Recharge':
+        return dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana})
+      case 'Short Cicuit':
+        return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage: spell.percentage})
+
+        //stage 2
+      case 'Payload':
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+      case 'Power Up': return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+
+        //stage 3
+      case 'Repair': return
+      case 'Speed Up':
+        dispatch({type: 'BOSS_SPELLS_REDUCE_COOLDOWN', percentage: spell.percentage})
+        return dispatch({type: 'BOSS_SPELLS_REDUCE_CAST', percentage: spell.percentage})
+
       case 'Change Gears':
         let stage = boss[spell.stage]
         if (boss.mana == spell.manaRequired) stage = boss['stageThree']
@@ -124,7 +175,6 @@ class BossSpell extends Component {
   tickCD() {
     let {currentCD} = this.state
     const {spell, started, boss} = this.props
-    console.log(this.mounted, 'mounted');
     if (!this.cooldownInterval || !this.mounted) return clearInterval(this.cooldownInterval)
     currentCD+= 0.1
     if (currentCD >= spell.coolDown && started) {

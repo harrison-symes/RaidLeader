@@ -39,7 +39,13 @@ class CyclingConveyer extends BossFrame {
             }
           case 'stageThree':
             switch(spell.name) {
-
+              case 'Repair':
+                return true
+              case 'Discharge':
+                return true
+              case 'Power Drill':
+                return true
+              case 'Speed Up': return true
               default: return null
             }
           default: return null

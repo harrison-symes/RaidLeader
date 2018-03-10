@@ -112,6 +112,17 @@ export default function boss (state = null, action) {
       }
       newState.spells = action.stage.spells.map(spell => ({...spell, onCooldown: false}))
       return clone(newState)
+    case 'BOSS_SPELLS_REDUCE_COOLDOWN':
+      newState.spells = newState.spells.map(spell => {
+        spell.coolDown -= (spell.coolDown * action.percentage)
+      })
+      return newState
+    case 'BOSS_SPELLS_REDUCE_CAST':
+      newState.spells = newState.spells.map(spell => {
+        spell.cast -= (spell.cast * action.percentage)
+      })
+      return newState
+
     default: return state
   }
 }

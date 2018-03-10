@@ -52,9 +52,9 @@ export default {
         type: 'damage',
         singleTarget: false,
         powerRatio: 50,
-        mana: 10,
+        mana: 20,
         onCooldown: false,
-        description: 'Gain 10 Mana',
+        description: 'Gain 20 Mana',
         icon: 'ra-energise'
       },
       {
@@ -65,6 +65,7 @@ export default {
         type: 'damage',
         singleTarget: false,
         powerRatio: 1,
+        tickPower: 1,
         onCooldown: false,
         percentage: 0.3,
         description: 'Set ALL recruits to 30% of their Max Health',
@@ -81,13 +82,15 @@ export default {
         onCooldown: false,
         tickPower: 0.1,
         powerRatio: 1,
+        ticks: 10,
+        tickPercentage: 0.05,
         description: 'Damage ALL recruits for 50% of their Max Health over the cast',
         icon: 'ra-defibrilate'
       },
       {
         name: 'Change Gears',
         manaRequired: 200,
-        cast: 5,
+        cast: 2,
         cost: 0,
         coolDown: 60,
         onCooldown: false,
@@ -101,13 +104,13 @@ export default {
   },
   stageTwo: {
     stage: 'stageTwo',
-    description: 'During Stage 2 the Conveyer will cast focused on dealing direct damage',
+    description: 'During Stage 2 the Conveyer will cast focused on dealing direct damage, casting spells from right to left',
     manaRegen: 1,
     spells: [
       {
         name: 'Change Gears',
         manaRequired: 200,
-        cast: 5,
+        cast: 2,
         cost: 0,
         coolDown: 60,
         onCooldown: false,
@@ -128,7 +131,7 @@ export default {
         ticks: 5,
         onCooldown: false,
         singleTarget: true,
-        description: "Damage the Boss' Target for (100%) Power over the cast",
+        description: "Damage the Boss' Target for (100%) Power during the cast",
         icon: 'ra-drill'
       },
       {
@@ -161,7 +164,7 @@ export default {
   stageThree: {
     stage: 'stageThree',
     description: 'During Stage 3 the Conveyer will stop gaining mana every second, and will use a mix of spells from the previous stages.',
-    manaRegen: 1,
+    manaRegen: 0,
     spells: [
       {
         name: 'Repair',
@@ -172,10 +175,12 @@ export default {
         powerRatio: 1,
         power: 10,
         mana: 10,
-        health: 500,
+        armor: 250,
+        isChanneled: true,
+        ticks: 10,
         onCooldown: false,
         singleTarget: false,
-        description: "The Boss gains 10 Power, 10 Mana and restores 500 Health",
+        description: "The Boss gains 10 Power, 10 Mana and restores 250 Armor during the cast of this spell",
         icon: 'ra-repair'
       },
       {
@@ -189,6 +194,8 @@ export default {
         onCooldown: false,
         tickPower: 0.1,
         powerRatio: 1,
+        ticks: 10,
+        tickPercentage: 0.05,
         description: 'Damage ALL recruits for 50% of their Max Health over the cast',
         icon: 'ra-defibrilate'
       },
@@ -209,9 +216,10 @@ export default {
       {
         name: 'Speed Up',
         cast: 5,
-        cost: 0,
+        cost: 10,
         coolDown: 10,
         powerRatio: 1,
+        percentage: 0.1,
         onCooldown: false,
         singleTarget: false,
         description: 'Reduce the Cast Time and Cooldown of ALL Boss Spells by 10%',
