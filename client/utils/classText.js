@@ -100,6 +100,10 @@ export function attackIcons (heroClass) {
       rotation: 0,
       icon: 'ra-fluffy-swirl'
     }
+    case 'Player': return {
+      colour: 'white',
+      icon: 'ra-player-king'
+    }
     default: return null
   }
 }

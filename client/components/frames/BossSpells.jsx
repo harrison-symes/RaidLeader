@@ -67,7 +67,7 @@ class BossSpell extends Component {
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 100})
       case 'Feeble Fire':
         dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
-        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 200})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: 150})
 
       //Wilds
       case 'Bite':

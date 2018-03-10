@@ -134,10 +134,11 @@ export function ArmorIcon ({value}) {
 }
 
 export function ClassIcon ({heroClass, id}) {
+  console.log({heroClass});
   return toolTipGenerator(
     <p>Class: {heroClass}</p>,
     <span>
-      <i style={{color: attackIcons(heroClass).colour }} id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
+      <i style={{color: attackIcons(heroClass).colour || 'white'}} id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
     </span>
   )
 }

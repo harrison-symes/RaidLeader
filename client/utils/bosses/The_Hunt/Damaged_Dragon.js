@@ -2,9 +2,9 @@ export default {
   name: 'Damaged Dragon',
   level: 1,
   initHp: 10000,
-  hp: 2000,
+  hp: 1500,
   initPower: 1000,
-  power: 200,
+  power: 150,
   initArmor: 5000,
   armor: 0,
   mana: 10,
@@ -41,7 +41,7 @@ export default {
       singleTarget: false,
       powerRatio: 0.15,
       onCooldown: false,
-      description: 'Damage ALL enemy characters for 15% BOSS POWER, lose 200 health',
+      description: 'Damage ALL enemy characters for 15% BOSS POWER, lose 150 health',
       icon: 'ra-dragon-breath'
     },
     {
