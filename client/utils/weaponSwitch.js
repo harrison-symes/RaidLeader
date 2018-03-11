@@ -217,7 +217,7 @@ module.exports = {
     description: 'A lost shield from a fallen adventurer. "A. Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-zebra-shield'
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -232,7 +232,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-dripping-sword'
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Daggers',
@@ -247,7 +247,7 @@ module.exports = {
     description: 'A lost pair of Daggers from a fallen adventurer. "Joe Van Boe" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-dripping-knife'
   }),
   ['Plagued Arrows']: (level, id) => ({
     name: 'Plagued Arrows',
@@ -277,7 +277,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "A A. Ron" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-scythe'
   }),
   ['Plagued Stave']: (level, id) => ({
     name: 'Plagued Stave',
@@ -289,10 +289,10 @@ module.exports = {
     power: 0.5,
     speed: 0,
     class: 'Monk',
-    description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-laser-blast'
   }),
   ['Plagued Wand']: (level, id) => ({
     name: 'Plagued Wand',
@@ -304,10 +304,10 @@ module.exports = {
     power: -0.3,
     speed: 0.3,
     class: 'Mage',
-    description: 'A lost weapon from a fallen adventurer. "Jazz Man" is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-spear-head'
   }),
   ['The Antidote']: (level, id) => ({
     name: 'The Antidote',
@@ -319,7 +319,7 @@ module.exports = {
     power: -0.9,
     speed: 1.5,
     class: 'Shaman',
-    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `When the Shaman casts Renew on a target, the target is cured of any Poison Effect`,
     icon: 'ra-heart-bottle'
@@ -334,7 +334,7 @@ module.exports = {
     power: 0.2,
     speed: 0.2,
     class: 'Priest',
-    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
     icon: 'ra-book'
