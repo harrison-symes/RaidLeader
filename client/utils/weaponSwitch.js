@@ -397,7 +397,7 @@ module.exports = {
     class: 'Mage',
     bonusEffect: 'charge',
     effectDescription: "The Mage's attacks restore 1 Mana to the Player",
-    icon: 'ra-battery'
+    icon: 'ra-laser-site'
   }),
   ['Lightning Rod']: (level, id) => ({
     name: 'Lightning Rod',
@@ -412,7 +412,7 @@ module.exports = {
     class: 'Warlock',
     bonusEffect: 'lightningRod',
     effectDescription: "The Warlock now only damages themselves for 5% of Max Health whenever they attack (instead of damagin ALL party members)",
-    icon: 'ra-battery'
+    icon: 'ra-magnet'
   }),
   ['Power Drill']: (level, id) => ({
     name: 'Power Drill',
@@ -427,6 +427,6 @@ module.exports = {
     class: 'Rogue',
     bonusEffect: 'critical',
     effectDescription: "All of the Rogue's attacks are Critical (Double damage, Ignores armor)",
-    icon: 'ra-battery'
+    icon: 'ra-drill'
   })
 }
