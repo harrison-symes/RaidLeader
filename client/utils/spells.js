@@ -428,7 +428,7 @@ module.exports = {
     id: 26,
     name: 'Life Soul',
     cast: 2,
-    cost: 5,
+    cost: 10,
     coolDown: 30,
     singleTarget: false,
     percentage: 0.1,
@@ -453,6 +453,21 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Fire Soul': {
+    id: 26,
+    name: 'Fire Soul',
+    cast: 2,
+    cost: 10,
+    coolDown: 30,
+    singleTarget: false,
+    percentage: 0.1,
+    greaterPercentage: 0.2,
+    description: "Reduces the Cast Time and Cooldown of your spells by 10%. If you only have Fire Spells, increase your Player Power and Mana Regen by 10%",
+    icon: 'ra-aura',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
   },
 }
 

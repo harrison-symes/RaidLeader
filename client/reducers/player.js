@@ -47,6 +47,9 @@ export default function player (state = null, action) {
     case 'PERCENT_INCREASE_POWER':
       newState.power += newState.power * action.percentage
       return newState
+    case 'PERCENT_INCREASE_MANA_REGEN':
+      newState.manaRegen += newState.manaRegen * action.percentage
+      return newState
     case 'REDUCE_SPELL_COST':
       newState.spells = newState.spells.map(spell => {
         spell.cost -= action.reduction

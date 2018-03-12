@@ -157,6 +157,13 @@ class PlayerSpell extends Component {
           dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.2})
         }
         return dispatch({type: 'REDUCE_SPELL_COST', reduction: 1})
+      case 'Fire Soul':
+        if (!player.spells.find(spell => spell.element != 'Fire')) {
+          dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
+          dispatch({type: 'PERCENT_INCREASE_MANA_REGEN', percentage: 0.1})
+        }
+        dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
+        return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
       default: return
     }
   }
