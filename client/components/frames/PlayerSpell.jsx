@@ -53,7 +53,6 @@ class PlayerSpell extends Component {
         }
         return
       case 'Cauterize':
-        console.log({spell, target});
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
       default: return
     }
@@ -134,9 +133,11 @@ class PlayerSpell extends Component {
         dispatch({type: 'BOSS_GAIN_MANA', amount: bossMana * -1})
         return dispatch({type: 'PLAYER_GAIN_MANA', power: bossMana})
       case 'Cauterize':
-        let percentage = spell.percentage
+        percentage = spell.percentage
         if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
         return dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.percentage})
+      case 'Alignment':
+        return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage: player.spells.find(spell => spell.element == 'Life') ? spell.percentage : spell.greaterPercentage})
       default: return
     }
   }

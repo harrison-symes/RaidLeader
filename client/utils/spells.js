@@ -384,12 +384,27 @@ module.exports = {
     tickPower: 1,
     tickPercentage: 0.1,
     percentage: 0.5,
-    greaterPercentage: 0.7
+    greaterPercentage: 0.7,
     description: 'Damage a target Recruit for 30% Max Health over 3 seconds, then heal the target for %50 of Max Health. If you have no Life Spells, heal for %70 instead.',
     icon: 'ra-heartburn',
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire'
+  },
+  'Alignment': {
+    id: 24,
+    name: 'Alignment',
+    cast: 3,
+    cost: 10,
+    coolDown: 15,
+    singleTarget: false,
+    percentage: 30,
+    greaterPercentage: 50,
+    description: 'Set ALL Recruits to 30% of their Max Health. If you have no Life Spells, set them to 50% Health instead.',
+    icon: 'ra-gear-heart',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
 
