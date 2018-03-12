@@ -47,6 +47,28 @@ export default function player (state = null, action) {
     case 'PERCENT_INCREASE_POWER':
       newState.power += newState.power * action.percentage
       return newState
+    case 'REDUCE_SPELL_COST':
+      newState.spells = newState.spells.map(spell => {
+        spell.cost -= action.reduction
+        if (spell.cost < 0) spell.cost = 0
+        return spell
+      })
+      return newState
+    case 'REDUCE_SPELL_CAST':
+      newState.spells = newState.spells.map(spell => {
+        spell.cast -= spell.cast * action.percentage
+        if (spell.cast < 0) spell.cast = 0
+        console.log({spell});
+        return spell
+      })
+      return newState
+    case 'REDUCE_SPELL_COOLDOWN':
+      newState.spells = newState.spells.map(spell => {
+        spell.coolDown -= spell.coolDown * action.percentage
+        if (spell.coolDown < 0) spell.coolDown = 0
+        return spell
+      })
+      return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       if (action.target.id != newState.id) return state

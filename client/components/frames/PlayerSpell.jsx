@@ -151,7 +151,12 @@ class PlayerSpell extends Component {
             ? spell.percentage
             : spell.greaterPercentage
         })
-
+      case 'Arcane Soul':
+        if (!player.spells.find(spell => spell.element != 'Arcane')) {
+          dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.2})
+          dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.2})
+        }
+        return dispatch({type: 'REDUCE_SPELL_COST', reduction: 1})
       default: return
     }
   }

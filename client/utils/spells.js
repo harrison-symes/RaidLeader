@@ -438,7 +438,22 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
-  }
+  },
+  'Arcane Soul': {
+    id: 26,
+    name: 'Arcane Soul',
+    cast: 2,
+    cost: 10,
+    coolDown: 30,
+    singleTarget: false,
+    percentage: 0.1,
+    greaterPercentage: 0.2,
+    description: "Reduces the Mana Cost of your Spells by 1. If you only have Arcane Spells, reduce the Cast Time and Cooldown of your spells by 20%",
+    icon: 'ra-aura',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
+  },
 }
 
 // 'Guardian Angel': {
