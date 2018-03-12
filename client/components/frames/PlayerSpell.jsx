@@ -62,7 +62,7 @@ class PlayerSpell extends Component {
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health, target})
       case 'Arcane Torrent':
         let damagedRecruits = party.filter(recruit => recruit.hp < recruit.initHp)
-        dispatch({type: 'PLAYER_GAIN_MANA', amount: -1})
+        dispatch({type: 'PLAYER_GAIN_MANA', power: -1})
         if (!player.spells.find(spell => spell.element == 'Life')) power*=2
         if (damagedRecruits.length == 0) return dispatch({
           type: 'PHYSICAL_ATTACK_BOSS',
