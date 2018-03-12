@@ -19,15 +19,24 @@ class Library extends Component {
     this.showOptions = this.showOptions.bind(this)
     this.reset = this.reset.bind(this)
   }
+  findByElement(element) {
+    const spellsByElement = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).map(name => spells[name]).filter(spell => spell.element == element)
+    if (spellsByElement.length) return spellsByElement[Math.floor(Math.random() * spellsByElement.length)]
+  }
   solveOptions() {
     const offeredSpells = []
     const spellNames = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell))
     if (spellNames.length < 4) return spellNames.map(name => spells[name])
-    while (offeredSpells.length < 4)  {
-      let idx = Math.floor(Math.random() * spellNames.length)
-      let spell = spells[spellNames[idx]]
-      if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
-    }
+    const Life = this.findByElement('Life')
+    const Fire = this.findByElement('Fire')
+    const Shadow = this.findByElement('Shadow')
+    const Arcane = this.findByElement('Arcane')
+    return [Life, Fire, Shadow, Arcane].filter(item => !!item)
+    // while (offeredSpells.length < 4)  {
+    //   let idx = Math.floor(Math.random() * spellNames.length)
+    //   let spell = spells[spellNames[idx]]
+    //   if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
+    // }
     return offeredSpells
   }
   selectSpell (selectedSpell) {
