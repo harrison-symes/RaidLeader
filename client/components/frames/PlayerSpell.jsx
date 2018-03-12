@@ -56,6 +56,10 @@ class PlayerSpell extends Component {
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
       case 'Mass Cauterize':
         return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
+      case 'Life Funnel':
+        let health = player.initHp * spell.tickPercentage
+        dispatch({type: 'DAMAGE_PLAYER', power: health})
+        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health, target})
       default: return
     }
   }

@@ -155,11 +155,11 @@ module.exports = {
     singleTarget: false,
     powerRatio: 3,
     mana: 10,
-    description: 'Lose (5%) hp, 10 mana',
+    description: 'Lose (5%) hp, gain 10 mana',
     icon: 'ra-cut-palm',
     color: colors.darkPurple,
     background: colors.faintPink,
-    element: 'Fire'
+    element: 'Shadow'
   },
   'Evocate': {
     id: 10,
@@ -440,7 +440,7 @@ module.exports = {
     element: 'Life'
   },
   'Arcane Soul': {
-    id: 26,
+    id: 27,
     name: 'Arcane Soul',
     cast: 2,
     cost: 10,
@@ -455,7 +455,7 @@ module.exports = {
     element: 'Arcane'
   },
   'Fire Soul': {
-    id: 26,
+    id: 28,
     name: 'Fire Soul',
     cast: 2,
     cost: 10,
@@ -470,7 +470,7 @@ module.exports = {
     element: 'Fire'
   },
   'Shadow Soul': {
-    id: 26,
+    id: 29,
     name: 'Shadow Soul',
     cast: 2,
     cost: 10,
@@ -480,6 +480,23 @@ module.exports = {
     greaterPercentage: 0.2,
     description: "Increase the Power of ALL Recruits by 10% at the cost of 20% Player Health. If you only have Shadow Spells, Heal the Player for 20% Health instead.",
     icon: 'ra-aura',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
+  },
+  'Life Funnel': {
+    id: 30,
+    name: 'Life Funnel',
+    cast: 5,
+    cost: 10,
+    coolDown: 0,
+    singleTarget: true,
+    tickPercentage: 0.01,
+    tickPower: 1,
+    ticks: 5,
+    isChanneled: true,
+    description: "Transfer 5% of Player Health to the target over 5 seconds",
+    icon: 'ra-shot-through-the-heart',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
