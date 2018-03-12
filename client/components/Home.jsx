@@ -13,7 +13,7 @@ export default function Home (props) {
         <Router>
           <div>
             <div className="container" style={{width: '50vw', marginLeft: '25vw'}}>
-              <h1 className="title is-1">Welcome to Raid Leader v0.2</h1>
+              <h1 className="title is-1">Welcome to Raid Leader v0.3</h1>
               <Route exact path='/' component={() => <div className=" has-text-centered" >
                 <Link to="/login" className="button is-large is-fullwidth is-info">Login</Link>
                 <Link to="/register" className="button is-large is-fullwidth is-primary">Register</Link>
