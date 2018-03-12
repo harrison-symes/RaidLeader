@@ -371,6 +371,25 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
+  },
+  'Cauterize': {
+    id: 23,
+    name: 'Cauterize',
+    cast: 3,
+    cost: 5,
+    coolDown: 5,
+    singleTarget: true,
+    isChanneled: true,
+    ticks: 3,
+    tickPower: 1,
+    tickPercentage: 0.1,
+    percentage: 0.5,
+    greaterPercentage: 0.7
+    description: 'Damage a target Recruit for 30% Max Health over 3 seconds, then heal the target for %50 of Max Health. If you have no Life Spells, heal for %70 instead.',
+    icon: 'ra-heartburn',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
   }
 }
 

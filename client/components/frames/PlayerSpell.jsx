@@ -29,8 +29,9 @@ class PlayerSpell extends Component {
     }
   }
   tickSwitch() {
-    let {spell, dispatch, player, party, target} = this.props
+    let {spell, dispatch, player, party} = this.props
     const power = this.props.player.power * spell.tickPower
+    let target = this.state.target
     if (target) target = party.find(other => other.id == target.id)
     switch(spell.name) {
       case 'Drain Life':
@@ -51,6 +52,9 @@ class PlayerSpell extends Component {
           dispatch({type: 'RESURRECT_TARGET', target, health: power})
         }
         return
+      case 'Cauterize':
+        console.log({spell, target});
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
       default: return
     }
   }
@@ -129,7 +133,10 @@ class PlayerSpell extends Component {
         if (!player.spells.find(spell => spell.element == 'Life')) dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'BOSS_GAIN_MANA', amount: bossMana * -1})
         return dispatch({type: 'PLAYER_GAIN_MANA', power: bossMana})
-
+      case 'Cauterize':
+        let percentage = spell.percentage
+        if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
+        return dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.percentage})
       default: return
     }
   }
