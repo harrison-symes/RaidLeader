@@ -54,6 +54,8 @@ class PlayerSpell extends Component {
         return
       case 'Cauterize':
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
+      case 'Mass Cauterize':
+        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
       default: return
     }
   }
@@ -135,9 +137,13 @@ class PlayerSpell extends Component {
       case 'Cauterize':
         percentage = spell.percentage
         if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
-        return dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage})
       case 'Alignment':
         return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage: player.spells.find(spell => spell.element == 'Life') ? spell.percentage : spell.greaterPercentage})
+      case 'Mass Cauterize':
+        percentage = spell.percentage
+        if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
+        return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: percentage})
       default: return
     }
   }

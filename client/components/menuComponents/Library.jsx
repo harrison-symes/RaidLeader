@@ -50,7 +50,7 @@ class Library extends Component {
   render() {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell, learntSpell} = this.state
-    const spellCost = 50 + (spellBook.length * 150)
+    const spellCost = 150 + (spellBook.length * 100)
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
