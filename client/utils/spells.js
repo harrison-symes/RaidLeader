@@ -501,6 +501,22 @@ module.exports = {
     background: colors.faintPink,
     element: 'Shadow'
   },
+  'Arcane Torrent': {
+    id: 31,
+    name: 'Arcane Torrent',
+    cast: 10,
+    cost: 10,
+    coolDown: 30,
+    singleTarget: false,
+    tickPower: 0.2,
+    ticks: 20,
+    isChanneled: true,
+    description: "Fire 20 bolts randomly during the cast. Each bolt will consume 1 mana to heal a Random Damaged Recruit or damage the Boss for (0.2%) Player Power. If you have no Life Spells, double the power of each bolt",
+    icon: 'ra-radial-balance',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
+  },
 }
 
 // 'Guardian Angel': {

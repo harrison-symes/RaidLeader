@@ -30,7 +30,7 @@ class PlayerSpell extends Component {
   }
   tickSwitch() {
     let {spell, dispatch, player, party} = this.props
-    const power = this.props.player.power * spell.tickPower
+    let power = this.props.player.power * spell.tickPower
     let target = this.state.target
     if (target) target = party.find(other => other.id == target.id)
     switch(spell.name) {
@@ -60,6 +60,19 @@ class PlayerSpell extends Component {
         let health = player.initHp * spell.tickPercentage
         dispatch({type: 'DAMAGE_PLAYER', power: health})
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health, target})
+      case 'Arcane Torrent':
+        let damagedRecruits = party.filter(recruit => recruit.hp < recruit.initHp)
+        dispatch({type: 'PLAYER_GAIN_MANA', amount: -1})
+        if (!player.spells.find(spell => spell.element == 'Life')) power*=2
+        if (damagedRecruits.length == 0) return dispatch({
+          type: 'PHYSICAL_ATTACK_BOSS',
+          power
+        })
+        return dispatch({
+          type: 'HEAL_FRIENDLY_TARGET',
+          power,
+          target: damagedRecruits[Math.floor(Math.random() * damagedRecruits.length)]
+        })
       default: return
     }
   }
