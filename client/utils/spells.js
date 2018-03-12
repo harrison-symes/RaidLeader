@@ -469,6 +469,21 @@ module.exports = {
     background: colors.lightOrange,
     element: 'Fire'
   },
+  'Shadow Soul': {
+    id: 26,
+    name: 'Shadow Soul',
+    cast: 2,
+    cost: 10,
+    coolDown: 30,
+    singleTarget: false,
+    percentage: 0.1,
+    greaterPercentage: 0.2,
+    description: "Increase the Power of ALL Recruits by 10% at the cost of 20% Player Health. If you only have Shadow Spells, Heal the Player for 20% Health instead.",
+    icon: 'ra-aura',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
+  },
 }
 
 // 'Guardian Angel': {

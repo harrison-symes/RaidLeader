@@ -8,6 +8,11 @@ export default function party (state = [], action) {
       return []
     case 'LOAD_GAME':
       return action.playerParty.map(recruit => ({...recruit}))
+    case 'PERCENT_INCREASE_RECRUIT_POWER':
+      return newState.map(recruit => {
+        recruit.power += recruit.power * action.percentage
+        return recruit
+      })
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       let target = newState.find(member => member.id == action.target.id)
