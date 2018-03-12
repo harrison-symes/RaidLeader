@@ -354,6 +354,23 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Drain Mana': {
+    id: 22,
+    name: 'Drain Mana',
+    cast: 2,
+    cost: 0,
+    coolDown: 10,
+    type: 'support',
+    powerRatio: 0,
+    singleTarget: false,
+    max: 5,
+    percentage: 0.3,
+    description: 'Steal up to 5 Mana from the Boss. If you have no Life Spells, Heal ALL Recruits for 30% of their Max Health',
+    icon: 'ra-reverse',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   }
 }
 

@@ -55,7 +55,7 @@ class PlayerSpell extends Component {
     }
   }
   castSwitch(target) {
-    const {spell, dispatch, player, party} = this.props
+    const {spell, dispatch, player, party, boss} = this.props
     const power = this.props.player.power * spell.powerRatio
     console.log({target, party});
     // if (target) target = party.find(other => other.id == target.id)
@@ -121,6 +121,15 @@ class PlayerSpell extends Component {
         }, 0)
         percentage = percentage / party.filter(member => member.isAlive).length
         return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage})
+      case 'Drain Mana':
+        let bossMana = boss.mana
+        if (bossMana < 0) bossMana = 0
+        else if (bossMana > spell.max) bossMana = 5
+        console.log({bossMana});
+        if (!player.spells.find(spell => spell.element == 'Life')) dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'BOSS_GAIN_MANA', amount: bossMana * -1})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: bossMana})
+
       default: return
     }
   }
@@ -207,13 +216,14 @@ class PlayerSpell extends Component {
   }
 }
 
-const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget}) => {
+const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget, boss}) => {
   return {
     started,
     player,
     selectedSpell,
     friendlyTarget,
-    party
+    party,
+    boss
   }
 }
 
