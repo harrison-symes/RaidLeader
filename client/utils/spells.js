@@ -423,6 +423,21 @@ module.exports = {
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire'
+  },
+  'Life Soul': {
+    id: 26,
+    name: 'Life Soul',
+    cast: 2,
+    cost: 5,
+    coolDown: 30,
+    singleTarget: false,
+    percentage: 0.1,
+    greaterPercentage: 0.2,
+    description: "Increase your Player Power by 10%. If you only have Life Spells, increase Power by 20% instead",
+    icon: 'ra-aura',
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   }
 }
 

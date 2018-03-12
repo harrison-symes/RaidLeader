@@ -144,6 +144,14 @@ class PlayerSpell extends Component {
         percentage = spell.percentage
         if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
         return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: percentage})
+      case 'Life Soul':
+        return dispatch({
+          type: 'PERCENT_INCREASE_POWER',
+          percentage: player.spells.find(spell => spell.element != 'Life')
+            ? spell.percentage
+            : spell.greaterPercentage
+        })
+
       default: return
     }
   }

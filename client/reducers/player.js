@@ -44,6 +44,9 @@ export default function player (state = null, action) {
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'PERCENT_INCREASE_POWER':
+      newState.power += newState.power * action.percentage
+      return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       if (action.target.id != newState.id) return state
