@@ -42,7 +42,7 @@ class BossSelection extends React.Component {
           </div>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Back</button>
         </footer>
       </div>
     </div>
