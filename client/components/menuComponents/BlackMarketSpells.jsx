@@ -17,11 +17,13 @@ class BlackMarketSpells extends Component {
     this.setState({selected})
   }
   sellSpell() {
-    this.props.dispatch(sellSpell(this.state.selected.name, (this.props.spells.length - 1) * 100))
+    const spellCost = 100 + (this.props.spells.length * 25)
+    this.props.dispatch(sellSpell(this.state.selected.name, -1 * spellCost))
   }
   render() {
     const {spells} = this.props
     const {selected} = this.state
+    const spellCost = 100 + (spells.length * 25)
     return <div className="has-text-centered">
       <span className="title is-3">Sell Spells</span>
       <hr />
@@ -57,7 +59,7 @@ class BlackMarketSpells extends Component {
           <hr />
           {spell.name == 'Heal'
             ? <button disabled className="button is-fullwidth is-danger">You can't sell this!</button>
-            : <button onClick={this.sellSpell} className="button is-fullwidth is-outlined is-success">Sell &nbsp; <GoldIcon value={`+${(((this.props.spells.length - 1) * 150) + 50) / 2}`} /></button>
+            : <button onClick={this.sellSpell} className="button is-fullwidth is-outlined is-success">Sell &nbsp; <GoldIcon value={`+${spellCost}`} /></button>
           }
         </div>}
       </div>)}

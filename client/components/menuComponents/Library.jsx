@@ -43,7 +43,8 @@ class Library extends Component {
     this.setState({selectedSpell})
   }
   showOptions() {
-    this.props.dispatch(earnGold(-1 * this.props.spellBook.length * 200))
+    const spellCost = 200 + (spellBook.length * 50)
+    this.props.dispatch(earnGold(-1 * spellCost))
     const offeredSpells = this.solveOptions()
     set('offeredSpells', JSON.stringify(offeredSpells))
     this.setState({showChoices: true, offeredSpells})
@@ -59,7 +60,7 @@ class Library extends Component {
   render() {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell, learntSpell} = this.state
-    const spellCost = 150 + (spellBook.length * 100)
+    const spellCost = 200 + (spellBook.length * 50)
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
