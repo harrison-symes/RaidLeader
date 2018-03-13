@@ -50,7 +50,7 @@ export default {
     {
       name: 'Sludge Bomb',
       cost: 2,
-      cast: 0,
+      cast: 3,
       coolDown: 7,
       powerRatio: 1,
       type: 'damage',
