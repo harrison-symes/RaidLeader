@@ -128,7 +128,8 @@ class PlayerSpell extends Component {
       case 'Ring of Fire':
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Purge':
-        if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: spell.mana * target.effects.length})
+        let healAmount = target.effects.length * (player.spells.find(spell => spell.element == 'Life') ? 0.1 : 0.2)
+        dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: healAmount})
         return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET', target})
       case 'Restore':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
