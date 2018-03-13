@@ -18,7 +18,7 @@ class BlackMarketSpells extends Component {
   }
   sellSpell() {
     const spellCost = 100 + (this.props.spells.length * 25)
-    this.props.dispatch(sellSpell(this.state.selected.name, -1 * spellCost))
+    this.props.dispatch(sellSpell(this.state.selected.name, spellCost))
   }
   render() {
     const {spells} = this.props
