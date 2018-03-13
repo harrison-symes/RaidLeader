@@ -121,7 +121,7 @@ class PlayerSpell extends Component {
       case 'Greater Renew':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
       case 'Siphon Life':
-        return dispatch({type: 'HEAL_ALL_FRIENDLY', power: player.power * 4})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Tranquility':
         dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
