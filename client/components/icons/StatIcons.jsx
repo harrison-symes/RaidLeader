@@ -34,9 +34,15 @@ export function DeadRecruitIcon ({name}) {
   )
 }
 
-export function PlayerIcon ({name}) {
+export function PlayerIcon ({player}) {
+  const {name, manaRegen, power} = player
   return toolTipGenerator(
-    <p>{name}</p>,
+    <span>
+      <p>{name}</p>
+      <hr />
+      <p>{manaRegen} Mana Regen</p>
+      <p>{power} Power</p>
+    </span>,
     <span>
       <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
     </span>
