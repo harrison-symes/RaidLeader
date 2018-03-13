@@ -60,7 +60,11 @@ export default function player (state = null, action) {
     case 'REDUCE_SPELL_CAST':
       newState.spells = newState.spells.map(spell => {
         spell.cast -= spell.cast * action.percentage
-        if (spell.cast < 1) spell.cast = 1
+        if (spell.cast < 0) spell.cast = 0
+        if (spell.isChanneled) {
+          let minCast = spell.ticks * 0.1
+          if (spell.cast < minCast) spell.cast = minCast
+        }
         return spell
       })
       return newState
