@@ -34,9 +34,9 @@ export default {
     },
     {
       name: 'Regenerate',
-      cast: 5,
+      cast: 3,
       cost: 0,
-      coolDown: 5,
+      coolDown: 15,
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
@@ -55,8 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      percentage: 0.5,
-      description: "Damage a random non-poisoned enemy recruit for (50%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      percentage: 0.6,
+      description: "Damage a random non-poisoned enemy recruit for (60%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-overhead'
     }
   ]
