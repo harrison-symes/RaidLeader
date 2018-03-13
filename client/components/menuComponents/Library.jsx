@@ -43,7 +43,7 @@ class Library extends Component {
     this.setState({selectedSpell})
   }
   showOptions() {
-    const spellCost = 200 + (spellBook.length * 50)
+    const spellCost = 200 + (this.props.spellBook.length * 50)
     this.props.dispatch(earnGold(-1 * spellCost))
     const offeredSpells = this.solveOptions()
     set('offeredSpells', JSON.stringify(offeredSpells))
