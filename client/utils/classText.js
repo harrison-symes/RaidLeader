@@ -2,9 +2,9 @@ export function startingBuff (heroClass) {
   switch(heroClass) {
     case 'Paladin': return 'The Paladin gains (+3%) HP for each other Party Member. The Paladin also starts as both the Player and the Boss target'
     case 'Priest': return "The Priest increases each Party Member's max HP by (10%)"
-    case 'Rogue': return "The Rogue damages the Boss equal to (5%) of the Boss' current HP"
+    case 'Rogue': return "The Rogue removes (5%) of the Boss' current HP"
     case 'Warrior': return "The Warrior increases the Power of each other Party Member by (+10%)"
-    case 'Warlock': return "The Warlock removes armor from the Boss (Armor removed = (300%) of Warlock's Power)"
+    case 'Warlock': return "The Warlock removes (10%) of the Boss' Armor"
     case 'Mage': return "The Mage increases the Player's Mana by (20%)"
     case 'Monk': return "The Monk gains (50%) more speed for each other Party Member"
     case 'Hunter': return "The Hunter increases the speed of all other party members by 10%"

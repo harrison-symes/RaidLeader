@@ -95,7 +95,7 @@ export default function boss (state = null, action) {
       newState.hp = newState.hp * 0.9
       return newState
     case 'WARLOCK_START_BUFF':
-      newState.armor-=action.power
+      newState.armor-=newState.armor * 0.1
       if (newState.armor < 0) newState.armor = 0
       return newState
     case 'PALADIN_START_BUFF':
