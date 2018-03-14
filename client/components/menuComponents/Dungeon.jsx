@@ -36,7 +36,7 @@ class Dungeon extends React.Component {
     const background = MenuBackground(dungeon.name)
     return <div className="box has-text-centered" style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
       <div onClick={()=>this.clickDungeon()} style={{cursor: 'pointer'}} className="level">
-        <p  className="title is-2">{dungeon.name} </p>
+        <p style={{textDecoration: 'none'}} className="title is-2 box"><i className={`ra ra-fw ${background.icon}`}/>&nbsp; {dungeon.name} &nbsp; </p>
         {dungeon.isCompleted
           ? <span className={`icon is-large has-text-${dungeon.is_repeatable ? 'success' : 'dark'}` }><i className="ra ra-3x ra-skull-trophy" /></span>
           : !levelRestrict
@@ -52,7 +52,9 @@ class Dungeon extends React.Component {
       </div>
       {selected == dungeon && !levelRestrict && <div>
         <div className="box">
-          <p className="title is-4">Dungeon Level: {dungeon.level}</p>
+          <p className="title is-2">Dungeon Level {dungeon.level}</p>
+          <hr />
+          <p className="subtitle is-3">You May Bring:</p>
           <div className="level">
             <div className="column is-6"><p className="subtitle is-3">{dungeon.max_party} Recruit{dungeon.max_party == 1 ? '':'s'}</p></div>
             <div className="column is-6"><p className="subtitle is-3">{dungeon.max_spells} Spell{dungeon.max_spells == 1 ? '':'s'}</p></div>
