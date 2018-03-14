@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "This Spider knows you hate her, but she hates you too, and she spits on you for it.",
   goldReward: 400,
-  weaponRewards: ['Fine Silk', 'Spider Eye Wand'],
+  weaponRewards: ['Fine Silk', 'Spider Eye Wand', 'Lute Thread'],
   weaponChance: 1,
   progress_required: 2,
   icon: 'ra-spider-face',

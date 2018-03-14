@@ -204,6 +204,20 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-eyeball'
   }),
+  ['Lute Thread']: (level, id) => ({
+    name: 'Lute Thread',
+    type: 'Weapon',
+    level,
+    id,
+    value: 200,
+    hp: 0.2,
+    power: -0.4,
+    speed: 0.2,
+    class: 'Bard',
+    description: "The Loot you received will go perfectly with a Lute.",
+    bonusEffect: null,
+    icon: 'ra-vine-whip'
+  }),
   ['Plagued Aegis']: (level, id) => ({
     name: 'Plagued Aegis',
     type: 'Weapon',
@@ -337,6 +351,21 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
+    icon: 'ra-book'
+  }),
+  ['Plagued Ocarina']: (level, id) => ({
+    name: 'Glowing Libram',
+    type: 'Weapon',
+    level,
+    id,
+    value: 500,
+    hp: -0.2,
+    power: 0.5,
+    speed: 0,
+    class: 'Priest',
+    description: '"The Ocarina of Slime"',
+    bonusEffect: 'selfPoison',
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
     icon: 'ra-book'
   }),
   ['Cracked Chassis']: (level, id) => ({
