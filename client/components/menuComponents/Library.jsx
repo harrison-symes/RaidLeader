@@ -42,6 +42,13 @@ class Library extends Component {
   selectSpell (selectedSpell) {
     this.setState({selectedSpell})
   }
+  reRoll() {
+    const rollCost = 100
+    this.props.dispatch(earnGold(-1 * rollCost))
+    const offeredSpells = this.solveOptions()
+    set('offeredSpells', JSON.stringify(offeredSpells))
+    this.setState({showChoices: true, offeredSpells})
+  }
   showOptions() {
     const spellCost = 200 + (this.props.spellBook.length * 50)
     this.props.dispatch(earnGold(-1 * spellCost))
@@ -61,12 +68,12 @@ class Library extends Component {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell, learntSpell} = this.state
     const spellCost = 200 + (spellBook.length * 50)
+    const rollCost = 100
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">
-            <i className="icon ra ra-crystal-ball" />&nbsp;The Library&nbsp;<i className="icon ra ra-crystal-ball" /></p>
+          <p className="modal-card-title is-1">Library&nbsp; - <GoldIcon value={gold} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
@@ -105,7 +112,8 @@ class Library extends Component {
               {showChoices
                 ? (<div>
                   <p className="title is-3">Choose a Spell:</p>
-                  <br />
+                  <span className="subtitle is-3">Or <button className="button is-warning Info-Button" onClick={this.reRoll.bind(this)}>Re-Roll</button> (<GoldIcon value={-1 * rollCost} />)</span>
+                  <hr />
                   {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
                     <div className="level">
                       <p className="title is-3">{spell.name}

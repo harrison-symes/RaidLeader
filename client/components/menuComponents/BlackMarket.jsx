@@ -5,6 +5,8 @@ import BlackMarketSpells from './BlackMarketSpells'
 import BlackMarketRecruits from './BlackMarketRecruits'
 import BlackMarketWeapons from './BlackMarketWeapons'
 
+import {GoldIcon} from '../icons/StatIcons'
+
 class BlackMarket extends Component {
   constructor(props) {
     super(props)
@@ -34,13 +36,13 @@ class BlackMarket extends Component {
     }
   }
   render() {
-    const {close} = this.props
+    const {close, gold} = this.props
     // const {isSell} = this.state
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">BlackMarket</p>
+          <p className="modal-card-title is-1">Market - <GoldIcon value={gold} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
@@ -67,9 +69,10 @@ class BlackMarket extends Component {
   }
 }
 
-const mapStateToProps = ({recruits, spells, weapons}) => {
+const mapStateToProps = ({recruits, gold, spells, weapons}) => {
   return {
     recruits,
+    gold,
     spells,
     weapons
   }
