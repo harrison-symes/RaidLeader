@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import RecruitModal from './RecruitModal'
-import {ClassIcon, WeaponAvailableIcon, LevelIcon} from '../icons/StatIcons'
+import {ClassIcon, WeaponAvailableIcon, LevelIcon, ZodiacIcon} from '../icons/StatIcons'
 
 class RecruitFrame extends React.Component {
   constructor(props) {
@@ -31,11 +31,11 @@ class RecruitFrame extends React.Component {
     return showMore
       ? <RecruitModal recruit={recruit} close={back} />
       : <tbody className="tbody box has-text-centered">
+        <tr className="title is-4 " style={{backgroundColor: 'grey', backgroundImage: "url()"}}>{recruit.name}</tr>
         <tr>
-          <td className="subtitle is-4">
-            {recruit.name}
-            &nbsp;
+          <td className="subtitle is-4"style={{backgroundColor: 'grey', backgroundImage: "url()"}}>
             <ClassIcon heroClass={recruit.heroClass} />
+            <ZodiacIcon zodiac={recruit.zodiac} />
             <span className="is-pulled-right">
               <LevelIcon level={recruit.level} />
               <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
