@@ -123,6 +123,13 @@ export default function player (state = null, action) {
         return {...spell}
       })
       return newState
+    case 'BARD_START_BUFF':
+      newState.spells = newState.spells.map(spell => {
+        spell.cost -= 1
+        if (spell.cost < 0) spell.cost = 0
+        return spell
+      })
+      return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
       if (action.target.id == newState.id) newState.hp-=action.power
