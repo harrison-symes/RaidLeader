@@ -41,6 +41,12 @@ class RecruitmentCentre extends Component {
     set('offeredRecruits', JSON.stringify(offeredRecruits))
     this.setState({showChoices: true, offeredRecruits})
   }
+  reRoll() {
+    this.props.dispatch(earnGold(-200))
+    const offeredRecruits = this.solveOptions()
+    set('offeredRecruits', JSON.stringify(offeredRecruits))
+    this.setState({showChoices: true, offeredRecruits})
+  }
   recruit(recruit) {
     this.props.dispatch(addRecruit(recruit))
     set('offeredRecruits', null)
@@ -110,7 +116,8 @@ class RecruitmentCentre extends Component {
                 ? <div>
                   <hr />
                   <p className="title is-3">Choose a Recruit:</p>
-                  <br />
+                  <span className="subtitle is-3">Or <button className="Info-Button button is-warning" onClick={this.reRoll.bind(this)}>Re-Roll</button>(<GoldIcon value={-200} />)</span>
+                  <hr />
                   {offeredRecruits.map((recruit, i) => {
                     recruit.level = 1
                     return <div key={`offered-recruit-${i}`} className="box">
