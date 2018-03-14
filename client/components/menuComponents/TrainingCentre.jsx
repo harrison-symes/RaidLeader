@@ -85,13 +85,13 @@ class TrainingCentre extends Component {
     </div>
   }
   render() {
-    const {close} = this.props
+    const {close, gold} = this.props
     const {levelUpgrade} = this.state
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card Modal">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1"><i className="icon ra ra-muscle-up ra-fw" />Training Centre<i className="icon ra ra-muscle-up ra-fw" /></p>
+          <p className="modal-card-title is-1">Training - <GoldIcon value={gold} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
@@ -119,7 +119,7 @@ class TrainingCentre extends Component {
   }
 }
 
-const mapStateToProps = ({dungeons, recruits, gold}) => {
+const mapStateToProps = ({gold, dungeons, recruits}) => {
   return {
     dungeons,
     recruits,

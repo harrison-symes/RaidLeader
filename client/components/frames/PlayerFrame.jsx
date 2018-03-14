@@ -27,8 +27,8 @@ class PlayerFrame extends Component {
             className="PlayerBox box"
             onClick={this.targetPlayer}>
             <div className="level">
-              <p className="subtitle is-1"><PowerIcon value={power} /></p>
-              <p className="subtitle is-1"><PlayerIcon name={name} />&nbsp;&nbsp;&nbsp;</p>
+              <p className="subtitle is-1"><PowerIcon value={Math.floor(power * 10) / 10} /></p>
+              <p className="subtitle is-1"><PlayerIcon player={player} />&nbsp;&nbsp;&nbsp;</p>
             </div>
             <div className="columns is-mobile">
               <div className="column is-6">

@@ -46,7 +46,7 @@ class RecruitModal extends Component {
           </div>
           : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
         }
-        {availableWeapons.length != 0 && <button className="button is-small is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>}
+        {availableWeapons.length != 0 && <button className="button is-large is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>}
       </div>
       <hr />
       {this.state.weaponFrame && this.weaponFrame()}
@@ -67,8 +67,8 @@ class RecruitModal extends Component {
     availableWeapons=Object.keys(dup).map(key => dup[key])
     return <div>
       <p className="title is-4">Avaiable Weapon{availableWeapons.length > 1 ? 's' : ''}</p>
-      <div className="columns is-multiline">
-        {availableWeapons.map((weapon, i) => <div key={`available-weapon-${i}`} className="box column">
+      <div className="">
+        {availableWeapons.map((weapon, i) => <div key={`available-weapon-${i}`} className="box">
           <p className="title is-4">{weapon.name}</p>
           <ul className="">
             {weapon.hp != 0 && <li className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></li>}
@@ -76,7 +76,7 @@ class RecruitModal extends Component {
             {weapon.speed != 0 && <li className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed * 100}%`} /></li>}
           </ul>
           {weapon.bonusEffect && <p className="content is-large box">{weapon.effectDescription}</p>}
-          <button className="button is-success" onClick={() => this.equip(weapon.id)}>Equip</button>
+          <button className="button Info-Button is-success" onClick={() => this.equip(weapon.id)}>Equip</button>
         </div>)}
       </div>
     </div>

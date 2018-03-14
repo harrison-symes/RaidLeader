@@ -83,8 +83,8 @@ module.exports = {
     id,
     value: 200,
     hp: 0.2,
-    power: -0.5,
-    speed: 1,
+    power: -0.25,
+    speed: 0.5,
     class: 'Paladin',
     description: 'A Scale from a Dragon, this should make a good shield',
     bonusEffect: null,
@@ -112,7 +112,7 @@ module.exports = {
     value: 200,
     hp: 0.5,
     power: 0,
-    speed: -0.33,
+    speed: -0.3,
     class: 'Warlock',
     description: 'The heart still beats, only a true sadist would find this useful',
     bonusEffect: null,
@@ -204,6 +204,20 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-eyeball'
   }),
+  ['Lute Thread']: (level, id) => ({
+    name: 'Lute Thread',
+    type: 'Weapon',
+    level,
+    id,
+    value: 200,
+    hp: 0.2,
+    power: -0.4,
+    speed: 0.2,
+    class: 'Bard',
+    description: "The Loot you received will go perfectly with a Lute.",
+    bonusEffect: null,
+    icon: 'ra-vine-whip'
+  }),
   ['Plagued Aegis']: (level, id) => ({
     name: 'Plagued Aegis',
     type: 'Weapon',
@@ -217,7 +231,7 @@ module.exports = {
     description: 'A lost shield from a fallen adventurer. "A. Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-zebra-shield'
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -232,7 +246,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-dripping-sword'
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Daggers',
@@ -247,7 +261,7 @@ module.exports = {
     description: 'A lost pair of Daggers from a fallen adventurer. "Joe Van Boe" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-dripping-knife'
   }),
   ['Plagued Arrows']: (level, id) => ({
     name: 'Plagued Arrows',
@@ -277,7 +291,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "A A. Ron" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-scythe'
   }),
   ['Plagued Stave']: (level, id) => ({
     name: 'Plagued Stave',
@@ -289,10 +303,10 @@ module.exports = {
     power: 0.5,
     speed: 0,
     class: 'Monk',
-    description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-laser-blast'
   }),
   ['Plagued Wand']: (level, id) => ({
     name: 'Plagued Wand',
@@ -304,10 +318,10 @@ module.exports = {
     power: -0.3,
     speed: 0.3,
     class: 'Mage',
-    description: 'A lost weapon from a fallen adventurer. "Jazz Man" is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-poison-cloud'
+    icon: 'ra-spear-head'
   }),
   ['The Antidote']: (level, id) => ({
     name: 'The Antidote',
@@ -319,7 +333,7 @@ module.exports = {
     power: -0.9,
     speed: 1.5,
     class: 'Shaman',
-    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `When the Shaman casts Renew on a target, the target is cured of any Poison Effect`,
     icon: 'ra-heart-bottle'
@@ -334,9 +348,24 @@ module.exports = {
     power: 0.2,
     speed: 0.2,
     class: 'Priest',
-    description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
+    description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
+    icon: 'ra-book'
+  }),
+  ['Plagued Ocarina']: (level, id) => ({
+    name: 'Glowing Libram',
+    type: 'Weapon',
+    level,
+    id,
+    value: 500,
+    hp: -0.2,
+    power: 0.5,
+    speed: 0,
+    class: 'Priest',
+    description: '"The Ocarina of Slime"',
+    bonusEffect: 'selfPoison',
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
     icon: 'ra-book'
   }),
   ['Cracked Chassis']: (level, id) => ({
@@ -384,4 +413,49 @@ module.exports = {
     effectDescription: "The Hunter's attacks now force the Boss to Target the Hunter",
     icon: 'ra-flaming-arrow'
   }),
+  ['Polarizing Stick']: (level, id) => ({
+    name: 'Polarizing Stick',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: -0.5,
+    power: 0,
+    speed: 1,
+    description: 'Still warm and crackling, electrically charged on one end, maybe hold it by the other end?',
+    class: 'Mage',
+    bonusEffect: 'charge',
+    effectDescription: "The Mage's attacks restore 1 Mana to the Player",
+    icon: 'ra-laser-site'
+  }),
+  ['Lightning Rod']: (level, id) => ({
+    name: 'Lightning Rod',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 1,
+    power: -0.5,
+    speed: 1,
+    description: "Lightning never strikes the same place twice, confirmation may require further testing",
+    class: 'Warlock',
+    bonusEffect: 'lightningRod',
+    effectDescription: "The Warlock now only damages themselves for 5% of Max Health whenever they attack (instead of damagin ALL party members)",
+    icon: 'ra-magnet'
+  }),
+  ['Power Drill']: (level, id) => ({
+    name: 'Power Drill',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.2,
+    power: -0.8,
+    speed: 2,
+    description: "Stealth and Subtlety are cool, but sometimes you just want to get straight to the point",
+    class: 'Rogue',
+    bonusEffect: 'critical',
+    effectDescription: "All of the Rogue's attacks are Critical (Double damage, Ignores armor)",
+    icon: 'ra-drill'
+  })
 }

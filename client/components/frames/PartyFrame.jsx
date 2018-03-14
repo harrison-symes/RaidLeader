@@ -10,6 +10,7 @@ import Priest from '../classes/Priest'
 import Monk from '../classes/Monk'
 import Hunter from '../classes/Hunter'
 import Shaman from '../classes/Shaman'
+import Bard from '../classes/Bard'
 
 class PartyFrame extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class PartyFrame extends Component {
       case 'Monk': return <Monk member={member} key={`member-${i}`} />
       case 'Hunter': return <Hunter member={member} key={`member-${i}`} />
       case 'Shaman': return <Shaman member={member} key={`member-${i}`} />
+      case 'Bard': return <Bard member={member} key={`member-${i}`} />
       default: return
     }
   }

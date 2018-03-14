@@ -44,6 +44,37 @@ export default function player (state = null, action) {
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'PERCENT_INCREASE_POWER':
+      newState.power += newState.power * action.percentage
+      return newState
+    case 'PERCENT_INCREASE_MANA_REGEN':
+      newState.manaRegen += newState.manaRegen * action.percentage
+      return newState
+    case 'REDUCE_SPELL_COST':
+      newState.spells = newState.spells.map(spell => {
+        spell.cost -= action.reduction
+        if (spell.cost < 0) spell.cost = 0
+        return spell
+      })
+      return newState
+    case 'REDUCE_SPELL_CAST':
+      newState.spells = newState.spells.map(spell => {
+        spell.cast -= spell.cast * action.percentage
+        if (spell.cast < 0) spell.cast = 0
+        if (spell.isChanneled) {
+          let minCast = spell.ticks * 0.1
+          if (spell.cast < minCast) spell.cast = minCast
+        }
+        return spell
+      })
+      return newState
+    case 'REDUCE_SPELL_COOLDOWN':
+      newState.spells = newState.spells.map(spell => {
+        spell.coolDown -= spell.coolDown * action.percentage
+        if (spell.coolDown < 0) spell.coolDown = 0
+        return spell
+      })
+      return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       if (action.target.id != newState.id) return state
@@ -90,6 +121,13 @@ export default function player (state = null, action) {
         spell.cast-= spell.cast * 0.1
         spell.coolDown -= spell.coolDown * 0.1
         return {...spell}
+      })
+      return newState
+    case 'BARD_START_BUFF':
+      newState.spells = newState.spells.map(spell => {
+        spell.cost -= 1
+        if (spell.cost < 0) spell.cost = 0
+        return spell
       })
       return newState
     case 'DAMAGE_FRIENDLY_TARGET':

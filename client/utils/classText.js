@@ -2,13 +2,14 @@ export function startingBuff (heroClass) {
   switch(heroClass) {
     case 'Paladin': return 'The Paladin gains (+3%) HP for each other Party Member. The Paladin also starts as both the Player and the Boss target'
     case 'Priest': return "The Priest increases each Party Member's max HP by (10%)"
-    case 'Rogue': return "The Rogue damages the Boss equal to (5%) of the Boss' current HP"
+    case 'Rogue': return "The Rogue removes (5%) of the Boss' current HP"
     case 'Warrior': return "The Warrior increases the Power of each other Party Member by (+10%)"
-    case 'Warlock': return "The Warlock removes armor from the Boss (Armor removed = (300%) of Warlock's Power)"
+    case 'Warlock': return "The Warlock removes (10%) of the Boss' Armor"
     case 'Mage': return "The Mage increases the Player's Mana by (20%)"
     case 'Monk': return "The Monk gains (50%) more speed for each other Party Member"
     case 'Hunter': return "The Hunter increases the speed of all other party members by 10%"
     case 'Shaman': return "The Shaman reduces the Cast Time and Cool Down of all Player Spells by 10%"
+    case 'Bard': return "The Bard reduces the Mana Cost of ALL Player Spells by 1"
     default: return null
   }
 }
@@ -24,6 +25,7 @@ export function classTraits(heroClass) {
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"
     case 'Hunter': return "The Hunter's attacks deal Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
     case 'Shaman': return "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds"
+    case 'Bard': return "Whenever the Bard attacks, restore 1 Mana to the Player"
     default: return null
   }
 }
@@ -39,6 +41,7 @@ export function classIcons (heroClass) {
     case 'Warrior': return 'ra-knight-helmet'
     case 'Hunter': return 'ra-archer'
     case 'Shaman': return 'ra-gem-pendant'
+    case 'Bard': return 'ra-ocarina'
     case 'Player': return 'ra-player-king'
     default: return null
   }
@@ -99,6 +102,16 @@ export function attackIcons (heroClass) {
       rotates: true,
       rotation: 0,
       icon: 'ra-fluffy-swirl'
+    }
+    case 'Bard': return {
+      colour: '#4682B4',
+      rotates: true,
+      rotation: 0,
+      icon: 'ra-ringing-bell'
+    }
+    case 'Player': return {
+      colour: 'white',
+      icon: 'ra-player-king'
     }
     default: return null
   }

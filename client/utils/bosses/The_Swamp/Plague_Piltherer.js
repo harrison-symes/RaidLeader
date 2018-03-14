@@ -14,10 +14,10 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "A crazed man darts around the Swamp lands, scavenging the many corpses for their precious loot. You even see him drinking some of that disgusting slime!",
-  weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Blade', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp', 'Plagued Arrows', 'The Antidote'],
+  weaponRewards: ['Glowing Libram', 'The Antidote', 'Cleansed Staff of the Woods'],
   goldReward: 500,
   weaponChance: 1,
-  progress_required: 0,
+  progress_required: 3,
   icon: 'ra-radioactive',
   spells: [
     {

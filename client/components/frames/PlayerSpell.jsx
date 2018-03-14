@@ -29,8 +29,9 @@ class PlayerSpell extends Component {
     }
   }
   tickSwitch() {
-    let {spell, dispatch, player, party, target} = this.props
-    const power = this.props.player.power * spell.tickPower
+    let {spell, dispatch, player, party} = this.props
+    let power = this.props.player.power * spell.tickPower
+    let target = this.state.target
     if (target) target = party.find(other => other.id == target.id)
     switch(spell.name) {
       case 'Drain Life':
@@ -51,13 +52,34 @@ class PlayerSpell extends Component {
           dispatch({type: 'RESURRECT_TARGET', target, health: power})
         }
         return
+      case 'Cauterize':
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
+      case 'Mass Cauterize':
+        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
+      case 'Life Funnel':
+        let health = player.initHp * spell.tickPercentage
+        dispatch({type: 'DAMAGE_PLAYER', power: health})
+        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health, target})
+      case 'Arcane Torrent':
+        let damagedRecruits = party.filter(recruit => recruit.hp < recruit.initHp)
+        if (!player.spells.find(spell => spell.element == 'Life')) power*=2
+        if (damagedRecruits.length == 0) return dispatch({
+          type: 'PHYSICAL_ATTACK_BOSS',
+          power
+        })
+        return dispatch({
+          type: 'HEAL_FRIENDLY_TARGET',
+          power,
+          target: damagedRecruits[Math.floor(Math.random() * damagedRecruits.length)]
+        })
       default: return
     }
   }
   castSwitch(target) {
-    const {spell, dispatch, player, party} = this.props
+    const {spell, dispatch, player, party, boss} = this.props
     const power = this.props.player.power * spell.powerRatio
-    if (target) target = party.find(other => other.id == target.id)
+    console.log({target, party});
+    // if (target) target = party.find(other => other.id == target.id)
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
@@ -99,14 +121,15 @@ class PlayerSpell extends Component {
       case 'Greater Renew':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
       case 'Siphon Life':
-        return dispatch({type: 'HEAL_ALL_FRIENDLY', power: player.power * 4})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Tranquility':
         dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Ring of Fire':
         return dispatch({type: 'PLAYER_ATTACK_BOSS', power})
       case 'Purge':
-        if (target.effects.length > 0) dispatch({type: "PLAYER_GAIN_MANA", power: spell.mana * target.effects.length})
+        let healAmount = target.effects.length * (player.spells.find(spell => spell.element == 'Life') ? 0.1 : 0.2)
+        dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: healAmount})
         return dispatch({type: 'REMOVE_EFFECTS_FROM_TARGET', target})
       case 'Restore':
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
@@ -120,6 +143,48 @@ class PlayerSpell extends Component {
         }, 0)
         percentage = percentage / party.filter(member => member.isAlive).length
         return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage})
+      case 'Drain Mana':
+        let bossMana = boss.mana
+        if (bossMana < 0) bossMana = 0
+        else if (bossMana > spell.max) bossMana = 5
+        console.log({bossMana});
+        if (!player.spells.find(spell => spell.element == 'Life')) dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'BOSS_GAIN_MANA', amount: bossMana * -1})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: bossMana})
+      case 'Cauterize':
+        percentage = spell.percentage
+        if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
+        return dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage})
+      case 'Alignment':
+        return dispatch({type: 'SET_RECRUIT_PERCENTAGE', percentage: player.spells.find(spell => spell.element == 'Life') ? spell.percentage : spell.greaterPercentage})
+      case 'Mass Cauterize':
+        percentage = spell.percentage
+        if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
+        return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: percentage})
+      case 'Life Soul':
+        return dispatch({
+          type: 'PERCENT_INCREASE_POWER',
+          percentage: player.spells.find(spell => spell.element != 'Life')
+            ? spell.percentage
+            : spell.greaterPercentage
+        })
+      case 'Arcane Soul':
+        if (!player.spells.find(spell => spell.element != 'Arcane')) {
+          dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
+          dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
+        }
+        return dispatch({type: 'REDUCE_SPELL_COST', reduction: 1})
+      case 'Fire Soul':
+        if (!player.spells.find(spell => spell.element != 'Fire')) {
+          dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
+          dispatch({type: 'PERCENT_INCREASE_MANA_REGEN', percentage: 0.1})
+        }
+        dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
+        return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
+      case 'Shadow Soul':
+        if (!player.spells.find(spell => spell.element != 'Shadow')) dispatch({type: 'HEAL_PLAYER', power: player.initHp * 0.2})
+        else dispatch({type: 'DAMAGE_PLAYER', power: player.initHp * 0.2})
+        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
       default: return
     }
   }
@@ -206,13 +271,14 @@ class PlayerSpell extends Component {
   }
 }
 
-const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget}) => {
+const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget, boss}) => {
   return {
     started,
     player,
     selectedSpell,
     friendlyTarget,
-    party
+    party,
+    boss
   }
 }
 

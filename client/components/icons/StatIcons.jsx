@@ -34,9 +34,15 @@ export function DeadRecruitIcon ({name}) {
   )
 }
 
-export function PlayerIcon ({name}) {
+export function PlayerIcon ({player}) {
+  const {name, manaRegen, power} = player
   return toolTipGenerator(
-    <p>{name}</p>,
+    <span>
+      <p>{name}</p>
+      <hr />
+      <p>{manaRegen} Mana Regen</p>
+      <p>{power} Power</p>
+    </span>,
     <span>
       <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
     </span>
@@ -137,7 +143,7 @@ export function ClassIcon ({heroClass, id}) {
   return toolTipGenerator(
     <p>Class: {heroClass}</p>,
     <span>
-      <i style={{color: attackIcons(heroClass).colour }} id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
+      <i style={{color: attackIcons(heroClass).colour || 'white'}} id={id || `${heroClass}-${Math.round(Math.random() * 1000)}`} className={`ra ra-fw ${classIcons(heroClass)} icon-large`} />
     </span>
   )
 }

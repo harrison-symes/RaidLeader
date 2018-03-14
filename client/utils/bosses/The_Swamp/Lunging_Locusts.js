@@ -14,10 +14,10 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "As you explore deeper into the Swamp, you see less life around you, and a soft buzzing sound starts getting louder... and louder...",
-  weaponRewards: ['Plagued Aegis', 'Plagued Daggers', 'Plagued Wand', 'Plagued Blade', 'Plagued Stave', 'Plagued Scythe', 'Glowing Libram', 'Plagued Staff of the Swamp', 'Plagued Arrows', 'The Antidote'],
+  weaponRewards: ['Plagued Wand', 'Plagued Stave', 'Plagued Staff of the Swamp'],
   goldReward: 500,
   weaponChance: 1,
-  progress_required: 0,
+  progress_required: 1,
   icon: ' ra-butterfly',
   spells: [
     {
@@ -34,9 +34,9 @@ export default {
     },
     {
       name: 'Regenerate',
-      cast: 5,
+      cast: 3,
       cost: 0,
-      coolDown: 5,
+      coolDown: 15,
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
@@ -55,8 +55,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      percentage: 0.5,
-      description: "Damage a random non-poisoned enemy recruit for (50%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      percentage: 0.6,
+      description: "Damage a random non-poisoned enemy recruit for (60%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
       icon: 'ra-overhead'
     }
   ]

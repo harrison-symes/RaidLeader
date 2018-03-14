@@ -76,7 +76,7 @@ test('effectTag receiveProps (new effect)', () => {
   wrapper.instance().componentWillReceiveProps({effect: newEffect})
 
   expect(wrapper.state()).toEqual(fakeState)
-  expect(mockFunction.mock.calls).  toHaveLength(1)
+  expect(mockFunction.mock.calls).toHaveLength(1)
   expect(mockFunction.mock.calls[0][0]).toEqual({remaining: 30})
 
 })

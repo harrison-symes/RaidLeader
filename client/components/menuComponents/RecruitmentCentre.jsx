@@ -25,7 +25,7 @@ class RecruitmentCentre extends Component {
   }
   solveOptions() {
     const zodiacs = getZodiacs()
-    const classes = ['Paladin', 'Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman']
+    const classes = ['Paladin', 'Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard']
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
@@ -84,7 +84,7 @@ class RecruitmentCentre extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1"><i className="icon ra ra-guarded-tower"/>&nbsp;Recruitment Centre&nbsp;<icon className="icon ra ra-guarded-tower ra-fw" /></p>
+          <p className="modal-card-title is-1">Recruit&nbsp; - <GoldIcon value={gold} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">

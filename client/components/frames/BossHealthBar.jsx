@@ -16,7 +16,7 @@ const healthBar = (current, max, armor) => {
     <div className="">
       <Line percent={percent} strokeWidth={armor == 0 ? '3' : '6'} strokeColor={colourClass} strokeLinecap="square" trailWidth="6"/>
     </div>
-    <p className="subtitle is-5"><HealthIcon value={`${current} / ${max}`} /></p>
+    <p className="subtitle is-5"><HealthIcon value={`${Math.round(current)} / ${Math.round(max)}`} /></p>
   </div>
 }
 
@@ -26,7 +26,7 @@ const armorBar = (current, max) => {
     <div className="">
       <Line percent={percent} strokeWidth="6" strokeColor={'hsl(0, 0%, 48%)'} strokeLinecap="square" trailWidth="6" />
       {/* <progress className={`ProgressBar progress is-small ArmorBar`} max="100" value={percent}>{percent}%</progress> */}
-      <p className="subtitle is-5"><ArmorIcon value={`${current} / ${max}`} /></p>
+      <p className="subtitle is-5"><ArmorIcon value={`${Math.round(current)} / ${Math.round(max)}`} /></p>
     </div>
   </div>
 }
@@ -37,7 +37,7 @@ const manaBar = (current, max) =>{
     <div className="">
       <Line percent={percent} strokeWidth="6" strokeColor={'hsl(217, 71%, 53%)'} strokeLinecap="square" trailWidth="6" />
       {/* <progress className={`ProgressBar progress is-small ${colourClass}`} max="100" value={percent}>{percent}%</progress> */}
-      <p className="subtitle is-5"><ManaIcon value={`${current}/${max}`} /></p>
+      <p className="subtitle is-5"><ManaIcon value={`${Math.round(current)}/${Math.round(max)}`} /></p>
     </div>
   </div>
 }

@@ -19,22 +19,39 @@ class Library extends Component {
     this.showOptions = this.showOptions.bind(this)
     this.reset = this.reset.bind(this)
   }
+  findByElement(element) {
+    const spellsByElement = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).map(name => spells[name]).filter(spell => spell.element == element)
+    if (spellsByElement.length) return spellsByElement[Math.floor(Math.random() * spellsByElement.length)]
+  }
   solveOptions() {
     const offeredSpells = []
     const spellNames = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell))
     if (spellNames.length < 4) return spellNames.map(name => spells[name])
-    while (offeredSpells.length < 4)  {
-      let idx = Math.floor(Math.random() * spellNames.length)
-      let spell = spells[spellNames[idx]]
-      if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
-    }
+    const Life = this.findByElement('Life')
+    const Fire = this.findByElement('Fire')
+    const Shadow = this.findByElement('Shadow')
+    const Arcane = this.findByElement('Arcane')
+    return [Life, Fire, Shadow, Arcane].filter(item => !!item)
+    // while (offeredSpells.length < 4)  {
+    //   let idx = Math.floor(Math.random() * spellNames.length)
+    //   let spell = spells[spellNames[idx]]
+    //   if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
+    // }
     return offeredSpells
   }
   selectSpell (selectedSpell) {
     this.setState({selectedSpell})
   }
+  reRoll() {
+    const rollCost = this.props.spellBook.length * 50
+    this.props.dispatch(earnGold(-1 * rollCost))
+    const offeredSpells = this.solveOptions()
+    set('offeredSpells', JSON.stringify(offeredSpells))
+    this.setState({showChoices: true, offeredSpells})
+  }
   showOptions() {
-    this.props.dispatch(earnGold(-1 * this.props.spellBook.length * 200))
+    const spellCost = 200 + (this.props.spellBook.length * 50)
+    this.props.dispatch(earnGold(-1 * spellCost))
     const offeredSpells = this.solveOptions()
     set('offeredSpells', JSON.stringify(offeredSpells))
     this.setState({showChoices: true, offeredSpells})
@@ -50,13 +67,13 @@ class Library extends Component {
   render() {
     const {close, gold, spellBook} = this.props
     const {offeredSpells, showChoices, selectedSpell, learntSpell} = this.state
-    const spellCost = 50 + (spellBook.length * 150)
+    const spellCost = 200 + (spellBook.length * 50)
+    const rollCost = this.props.spellBook.length * 50
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">
-            <i className="icon ra ra-crystal-ball" />&nbsp;The Library&nbsp;<i className="icon ra ra-crystal-ball" /></p>
+          <p className="modal-card-title is-1">Library&nbsp; - <GoldIcon value={gold} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
@@ -95,7 +112,8 @@ class Library extends Component {
               {showChoices
                 ? (<div>
                   <p className="title is-3">Choose a Spell:</p>
-                  <br />
+                  <span className="subtitle is-3">Or <button className="button is-warning Info-Button" onClick={this.reRoll.bind(this)}>Re-Roll</button> (<GoldIcon value={-1 * rollCost} />)</span>
+                  <hr />
                   {offeredSpells.map((spell, i) => <div key={`offered-spell-${i}`} className="box">
                     <div className="level">
                       <p className="title is-3">{spell.name}
