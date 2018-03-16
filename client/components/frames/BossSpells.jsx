@@ -157,6 +157,7 @@ class BossSpell extends Component {
 
         //stage 2
       case 'Payload':
+        dispatch({type: 'DAMAGE_PLAYER', power})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Power Up': return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
 
