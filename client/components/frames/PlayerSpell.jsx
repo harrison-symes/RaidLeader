@@ -177,13 +177,12 @@ class PlayerSpell extends Component {
       case 'Fire Soul':
         if (!player.spells.find(spell => spell.element != 'Fire')) {
           dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
-          dispatch({type: 'PERCENT_INCREASE_MANA_REGEN', percentage: 0.1})
         }
         dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
         return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
       case 'Shadow Soul':
-        if (!player.spells.find(spell => spell.element != 'Shadow')) dispatch({type: 'HEAL_PLAYER', power: player.initHp * 0.2})
-        else dispatch({type: 'DAMAGE_PLAYER', power: player.initHp * 0.2})
+        if (!player.spells.find(spell => spell.element != 'Shadow')) dispatch({type: 'HEAL_PLAYER', power: player.initHp * 0.1})
+        else dispatch({type: 'DAMAGE_PLAYER', power: player.initHp * 0.1})
         return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
       default: return
     }
