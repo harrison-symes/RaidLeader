@@ -31,7 +31,7 @@ class BossSpell extends Component {
       //furnace
       case 'Boil':
         let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
-        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target: randomTarget, percentage: spell.tickPercentage})
       case 'Unleash Flames':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Exhaust Heat':
