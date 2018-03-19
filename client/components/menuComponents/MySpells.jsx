@@ -3,6 +3,10 @@ import {connect} from 'react-redux'
 
 import SpellFrame from './SpellFrame'
 
+const elements = [
+  "Life", 'Fire', 'Shadow', 'Arcane'
+]
+
 class MySpells extends Component {
   constructor(props) {
     super(props)
@@ -18,19 +22,30 @@ class MySpells extends Component {
   selectSpell(selected) {
     this.setState({selected})
   }
+  spellsByElement(element) {
+    const spells = this.props.spellBook.filter(spell => spell.element == element)
+    if (spells.length == 0) return null
+    return <div className="has-text-centered">
+      <h1 className="title is-3">{element}</h1>
+      <div className="columns is-multiline">
+        {spells.map(spell =>
+          <table className="column is-4 table has-text-centered is-full-width">
+            <SpellFrame
+              viewSpell={this.selectSpell}
+              onBar={false}
+              key={`spell-${spell.id}`}
+              spell={spell}
+            />
+          </table>
+        )}
+      </div>
+      <br />
+    </div>
+  }
   renderContent() {
     const {spellBook} = this.props
-    return <div className="columns is-multiline">
-      {spellBook.map(spell =>
-        <table className="column is-4 table has-text-centered is-full-width">
-          <SpellFrame
-            viewSpell={this.selectSpell}
-            onBar={false}
-            key={`spell-${spell.id}`}
-            spell={spell}
-          />
-        </table>
-      )}
+    return <div>
+      {elements.map(element => this.spellsByElement(element))}
     </div>
   }
   render() {
