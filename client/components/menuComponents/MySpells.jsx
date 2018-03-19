@@ -52,7 +52,7 @@ class MySpells extends Component {
     const {selected} = this.state
     const {close, spellBook} = this.props
     return selected
-      ? <SpellFrame showMore={true} recruit={selected} back={this.back} />
+      ? <SpellFrame showMore={true} spell={selected} back={this.back} />
       : <div className={`Modal modal is-active`} >
       <div className="modal-background"></div>
       <div className="modal-card">
