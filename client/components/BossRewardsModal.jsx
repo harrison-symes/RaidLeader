@@ -13,7 +13,7 @@ class BossRewardsModal extends Component {
     super(props)
     this.state = {
       showRewards: false,
-      goldReward: props.boss.goldReward || 0,
+      goldReward: Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4))),
       weaponReward: this.solveWeaponReward(props.boss)
     }
     this.showRewards = this.showRewards.bind(this)

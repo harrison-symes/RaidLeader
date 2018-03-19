@@ -16,9 +16,10 @@ class DungeonRewards extends Component {
     super(props)
     this.state = {
       showRewards: false,
-      goldReward: props.currentLocation.gold_reward,
+      goldReward: Math.ceil(props.currentLocation.gold_reward * (0.9 + (Math.random() * 0.4))),
       weaponReward: this.solveWeaponReward()
     }
+    console.log(this.state);
     this.showRewards = this.showRewards.bind(this)
     this.returnToTown = this.returnToTown.bind(this)
   }
