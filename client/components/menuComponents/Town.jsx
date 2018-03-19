@@ -9,6 +9,7 @@ import Library from './Library'
 import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import BlackMarket from './BlackMarket'
+import MyRecruits from './MyRecruits'
 
 import {GoldIcon, RecruitCountIcon, SpellCountIcon} from '../icons/StatIcons'
 
@@ -32,6 +33,7 @@ class Town extends Component {
       case 'Training Centre': return <TrainingCentre close={close} />
       case 'Black Market': return <BlackMarket close={close} />
       case 'Dungeon Map': return <Dungeons close={close} />
+      case 'My Recruits': return <MyRecruits close={close} />
       default: return null
     }
   }
@@ -64,7 +66,7 @@ class Town extends Component {
             <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
           <div className=" is-4">
-            <p className="subtitle is-2">
+            <p className="subtitle is-2" onClick={()=>this.toggleModal('My Recruits')}>
               <RecruitCountIcon amount={recruits.length} />
             </p>
           </div>
