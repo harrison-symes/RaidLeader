@@ -71,9 +71,40 @@ class MySpells extends Component {
   }
 }
 
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+const isEarlier = (a, b, i) => {
+  if (a[i] == b[i]) return isEarlier(a, b, i + 1)
+  else {
+    const aIdx =  alphabet.findIndex(char => char == a[i].toLowerCase())
+    const bIdx =  alphabet.findIndex(char => char == b[i].toLowerCase())
+    const diff = aIdx - bIdx
+    return diff <= 0
+  }
+}
+
+const alphabetSort = spells => {
+  const newArr = []
+  console.log({spells});
+  spells.forEach((spell, i) => {
+    if (newArr.length == 0) newArr.push(spell)
+    else {
+      var found = newArr.find((item, idx) => {
+        if (isEarlier(spell.name, item.name, 0)) {
+          console.log(spell.name, i, idx);
+          return newArr.splice(idx, 0, spell)
+        }
+      })
+      if (!found) newArr.push(spell)
+    }
+  })
+  return newArr
+}
+
 const mapStateToProps = ({spellBook}) => {
+  alphabetSort(spellBook)
   return {
-    spellBook
+    spellBook: alphabetSort(spellBook)
   }
 }
 
