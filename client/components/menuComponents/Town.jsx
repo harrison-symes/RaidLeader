@@ -59,7 +59,7 @@ class Town extends Component {
       <div className="has-text-centered Town-Banner">
           <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
         <div className="level has-text-centered Resources">
-          <div className=" is-4">
+          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
             <div className="subtitle is-2" onClick={()=>this.toggleModal('My Spells')}>
               <SpellCountIcon amount={spellBook.length} />
             </div>
@@ -67,7 +67,7 @@ class Town extends Component {
           <div className=" is-4">
             <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
-          <div className=" is-4">
+          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
             <p className="subtitle is-2" onClick={()=>this.toggleModal('My Recruits')}>
               <RecruitCountIcon amount={recruits.length} />
             </p>

@@ -288,7 +288,10 @@ export function RecruitCountIcon ({amount}) {
 
 export function SpellCountIcon ({amount}) {
   return toolTipGenerator(
-    <p>You know {amount} Spell{amount > 1 ? 's' : ''}</p>,
+    <span>
+      <p>You know {amount} Spell{amount > 1 ? 's' : ''}</p>
+      <p>(Click to View)</p>
+    </span>,
     <span>
       {amount}
       <i className="ra ra-book icon-large" />
