@@ -85,13 +85,11 @@ const isEarlier = (a, b, i) => {
 
 const alphabetSort = spells => {
   const newArr = []
-  console.log({spells});
   spells.forEach((spell, i) => {
     if (newArr.length == 0) newArr.push(spell)
     else {
       var found = newArr.find((item, idx) => {
         if (isEarlier(spell.name, item.name, 0)) {
-          console.log(spell.name, i, idx);
           return newArr.splice(idx, 0, spell)
         }
       })

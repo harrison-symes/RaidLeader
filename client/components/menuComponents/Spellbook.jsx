@@ -175,9 +175,48 @@ class SpellBook extends React.Component {
   }
 }
 
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+const isEarlier = (a, b, i) => {
+  if (a[i] == b[i]) return isEarlier(a, b, i + 1)
+  else {
+    const aIdx =  alphabet.findIndex(char => char == a[i].toLowerCase())
+    const bIdx =  alphabet.findIndex(char => char == b[i].toLowerCase())
+    const diff = aIdx - bIdx
+    return diff <= 0
+  }
+}
+
+const alphabetSort = spells => {
+  const newArr = []
+  spells.forEach((spell, i) => {
+    if (newArr.length == 0) newArr.push(spell)
+    else {
+      var found = newArr.find((item, idx) => {
+        if (isEarlier(spell.name, item.name, 0)) {
+          return newArr.splice(idx, 0, spell)
+        }
+      })
+      if (!found) newArr.push(spell)
+    }
+  })
+  return newArr
+}
+
+const elementAlphabetSort = spells => {
+  let newArr = []
+  const elements = ['Life', 'Fire', 'Shadow', 'Arcane']
+  elements.forEach(element => {
+    var arr = alphabetSort(spells.filter(spell => spell.element == element))
+    newArr = newArr.concat(arr)
+  })
+  return newArr
+}
+
+
 const mapStateToProps = ({spellBook, playerSpells, location}) => {
   return {
-    spellBook,
+    spellBook: elementAlphabetSort(spellBook),
     playerSpells,
     currentLocation: location
   }
