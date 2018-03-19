@@ -36,10 +36,8 @@ class RecruitFrame extends React.Component {
           <td className="subtitle is-4"style={{backgroundColor: 'grey', backgroundImage: "url()"}}>
             <ClassIcon heroClass={recruit.heroClass} />
             <ZodiacIcon zodiac={recruit.zodiac} />
-            <span className="is-pulled-right">
-              <LevelIcon level={recruit.level} />
-              <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
-            </span>
+            <LevelIcon level={recruit.level} />
+            <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
           </td>
         </tr>
       <tr>
