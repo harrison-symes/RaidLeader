@@ -26,13 +26,14 @@ export default function Home (props) {
         <Link to="/" className="title is-1">Raid Leader v0.3</Link>
       </div>
       <div className="Town-Buttons" >
-        <div className="subtitle is-1 has-text-centered">
-          {classes.map(heroClass => <ClassIcon heroClass={heroClass} />)}
-        </div>
-        <Route exact path='/' component={() => <div style={{marginTop: '10%'}}>
+
+        <Route exact path='/' component={() => <div>
+          <div className="subtitle is-1 has-text-centered">
+            {classes.map(heroClass => <ClassIcon heroClass={heroClass} />)}
+          </div>
           <Link to="/login" className="column is-6 is-offset-3 button is-large is-fullwidth is-info is-outlined">Login</Link>
           <Link to="/register" className="column is-6 is-offset-3 button is-large is-fullwidth is-primary is-outlined">Register</Link>
-          <Link to="/about" className="column is-6 is-offset-3 button is-large is-fullwidth is-warning is-outlined" disabled>About (WIP)</Link>
+          <Link to="/" className="column is-6 is-offset-3 button is-large is-fullwidth is-warning is-outlined" disabled>About (WIP)</Link>
         </div>} />
         <Route path="/login" component={Login} />
         <Route path="/Register" component={Register} />
