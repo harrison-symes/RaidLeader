@@ -5,16 +5,16 @@ import Register from './Register'
 import {ClassIcon} from './icons/StatIcons'
 
 const classes = [
-  'Paladin',
-  'Warrior',
   'Rogue',
+  'Warrior',
   'Mage',
-  'Hunter',
-  'Warlock',
   'Priest',
+  'Hunter',
   'Monk',
   'Shaman',
-  'Bard'
+  'Bard',
+  'Warlock',
+  'Paladin',
 ]
 
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
