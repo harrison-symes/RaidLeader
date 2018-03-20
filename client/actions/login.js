@@ -27,22 +27,24 @@ function loginError (message) {
   }
 }
 
-export function loginUser (creds) {
+export function loginUser (creds, cb) {
   return dispatch => {
     dispatch(requestLogin(creds))
     return request('post', 'auth/login', creds)
       .then((response) => {
+        console.log({response})
         if (response.status === 403) {
-          alert("Try Again!")
           dispatch(loginError(response.body.message))
-          return Promise.reject(response.body.message)
+          console.log({response});
+          cb(response.body.message)
         } else {
           const userInfo = saveUserToken(response.body.token)
+          cb(null)
           dispatch(receiveLogin(userInfo))
-          document.location = "/#/"
         }
-      }).catch(err => alert("Try Again!")
-
-      )
+      }).catch(err => {
+        console.log({err})
+        cb(err.response.body.message)
+      })
   }
 }
