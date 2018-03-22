@@ -15,8 +15,8 @@ class CyclingConveyer extends BossFrame {
           case 'stageOne':
             switch(spell.name) {
               case 'Charge': return boss.hp <= (boss.initHp * spell.healthMax)
-              case 'Magma Surge': return true
               case 'Magnetic Pulse': return true
+              case 'Magma Surge': return true
               default: return null
             }
           case 'stageTwo':

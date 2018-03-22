@@ -43,12 +43,17 @@ class BossSpell extends Component {
       case 'Discharge':
         return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.tickPercentage})
       case 'Power Drill':
-        console.log("power drill tick", {target, power, ticks: this.state.ticks})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Repair':
         dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana / spell.ticks})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power / spell.ticks})
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor / spell.ticks})
+
+      //core
+      case 'Magnetic Pulse':
+        return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.tickArmor})
+      case 'Magma Surge':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: this.props.player.power})
       default: return
     }
   }
@@ -173,10 +178,19 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage})
 
       //core
+        //stage 1
       case 'Charge':
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Magma Surge':
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+      case 'Magnetic Pulse':
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+
+        //stage 2
       case 'Meldown':
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+
+        //stage 3
       default: return
     }
   }
