@@ -18,7 +18,7 @@ export default {
   goldReward: 2000,
   weaponChance: 1,
   progress_required: 0,
-  icon: ' ra-recycle',
+  icon: 'ra-alien-fire',
   stage: 'stageZero',
   spells: [
     {
@@ -30,9 +30,9 @@ export default {
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
-      stage: 'stageTwo'
+      stage: 'stageTwo',
       description: "(Only used when below 4000 Health) Change to Stage 2, gaining 25 Power",
-      icon: 'ra-lever'
+      icon: 'ra-energise'
     },
     {
       name: 'Magma Surge',
@@ -50,7 +50,7 @@ export default {
       tickPower: 1,
       onCooldown: false,
       description: "Damage ALL Recruits for 30% of their Max Health during the cast, and then Damage the Target for (100%) Boss Power",
-      icon: 'ra-lever'
+      icon: 'ra-lava'
     },
     {
       name: 'Magnetic Pulse',
@@ -68,10 +68,7 @@ export default {
       armor: 50,
       onCooldown: false,
       description: "Gain 150 Armor during the cast, and damage the target for (300%) PLAYER Power over the cast",
-      icon: 'ra-lever'
-    },
-    {
-      name: ''
+      icon: 'ra-magnet'
     }
   ],
   stageTwo: {
@@ -91,48 +88,38 @@ export default {
         powerRatio: 1,
         stage: 'stageOne',
         description: '(Only useable at 200 Mana) Change to Stage 3, gaining 50 Power and Poisoning ALL Recruits for (60%) of their Max Health over 15 seconds',
-        icon: 'ra-gears'
+        icon: 'ra-radioactive'
       },
-      // {
-      //   name: 'Power Drill',
-      //   cast: 5,
-      //   cost: 0,
-      //   coolDown: 1000,
-      //   type: 'damage',
-      //   powerRatio: 1,
-      //   tickPower: 0.3,
-      //   ticks: 5,
-      //   isChanneled: true,
-      //   onCooldown: false,
-      //   singleTarget: true,
-      //   description: "Damage the Boss' Target for (150%) Power during the cast",
-      //   icon: 'ra-drill'
-      // },
       {
-        name: 'Radiation',
+        name: 'Half Life',
         cast: 5,
         cost: 0,
         coolDown: 10,
         type: 'damage',
         powerRatio: 1,
         onCooldown: false,
-        singleTarget: true,
-        description: "Damage ALL recruits for 40% of their Max Health during the cast and Poison them for (60%) of their Max Health over 15 seconds.",
-        icon: 'ra-robot-arm'
+        singleTarget: false,
+        description: "Damage EACH Recruit for (50%) of their CURRENT Health",
+        icon: 'ra-reactor'
       },
-      // {
-      //   name: 'Power Up',
-      //   cast: 5,
-      //   cost: 0,
-      //   coolDown: 1000,
-      //   type: 'damage',
-      //   singleTarget: false,
-      //   powerRatio: 50,
-      //   power: 10,
-      //   onCooldown: false,
-      //   description: 'Gain 20 Power',
-      //   icon: 'ra-heartburn'
-      // }
+      {
+        name: 'Magma Surge',
+        cost: 0,
+        cast: 3,
+        coolDown: 15,
+        powerRatio: 1,
+        percentage: 0.5,
+        tickPower: 0,
+        type: 'damage',
+        singleTarget: false,
+        isChanneled: true,
+        ticks: 3,
+        tickPercentage: 0.1,
+        tickPower: 1,
+        onCooldown: false,
+        description: "Damage ALL Recruits for 30% of their Max Health during the cast, and then Damage the Target for (100%) Boss Power",
+        icon: 'ra-lava'
+      }
     ]
   },
   stageThree: {
@@ -142,64 +129,55 @@ export default {
     power: 100,
     spells: [
       {
-        name: 'Repair',
+        name: 'Explode',
         cast: 10,
-        cost: 10,
-        coolDown: 20,
+        cost: 0,
+        coolDown: 0,
         type: 'support',
-        powerRatio: 1,
-        power: 20,
-        mana: 20,
-        armor: 200,
-        isChanneled: true,
-        ticks: 10,
+        powerRatio: 10000,
         onCooldown: false,
         singleTarget: false,
-        description: "The Boss gains 20 Power, 20 Mana and restores 200 Armor during the cast of this spell",
-        icon: 'ra-repair'
+        description: "(Only Useable at 0 Mana): Damage ALL enemy characters for (1,000,000%) Boss Power",
+        icon: 'ra-bomb-explosion'
       },
       {
-        name: 'Discharge',
-        cast: 5,
-        cost: 10,
-        coolDown: 20,
-        type: 'damage',
-        isChanneled: true,
-        singleTarget: false,
-        onCooldown: false,
-        tickPower: 0.1,
-        powerRatio: 1,
-        ticks: 10,
-        tickPercentage: 0.05,
-        description: 'Damage ALL recruits for 50% of their Max Health over the cast',
-        icon: 'ra-defibrilate'
-      },
-      {
-        name: 'Power Drill',
+        name: 'Decay',
         cast: 5,
         cost: 0,
-        coolDown: 20,
+        coolDown: 10,
         type: 'damage',
         powerRatio: 1,
-        tickPower: 0.3,
-        ticks: 5,
         isChanneled: true,
+        ticks: 5,
+        tickPercentage: 0.08,
         onCooldown: false,
         singleTarget: true,
-        description: "Damage the Boss' Target for (150%) Power over the cast",
-        icon: 'ra-drill'
+        description: "Poison ALL Recruits for (60%) of their Max Health over 15 seconds. The Poison increases in damage by 2% for every 1 Mana the Boss is missing.",
+        icon: 'ra-alien-fire'
       },
       {
-        name: 'Speed Up',
+        name: 'Half Life',
         cast: 5,
-        cost: 20,
-        coolDown: 20,
+        cost: 0,
+        coolDown: 10,
+        type: 'damage',
         powerRatio: 1,
-        percentage: 0.1,
         onCooldown: false,
         singleTarget: false,
-        description: 'Reduce the Cast Time and Cooldown of ALL Boss Spells by 10%',
-        icon: 'ra-recycle'
+        description: "Damage EACH Recruit for (50%) of their CURRENT Health",
+        icon: 'ra-reactor'
+      },
+      {
+        name: 'Fission',
+        cast: 5,
+        cost: 0,
+        coolDown: 10,
+        onCooldown: false,
+        singleTarget: true,
+        powerRatio: 1,
+        power: -10,
+        description: 'Damage the Boss Target for (100%) Boss Power, lose 10 Power',
+        icon: 'ra-tesla'
       }
     ]
   }

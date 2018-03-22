@@ -125,7 +125,8 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       description: "A great Foundry resides within an active Volcano. You're not sure who, what or why, but SOMEONE is definitely doing SOMETHING here for SOME REASON...",
       bosses: [
         "Flaming Furnace",
-        "Cycling Conveyer"
+        "Cycling Conveyer",
+        "Collapsing Core"
       ]
     }
     case "The Armory": return {
