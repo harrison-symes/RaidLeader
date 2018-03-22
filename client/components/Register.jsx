@@ -55,7 +55,10 @@ class Register extends React.Component {
       <form className="box column is-6 is-offset-3 form has-text-centered" style={{ background: 'inherit', backgroundImage: '', borderRadius: '15%'}} onSubmit={this.submit}>
         <p className="title is-1">Register</p>
         {this.state.errorMessage && <h1 className="box has-text-danger">{this.state.errorMessage}</h1>}
-        <label className="column is-8 is-offset-2 label is-large has-text-light">Username:
+        <label className="column is-8 is-offset-2 label is-large has-text-light">
+          <span >
+            Username:
+          </span>
           <div className="control has-icons-left has-icons-right">
             <input
               required
