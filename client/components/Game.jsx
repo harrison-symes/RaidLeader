@@ -71,10 +71,12 @@ class Game extends Component {
     const {started, boss, player, party} = this.props
     const {loseModal, winModal} = this.state
     const background = MenuBackground(this.props.currentLocation.name)
-    if (!player || player.spells.length == 0 || party.length == 0 || !boss) return <div className="Game hero is-fullheight has-text-centered" style={{backgroundImage: `url(${background.background})`}}>
-      <div className="hero">
+    if (!player || player.spells.length == 0 || party.length == 0 || !boss) return <div className="Town has-text-centered" style={{backgroundImage: `url(${background.background})`}}>
+      <div className="Town-Banner">
         <h1 className="title is-1">Game not ready</h1><br />
-        <Link to="/" className="button is-large is-success">Return to Menu</Link>
+      </div>
+      <div className="Town-Buttons">
+        <Link to="/" className="button is-large is-success is-outlined">Return to Menu</Link>
       </div>
     </div>
     return <div className="Game">
