@@ -108,21 +108,21 @@ export default {
       {
         name: 'Magma Surge',
         cost: 0,
-        cast: 3,
-        coolDown: 15,
+        cast: 5,
+        coolDown: 0,
         powerRatio: 1,
         percentage: 0.5,
         tickPower: 0,
         type: 'damage',
-        singleTarget: false,
+        singleTarget: true,
         isChanneled: true,
-        ticks: 3,
-        tickPercentage: 0.1,
+        ticks: 5,
+        tickPercentage: 0.04,
         tickPower: 1,
         onCooldown: false,
-        description: "Damage ALL Recruits for 30% of their Max Health during the cast, and then Damage the Target for (100%) Boss Power",
+        description: "Damage ALL Recruits for (200%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
         icon: 'ra-lava'
-      }
+      },
     ]
   },
   stageThree: {

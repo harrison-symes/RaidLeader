@@ -188,9 +188,23 @@ class BossSpell extends Component {
 
         //stage 2
       case 'Meldown':
+        dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
-
+      case 'Half Life':
+        return party.forEach(target => {
+          dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power: Math.round(target.hp / 2)})
+        })
         //stage 3
+
+      case 'Explode':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Decay':
+        let poisonPercentage = 0.1
+        poisonPercentage += (0.02 * boss.maxMana - boss.mana) * poisonPercentage
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(poisonPercentage)})
+      case 'Fission':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       default: return
     }
   }
