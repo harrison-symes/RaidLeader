@@ -8,7 +8,7 @@ export default {
   initArmor: 0,
   armor: 0,
   mana: 0,
-  maxMana: 200,
+  maxMana: 100,
   manaRegen: 0,
   armorRegen: 0,
   isCasting: false,
@@ -19,7 +19,7 @@ export default {
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-alien-fire',
-  stage: 'stageZero',
+  stage: 'stageOne',
   spells: [
     {
       name: 'Charge',
@@ -27,11 +27,12 @@ export default {
       cast: 10,
       coolDown: 0,
       powerRatio: 1,
+      healthMax: 0.7,
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
       stage: 'stageTwo',
-      description: "(Only used when below 4000 Health) Change to Stage 2, gaining 25 Power",
+      description: "(Only used when below 70% Health) Change to Stage 2, gaining 25 Power",
       icon: 'ra-energise'
     },
     {
@@ -86,8 +87,8 @@ export default {
         onCooldown: false,
         singleTarget: false,
         powerRatio: 1,
-        stage: 'stageOne',
-        description: '(Only useable at 200 Mana) Change to Stage 3, gaining 50 Power and Poisoning ALL Recruits for (60%) of their Max Health over 15 seconds',
+        stage: 'stageThree',
+        description: '(Only useable at 100 Mana) Change to Stage 3, gaining 50 Power and Poisoning ALL Recruits for (60%) of their Max Health over 15 seconds',
         icon: 'ra-radioactive'
       },
       {

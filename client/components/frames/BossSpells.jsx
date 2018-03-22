@@ -171,6 +171,12 @@ class BossSpell extends Component {
         let stage = boss[spell.stage]
         if (boss.mana == spell.manaRequired) stage = boss['stageThree']
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage})
+
+      //core
+      case 'Charge':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Meldown':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
       default: return
     }
   }

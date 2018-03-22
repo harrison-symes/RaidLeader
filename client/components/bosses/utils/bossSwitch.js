@@ -10,6 +10,7 @@ import LungingLocusts from '../LungingLocusts'
 import PlaguePiltherer from '../PlaguePiltherer'
 import FlamingFurnace from '../FlamingFurnace'
 import CyclingConveyer from '../CyclingConveyer'
+import CollapsingCore from '../CollapsingCore'
 
 export default function (boss) {
   switch(boss.name) {
@@ -23,6 +24,7 @@ export default function (boss) {
     case 'Plague Piltherer': return <PlaguePiltherer boss={boss} />
     case 'Flaming Furnace': return <FlamingFurnace boss={boss} />
     case 'Cycling Conveyer': return <CyclingConveyer boss={boss} />
+    case 'Collapsing Core': return <CollapsingCore boss={boss} />
     default: return null
   }
 }
