@@ -10,11 +10,12 @@ export function registerUserRequest ({user_name, password}, cb) {
         user_name, password
       })
       .then(response => {
-        const userInfo = saveUserToken(res.body.token)
+        const userInfo = saveUserToken(response.body.token)
         dispatch(receiveLogin(userInfo))
         cb(null)
       })
       .catch(err => {
+        console.log({err});
         cb(err.response.body.message)
       })
   }
