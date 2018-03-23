@@ -66,9 +66,9 @@ export default {
       singleTarget: true,
       isChanneled: true,
       ticks: 5,
-      tickPower: 0.4,
+      tickPower: 0.2,
       onCooldown: false,
-      description: "Damage ALL enemies for (200%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
+      description: "Damage ALL enemies for (100%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
       icon: 'ra-lava'
     },
 
@@ -116,9 +116,9 @@ export default {
         singleTarget: true,
         isChanneled: true,
         ticks: 5,
-        tickPower: 0.4,
+        tickPower: 0.2,
         onCooldown: false,
-        description: "Damage ALL enemies for (200%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
+        description: "Damage ALL enemies for (100%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
         icon: 'ra-lava'
       },
     ]
