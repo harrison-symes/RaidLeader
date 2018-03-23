@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: `At the heart of the Volcano lives a Molten, Magnetic Core. The Core's Power was being funnelled out to the Conveyer and the Furnace, and it looks like the energy is being used for further devious means.`,
-  weaponRewards: ['Polarizing Stick', 'Lightning Rod', 'Power Drill'],
+  weaponRewards: ['Decaying Blade', 'Decayed Core', 'Sheet Music'],
   goldReward: 2000,
   weaponChance: 1,
   progress_required: 0,

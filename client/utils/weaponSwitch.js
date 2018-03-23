@@ -457,5 +457,50 @@ module.exports = {
     bonusEffect: 'critical',
     effectDescription: "All of the Rogue's attacks are Critical (Double damage, Ignores armor)",
     icon: 'ra-drill'
+  }),
+  ['Sheet Music']: (level, id) => ({
+    name: 'Sheet Music',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.2,
+    power: -0.5,
+    speed: 2,
+    description: "A melody that was played to calm down the Core whenever it was close to a Meltdown",
+    class: 'Bard',
+    bonusEffect: 'loseMana',
+    effectDescription: "The Bard's attack cause the Player to LOSE 1 Mana instead of gaining 1",
+    icon: 'ra-scroll-unfurled'
+  }),
+  ['Decaying Blade']: (level, id) => ({
+    name: 'Decaying Blade',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: -0.3,
+    power: -0.5,
+    speed: 0.5,
+    description: "What is the Half Life of a Warrior?",
+    class: 'Warrior',
+    bonusEffect: 'enrage',
+    effectDescription: "The Warrior deals Double Damage while below 50% Health",
+    icon: 'ra-scroll-unfurled'
+  }),
+  ['Decayed Core']: (level, id) => ({
+    name: 'Decayed Core',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.3,
+    power: -0.3,
+    speed: 0.3,
+    description: "Is the Recruit half alive, or half dead? It's really a matter of perspective",
+    class: 'Priest',
+    bonusEffect: 'halfLife',
+    effectDescription: "The Priest's heals are Twice as effective against targets ABOVE (50%) Health",
+    icon: 'ra-implosion'
   })
 }
