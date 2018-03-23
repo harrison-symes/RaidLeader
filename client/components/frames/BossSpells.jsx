@@ -53,7 +53,7 @@ class BossSpell extends Component {
       case 'Magnetic Pulse':
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.tickArmor})
       case 'Magma Surge':
-        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: this.props.player.power})
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: this.props.player.power * spell.tickPower})
       default: return
     }
   }
