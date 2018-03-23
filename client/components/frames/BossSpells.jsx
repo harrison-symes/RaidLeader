@@ -187,7 +187,7 @@ class BossSpell extends Component {
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
 
         //stage 2
-      case 'Meldown':
+      case 'Meltdown':
         dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
       case 'Half Life':
