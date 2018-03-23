@@ -10,7 +10,7 @@ export class Warlock extends PartyMemberFrame {
     let {power, isAlive, weapon_effect} = member
     if (isAlive && started) {
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      if (weapon_effect == 'lightningRod') dispatch({type: 'PERCENT_DAMAGE_DAMAGE_FRIENDLY_TARGET', percentage: 0.05})
+      if (weapon_effect == 'lightningRod') dispatch({type: 'PERCENT_DAMAGE_DAMAGE_FRIENDLY_TARGET', target: member, percentage: 0.05})
       else dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: 0.05, target: member})
     }
   }
