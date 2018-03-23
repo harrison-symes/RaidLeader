@@ -66,8 +66,7 @@ export default {
       singleTarget: true,
       isChanneled: true,
       ticks: 5,
-      tickPercentage: 0.04,
-      tickPower: 1,
+      tickPower: 0.4,
       onCooldown: false,
       description: "Damage ALL Recruits for (200%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
       icon: 'ra-lava'
@@ -117,8 +116,7 @@ export default {
         singleTarget: true,
         isChanneled: true,
         ticks: 5,
-        tickPercentage: 0.04,
-        tickPower: 1,
+        tickPower: 0.4,
         onCooldown: false,
         description: "Damage ALL Recruits for (200%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
         icon: 'ra-lava'
