@@ -18,17 +18,37 @@ export default class CombatTutorial extends Component {
       power: 20,
       manaRegen: 0,
       target: null,
-      step: 1
+      step: 1,
+      stepCompleted: false
     }
   }
+  tick() {
+    if (this.state.stepCompleted) return <i className="icon fas fa-check" style={{color: 'lightgreen'}} />
+    else return null
+  }
+  completeStep(step) {
+    this.setState({stepCompleted: true})
+    setTimeout(() => this.setState({step: step+1, stepCompleted: false}), 1000)
+  }
   targetPaladin() {
+    if (this.state.step == 1) this.completeStep(1)
     this.setState({target: this.props.paladinName})
   }
   targetPlayer() {
     this.setState({target: 'Player'})
   }
-  renderTutorialMessage() {
+  messageSwitch() {
 
+    const {step, stepCompleted} = this.state
+    switch(step) {
+      case 1: return <p className="message-content">Click on <b>{this.props.paladinName}</b> to <b>Target</b> them.{this.tick()}</p>
+      default: return null
+    }
+  }
+  renderTutorialMessage() {
+    return <div className="message is-info is-large">
+      {this.messageSwitch()}
+    </div>
   }
   renderHealthBar () {
     const {hp, initHp} = this.state
