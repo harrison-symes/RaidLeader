@@ -21,7 +21,7 @@ export default class CombatTutorial extends Component {
       power: 20,
       manaRegen: 0,
       target: null,
-      step: 11,
+      step: 1,
       spellCast: 5,
       coolDown: 5,
       cost: 5,
@@ -140,6 +140,7 @@ export default class CombatTutorial extends Component {
       )
         && <button disabled={stepCompleted} onClick={() => this.completeStep(step)} className="button is-large is-info is-fullwidth is-outlined">Continue</button>
       }
+      <button onClick={this.props.endTutorial} className="button is-danger is-small">Skip Tutorial</button>
     </div>
   }
   renderHealthBar () {

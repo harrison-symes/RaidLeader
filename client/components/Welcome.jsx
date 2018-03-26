@@ -90,7 +90,7 @@ class Welcome extends Component {
         <p className="title is-1">Heal {paladinName}</p>
       </div>
       <div className="box" style={{color: 'black'}}>
-        <CombatTutorial paladinName={paladinName} />
+        <CombatTutorial paladinName={paladinName} endTutorial={() => this.getStarted()} />
       </div>
     </div>
   }
