@@ -51,10 +51,10 @@ export default class CombatTutorial extends Component {
   }
   tickCD() {
     let currentCooldown = this.state.currentCooldown + 0.1
-    console.log("tick CD", currentCooldown);
     if (this.state.onCooldown && currentCooldown >= this.state.coolDown) {
       console.log("CD finished");
       window.clearTimeout(this.coolDownTimer)
+      window.clearTimeout(this.castTimer)
       if (this.state.step <= 14) {
         if (this.state.mana == 0) this.setState({step: 16})
         else this.setState({step: 15})
@@ -67,7 +67,9 @@ export default class CombatTutorial extends Component {
     }
   }
   finishCast() {
+    console.log("FInish CAST");
     let {hp, initHp, power} = this.state
+    window.clearTimeout(this.castTimer)
     hp += power
     if (hp >= initHp) hp = initHp
     this.setState({onCooldown: true, hp, mana: this.state.mana -5 <= 0 ? 0 : this.state.mana - 5})
@@ -80,9 +82,13 @@ export default class CombatTutorial extends Component {
       if (this.state.step == 12) {
         window.clearTimeout(this.castTimer)
         this.setState({step: 13})
+        console.log("delayed finish cast");
         return setTimeout(() => this.finishCast(), 4000)
       }
-      else return this.finishCast()
+      else {
+        console.log("regular finish cast");
+        return this.finishCast()
+      }
     } else {
       this.setState({currentCast})
       this.castTimer = setTimeout(() => this.tickCast(), 100)
