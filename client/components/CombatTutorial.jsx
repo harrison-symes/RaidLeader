@@ -305,7 +305,7 @@ export default class CombatTutorial extends Component {
                 type="circle"
                 percent={Math.round(perc)}
                 width={width * 0.9}
-                symbolClassName={`ra ra-sword`}
+                symbolClassName={`ra ra-daisy`}
                 status={onCooldown ? 'danger' : 'casting'}
                 strokeWidth={10}
                 theme={{
@@ -315,7 +315,7 @@ export default class CombatTutorial extends Component {
               />
             </Tooltip>
           </span>
-          : <i onClick={() => this.castHeal()} style={{position: 'relative', color: 'green', backgroundColor:'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ra-sword icon icon-large`}
+          : <i onClick={() => this.castHeal()} style={{position: 'relative', color: '#C0FF3E', backgroundColor:'#008B45', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ra-daisy icon icon-large`}
           />}
         </button>
       </Tooltip>
