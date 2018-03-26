@@ -20,8 +20,16 @@ export default class CombatTutorial extends Component {
       manaRegen: 0,
       target: null,
       step: 1,
+      spellCast: 2.5,
+      coolDown: 2,
+      cost: 5,
+      currentCast: 0,
+      currentCooldown: 0,
+      onCooldown: false,
       stepCompleted: false
     }
+    this.castInterval = false
+    this.cooldownInterval = false
   }
   toggleCompletion() {
     this.setState({stepCompleted: !this.state.stepCompleted})
@@ -41,12 +49,11 @@ export default class CombatTutorial extends Component {
   }
   messageSwitch() {
     const {step, stepCompleted} = this.state
-    console.log({stepCompleted});
     switch(step) {
       case 1: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Click on <b>{this.props.paladinName}</b> to <b>Target</b> them.  </p>
       case 2: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Great! Now Click on the <b>Player Frame</b> on the <b>Bottom Left</b> to <b>Target</b> Yourself.</p>
       case 3: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Now you understand <b>Targeting</b>. To cast a spell on a <b>Target</b> you MUST target them first!
-        <hr />
+        <br />
         Now <b>Target</b> {this.props.paladinName} once more!
       </p>
       case 4: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This is {this.props.paladinName}'s <b>Health Bar</b>. as you can see, {this.props.paladinName} is <b>Damaged</b></p>
@@ -54,17 +61,18 @@ export default class CombatTutorial extends Component {
       case 6: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This here is your <b>Player Power</b>. This value increases the strength of your <b>Spells</b></p>
       case 7: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This bar represents you <b>Player Health</b>. If this bar runs out, its <b>Game Over</b></p>
       case 8: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This bar represents you <b>Player Mana</b>. Casting <b>Spells</b> Costs <b>Mana</b>. If you don't have enough Mana, you can't cast the <b>Spell</b>.</p>
+      case 9: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">If you hover over this Icon, you can see more information about your <b>Player</b>. (Such as <b>Mana Regen</b>)</p>
     }
   }
   renderTutorialMessage() {
     const {step, stepCompleted} = this.state
     return <div className="message is-info is-large">
       {this.messageSwitch()}
-      {(step != 1 || 
+      {(step != 1 ||
         step != 2 ||
         step != 3
       )
-        && <button disabled={stepCompleted} onClick={() => this.completeStep(step)} className="button is-large is-info is-outlined">Continue</button>
+        && <button disabled={stepCompleted} onClick={() => this.completeStep(step)} className="button is-large is-info is-fullwidth is-outlined">Continue</button>
       }
     </div>
   }
@@ -86,7 +94,6 @@ export default class CombatTutorial extends Component {
           theme="dark"
           open={step == 4}
           html={this.messageSwitch()}
-          onClick={() => this.completeStep(4)}
           class="has-text-centered"
         >
           <Line percent={percent} strokeWidth={`10`} strokeColor={colourClass} strokeLinecap="square"  trailWidth={`10`}/>
@@ -102,7 +109,6 @@ export default class CombatTutorial extends Component {
             theme="dark"
             open={step == 5}
             html={this.messageSwitch()}
-            onClick={() => this.completeStep(5)}
             class="has-text-centered"
           >
             <HealthIcon value={`${Math.round(hp)} / ${Math.round(initHp)}`} />
@@ -141,6 +147,41 @@ export default class CombatTutorial extends Component {
       </Tooltip>
     </span>
   }
+  renderPlayerSpell() {
+    const {mana, target, cost, spellCast, currentCD, currentCast, onCooldown, coolDown} = this.state
+
+    const spellColour = onCooldown || mana < cost ? 'is-danger' : 'is-success'
+    var cdPercentage = (coolDown - currentCD) / coolDown * 100
+    var castPercentage = currentCast / spellCast * 100
+    let perc = onCooldown ? cdPercentage : castPercentage
+    var text = Math.round(perc * (onCooldown ? coolDown: spellCast) / 100)
+    let width = 1000 / 1
+    if (width > 200) width = 200
+    return <div className="columns is-multiline is-mobile PlayerSpellBarContainer has-text-centered">
+      <button
+        className={`PlayerSpell ${spellColour}`}
+        style={{position: 'relative', width, height: width}}
+      >
+        {(onCooldown || currentCast > 0)
+        ? <span style={{position: 'relative', width, height: width}} className="CastProgress">
+          <Progress
+            type="circle"
+            percent={Math.round(perc)}
+            width={width * 0.9}
+            symbolClassName={`ra ra-sword`}
+            status={onCooldown ? 'danger' : 'casting'}
+            strokeWidth={10}
+            theme={{
+              casting: {symbol: null, color: 'blue'},
+              danger: {symbol: null, color: 'red'}
+            }}
+          />
+        </span>
+        : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: 'green', backgroundColor:'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ra-sword icon icon-large`}
+        />}
+      </button>
+    </div>
+  }
   renderPlayer() {
     const {mana, power, maxMana, manaRegen, target, step} = this.state
     const hp = 100
@@ -174,13 +215,23 @@ export default class CombatTutorial extends Component {
                     theme="dark"
                     open={step == 6}
                     html={this.messageSwitch()}
-                    onClick={() => this.completeStep(6)}
                     class="has-text-centered"
                   >
                     <PowerIcon value={Math.floor(power * 10) / 10} />
                   </Tooltip>
                 </p>
-                <p className="subtitle is-1"><PlayerIcon player={{name: 'Player', manaRegen, power}} />&nbsp;&nbsp;&nbsp;</p>
+                <Tooltip
+                  animation="scale"
+                  arrow="true"
+                  position="bottom"
+                  intertia="true"
+                  theme="dark"
+                  open={step == 9}
+                  html={this.messageSwitch()}
+                  class="has-text-centered"
+                >
+                  <p className="subtitle is-1"><PlayerIcon player={{name: 'Player', manaRegen, power}} />&nbsp;&nbsp;&nbsp;</p>
+                </Tooltip>
               </div>
               <div className="columns is-mobile">
                 <div className="column is-6">
@@ -193,7 +244,6 @@ export default class CombatTutorial extends Component {
                     theme="dark"
                     open={step == 7}
                     html={this.messageSwitch()}
-                    onClick={() => this.completeStep(6)}
                     class="has-text-centered"
                   >
                     <HealthBar hp={hp} maxHP={initHp} />
@@ -209,7 +259,6 @@ export default class CombatTutorial extends Component {
                     theme="dark"
                     open={step == 8}
                     html={this.messageSwitch()}
-                    onShow={() => setTimeout(() => this.completeStep(6), 5000)}
                     class="has-text-centered"
                   >
                     <ManaBar mana={mana} maxMana={maxMana} />
@@ -220,7 +269,7 @@ export default class CombatTutorial extends Component {
           </Tooltip>
         </div>
         <div className="column is-8">
-            {/* <PlayerSpellBar spells={spells}/> */}
+          {this.renderPlayerSpell()}
         </div>
       </div>
     </div>
