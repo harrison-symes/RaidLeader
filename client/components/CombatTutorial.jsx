@@ -9,6 +9,23 @@ import { Line, Circle } from 'rc-progress';
 import {Tooltip} from 'react-tippy'
 import { Progress } from 'react-sweet-progress';
 
+const initialState = {
+  hp: 10,
+  initHp: 70,
+  mana: 10,
+  maxMana: 10,
+  power: 20,
+  manaRegen: 0,
+  target: null,
+  step: 1,
+  spellCast: 5,
+  coolDown: 5,
+  cost: 5,
+  currentCast: 0,
+  currentCooldown: 0,
+  onCooldown: false,
+  stepCompleted: false
+}
 
 export default class CombatTutorial extends Component {
   constructor(props) {
@@ -32,6 +49,24 @@ export default class CombatTutorial extends Component {
     }
     this.castTimer = null
     this.coolDownTimer = null
+    this.manaRegenTimer = null
+  }
+  tickManaRegen() {
+    let {manaRegen, mana, maxMana, step} = this.state
+    mana += manaRegen
+    if (mana > maxMana) mana = maxMana
+    if (mana != this.state.mana) this.setState({mana})
+    if (step == 17) this.setState({manaRegen: 1})
+    if (mana >= 5 && step == 17) this.completeStep(17)
+    this.manaRegenTimer = setTimeout(() => this.tickManaRegen(), 1000)
+  }
+  componentDidMount() {
+    this.manaRegenTimer = setTimeout(() => this.tickManaRegen(), 1000)
+  }
+  componentWillUnmount() {
+    clearTimeout(this.manaRegenTimer)
+    clearTimeout(this.castTimer)
+    clearTimeout(this.coolDownTimer)
   }
   toggleCompletion() {
     this.setState({stepCompleted: !this.state.stepCompleted})
@@ -52,7 +87,6 @@ export default class CombatTutorial extends Component {
   tickCD() {
     let currentCooldown = this.state.currentCooldown + 0.1
     if (this.state.onCooldown && currentCooldown >= this.state.coolDown) {
-      console.log("CD finished");
       window.clearTimeout(this.coolDownTimer)
       window.clearTimeout(this.castTimer)
       if (this.state.step <= 14) {
@@ -67,13 +101,15 @@ export default class CombatTutorial extends Component {
     }
   }
   finishCast() {
-    console.log("FInish CAST");
-    let {hp, initHp, power} = this.state
+    let {hp, initHp, power, step, mana} = this.state
     window.clearTimeout(this.castTimer)
     hp += power
-    if (hp >= initHp) hp = initHp
-    this.setState({onCooldown: true, hp, mana: this.state.mana -5 <= 0 ? 0 : this.state.mana - 5})
-    if (this.state.step == 13) this.setState({step: 14})
+    if (hp >= initHp) {
+      hp = initHp
+      if (step == 18) this.completeStep(18)
+    }
+    this.setState({onCooldown: true, hp, mana: mana -5 <= 0 ? 0 : mana - 5})
+    if (step == 13) this.setState({step: 14})
     this.tickCD()
   }
   tickCast() {
@@ -82,11 +118,9 @@ export default class CombatTutorial extends Component {
       if (this.state.step == 12) {
         window.clearTimeout(this.castTimer)
         this.setState({step: 13})
-        console.log("delayed finish cast");
         return setTimeout(() => this.finishCast(), 4000)
       }
       else {
-        console.log("regular finish cast");
         return this.finishCast()
       }
     } else {
@@ -118,9 +152,9 @@ export default class CombatTutorial extends Component {
       case 8: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This bar represents you <b>Player Mana</b>. Casting <b>Spells</b> Costs <b>Mana</b>. If you don't have enough Mana, you can't cast the <b>Spell</b>.</p>
       case 9: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">If you hover over this Icon, you can see more information about your <b>Player</b>. (Such as <b>Mana Regen</b>)</p>
       case 10: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This is a <b>Spell</b>. Specifically a Spell called
-        <b>Heal</b>.
+        &nbsp; <b>Heal</b>.
         <br/>
-        <b>Heal</b> restores <b>Health</b> to your target equal to <b>100% Player Power</b>, so it will heal for <b>20</b> in this case
+        <b> Heal</b> restores <b>Health</b> to your target equal to <b>100% Player Power</b>, so it will heal for <b>20</b> in this case
       </p>
       case 11: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Now! To <b>Heal</b> your friend <b>{this.props.paladinName}</b>, <b>Target</b> them and <b>Click</b> this Spell!</p>
       case 12: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">This <b>Blue Bar</b> means the spell is casting</p>
@@ -128,18 +162,33 @@ export default class CombatTutorial extends Component {
       case 14: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">After a <b>Spell</b> is Cast, it must <b>Cool Down</b> for a period of time before it can be used again.</p>
       case 15: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Your Spell has Finished its <b>Cooldown</b> and is ready to Cast Again</p>
       case 16: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">You have run out of <b>Mana</b> and must wait for it to regenerate before you can cast another <b>Spell</b></p>
+      case 17: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Your Mana will <b>Regenerate</b> by <b>1 Mana</b> every second, but cannot exceed your <b>Max Mana</b></p>
+      case 18: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">Now that you have enough <b>Mana</b>, you can cast <b>Heal</b> on <b>{this.props.paladinName}</b> again!</p>
+      case 19: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content"><b>{this.props.paladinName}</b> has been restored back to <b>Full Health</b>!</p>
+      case 20: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content">You're now ready to head out into the World! <b>{this.props.paladinName}</b> wants to <b>Join your Party</b>!</p>
+      case 21: return <p style={{color: stepCompleted ? 'lightgreen' : 'orange'}} className="message-content"><b>{this.props.paladinName}</b> does have one request first: Help them to take Revenge against that <b>Dragon</b>! They'll meet you in <b>TOWN</b></p>
     }
   }
   renderTutorialMessage() {
     const {step, stepCompleted} = this.state
+    const unskippable = [1, 2, 3, 11, 12, 13, 14, 15, 17, 18]
+    if (step == 21) return <button onClick={this.props.endTutorial}className="button is-large is-primary is-fullwidth">Travel To <b>Town</b>!</button>
     return <div className="message is-info is-large">
-      {this.messageSwitch()}
-      {(step != 1 ||
-        step != 2 ||
-        step != 3
-      )
-        && <button disabled={stepCompleted} onClick={() => this.completeStep(step)} className="button is-large is-info is-fullwidth is-outlined">Continue</button>
+      {!unskippable.includes(step)
+        && <Tooltip
+          animation="scale"
+          arrow="true"
+          position="top"
+          intertia="true"
+          theme="dark"
+          open={true}
+          title={'Click Here to Progress to the Next Step'}
+          class="has-text-centered"
+        >
+          <button onClick={() => this.completeStep(step)} className="button is-large is-info is-fullwidth is-outlined">Continue</button>
+        </Tooltip>
       }
+      {this.messageSwitch()}
       <button onClick={this.props.endTutorial} className="button is-danger is-small">Skip Tutorial</button>
     </div>
   }
@@ -174,7 +223,7 @@ export default class CombatTutorial extends Component {
             position="bottom"
             intertia="true"
             theme="dark"
-            open={step == 5}
+            open={step == 5 || step == 19}
             html={this.messageSwitch()}
             class="has-text-centered"
           >
@@ -195,7 +244,7 @@ export default class CombatTutorial extends Component {
         intertia="true"
         size="big"
         theme="dark"
-        open={step == 1 || step == 3}
+        open={step == 1 || step == 3 || step == 20 || step == 21}
         html={this.messageSwitch()}
         class="has-text-centered"
       >
@@ -232,7 +281,7 @@ export default class CombatTutorial extends Component {
         intertia="true"
         size="big"
         theme="dark"
-        open={step == 10 || step == 11 || step == 15}
+        open={step == 10 || step == 11 || step == 15 || step == 18}
         html={this.messageSwitch()}
       >
         <button
@@ -347,7 +396,7 @@ export default class CombatTutorial extends Component {
                     position="top"
                     intertia="true"
                     theme="dark"
-                    open={step == 8 || step == 16}
+                    open={step == 8 || step == 16 || step == 17}
                     html={this.messageSwitch()}
                     class="has-text-centered"
                   >
