@@ -126,7 +126,8 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       bosses: [
         "Flaming Furnace",
         "Cycling Conveyer",
-        "Collapsing Core"
+        "Collapsing Core",
+        "Trapped Tunnel"
       ]
     }
     case "The Armory": return {

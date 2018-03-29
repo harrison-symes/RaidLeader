@@ -27,12 +27,12 @@ export default {
       cast: 10,
       coolDown: 0,
       powerRatio: 1,
-      healthMax: 0.7,
+      healthMax: 0.8,
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
       stage: 'stageTwo',
-      description: "(Only used when below 70% Health) Change to Stage 2, gaining 25 Power",
+      description: "(Only used when below 80% Health) Change to Stage 2, gaining 25 Power",
       icon: 'ra-energise'
     },
     {
@@ -106,8 +106,8 @@ export default {
       },
       {
         name: 'Magma Surge',
-        cost: 0,
         cast: 5,
+        cost: 0,
         coolDown: 0,
         powerRatio: 1,
         percentage: 0.5,

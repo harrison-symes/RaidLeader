@@ -205,6 +205,48 @@ class BossSpell extends Component {
       case 'Fission':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+
+      //Tunnel
+      case 'Next Room':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Crushing Walls':
+        if (aliveTargets.length == 0) return
+        let highestHealth = aliveTargets[0].hp
+        party.forEach(recruit => {
+          if (recruit.hp > highestHealth) highestHealth = recruit.hp
+        })
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * 0.5})
+
+      case 'Snake Trap':
+        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
+
+      case 'Dart Trap':
+        let availableTargets = aliveTargets.filter(recruit => {
+          return recruit.hp / recruit.initHp >= 0.5
+        })
+        target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+
+      //stage 2
+      case 'Crumbling Walls':
+        if (aliveTargets.length == 0) return
+        let lowestHealth = aliveTargets[0].hp
+        party.forEach(recruit => {
+          if (recruit.hp < lowestHealth) lowestHealth = recruit.hp
+        })
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: lowestHealth * 0.5})
+
+      case 'Spike Trap':
+        availableTargets = aliveTargets.filter(recruit => {
+          return recruit.hp / recruit.initHp <= 0.2
+        })
+        target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
+
+      //stage 3
+      case 'Escape!':
+        return dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 2})
       default: return
     }
   }
