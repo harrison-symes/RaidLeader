@@ -21,7 +21,7 @@ class CyclingConveyer extends BossFrame {
             }
           case 'stageTwo':
             switch(spell.name) {
-              case 'Meltdown': return boss.mana == spell.manaRequired
+              case 'Meltdown': return boss.mana >= spell.manaRequired
               case 'Half Life': return true
               case 'Magma Surge': return true
 
@@ -30,7 +30,7 @@ class CyclingConveyer extends BossFrame {
           case 'stageThree':
             switch(spell.name) {
               case 'Explode': return boss.mana == spell.manaRequired
-              case 'Decay': return true
+              case 'Radiate': return true
               case 'Half Life': return true
               case 'Fission': return true
               default: return null
