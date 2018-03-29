@@ -145,7 +145,7 @@ export default {
         singleTarget: false,
         powerRatio: 10000000,
         description: 'The Player Wins (By Escaping)',
-        icon: 'ra-sword'
+        icon: 'ra-trail'
       },
       {
         name: 'Dart Trap',
