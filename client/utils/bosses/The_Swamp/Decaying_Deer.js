@@ -1,8 +1,8 @@
 export default {
   name: 'Decaying Deer',
   level: 2,
-  initHp: 1000,
-  hp: 1000,
+  initHp: 1500,
+  hp: 1500,
   initPower: 50,
   power: 50,
   initArmor: 500,

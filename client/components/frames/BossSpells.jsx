@@ -198,9 +198,9 @@ class BossSpell extends Component {
 
       case 'Explode':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
-      case 'Decay':
+      case 'Radiate':
         let poisonPercentage = 0.1
-        poisonPercentage += (0.02 * boss.maxMana - boss.mana) * poisonPercentage
+        poisonPercentage += (0.01 *  boss.mana)
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(poisonPercentage)})
       case 'Fission':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})

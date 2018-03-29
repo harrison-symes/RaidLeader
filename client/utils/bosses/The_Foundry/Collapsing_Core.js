@@ -57,20 +57,20 @@ export default {
     {
       name: 'Magma Surge',
       cost: 0,
-      cast: 5,
-      coolDown: 0,
+      cast: 10,
+      coolDown: 5,
       powerRatio: 1,
       percentage: 0.5,
       tickPower: 0,
       type: 'damage',
       singleTarget: true,
       isChanneled: true,
-      ticks: 5,
-      tickPower: 0.2,
+      ticks: 10,
+      tickPower: 0.1,
       onCooldown: false,
       description: "Damage ALL enemies for (100%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
       icon: 'ra-lava'
-    },
+    }
 
   ],
   stageTwo: {
@@ -81,7 +81,7 @@ export default {
     spells: [
       {
         name: 'Meltdown',
-        manaRequired: 100,
+        manaRequired: 50,
         cast: 10,
         cost: 0,
         coolDown: 0,
@@ -89,7 +89,7 @@ export default {
         singleTarget: false,
         powerRatio: 1,
         stage: 'stageThree',
-        description: '(Only useable at 100 Mana) Change to Stage 3, gaining 50 Power and Poisoning ALL Recruits for (60%) of their Max Health over 15 seconds',
+        description: '(Only useable at 50 Mana) Change to Stage 3, gaining 50 Power and Poisoning ALL Recruits for (60%) of their Max Health over 15 seconds',
         icon: 'ra-radioactive'
       },
       {
@@ -106,17 +106,17 @@ export default {
       },
       {
         name: 'Magma Surge',
-        cast: 5,
+        cast: 10,
         cost: 0,
-        coolDown: 0,
+        coolDown: 5,
         powerRatio: 1,
         percentage: 0.5,
         tickPower: 0,
         type: 'damage',
         singleTarget: true,
         isChanneled: true,
-        ticks: 5,
-        tickPower: 0.2,
+        ticks: 10,
+        tickPower: 0.1,
         onCooldown: false,
         description: "Damage ALL enemies for (100%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
         icon: 'ra-lava'
@@ -125,8 +125,8 @@ export default {
   },
   stageThree: {
     stage: 'stageThree',
-    description: 'During Stage 3 the Core will lose 1 Mana per second, increasing in Damage as the Mana reduces. Once at 0 Mana the Core will explode, killing the Player and their Recruits',
-    manaRegen: -1,
+    description: 'During Stage 3 the Core will gain 1 Mana per second, increasing in Damage as the Mana reduces. Once at 100 Mana the Core will explode, killing the Player and their Recruits',
+    manaRegen: 1,
     power: 100,
     spells: [
       {
@@ -135,14 +135,15 @@ export default {
         cost: 0,
         coolDown: 0,
         type: 'support',
+        manaRequired: 100,
         powerRatio: 10000,
         onCooldown: false,
         singleTarget: false,
-        description: "(Only Useable at 0 Mana): Damage ALL enemy characters for (1,000,000%) Boss Power",
+        description: "(Only Useable at 100 Mana): Damage ALL enemy characters for (1,000,000%) Boss Power",
         icon: 'ra-bomb-explosion'
       },
       {
-        name: 'Decay',
+        name: 'Radiate',
         cast: 5,
         cost: 0,
         coolDown: 10,
@@ -153,7 +154,7 @@ export default {
         tickPercentage: 0.08,
         onCooldown: false,
         singleTarget: true,
-        description: "Poison ALL Recruits for (60%) of their Max Health over 15 seconds. The Poison increases in damage by 2% for every 1 Mana the Boss is missing.",
+        description: "Poison ALL Recruits for (60%) of their Max Health over 15 seconds. The Poison increases in damage by 1% for every 1 Mana the Boss has.",
         icon: 'ra-alien-fire'
       },
       {
