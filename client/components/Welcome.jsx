@@ -33,9 +33,9 @@ class Welcome extends Component {
       </div>
       <div className="box Town-Buttons">
         <div style={{color: 'black'}}>
-          <div className="content is-large">You are about to begin your journey.</div>
-          <div className="content is-large">I'm not gonna tell you how to play this thing, you can figure that out for yourself.</div>
-          <div className="content is-large">I can however, get you started...</div>
+          <div className="content is-large">You are about to begin a Grand Adventure!.</div>
+          <div className="content is-large">Bored of the absense of events in your <b>Home Town</b> you set off, walking down the Winding Road</div>
+          <div className="content is-large">You have no idea what awaits you at the end of this path...</div>
           <button className="button is-large is-success is-outlined" onClick={this.nextStage}>Exciting!</button>
         </div>
       </div>
