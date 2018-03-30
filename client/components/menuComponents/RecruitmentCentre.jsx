@@ -25,7 +25,8 @@ class RecruitmentCentre extends Component {
   }
   solveOptions() {
     const zodiacs = getZodiacs()
-    const classes = ['Paladin', 'Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard']
+    const classes = ['Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard']
+    if (this.props.recruits.length > 3) classes.push('Paladin')
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
