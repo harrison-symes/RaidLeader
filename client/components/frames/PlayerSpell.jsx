@@ -243,7 +243,7 @@ class PlayerSpell extends Component {
     var castPercentage = currentCastTime / spell.cast * 100
     let perc = onCooldown ? cdPercentage : castPercentage
     var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
-    let width = 1000 / player.spells.length
+    let width = 800 / player.spells.length
     if (width > 200) width = 200
     return <button
     className={`PlayerSpell ${spellColour}`}

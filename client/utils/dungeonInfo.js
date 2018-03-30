@@ -164,5 +164,16 @@ export default function getDungeonInfo(dungeon, isCompleted) {
 
       ]
     }
+    case "The Test": return {
+      name: 'The Test',
+      isCompleted,
+      level: 1,
+      is_repeatable: true,
+      max_party: 5,
+      max_spells: 5,
+      bosses: [
+        'Trapped Tunnel'
+      ]
+    }
   }
 }

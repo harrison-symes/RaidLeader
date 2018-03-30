@@ -53,16 +53,16 @@ class MemberFrame extends Component {
     const {initHp, hp, name, isAlive, effects, power, speed} = member
     let width = 70 / party.length
     // if (width > 20) width = 20
-    return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{minWidth: `${width}vw`, border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`, cursor: 'pointer', backgroundColor: !isAlive ? 'grey' : friendlyTarget == member ? 'lightgreen' : 'white'}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
+    return <div className={`column button MemberFrame ${!isAlive ? 'is-dark' : friendlyTarget == member ? 'is-success' : ''}`} style={{border: `5px ${friendlyTarget == member ? 'lightgreen' : 'black'}`,margin: '10px', marginTop: '3vh', height: '15vh', cursor: 'pointer'}} onClick={() => dispatch({type: 'SELECT_FRIENDLY_TARGET', target: member})}>
       <div className="columns is-gapless has-text-centered">
         <div className="column">
-          <h1 className={`subtitle is-4`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>
+          <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>
             <span className="is-pulled-left">
               {name}
               <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} />
               {!member.isAlive && <DeadRecruitIcon name={member.name} />}
             </span>
-            <span className="is-pulled-right">{Math.round(member.hp / member.initHp * 100)}%</span>
+            {/* <span className="is-pulled-right">{Math.round(member.hp / member.initHp * 100)}%</span> */}
           </h1>
         </div>
         {effects.length > 0

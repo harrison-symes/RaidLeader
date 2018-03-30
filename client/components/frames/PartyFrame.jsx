@@ -34,7 +34,7 @@ class PartyFrame extends Component {
   render() {
     const {party} = this.props
     return <div className="section PartyFrame">
-      <div className="columns is-mobile">
+      <div className="columns is-0 buttons is-mobile">
         {party.map((member, i) => this.classSwitch(member, i))}
       </div>
     </div>

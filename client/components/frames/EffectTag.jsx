@@ -58,7 +58,7 @@ export class EffectTag extends Component {
     const {effect, target} = this.props
     const {name, duration, colour, icon} = effect
     const {remaining} = this.state
-    return <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-medium"><i className={`ra ${icon} ra-fw`} style={{color: 'black'}} />{remaining}</div>
+    return <div style={{backgroundColor: colour, borderColor: 'black'}} className="tag is-small"><i className={`ra ${icon} ra-fw`} style={{color: 'black'}} />{remaining}</div>
   }
 }
 

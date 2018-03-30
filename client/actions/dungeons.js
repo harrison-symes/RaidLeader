@@ -5,6 +5,7 @@ import dungeonInfo from '../utils/dungeonInfo'
 
 export function receiveDungeonsAction (dungeons) {
   console.log({dungeons});
+  dungeons.push(dungeonInfo('The Test', false))
   return {
     type: "RECEIVE_DUNGEONS",
     dungeons: dungeons.map(dungeon => {
