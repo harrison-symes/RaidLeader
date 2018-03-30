@@ -41,7 +41,7 @@ export default function Home (props) {
         </div>} />
         <Route path="/login" component={Login} />
         <Route path="/Register" component={Register} />
-        <Route path="/new" component={WhatsNew} />
+        {/* <Route path="/new" component={WhatsNew} /> */}
       </div>
     </div>
   </Router>

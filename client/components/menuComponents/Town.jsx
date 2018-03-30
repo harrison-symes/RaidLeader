@@ -105,7 +105,7 @@ class Town extends Component {
               <i className={`ra ra-turd ra-lg` }></i>
             </span>
           </Link>
-          <div disabled className="button is-large is-fullwidth is-dark is-outlined">Profile (WIP)</div>
+          <Link to="/new" className="button is-large is-fullwidth is-info is-outlined">What's New?</Link>
         </div>
       </div>
     </div>

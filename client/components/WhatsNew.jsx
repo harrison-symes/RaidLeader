@@ -4,7 +4,7 @@ import patchNotes from '../utils/patchNotes'
 import {Link} from 'react-router-dom'
 
 export default function (props) {
-  return <div className="">
+  return <div className="Town has-text-centered">
     <div className="title is-1 Town-Banner">What's New?</div>
     <div className="Town-Buttons">
       {patchNotes.map(patch => <div>
@@ -16,8 +16,10 @@ export default function (props) {
             {update.description}
           </div>)}
         </div>
+        <hr />
       </div>)}
+      <hr />
+      <Link to='/' className="button is-info is-outlined column is-6 is-offset-3">Back</Link>
     </div>
-    <Link to='/' className="button is-info is-outlined column is-6 is-offset-3">Back</Link>
   </div>
 }
