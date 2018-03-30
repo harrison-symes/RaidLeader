@@ -140,10 +140,13 @@ class RecruitmentCentre extends Component {
                   </div>
                 })}
                 </div>
-                : (gold >= 500
-                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
-                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<GoldIcon /></button>
-                )
+                : this.props.recruits.length == 2 && this.props.spellBook.length < 2
+                  ? <button className="is-danger is-large button is-fullwidth" disabled>Learn a 2nd Spell First</button>
+                  : (gold >= 500
+                    ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
+                    : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<GoldIcon /></button>
+                  )
+
               }
 
             </div>
@@ -162,10 +165,11 @@ class RecruitmentCentre extends Component {
   }
 }
 
-const mapStateToProps = ({gold, recruits}) => {
+const mapStateToProps = ({gold, recruits, spellBook}) => {
   return {
     gold,
-    recruits
+    recruits,
+    spellBook
   }
 }
 
