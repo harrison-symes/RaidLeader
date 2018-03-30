@@ -67,6 +67,8 @@
     "react-beautiful-dnd": "^3.0.0",
     "react-circular-progressbar": "^0.8.0",
     "react-dom": "^15.5.4",
+    "react-key-handler": "^1.0.1",
+    "react-keydown": "^1.9.7",
     "react-redux": "^5.0.5",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.1.1",

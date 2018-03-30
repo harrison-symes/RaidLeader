@@ -42,7 +42,7 @@ export default {
       {
         name: 'Next Room',
         cast: 5,
-        cost: 5,
+        cost: 0,
         coolDown: 10,
         manaRequired: 60,
         singleTarget: false,
@@ -57,7 +57,8 @@ export default {
         coolDown: 10,
         singleTarget: false,
         powerRatio: 1,
-        description: 'Damage ALL Recruits for (50%) of the CURRENT Health on the Recruit with the Highest CURRENT Health.',
+        percentage: 0.3,
+        description: 'Damage ALL Recruits for (30%) of the CURRENT Health on the Recruit with the Highest CURRENT Health.',
         icon: 'ra-crush'
       },
       {
@@ -91,7 +92,7 @@ export default {
       {
         name: 'Next Room',
         cast: 5,
-        cost: 5,
+        cost: 0,
         coolDown: 10,
         manaRequired: 120,
         singleTarget: false,

@@ -5,6 +5,8 @@ import {poisonConstructor, renewConstructor} from '../../utils/effectConstructor
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
+import KeyHandler, {KEYPRESS} from 'react-key-handler';
+
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -266,6 +268,7 @@ class PlayerSpell extends Component {
       </span>
       : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`}
       />}
+      <KeyHandler keyEventName={'keydown'} keyValue={this.props.idx.toString()} onKeyHandle={this.clickSpell.bind(this)} />
     </button>
   }
 }

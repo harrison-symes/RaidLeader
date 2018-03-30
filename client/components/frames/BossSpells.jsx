@@ -215,7 +215,7 @@ class BossSpell extends Component {
         party.forEach(recruit => {
           if (recruit.hp > highestHealth) highestHealth = recruit.hp
         })
-        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * 0.5})
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * spell.percentage})
 
       case 'Snake Trap':
         dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
