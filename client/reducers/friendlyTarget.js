@@ -8,7 +8,7 @@ export default function (state = null, action) {
     case 'TRAVEL_TO_TOWN':
       return null
     case 'SELECT_FRIENDLY_TARGET':
-      if (action.target.isAlive) return action.target
+      if (action.target && action.target.isAlive) return action.target
       else return state
     case 'PALADIN_START_BUFF':
       return action.target
