@@ -173,7 +173,7 @@ export default {
         cost: 0,
         coolDown: 5,
         powerRatio: 1,
-        percentage: 0.3
+        percentage: 0.3,
         description: 'Damage ALL Recruits for (30%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if A Recruit is above (50%) Health). Also Damages the Player for (5%) Health.',
         icon: 'ra-snake'
       },
