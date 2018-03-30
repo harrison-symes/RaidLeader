@@ -23,7 +23,7 @@ export default function Home (props) {
   return <Router>
     <div className="Town">
       <div className="Town-Banner has-text-centered">
-        <Link to="/" className="title is-1">Raid Leader v0.3</Link>
+        <Link to="/" className="title is-1">Raid Leader v0.4!</Link>
       </div>
       <div className="Town-Buttons" >
 
