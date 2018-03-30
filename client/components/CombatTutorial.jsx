@@ -72,6 +72,7 @@ export default class CombatTutorial extends Component {
     this.setState({stepCompleted: !this.state.stepCompleted})
   }
   completeStep(step) {
+    if (this.state.stepCompleted) return
     this.setState({stepCompleted: true})
     setTimeout(() => this.setState({stepCompleted: false, step: this.state.step + 1}), 1000)
   }
@@ -185,7 +186,7 @@ export default class CombatTutorial extends Component {
           title={'Click Here to Progress to the Next Step'}
           class="has-text-centered"
         >
-          <button onClick={() => this.completeStep(step)} className="button is-large is-info is-fullwidth is-outlined">Continue</button>
+          <button onClick={() => this.completeStep(step)} disabled={stepCompleted} className="button is-large is-info is-fullwidth is-outlined">Continue</button>
         </Tooltip>
       }
       {this.messageSwitch()}

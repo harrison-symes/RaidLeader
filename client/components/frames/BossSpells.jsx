@@ -315,14 +315,13 @@ class BossSpell extends Component {
     clearInterval(this.castInterval)
     clearInterval(this.cooldownInterval)
   }
-  componentWillReceiveProps(nextProps) {
-    const {spell, started, boss} = nextProps
+  componentWillReceiveProps({spell, started, boss}) {
     if (!boss.spells.find(bossSpell => bossSpell.name == this.props.spell.name)) {
       console.log("spell not found");
       clearInterval(this.castInterval)
       return clearInterval(this.cooldownInterval)
     }
-    if (nextProps.spell !== this.props.spell) {
+    if (spell !== this.props.spell) {
       console.log("Spell changed");
       this.setState({
         onCooldown: false,
@@ -333,13 +332,13 @@ class BossSpell extends Component {
       clearInterval(this.castInterval)
       return clearInterval(this.cooldownInterval)
     }
-    if (!nextProps.started && this.props.started) {
+    if (!started && this.props.started) {
       clearInterval(this.castInterval)
       clearInterval(this.cooldownInterval)
       this.stopCasting()
     }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.castInterval) this.stopCasting()
-    else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+    else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
       this.startCasting()
     }
   }
