@@ -20,7 +20,7 @@ module.exports = [
           <p>If you ever had trouble learning <b>How to Play</b>, or you're worried you might have been missing something, there is now a <b>Tutorial</b>!</p>
           <p>The Tutorial will be Presented to you upon Registering for the first time. Check it out!</p>
         </div>
-      }
+      },
       {
         title: 'Key Controls!',
         description: <div className="content is-large">
