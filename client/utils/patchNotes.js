@@ -11,7 +11,7 @@ module.exports = [
         description: <div className="content is-large">
           <p>4 new Bosses await you in <b>The Foundry</b>!</p>
           <p>These Encounters will change their abilities and mechanics <b>DURING</b> the fight, so you better be ready for what these Machines have up their sleeves.</p>
-          <p>Grab your best <b>3 Recruits (at Level 3)</b> and <b>3 Spells</b> and dive in! (There's plenty of new Loot to Grab!).</p>
+          <p>Grab your best <b>3 Recruits (at Level 3)</b> and <b>3 Spells</b> and dive in! (There's plenty of new Loot to find!).</p>
         </div>
       },
       {
