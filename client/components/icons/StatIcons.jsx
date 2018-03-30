@@ -298,3 +298,17 @@ export function SpellCountIcon ({amount}) {
     </span>
   )
 }
+
+export function GameRecruitInfo ({recruit}) {
+  const {name, hp, initHp, power, speed} = recruit
+  return toolTipGenerator(
+    <span>
+      <p>{Math.round(power * 10) / 10} Power</p>
+      <p>{Math.round(speed * 10) / 10} Speed</p>
+      <p>({Math.round(power * speed * 10) / 10} Dp10s)</p>
+    </span>,
+    <span>
+      {name}
+    </span>
+  )
+}

@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import RecruitHealthBar from './RecruitHealthBar'
 import EffectTag from './EffectTag'
-import {ClassIcon, SpeedIcon, PowerIcon, DeadRecruitIcon} from '../icons/StatIcons'
+import {ClassIcon, SpeedIcon, PowerIcon, DeadRecruitIcon, GameRecruitInfo} from '../icons/StatIcons'
 import AttackIcon from './AttackIcon'
 import {attackIcons} from '../../utils/classText'
 
@@ -58,7 +58,7 @@ class MemberFrame extends Component {
         <div className="column">
           <h1 className={`subtitle is-3`} style={{color: boss.bossTarget == member ? 'red' : 'black'}}>
             <span className="is-pulled-left">
-              {name}
+              <GameRecruitInfo recruit={member} />
               <ClassIcon id={`Recruit-${member.id}`} heroClass={member.heroClass} />
               {!member.isAlive && <DeadRecruitIcon name={member.name} />}
             </span>
