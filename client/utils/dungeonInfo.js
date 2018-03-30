@@ -1,26 +1,32 @@
 export function MenuBackground (dungeon) {
   switch(dungeon) {
     case 'The Hunt': return {
+      icon: 'ra-dragon',
       colour: '#b88d8d',
       background: 'https://www.transparenttextures.com/patterns/black-scales.png'
     }
     case 'The Cursed Wilds': return {
+      icon: 'ra-pine-tree',
       colour: '#00633a',
       background: 'https://www.transparenttextures.com/patterns/gray-floral.png'
     }
     case 'The Swamp': return {
+      icon: 'ra-ocean-emblem',
       colour: '#47294a',
       background: 'https://www.transparenttextures.com/patterns/asfalt-light.png'
     }
     case 'The Foundry': return {
+      icon: 'ra-forging',
       colour: '#c23f18',
       background: 'https://www.transparenttextures.com/patterns/diagmonds.png'
     }
     case 'The Armory': return {
+      icon: 'ra-all-for-one',
       colour: '#302b30',
       background: 'https://www.transparenttextures.com/patterns/brushed-alum.png'
     }
     case 'The Lair': return {
+      icon: 'ra-uncertainty',
       colour: '#42520f',
       background: 'https://www.transparenttextures.com/patterns/pyramid.png'
     }
@@ -119,7 +125,9 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       description: "A great Foundry resides within an active Volcano. You're not sure who, what or why, but SOMEONE is definitely doing SOMETHING here for SOME REASON...",
       bosses: [
         "Flaming Furnace",
-        "Cycling Conveyer"
+        "Cycling Conveyer",
+        "Collapsing Core",
+        "Trapped Tunnel"
       ]
     }
     case "The Armory": return {
@@ -154,6 +162,17 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       description: "Hey remember that Dragon you killed a while back? Well, her boyfriend is pretty pissed of at you. So pissed off that he: Cursed the Woods, Plagued a Forest, Turned a Volcano into a Foundry, Used that Foundry to create hundreds of Weapons, and... You get the idea, I suggest being a little terrified!",
       bosses: [
 
+      ]
+    }
+    case "The Test": return {
+      name: 'The Test',
+      isCompleted,
+      level: 1,
+      is_repeatable: true,
+      max_party: 5,
+      max_spells: 5,
+      bosses: [
+        'Trapped Tunnel'
       ]
     }
   }

@@ -7,6 +7,8 @@ import createClass from '../utils/createClass'
 import {getStarted} from '../actions/welcome'
 import {getZodiacs} from '../utils/zodiacs'
 
+import CombatTutorial from './CombatTutorial'
+
 class Welcome extends Component {
   constructor(props) {
     super(props)
@@ -26,51 +28,86 @@ class Welcome extends Component {
   }
   stageOne() {
     return <div className="section has-text-centered">
-      <p className="title is-1">Welcome!</p>
-      <div className="content is-large">You are about to begin your journey.</div>
-      <div className="content is-large">I'm not gonna tell you how to play this thing, you can figure that out for yourself.</div>
-      <div className="content is-large">I can however, get you started...</div>
-      <button className="button is-large is-success" onClick={this.nextStage}>Exciting!</button>
+      <div className="Town-Banner">
+        <p className="title is-1">Welcome!</p>
+      </div>
+      <div className="box Town-Buttons">
+        <div style={{color: 'black'}}>
+          <div className="content is-large">You are about to begin your journey.</div>
+          <div className="content is-large">I'm not gonna tell you how to play this thing, you can figure that out for yourself.</div>
+          <div className="content is-large">I can however, get you started...</div>
+          <button className="button is-large is-success is-outlined" onClick={this.nextStage}>Exciting!</button>
+        </div>
+      </div>
     </div>
   }
   stageTwo() {
     const {paladinName} = this.state
     return <div className="section has-text-centered">
-      <p className="title is-1">Great News!</p>
-      <p className="content is-large">"{paladinName}" the Paladin wants to join your party!</p>
-      <p className="content is-large">He will help you on your journey, but first you must help him!</p>
-      <p className="content is-large">"{paladinName}" has found a injured Dragon, and if you can sate the beast, there will be a great reward!</p>
-      <button className="button is-large is-success" onClick={this.nextStage}>Great!</button>
+      <div className="Town-Banner">
+        <p className="subtitle is-1">Along the road you encounter <b>{paladinName}</b></p>
+      </div>
+      <div className="box Town-Buttons" style={{color: 'black'}}>
+        <p className="content is-large"><b>{paladinName}</b> is a <b>Paladin</b>, a Devout Warrior of the light.</p>
+
+        <p className="content is-large">Upon approaching them, they tell you of their encounter with a fearsome <b>Dragon</b>, and how they barely made it away</p>
+        <p className="content is-large">On closer inspection, you can see that the Paladin is quite badly injured</p>
+        <button className="button is-large is-success is-outlined" onClick={this.nextStage}>Help the Poor Soul</button>
+      </div>
     </div>
   }
   stageThree() {
     const {paladinName} = this.state
     return <div className="section has-text-centered">
-      <p className="title is-1">{paladinName} the Paladin joins your party!</p>
-      <p className="content is-large">Having party members is great, but you can't just sit back and let them do all the work</p>
-      <p className="content is-large">So you're going to need a weapon yourself. A weapon fit for a Magi like yourself</p>
-      <button className="button is-large is-success" onClick={this.nextStage}>Gimme!</button>
+      <div className="Town-Banner">
+        <p className="title is-1">"You look hurt! How can I help?"</p>
+      </div>
+      <div className="box Town-Buttons" style={{color: 'black'}}>
+        <p className="content is-large"><b>{paladinName}</b> smiles. "Thank you kind soul"</p>
+        <p className="content is-large">"I had a friend who would support me in my adventures, healing me of any injury. Unfortunately, they are currently being digested by that beastly creature"</p>
+        <p className="content is-large">"I was however able to salvage his <b>Training Staff</b>, maybe you can harness the powers within to restore me!"</p>
+        <button className="button is-large is-success is-outlined" onClick={this.nextStage}>Grab the Staff</button>
+      </div>
     </div>
   }
   stageFour() {
     const {paladinName} = this.state
     return <div className="section has-text-centered">
-      <p className="title is-1">Received Weapon: "Training Staff"</p>
-      <p className="content is-large">Now, "{paladinName}" is going to help you defeat the Dragon, but they are going to take quite a beating.</p>
-      <p className="content is-large">So I'm going to teach you a spell, "Heal" to help keep them alive</p>
-      <button className="button is-large is-success" onClick={this.nextStage}>Cool! Thanks!</button>
+      <div className="Town-Banner">
+        <p className="title is-1">You take hold of the <b>Training Staff</b></p>
+      </div>
+      <div className="box Town-Buttons" style={{color: 'black'}}>
+        <p className="content is-large">Upon holding the <b>Training Staff</b> you feel a soothing power surge through your soul.</p>
+        <p className="content is-large">"I don't really know how it works, but maybe you can figure it out" <b>{paladinName}</b> says.</p>
+        <button className="button is-large is-success is-outlined" onClick={this.nextStage}>Direct your power towards {paladinName}</button>
+      </div>
     </div>
   }
   stageFive() {
+    const {paladinName} = this.state
     return <div className="section has-text-centered">
-      <p className="title is-1">You learned the spell "Heal"!</p>
-      <p className="content is-large">...And that's all you need to get started!</p>
-      <p className="content is-large">I will drop you off in "Town".</p>
-      <p className="content is-large">From there, open up your "Dungeon Map" and Travel to "The Hunt" for your first encounter.</p>
-      <p className="content is-large">Good Luck!</p>
-      <button onClick={this.getStarted} className="button is-large is-success">I'm sure I'll need it!</button>
+      <div className="Town-Banner">
+        <p className="title is-1">Heal {paladinName}</p>
+      </div>
+      <div className="box" style={{color: 'black'}}>
+        <CombatTutorial paladinName={paladinName} endTutorial={() => this.getStarted()} />
+      </div>
     </div>
   }
+  // stageFive() {
+  //   return <div className="section has-text-centered">
+  //     <div className="Town-Banner">
+  //       <p className="title is-1">You learned the spell "Heal"!</p>
+  //     </div>
+  //     <div className="box Town-Buttons" style={{color: 'black'}}>
+  //       <p className="content is-large">...And that's all you need to get started!</p>
+  //       <p className="content is-large">I will drop you off in "Town".</p>
+  //       <p className="content is-large">From there, open up your "Dungeon Map" and Travel to "The Hunt" for your first encounter.</p>
+  //       <p className="content is-large">Good Luck!</p>
+  //       <button onClick={this.getStarted} className="button is-large is-success is-outlined">I'm sure I'll need it!</button>
+  //     </div>
+  //   </div>
+  // }
   stageSwitch() {
     const {stage} = this.state
     switch (stage) {
@@ -82,7 +119,7 @@ class Welcome extends Component {
     }
   }
   render() {
-    return <div>
+    return <div className="Town">
       {this.stageSwitch()}
     </div>
   }

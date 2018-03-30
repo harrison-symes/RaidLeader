@@ -275,7 +275,10 @@ export function WeaponEquippedByIcon ({equippedBy}) {
 
 export function RecruitCountIcon ({amount}) {
   return toolTipGenerator(
-    <p>You have {amount} Recruit{amount > 1 ? 's' : ''}</p>,
+    <span>
+      <p>You have {amount} Recruit{amount > 1 ? 's' : ''}</p>
+      <p>(Click to View)</p>
+    </span>,
     <span>
       {amount}
       <i className="ra ra-double-team icon-large" />
@@ -285,10 +288,27 @@ export function RecruitCountIcon ({amount}) {
 
 export function SpellCountIcon ({amount}) {
   return toolTipGenerator(
-    <p>You know {amount} Spell{amount > 1 ? 's' : ''}</p>,
+    <span>
+      <p>You know {amount} Spell{amount > 1 ? 's' : ''}</p>
+      <p>(Click to View)</p>
+    </span>,
     <span>
       {amount}
       <i className="ra ra-book icon-large" />
+    </span>
+  )
+}
+
+export function GameRecruitInfo ({recruit}) {
+  const {name, hp, initHp, power, speed} = recruit
+  return toolTipGenerator(
+    <span>
+      <p>{Math.round(power * 10) / 10} Power</p>
+      <p>{Math.round(speed * 10) / 10} Speed</p>
+      <p>({Math.round(power * speed * 10) / 10} Dp10s)</p>
+    </span>,
+    <span>
+      {name}
     </span>
   )
 }

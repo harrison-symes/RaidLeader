@@ -13,7 +13,7 @@ class BossRewardsModal extends Component {
     super(props)
     this.state = {
       showRewards: false,
-      goldReward: props.boss.goldReward || 0,
+      goldReward: Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4))),
       weaponReward: this.solveWeaponReward(props.boss)
     }
     this.showRewards = this.showRewards.bind(this)
@@ -71,7 +71,7 @@ class BossRewardsModal extends Component {
   render() {
     const {showRewards, goldReward, weaponReward} = this.state
     const {boss} = this.props
-    return <div className="Modal modal is-active">
+    return <div className="Town-Buttons Menu-Buttons Town Menu Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">

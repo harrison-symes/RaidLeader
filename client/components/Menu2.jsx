@@ -135,7 +135,7 @@ class Menu extends React.Component {
     const background = MenuBackground(currentLocation.name)
     return <div className="Town Menu has-text-centered" style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
       <div className="has-text-centered Town-Banner Menu-Banner">
-        <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> {currentLocation.name} <i className="ra ra-heart-tower ra-fw" /></p>
+        <p className="title is-1"><i className={`ra ${background.icon} ra-fw`} />&nbsp; {currentLocation.name} &nbsp;<i className={`ra ${background.icon} ra-fw`} /></p>
       </div>
       {this.modalSwitch()}
       <div className="Town-Buttons Menu-Buttons">

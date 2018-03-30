@@ -64,7 +64,7 @@ export default function party (state = [], action) {
       console.log("recruit percentage set");
       newState=  newState.map(member => {
         if (member.isAlive) {
-          member.hp = (member.initHp * (action.percentage / 100))
+          member.hp = Math.ceil(member.initHp * (action.percentage / 100))
         }
         return member
       })
@@ -83,26 +83,26 @@ export default function party (state = [], action) {
       return newState
     case 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
-        if (member.isAlive) member.hp-=member.initHp * action.percentage
+        if (member.isAlive) member.hp-=Math.ceil(member.initHp * action.percentage)
         return member
       })
     case 'PERCENT_DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return state
       target = newState.find(member => member.id == action.target.id)
       if (!target || !target.isAlive) return state
-      target.hp-=target.initHp * action.percentage
+      target.hp-=Math.ceil(target.initHp * action.percentage)
       return newState
     case 'PERCENT_HEAL_FRIENDLY_TARGET':
       if (!action.target) return state
       target = newState.find(member => member.id == action.target.id)
       if (!target || !target.isAlive) return state
-      target.hp+=target.initHp * action.percentage
+      target.hp+=Math.ceil(target.initHp * action.percentage)
       if (target.hp >= target.initHp) target.hp = target.initHp
       return newState
     case 'PERCENT_HEAL_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) {
-          member.hp+=member.initHp * action.percentage
+          member.hp+= Math.ceil(member.initHp * action.percentage)
           if (member.hp >= member.initHp) member.hp = member.initHp
         }
         return member

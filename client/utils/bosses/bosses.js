@@ -8,6 +8,8 @@ import Lunging_Locusts from './The_Swamp/Lunging_Locusts'
 import Plague_Piltherer from './The_Swamp/Plague_Piltherer'
 import Flaming_Furnace from './The_Foundry/Flaming_Furnace'
 import Cycling_Conveyer from './The_Foundry/Cycling_Conveyer'
+import Collapsing_Core from './The_Foundry/Collapsing_Core'
+import Trapped_Tunnel from './The_Foundry/Trapped_Tunnel'
 
 export default function (bossName) {
   switch(bossName) {
@@ -21,6 +23,8 @@ export default function (bossName) {
     case 'Plague Piltherer': return Plague_Piltherer
     case 'Flaming Furnace': return Flaming_Furnace
     case 'Cycling Conveyer': return Cycling_Conveyer
+    case 'Collapsing Core': return Collapsing_Core
+    case 'Trapped Tunnel': return Trapped_Tunnel
     default: return null
   }
 }

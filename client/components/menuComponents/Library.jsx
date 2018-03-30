@@ -151,9 +151,11 @@ class Library extends Component {
                     </div>)}
                   </div>)
                   : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
-                  ? gold >= spellCost
-                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (<GoldIcon value={-1 * spellCost} />)</button>
-                  : <button className="is-danger is-large button is-fullwidth" disabled><GoldIcon value={`Not Enough`} /></button>
+                  ? this.props.spellBook.length == 2 && this.props.recruits.length < 2
+                    ? <button disabled className="is-danger is-large button is-fullwidth">Recruit another Party Member First</button>
+                    : gold >= spellCost
+                      ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (<GoldIcon value={-1 * spellCost} />)</button>
+                      : <button className="is-danger is-large button is-fullwidth" disabled><GoldIcon value={`Not Enough`} /></button>
                   : <button disabled className="is-danger is-large button is-fullwidth">You have learned every spell!</button>
                 }
 
@@ -173,10 +175,11 @@ class Library extends Component {
   }
 }
 
-const mapStateToProps = ({gold, spellBook}) => {
+const mapStateToProps = ({gold, spellBook, recruits}) => {
   return {
     gold,
-    spellBook
+    spellBook,
+    recruits
   }
 }
 

@@ -1,8 +1,8 @@
 export default {
   name: 'Seeping Slime',
   level: 2,
-  initHp: 1000,
-  hp: 1000,
+  initHp: 1500,
+  hp: 1500,
   initPower: 40,
   power: 40,
   initArmor: 500,

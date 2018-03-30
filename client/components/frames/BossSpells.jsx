@@ -31,7 +31,7 @@ class BossSpell extends Component {
       //furnace
       case 'Boil':
         let randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
-        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target: randomTarget, percentage: spell.tickPercentage})
       case 'Unleash Flames':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Exhaust Heat':
@@ -43,12 +43,17 @@ class BossSpell extends Component {
       case 'Discharge':
         return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.tickPercentage})
       case 'Power Drill':
-        console.log("power drill tick", {target, power, ticks: this.state.ticks})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Repair':
         dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana / spell.ticks})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power / spell.ticks})
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.armor / spell.ticks})
+
+      //core
+      case 'Magnetic Pulse':
+        return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.tickArmor})
+      case 'Magma Surge':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: this.props.player.power * spell.tickPower})
       default: return
     }
   }
@@ -157,6 +162,7 @@ class BossSpell extends Component {
 
         //stage 2
       case 'Payload':
+        dispatch({type: 'DAMAGE_PLAYER', power})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Power Up': return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
 
@@ -170,6 +176,77 @@ class BossSpell extends Component {
         let stage = boss[spell.stage]
         if (boss.mana == spell.manaRequired) stage = boss['stageThree']
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage})
+
+      //core
+        //stage 1
+      case 'Charge':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Magma Surge':
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+      case 'Magnetic Pulse':
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+
+        //stage 2
+      case 'Meltdown':
+        dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Half Life':
+        return party.forEach(target => {
+          dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power: Math.round(target.hp / 2)})
+        })
+        //stage 3
+
+      case 'Explode':
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
+      case 'Radiate':
+        let poisonPercentage = 0.1
+        poisonPercentage += (0.01 *  boss.mana)
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(poisonPercentage)})
+      case 'Fission':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
+
+      //Tunnel
+      case 'Next Room':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Crushing Walls':
+        if (aliveTargets.length == 0) return
+        let highestHealth = aliveTargets[0].hp
+        party.forEach(recruit => {
+          if (recruit.hp > highestHealth) highestHealth = recruit.hp
+        })
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * spell.percentage})
+
+      case 'Snake Trap':
+        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
+
+      case 'Dart Trap':
+        let availableTargets = aliveTargets.filter(recruit => {
+          return recruit.hp / recruit.initHp >= 0.5
+        })
+        target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+
+      //stage 2
+      case 'Crumbling Walls':
+        if (aliveTargets.length == 0) return
+        let lowestHealth = aliveTargets[0].hp
+        party.forEach(recruit => {
+          if (recruit.hp < lowestHealth) lowestHealth = recruit.hp
+        })
+        return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: lowestHealth * 0.5})
+
+      case 'Spike Trap':
+        availableTargets = aliveTargets.filter(recruit => {
+          return recruit.hp / recruit.initHp <= 0.2
+        })
+        target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
+
+      //stage 3
+      case 'Escape!':
+        return dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 2})
       default: return
     }
   }
@@ -238,14 +315,13 @@ class BossSpell extends Component {
     clearInterval(this.castInterval)
     clearInterval(this.cooldownInterval)
   }
-  componentWillReceiveProps(nextProps) {
-    const {spell, started, boss} = nextProps
+  componentWillReceiveProps({spell, started, boss}) {
     if (!boss.spells.find(bossSpell => bossSpell.name == this.props.spell.name)) {
       console.log("spell not found");
       clearInterval(this.castInterval)
       return clearInterval(this.cooldownInterval)
     }
-    if (nextProps.spell !== this.props.spell) {
+    if (spell !== this.props.spell) {
       console.log("Spell changed");
       this.setState({
         onCooldown: false,
@@ -256,13 +332,13 @@ class BossSpell extends Component {
       clearInterval(this.castInterval)
       return clearInterval(this.cooldownInterval)
     }
-    if (!nextProps.started && this.props.started) {
+    if (!started && this.props.started) {
       clearInterval(this.castInterval)
       clearInterval(this.cooldownInterval)
       this.stopCasting()
     }
     if (this.props.boss.bossTarget && this.props.boss.bossTarget.isAlive && !boss.bossTarget.isAlive && this.castInterval) this.stopCasting()
-    else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !nextProps.spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
+    else if (started && ((spell.singleTarget && boss.bossTarget) || !spell.singleTarget) && !spell.onCooldown && !boss.isCasting && spell.cost <= boss.mana && boss.wantsToCast == spell.name) {
       this.startCasting()
     }
   }

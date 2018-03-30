@@ -9,6 +9,8 @@ import Library from './Library'
 import TrainingCentre from './TrainingCentre'
 import Dungeons from './Dungeons'
 import BlackMarket from './BlackMarket'
+import MyRecruits from './MyRecruits'
+import MySpells from './MySpells'
 
 import {GoldIcon, RecruitCountIcon, SpellCountIcon} from '../icons/StatIcons'
 
@@ -32,6 +34,8 @@ class Town extends Component {
       case 'Training Centre': return <TrainingCentre close={close} />
       case 'Black Market': return <BlackMarket close={close} />
       case 'Dungeon Map': return <Dungeons close={close} />
+      case 'My Recruits': return <MyRecruits close={close} />
+      case 'My Spells': return <MySpells close={close} />
       default: return null
     }
   }
@@ -55,16 +59,16 @@ class Town extends Component {
       <div className="has-text-centered Town-Banner">
           <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
         <div className="level has-text-centered Resources">
-          <div className=" is-4">
-            <div className="subtitle is-2">
+          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
+            <div className="subtitle is-2" onClick={()=>this.toggleModal('My Spells')}>
               <SpellCountIcon amount={spellBook.length} />
             </div>
           </div>
           <div className=" is-4">
             <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
-          <div className=" is-4">
-            <p className="subtitle is-2">
+          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
+            <p className="subtitle is-2" onClick={()=>this.toggleModal('My Recruits')}>
               <RecruitCountIcon amount={recruits.length} />
             </p>
           </div>

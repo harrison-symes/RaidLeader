@@ -16,11 +16,12 @@ const RecruitHealthBar = ({recruit, party}) => {
     : 'hsl(348, 100%, 61%)'
   return <div className="RecruitHealthBar has-text-centered">
     <div className="">
-      <div className="columns">
-        <div className="column is-6" style={{heigth: '15px'}}>
-          <Line percent={percent} strokeWidth={`${4 * party.length}`} strokeColor={colourClass} strokeLinecap="square"  trailWidth={`${4 * party.length}`}/>
-        </div>
-        <div className="column is-desktop-only"><p className="subtitle is-5"><HealthIcon value={`${Math.round(hp)} / ${Math.round(initHp)}`} /></p></div>
+      <span className="column" style={{maxHeigth: '15px', margin: 0}}>
+        <Line percent={percent} strokeWidth={`${4 * party.length}`} strokeColor={colourClass} strokeLinecap="square"  trailWidth={`${4 * party.length}`}/>
+      </span>
+      <div className="columns" style={{marginTop: 0, backgroundColor: 'white'}}>
+        <span className="column is-pulled-left"><p className="subtitle is-5">{Math.round(percent)}%</p></span>
+        <div className="column is-pulled-right is-desktop-only"><p className="subtitle is-5"><HealthIcon value={`${Math.round(hp)} / ${Math.round(initHp)}`} /></p></div>
       </div>
     </div>
   </div>

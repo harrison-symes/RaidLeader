@@ -25,7 +25,8 @@ class RecruitmentCentre extends Component {
   }
   solveOptions() {
     const zodiacs = getZodiacs()
-    const classes = ['Paladin', 'Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard']
+    const classes = ['Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard']
+    if (this.props.recruits.length > 3) classes.push('Paladin')
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
@@ -37,6 +38,12 @@ class RecruitmentCentre extends Component {
   }
   showOptions() {
     this.props.dispatch(earnGold(-500))
+    const offeredRecruits = this.solveOptions()
+    set('offeredRecruits', JSON.stringify(offeredRecruits))
+    this.setState({showChoices: true, offeredRecruits})
+  }
+  reRoll() {
+    this.props.dispatch(earnGold(-200))
     const offeredRecruits = this.solveOptions()
     set('offeredRecruits', JSON.stringify(offeredRecruits))
     this.setState({showChoices: true, offeredRecruits})
@@ -110,7 +117,8 @@ class RecruitmentCentre extends Component {
                 ? <div>
                   <hr />
                   <p className="title is-3">Choose a Recruit:</p>
-                  <br />
+                  <span className="subtitle is-3">Or <button className="Info-Button button is-warning" onClick={this.reRoll.bind(this)}>Re-Roll</button>(<GoldIcon value={-200} />)</span>
+                  <hr />
                   {offeredRecruits.map((recruit, i) => {
                     recruit.level = 1
                     return <div key={`offered-recruit-${i}`} className="box">
@@ -132,10 +140,13 @@ class RecruitmentCentre extends Component {
                   </div>
                 })}
                 </div>
-                : (gold >= 500
-                  ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
-                  : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<GoldIcon /></button>
-                )
+                : this.props.recruits.length == 2 && this.props.spellBook.length < 2
+                  ? <button className="is-danger is-large button is-fullwidth" disabled>Learn a 2nd Spell First</button>
+                  : (gold >= 500
+                    ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Recruit now! (<GoldIcon value={`-500`} />)</button>
+                    : <button className="is-danger is-large button is-fullwidth" disabled>Not Enough &nbsp;<GoldIcon /></button>
+                  )
+
               }
 
             </div>
@@ -154,10 +165,11 @@ class RecruitmentCentre extends Component {
   }
 }
 
-const mapStateToProps = ({gold, recruits}) => {
+const mapStateToProps = ({gold, recruits, spellBook}) => {
   return {
     gold,
-    recruits
+    recruits,
+    spellBook
   }
 }
 

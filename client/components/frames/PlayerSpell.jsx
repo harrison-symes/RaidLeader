@@ -5,6 +5,8 @@ import {poisonConstructor, renewConstructor} from '../../utils/effectConstructor
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
+import KeyHandler, {KEYPRESS} from 'react-key-handler';
+
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -177,13 +179,12 @@ class PlayerSpell extends Component {
       case 'Fire Soul':
         if (!player.spells.find(spell => spell.element != 'Fire')) {
           dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
-          dispatch({type: 'PERCENT_INCREASE_MANA_REGEN', percentage: 0.1})
         }
         dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
         return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
       case 'Shadow Soul':
-        if (!player.spells.find(spell => spell.element != 'Shadow')) dispatch({type: 'HEAL_PLAYER', power: player.initHp * 0.2})
-        else dispatch({type: 'DAMAGE_PLAYER', power: player.initHp * 0.2})
+        if (!player.spells.find(spell => spell.element != 'Shadow')) dispatch({type: 'HEAL_PLAYER', power: player.initHp * 0.1})
+        else dispatch({type: 'DAMAGE_PLAYER', power: player.initHp * 0.1})
         return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
       default: return
     }
@@ -244,7 +245,7 @@ class PlayerSpell extends Component {
     var castPercentage = currentCastTime / spell.cast * 100
     let perc = onCooldown ? cdPercentage : castPercentage
     var text = Math.round(perc * (onCooldown ? spell.coolDown: spell.cast) / 100)
-    let width = 1000 / player.spells.length
+    let width = 800 / player.spells.length
     if (width > 200) width = 200
     return <button
     className={`PlayerSpell ${spellColour}`}
@@ -267,6 +268,7 @@ class PlayerSpell extends Component {
       </span>
       : <i onClick={() => this.clickSpell()} style={{position: 'relative', color: spell.color || 'green', backgroundColor: spell.background || 'white', width: '90%', height: '90%', margin: 'auto'}} className={`ra ra-5x ${spell.icon} icon icon-large`}
       />}
+      <KeyHandler keyEventName={'keydown'} keyValue={this.props.idx.toString()} onKeyHandle={this.clickSpell.bind(this)} />
     </button>
   }
 }
