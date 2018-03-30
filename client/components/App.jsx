@@ -7,6 +7,7 @@ import Game from './Game'
 import Menu from './Menu2'
 import Town from './menuComponents/Town'
 import Welcome from './Welcome'
+import WhatsNew from './WhatsNew'
 
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
@@ -44,18 +45,21 @@ class App extends React.Component {
     const {game} = this.state
     return <Router>
       <div className='app-container'>
-        {auth.isAuthenticated
-          ? <Switch>
-            <Route path="/game" component={Game} />
-            {showWelcome
-              ? <Route path='/' component={Welcome} />
-              : currentLocation.name == 'Town'
+        <Switch>
+          <Route path="/new" component={WhatsNew} />
+          {auth.isAuthenticated
+            ? <Switch>
+              <Route path="/game" component={Game} />
+              {showWelcome
+                ? <Route path='/' component={Welcome} />
+                : currentLocation.name == 'Town'
                 ? <Route exact path='/' component={Town} />
                 : <Route path='/' component={Menu} />
-            }
-          </Switch>
-          : <Home />
-        }
+              }
+            </Switch>
+            : <Home />
+          }
+        </Switch>
       </div>
     </Router>
   }
