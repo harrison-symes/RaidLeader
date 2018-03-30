@@ -67,8 +67,8 @@ export default {
         cost: 0,
         coolDown: 5,
         powerRatio: 1,
-        percentage: 0.2,
-        description: 'Damage ALL Recruits for (20%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health)',
+        percentage: 0.3,
+        description: 'Damage ALL Recruits for (20%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health). Also Damages the Player for (5%) Health.',
         icon: 'ra-snake'
       },
       {
@@ -125,8 +125,8 @@ export default {
         cost: 0,
         coolDown: 5,
         powerRatio: 1,
-        percentage: 0.2,
-        description: 'Damage ALL Recruits for (20%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health)',
+        percentage: 0.3,
+        description: 'Damage ALL Recruits for (30%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health). Also Damages the Player for (5%) Health.',
         icon: 'ra-snake'
       },
     ]
@@ -173,7 +173,8 @@ export default {
         cost: 0,
         coolDown: 5,
         powerRatio: 1,
-        description: 'Damage ALL Recruits for (20%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if A Recruit is above (50%) Health)',
+        percentage: 0.3
+        description: 'Damage ALL Recruits for (30%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if A Recruit is above (50%) Health). Also Damages the Player for (5%) Health.',
         icon: 'ra-snake'
       },
     ]

@@ -242,6 +242,7 @@ class BossSpell extends Component {
           return recruit.hp / recruit.initHp <= 0.2
         })
         target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
+        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage 0.05})
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
 
       //stage 3
