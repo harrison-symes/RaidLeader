@@ -387,6 +387,21 @@ module.exports = {
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
     icon: 'ra-spear-head'
   }),
+  ['Plagued Skull']: (level, id) => ({
+    name: 'Plagued Skull',
+    type: 'Weapon',
+    level,
+    id,
+    value: 400,
+    hp: -0.6,
+    power: 0.5,
+    speed: 0.2,
+    class: 'Necromancer',
+    description: 'A lost weapon from a fallen adventurer. "Decaying Deer" is engraved on the back',
+    bonusEffect: 'selfPoison',
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-desert-skull'
+  }),
   ['The Antidote']: (level, id) => ({
     name: 'The Antidote',
     type: 'Weapon',

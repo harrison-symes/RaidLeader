@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "You find the corpse of a deer. So sad... and then it starts moving...",
-  weaponRewards: ['Plagued Daggers', 'Plagued Arrows', 'The Antidote'],
+  weaponRewards: ['Plagued Daggers', 'Plagued Arrows', 'Plagued Skull'],
   goldReward: 500,
   weaponChance: 1,
   progress_required: 0,

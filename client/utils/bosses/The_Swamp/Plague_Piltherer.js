@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "A crazed man darts around the Swamp lands, scavenging the many corpses for their precious loot. You even see him drinking some of that disgusting slime!",
-  weaponRewards: ['Glowing Libram', 'The Antidote', 'Cleansed Staff of the Woods'],
+  weaponRewards: ['Glowing Libram', 'The Antidote'],
   goldReward: 500,
   weaponChance: 1,
   progress_required: 3,
