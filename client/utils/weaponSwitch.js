@@ -196,6 +196,20 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-arrow-cluster'
   }),
+  ['Chew Toy']: (level, id) => ({
+    name: 'Chew Toy',
+    type: 'Weapon',
+    level,
+    id,
+    value: 200,
+    hp: -0.2,
+    power: -0.3,
+    speed: 0.5,
+    class: 'Necromancer',
+    description: "The Bear was very attached to this bone, you're not really sure what kind of Animal it is from. (Could be Human)",
+    bonusEffect: null,
+    icon: 'ra-bone-bite'
+  }),
   ['Massive Shell']: (level, id) => ({
     name: 'Massive Shell',
     type: 'Weapon',
