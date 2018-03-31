@@ -1,6 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {WeaponIcon} from '../icons/StatIcons'
+
+import jump from 'jump.js'
+
 import {MenuBackground} from '../../utils/dungeonInfo'
 
 class Dungeon extends React.Component {
@@ -28,13 +32,14 @@ class Dungeon extends React.Component {
     // if (!dungeon.requires_complete) this.props.selectDungeon(dungeon)
     // else if (dungeons.find(other => other.name == dungeon.requires_complete).isCompleted)
     this.props.selectDungeon(dungeon, allowed)
+    jump('#' + dungeon.name)
   }
   render() {
     const {dungeon, currentLocation, dungeons, selectDungeon, selected} = this.props
     let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (!dungeon.requires_complete) levelRestrict = false
     const background = MenuBackground(dungeon.name)
-    return <div className="box has-text-centered" style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
+    return <div className="box has-text-centered" id={dungeon.name} style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
       <div onClick={()=>this.clickDungeon()} style={{cursor: 'pointer'}} className="level">
         <p style={{textDecoration: 'none'}} className="title is-2 box"><i className={`ra ra-fw ${background.icon}`}/>&nbsp; {dungeon.name} &nbsp; </p>
         {dungeon.isCompleted
@@ -58,6 +63,12 @@ class Dungeon extends React.Component {
           <div className="level">
             <div className="column is-6"><p className="subtitle is-3">{dungeon.max_party} Recruit{dungeon.max_party == 1 ? '':'s'}</p></div>
             <div className="column is-6"><p className="subtitle is-3">{dungeon.max_spells} Spell{dungeon.max_spells == 1 ? '':'s'}</p></div>
+          </div>
+        </div>
+        <div className="box">
+          <p className="title is-3">Rewards:</p>
+          <div className="columns has-text-centered">
+            {dungeon.rewards.map(reward => <p className="column subtitle is-3"><WeaponIcon name={reward.name} /></p>)}
           </div>
         </div>
         <p className="subtitle is-4 box">{dungeon.description || 'Mock description goes here'}</p>

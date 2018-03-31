@@ -15,6 +15,9 @@ class PlayerFrame extends Component {
   targetPlayer() {
     this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target: this.props.player})
   }
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.started && nextProps.started) this.props.dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: 0.1 * nextProps.player.spells.filter(spell => spell.element == 'Arcane').length})
+  }
   render() {
     const {player, friendlyTarget} = this.props
     const {initHp, hp, maxMana, mana, spells, power, name} = player

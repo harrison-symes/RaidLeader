@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "As you investigate the off coloured swamp water at the entrance of the swamp, the water starts investigating you.",
   weaponRewards: ['Plagued Aegis', 'Plagued Blade', 'Plagued Ocarina'],
-  goldReward: 400,
+  goldReward: 500,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-ocean-emblem',

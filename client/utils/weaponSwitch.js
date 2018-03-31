@@ -27,7 +27,7 @@ module.exports = {
     class: 'Player',
     description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.',
     bonusEffect: null,
-    icon: 'ra-pine-tree'
+    icon: 'ra-dead-tree'
   }),
   ['Cleansed Staff of the Wilds']: (level, id) => ({
     name: 'Cleansed Staff of the Wilds',
@@ -57,7 +57,7 @@ module.exports = {
     class: 'Player',
     description: 'The staff resonates great power, but something about it feels so wrong.',
     bonusEffect: 'Poison',
-    effectDescription: `Your targeted heals Poison the target for 20% of target's hp as damage every 5 seconds for 15 seconds`,
+    effectDescription: `Your targeted heals Poison the target for 60% of target's Max Health over 15 seconds`,
     icon: 'ra-biohazard'
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({
@@ -75,6 +75,70 @@ module.exports = {
     bonusEffect: 'curePoison',
     effectDescription: "Your targeted heals remove any Poison effect from the target",
     icon: 'ra-sprout'
+  }),
+  ['Staff of Eternal Flame']: (level, id) => ({
+    name: 'Cleansed Staff of the Woods',
+    type: 'Weapon',
+    level,
+    id,
+    value: 700,
+    hp: 2000,
+    power: 40,
+    mana: 250,
+    manaRegen: 1.2,
+    class: 'Player',
+    description: 'A Glowing Sun Shaped Ruby sits at the tip of the Staff. The Hilt Glows as you touch it, warming you soul... a little too warm perhaps...',
+    bonusEffect: 'firePower',
+    effectDescription: "The Power of your Fire Spells is Increased by (100%)",
+    icon: 'ra-sun'
+  }),
+  ['Staff of Endless Shadow']: (level, id) => ({
+    name: 'Staff of Endless Shadow',
+    type: 'Weapon',
+    level,
+    id,
+    value: 700,
+    hp: 2000,
+    power: 40,
+    mana: 250,
+    manaRegen: 1.2,
+    class: 'Player',
+    description: 'A skull sits at the tip of the Staff. A soft voice calls out to you: "Fear not mortal, together can do anything I desire..."',
+    bonusEffect: 'shadowPower',
+    effectDescription: "Whenever you cast a Shadow Spell, the Power of ALL Recruits are increased by 1%",
+    icon: 'ra-death-skull'
+  }),
+  ['Staff of Arcane Energy']: (level, id) => ({
+    name: 'Staff of Arcane Energy',
+    type: 'Weapon',
+    level,
+    id,
+    value: 700,
+    hp: 2000,
+    power: 40,
+    mana: 250,
+    manaRegen: 1.2,
+    class: 'Player',
+    description: 'A swirling mist hovers over the tip of the Staff. As you hold the Weapon a surge flows through your body. You feel like you could run forever. In fact, not running is quite painful.',
+    bonusEffect: 'arcanePower',
+    effectDescription: "Your Recruits have +10% Speed for Each Arcane Spell on your Spell Bar",
+    icon: 'ra-kaleidoscope'
+  }),
+  ['Staff of Blossoming Life']: (level, id) => ({
+    name: 'Staff of Blossoming Life',
+    type: 'Weapon',
+    level,
+    id,
+    value: 700,
+    hp: 2000,
+    power: 40,
+    mana: 250,
+    manaRegen: 1.2,
+    class: 'Player',
+    description: 'A small daisy sits at the tip of the Staff. Walking out of the Scorched Volcano with this in your hand, you watch amazed as the Earth around you sprouts and heals with new life.',
+    bonusEffect: 'lifePower',
+    effectDescription: "Whenever you Cast a Life Spell, Heal ALL Recruits for (5%) of their Max Health",
+    icon: 'ra-daisy'
   }),
   ['Dragon Scale']: (level, id) => ({
     name: 'Dragon Scale',
@@ -502,5 +566,18 @@ module.exports = {
     bonusEffect: 'halfLife',
     effectDescription: "The Priest's heals are Twice as effective against targets ABOVE (50%) Health",
     icon: 'ra-implosion'
+  }),
+  ['Snake Charmer']: (level, id) => ({
+    name: 'Snake Charmer',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.3,
+    power: -0.8,
+    speed: 0.5,
+    description: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
+    bonusEffect: 'speedBooster',
+    icon: 'ra-snake'
   })
 }

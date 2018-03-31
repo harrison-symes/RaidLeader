@@ -15,6 +15,7 @@ export class Shaman extends PartyMemberFrame {
       party.forEach(recruit => {
         if (recruit.isAlive && (recruit.hp / recruit.initHp) * 100 < (renewTarget.hp / renewTarget.initHp) * 100) renewTarget = recruit
       })
+      if (member.weapon_effect == 'speedBooster') dispatch({type: 'INCREASE_RECRUIT_SPEED', percentage: 0.1, target: renewTarget})
       if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target: renewTarget, effect: {name: 'Poison'}})
       dispatch({type: 'ADD_EFFECT_TO_TARGET', target: renewTarget, effect: renewConstructor()})
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
