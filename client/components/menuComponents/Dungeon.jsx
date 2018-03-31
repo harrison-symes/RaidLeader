@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {WeaponIcon} from '../icons/StatIcons'
+
 import {MenuBackground} from '../../utils/dungeonInfo'
 
 class Dungeon extends React.Component {
@@ -58,6 +60,12 @@ class Dungeon extends React.Component {
           <div className="level">
             <div className="column is-6"><p className="subtitle is-3">{dungeon.max_party} Recruit{dungeon.max_party == 1 ? '':'s'}</p></div>
             <div className="column is-6"><p className="subtitle is-3">{dungeon.max_spells} Spell{dungeon.max_spells == 1 ? '':'s'}</p></div>
+          </div>
+        </div>
+        <div className="box">
+          <p className="title is-3">Rewards:</p>
+          <div className="columns has-text-centered">
+            {dungeon.rewards.map(reward => <p className="column subtitle is-3"><WeaponIcon name={reward.name} /></p>)}
           </div>
         </div>
         <p className="subtitle is-4 box">{dungeon.description || 'Mock description goes here'}</p>

@@ -193,7 +193,9 @@ export function WeaponIcon ({name, level}) {
     <span>
       {name}
       <hr />
-      {weapon.class} Weapon
+      {weapon.class} Weapon <br />
+      {weapon.effectDescription && <hr />}
+      {weapon.effectDescription}
     </span>,
     <span>
       <i className={`ra ra-fw ${weapon.icon} icon-large`} />

@@ -27,7 +27,7 @@ module.exports = {
     class: 'Player',
     description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.',
     bonusEffect: null,
-    icon: 'ra-pine-tree'
+    icon: 'ra-dead-tree'
   }),
   ['Cleansed Staff of the Wilds']: (level, id) => ({
     name: 'Cleansed Staff of the Wilds',
@@ -57,7 +57,7 @@ module.exports = {
     class: 'Player',
     description: 'The staff resonates great power, but something about it feels so wrong.',
     bonusEffect: 'Poison',
-    effectDescription: `Your targeted heals Poison the target for 20% of target's hp as damage every 5 seconds for 15 seconds`,
+    effectDescription: `Your targeted heals Poison the target for 60% of target's Max Health over 15 seconds`,
     icon: 'ra-biohazard'
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({
