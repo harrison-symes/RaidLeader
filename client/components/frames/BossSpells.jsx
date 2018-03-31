@@ -120,9 +120,11 @@ class BossSpell extends Component {
       case 'Overwhelm':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
-        aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
+        aliveTargets = party.filter(member => member.isAlive)
         if (aliveTargets.length) {
-          target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+          let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
+          if (poisonedTargets.length > 0) target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length]
+          else target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
           dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }

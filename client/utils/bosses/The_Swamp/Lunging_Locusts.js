@@ -36,7 +36,7 @@ export default {
       name: 'Regenerate',
       cast: 3,
       cost: 0,
-      coolDown: 15,
+      coolDown: 20,
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
@@ -50,13 +50,13 @@ export default {
       name: 'Lunge',
       cost: 0,
       cast: 4,
-      coolDown: 4,
+      coolDown: 0,
       powerRatio: 1,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      percentage: 0.6,
-      description: "Damage a random non-poisoned enemy recruit for (60%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds",
+      percentage: 0.3,
+      description: "Damage a random Recruit for (30%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds, Prioritises Non Poisoned Recruits.",
       icon: 'ra-overhead'
     }
   ]
