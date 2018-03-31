@@ -65,6 +65,16 @@ module.exports = [
           <p>If you don't like the Recruits you are offered, you may <b>ReRoll</b> the offerings for a small price.</p>
           <p>Many Weapons and Class stats have been tweaked so be sure to keep and eye out.</p>
         </div>
+      },
+      {
+        title: 'Better Loot!',
+        description: <div className="content is-large">
+          <p>Not getting any <b>Weapons</b> for the Classes you have chosen for your Party sucks</p>
+          <p>When you defeat a Boss, the Boss has several Weapons that they can Drop for you, one is Randomly Chosen</p>
+          <p>Now, when <b>Randomly</b> choosing which Weapon you will receive, you are <b>3x more likely</b> to receive a Weapon for a Class that was in your Party (if Available)</p>
+          <p>Basically, the Loot will ReRoll up to 2 extra times to try and give you a useable item, while still having some randomness</p>
+          <p><b>Important: If you already have a copy of the weapon, there is no Bonus chance of it Dropping!</b></p>
+        </div>
       }
     ]
   }
