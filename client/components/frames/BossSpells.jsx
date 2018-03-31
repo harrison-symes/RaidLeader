@@ -112,6 +112,7 @@ class BossSpell extends Component {
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Decay':
+        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
 
