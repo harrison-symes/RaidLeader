@@ -244,7 +244,7 @@ module.exports = {
     id: 15,
     name: 'Greater Renew',
     cast: 3,
-    cost: 20,
+    cost: 15,
     coolDown: 15,
     type: 'healing',
     powerRatio: 0.5,
