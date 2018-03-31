@@ -141,6 +141,12 @@ export default function party (state = [], action) {
         if (member.id != action.target.id) member.power *= 1.1
         return member
       })
+    case 'INCREASE_RECRUIT_SPEED':
+      if (!action.recruit) return
+      target = newState.find(member => member.id == action.target.id)
+      if (!target) return newState
+      target.speed+=target.speed*action.percentage
+      return newState
     case 'MEMBER_DIED':
       if (!action.target) return state
       target = newState.find(member => member.id == action.target.id)

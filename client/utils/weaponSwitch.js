@@ -502,5 +502,18 @@ module.exports = {
     bonusEffect: 'halfLife',
     effectDescription: "The Priest's heals are Twice as effective against targets ABOVE (50%) Health",
     icon: 'ra-implosion'
+  }),
+  ['Snake Charmer']: (level, id) => ({
+    name: 'Snake Charmer',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.3,
+    power: -0.8,
+    speed: 0.5,
+    description: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
+    bonusEffect: 'speedBooster',
+    icon: 'ra-snake'
   })
 }

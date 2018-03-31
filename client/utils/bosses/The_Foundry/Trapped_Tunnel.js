@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: `TESTING :) <3`,
-  weaponRewards: ['Decaying Blade', 'Decayed Core', 'Sheet Music'],
+  weaponRewards: ['Snake Charmer'],
   goldReward: 2000,
   weaponChance: 1,
   progress_required: 0,
