@@ -42,6 +42,14 @@ module.exports = [
         </div>
       },
       {
+        title: 'New Class: The Necromancer!',
+        description: <div className="content is-large">
+          <p><b>The Necromancer</b> is a <b>Low Health</b>, <b>Mid Power</b>, <b>Mid Speed</b> Recruit.</p>
+          <p><b>Starting Buff</b>: {startingBuff('Necromancer')}</p>
+          <p><b>Trait</b>: {classTraits('Necromancer')}</p>
+        </div>
+      },
+      {
         title: 'Spell Changes!',
         description: <div className="content is-large">
           <p>Keep an eye out on <b>Spells</b> as most of them have changed, some in bigger ways than others.</p>
