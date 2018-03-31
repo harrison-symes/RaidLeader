@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import {WeaponIcon} from '../icons/StatIcons'
 
+import jump from 'jump.js'
+
 import {MenuBackground} from '../../utils/dungeonInfo'
 
 class Dungeon extends React.Component {
@@ -30,13 +32,14 @@ class Dungeon extends React.Component {
     // if (!dungeon.requires_complete) this.props.selectDungeon(dungeon)
     // else if (dungeons.find(other => other.name == dungeon.requires_complete).isCompleted)
     this.props.selectDungeon(dungeon, allowed)
+    jump('#' + dungeon.name)
   }
   render() {
     const {dungeon, currentLocation, dungeons, selectDungeon, selected} = this.props
     let levelRestrict = !dungeon.requires_complete || !dungeons.find(other => other.name == dungeon.requires_complete).isCompleted
     if (!dungeon.requires_complete) levelRestrict = false
     const background = MenuBackground(dungeon.name)
-    return <div className="box has-text-centered" style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
+    return <div className="box has-text-centered" id={dungeon.name} style={{backgroundColor: background.colour, backgroundImage: `url(${background.background})`}}>
       <div onClick={()=>this.clickDungeon()} style={{cursor: 'pointer'}} className="level">
         <p style={{textDecoration: 'none'}} className="title is-2 box"><i className={`ra ra-fw ${background.icon}`}/>&nbsp; {dungeon.name} &nbsp; </p>
         {dungeon.isCompleted
