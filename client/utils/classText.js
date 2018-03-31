@@ -7,9 +7,11 @@ export function startingBuff (heroClass) {
     case 'Warlock': return "The Warlock removes (10%) of the Boss' Armor"
     case 'Mage': return "The Mage increases the Player's Mana by (20%)"
     case 'Monk': return "The Monk gains (50%) more speed for each other Party Member"
-    case 'Hunter': return "The Hunter increases the speed of all other party members by 10%"
-    case 'Shaman': return "The Shaman reduces the Cast Time and Cool Down of all Player Spells by 10%"
-    case 'Bard': return "The Bard reduces the Mana Cost of ALL Player Spells by 1"
+    case 'Hunter': return "The Hunter increases the speed of all other party members by (10%)"
+    case 'Shaman': return "The Shaman reduces the Cast Time and Cool Down of all Player Spells by (10%)"
+    case 'Bard': return "The Bard reduces the Mana Cost of ALL Player Spells by (1)"
+    case 'Necromancer': return "The Necromancer increases your Player Power by (10%)"
+    break;
     default: return null
   }
 }
@@ -26,6 +28,7 @@ export function classTraits(heroClass) {
     case 'Hunter': return "The Hunter's attacks deal Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
     case 'Shaman': return "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds"
     case 'Bard': return "Whenever the Bard attacks, restore 1 Mana to the Player"
+    case 'Necromancer': return "The Necromancer continues to Attack while Dead, for (50%) of normal Damage"
     default: return null
   }
 }
@@ -42,6 +45,7 @@ export function classIcons (heroClass) {
     case 'Hunter': return 'ra-archer'
     case 'Shaman': return 'ra-gem-pendant'
     case 'Bard': return 'ra-ocarina'
+    case 'Necromancer': return 'ra-death-skull'
     case 'Player': return 'ra-player-king'
     default: return null
   }
@@ -112,6 +116,12 @@ export function attackIcons (heroClass) {
     case 'Player': return {
       colour: 'white',
       icon: 'ra-player-king'
+    }
+    case 'Necromancer': return {
+      colour: 'black',
+      icon: 'ra-sickle',
+      rotation: 270,
+      rotates: true
     }
     default: return null
   }
