@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: `TESTING :) <3`,
   weaponRewards: ['Snake Charmer'],
-  goldReward: 2000,
+  goldReward: 700,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-alien-fire',

@@ -35,6 +35,7 @@ class PlayerSpell extends Component {
     let power = this.props.player.power * spell.tickPower
     let target = this.state.target
     if (target) target = party.find(other => other.id == target.id)
+    if (player.bonusEffect == 'firePower' && spell.element == 'Fire') power*=2
     switch(spell.name) {
       case 'Drain Life':
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
@@ -79,12 +80,15 @@ class PlayerSpell extends Component {
   }
   castSwitch(target) {
     const {spell, dispatch, player, party, boss} = this.props
-    const power = this.props.player.power * spell.powerRatio
+    let power = this.props.player.power * spell.powerRatio
     console.log({target, party});
     // if (target) target = party.find(other => other.id == target.id)
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
+    else if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
+    else if (player.bonusEffect == 'shadowPower' && spell.element == 'Shadow') dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.01})
+    else if (player.bonusEffect == 'lifePower' && spell.element == 'Life') dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.05})
+    else if (player.bonusEffect == 'firePower' ** spell.element == 'Fire') power*=2
 
     switch(spell.name) {
       case 'Heal':

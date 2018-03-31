@@ -119,7 +119,23 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       max_spells: 3,
       requires_complete: 'The Swamp',
       rewards: [
-
+        {
+          name: 'Staff of Eternal Flame',
+          min: 0,
+          max: 0.25
+        }, {
+          name: 'Staff of Endless Shadow',
+          min: 0.25,
+          max: 0.5
+        }, {
+          name: 'Staff of Arcane Energy',
+          min: 0.5,
+          max: 0.75
+        }, {
+          name: 'Staff of Blossoming Life',
+          min: 0.75,
+          max: 1
+        }
       ],
       gold_reward: 1500,
       description: "A great Foundry resides within an active Volcano. You're not sure who, what or why, but SOMEONE is definitely doing SOMETHING here for SOME REASON...",
