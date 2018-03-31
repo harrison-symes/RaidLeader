@@ -28,7 +28,7 @@ export class Necromancer extends PartyMemberFrame {
     }, 10000 / speed)
   }
   startFighting () {
-    this.props.dispatch({type: 'BARD_START_BUFF'})
+    this.props.dispatch({type: 'NECROMANCER_START_BUFF'})
     this.startCast()
   }
 }
