@@ -591,8 +591,25 @@ module.exports = {
     hp: 0.3,
     power: -0.8,
     speed: 0.5,
-    description: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
+    class: 'Shaman',
+    description: 'A flute made FROM a Snake to CHARM other Snakes. It seems to scare the other Party members...',
+    effectDescription: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
     bonusEffect: 'speedBooster',
     icon: 'ra-snake'
+  }),
+  ['Crushed Skull']: (level, id) => ({
+    name: 'Crushed Skull',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.5,
+    power: -0.2,
+    speed: 0,
+    class: 'Necromancer',
+    description: "You found this under the collapsing walls of the Tunnel, looks like another Adventurer wasn't so lucky.",
+    effectDescription: "The Necromancer's attacks deal Critical Damage (Double Damage, Ignores Armor) while Dead",
+    bonusEffect: 'criticalDead',
+    icon: 'ra-broken-skull'
   })
 }

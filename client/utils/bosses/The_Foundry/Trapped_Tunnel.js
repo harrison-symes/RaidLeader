@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: `TESTING :) <3`,
-  weaponRewards: ['Snake Charmer'],
+  weaponRewards: ['Snake Charmer', 'Crushed Skull'],
   goldReward: 700,
   weaponChance: 1,
   progress_required: 0,

@@ -10,7 +10,9 @@ export class Necromancer extends PartyMemberFrame {
     let {power, weapon_effect} = member
     if (started) {
       if (!member.isAlive) power*=0.5
-      dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
+      
+      if (member.weapon_effect == 'criticalDead' && !member.isAlive) dispatch({type: 'CRITICAL_ATTACK_BOSS', power})
+      else dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
     }
   }
   completeCast(target) {
