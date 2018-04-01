@@ -15,7 +15,8 @@ const classes = [
   'Priest',
   'Monk',
   'Shaman',
-  'Bard'
+  'Bard',
+  'Necromancer'
 ]
 
 class MyRecruits extends Component {

@@ -195,10 +195,10 @@ class PlayerSpell extends Component {
       case 'Chosen Champion':
         if (!player.spells.find(spell => !spell.singleTarget)) {
           dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-          dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * this.spell.altPowerRatio})
+          dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * spell.altPowerRatio})
         }
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
-        return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * this.spell.altPowerRatio})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * spell.altPowerRatio})
       default: return
     }
   }
