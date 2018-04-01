@@ -75,6 +75,20 @@ module.exports = [
           <p>Basically, the Loot will ReRoll up to 2 extra times to try and give you a useable item, while still having some randomness</p>
           <p><b>Important: If you already have a copy of the weapon, there is no Bonus chance of it Dropping!</b></p>
         </div>
+      },
+      {
+        title: 'Monk Reworked!',
+        description: <div className="content is-large">
+          <p>Across the Board the have been changes to the power of AOE (Area of Effect) Damage and Healing</p>
+          <p>Overall these changes are intended to make the gameplay more interesting, and to make Targeted Spells continue to feel useful as the size of your Party starts to grow.</p>
+          <p>The Monk's previous <b>Trait</b> was to <b>Heal All Recruits for (10%) of their Max Health whenever the Monk attacks</b></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;- The new <b>Trait</b>: {classTraits('Monk')}</p>
+          <p>The Monk's previous <b>Trait</b> was to <b>Gain (50%) Speed for each other Party Member. This caused the Monk to be really weak and ineffective at lower party sizes (early dungeons) and then get quite out of control later on.</b></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;- The new <b>Starting Buff</b>: {startingBuff('Monk')}</p>
+          <br />
+          <p>These changes should put the Monk's Healing Output to be more in Line with the <b>Priest</b> while still being able to get a few jabs in on the Boss, making the <b>Monk</b> a better choice for <b>AOE</b> heavy encounters</p>
+          <p>This is all new and in need of testing so feedback is very much appreciated!</p>
+        </div>
       }
     ]
   }
