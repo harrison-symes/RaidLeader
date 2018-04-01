@@ -143,6 +143,7 @@ class BossSpell extends Component {
 
       //Furnace
       case 'Heat Up':
+        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana})
       case 'Unleash Flames':
@@ -151,6 +152,8 @@ class BossSpell extends Component {
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
+      case 'Exhaust Heat':
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
 
       //conveyer
         //stage 0
