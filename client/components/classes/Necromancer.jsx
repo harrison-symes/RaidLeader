@@ -3,6 +3,8 @@ import PartyMemberFrame from '../frames/PartyMemberFrame'
 import {connect} from 'react-redux'
 
 import mapStateToProps from './utils/classStateMap'
+import {poisonConstructor} from '../../utils/effectConstructors'
+
 
 export class Necromancer extends PartyMemberFrame {
   finishCast() {
@@ -10,7 +12,7 @@ export class Necromancer extends PartyMemberFrame {
     let {power, weapon_effect} = member
     if (started) {
       if (!member.isAlive) power*=0.5
-      
+
       if (member.weapon_effect == 'criticalDead' && !member.isAlive) dispatch({type: 'CRITICAL_ATTACK_BOSS', power})
       else dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
     }
@@ -20,7 +22,7 @@ export class Necromancer extends PartyMemberFrame {
     this.startCast()
   }
   startCast() {
-    const {power, speed, isAlive} = this.props.member
+    const {power, speed} = this.props.member
     const {started, member, dispatch} = this.props
     if (started) setTimeout(() => {
       if (started) {
