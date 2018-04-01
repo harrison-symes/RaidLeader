@@ -57,8 +57,8 @@ export default {
       singleTarget: false,
       onCooldown: false,
       power: -10,
-      percentage: 0.3,
-      description: "Damage each enemy Recruit for 30% of their Max Health, lose 10 Power, Damage the Player for 3% of their Max Health",
+      percentage: 0.25,
+      description: "Damage each enemy Recruit for (25%) of their Max Health, lose 10 Power, Damage the Player for (3%) of their Max Health",
       icon: 'ra-slash-ring'
     },
     {
