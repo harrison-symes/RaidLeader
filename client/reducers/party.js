@@ -18,6 +18,20 @@ export default function party (state = [], action) {
         recruit.speed += recruit.speed * action.percentage
         return recruit
       })
+    case 'PERCENT_INCREASE_TARGET_RECRUIT_POWER':
+      if (!action.target) return state
+      target = newState.find(recruit => recruit.id == action.target.id)
+      if (!target) return state
+      console.log({target});
+      target.power += target.power * action.percentage
+      return newState
+    case 'PERCENT_INCREASE_TARGET_RECRUIT_SPEED':
+      if (!action.target) return state
+      target = newState.find(recruit => recruit.id == action.target.id)
+      if (!target) return state
+      console.log({target});
+      target.speed += target.speed * action.percentage
+      return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       let target = newState.find(member => member.id == action.target.id)

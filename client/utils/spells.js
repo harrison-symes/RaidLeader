@@ -547,7 +547,23 @@ module.exports = {
     icon: 'ra-muscle-fat',
     color: colors.lightOlive,
     background: colors.darkGreen,
-    element: 'Life'  
+    element: 'Life'
+  },
+  'Imbue': {
+    id: 33,
+    name: 'Imbue',
+    cast: 2,
+    cost: 10,
+    coolDown: 15,
+    singleTarget: true,
+    powerRatio: 1,
+    percentage: 0.1,
+    greaterPercentage: 0.5,
+    description: "Increase Target Recruit's Power and Speed by (10%). If you only have Single Target Spells, the Target is also healed for (50%) of their Max Health",
+    icon: 'ra-heart-bottle',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
 

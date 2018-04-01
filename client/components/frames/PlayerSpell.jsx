@@ -199,6 +199,10 @@ class PlayerSpell extends Component {
         }
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * spell.altPowerRatio})
+      case 'Imbue':
+        if (!player.spells.find(spell => !spell.singleTarget)) dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.greaterPercentage})
+        dispatch({type: 'PERCENT_INCREASE_TARGET_RECRUIT_SPEED', target, percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_INCREASE_TARGET_RECRUIT_POWER', target, percentage: spell.percentage})
       default: return
     }
   }
