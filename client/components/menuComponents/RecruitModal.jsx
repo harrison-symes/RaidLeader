@@ -28,7 +28,7 @@ class RecruitModal extends Component {
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     const availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
-      return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
+      return other.class == recruit.heroClass && !recruits.find(rec => rec.weapon_id == other.id)
     })
     return <div className="">
       <div className="box">
@@ -46,10 +46,10 @@ class RecruitModal extends Component {
           </div>
           : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
         }
-        {availableWeapons.length != 0 && <button className="button is-large is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>}
+        {/* {availableWeapons.length != 0 && <button className="button is-large is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>} */}
       </div>
       <hr />
-      {this.state.weaponFrame && this.weaponFrame()}
+      {availableWeapons.length != 0 && this.weaponFrame()}
     </div>
   }
   weaponFrame() {
@@ -57,8 +57,8 @@ class RecruitModal extends Component {
     let weapon
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     let availableWeapons = weapons.filter(other => {
-      if (other == weapon) return false
-      return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
+      if (other == weapon || (weapon && other.name == weapon.name)) return false
+      return other.class == recruit.heroClass && !recruits.find(rec => rec.weapon_id == other.id)
     })
     let dup = availableWeapons.reduce((obj, weapon) => {
       obj[weapon.name] = weapon
@@ -66,17 +66,35 @@ class RecruitModal extends Component {
     }, {})
     availableWeapons=Object.keys(dup).map(key => dup[key])
     return <div>
-      <p className="title is-4">Avaiable Weapon{availableWeapons.length > 1 ? 's' : ''}</p>
+      <p className="title is-3">Avaiable Weapon{availableWeapons.length > 1 ? 's' : ''}</p>
       <div className="">
         {availableWeapons.map((weapon, i) => <div key={`available-weapon-${i}`} className="box">
-          <p className="title is-4">{weapon.name}</p>
-          <ul className="">
-            {weapon.hp != 0 && <li className="subtitle is-4"><HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/></li>}
-            {weapon.power != 0 && <li className="subtitle is-4"><PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`}/></li>}
-            {weapon.speed != 0 && <li className="subtitle is-4"><SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed * 100}%`} /></li>}
-          </ul>
+          <span className="level">
+            <p className="is-pulled-left title is-4">{weapon.name}</p>
+            {
+              weapon.level <= recruit.level
+                ? <button className="is-pulled-right button Info-Button is-success" onClick={() => this.equip(weapon.id)}>Equip</button>
+                : <span className="is-pulled-right tag is-danger is-large" disabled>Requires Level {weapon.level}</span>
+            }
+          </span>
+          <div className="columns">
+            {weapon.hp != 0 && <span className="column is-4">
+              <span className="subtitle is-4">
+                <HealthIcon value={`${weapon.hp > 0 ? "+": ""}${weapon.hp * 100}%`}/>
+              </span>
+            </span>}
+            {weapon.power != 0 && <span className="column is-4">
+              <span className="subtitle is-4">
+                <PowerIcon value={`${weapon.power > 0 ? "+": ""}${weapon.power * 100}%`}/>
+              </span>
+            </span>}
+            {weapon.speed != 0 && <span className="column is-4">
+              <span className="subtitle is-4">
+                <SpeedIcon value={`${weapon.speed > 0 ? "+": ""} ${weapon.speed * 100}%`} />
+              </span>
+            </span>}
+          </div>
           {weapon.bonusEffect && <p className="content is-large box">{weapon.effectDescription}</p>}
-          <button className="button Info-Button is-success" onClick={() => this.equip(weapon.id)}>Equip</button>
         </div>)}
       </div>
     </div>
@@ -101,6 +119,8 @@ class RecruitModal extends Component {
             <span className="subtitle is-1"><ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/></span>
             <hr />
             {this.renderWeaponFrame()}
+            <br />
+            <hr />
             {!this.state.weaponFrame
               && <div className="columns">
                 <div className="column has-text-centered">
