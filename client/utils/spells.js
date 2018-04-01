@@ -550,7 +550,7 @@ module.exports = {
     element: 'Life'
   },
   'Imbue': {
-    id: 33,
+    id: 34,
     name: 'Imbue',
     cast: 2,
     cost: 10,
@@ -561,6 +561,22 @@ module.exports = {
     greaterPercentage: 0.5,
     description: "Increase Target Recruit's Power and Speed by (10%). If you only have Single Target Spells, the Target is also healed for (50%) of their Max Health",
     icon: 'ra-heart-bottle',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
+  },
+  'Containment': {
+    id: 35,
+    name: 'Containment',
+    cast: 5,
+    cost: 15,
+    coolDown: 30,
+    singleTarget: false,
+    powerRatio: 1,
+    percentage: -0.2,
+    greaterPercentage: 0.5,
+    description: "Reduces the Health and Speed of ALL Recruits by (20%), but increases their Power by (50%). If all of your other spells aren't Single Target Spells, Kill a Random Recruit.",
+    icon: 'ra-player-despair',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'

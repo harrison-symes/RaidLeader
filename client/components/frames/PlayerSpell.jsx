@@ -203,6 +203,14 @@ class PlayerSpell extends Component {
         if (!player.spells.find(spell => !spell.singleTarget)) dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.greaterPercentage})
         dispatch({type: 'PERCENT_INCREASE_TARGET_RECRUIT_SPEED', target, percentage: spell.percentage})
         return dispatch({type: 'PERCENT_INCREASE_TARGET_RECRUIT_POWER', target, percentage: spell.percentage})
+      case 'Containment':
+        if (!player.spells.find(playerSpell => playerSpell.singleTarget || playerSpell.name == spell.name)) {
+          let aliveTargets = party.filter(recruit => recruit.isAlive)
+          if (aliveTargets.length > 0) dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: aliveTargets[Math.floor(Math.random() * aliveTargets.length)], power: 10000000})
+        }
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.greaterPercentage})
       default: return
     }
   }
