@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {recruitEquipWeapon} from '../../actions/weapons'
 import {startingBuff, classTraits} from '../../utils/classText'
-import {HealthIcon, PowerIcon, SpeedIcon, ZodiacIcon, LevelIcon} from '../icons/StatIcons'
+import {HealthIcon, PowerIcon, SpeedIcon, ZodiacIcon, LevelIcon, ClassIcon, WeaponIcon} from '../icons/StatIcons'
 
 
 class RecruitModal extends Component {
@@ -34,7 +34,7 @@ class RecruitModal extends Component {
       <div className="box">
         {weapon
           ? <div className="">
-            <p className="title is-3">Equipped: {weapon.name}</p>
+            <p className="title is-3">Equipped: {weapon.name}&nbsp;<WeaponIcon name={weapon.name} /></p>
             <button onClick={() => this.equip(null)} className="delete" aria-label="close"></button>
             <p className="subtitle is-5">{weapon.description}</p>
             <div className="columns is-multiline">
@@ -49,7 +49,10 @@ class RecruitModal extends Component {
         {/* {availableWeapons.length != 0 && <button className="button is-large is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>} */}
       </div>
       <hr />
-      {availableWeapons.length != 0 && this.weaponFrame()}
+      {availableWeapons.length != 0
+        ? this.weaponFrame()
+        : <p className="box subtitle is-2">No Weapons Available</p>
+      }
     </div>
   }
   weaponFrame() {
@@ -70,7 +73,7 @@ class RecruitModal extends Component {
       <div className="">
         {availableWeapons.map((weapon, i) => <div key={`available-weapon-${i}`} className="box">
           <span className="level">
-            <p className="is-pulled-left title is-4">{weapon.name}</p>
+            <p className="is-pulled-left title is-4">{weapon.name}&nbsp;<WeaponIcon name={weapon.name} /></p>
             {
               weapon.level <= recruit.level
                 ? <button className="is-pulled-right button Info-Button is-success" onClick={() => this.equip(weapon.id)}>Equip</button>
@@ -105,7 +108,7 @@ class RecruitModal extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">{recruit.name} the {recruit.heroClass} <LevelIcon level={recruit.level} /></p>
+          <p className="modal-card-title is-1">{recruit.name} &nbsp;<ClassIcon heroClass={recruit.heroClass} />&nbsp;<LevelIcon level={recruit.level} /></p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">

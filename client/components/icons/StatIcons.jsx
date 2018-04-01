@@ -175,14 +175,16 @@ export function LevelIcon ({level}) {
   )
 }
 
-export function WeaponAvailableIcon ({amount, hasWeapon}) {
+export function WeaponAvailableIcon ({amount, hasWeapon, lowLevel}) {
   return toolTipGenerator(
     <p>{hasWeapon
       ? `${hasWeapon.name}`
-      : `${amount} Weapon${amount != 1 ? 's':''} Available`
+      : amount == lowLevel && amount != 0
+        ? `${lowLevel} Weapon${lowLevel == 1 ? '' : 's'}, but Recruit's Level is too Low`
+        : `${amount} Weapon${amount != 1 ? 's':''} Available`
     }</p>,
     <span>
-      <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon: 'ra-hand'} icon-large`} />
+      <i style={{color: hasWeapon ? 'lightgreen' : amount == lowLevel && amount != 0 ? 'red' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon: 'ra-hand'} icon-large`} />
     </span>
   )
 }
