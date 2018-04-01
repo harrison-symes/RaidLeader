@@ -15,7 +15,7 @@ export default function (state = null, action) {
     case 'MEMBER_DIED':
     console.log({action});
       if (!action.target) return state
-      if (action.target.id == state.id) return null
+      if (state && action.target.id == state.id) return null
       else return state
     default:
       return state

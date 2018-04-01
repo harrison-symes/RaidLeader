@@ -130,6 +130,9 @@ export default function player (state = null, action) {
         return spell
       })
       return newState
+    case 'NECROMANCER_START_BUFF':
+      newState.power += newState.power * 0.1
+      return newState
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
       if (action.target.id == newState.id) newState.hp-=action.power

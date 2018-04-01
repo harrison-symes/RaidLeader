@@ -99,6 +99,8 @@ class PlayerSpell extends Component {
         return dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
       case 'Healing Ring':
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+      case 'Blossom':
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power})
       case 'Bind':
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'HEAL_PLAYER', power})
@@ -190,6 +192,13 @@ class PlayerSpell extends Component {
         if (!player.spells.find(spell => spell.element != 'Shadow')) dispatch({type: 'HEAL_PLAYER', power: player.initHp * 0.1})
         else dispatch({type: 'DAMAGE_PLAYER', power: player.initHp * 0.1})
         return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
+      case 'Chosen Champion':
+        if (!player.spells.find(spell => !spell.singleTarget)) {
+          dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+          dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * this.spell.altPowerRatio})
+        }
+        dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * this.spell.altPowerRatio})
       default: return
     }
   }

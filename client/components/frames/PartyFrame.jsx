@@ -11,6 +11,7 @@ import Monk from '../classes/Monk'
 import Hunter from '../classes/Hunter'
 import Shaman from '../classes/Shaman'
 import Bard from '../classes/Bard'
+import Necromancer from '../classes/Necromancer'
 
 import KeyHandler, {KEYPRESS} from 'react-key-handler';
 
@@ -30,6 +31,7 @@ class PartyFrame extends Component {
       case 'Hunter': return <Hunter member={member} key={`member-${i}`} />
       case 'Shaman': return <Shaman member={member} key={`member-${i}`} />
       case 'Bard': return <Bard member={member} key={`member-${i}`} />
+      case 'Necromancer': return <Necromancer member={member} key={`member-${i}`} />
       default: return
     }
   }

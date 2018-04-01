@@ -42,6 +42,14 @@ module.exports = [
         </div>
       },
       {
+        title: 'New Class: The Necromancer!',
+        description: <div className="content is-large">
+          <p><b>The Necromancer</b> is a <b>Low Health</b>, <b>Mid Power</b>, <b>Mid Speed</b> Recruit.</p>
+          <p><b>Starting Buff</b>: {startingBuff('Necromancer')}</p>
+          <p><b>Trait</b>: {classTraits('Necromancer')}</p>
+        </div>
+      },
+      {
         title: 'Spell Changes!',
         description: <div className="content is-large">
           <p>Keep an eye out on <b>Spells</b> as most of them have changed, some in bigger ways than others.</p>
@@ -56,6 +64,30 @@ module.exports = [
           <p>You will no longer be offered <b>Paladin</b> Recruits for your first few Recruit choice.s</p>
           <p>If you don't like the Recruits you are offered, you may <b>ReRoll</b> the offerings for a small price.</p>
           <p>Many Weapons and Class stats have been tweaked so be sure to keep and eye out.</p>
+        </div>
+      },
+      {
+        title: 'Better Loot!',
+        description: <div className="content is-large">
+          <p>Not getting any <b>Weapons</b> for the Classes you have chosen for your Party sucks</p>
+          <p>When you defeat a Boss, the Boss has several Weapons that they can Drop for you, one is Randomly Chosen</p>
+          <p>Now, when <b>Randomly</b> choosing which Weapon you will receive, you are <b>3x more likely</b> to receive a Weapon for a Class that was in your Party (if Available)</p>
+          <p>Basically, the Loot will ReRoll up to 2 extra times to try and give you a useable item, while still having some randomness</p>
+          <p><b>Important: If you already have a copy of the weapon, there is no Bonus chance of it Dropping!</b></p>
+        </div>
+      },
+      {
+        title: 'Monk Reworked!',
+        description: <div className="content is-large">
+          <p>Across the Board the have been changes to the power of AOE (Area of Effect) Damage and Healing</p>
+          <p>Overall these changes are intended to make the gameplay more interesting, and to make Targeted Spells continue to feel useful as the size of your Party starts to grow.</p>
+          <p>The Monk's previous <b>Trait</b> was to <b>Heal All Recruits for (10%) of their Max Health whenever the Monk attacks</b></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;- The new <b>Trait</b>: {classTraits('Monk')}</p>
+          <p>The Monk's previous <b>Trait</b> was to <b>Gain (50%) Speed for each other Party Member. This caused the Monk to be really weak and ineffective at lower party sizes (early dungeons) and then get quite out of control later on.</b></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;- The new <b>Starting Buff</b>: {startingBuff('Monk')}</p>
+          <br />
+          <p>These changes should put the Monk's Healing Output to be more in Line with the <b>Priest</b> while still being able to get a few jabs in on the Boss, making the <b>Monk</b> a better choice for <b>AOE</b> heavy encounters</p>
+          <p>This is all new and in need of testing so feedback is very much appreciated!</p>
         </div>
       }
     ]

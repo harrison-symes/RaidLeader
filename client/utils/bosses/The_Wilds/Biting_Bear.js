@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
-  weaponRewards: ['Bear Fangs', 'Bear Heart', 'Bear Claw Arrows'],
+  weaponRewards: ['Bear Fangs', 'Bear Heart', 'Bear Claw Arrows', 'Chew Toy'],
   goldReward: 300,
   weaponChance: 1,
   progress_required: 1,

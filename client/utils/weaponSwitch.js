@@ -196,6 +196,20 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-arrow-cluster'
   }),
+  ['Chew Toy']: (level, id) => ({
+    name: 'Chew Toy',
+    type: 'Weapon',
+    level,
+    id,
+    value: 200,
+    hp: -0.2,
+    power: -0.3,
+    speed: 0.5,
+    class: 'Necromancer',
+    description: "The Bear was very attached to this bone, you're not really sure what kind of Animal it is from. (Could be Human)",
+    bonusEffect: null,
+    icon: 'ra-bone-bite'
+  }),
   ['Massive Shell']: (level, id) => ({
     name: 'Massive Shell',
     type: 'Weapon',
@@ -387,6 +401,21 @@ module.exports = {
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
     icon: 'ra-spear-head'
   }),
+  ['Plagued Skull']: (level, id) => ({
+    name: 'Plagued Skull',
+    type: 'Weapon',
+    level,
+    id,
+    value: 400,
+    hp: -0.6,
+    power: 0.5,
+    speed: 0.2,
+    class: 'Necromancer',
+    description: 'A lost weapon from a fallen adventurer. "Decaying Deer" is engraved on the back',
+    bonusEffect: 'selfPoison',
+    effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
+    icon: 'ra-desert-skull'
+  }),
   ['The Antidote']: (level, id) => ({
     name: 'The Antidote',
     type: 'Weapon',
@@ -576,8 +605,25 @@ module.exports = {
     hp: 0.3,
     power: -0.8,
     speed: 0.5,
-    description: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
+    class: 'Shaman',
+    description: 'A flute made FROM a Snake to CHARM other Snakes. It seems to scare the other Party members...',
+    effectDescription: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
     bonusEffect: 'speedBooster',
     icon: 'ra-snake'
+  }),
+  ['Crushed Skull']: (level, id) => ({
+    name: 'Crushed Skull',
+    type: 'weapon',
+    level,
+    id,
+    value: 800,
+    hp: 0.5,
+    power: -0.2,
+    speed: 0,
+    class: 'Necromancer',
+    description: "You found this under the collapsing walls of the Tunnel, looks like another Adventurer wasn't so lucky.",
+    effectDescription: "The Necromancer's attacks deal Critical Damage (Double Damage, Ignores Armor) while Dead",
+    bonusEffect: 'criticalDead',
+    icon: 'ra-broken-skull'
   })
 }

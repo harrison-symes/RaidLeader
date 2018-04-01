@@ -137,9 +137,9 @@ export default function party (state = [], action) {
       if (!action.target) return newState
       target = newState.find(member => member.id == action.target.id)
       if (!target) return newState
-      let bonusSpeed = newState.filter(member => member.id != action.target.id).length * 0.5
-      target.initSpeed += bonusSpeed
-      target.speed += bonusSpeed
+      let bonusPower = newState.filter(member => member.id != action.target.id).length * 0.1
+      target.initPower += target.initPower * bonusPower
+      target.power += target.power * bonusPower
       return newState
     case 'WARRIOR_START_BUFF':
       return newState.map(member => {

@@ -7,6 +7,7 @@ import {ClassIcon} from './icons/StatIcons'
 
 
 const classes = [
+  'Necromancer',
   'Rogue',
   'Warrior',
   'Mage',

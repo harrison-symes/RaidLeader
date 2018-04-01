@@ -30,9 +30,9 @@ export default {
       type: 'damage',
       singleTarget: true,
       isChanneled: true,
-      ticks: 20,
+      ticks: 15,
       onCooldown: false,
-      description: "Useable when at 0 Armor: Damage ALL enemy recruits for (200%) Boss Power over the duration of the cast. Then change to Stage 2",
+      description: "Useable when at 0 Armor: Damage ALL enemy recruits for (150%) Boss Power over the duration of the cast. Then change to Stage 2",
       icon: 'ra-fire-shield'
     },
     {
@@ -42,11 +42,11 @@ export default {
       coolDown: 10,
       type: 'damage',
       singleTarget: false,
-      powerRatio: 50,
+      powerRatio: 0.5,
       power: 10,
       mana: 10,
       onCooldown: false,
-      description: 'Gain 10 Power and 10 Mana, damage ALL enemy characters for (100%) Boss Power',
+      description: 'Gain 10 Power and 10 Mana, damage ALL enemy characters for (50%) Boss Power',
       icon: 'ra-heartburn'
     },
     {
@@ -62,7 +62,7 @@ export default {
       onCooldown: false,
       isChanneled: true,
       tickPower: 0.5,
-      description: 'Damage a Random Enemy Recruit for 10% Max Health 5 times during the duration of the cast',
+      description: 'Damage a Random Enemy Recruit for (10%) Max Health 5 times during the duration of the cast',
       icon: 'ra-hot-surface'
     },
   ],
@@ -77,11 +77,11 @@ export default {
         coolDown: 10,
         type: 'damage',
         singleTarget: false,
-        powerRatio: 50,
+        powerRatio: 0.5,
         power: 10,
         mana: 10,
         onCooldown: false,
-        description: 'Gain 10 Power and 10 Mana',
+        description: 'Gain 10 Power and 10 Mana, damage ALL enemy characters for (50%) Boss Power',
         icon: 'ra-heartburn'
       },
       {
@@ -91,13 +91,13 @@ export default {
         coolDown: 5,
         type: 'damage',
         singleTarget: false,
-        powerRatio: 0.5,
-        tickPower: 0.5,
-        ticks: 3,
+        powerRatio: 0.2,
+        tickPower: 0.2,
+        ticks: 5,
         onCooldown: false,
         isChanneled: true,
         power: -10,
-        description: 'Damage ALL enemy Recruits for (150%) Boss Damage over the duration of the cast. Lose 10 Power',
+        description: 'Damage ALL enemy Recruits for (100%) Boss Damage over the duration of the cast. Lose 10 Power',
         icon: 'ra-lava'
       },
       {

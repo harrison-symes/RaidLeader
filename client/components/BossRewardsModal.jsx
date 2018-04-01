@@ -16,17 +16,26 @@ class BossRewardsModal extends Component {
       goldReward: Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4))),
       weaponReward: this.solveWeaponReward(props.boss)
     }
+    console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
     this.showRewards = this.showRewards.bind(this)
   }
   solveWeaponReward(boss) {
-    const {currentLocation} = this.props
+    const {currentLocation, party} = this.props
     const giveWeapon = Math.random() < boss.weaponChance
     if (!giveWeapon) return null
     const weapons = boss.weaponRewards
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
-    let reward = weapons[Math.floor(Math.random() * weapons.length)]
-    reward = weaponSwitch[reward](boss.level)
+    let reward
+    for (var i = 0; i < 2; i++) {
+      reward = weapons[Math.floor(Math.random() * weapons.length)]
+      reward = weaponSwitch[reward](boss.level)
+      if (party.find(recruit => recruit.heroClass == reward['class'])) {
+        console.log("chose reward based on class", {party, reward, weapons: this.props.weapons});
+        if (!this.props.weapons.find(weapon => weapon.name == reward.name)) return reward
+      }
+    }
+    console.log("Default Reward");
     return reward
   }
   componentDidMount() {
@@ -96,9 +105,11 @@ class BossRewardsModal extends Component {
   }
 }
 
-const mapStateToProps = ({location}) => {
+const mapStateToProps = ({location, party, weapons}) => {
   return {
-    currentLocation: location
+    currentLocation: location,
+    party,
+    weapons
   }
 }
 

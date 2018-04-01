@@ -105,7 +105,11 @@ class Town extends Component {
               <i className={`ra ra-turd ra-lg` }></i>
             </span>
           </Link>
-          <Link to="/new" className="button is-large is-fullwidth is-info is-outlined">What's New?</Link>
+          <Link to="/new" className="button is-large is-fullwidth is-info is-outlined">
+            <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
+              <span>&nbsp;What's New?&nbsp;</span>
+            <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
+          </Link>
         </div>
       </div>
     </div>

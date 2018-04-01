@@ -112,6 +112,7 @@ class BossSpell extends Component {
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Decay':
+        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
 
@@ -119,9 +120,11 @@ class BossSpell extends Component {
       case 'Overwhelm':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
-        aliveTargets = party.filter(member => member.isAlive && !member.effects.find(eff => eff.name == 'Poison'))
+        aliveTargets = party.filter(member => member.isAlive)
         if (aliveTargets.length) {
-          target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+          let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
+          if (poisonedTargets.length == aliveTargets.length) target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
+          else target = aliveTargets.filter(recruit => !recruit.effects.find(effect => effect.name == 'Poison'))[Math.floor(Math.random() * aliveTargets.length)]
           dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
         }
@@ -140,6 +143,7 @@ class BossSpell extends Component {
 
       //Furnace
       case 'Heat Up':
+        dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'BOSS_GAIN_MANA', amount: spell.mana})
       case 'Unleash Flames':
@@ -148,6 +152,8 @@ class BossSpell extends Component {
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', power, target})
         dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
         return dispatch({type: 'DAMAGE_PLAYER', power})
+      case 'Exhaust Heat':
+        return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
 
       //conveyer
         //stage 0

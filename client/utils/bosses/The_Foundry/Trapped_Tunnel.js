@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: `TESTING :) <3`,
-  weaponRewards: ['Snake Charmer'],
+  weaponRewards: ['Snake Charmer', 'Crushed Skull'],
   goldReward: 700,
   weaponChance: 1,
   progress_required: 0,
@@ -57,8 +57,8 @@ export default {
         coolDown: 10,
         singleTarget: false,
         powerRatio: 1,
-        percentage: 0.3,
-        description: 'Damage ALL Recruits for (30%) of the CURRENT Health on the Recruit with the Highest CURRENT Health.',
+        percentage: 0.25,
+        description: 'Damage ALL Recruits for (25%) of the CURRENT Health on the Recruit with the Highest CURRENT Health.',
         icon: 'ra-crush'
       },
       {
@@ -68,7 +68,7 @@ export default {
         coolDown: 5,
         powerRatio: 1,
         percentage: 0.3,
-        description: 'Damage ALL Recruits for (20%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health). Also Damages the Player for (5%) Health.',
+        description: 'Damage ALL Recruits for (30%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health). Also Damages the Player for (5%) Health.',
         icon: 'ra-snake'
       },
       {
@@ -107,7 +107,7 @@ export default {
         coolDown: 10,
         singleTarget: false,
         powerRatio: 1,
-        description: 'Damage ALL Recruits for (50%) of the CURRENT Health on the Recruit with the Lowest CURRENT Health.',
+        description: 'Damage ALL Recruits for (50%) of the CURRENT Health of the Recruit with the Lowest CURRENT Health.',
         icon: 'ra-fall-down'
       },
       {
