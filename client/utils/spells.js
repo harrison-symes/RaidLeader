@@ -533,6 +533,21 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
+  },
+  'Chosen Champion': {
+    id: 33,
+    name: 'Chosen Champion',
+    cast: 3,
+    cost: 15,
+    coolDown: 10,
+    singleTarget: true,
+    powerRatio: 1,
+    altPowerRatio: 0.5,
+    description: "Heal a Friendly Target for (50%) Player Power, and then Heal ALL Friendly Characters for (50%) Player Power. If you only have Single Target Spells, these Healing Effects happens Twice",
+    icon: 'ra-muscle-fat',
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'  
   }
 }
 
