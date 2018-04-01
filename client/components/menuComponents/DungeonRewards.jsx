@@ -69,7 +69,7 @@ class DungeonRewards extends Component {
           {showRewards
             ? <div>
               <p className="title is-2">Rewards:</p>
-              <p className="title is-3"><GoldIcon value={currentLocation.gold_reward} /></p>
+              <p className="title is-3"><GoldIcon value={this.state.gold_reward} /></p>
               {weaponReward && this.weaponInfo(weaponReward)}
             </div>
             : <button className="button is-primary is-fullwidth is-large" onClick={this.showRewards}>Open Chest</button>
