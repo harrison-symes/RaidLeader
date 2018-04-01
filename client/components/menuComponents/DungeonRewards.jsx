@@ -9,7 +9,7 @@ import {addWeapon} from '../../actions/weapons'
 import {earnGold} from '../../actions/gold'
 import {completeDungeon} from '../../actions/dungeons'
 
-import {GoldIcon} from '../icons/StatIcons'
+import {GoldIcon, PowerIcon, ManaIcon, ManaRegenIcon, HealthIcon, WeaponIcon, SpeedIcon} from '../icons/StatIcons'
 
 class DungeonRewards extends Component {
   constructor(props) {
@@ -44,14 +44,14 @@ class DungeonRewards extends Component {
       <p className="title is-3">You found a Weapon!</p>
       <hr />
       <div className="box">
-        <h1 className="title is-3">{weapon.name}</h1>
+        <h1 className="title is-3">{weapon.name}&nbsp;<WeaponIcon name={weapon.name} /></h1>
         <div className="title is-4">{weapon.class} Weapon!</div>
         <div className="subtitle is-5">{weapon.description}</div>
         <div className="columns is-multiline">
-          <div className="column subtitle is-4">Health: {weapon.hp}</div>
-          <div className="column subtitle is-4">Power: {weapon.power}</div>
-          {weapon.class != 'Player' && <div className="column subtitle is-4">Speed: {weapon.speed}</div>}
-          {weapon.class == 'Player' && <div className="column subtitle is-4">Mana: {weapon.mana} ({weapon.manaRegen} per second)</div>}
+          <div className="column subtitle is-4"><HealthIcon value={weapon.hp} /></div>
+          <div className="column subtitle is-4"><PowerIcon value={weapon.power} /></div>
+          {weapon.class != 'Player' && <div className="column subtitle is-4"><SpeedIcon value={weapon.speed} /></div>}
+          {weapon.class == 'Player' && <div className="column subtitle is-4"><ManaIcon value={weapon.mana}/> (<ManaRegenIcon value={weapon.manaRegen} />)</div>}
         </div>
         {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
       </div>
