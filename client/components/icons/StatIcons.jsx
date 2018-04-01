@@ -309,7 +309,7 @@ export function GameRecruitInfo ({recruit}) {
     <span>
       <p>{Math.round(power * 10) / 10} Power</p>
       <p>{Math.round(speed * 10) / 10} Speed</p>
-      <p>({Math.round(power * speed * 10) / 10} Dp10s)</p>
+      <p>({Math.round(power * speed) / 10} Dps)</p>
     </span>,
     <span>
       {name}

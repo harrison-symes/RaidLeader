@@ -586,6 +586,22 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Sacrifice': {
+    id: 36,
+    name: 'Sacrifice',
+    cast: 1,
+    cost: 10,
+    coolDown: 30,
+    singleTarget: true,
+    recruitOnly: true,
+    percentage: 1,
+    greaterPercentage: 0.5,
+    description: "Kill a Target Recruit, and Heal ALL other Recruits to Full Health. Also Increases the Power of ALL Recruits and the Player by (100% divided by Party Size. i.e, 3 Recruits = (33%) Power to All). If the Target is Below (50%) Health, the Player loses (25%) Max Health",
+    icon: 'ra-player-thunder-struck',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   }
 }
 

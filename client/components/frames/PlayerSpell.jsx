@@ -211,6 +211,12 @@ class PlayerSpell extends Component {
         dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: spell.percentage})
         dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: spell.percentage})
         return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.greaterPercentage})
+      case 'Sacrifice':
+        if (target.hp / target.initHp < 0.5) dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: spell.greaterPercentage})
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power: 1000000})
+        dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 1})
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 1 / party.length})
+        return dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 1 / party.length})
       default: return
     }
   }
