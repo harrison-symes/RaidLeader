@@ -258,7 +258,7 @@ class PlayerSpell extends Component {
   clickSpell() {
     if (!this.props.started) return
     const {spell, player, friendlyTarget, started} = this.props
-    if (started && ((spell.singleTarget && friendlyTarget) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
+    if (started && ((spell.singleTarget && friendlyTarget && (!spell.recruitOnly || spell.recruitOnly && friendlyTarget && friendlyTarget.id != 0)) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
       this.startCasting()
     }
   }
