@@ -33,7 +33,7 @@ const createPaladin = (name, level, id, weapon_id, zodiac) => createMember(name,
 
 const createPriest = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Priest', (level + 1) * 30, (level + 1) * 5, 25)
 
-const createMonk = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Monk', (level + 1) * 35, (level + 1) * 10 , 10)
+const createMonk = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Monk', (level + 1) * 35, (level + 1) * 5 , 25)
 
 const createRogue = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Rogue', (level + 1) * 35, (level + 1) * 5, 50)
 

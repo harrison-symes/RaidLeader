@@ -7,11 +7,11 @@ import mapStateToProps from './utils/classStateMap'
 
 export class Monk extends PartyMemberFrame {
   finishCast() {
-    const {started, member, dispatch} = this.props
+    const {started, member, dispatch, party} = this.props
     if (started && member.isAlive) {
       if (member.weapon_effect == 'taunt') dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: member.power})
-      dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.1})
+      dispatch({type: 'HEAL_ALL_FRIENDLY', power: member.power / party.length})
     }
   }
   startFighting () {
