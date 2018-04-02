@@ -20,7 +20,10 @@ module.exports = [
         description: <div className="content is-large">
           <p>A new feature is in the works, and it involves gaining <b>experience</b> and <b>leveling</b> up your Player Character.</p>
           <p>Leveling will provide you with a special currencey which you can use to purchase traits / upgrades.</p>
-          <p><b>Present Moment (Watch this space):</b>Leveling and experience gains are functional, but the currencey and upgrades are not implemented yet. Let me know if you run into any EXP related bugs, and WATCH THIS SPACE</p> '
+          <p><b>Present Moment (Watch this space):</b></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - Leveling and experience gains are functional, and you will gain <b>1 Gem</b> every time you level up.</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - Experience Required to Level Up increases by 10% of the previous levels EXP Requirement. (500, 550, 605).</p>
+          <p>Let me know if you run into any EXP related bugs, and WATCH THIS SPACE</p> '
         </div>
       }
     ]
