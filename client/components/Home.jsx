@@ -4,7 +4,7 @@ import Register from './Register'
 import WhatsNew from './WhatsNew'
 
 import {ClassIcon} from './icons/StatIcons'
-
+import {connect} from 'react-redux'
 
 const classes = [
   'Necromancer',
@@ -22,11 +22,11 @@ const classes = [
 
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 
-export default function Home (props) {
+function Home ({version}) {
   return <Router>
     <div className="Town">
       <div className="Town-Banner has-text-centered">
-        <Link to="/" className="title is-1">Raid Leader v0.4!</Link>
+        <Link to="/" className="title is-1">Raid Leader v{version}!</Link>
       </div>
       <div className="Town-Buttons has-text-centered" >
 
@@ -47,3 +47,7 @@ export default function Home (props) {
     </div>
   </Router>
 }
+
+const mapStateToProps = ({version}) => ({version})
+
+export default connect(mapStateToProps)(Home)
