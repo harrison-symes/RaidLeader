@@ -16,12 +16,12 @@ const createState = exp => ({
 class AnimatedExpBar extends Component {
   constructor(props) {
     super(props)
-    let totalToMove = 1000
+    let totalToMove = props.experienceGained
     this.state = {
       currentExperience: createState(props.currentExperience.exp),
       currentExpMovement: 0,
       totalToMove,
-      expPerTick: Math.ceil(totalToMove) / 50,
+      expPerTick: Math.ceil(totalToMove / 50),
       gems: 0,
       overLap: 0
     }
@@ -43,11 +43,13 @@ class AnimatedExpBar extends Component {
   render() {
     const {currentExperience, currentExpMovement, overLap} = this.state
     let percent = (currentExperience.exp - currentExperience.expConsumed) / currentExperience.totalToLevel * 100
-    console.log({currentExperience});
-    // if (overLap == 1) percent = ((currentExperience.expNeeded - (currentExperience.exp + currentExpMovement)) + )
     return <div>
       <Line percent={percent} strokeWidth={`${4}`} strokeColor={'blue'} strokeLinecap="square"  trailWidth={`${5}`}/>
-      <p className="subtitle is-4">Level {solveLevelByExperience(currentExperience.exp)}: {currentExperience.exp - currentExperience.expConsumed} / {currentExperience.totalToLevel} Exp</p>
+      <span className="level">
+        <p className="is-pulled-left title is-3">Level</p>
+        <p className="is-pulled-right subtitle is-3">{solveLevelByExperience(currentExperience.exp)}: {currentExperience.exp - currentExperience.expConsumed} / {currentExperience.totalToLevel} Exp</p>
+      </span>
+      <hr />
     </div>
   }
 }

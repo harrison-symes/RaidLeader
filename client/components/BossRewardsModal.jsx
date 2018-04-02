@@ -6,6 +6,7 @@ import weaponSwitch from '../utils/weaponSwitch'
 
 import {earnGold} from '../actions/gold'
 import {addWeapon} from '../actions/weapons'
+import {gainExperience} from '../actions/experience'
 import {HealthIcon, PowerIcon, ManaIcon, SpeedIcon, ManaRegenIcon, GoldIcon} from './icons/StatIcons'
 import AnimatedExpBar from './menuComponents/AnimatedExpBar'
 
@@ -26,8 +27,7 @@ class BossRewardsModal extends Component {
       showRewards: false,
       goldReward,
       weaponReward: this.solveWeaponReward(props.boss),
-      currentExperience: props.experience,
-      nextExperience: createState(props.experience.exp + goldReward)
+      currentExperience: props.experience
     }
     console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
@@ -57,6 +57,7 @@ class BossRewardsModal extends Component {
   getReward() {
     const {goldReward, weaponReward} = this.state
     this.props.dispatch(earnGold(goldReward))
+    this.props.dispatch(gainExperience(goldReward))
     if (weaponReward) this.props.dispatch(addWeapon(weaponReward))
   }
   showRewards() {
@@ -102,7 +103,7 @@ class BossRewardsModal extends Component {
         <section className="modal-card-body">
           {showRewards
             ? <div className="has-text-centered">
-              <AnimatedExpBar currentExperience={currentExperience} nextExperience={nextExperience} />
+              <AnimatedExpBar currentExperience={currentExperience} experienceGained={goldReward} />
               <p className="title is-2">Your Rewards</p>
               <span className="subtitle is-1"><GoldIcon value={goldReward} /></span>
               {weaponReward && this.weaponInfo(weaponReward)}

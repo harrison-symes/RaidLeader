@@ -16,6 +16,7 @@ const createState = exp => ({
 export default function (state = initialState, action) {
   switch(action.type){
     case 'RECEIVE_EXPERIENCE':
+      console.log({experience: action.experience});
       return createState(action.experience)
     case 'GAIN_EXPERIENCE':
       return createState(action.experience + state.exp)
