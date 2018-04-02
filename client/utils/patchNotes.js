@@ -4,6 +4,28 @@ import {startingBuff, classTraits} from '../utils/classText'
 
 module.exports = [
   {
+    version: '0.4.1',
+    updates: [
+      {
+        title: 'Database Reset!',
+        description: <div className="content is-large">
+          <p><b>Apologies for destroying your precious progress!</b></p>
+          <p>During development this will need to happen from time to time, but I am putting measures in place to prevent this being necessary in the future.</p>
+          <p>For those of you with Level 6 Armies, this is a good chance to go through and retest the game more fairly :)</p>
+          <p>As much as the <b>Patch Number</b> may suggest, this is not an April Fools Joke</p>
+        </div>
+      },
+      {
+        title: 'Player Leveling',
+        description: <div className="content is-large">
+          <p>A new feature is in the works, and it involves gaining <b>experience</b> and <b>leveling</b> up your Player Character.</p>
+          <p>Leveling will provide you with a special currencey which you can use to purchase traits / upgrades.</p>
+          <p><b>Present Moment (Watch this space):</b>Leveling and experience gains are functional, but the currencey and upgrades are not implemented yet. Let me know if you run into any EXP related bugs, and WATCH THIS SPACE</p> '
+        </div>
+      }
+    ]
+  },
+  {
     version: '0.4',
     updates: [
       {
