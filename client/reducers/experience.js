@@ -6,17 +6,19 @@ const initialState = {
   expNeeded: levelExperienceRequired(1)
 }
 
+const createState = exp => ({
+  exp,
+  level: solveLevelByExperience(exp),
+  expNeeded: solveExperienceNeeded(exp),
+  totalToLevel: levelExperienceRequired(solveLevelByExperience(exp))
+})
+
 export default function (state = initialState, action) {
   switch(action.type){
     case 'RECEIVE_EXPERIENCE':
-      const exp = action.experience
-      const level = solveLevelByExperience(action.experience)
-      return {
-        exp,
-        level,
-        expNeeded: solveExperienceNeeded(exp),
-        totalToLevel: levelExperienceRequired(level)
-      }
+      return createState(action.experience)
+    case 'GAIN_EXPERIENCE':
+      return createState(action.experience + state.exp)
     default: return state
   }
 }

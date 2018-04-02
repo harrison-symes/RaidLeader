@@ -28,7 +28,6 @@ const experienceForLevel = level => {
 const solveExperienceNeeded = exp => {
   let level = solveLevelByExperience(exp)
   let consumedExp = experienceForLevel(level)
-  console.log({level, consumedExp});
   return consumedExp - exp
 }
 
