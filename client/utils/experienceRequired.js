@@ -1,4 +1,5 @@
 const levelExperienceRequired = level => {
+  if (level == 0) return 0
   const baseExp = 500
   const scaleAmount = 1.1
   let experienceToLevel = baseExp

@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
   weaponRewards: ['Bear Fangs', 'Bear Heart', 'Bear Claw Arrows', 'Chew Toy'],
-  goldReward: 300,
+  goldReward: 1000,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-pawprint',
