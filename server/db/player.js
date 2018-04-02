@@ -9,5 +9,6 @@ module.exports = {
   addWeapon: (user_id, name, level, testDb) => (testDb || knex)('inventory').insert({user_id, name, level, is_weapon: true}, 'id')
     .then(id => getWeaponById(id[0], testDb)),
   getWeapons: (user_id, testDb) => (testDb || knex)('inventory').where({is_weapon: true, user_id}),
-  delWeapon: (id, testDb) => (testDb || knex)('inventory').where({id}).del()
+  delWeapon: (id, testDb) => (testDb || knex)('inventory').where({id}).del(),
+  playerGainExperience: (id, experience, level, testDb) => (testDb || knex)('users').update({experience, level}).where({id})
 }

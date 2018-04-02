@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('hash')
     table.integer('level').defaultTo(1)
     table.integer('experience')
+    table.integer('gems').defaultTo(0)
     table.integer('gold').defaultTo(0)
   })
 };
