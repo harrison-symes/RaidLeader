@@ -3,36 +3,45 @@ import {connect} from 'react-redux'
 
 import { Line, Circle } from 'rc-progress';
 
-import {solveLevelByExperience, solveExperienceNeeded, levelExperienceRequired} from '../../utils/experienceRequired'
+import {solveLevelByExperience, solveExperienceNeeded, levelExperienceRequired, experienceForLevel} from '../../utils/experienceRequired'
 
 const createState = exp => ({
   exp,
   level: solveLevelByExperience(exp),
   expNeeded: solveExperienceNeeded(exp),
   totalToLevel: levelExperienceRequired(solveLevelByExperience(exp)),
-  expConsumed: levelExperienceRequired(solveLevelByExperience(exp) - 1)
+  expConsumed: experienceForLevel(solveLevelByExperience(exp) - 1)
 })
 
 class AnimatedExpBar extends Component {
   constructor(props) {
     super(props)
     let totalToMove = props.experienceGained
+    let currentExperience = createState(props.currentExperience.exp)
     this.state = {
-      currentExperience: createState(props.currentExperience.exp),
+      currentExperience,
+      startingLevel: currentExperience.level,
       currentExpMovement: 0,
       totalToMove,
       expPerTick: Math.ceil(totalToMove / 50),
-      gems: 0,
-      overLap: 0
+      overLap: 0,
+      gems: 0
     }
     this.timeout = null
   }
   tickExpMovement() {
-    let {currentExpMovement, totalToMove, expPerTick, currentExperience, nextExperience} = this.state
+    let {currentExpMovement, totalToMove, expPerTick, currentExperience, nextExperience, startingLevel, gems} = this.state
     currentExpMovement+=expPerTick
     if (currentExpMovement > totalToMove) currentExpMovement = totalToMove
-    this.setState({currentExpMovement, currentExperience: createState(currentExperience.exp + expPerTick)})
+    currentExperience = createState(currentExperience.exp + expPerTick)
+    console.log({currentExperience});
+    if (currentExperience.level > startingLevel + gems) {
+      gems++
+      this.props.addGem()
+    }
+    this.setState({currentExpMovement, currentExperience, gems})
     if (currentExpMovement < totalToMove) this.startTick()
+    else this.props.finishExpAnimation()
   }
   startTick() {
     this.timeout = setTimeout(() => this.tickExpMovement(), 100)
@@ -46,8 +55,8 @@ class AnimatedExpBar extends Component {
     return <div>
       <Line percent={percent} strokeWidth={`${4}`} strokeColor={'blue'} strokeLinecap="square"  trailWidth={`${5}`}/>
       <span className="level">
-        <p className="is-pulled-left title is-3">Level</p>
-        <p className="is-pulled-right subtitle is-3">{solveLevelByExperience(currentExperience.exp)}: {currentExperience.exp - currentExperience.expConsumed} / {currentExperience.totalToLevel} Exp</p>
+        <p className="is-pulled-left title is-3">Level: {solveLevelByExperience(currentExperience.exp)}</p>
+        <p className="is-pulled-right subtitle is-3"> {currentExperience.exp - currentExperience.expConsumed} / {currentExperience.totalToLevel} Exp</p>
       </span>
       <hr />
     </div>

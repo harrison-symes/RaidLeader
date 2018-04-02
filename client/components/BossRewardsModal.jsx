@@ -7,8 +7,10 @@ import weaponSwitch from '../utils/weaponSwitch'
 import {earnGold} from '../actions/gold'
 import {addWeapon} from '../actions/weapons'
 import {gainExperience} from '../actions/experience'
-import {HealthIcon, PowerIcon, ManaIcon, SpeedIcon, ManaRegenIcon, GoldIcon} from './icons/StatIcons'
+import {HealthIcon, PowerIcon, ManaIcon, SpeedIcon, ManaRegenIcon, GoldIcon, GemIcon} from './icons/StatIcons'
 import AnimatedExpBar from './menuComponents/AnimatedExpBar'
+
+import {gainGems} from '../actions/gems'
 
 import {solveLevelByExperience, solveExperienceNeeded, levelExperienceRequired} from '../utils/experienceRequired'
 
@@ -27,11 +29,19 @@ class BossRewardsModal extends Component {
       showRewards: false,
       goldReward,
       weaponReward: this.solveWeaponReward(props.boss),
-      currentExperience: props.experience
+      currentExperience: props.experience,
+      gems: 0
     }
     console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
-    this.showRewards = this.showRewards.bind(this)
+    this.addGem = this.addGem.bind(this)
+    this.finishExpAnimation = this.finishExpAnimation.bind(this)
+  }
+  addGem() {
+    this.setState({gems: this.state.gems + 1})
+  }
+  finishExpAnimation() {
+    this.props.dispatch(gainGems(this.state.gems))
   }
   solveWeaponReward(boss) {
     const {currentLocation, party} = this.props
@@ -92,7 +102,7 @@ class BossRewardsModal extends Component {
     </div>
   }
   render() {
-    const {showRewards, goldReward, weaponReward, currentExperience, nextExperience} = this.state
+    const {showRewards, goldReward, weaponReward, currentExperience, nextExperience, gems} = this.state
     const {boss} = this.props
     return <div className="Town-Buttons Menu-Buttons Town Menu Modal modal is-active">
       <div className="modal-background"></div>
@@ -103,9 +113,16 @@ class BossRewardsModal extends Component {
         <section className="modal-card-body">
           {showRewards
             ? <div className="has-text-centered">
-              <AnimatedExpBar currentExperience={currentExperience} experienceGained={goldReward} />
+              <AnimatedExpBar currentExperience={currentExperience} experienceGained={goldReward} finishExpAnimation={this.finishExpAnimation} addGem={this.addGem} />
               <p className="title is-2">Your Rewards</p>
-              <span className="subtitle is-1"><GoldIcon value={goldReward} /></span>
+              {gems > 0
+                ? <span className="column is-8 is-offset-2 columns">
+                  <span className="column is-6"><p className="subtitle is-1"><GemIcon value={gems} /></p></span>
+                  <span className="column is-6"><p className="subtitle is-1"><GoldIcon value={goldReward} /></p></span>
+                </span>
+                : <span className="subtitle is-1"><GoldIcon value={goldReward} /></span>
+              }
+
               {weaponReward && this.weaponInfo(weaponReward)}
               <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
             </div>
