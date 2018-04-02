@@ -9,10 +9,10 @@ const levelExperienceRequired = level => {
 }
 
 const solveLevelByExperience = exp => {
-  let level = 0
+  let level = 1
   while (levelExperienceRequired(level) < exp) {
-    level++
     exp-=levelExperienceRequired(level)
+    level++
   }
   return level
 }
@@ -22,7 +22,6 @@ const experienceForLevel = level => {
   for (var i = 1; i <= level; i++) {
     exp+=levelExperienceRequired(i)
   }
-  console.log({level, exp});
   return exp
 }
 
@@ -30,7 +29,7 @@ const solveExperienceNeeded = exp => {
   let level = solveLevelByExperience(exp)
   let consumedExp = experienceForLevel(level)
   console.log({level, consumedExp});
-  return exp - consumedExp
+  return consumedExp - exp
 }
 
 module.exports = {
