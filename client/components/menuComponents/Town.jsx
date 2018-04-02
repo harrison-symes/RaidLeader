@@ -12,7 +12,7 @@ import BlackMarket from './BlackMarket'
 import MyRecruits from './MyRecruits'
 import MySpells from './MySpells'
 
-import {GoldIcon, RecruitCountIcon, SpellCountIcon} from '../icons/StatIcons'
+import {GoldIcon, RecruitCountIcon, SpellCountIcon, GemIcon} from '../icons/StatIcons'
 
 class Town extends Component {
   constructor(props) {
@@ -53,21 +53,24 @@ class Town extends Component {
     </a>
   }
   render() {
-    const {gold, recruits, spellBook} = this.props
+    const {gold, recruits, spellBook, gems} = this.props
     const {showRecruitmentModal} = this.state
     return <div className="Town">
       <div className="has-text-centered Town-Banner">
           <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
         <div className="level has-text-centered Resources">
-          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
+          <div className="button is-outlined is-light Info-Button is-3" style={{cursor: 'pointer'}}>
             <div className="subtitle is-2" onClick={()=>this.toggleModal('My Spells')}>
               <SpellCountIcon amount={spellBook.length} />
             </div>
           </div>
-          <div className=" is-4">
+          <div className="is-3">
             <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
-          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
+          <div className="is-3">
+            <p className="subtitle is-2"><GemIcon value={gems} /></p>
+          </div>
+          <div className="button is-outlined is-light Info-Button is-3" style={{cursor: 'pointer'}}>
             <p className="subtitle is-2" onClick={()=>this.toggleModal('My Recruits')}>
               <RecruitCountIcon amount={recruits.length} />
             </p>
@@ -117,9 +120,13 @@ class Town extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {gold, recruits, spellBook, dungeons} = state
+  const {gold, recruits, spellBook, dungeons, gems} = state
   return {
-    gold, recruits, spellBook, dungeons
+    gold,
+    recruits,
+    spellBook,
+    dungeons,
+    gems
   }
 }
 

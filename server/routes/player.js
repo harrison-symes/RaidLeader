@@ -53,7 +53,7 @@ router.post('/getStarted', decode, (req, res) => {
 })
 
 router.get('/experience', decode, (req, res) => {
-  playerDb.getPlayerExperience(req.user.user_id)
+  playerDb.getPlayer(req.user.user_id)
     .then((player) => {
       console.log({player});
       res.status(200).json(player.experience)
@@ -63,6 +63,16 @@ router.get('/experience', decode, (req, res) => {
 router.put('/experience', decode, (req, res) => {
   console.log(req.body);
   playerDb.playerGainExperience(req.user.user_id, req.body.experience)
+    .then(() => res.sendStatus(200))
+})
+
+router.get('/gems', decode, (req, res) => {
+  playerDb.getPlayer(req.user.user_id)
+    .then(player => res.status(200).json(player.gems))
+})
+
+router.put('/gems', decode, (req, res) => {
+  playerDb.playerGainGems(req.user.user_id, req.body.gems)
     .then(() => res.sendStatus(200))
 })
 

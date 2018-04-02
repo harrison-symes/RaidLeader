@@ -22,6 +22,7 @@ import {getDungeons} from '../actions/dungeons'
 import {getPlayerGold} from '../actions/gold'
 import {getWeapons} from '../actions/weapons'
 import {getExperience} from '../actions/experience'
+import {getGems} from '../actions/gems'
 
 import {MenuBackground} from '../utils/dungeonInfo'
 
@@ -46,6 +47,7 @@ class Menu extends React.Component {
       this.props.dispatch(getPlayerGold())
       this.props.dispatch(getWeapons())
       this.props.dispatch(getExperience())
+      this.props.dispatch(getGems())
     } else this.props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
   }
   togglePreview() {

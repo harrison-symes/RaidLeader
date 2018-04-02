@@ -128,6 +128,15 @@ export function GoldIcon ({value}) {
     </span>
   )
 }
+export function GemIcon ({value}) {
+  return toolTipGenerator(
+    <p>{value} Gems</p>,
+    <span>
+      {value}
+      <i className="ra ra-fw ra-diamond icon-large" />
+    </span>
+  )
+}
 
 export function ArmorIcon ({value}) {
   return toolTipGenerator(
