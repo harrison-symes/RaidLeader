@@ -217,6 +217,13 @@ class PlayerSpell extends Component {
         dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 1})
         dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 1 / party.length})
         return dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 1 / party.length})
+      case 'Acclimate':
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: spell.percentage})
+        for (var i = 0; i < player.spells.length; i++) {
+          if (player.spells.find(playerSpell => playerSpell.element == player.spells[i].element && player.spells[i].name != spell.name && playerSpell.name != spell.name)) return
+        }
+        console.log("no duplicate elements");
+        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: spell.percentage})
       default: return
     }
   }

@@ -602,6 +602,20 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
+  },
+  'Acclimate': {
+    name: 'Acclimate',
+    id: 37,
+    cast: 5,
+    cost: 10,
+    coolDown: 20,
+    singleTarget: false,
+    percentage: 0.1,
+    description: "Increase the Max and Current of ALL Recruits by (10%). If you have no Two Spells of the same element (ignoring this Spell), Increase the Speed of your Recruits by (10%) too.",
+    icon: 'ra-moon-sun',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
 
