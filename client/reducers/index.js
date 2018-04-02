@@ -19,6 +19,7 @@ import showWelcome from './showWelcome'
 import playerWeapon from './playerWeapon'
 import bossCount from './bossCount'
 import version from './version'
+import experience from './experience'
 
 export default combineReducers({
   auth,
@@ -39,5 +40,6 @@ export default combineReducers({
   weapons,
   playerWeapon,
   bossCount,
-  version
+  version,
+  experience
 })
