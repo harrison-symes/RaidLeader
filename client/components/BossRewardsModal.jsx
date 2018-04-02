@@ -7,14 +7,27 @@ import weaponSwitch from '../utils/weaponSwitch'
 import {earnGold} from '../actions/gold'
 import {addWeapon} from '../actions/weapons'
 import {HealthIcon, PowerIcon, ManaIcon, SpeedIcon, ManaRegenIcon, GoldIcon} from './icons/StatIcons'
+import AnimatedExpBar from './menuComponents/AnimatedExpBar'
+
+import {solveLevelByExperience, solveExperienceNeeded, levelExperienceRequired} from '../utils/experienceRequired'
+
+const createState = exp => ({
+  exp,
+  level: solveLevelByExperience(exp),
+  expNeeded: solveExperienceNeeded(exp),
+  totalToLevel: levelExperienceRequired(solveLevelByExperience(exp))
+})
 
 class BossRewardsModal extends Component {
   constructor(props) {
     super(props)
+    let goldReward = Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4)))
     this.state = {
       showRewards: false,
-      goldReward: Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4))),
-      weaponReward: this.solveWeaponReward(props.boss)
+      goldReward,
+      weaponReward: this.solveWeaponReward(props.boss),
+      currentExperience: props.experience,
+      nextExperience: createState(props.experience.exp + goldReward)
     }
     console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
@@ -55,9 +68,9 @@ class BossRewardsModal extends Component {
   }
   weaponInfo(weapon) {
     return <div className="">
-      <p className="title is-3">You found a Weapon!</p>
       <hr />
       <div className="box">
+        <p className="title is-3">You found a Weapon!</p>
         <h1 className="title is-3">{weapon.name} <i className={`icon ra ra-fw ${weapon.icon}`} /></h1>
         <div className="title is-4">{weapon.class} Weapon!</div>
         <div className="subtitle is-5">{weapon.description}</div>
@@ -78,7 +91,7 @@ class BossRewardsModal extends Component {
     </div>
   }
   render() {
-    const {showRewards, goldReward, weaponReward} = this.state
+    const {showRewards, goldReward, weaponReward, currentExperience, nextExperience} = this.state
     const {boss} = this.props
     return <div className="Town-Buttons Menu-Buttons Town Menu Modal modal is-active">
       <div className="modal-background"></div>
@@ -89,6 +102,7 @@ class BossRewardsModal extends Component {
         <section className="modal-card-body">
           {showRewards
             ? <div className="has-text-centered">
+              <AnimatedExpBar currentExperience={currentExperience} nextExperience={nextExperience} />
               <p className="title is-2">Your Rewards</p>
               <span className="subtitle is-1"><GoldIcon value={goldReward} /></span>
               {weaponReward && this.weaponInfo(weaponReward)}
@@ -105,11 +119,12 @@ class BossRewardsModal extends Component {
   }
 }
 
-const mapStateToProps = ({location, party, weapons}) => {
+const mapStateToProps = ({location, party, weapons, experience}) => {
   return {
     currentLocation: location,
     party,
-    weapons
+    weapons,
+    experience
   }
 }
 

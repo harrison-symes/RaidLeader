@@ -187,9 +187,13 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 5,
       max_spells: 5,
+      gold_reward: 0,
       bosses: [
-        'Trapped Tunnel'
-      ]
+        'Test'
+      ],
+      rewards: [
+
+      ],
     }
   }
 }
