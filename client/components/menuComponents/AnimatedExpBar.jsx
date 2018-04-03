@@ -17,13 +17,13 @@ class AnimatedExpBar extends Component {
   constructor(props) {
     super(props)
     let totalToMove = props.experienceGained
-    let currentExperience = props.experience
+    let currentExperience = props.currentExperience ? createState(props.currentExperience.exp) : createState(props.experience.exp)
     this.state = {
       currentExperience,
       startingLevel: currentExperience.level,
       currentExpMovement: 0,
       totalToMove,
-      expPerTick: Math.ceil(totalToMove / 50),
+      expPerTick: Math.ceil(totalToMove / 24),
       overLap: 0,
       gems: 0
     }

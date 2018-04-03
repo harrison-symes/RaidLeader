@@ -19,6 +19,7 @@ export default function (state = initialState, action) {
       console.log({experience: action.experience});
       return createState(action.experience)
     case 'GAIN_EXPERIENCE':
+      console.log("gain experience reducer", createState(action.experience + state.exp));
       return createState(action.experience + state.exp)
     default: return state
   }

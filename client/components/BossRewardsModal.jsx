@@ -30,7 +30,8 @@ class BossRewardsModal extends Component {
       goldReward,
       weaponReward: this.solveWeaponReward(props.boss),
       currentExperience: props.experience,
-      gems: 0
+      gems: 0,
+      animationDone: false
     }
     console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
@@ -41,7 +42,9 @@ class BossRewardsModal extends Component {
     this.setState({gems: this.state.gems + 1})
   }
   finishExpAnimation() {
+    this.props.dispatch(gainExperience(this.state.goldReward))
     this.props.dispatch(gainGems(this.state.gems))
+    this.setState({animationDone: true})
   }
   solveWeaponReward(boss) {
     const {currentLocation, party} = this.props
@@ -67,7 +70,6 @@ class BossRewardsModal extends Component {
   getReward() {
     const {goldReward, weaponReward} = this.state
     this.props.dispatch(earnGold(goldReward))
-    this.props.dispatch(gainExperience(goldReward))
     if (weaponReward) this.props.dispatch(addWeapon(weaponReward))
   }
   showRewards() {
@@ -124,7 +126,7 @@ class BossRewardsModal extends Component {
               }
 
               {weaponReward && this.weaponInfo(weaponReward)}
-              <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>
+              {this.state.animationDone && <button onClick={() => this.backToMenu()} className="button is-info is-large is-fullwidth">Back to Dungeon Menu</button>}
             </div>
             : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="fas fas-gift" /></button>
           }

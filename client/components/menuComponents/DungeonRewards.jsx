@@ -31,7 +31,8 @@ class DungeonRewards extends Component {
       showRewards: false,
       goldReward: Math.ceil(props.currentLocation.gold_reward * (0.9 + (Math.random() * 0.4))),
       weaponReward: this.solveWeaponReward(),
-      gems: 0
+      gems: 0,
+      animationDone: false
     }
     console.log(this.state);
     this.showRewards = this.showRewards.bind(this)
@@ -43,7 +44,9 @@ class DungeonRewards extends Component {
     this.setState({gems: this.state.gems + 1})
   }
   finishExpAnimation() {
+    this.props.dispatch(gainExperience(this.state.goldReward))
     if (this.state.gems > 0) this.props.dispatch(gainGems(this.state.gems))
+    this.setState({animationDone: true})
   }
   returnToTown() {
     this.props.dispatch({type: 'TRAVEL_TO_TOWN'})
@@ -105,7 +108,7 @@ class DungeonRewards extends Component {
           }
         </section>
         {showRewards && <footer className="modal-card-foot">
-          <div onClick={this.returnToTown} className="button is-success is-fullwidth is-large">Return to Town</div>
+          {this.state.animationDone && <div onClick={this.returnToTown} className="button is-success is-fullwidth is-large">Return to Town</div>}
         </footer>}
       </div>
     </div>
@@ -116,7 +119,6 @@ class DungeonRewards extends Component {
     this.props.dispatch({type: 'DUNGEON_CHEST_OPENED'})
     this.props.dispatch(completeDungeon(currentLocation))
     this.props.dispatch(earnGold(goldReward))
-    this.props.dispatch(gainExperience(goldReward))
     if (weaponReward) this.props.dispatch(addWeapon(weaponReward))
     this.setState({showRewards: true})
   }
