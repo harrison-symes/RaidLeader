@@ -1,6 +1,6 @@
 export default {
   name: 'Biting Bear',
-  level: 1,
+  level: 2,
   initHp: 1,
   hp: 1,
   initPower: 0,
@@ -16,6 +16,7 @@ export default {
   description: "You encounter a starving Bear in The Wilds, and this Bear is very, very hungry...",
   weaponRewards: ['Bear Fangs', 'Bear Heart', 'Bear Claw Arrows', 'Chew Toy'],
   goldReward: 1000,
+  gemChance: 1,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-pawprint',

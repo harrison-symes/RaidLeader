@@ -130,7 +130,7 @@ export function GoldIcon ({value}) {
 }
 export function GemIcon ({value}) {
   return toolTipGenerator(
-    <p>{value} Gems</p>,
+    <p>{value} Gem{value == 1 ? '' : 's'}</p>,
     <span>
       {value}
       <i className="ra ra-fw ra-diamond icon-large" />

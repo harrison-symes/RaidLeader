@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 
 import Dungeon from './Dungeon'
 
-
 import {getRecruits} from '../../actions/recruits'
 import {getSpells} from '../../actions/spells'
 import {getDungeons} from '../../actions/dungeons'

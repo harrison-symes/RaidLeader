@@ -30,13 +30,21 @@ class BossRewardsModal extends Component {
       goldReward,
       weaponReward: this.solveWeaponReward(props.boss),
       currentExperience: props.experience,
-      gems: 0,
+      gems: this.solveBaseGems(),
       animationDone: false
     }
     console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
     this.addGem = this.addGem.bind(this)
     this.finishExpAnimation = this.finishExpAnimation.bind(this)
+  }
+  solveBaseGems() {
+    const {party, currentLocation} = this.props
+    console.log({currentLocation});
+    const levelMetCount = party.filter(recruit => recruit.level <= currentLocation.level).length
+    const gemChance = (0.1 + (Math.random() + ((currentLocation.gemChance / currentLocation.max_party) * levelMetCount)))
+    console.log({gemChance});
+    return Math.floor(gemChance)
   }
   addGem() {
     this.setState({gems: this.state.gems + 1})

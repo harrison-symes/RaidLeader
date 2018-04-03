@@ -47,6 +47,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       max_party: 1,
       max_spells: 1,
       requires_complete: null,
+      gemChance: 1,
       rewards: [],
       gold_reward: 500,
       description: "The Paladin knows the location of a dying Dragon. Dragons are pretty scary, but they always hoard a large amount of treasure. Hopefully this Dragon won't live long enough to burn you alive...",
@@ -61,6 +62,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 2,
       max_spells: 2,
+      gemChance: 1/4,
       requires_complete: 'The Hunt',
       rewards: [
         {
@@ -89,6 +91,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 3,
       max_spells: 3,
+      gemChance: 1/3,
       requires_complete: 'The Cursed Wilds',
       rewards: [
         {
@@ -118,6 +121,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       max_party: 3,
       max_spells: 3,
       requires_complete: 'The Swamp',
+      gemChance: 1/2,
       rewards: [
         {
           name: 'Staff of Eternal Flame',
@@ -183,11 +187,12 @@ export default function getDungeonInfo(dungeon, isCompleted) {
     case "The Test": return {
       name: 'The Test',
       isCompleted,
-      level: 1,
+      level: 5,
       is_repeatable: true,
       max_party: 5,
       max_spells: 5,
       gold_reward: 500,
+      gemChance: 1,
       bosses: [
         'Test'
       ],

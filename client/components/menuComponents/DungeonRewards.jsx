@@ -34,7 +34,6 @@ class DungeonRewards extends Component {
       gems: 0,
       animationDone: false
     }
-    console.log(this.state);
     this.showRewards = this.showRewards.bind(this)
     this.returnToTown = this.returnToTown.bind(this)
     this.addGem = this.addGem.bind(this)
@@ -134,9 +133,10 @@ class DungeonRewards extends Component {
   }
 }
 
-const mapStateToProps = ({location}) => {
+const mapStateToProps = ({location, party}) => {
   return {
-    currentLocation: location
+    currentLocation: location,
+    party
   }
 }
 
