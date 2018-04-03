@@ -62,7 +62,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 2,
       max_spells: 2,
-      gemChance: 1/4,
+      gemChance: 1/5,
       requires_complete: 'The Hunt',
       rewards: [
         {
@@ -91,7 +91,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 3,
       max_spells: 3,
-      gemChance: 1/3,
+      gemChance: 1/4,
       requires_complete: 'The Cursed Wilds',
       rewards: [
         {
@@ -121,7 +121,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       max_party: 3,
       max_spells: 3,
       requires_complete: 'The Swamp',
-      gemChance: 1/2,
+      gemChance: 1/3,
       rewards: [
         {
           name: 'Staff of Eternal Flame',
@@ -158,6 +158,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       max_party: 4,
       max_spells: 4,
       requires_complete: 'The Foundry',
+      gemChance: 1/2,
       rewards: [
 
       ],
@@ -179,6 +180,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
 
       ],
       gold_reward: 5000,
+      gemChance: 1,
       description: "Hey remember that Dragon you killed a while back? Well, her boyfriend is pretty pissed of at you. So pissed off that he: Cursed the Woods, Plagued a Forest, Turned a Volcano into a Foundry, Used that Foundry to create hundreds of Weapons, and... You get the idea, I suggest being a little terrified!",
       bosses: [
 
