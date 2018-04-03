@@ -17,7 +17,7 @@ class AnimatedExpBar extends Component {
   constructor(props) {
     super(props)
     let totalToMove = props.experienceGained
-    let currentExperience = createState(props.currentExperience.exp)
+    let currentExperience = props.experience
     this.state = {
       currentExperience,
       startingLevel: currentExperience.level,
@@ -47,6 +47,7 @@ class AnimatedExpBar extends Component {
     this.timeout = setTimeout(() => this.tickExpMovement(), 100)
   }
   componentDidMount() {
+    console.log("mounting");
     this.startTick()
   }
   render() {
@@ -63,4 +64,6 @@ class AnimatedExpBar extends Component {
   }
 }
 
-export default connect()(AnimatedExpBar)
+const mapStateToProps = ({experience}) => ({experience})
+
+export default connect(mapStateToProps)(AnimatedExpBar)

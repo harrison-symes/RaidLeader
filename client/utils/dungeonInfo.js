@@ -187,12 +187,16 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       is_repeatable: true,
       max_party: 5,
       max_spells: 5,
-      gold_reward: 0,
+      gold_reward: 500,
       bosses: [
         'Test'
       ],
       rewards: [
-
+        {
+         name: 'Staff of Blossoming Life',
+         min: 0,
+         max: 1
+        }
       ],
     }
   }
