@@ -73,10 +73,11 @@ class DungeonRewards extends Component {
         <div className="title is-4">{weapon.class} Weapon!</div>
         <div className="subtitle is-5">{weapon.description}</div>
         <div className="columns is-multiline">
-          <div className="column subtitle is-4"><HealthIcon value={weapon.hp} /></div>
-          <div className="column subtitle is-4"><PowerIcon value={weapon.power} /></div>
-          {weapon.class != 'Player' && <div className="column subtitle is-4"><SpeedIcon value={weapon.speed} /></div>}
-          {weapon.class == 'Player' && <div className="column subtitle is-4"><ManaIcon value={weapon.mana}/> (<ManaRegenIcon value={weapon.manaRegen} />)</div>}
+          <div className="column subtitle is-3"><HealthIcon value={weapon.hp} /></div>
+          <div className="column subtitle is-3"><PowerIcon value={weapon.power} /></div>
+          {weapon.class != 'Player' && <div className="column subtitle is-3"><SpeedIcon value={weapon.speed} /></div>}
+          {weapon.class == 'Player' && <div className="column subtitle is-3"><ManaIcon value={weapon.mana}/></div>}
+          {weapon.class == 'Player' && <div className="column subtitle is-3"><ManaRegenIcon value={weapon.manaRegen} /></div>}
         </div>
         {weapon.bonusEffect && <div className="content is-large box">{weapon.effectDescription}</div>}
       </div>
