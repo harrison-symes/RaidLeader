@@ -22,7 +22,8 @@ module.exports = [
           <p>Leveling will provide you with a special currencey which you can use to purchase traits / upgrades.</p>
           <p><b>Present Moment (Watch this space):</b></p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - Leveling and experience gains are functional, and you will gain <b>1 Gem</b> every time you level up.</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp; - Experience Required to Level Up increases by 10% of the previous levels EXP Requirement. (500, 550, 605).</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - Experience Required to Level Up increases by 10% of the previous levels EXP Requirement. (1000, 1100, 1210).</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - Defeating a Boss within a dungeon has a <b>Chance</b> to reward a <b>Gem</b>, this chance is reduced for every <b>Recruit</b> that was higher than the Dungeon's <b>Expected Level</b>. Harder Dungeons have a <b>Higher Chances of Gems</b></p>
           <p>Let me know if you run into any EXP related bugs, and WATCH THIS SPACE</p> '
         </div>
       }
