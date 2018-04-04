@@ -233,9 +233,13 @@ export function SpellElementIcon ({element}) {
 }
 
 export function SpellIcon ({spell, isLarge}) {
-  const {name, icon, color, background} = spell
+  const {name, icon, color, background, description} = spell
   return toolTipGenerator(
-    <p>{name}</p>,
+    <span>
+      <p>{name}</p>
+      <hr />
+      <p>{description}</p>
+    </span>,
     <span>
       <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw  ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
     </span>
