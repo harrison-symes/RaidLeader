@@ -7,6 +7,9 @@ import {levelUpRecruit} from '../../actions/recruits'
 import {classIcons} from '../../utils/classText'
 import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon, GemIcon, SpellIcon, TargetTypeIcon, SpellElementIcon, ManaIcon, CastTimeIcon, CoolDownIcon} from '../icons/StatIcons'
 
+import {gainGems} from '../../actions/gems'
+import {addSpell} from '../../actions/spells'
+
 import {getTraitsByElement, sortTiers} from '../../utils/traits'
 
 class MageTower extends Component {
@@ -25,6 +28,14 @@ class MageTower extends Component {
     let traits = sortTiers(getTraitsByElement(element))
     console.log({traits});
     this.setState({element, traits, selected: null})
+  }
+  purchaseTrait() {
+    const {selected} = this.state
+    if (selected.isSpell) {
+      console.log("purchasing", selected);
+      this.props.dispatch(gainGems(selected.gemCost * -1))
+      this.props.dispatch(addSpell(selected.spell))
+    }
   }
   renderSpellPreview(spell) {
     return <div className="column is-12 box">
@@ -53,23 +64,30 @@ class MageTower extends Component {
   renderTraitDetails() {
     const {selected} = this.state
     const {gems} = this.props
+    const isLearned = selected.isSpell && this.props.spellBook.find(spell => spell == selected.spell)
     return <div>
       <hr />
       <p className="content is-large">{selected.description}</p>
       {selected.isSpell && this.renderSpellPreview(selected.spell)}
-      {gems >= selected.gemCost
-        ? <button className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon gems={-1 * selected.gemCost} />)</button>
-        : <button className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon gems={selected.gemCost} />) </button>
+      {!isLearned
+        ? (gems >= selected.gemCost)
+          ? <button onClick={()=>this.purchaseTrait()} className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
+          : <button className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon value={selected.gemCost} />) </button>
+        : null
       }
     </div>
   }
   renderTraitIcon(trait, size) {
     const {selected} = this.state
+    const isLearned = trait.isSpell && this.props.spellBook.find(spell => spell == trait.spell)
     return <div className={`column is-${size}`}>
-      <p className="title is-4">{trait.name}</p>
+      <span className="has-text-centered">
+        <p className="title is-4">{trait.name}</p>
+        {isLearned &&  <p className="tag is-large is-success">Trait Learned</p>}
+      </span>
       <div className="level">
         <p className="subtitle is-3"><SpellIcon spell={trait} isLarge={true} /></p>
-        {selected == trait
+        {(selected == trait)
           ? <button onClick={() => this.selectTrait(null)} className="button Info-Button is-outlined is-warning">Hide</button>
           : <button onClick={() => this.selectTrait(trait)} className="button Info-Button is-outlined is-info">Details</button>
         }
@@ -146,12 +164,13 @@ class MageTower extends Component {
   }
 }
 
-const mapStateToProps = ({gold, dungeons, recruits, gems}) => {
+const mapStateToProps = ({gold, dungeons, recruits, gems, spellBook}) => {
   return {
     dungeons,
     recruits,
     gold,
-    gems
+    gems,
+    spellBook
   }
 }
 

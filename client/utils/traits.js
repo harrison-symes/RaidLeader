@@ -92,30 +92,30 @@ const fire = [
     element: 'Fire',
     spell: spells['Fireblast']
   },
-  {
-    name: 'Quicklight',
-    tier: 2,
-    gemCost: 2,
-    description: 'Reduces the Cast Time of your Fire Spells by 20%.',
-    isSpell: false,
-    element: 'Fire',
-    requiredTrait: null,
-    icon: 'ra-match',
-    color: colors.darkRed,
-    background: 'white',
-  },
-  {
-    name: 'Light the Way',
-    tier: 2,
-    gemCost: 2,
-    description: 'Casting a Fire Spell will Heal the Player for (50%) of Player Power',
-    isSpell: false,
-    element: 'Fire',
-    requiredTrait: null,
-    icon: 'ra-torch',
-    color: colors.darkRed,
-    background: 'white',
-  }
+  // {
+  //   name: 'Quicklight',
+  //   tier: 2,
+  //   gemCost: 2,
+  //   description: 'Reduces the Cast Time of your Fire Spells by 20%.',
+  //   isSpell: false,
+  //   element: 'Fire',
+  //   requiredTrait: null,
+  //   icon: 'ra-match',
+  //   color: colors.darkRed,
+  //   background: 'white',
+  // },
+  // {
+  //   name: 'Light the Way',
+  //   tier: 2,
+  //   gemCost: 2,
+  //   description: 'Casting a Fire Spell will Heal the Player for (50%) of Player Power',
+  //   isSpell: false,
+  //   element: 'Fire',
+  //   requiredTrait: null,
+  //   icon: 'ra-torch',
+  //   color: colors.darkRed,
+  //   background: 'white',
+  // }
 ]
 
 function getTraitsByElement(element) {
