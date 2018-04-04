@@ -9,6 +9,7 @@ import {PowerIcon, SpeedIcon, HealthIcon, GoldIcon, GemIcon, SpellIcon, TargetTy
 
 import {gainGems} from '../../actions/gems'
 import {addSpell} from '../../actions/spells'
+import {addTrait} from '../../actions/traits'
 
 import {getTraitsByElement, sortTiers} from '../../utils/traits'
 
@@ -29,6 +30,7 @@ class MageTower extends Component {
     let traits = getTraitsByElement(element)
     traits.forEach(trait => {
       if (trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
+      else if (this.props.traits.find(learned => learned.name == trait.name)) trait.isLearned = true
       else trait.isLearned = false
     })
     console.log({traits});
@@ -42,6 +44,9 @@ class MageTower extends Component {
       console.log("purchasing", selected);
       this.props.dispatch(gainGems(selected.gemCost * -1))
       this.props.dispatch(addSpell(selected.spell))
+    } else {
+      this.props.dispatch(gainGems(selected.gemCost * -1))
+      this.props.dispatch(addTrait(selected))
     }
   }
   componentWillReceiveProps() {
@@ -92,8 +97,8 @@ class MageTower extends Component {
     const isLearned = trait.isSpell && this.props.spellBook.find(spell => spell == trait.spell)
     return <div className={`column is-${size}`}>
       <span className="has-text-centered">
+        {trait.isLearned ?  <p className="tag is-medium is-success">Trait Learned</p> : <br />}
         <p className="title is-4">{trait.name}</p>
-        {trait.isLearned &&  <p className="tag is-large is-success">Trait Learned</p>}
       </span>
       <div className="level">
         <p className="subtitle is-3"><SpellIcon spell={trait} isLarge={true} /></p>
@@ -174,13 +179,14 @@ class MageTower extends Component {
   }
 }
 
-const mapStateToProps = ({gold, dungeons, recruits, gems, spellBook}) => {
+const mapStateToProps = ({gold, dungeons, recruits, gems, spellBook, traits}) => {
   return {
     dungeons,
     recruits,
     gold,
     gems,
-    spellBook
+    spellBook,
+    traits
   }
 }
 
