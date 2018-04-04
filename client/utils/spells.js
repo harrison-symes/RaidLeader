@@ -53,7 +53,8 @@ module.exports = {
     icon: 'ra-daisy',
     color: colors.lightOlive,
     background: colors.darkGreen,
-    element: 'Life'
+    element: 'Life',
+    reserved: true
   },
   'Greater Heal': {
     id: 3,
@@ -172,6 +173,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
+    reserved: true,
     description: 'Restore 10% Mana',
     icon: 'ra-player-teleport',
     color: colors.darkBlue,
@@ -508,7 +510,8 @@ module.exports = {
     icon: 'ra-shot-through-the-heart',
     color: colors.darkPurple,
     background: colors.faintPink,
-    element: 'Shadow'
+    element: 'Shadow',
+    reserved: true
   },
   'Arcane Torrent': {
     id: 31,
@@ -538,7 +541,8 @@ module.exports = {
     icon: 'ra-apple',
     color: colors.lightOlive,
     background: colors.darkGreen,
-    element: 'Life'
+    element: 'Life',
+    reserved: true
   },
   'Chosen Champion': {
     id: 33,

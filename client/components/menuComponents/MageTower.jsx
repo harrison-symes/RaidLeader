@@ -24,7 +24,7 @@ class MageTower extends Component {
   pickElement(element) {
     let traits = sortTiers(getTraitsByElement(element))
     console.log({traits});
-    this.setState({element, traits})
+    this.setState({element, traits, selected: null})
   }
   renderSpellPreview(spell) {
     return <div className="column is-12 box">

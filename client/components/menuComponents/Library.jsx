@@ -20,7 +20,7 @@ class Library extends Component {
     this.reset = this.reset.bind(this)
   }
   findByElement(element) {
-    const spellsByElement = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).map(name => spells[name]).filter(spell => spell.element == element)
+    const spellsByElement = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).map(name => spells[name]).filter(spell => spell.element == element && !spell.reserved)
     if (spellsByElement.length) return spellsByElement[Math.floor(Math.random() * spellsByElement.length)]
   }
   solveOptions() {
