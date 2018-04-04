@@ -98,7 +98,7 @@ class Town extends Component {
         </div>
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Training Centre', 'ra-muscle-up', 'The Cursed Wilds')}
-          {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
           <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
