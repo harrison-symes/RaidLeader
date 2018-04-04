@@ -43,8 +43,8 @@ class BlackMarket extends Component {
       <div className="modal-card">
         <header className="modal-card-head">
           <span className="modal-card-title is-6 level">
-            <p className=" is-pulled-left">Market</p>
-            <p className=" is-pulled-right">
+            <p className="is-pulled-left">Market</p>
+            <p className="is-pulled-right">
               <GoldIcon value={gold} />
               <button onClick={close} className="delete" aria-label="close"></button>
             </p>
