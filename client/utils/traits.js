@@ -27,15 +27,54 @@ var colors = {
 }
 
 const life = [
-
+  {
+    name: 'Blossom',
+    tier: 1,
+    gemCost: 1,
+    description: 'Learn the Spell "Blossom"',
+    isSpell: true,
+    element: 'Life',
+    requiredTrait: null,
+    icon: spells['Blossom'].icon,
+    color: spells['Blossom'].color,
+    background: spells['Blossom'].background,
+    element: 'Life',
+    spell: spells['Blossom']
+  }
 ]
 
 const shadow = [
-
+  {
+    name: 'Life Funnel',
+    tier: 1,
+    gemCost: 1,
+    description: 'Learn the Spell "Life Funnel"',
+    isSpell: true,
+    element: 'Shadow',
+    requiredTrait: null,
+    icon: spells['Life Funnel'].icon,
+    color: spells['Life Funnel'].color,
+    background: spells['Life Funnel'].background,
+    element: 'Shadow',
+    spell: spells['Life Funnel']
+  }
 ]
 
 const arcane = [
-
+  {
+    name: 'Evocate',
+    tier: 1,
+    gemCost: 1,
+    description: 'Learn the Spell "Evocate"',
+    isSpell: true,
+    element: 'Arcane',
+    requiredTrait: null,
+    icon: spells['Evocate'].icon,
+    color: spells['Evocate'].color,
+    background: spells['Evocate'].background,
+    element: 'Arcane',
+    spell: spells['Evocate']
+  }
 ]
 
 const fire = [
