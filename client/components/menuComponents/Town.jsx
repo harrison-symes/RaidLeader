@@ -7,6 +7,7 @@ import {logoutUser} from '../../actions/logout'
 import RecruitmentCentre from './RecruitmentCentre'
 import Library from './Library'
 import TrainingCentre from './TrainingCentre'
+import MageTower from './MageTower'
 import Dungeons from './Dungeons'
 import BlackMarket from './BlackMarket'
 import MyRecruits from './MyRecruits'
@@ -32,6 +33,7 @@ class Town extends Component {
       case 'Recruitment Centre': return <RecruitmentCentre close={close} />
       case 'Library': return <Library close={close} />
       case 'Training Centre': return <TrainingCentre close={close} />
+      case 'Mage Tower': return <MageTower close={close} />
       case 'Black Market': return <BlackMarket close={close} />
       case 'Dungeon Map': return <Dungeons close={close} />
       case 'My Recruits': return <MyRecruits close={close} />
@@ -92,11 +94,11 @@ class Town extends Component {
 
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower', 'The Hunt')}
-          {this.renderTownMenuButton('Library', 'ra-crystal-ball', 'The Hunt')}
+          {this.renderTownMenuButton('Library', 'ra-book', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Training Centre', 'ra-muscle-up', 'The Cursed Wilds')}
-          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Cursed Wilds')}
         </div>
         <div className="columns Town-Button-Div">
           <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
@@ -108,13 +110,15 @@ class Town extends Component {
               <i className={`ra ra-turd ra-lg` }></i>
             </span>
           </Link>
-          <Link to="/new" className="button is-large is-fullwidth is-info is-outlined">
-            <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
-              <span>&nbsp;What's New?&nbsp;</span>
-            <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
-          </Link>
+          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
+
         </div>
       </div>
+      <Link to="/new" className="button is-large is-fullwidth is-dark Info-Button is-outlined">
+        <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
+          <span>&nbsp;What's New?&nbsp;</span>
+        <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
+      </Link>
     </div>
   }
 }
