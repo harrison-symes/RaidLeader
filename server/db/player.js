@@ -21,8 +21,8 @@ module.exports = {
     .then(player => {
       return (testDb || knex)('users').update({gems: (gems || 0) + player.gems}).where({user_id})
     }),
-  getPlayerTraits: (user_id, testDb) => (testDb || knex)('traits')
+  getPlayerTraits: (user_id, testDb) => (testDb || knex)('playerTraits')
     .where({user_id}),
-  insertTrait: (user_id, name, testDb) => (testDb || knex)('Traits')
+  insertTrait: (user_id, name, testDb) => (testDb || knex)('playerTraits')
     .insert({user_id, name})
 }

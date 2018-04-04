@@ -137,9 +137,16 @@ function sortTiers (traits) {
   console.log(tierSorter);
 }
 
+function getAllTraits () {
+  return life.concat(fire).concat(shadow).concat(arcane)
+}
+
+console.log(getAllTraits());
+
 module.exports = {
   sortTiers,
-  getTraitsByElement
+  getTraitsByElement,
+  getAllTraits
 }
 
 sortTiers(getTraitsByElement('Fire'))

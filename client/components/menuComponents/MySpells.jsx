@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import SpellFrame from './SpellFrame'
 
+import {SpellIcon} from '../icons/StatIcons'
+
 const elements = [
   "Life", 'Fire', 'Shadow', 'Arcane'
 ]
@@ -48,6 +50,12 @@ class MySpells extends Component {
       {elements.map(element => this.spellsByElement(element))}
     </div>
   }
+  renderTraits() {
+    return <div className="box has-text-centered">
+      <p className="title is-3">Passive Traits:</p>
+      {this.props.traits.map(trait => <span className="subtitle is-4"><SpellIcon spell={trait} isLarge={true} /></span>)}
+    </div>
+  }
   render() {
     const {selected} = this.state
     const {close, spellBook} = this.props
@@ -61,6 +69,7 @@ class MySpells extends Component {
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
+          {this.renderTraits()}
           {this.renderContent()}
         </section>
         <footer className="modal-card-foot">
@@ -99,10 +108,12 @@ const alphabetSort = spells => {
   return newArr
 }
 
-const mapStateToProps = ({spellBook}) => {
+const mapStateToProps = ({spellBook, traits}) => {
   alphabetSort(spellBook)
+  console.log({traits});
   return {
-    spellBook: alphabetSort(spellBook)
+    spellBook: alphabetSort(spellBook),
+    traits
   }
 }
 
