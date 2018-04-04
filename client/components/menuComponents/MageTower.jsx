@@ -25,7 +25,14 @@ class MageTower extends Component {
     this.setState({selected})
   }
   pickElement(element) {
-    let traits = sortTiers(getTraitsByElement(element))
+    if (!element) return
+    let traits = getTraitsByElement(element)
+    traits.forEach(trait => {
+      if (trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
+      else trait.isLearned = false
+    })
+    console.log({traits});
+    traits = sortTiers(traits)
     console.log({traits});
     this.setState({element, traits, selected: null})
   }
@@ -36,6 +43,9 @@ class MageTower extends Component {
       this.props.dispatch(gainGems(selected.gemCost * -1))
       this.props.dispatch(addSpell(selected.spell))
     }
+  }
+  componentWillReceiveProps() {
+    this.pickElement(this.state.element)
   }
   renderSpellPreview(spell) {
     return <div className="column is-12 box">
@@ -69,7 +79,7 @@ class MageTower extends Component {
       <hr />
       <p className="content is-large">{selected.description}</p>
       {selected.isSpell && this.renderSpellPreview(selected.spell)}
-      {!isLearned
+      {!selected.isLearned
         ? (gems >= selected.gemCost)
           ? <button onClick={()=>this.purchaseTrait()} className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
           : <button className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon value={selected.gemCost} />) </button>
@@ -83,7 +93,7 @@ class MageTower extends Component {
     return <div className={`column is-${size}`}>
       <span className="has-text-centered">
         <p className="title is-4">{trait.name}</p>
-        {isLearned &&  <p className="tag is-large is-success">Trait Learned</p>}
+        {trait.isLearned &&  <p className="tag is-large is-success">Trait Learned</p>}
       </span>
       <div className="level">
         <p className="subtitle is-3"><SpellIcon spell={trait} isLarge={true} /></p>
