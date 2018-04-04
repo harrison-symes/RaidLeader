@@ -26,6 +26,18 @@ var colors = {
   faintPink: '#DDA0DD'
 }
 
+const life = [
+
+]
+
+const shadow = [
+
+]
+
+const arcane = [
+
+]
+
 const fire = [
   {
     name: 'Fireblast',
@@ -70,6 +82,8 @@ const fire = [
 function getTraitsByElement(element) {
   switch (element) {
     case 'Fire': return fire
+    case 'Shadow': return shadow
+    case 'Arcane': return arcane
     default: return life
   }
 }
