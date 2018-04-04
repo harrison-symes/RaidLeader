@@ -129,7 +129,8 @@ module.exports = {
     icon: 'ra-blaster',
     color: colors.darkRed,
     background: colors.lightOrange,
-    element: 'Fire'
+    element: 'Fire',
+    reserved: true
   },
   'Flash Fire': {
     id: 8,
