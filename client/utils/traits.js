@@ -74,7 +74,31 @@ const arcane = [
     background: spells['Evocate'].background,
     element: 'Arcane',
     spell: spells['Evocate']
-  }
+  },
+  {
+    name: 'Light Feet',
+    tier: 2,
+    gemCost: 2,
+    description: 'Reduces the Mana Cost of your Spells by (1)',
+    isSpell: false,
+    element: 'Arcane',
+    requiredTrait: null,
+    icon: 'ra-feather-wing',
+    color: colors.lightBlue,
+    background: 'white',
+  },
+  {
+    name: 'Agility',
+    tier: 2,
+    gemCost: 2,
+    description: 'Casting an Arcane Spell will reduce the Cooldown of All Spells by 1%',
+    isSpell: false,
+    element: 'Arcane',
+    requiredTrait: null,
+    icon: 'ra-player-dodge',
+    color: colors.lightBlue,
+    background: 'white',
+  },
 ]
 
 const fire = [
@@ -101,7 +125,7 @@ const fire = [
     element: 'Fire',
     requiredTrait: null,
     icon: 'ra-match',
-    color: colors.darkRed,
+    color: colors.medOrange,
     background: 'white',
   },
   {
@@ -113,7 +137,7 @@ const fire = [
     element: 'Fire',
     requiredTrait: null,
     icon: 'ra-torch',
-    color: colors.darkRed,
+    color: colors.medOrange,
     background: 'white',
   }
 ]

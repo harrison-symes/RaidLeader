@@ -78,26 +78,37 @@ class MageTower extends Component {
   }
   renderTraitDetails() {
     const {selected} = this.state
+    console.log({selected});
     const {gems} = this.props
     const isLearned = selected.isSpell && this.props.spellBook.find(spell => spell == selected.spell)
+    const isLocked = selected.tier != 1 && !this.state.traits[selected.tier - 1].find(other => other.isLearned)
     return <div>
       <hr />
       <p className="content is-large">{selected.description}</p>
       {selected.isSpell && this.renderSpellPreview(selected.spell)}
-      {!selected.isLearned
-        ? (gems >= selected.gemCost)
-          ? <button onClick={()=>this.purchaseTrait()} className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
-          : <button className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon value={selected.gemCost} />) </button>
-        : null
+      {isLocked
+        ? <button disabled className="button is-outlined is-danger">Requires a Tier {selected.tier - 1} {selected.element} Trait</button>
+        : !selected.isLearned
+          ? (gems >= selected.gemCost)
+            ? <button onClick={()=>this.purchaseTrait()} className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
+            : <button disabled className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon value={selected.gemCost} />) </button>
+          : null
       }
     </div>
   }
   renderTraitIcon(trait, size) {
     const {selected} = this.state
     const isLearned = trait.isSpell && this.props.spellBook.find(spell => spell == trait.spell)
+    const isLocked = trait.tier != 1 && !this.state.traits[trait.tier - 1].find(other => other.isLearned)
     return <div className={`column is-${size}`}>
       <span className="has-text-centered">
-        {trait.isLearned ?  <p className="tag is-medium is-success">Trait Learned</p> : <br />}
+        {trait.isLearned
+          ? <p className="tag is-medium is-success">Trait Learned</p>
+          : isLocked
+            ? <p className="tag is-medium is-danger">
+              Learn a Tier {trait.tier - 1} Trait First
+            </p>
+            : <br />}
         <p className="title is-4">{trait.name}</p>
       </span>
       <div className="level">
