@@ -20,5 +20,9 @@ module.exports = {
   playerGainGems: (user_id, gems, testDb) => getPlayer(user_id, testDb)
     .then(player => {
       return (testDb || knex)('users').update({gems: (gems || 0) + player.gems}).where({user_id})
-    })
+    }),
+  getPlayerTraits: (user_id, testDb) => (testDb || knex)('traits')
+    .where({user_id}),
+  insertTrait: (user_id, name, testDb) => (testDb || knex)('Traits')
+    .insert({user_id, name})
 }

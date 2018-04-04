@@ -76,4 +76,14 @@ router.put('/gems', decode, (req, res) => {
     .then(() => res.sendStatus(200))
 })
 
+router.get('/traits', decode, (req, res) => {
+  playerDb.getPlayerTraits(req.user.user_id)
+    .then(traits => res.json(traits))
+})
+
+router.post('/traits', decode, (req, res) => {
+  playerDb.insertTrait(req.user.user_id, req.body.name)
+    .then(() => res.sendStatus(201))
+})
+
 module.exports = router
