@@ -8,6 +8,7 @@ import { Progress } from 'react-sweet-progress';
 import KeyHandler, {KEYPRESS} from 'react-key-handler';
 
 const castTraitHandler = (trait, props, spell) => {
+  const {dispatch} = props
   switch(trait.name) {
     //Life
     case 'Fruitful':
@@ -19,7 +20,7 @@ const castTraitHandler = (trait, props, spell) => {
     //Shadow
 
     //Arcane
-    default: return state
+    default: return
   }
 }
 

@@ -13,7 +13,7 @@ const startingTraitHandler = (trait, props) => {
     //Life
     case 'Ingrain':
       return dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
-      
+
     //Fire
     case 'Quicklight':
       dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
@@ -30,7 +30,8 @@ const startingTraitHandler = (trait, props) => {
     case 'Light Feet':
       return dispatch({type: 'REDUCE_SPELL_COST', reduction: 1})
     case 'Mana Pool':
-      return dispatch({type: 'INCREASE_PLAYER_MANA', mana: 10 * props.spellBook.filter(spell => spell.element == 'Arcane')})
+      let mana = 10 * props.spellBook.filter(spell => spell.element == 'Arcane').length
+      return dispatch({type: 'INCREASE_PLAYER_MANA', mana})
     default: return
   }
 }
