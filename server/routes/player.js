@@ -82,8 +82,10 @@ router.get('/traits', decode, (req, res) => {
 })
 
 router.post('/traits', decode, (req, res) => {
+  console.log("Trait Post", req.body)
   playerDb.insertTrait(req.user.user_id, req.body.name)
     .then(() => res.sendStatus(201))
+    .catch(err => console.log({err}))
 })
 
 module.exports = router
