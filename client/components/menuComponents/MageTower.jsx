@@ -49,7 +49,8 @@ class MageTower extends Component {
       this.props.dispatch(addTrait(selected))
     }
   }
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
+    console.log("traits changed", nextProps);
     this.pickElement(this.state.element)
   }
   renderSpellPreview(spell) {
@@ -98,7 +99,10 @@ class MageTower extends Component {
   }
   renderTraitIcon(trait, size) {
     const {selected} = this.state
-    const isLearned = trait.isSpell && this.props.spellBook.find(spell => spell == trait.spell)
+    if (trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
+    else if (this.props.traits.find(learned => learned.name == trait.name)) trait.isLearned = true
+    else trait.isLearned = false
+    const isLearned = trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)
     const isLocked = trait.tier != 1 && !this.state.traits[trait.tier - 1].find(other => other.isLearned)
     return <div className={`column is-${size}`}>
       <span className="has-text-centered">
@@ -139,12 +143,11 @@ class MageTower extends Component {
   }
   renderElementButton(element) {
     return <button onClick={() => this.pickElement(element)} className={`button Info-Button ${this.state.element ==  element ? 'is-success' : 'is-info'} is-outlined`}>{element}</button>
-
   }
   render() {
     const {close, gems} = this.props
     const {element} = this.state
-
+    console.log(this.state);
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card Modal">
