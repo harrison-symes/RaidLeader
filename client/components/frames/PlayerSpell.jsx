@@ -189,11 +189,10 @@ class PlayerSpell extends Component {
         if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
         return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: percentage})
       case 'Life Soul':
+        if (!player.spells.find(spell => spell.element != 'Life')) dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
         return dispatch({
           type: 'PERCENT_INCREASE_POWER',
-          percentage: player.spells.find(spell => spell.element != 'Life')
-            ? spell.percentage
-            : spell.greaterPercentage
+          percentage: spell.percentage
         })
       case 'Arcane Soul':
         if (!player.spells.find(spell => spell.element != 'Arcane')) {
