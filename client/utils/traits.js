@@ -65,6 +65,20 @@ const life = [
     color: colors.lightOlive,
     background: 'white',
   },
+  {
+    name: 'Life Soul',
+    tier: 3,
+    gemCost: 3,
+    description: 'Learn the Spell "Life Soul"',
+    isSpell: true,
+    element: 'Life',
+    requiredTrait: null,
+    icon: spells['Life Soul'].icon,
+    color: spells['Life Soul'].color,
+    background: spells['Life Soul'].background,
+    element: 'Life',
+    spell: spells['Life Soul']
+  },
 ]
 
 const shadow = [
@@ -106,6 +120,20 @@ const shadow = [
     color: colors.darkPurple,
     background: 'white',
   },
+  {
+    name: 'Shadow Soul',
+    tier: 3,
+    gemCost: 3,
+    description: 'Learn the Spell "Shadow Soul"',
+    isSpell: true,
+    element: 'Shadow',
+    requiredTrait: null,
+    icon: spells['Shadow Soul'].icon,
+    color: spells['Shadow Soul'].color,
+    background: spells['Shadow Soul'].background,
+    element: 'Shadow',
+    spell: spells['Shadow Soul']
+  },
 ]
 
 const arcane = [
@@ -146,7 +174,21 @@ const arcane = [
     icon: 'ra-player-dodge',
     color: colors.lightBlue,
     background: 'white',
-  }
+  },
+  {
+    name: 'Arcane Soul',
+    tier: 3,
+    gemCost: 3,
+    description: 'Learn the Spell "Arcane Soul"',
+    isSpell: true,
+    element: 'Arcane',
+    requiredTrait: null,
+    icon: spells['Arcane Soul'].icon,
+    color: spells['Arcane Soul'].color,
+    background: spells['Arcane Soul'].background,
+    element: 'Arcane',
+    spell: spells['Arcane Soul']
+  },
 ]
 
 const fire = [
@@ -187,7 +229,21 @@ const fire = [
     icon: 'ra-torch',
     color: colors.medOrange,
     background: 'white',
-  }
+  },
+  {
+    name: 'Fire Soul',
+    tier: 3,
+    gemCost: 3,
+    description: 'Learn the Spell "Fire Soul"',
+    isSpell: true,
+    element: 'Fire',
+    requiredTrait: null,
+    icon: spells['Fire Soul'].icon,
+    color: spells['Fire Soul'].color,
+    background: spells['Fire Soul'].background,
+    element: 'Fire',
+    spell: spells['Fire Soul']
+  },
 ]
 
 function getTraitsByElement(element) {

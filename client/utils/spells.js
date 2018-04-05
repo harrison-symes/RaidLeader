@@ -447,7 +447,8 @@ module.exports = {
     icon: 'ra-aura',
     color: colors.lightOlive,
     background: colors.darkGreen,
-    element: 'Life'
+    element: 'Life',
+    reserved: true
   },
   'Arcane Soul': {
     id: 27,
@@ -462,7 +463,8 @@ module.exports = {
     icon: 'ra-aura',
     color: colors.darkBlue,
     background: colors.lightBlue,
-    element: 'Arcane'
+    element: 'Arcane',
+    reserved: true
   },
   'Fire Soul': {
     id: 28,
@@ -477,7 +479,8 @@ module.exports = {
     icon: 'ra-aura',
     color: colors.darkRed,
     background: colors.lightOrange,
-    element: 'Fire'
+    element: 'Fire',
+    reserved: true
   },
   'Shadow Soul': {
     id: 29,
@@ -492,7 +495,8 @@ module.exports = {
     icon: 'ra-aura',
     color: colors.darkPurple,
     background: colors.faintPink,
-    element: 'Shadow'
+    element: 'Shadow',
+    reserved: true
   },
   'Life Funnel': {
     id: 30,
