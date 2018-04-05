@@ -79,7 +79,7 @@ class PlayerSpell extends Component {
       case 'Life Funnel':
         let health = player.initHp * spell.tickPercentage
         dispatch({type: 'DAMAGE_PLAYER', power: health})
-        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health, target})
+        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health*2, target})
       case 'Arcane Torrent':
         let damagedRecruits = party.filter(recruit => recruit.hp < recruit.initHp)
         if (!player.spells.find(spell => spell.element == 'Life')) power*=2
@@ -241,7 +241,7 @@ class PlayerSpell extends Component {
           if (player.spells.find(playerSpell => playerSpell.element == player.spells[i].element && player.spells[i].name != spell.name && playerSpell.name != spell.name)) return
         }
         console.log("no duplicate elements");
-        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.percentage})
       default: return
     }
   }
