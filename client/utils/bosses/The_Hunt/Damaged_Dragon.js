@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "A big scary Dragon, with a big Boo-Boo",
   weaponRewards: ['Dragon Scale'],
-  goldReward: 500,
+  goldReward: 300,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-dragon',

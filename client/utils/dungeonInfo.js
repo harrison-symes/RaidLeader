@@ -49,7 +49,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       requires_complete: null,
       gemChance: 1,
       rewards: [],
-      gold_reward: 500,
+      gold_reward: 300  ,
       description: "The Paladin knows the location of a dying Dragon. Dragons are pretty scary, but they always hoard a large amount of treasure. Hopefully this Dragon won't live long enough to burn you alive...",
       bosses: [
         'Damaged Dragon'
