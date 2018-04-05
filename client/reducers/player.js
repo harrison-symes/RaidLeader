@@ -50,6 +50,14 @@ export default function player (state = null, action) {
     case 'PERCENT_INCREASE_MANA_REGEN':
       newState.manaRegen += newState.manaRegen * action.percentage
       return newState
+    case 'REDUCE_SPELL_COST_BY_ELEMENT':
+      newState.spells = newState.spells.map(spell => {
+        if (spell.element != action.element) return spell
+        spell.cost -= action.reduction
+        if (spell.cost < 0) spell.cost = 0
+        return spell
+      })
+      return newState
     case 'REDUCE_SPELL_COST':
       newState.spells = newState.spells.map(spell => {
         spell.cost -= action.reduction
@@ -111,6 +119,10 @@ export default function player (state = null, action) {
     case 'PLAYER_GAIN_MANA':
       newState.mana += action.power
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
+      return newState
+    case 'INCREASE_PLAYER_MANA':
+      newState.mana += action.mana
+      newState.maxMana += action.mana
       return newState
     case 'MAGE_START_BUFF':
       newState.mana += Math.floor(newState.mana * 0.2)

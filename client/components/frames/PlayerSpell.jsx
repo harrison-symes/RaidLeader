@@ -7,6 +7,22 @@ import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
 import KeyHandler, {KEYPRESS} from 'react-key-handler';
 
+const castTraitHandler = (trait, props, spell) => {
+  switch(trait.name) {
+    //Life
+    case 'Fruitful':
+      if (spell.element != 'Life') return
+      return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.01 * spell.cast})
+    //Fire
+    case 'Light the Way':
+      return dispatch({type: 'HEAL_PLAYER', power: props.player.power})
+    //Shadow
+
+    //Arcane
+    default: return state
+  }
+}
+
 
 class PlayerSpell extends Component {
   constructor(props) {
@@ -89,6 +105,8 @@ class PlayerSpell extends Component {
     else if (player.bonusEffect == 'shadowPower' && spell.element == 'Shadow') dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.01})
     else if (player.bonusEffect == 'lifePower' && spell.element == 'Life') dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.05})
     else if (player.bonusEffect == 'firePower' ** spell.element == 'Fire') power*=2
+
+    this.props.traits.forEach(trait => castTraitHandler(trait, this.props, spell))
 
     switch(spell.name) {
       case 'Heal':
@@ -311,14 +329,15 @@ class PlayerSpell extends Component {
   }
 }
 
-const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget, boss}) => {
+const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget, boss, traits}) => {
   return {
     started,
     player,
     selectedSpell,
     friendlyTarget,
     party,
-    boss
+    boss,
+    traits
   }
 }
 

@@ -40,7 +40,31 @@ const life = [
     background: spells['Blossom'].background,
     element: 'Life',
     spell: spells['Blossom']
-  }
+  },
+  {
+    name: 'Ingrain',
+    tier: 2,
+    gemCost: 2,
+    description: 'Increases Player Power by (10%)',
+    isSpell: false,
+    element: 'Life',
+    requiredTrait: null,
+    icon: 'ra-aura',
+    color: colors.lightOlive,
+    background: 'white',
+  },
+  {
+    name: 'Fruitful',
+    tier: 2,
+    gemCost: 2,
+    description: 'Casting a Life spell will heal ALL Recruits for (1%) of their Max Health per 1 Second of the Spells Cast Time',
+    isSpell: false,
+    element: 'Life',
+    requiredTrait: null,
+    icon: 'ra-acorn',
+    color: colors.lightOlive,
+    background: 'white',
+  },
 ]
 
 const shadow = [
@@ -57,7 +81,31 @@ const shadow = [
     background: spells['Life Funnel'].background,
     element: 'Shadow',
     spell: spells['Life Funnel']
-  }
+  },
+  {
+    name: 'Empower',
+    tier: 2,
+    gemCost: 2,
+    description: 'Increases the Power of you Recruits by (10%), You will lose (10%) of Player Health at the Start of each Game',
+    isSpell: false,
+    element: 'Shadow',
+    requiredTrait: null,
+    icon: 'ra-muscle-up',
+    color: colors.darkPurple,
+    background: 'white',
+  },
+  {
+    name: 'Unchain',
+    tier: 2,
+    gemCost: 2,
+    description: 'Your Shadow Spells cost 0 Mana',
+    isSpell: false,
+    element: 'Shadow',
+    requiredTrait: null,
+    icon: 'ra-chain',
+    color: colors.darkPurple,
+    background: 'white',
+  },
 ]
 
 const arcane = [
@@ -88,17 +136,17 @@ const arcane = [
     background: 'white',
   },
   {
-    name: 'Agility',
+    name: 'Mana Pool',
     tier: 2,
     gemCost: 2,
-    description: 'Casting an Arcane Spell will reduce the Cooldown of All Spells by 1%',
+    description: 'Increases your Mana by 10 for each Arcane Spell on your Spell Bar',
     isSpell: false,
     element: 'Arcane',
     requiredTrait: null,
     icon: 'ra-player-dodge',
     color: colors.lightBlue,
     background: 'white',
-  },
+  }
 ]
 
 const fire = [
@@ -120,7 +168,7 @@ const fire = [
     name: 'Quicklight',
     tier: 2,
     gemCost: 2,
-    description: 'Reduces the Cast Time of your Spells by 10%.',
+    description: 'Reduces the Cast Time and Cool Down of your Spells by 10%.',
     isSpell: false,
     element: 'Fire',
     requiredTrait: null,
