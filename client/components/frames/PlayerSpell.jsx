@@ -99,7 +99,7 @@ class PlayerSpell extends Component {
     }
   }
   castSwitch(target) {
-    const {spell, dispatch, player, party, boss} = this.props
+    const {spell, dispatch, player, party, boss, traits} = this.props
     let power = this.props.player.power * spell.powerRatio
     console.log({target, party});
     // if (target) target = party.find(other => other.id == target.id)

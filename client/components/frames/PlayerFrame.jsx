@@ -41,14 +41,15 @@ const startingTraitHandler = (trait, props) => {
     case 'Focus':
       spells = player.spells
       spells.forEach(spell => {
-        spell.cast *= 0.5
-        spell.coolDown *= 0.5
-        if (spell.cast < 0) spell.cast = 0
         if (spell.isChanneled) {
+          spell.cast *= 0.5
+          spell.coolDown *= 0.5
           let minCast = spell.ticks * 0.1
           if (spell.cast < minCast) spell.cast = minCast
+          if (spell.cast < 0) spell.cast = 0
         }
       })
+      console.log("Focus Trait", {spells});
       return dispatch({type: 'OVERWRITE_SPELLS', spell})
     default: return
   }
