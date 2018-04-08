@@ -50,10 +50,22 @@ class MySpells extends Component {
       {elements.map(element => this.spellsByElement(element))}
     </div>
   }
+  renderElementTraits(element) {
+    const traits = this.props.traits.filter(trait => trait.element == element)
+    return <div className="column">
+      <p className="content is-large">{element}</p>
+      {traits.map(trait => <span className="subtitle is-4"><SpellIcon spell={trait} isLarge={true} /></span>)}
+    </div>
+  }
   renderTraits() {
     return <div className="box has-text-centered">
       <p className="title is-3">Passive Traits:</p>
-      {this.props.traits.map(trait => <span className="subtitle is-4"><SpellIcon spell={trait} isLarge={true} /></span>)}
+      <div className="columns">
+        {this.renderElementTraits('Life')}
+        {this.renderElementTraits('Fire')}
+        {this.renderElementTraits('Shadow')}
+        {this.renderElementTraits('Arcane')}
+      </div>
     </div>
   }
   render() {
@@ -85,6 +97,8 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const isEarlier = (a, b, i) => {
   if (a[i] == b[i]) return isEarlier(a, b, i + 1)
   else {
+    if (i >= b.length) return true
+    else if (i >= a.length) return false
     const aIdx =  alphabet.findIndex(char => char == a[i].toLowerCase())
     const bIdx =  alphabet.findIndex(char => char == b[i].toLowerCase())
     const diff = aIdx - bIdx
