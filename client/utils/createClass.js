@@ -49,7 +49,7 @@ const createShaman = (name, level ,id, weapon_id, zodiac) => createMember(name, 
 
 const createBard = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Bard', (level + 1) * 35, (level + 1) * 10, 20)
 
-const createNecromancer = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Necromancer', (level + 1) * 30, (level + 1) * 10, 25)
+const createNecromancer = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Necromancer', (level + 1) * 30, (level + 1) * 10, 20)
 
 
 module.exports = ({name, heroClass, level, id, weapon_id, zodiac}) => {
