@@ -20,11 +20,24 @@ module.exports = [
         description: <div className="content is-large">
           <p>A new feature is in the works, and it involves gaining <b>experience</b> and <b>leveling</b> up your Player Character.</p>
           <p>Leveling will provide you with a special currencey which you can use to purchase traits / upgrades.</p>
-          <p><b>Present Moment (Watch this space):</b></p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - Leveling and experience gains are functional, and you will gain <b>1 Gem</b> every time you level up.</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - Experience Required to Level Up increases by 10% of the previous levels EXP Requirement. (1000, 1100, 1210).</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - Defeating a Boss within a dungeon has a <b>Chance</b> to reward a <b>Gem</b>, this chance is reduced for every <b>Recruit</b> that was higher than the Dungeon's <b>Expected Level</b>. Harder Dungeons have a <b>Higher Chances of Gems</b></p>
-          <p>Let me know if you run into any EXP related bugs, and WATCH THIS SPACE</p> '
+          <br />
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - You can spend the <b>Gems</b> that you have earned at the <b>Mage Tower</b></p>
+          <p>Let me know if you run into any EXP related bugs</p>
+        </div>
+      },
+      {
+        title: 'Mage Tower Added!',
+        description: <div className="content is-large">
+          <p>The <b>Mage Tower</b> is a new Menu you will find in <b>Town</b></p>
+          <p>At the Mage Tower you can spend the <b>Gems</b> that you have earned on your adventure</p>
+          <p>You will find <b>4</b> different <b>"Trees"</b>, one for each element</p>
+          <p>In each tree you will find <b>Spells</b> that you can learn, or <b>Passive Traits</b> which will empower you <b>Player and/or Recruits</b> in various ways for the <b>Rest of your Adventure</b></p>
+          <p>As unlock <b>Traits</b> for a Element Type, you will be able to purchase more <b>Expensive</b> but <b>Powerful</b> Traits and Spells further down the Tree</p>
+          <br />
+          <p>There are some <b>Wild</b> combinations to build towards to make you the <b>Most Powerful Raid Leader!</b></p>
         </div>
       },
       {
@@ -39,6 +52,14 @@ module.exports = [
           <p><b>Shaman</b>:</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>Previous Trait</b>: "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>New Trait</b>: The Shaman's attacks have a chance to place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds. (This chance scales with the Shaman's Speed and will occur roughly once per 10 seconds.)</p>
+        </div>
+      },
+      {
+        title: 'New Effect: Stunned',
+        description: <div className="content is-large">
+          <p>In Preparation for developing <b>The Armory</b>, I've been hard at work on several New and Interesting Effects</p>
+          <p><b>Stunned:</b> A Stunned Recruit cannot Attack. The Recruit's Attack timer will continue to 'tick' during the stun, but any <b>Completed</b> Attacks will not happen while <b>Stunned</b></p>
+          <p>If you want to try out the new Effect, there are several new Spells that are Powerful and Cheap, but will Stun A / All Recruits as a side effect. Try them out :) </p>
         </div>
       }
     ]
