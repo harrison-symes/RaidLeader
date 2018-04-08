@@ -50,7 +50,7 @@ const life = [
     element: 'Life',
     requiredTrait: null,
     icon: 'ra-aura',
-    color: colors.lightOlive,
+    color: spells['Life Soul'].background,
     background: 'white',
   },
   {
@@ -62,7 +62,7 @@ const life = [
     element: 'Life',
     requiredTrait: null,
     icon: 'ra-acorn',
-    color: colors.lightOlive,
+    color: spells['Life Soul'].background,
     background: 'white',
   },
   {
@@ -87,9 +87,9 @@ const life = [
     isSpell: false,
     element: 'Life',
     requiredTrait: null,
-    icon: 'ra-hearts',
-    color: spells['Life Soul'].color,
-    background: spells['Life Soul'].background,
+    icon: 'ra-two-hearts',
+    color: spells['Life Soul'].background,
+    background: 'white',
     element: 'Life',
   },
 ]
@@ -118,7 +118,7 @@ const shadow = [
     element: 'Shadow',
     requiredTrait: null,
     icon: 'ra-muscle-up',
-    color: colors.darkPurple,
+    color: spells['Life Funnel'].background,
     background: 'white',
   },
   {
@@ -130,7 +130,7 @@ const shadow = [
     element: 'Shadow',
     requiredTrait: null,
     icon: 'ra-chain',
-    color: colors.darkPurple,
+    color: spells['Life Funnel'].background,
     background: 'white',
   },
   {
@@ -155,9 +155,9 @@ const shadow = [
     isSpell: false,
     element: 'Shadow',
     requiredTrait: null,
-    icon: spells['Shadow Soul'].icon,
-    color: spells['Shadow Soul'].color,
-    background: spells['Shadow Soul'].background,
+    icon: 'ra-reverse',
+    color: spells['Shadow Soul'].background,
+    background: 'white',
     element: 'Shadow',
   },
 ]
@@ -186,7 +186,7 @@ const arcane = [
     element: 'Arcane',
     requiredTrait: null,
     icon: 'ra-feather-wing',
-    color: colors.lightBlue,
+    color:  spells['Evocate'].background,
     background: 'white',
   },
   {
@@ -198,7 +198,7 @@ const arcane = [
     element: 'Arcane',
     requiredTrait: null,
     icon: 'ra-player-dodge',
-    color: colors.lightBlue,
+    color:  spells['Evocate'].background,
     background: 'white',
   },
   {
@@ -223,9 +223,9 @@ const arcane = [
     isSpell: false,
     element: 'Arcane',
     requiredTrait: null,
-    icon: 'ra-player',
-    color: spells['Arcane Soul'].color,
-    background: spells['Arcane Soul'].background,
+    icon: 'ra-droplet-splash',
+    color: spells['Arcane Soul'].background,
+    background: 'white',
     element: 'Arcane',
   },
 ]
@@ -254,7 +254,7 @@ const fire = [
     element: 'Fire',
     requiredTrait: null,
     icon: 'ra-match',
-    color: colors.medOrange,
+    color: colors.darkRed,
     background: 'white',
   },
   {
@@ -266,7 +266,7 @@ const fire = [
     element: 'Fire',
     requiredTrait: null,
     icon: 'ra-torch',
-    color: colors.medOrange,
+    color: colors.darkRed,
     background: 'white',
   },
   {
@@ -291,9 +291,9 @@ const fire = [
     isSpell: false,
     element: 'Fire',
     requiredTrait: null,
-    icon: 'ra-speed',
-    color: spells['Fire Soul'].color,
-    background: spells['Fire Soul'].background,
+    icon: 'ra-dragon-breath',
+    color: colors.darkRed,
+    background: 'white',
     element: 'Fire'
   },
 ]

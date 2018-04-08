@@ -23,7 +23,7 @@ const startingTraitHandler = (trait, props) => {
     case 'Burning Rush':
       let spells = player.spells.filter(spell => spell.cast <= 2)
       spells.forEach(spell => spell.coolDown = 0)
-      return dispatch({type: 'OVERWRITE_SPELLS', spell})
+      return dispatch({type: 'BURNING_RUSH_TRAIT'})
 
     //Shadow
     case 'Empower':
@@ -39,18 +39,7 @@ const startingTraitHandler = (trait, props) => {
       let mana = 10 * props.spellBook.filter(spell => spell.element == 'Arcane').length
       return dispatch({type: 'INCREASE_PLAYER_MANA', mana})
     case 'Focus':
-      spells = player.spells
-      spells.forEach(spell => {
-        if (spell.isChanneled) {
-          spell.cast *= 0.5
-          spell.coolDown *= 0.5
-          let minCast = spell.ticks * 0.1
-          if (spell.cast < minCast) spell.cast = minCast
-          if (spell.cast < 0) spell.cast = 0
-        }
-      })
-      console.log("Focus Trait", {spells});
-      return dispatch({type: 'OVERWRITE_SPELLS', spell})
+      return dispatch({type: 'FOCUS_TRAIT'})
     default: return
   }
 }

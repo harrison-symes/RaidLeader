@@ -153,6 +153,28 @@ export default function player (state = null, action) {
       if (!action.target) return newState
       if (action.target.id == newState.id) newState.hp-=action.power
       return newState
+    case 'BURNING_RUSH_TRAIT':
+      newState.spells = newState.spells.map(spell => {
+        if (spell.cast <= 2) {
+          spell.cast = 0
+          if (spell.isChanneled) spell.cast = spell.ticks * 0.1
+        }
+        return spell
+      })
+      return newState
+    case 'FOCUS_TRAIT':
+      newState.spells = newState.spells.map(spell => {
+        if (spell.isChanneled) {
+          spell.cast *= 0.5
+          spell.coolDown *= 0.5
+          let minCast = spell.ticks * 0.1
+          if (spell.cast < minCast) spell.cast = minCast
+          if (spell.cast < 0) spell.cast = 0
+        }
+        return spell
+      })
+      console.log("FOCUS", newState.spells);
+      return newState
     default: return state
   }
 }
