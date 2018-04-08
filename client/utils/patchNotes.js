@@ -26,6 +26,20 @@ module.exports = [
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - Defeating a Boss within a dungeon has a <b>Chance</b> to reward a <b>Gem</b>, this chance is reduced for every <b>Recruit</b> that was higher than the Dungeon's <b>Expected Level</b>. Harder Dungeons have a <b>Higher Chances of Gems</b></p>
           <p>Let me know if you run into any EXP related bugs, and WATCH THIS SPACE</p> '
         </div>
+      },
+      {
+        title: 'Speed Scaling Changes',
+        description: <div className="content is-large">
+          <p>Some Classes, namely <b>Bard</b> and <b>Shaman</b> have very powerful Traits at the cost of having low Power / Speed.</p>
+          <p>This meant that a Shaman with a <b>+20% Speed Zodiac</b> was amazing, but a <b>-20% Speed Zodiac</b> was terrible.</p>
+          <p>To fix this, I have changed the <b>Traits</b> of the <b>Bard and Shaman</b></p>
+          <p><b>Bard</b>:</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>Previous Trait</b>: Whenever the Bard attacks, restore 1 Mana to the Player</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>New Trait</b>: The Bard's attacks have a chance to restore 3 Mana to the Player. (This chance scales with the Bard's Speed and will occur roughly once per 10 seconds.)</p>
+          <p><b>Shaman</b>:</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>Previous Trait</b>: "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>New Trait</b>: The Shaman's attacks have a chance to place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds. (This chance scales with the Shaman's Speed and will occur roughly once per 10 seconds.)</p>
+        </div>
       }
     ]
   },

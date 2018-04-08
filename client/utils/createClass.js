@@ -45,7 +45,7 @@ const createWarlock = (name, level, id, weapon_id, zodiac) => createMember(name,
 
 const createHunter = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Hunter', (level + 1) * 35, (level + 1) * 10, 20)
 
-const createShaman = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Shaman', (level + 1) * 35, (level + 1) * 20, 10)
+const createShaman = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Shaman', (level + 1) * 35, (level + 1) * 10, 20)
 
 const createBard = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Bard', (level + 1) * 35, (level + 1) * 10, 20)
 

@@ -26,8 +26,8 @@ export function classTraits(heroClass) {
     case 'Monk': return "Whenever the Monk attacks, Heal All Friendly Characters for (100%) of the Attack's Damage, divided amongst all recruits"
     case 'Warlock': return "Whenever the Warlock attacks, all Party Members take (5%) of the max HP as damage"
     case 'Hunter': return "The Hunter's attacks deal Critical Damage while below 50% Health, and these attacks also heal the Hunter for 10% of Max Health"
-    case 'Shaman': return "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds"
-    case 'Bard': return "Whenever the Bard attacks, restore 1 Mana to the Player"
+    case 'Shaman': return "The Shaman's attacks have a chance to place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds. (This chance scales with the Shaman's Speed and will occur roughly once per 10 seconds.)"
+    case 'Bard': return "The Bard's attacks have a chance to restore 3 Mana to the Player. (This chance scales with the Bard's Speed and will occur roughly once per 10 seconds)"
     case 'Necromancer': return "The Necromancer continues to Attack while Dead, for (50%) of normal Damage"
     default: return null
   }
