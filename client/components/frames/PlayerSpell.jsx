@@ -16,7 +16,7 @@ const castTraitHandler = (trait, props, spell) => {
       return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.01 * spell.cast})
     //Fire
     case 'Light the Way':
-      return dispatch({type: 'HEAL_PLAYER', power: (0.5 * spell.cast) * props.player.power})
+      return dispatch({type: 'HEAL_PLAYER', power: (0.25 * spell.cast) * props.player.power})
     //Shadow
 
     //Arcane
