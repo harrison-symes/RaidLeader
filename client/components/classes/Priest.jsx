@@ -8,6 +8,7 @@ export class Priest extends PartyMemberFrame {
   findTarget() {
     const {started, member, dispatch, party} = this.props
     if (!started || !member.isAlive) return
+
     let target = null
     party.forEach(member => {
       if (!target && member.isAlive) target = member
@@ -29,8 +30,9 @@ export class Priest extends PartyMemberFrame {
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
-    const {started} = this.props
+    const {started, member} = this.props
     if (!started || !isAlive) return
+
     setTimeout(() => this.findTarget(), 10000 / speed)
   }
   startFighting () {

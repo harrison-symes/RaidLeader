@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor} from '../../utils/effectConstructors'
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
@@ -247,6 +247,9 @@ class PlayerSpell extends Component {
         }
         console.log("no duplicate elements");
         return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.percentage})
+      case 'Arcane Blast':
+        dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.duration)})
       default: return
     }
   }

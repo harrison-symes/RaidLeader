@@ -625,6 +625,22 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Arcane Blast': {
+    name: 'Arcane Blast',
+    id: 38,
+    cast: 1,
+    cost: 5,
+    coolDown: 5,
+    singleTarget: false,
+    recruitOnly: true,
+    powerRatio: 1.5,
+    duration: 5,
+    description: "Heal a Recruit for (150%) Player Power, the Recruit is then Stunned for 5 seconds (Recruits can't Attack while Stunned).",
+    icon: 'ra-player-pain',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
 

@@ -18,12 +18,14 @@ export class Necromancer extends PartyMemberFrame {
     }
   }
   completeCast(target) {
-    this.createSVG(target)
+    if (!this.props.member.effects.find(effect => effect.name == 'Stunned')) this.createSVG(target)
+
     this.startCast()
   }
   startCast() {
     const {power, speed} = this.props.member
     const {started, member, dispatch} = this.props
+
     if (started) setTimeout(() => {
       if (started) {
         if (member.weapon_effect == 'selfPoison' && Math.random() < (1 / member.speed)) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor()})

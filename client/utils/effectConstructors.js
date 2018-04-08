@@ -21,3 +21,15 @@ export function renewConstructor (perc) {
     type: 'PERCENT_HEAL_FRIENDLY_TARGET'
   }
 }
+
+export function stunConstructor (duration) {
+  return {
+    name: 'Stunned',
+    icon: 'ra-player-pain',
+    duration,
+    tickRate: duration,
+    percentage: 0,
+    colour: '#7D9EC0',
+    type: null
+  }
+}
