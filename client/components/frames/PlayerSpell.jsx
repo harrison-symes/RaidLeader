@@ -48,11 +48,14 @@ class PlayerSpell extends Component {
     }
   }
   tickSwitch() {
-    let {spell, dispatch, player, party} = this.props
+    let {spell, dispatch, player, party, traits} = this.props
     let power = this.props.player.power * spell.tickPower
     let target = this.state.target
     if (target) target = party.find(other => other.id == target.id)
     if (player.bonusEffect == 'firePower' && spell.element == 'Fire') power*=2
+
+    if (traits.find(trait => trait.name == 'Vengeance')) power += power * (0.5 * (1 - (player.hp / player.initHp)))
+
     switch(spell.name) {
       case 'Drain Life':
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
@@ -108,6 +111,8 @@ class PlayerSpell extends Component {
     else if (player.bonusEffect == 'firePower' ** spell.element == 'Fire') power*=2
 
     this.props.traits.forEach(trait => castTraitHandler(trait, this.props, spell))
+
+    if (traits.find(trait => trait.name == 'Vengeance')) power += power * (0.5 * (1 - (player.hp / player.initHp)))
 
     switch(spell.name) {
       case 'Heal':

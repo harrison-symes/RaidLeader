@@ -8,16 +8,22 @@ import PlayerSpellBar from './PlayerSpellBar'
 import {PowerIcon, PlayerIcon} from '../icons/StatIcons'
 
 const startingTraitHandler = (trait, props) => {
-  const {dispatch} = props
+  const {dispatch, player} = props
   switch (trait.name) {
     //Life
     case 'Ingrain':
       return dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
+    case 'Hearty':
+      return dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: 0.1})
 
     //Fire
     case 'Quicklight':
       dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
       return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
+    case 'Burning Rush':
+      let spells = player.spells.filter(spell => spell.cast <= 2)
+      spells.forEach(spell => spell.coolDown = 0)
+      return dispatch({type: 'OVERWRITE_SPELLS', spell})
 
     //Shadow
     case 'Empower':
@@ -32,6 +38,18 @@ const startingTraitHandler = (trait, props) => {
     case 'Mana Pool':
       let mana = 10 * props.spellBook.filter(spell => spell.element == 'Arcane').length
       return dispatch({type: 'INCREASE_PLAYER_MANA', mana})
+    case 'Focus':
+      spells = player.spells
+      spells.forEach(spell => {
+        spell.cast *= 0.5
+        spell.coolDown *= 0.5
+        if (spell.cast < 0) spell.cast = 0
+        if (spell.isChanneled) {
+          let minCast = spell.ticks * 0.1
+          if (spell.cast < minCast) spell.cast = minCast
+        }
+      })
+      return dispatch({type: 'OVERWRITE_SPELLS', spell})
     default: return
   }
 }

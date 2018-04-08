@@ -44,6 +44,10 @@ export default function player (state = null, action) {
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'OVERWRITE_SPELLS':
+      if (!action.spells) return state
+      newState.spells = action.spells
+      return newState
     case 'PERCENT_INCREASE_POWER':
       newState.power += newState.power * action.percentage
       return newState
