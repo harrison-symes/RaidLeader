@@ -222,7 +222,7 @@ const fire = [
     name: 'Light the Way',
     tier: 2,
     gemCost: 2,
-    description: 'Casting a Fire Spell will Heal the Player for (100%) of Player Power',
+    description: "Casting a Fire Spell will Heal the Player for (25%) of Player Power per 1 second of the Spell's Cast Time",
     isSpell: false,
     element: 'Fire',
     requiredTrait: null,
