@@ -105,7 +105,7 @@ module.exports = {
   'Fireball': {
     id: 6,
     name: 'Fireball',
-    cast: 4,
+    cast: 5,
     cost: 8,
     coolDown: 5,
     type: 'damage',
@@ -120,7 +120,7 @@ module.exports = {
   'Fireblast': {
     id: 7,
     name: 'Fireblast',
-    cast: 2,
+    cast: 3,
     cost: 6,
     coolDown: 5,
     type: 'damage',
@@ -136,7 +136,7 @@ module.exports = {
   'Flash Fire': {
     id: 8,
     name: 'Flash Fire',
-    cast: 0.5,
+    cast: 1,
     cost: 4,
     coolDown: 5,
     type: 'damage',
