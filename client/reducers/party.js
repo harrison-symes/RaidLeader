@@ -111,7 +111,7 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.hp-=action.power
       return newState
-    case 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY':
+    case 'PERCENT_DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=Math.ceil(member.initHp * action.percentage)
         return member

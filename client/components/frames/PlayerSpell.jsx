@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {poisonConstructor, renewConstructor, stunConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor, bombConstructor} from '../../utils/effectConstructors'
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
@@ -78,7 +78,7 @@ class PlayerSpell extends Component {
       case 'Cauterize':
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
       case 'Mass Cauterize':
-        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
+        return dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
       case 'Life Funnel':
         let health = player.initHp * spell.tickPercentage
         dispatch({type: 'DAMAGE_PLAYER', power: health})
@@ -253,6 +253,11 @@ class PlayerSpell extends Component {
       case 'Arcane Explosion':
         dispatch({type: 'HEAL_ALL_FRIENDLY', power})
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.duration)})
+      case 'Living Bomb':
+        let bombTargets = party.filter(recruit => recruit.isAlive)
+        if (bombTargets.length > 0) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: bombTargets[Math.floor(Math.random() * bombTargets.length)], effect: bombConstructor(spell.duration, spell.percentage)})
+        else dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.1})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       default: return
     }
   }

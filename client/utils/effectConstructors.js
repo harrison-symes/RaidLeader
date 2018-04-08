@@ -33,3 +33,15 @@ export function stunConstructor (duration) {
     type: null
   }
 }
+
+export function bombConstructor (duration, perc) {
+  return {
+    name: 'Bomb',
+    icon: 'ra-fire-bomb',
+    duration: duration || 7,
+    tickRate: duration || 7,
+    percentage: perc || 0.2,
+    colour: '#FFC125',
+    type: 'PERCENT_DAMAGE_ALL_FRIENDLY'
+  }
+}

@@ -356,9 +356,9 @@ test('DAMAGE_FRIENDLY_TARGET (no match target)', () => {
   expect(actual).toEqual(fakeParty)
 })
 
-test('PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY)', () => {
+test('PERCENT_DAMAGE_ALL_FRIENDLY)', () => {
   const actual = reducer(clone(fakeParty), {
-    type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY',
+    type: 'PERCENT_DAMAGE_ALL_FRIENDLY',
     percentage: 0.1
   })
   expect(actual[0].hp).toEqual(fakeParty[0].hp - (fakeParty[0].initHp * 0.1))

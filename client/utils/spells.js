@@ -656,7 +656,23 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
-  }
+  },
+  'Living Bomb': {
+    id: 40,
+    name: 'Living Bomb',
+    cast: 2.5,
+    cost: 5,
+    coolDown: 7,
+    singleTarget: false,
+    powerRatio: 1.5,
+    duration: 7,
+    percentage: 0.2,
+    description: 'Damage the Boss for (150%) Player Power, and place a Bomb Effect to a Random Recruit that will Explode after 7 seconds, Damaging All Recruits for (20%) of their Max Health. If All Recruits are Dead, Damage the Player for (10%) of Max Health instead',
+    icon: 'ra-fire-bomb',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
+  },
 }
 
 // 'Guardian Angel': {

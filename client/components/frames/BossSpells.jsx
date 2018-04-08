@@ -41,7 +41,7 @@ class BossSpell extends Component {
       case 'Activate':
         return dispatch({type: 'BOSS_GAIN_POWER', amount: 10})
       case 'Discharge':
-        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.tickPercentage})
+        return dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.tickPercentage})
       case 'Power Drill':
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Repair':
@@ -105,14 +105,14 @@ class BossSpell extends Component {
       case 'Seep':
         dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 0.05})
         dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.05})
-        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
 
       //Deer
       case 'Plague Bite':
         dispatch({type: "DAMAGE_FRIENDLY_TARGET", target, power})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', effect: poisonConstructor(), target})
       case 'Decay':
-        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
 
@@ -131,7 +131,7 @@ class BossSpell extends Component {
 
       //Piltherer
       case 'Ravage':
-        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.03})
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Ingest Plague':
@@ -224,7 +224,7 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * spell.percentage})
 
       case 'Snake Trap':
-        dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.percentage})
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
 
       case 'Dart Trap':
