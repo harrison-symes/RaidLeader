@@ -21,10 +21,7 @@ const startingTraitHandler = (trait, props) => {
       dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
       return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
     case 'Burning Rush':
-      let spells = player.spells.filter(spell => spell.cast <= 2)
-      spells.forEach(spell => spell.coolDown = 0)
       return dispatch({type: 'BURNING_RUSH_TRAIT'})
-
     //Shadow
     case 'Empower':
       dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
