@@ -250,6 +250,9 @@ class PlayerSpell extends Component {
       case 'Arcane Blast':
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.duration)})
+      case 'Arcane Explosion':
+        dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.duration)})
       default: return
     }
   }
