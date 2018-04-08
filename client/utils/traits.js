@@ -79,6 +79,19 @@ const life = [
     element: 'Life',
     spell: spells['Life Soul']
   },
+  {
+    name: 'Hearty',
+    tier: 3,
+    gemCost: 3,
+    description: "Increases the Max Health of your Recruits by (10%)",
+    isSpell: false,
+    element: 'Life',
+    requiredTrait: null,
+    icon: 'ra-hearts',
+    color: spells['Life Soul'].color,
+    background: spells['Life Soul'].background,
+    element: 'Life',
+  },
 ]
 
 const shadow = [
@@ -133,6 +146,19 @@ const shadow = [
     background: spells['Shadow Soul'].background,
     element: 'Shadow',
     spell: spells['Shadow Soul']
+  },
+  {
+    name: 'Vengeance',
+    tier: 3,
+    gemCost: 3,
+    description: 'Increases the Power of your Spells (That are based on your Player Power) by up to (50%). The amount is increased by how LOW your Player Health is. (100% Player health = 0% Power Boost, 50% Player Health = 25% Power Boost)',
+    isSpell: false,
+    element: 'Shadow',
+    requiredTrait: null,
+    icon: spells['Shadow Soul'].icon,
+    color: spells['Shadow Soul'].color,
+    background: spells['Shadow Soul'].background,
+    element: 'Shadow',
   },
 ]
 
@@ -189,6 +215,19 @@ const arcane = [
     element: 'Arcane',
     spell: spells['Arcane Soul']
   },
+  {
+    name: 'Focus',
+    tier: 3,
+    gemCost: 3,
+    description: 'Reduces the Cast Time and Cool Down of you Channeled Spells by (50%)',
+    isSpell: false,
+    element: 'Arcane',
+    requiredTrait: null,
+    icon: 'ra-player',
+    color: spells['Arcane Soul'].color,
+    background: spells['Arcane Soul'].background,
+    element: 'Arcane',
+  },
 ]
 
 const fire = [
@@ -243,6 +282,19 @@ const fire = [
     background: spells['Fire Soul'].background,
     element: 'Fire',
     spell: spells['Fire Soul']
+  },
+  {
+    name: 'Burning Rush',
+    tier: 3,
+    gemCost: 3,
+    description: 'Your Spells with a BASE cast time of 2 seconds or Less have no Cool Down',
+    isSpell: false,
+    element: 'Fire',
+    requiredTrait: null,
+    icon: 'ra-speed',
+    color: spells['Fire Soul'].color,
+    background: spells['Fire Soul'].background,
+    element: 'Fire'
   },
 ]
 

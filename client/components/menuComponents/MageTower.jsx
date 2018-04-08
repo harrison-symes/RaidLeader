@@ -129,7 +129,7 @@ class MageTower extends Component {
     const {selected} = this.state
     return <div className="box has-text-centered">
       <p className="title is-3">Tier {tier}</p>
-      <div className="columns">
+      <div className="columns is-multiline">
         {traits.map(trait => this.renderTraitIcon(trait, 12 / traits))}
       </div>
       {(selected && selected.tier == tier) && this.renderTraitDetails()}
