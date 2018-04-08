@@ -89,7 +89,7 @@ module.exports = {
   'Bind': {
     id: 5,
     name: 'Bind',
-    cast: 0,
+    cast: 1,
     cost: 15,
     coolDown: 10,
     type: 'heal',
@@ -151,7 +151,7 @@ module.exports = {
   'Life Tap': {
     id: 9,
     name: 'Life Tap',
-    cast: 0,
+    cast: 1,
     cost: 0,
     coolDown: 10,
     type: 'special',
@@ -167,9 +167,9 @@ module.exports = {
   'Evocate': {
     id: 10,
     name: 'Evocate',
-    cast: 3,
+    cast: 2,
     cost: 0,
-    coolDown: 10,
+    coolDown: 15,
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
@@ -232,7 +232,7 @@ module.exports = {
   'Renew': {
     id: 14,
     name: 'Renew',
-    cast: 0,
+    cast: 1,
     cost: 5,
     coolDown: 3,
     type: 'healing',
@@ -370,7 +370,7 @@ module.exports = {
     name: 'Drain Mana',
     cast: 2,
     cost: 0,
-    coolDown: 10,
+    coolDown: 15,
     type: 'support',
     powerRatio: 0,
     singleTarget: false,
@@ -385,9 +385,9 @@ module.exports = {
   'Cauterize': {
     id: 23,
     name: 'Cauterize',
-    cast: 3,
+    cast: 2,
     cost: 5,
-    coolDown: 5,
+    coolDown: 6,
     singleTarget: true,
     recruitOnly: true,
     isChanneled: true,
@@ -420,7 +420,7 @@ module.exports = {
   'Mass Cauterize': {
     id: 25,
     name: 'Mass Cauterize',
-    cast: 3,
+    cast: 2,
     cost: 15,
     coolDown: 15,
     singleTarget: false,
@@ -551,7 +551,7 @@ module.exports = {
   'Chosen Champion': {
     id: 33,
     name: 'Chosen Champion',
-    cast: 3,
+    cast: 2,
     cost: 15,
     coolDown: 10,
     singleTarget: true,
@@ -599,7 +599,7 @@ module.exports = {
   'Sacrifice': {
     id: 36,
     name: 'Sacrifice',
-    cast: 1,
+    cast: 2,
     cost: 20,
     coolDown: 30,
     singleTarget: true,
