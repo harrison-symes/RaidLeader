@@ -122,6 +122,7 @@ const alphabetSort = spells => {
   return newArr
 }
 
+
 const mapStateToProps = ({spellBook, traits}) => {
   alphabetSort(spellBook)
   console.log({traits});

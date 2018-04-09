@@ -253,7 +253,7 @@ class PlayerSpell extends Component {
       case 'Arcane Explosion':
         dispatch({type: 'HEAL_ALL_FRIENDLY', power})
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.duration)})
-      case 'Living Bomb':
+      case 'Bomb Toss':
         let bombTargets = party.filter(recruit => recruit.isAlive)
         if (bombTargets.length > 0) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: bombTargets[Math.floor(Math.random() * bombTargets.length)], effect: bombConstructor(spell.duration, spell.percentage)})
         else dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.1})
@@ -265,6 +265,9 @@ class PlayerSpell extends Component {
           dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
           return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(3)})
         }
+      case 'Living Bomb':
+        dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.healPercentage})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: bombConstructor(spell.duration, spell.percentage)})
       default: return
     }
   }
