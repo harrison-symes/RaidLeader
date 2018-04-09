@@ -156,7 +156,7 @@ class Library extends Component {
                     </div>)}
                   </div>)
                   : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
-                  ? this.props.spellBook.length == 2 && this.props.recruits.length < 2
+                  ? this.props.spellBook.length <= 2 && this.props.recruits.length < 2
                     ? <button disabled className="is-danger is-large button is-fullwidth">Recruit another Party Member First</button>
                     : gold >= spellCost
                       ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (<GoldIcon value={-1 * spellCost} />)</button>
