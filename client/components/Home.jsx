@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 
 const classes = [
   'Necromancer',
+  'Beast Master',
   'Rogue',
   'Warrior',
   'Mage',

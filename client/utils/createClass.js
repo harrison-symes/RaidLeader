@@ -51,6 +51,8 @@ const createBard = (name, level ,id, weapon_id, zodiac) => createMember(name, le
 
 const createNecromancer = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Necromancer', (level + 1) * 30, (level + 1) * 10, 20)
 
+const createBeastMaster = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Beast Master', (level + 1) * 35, (level + 1) * 5, 20)
+
 
 module.exports = ({name, heroClass, level, id, weapon_id, zodiac}) => {
   switch(heroClass) {
@@ -65,6 +67,7 @@ module.exports = ({name, heroClass, level, id, weapon_id, zodiac}) => {
     case 'Shaman': return createShaman(name, level ,id, weapon_id, zodiac)
     case 'Bard': return createBard(name, level, id, weapon_id, zodiac)
     case 'Necromancer': return createNecromancer(name, level, id, weapon_id, zodiac)
+    case 'Beast Master': return createBeastMaster(name, level, id, weapon_id, zodiac)
     default: return null
   }
 }

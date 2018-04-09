@@ -11,6 +11,7 @@ export function startingBuff (heroClass) {
     case 'Shaman': return "The Shaman reduces the Cast Time and Cool Down of all Player Spells by (10%)"
     case 'Bard': return "The Bard reduces the Mana Cost of ALL Player Spells by (1)"
     case 'Necromancer': return "The Necromancer increases your Player Power by (10%)"
+    case 'Beast Master': return "The Beast Master will Summon a Wolf (with (50%) of the Beast Master's Health, Power and Speed) to assist your party"
     break;
     default: return null
   }
@@ -29,6 +30,7 @@ export function classTraits(heroClass) {
     case 'Shaman': return "The Shaman's attacks have a chance to place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds. (This chance scales with the Shaman's Speed and will occur roughly once per 10 seconds.)"
     case 'Bard': return "The Bard's attacks have a chance to restore 3 Mana to the Player. (This chance scales with the Bard's Speed and will occur roughly once per 10 seconds)"
     case 'Necromancer': return "The Necromancer continues to Attack while Dead, for (50%) of normal Damage"
+    case 'Beast Master': return "The Beast Master will deal (20%) more damage if their Summoned Pet is Dead"
     default: return null
   }
 }
@@ -46,6 +48,7 @@ export function classIcons (heroClass) {
     case 'Shaman': return 'ra-gem-pendant'
     case 'Bard': return 'ra-ocarina'
     case 'Necromancer': return 'ra-death-skull'
+    case 'Beast Master': return 'ra-pawprint'
     case 'Player': return 'ra-player-king'
     default: return null
   }
@@ -120,6 +123,12 @@ export function attackIcons (heroClass) {
     case 'Necromancer': return {
       colour: 'black',
       icon: 'ra-sickle',
+      rotation: 270,
+      rotates: true
+    }
+    case 'Beast Master': return {
+      colour: 'sienna',
+      icon: 'ra-horseshoe',
       rotation: 270,
       rotates: true
     }
