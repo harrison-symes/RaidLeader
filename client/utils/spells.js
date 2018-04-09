@@ -673,6 +673,21 @@ module.exports = {
     background: colors.lightOrange,
     element: 'Fire'
   },
+  'Defuse': {
+    id: 41,
+    name: 'Defuse',
+    cast: 1,
+    cost: 5,
+    coolDown: 10,
+    singleTarget: true,
+    recruitOnly: true,
+    powerRatio: 1,
+    description: "If the Target Recruit has a Bomb Effect applied to them, the Bomb will now Heal All Recruits rather than Damage them when it expires. If there is no Bomb Effect on the Target, Apply a Renew Effect and a 3 second Stun effect to the Target instead.",
+    icon: 'ra-vest',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
+  }
 }
 
 // 'Guardian Angel': {

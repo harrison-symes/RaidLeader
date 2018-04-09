@@ -258,6 +258,13 @@ class PlayerSpell extends Component {
         if (bombTargets.length > 0) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: bombTargets[Math.floor(Math.random() * bombTargets.length)], effect: bombConstructor(spell.duration, spell.percentage)})
         else dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.1})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
+      case 'Defuse':
+        let bomb = target.effects.find(effect => effect.name = 'Bomb')
+        if (bomb) return dispatch({type: 'DEFUSE_BOMB', target})
+        else {
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
+          return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(3)})
+        }
       default: return
     }
   }

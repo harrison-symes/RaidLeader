@@ -186,6 +186,17 @@ export default function party (state = [], action) {
       target.effects = []
       console.log({newState, action});
       return newState
+    case 'DEFUSE_BOMB':
+      if (!action.target) return state
+      target = newState.find(member => member.id == action.target.id)
+      if (!target) return state
+      let bomb = target.effects.find(effect => effect.name == 'Bomb')
+      if (!bomb) return state
+
+      bomb.colour = 'grey'
+      bomb.type = 'PERCENT_HEAL_ALL_FRIENDLY'
+
+      return newState
     default: return state
   }
 }
