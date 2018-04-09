@@ -57,7 +57,7 @@ module.exports = {
     class: 'Player',
     description: 'The staff resonates great power, but something about it feels so wrong.',
     bonusEffect: 'Poison',
-    effectDescription: `Your targeted heals Poison the target for 60% of target's Max Health over 15 seconds`,
+    effectDescription: `Casting a Life Spell on a Recruit will Poison the Recruit for 60% of their Max Health over 15 seconds`,
     icon: 'ra-biohazard'
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({
@@ -73,7 +73,7 @@ module.exports = {
     class: 'Player',
     description: 'Made from a powerful Oak Tree. A small artifact of purity from the Woods that used to be...',
     bonusEffect: 'curePoison',
-    effectDescription: "Your targeted heals remove any Poison effect from the target",
+    effectDescription: "Casting a Life Spell on a Recruit will remove any Poison effect from the target",
     icon: 'ra-sprout'
   }),
   ['Staff of Eternal Flame']: (level, id) => ({
