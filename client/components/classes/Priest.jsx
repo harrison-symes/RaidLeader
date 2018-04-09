@@ -25,7 +25,7 @@ export class Priest extends PartyMemberFrame {
     if (member.weapon_effect == 'halfLife' && (target.hp / target.initHp) >= 0.5) power*=2
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
     let overHealing =(target.initHp - target.hp) - power
-    if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -2})
+    if (overHealing < 0) dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: overHealing * -3})
     dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
   }
   startCast() {
