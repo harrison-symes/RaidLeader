@@ -55,11 +55,15 @@ module.exports = [
         </div>
       },
       {
-        title: 'New Effect: Stunned',
+        title: 'New Effects; Stunned and Bomb',
         description: <div className="content is-large">
           <p>In Preparation for developing <b>The Armory</b>, I've been hard at work on several New and Interesting Effects</p>
+          <br />
           <p><b>Stunned:</b> A Stunned Recruit cannot Attack. The Recruit's Attack timer will continue to 'tick' during the stun, but any <b>Completed</b> Attacks will not happen while <b>Stunned</b></p>
-          <p>If you want to try out the new Effect, there are several new Spells that are Powerful and Cheap, but will Stun A / All Recruits as a side effect. Try them out :) </p>
+          <hr />
+          <p><b>Bomb:</b> A Bomb Effect can be placed on a Recruit. The Bomb will <b>Explode</b> when it <b>Expires</b>, damagin <b>All Recruits</b> for a specified Health % (default is 20%)</p>
+          <br />
+          <p>If you want to try out the new Effects, there are several new Spells that utilise them in interesting ways</p>
         </div>
       }
     ]
