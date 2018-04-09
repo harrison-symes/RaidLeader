@@ -13,7 +13,8 @@ const createPlayer = ({hp, mana, manaRegen, power, bonusEffect, level}, name) =>
     isAlive: true,
     spells: [],
     bonusEffect,
-    level
+    level,
+    fatigue: 0
   }
 )
 
@@ -174,6 +175,10 @@ export default function player (state = null, action) {
         return spell
       })
       console.log("FOCUS", newState.spells);
+      return newState
+    case 'FATIGUE':
+      newState.fatigue += 0.005
+      newState.hp -= newState.initHp * newState.fatigue
       return newState
     default: return state
   }

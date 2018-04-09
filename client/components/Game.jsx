@@ -28,7 +28,7 @@ class Game extends Component {
   }
   endOneSecond() {
     this.props.dispatch({type: 'TICK_ONE_SECOND'})
-    if (this.props.party.filter(member => member.isAlive).length == 0) this.props.dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.01})
+    if (this.props.party.filter(member => member.isAlive).length == 0) this.props.dispatch({type: 'FATIGUE'})
     if (this.props.started) this.startOneSecond()
   }
   startOneSecond() {
