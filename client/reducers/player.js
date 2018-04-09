@@ -177,7 +177,7 @@ export default function player (state = null, action) {
       console.log("FOCUS", newState.spells);
       return newState
     case 'FATIGUE':
-      newState.fatigue += 0.005
+      newState.fatigue += 0.002
       newState.hp -= newState.initHp * newState.fatigue
       return newState
     default: return state
