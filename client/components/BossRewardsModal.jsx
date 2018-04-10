@@ -61,7 +61,7 @@ class BossRewardsModal extends Component {
     const weapons = boss.weaponRewards
     // const weapons = boss.weaponRewards.concat(currentLocation.weaponRewards)
     let reward
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < boss.weaponRewards.length; i++) {
       reward = weapons[Math.floor(Math.random() * weapons.length)]
       reward = weaponSwitch[reward](boss.level)
       if (party.find(recruit => recruit.heroClass == reward['class'])) {
