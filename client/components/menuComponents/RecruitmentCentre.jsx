@@ -25,8 +25,8 @@ class RecruitmentCentre extends Component {
   }
   solveOptions() {
     const zodiacs = getZodiacs()
-    const classes = ['Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard', 'Necromancer']
-    
+    const classes = ['Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard', 'Necromancer', 'Beast Master']
+
     if (this.props.recruits.length > 1) {
       classes.push('Priest')
     }
