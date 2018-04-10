@@ -49,6 +49,7 @@ export function classIcons (heroClass) {
     case 'Bard': return 'ra-ocarina'
     case 'Necromancer': return 'ra-death-skull'
     case 'Beast Master': return 'ra-pawprint'
+    case 'Beast': return 'ra-wolf-head'
     case 'Player': return 'ra-player-king'
     default: return null
   }
@@ -129,6 +130,12 @@ export function attackIcons (heroClass) {
     case 'Beast Master': return {
       colour: 'sienna',
       icon: 'ra-horseshoe',
+      rotation: 270,
+      rotates: true
+    }
+    case 'Beast': return {
+      colour: 'sienna',
+      icon: 'ra-broken-bone',
       rotation: 270,
       rotates: true
     }

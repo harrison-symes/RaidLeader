@@ -171,6 +171,11 @@ export default function party (state = [], action) {
         if (member.id != action.target.id) member.power *= 1.1
         return member
       })
+    case 'BEAST_MASTER_START_BUFF':
+      newState.push(action.beast)
+      let master = newState.find(member => member.id == action.master.id)
+      master.petId = action.beast.id
+      return newState
     case 'INCREASE_RECRUIT_SPEED':
       if (!action.recruit) return
       target = newState.find(member => member.id == action.target.id)

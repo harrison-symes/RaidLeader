@@ -14,6 +14,7 @@ exports.seed = function(knex, Promise) {
         {zodiac: 'Aries', name: 'Weston', heroClass: 'Warrior', weapon_id: null, level: 1, user_id: 1},
         {zodiac: 'Aries', name: 'Max', heroClass: 'Monk', weapon_id: null, level: 2, user_id: 1},
         {zodiac: 'Aries', name: 'Harrison', heroClass: 'Hunter', weapon_id: null, level: 2, user_id: 1},
+        {zodiac: 'Aries', name: 'Usha', heroClass: 'Beast Master', weapon_id: null, level: 2, user_id: 1},
       ]);
     });
 };
