@@ -11,7 +11,7 @@ export function startingBuff (heroClass) {
     case 'Shaman': return "The Shaman reduces the Cast Time and Cool Down of all Player Spells by (10%)"
     case 'Bard': return "The Bard reduces the Mana Cost of ALL Player Spells by (1)"
     case 'Necromancer': return "The Necromancer increases your Player Power by (10%)"
-    case 'Beast Master': return "The Beast Master will Summon a Wolf (with (50%) of the Beast Master's Health, Power and Speed) to assist your party"
+    case 'Beast Master': return "The Beast Master will Summon a Wolf (with (50%) of the Beast Master's Health and power, and (100%) Speed) to assist your party"
     break;
     default: return null
   }
