@@ -7,6 +7,15 @@ module.exports = [
     version: '0.4.1',
     updates: [
       {
+        title: 'New Class: Beast Master!',
+        description: <div className="content is-large">
+          <p><b>The Beast Master</b> is a <b>Mid Health</b>, <b>Mid Power</b>, <b>Mid Speed</b> Recruit.</p>
+          <p><b>Starting Buff</b>: {startingBuff('Beast Master')}</p>
+          <p><b>Trait</b>: {classTraits('Beast Master')}</p>
+          <p>- The Beast Master's Weapons are still in development and will <b>Soon</b> be available from all Dungeons (and they're gonna be really, really, reallllllly cool!)</p>
+        </div>
+      }
+      {
         title: 'Database Reset!',
         description: <div className="content is-large">
           <p><b>Apologies for destroying your precious progress!</b></p>
