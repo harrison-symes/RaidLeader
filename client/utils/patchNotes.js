@@ -14,7 +14,7 @@ module.exports = [
           <p><b>Trait</b>: {classTraits('Beast Master')}</p>
           <p>- The Beast Master's Weapons are still in development and will <b>Soon</b> be available from all Dungeons (and they're gonna be really, really, reallllllly cool!)</p>
         </div>
-      }
+      },
       {
         title: 'Database Reset!',
         description: <div className="content is-large">
