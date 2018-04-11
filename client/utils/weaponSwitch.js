@@ -308,7 +308,7 @@ module.exports = {
     class: 'Beast Master',
     description: "A charm embedded with the Turtle's soul. It calls out quietly, seeking the aid of other Turtles.",
     bonusEffect: 'turtlePet',
-    effectDescription: "The Beast Master will now summon a Turtle Pet instead. The Turtle will inherit (100%) of the Beast Master's Health, but only (30% of the Beast Master's speed)"
+    effectDescription: "The Beast Master will now summon a Turtle Pet instead. The Turtle will inherit (100%) of the Beast Master's Health, but only (30% of the Beast Master's speed)",
     icon: 'ra-spiral-shell'
   }),
   ['Plagued Aegis']: (level, id) => ({

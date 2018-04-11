@@ -13,6 +13,7 @@ exports.seed = function(knex, Promise) {
         {name: 'Plagued Staff of the Swamp', level: 2, is_weapon: true, user_id: 1},
         {name: 'Cleansed Staff of the Woods', level: 2, is_weapon: true, user_id: 1},
         {name: 'Plagued Wand', level: 2, is_weapon: true, user_id: 1},
+        {name: 'Turtle Aspect', level: 1, is_weapon: true, user_id: 1},
       ]);
     });
 };
