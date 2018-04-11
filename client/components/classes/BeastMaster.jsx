@@ -14,6 +14,37 @@ export class BeastMaster extends PartyMemberFrame {
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
     }
   }
+  solvePet() {
+    const {member, party} = this.props
+    const {hp, initHp, power, speed} = member
+
+    let newId = party.length
+    while (party.find(recruit => recruit.id == newId)) newId++
+
+    let beast =  {
+      ...this.props.member,
+      hp: initHp / 2,
+      initHp: initHp / 2,
+      power: power / 2,
+      heroClass: 'Beast',
+      id: newId,
+      name: 'Wolf',
+      ownerId: member.id
+    }
+
+    switch (member.weapon_effect) {
+      case 'turtlePet':
+        beast = {
+          ...beast,
+          hp: initHp,
+          initHp: initHp,
+          speed: speed * 0.3,
+          name: 'Turtle'
+        }
+        return beast
+      default: return beast
+    }
+  }
   startFighting () {
     const {member, party} = this.props
     const {hp, initHp, power, speed} = member
@@ -31,7 +62,7 @@ export class BeastMaster extends PartyMemberFrame {
       name: 'Wolf',
       ownerId: member.id
     }
-    this.props.dispatch({type: 'BEAST_MASTER_START_BUFF', beast, master: member})
+    this.props.dispatch({type: 'BEAST_MASTER_START_BUFF', beast: this.solvePet(), master: member})
     this.startCast()
   }
 }

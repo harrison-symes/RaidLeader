@@ -296,6 +296,21 @@ module.exports = {
     bonusEffect: null,
     icon: 'ra-vine-whip'
   }),
+  ['Turtle Aspect']: (level, id) => ({
+    name: 'Turtle Aspect',
+    type: 'Weapon',
+    level,
+    id,
+    value: 200,
+    hp: 0.4,
+    power: 0.2,
+    speed: -0.2,
+    class: 'Beast Master',
+    description: "A charm embedded with the Turtle's soul. It calls out quietly, seeking the aid of other Turtles.",
+    bonusEffect: 'turtlePet',
+    effectDescription: "The Beast Master will now summon a Turtle Pet instead. The Turtle will inherit (100%) of the Beast Master's Health, but only (30% of the Beast Master's speed)"
+    icon: 'ra-spiral-shell'
+  }),
   ['Plagued Aegis']: (level, id) => ({
     name: 'Plagued Aegis',
     type: 'Weapon',
