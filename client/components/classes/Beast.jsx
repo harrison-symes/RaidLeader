@@ -4,11 +4,17 @@ import {connect} from 'react-redux'
 import mapStateToProps from './utils/classStateMap'
 import PartyMemberFrame from '../frames/PartyMemberFrame'
 
+import {poisonConstructor} from '../../utils/effectConstructors'
+
 class Beast extends PartyMemberFrame {
   finishCast() {
-    const {member, started, player, dispatch} = this.props
+    const {member, started, player, dispatch, party} = this.props
     let {power, weapon_effect, speed} = member
     if (started && member.isAlive) {
+      if (member.weapon_effect == 'foxPet') {
+        dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', effect: {name: 'Poison'}, target: {id: member.ownerId}})
+        dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', effect: {name: 'Poison'}, target: member})
+      }
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
     }
   }

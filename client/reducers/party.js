@@ -76,7 +76,7 @@ export default function party (state = [], action) {
       return newState
     case 'REMOVE_EFFECT_FROM_TARGET':
       if (!action.target) return state
-      target = newState.find(member => member == action.target)
+      target = newState.find(member => member.id == action.target.id)
       if (!target) return state
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
       return newState

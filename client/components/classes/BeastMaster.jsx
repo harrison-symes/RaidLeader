@@ -42,26 +42,19 @@ export class BeastMaster extends PartyMemberFrame {
           name: 'Turtle'
         }
         return beast
+      case 'foxPet':
+        beast = {
+          ...beast,
+          speed: speed * 1.5,
+          power: power * 0.3,
+          name: 'Fox'
+        }
       default: return beast
     }
   }
   startFighting () {
     const {member, party} = this.props
-    const {hp, initHp, power, speed} = member
-    let newId = party.length
-    while (party.find(recruit => recruit.id == newId)) {
-      newId++
-    }
-    let beast = {
-      ...this.props.member,
-      hp: hp / 2,
-      initHp: hp / 2,
-      power: power / 2,
-      heroClass: 'Beast',
-      id: newId,
-      name: 'Wolf',
-      ownerId: member.id
-    }
+
     this.props.dispatch({type: 'BEAST_MASTER_START_BUFF', beast: this.solvePet(), master: member})
     this.startCast()
   }
