@@ -33,15 +33,12 @@ class MageTower extends Component {
       else if (this.props.traits.find(learned => learned.name == trait.name)) trait.isLearned = true
       else trait.isLearned = false
     })
-    console.log({traits});
     traits = sortTiers(traits)
-    console.log({traits});
     this.setState({element, traits, selected: null})
   }
   purchaseTrait() {
     const {selected} = this.state
     if (selected.isSpell) {
-      console.log("purchasing", selected);
       this.props.dispatch(gainGems(selected.gemCost * -1))
       this.props.dispatch(addSpell(selected.spell))
     } else {
@@ -50,7 +47,6 @@ class MageTower extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    console.log("traits changed", nextProps);
     this.pickElement(this.state.element)
   }
   renderSpellPreview(spell) {
@@ -79,7 +75,6 @@ class MageTower extends Component {
   }
   renderTraitDetails() {
     const {selected} = this.state
-    console.log({selected});
     const {gems} = this.props
     const isLearned = selected.isSpell && this.props.spellBook.find(spell => spell == selected.spell)
     const isLocked = selected.tier != 1 && !this.state.traits[selected.tier - 1].find(other => other.isLearned)
@@ -147,7 +142,6 @@ class MageTower extends Component {
   render() {
     const {close, gems} = this.props
     const {element} = this.state
-    console.log(this.state);
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card Modal">

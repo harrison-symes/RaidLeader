@@ -13,7 +13,6 @@ export default function (state = null, action) {
     case 'PALADIN_START_BUFF':
       return action.target
     case 'MEMBER_DIED':
-    console.log({action});
       if (!action.target) return state
       if (state && action.target.id == state.id) return null
       else return state

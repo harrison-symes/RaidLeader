@@ -34,7 +34,6 @@ class AnimatedExpBar extends Component {
     currentExpMovement+=expPerTick
     if (currentExpMovement > totalToMove) currentExpMovement = totalToMove
     currentExperience = createState(currentExperience.exp + expPerTick)
-    console.log({currentExperience});
     if (currentExperience.level > startingLevel + gems) {
       gems++
       this.props.addGem()
@@ -47,7 +46,6 @@ class AnimatedExpBar extends Component {
     this.timeout = setTimeout(() => this.tickExpMovement(), 100)
   }
   componentDidMount() {
-    console.log("mounting");
     this.startTick()
   }
   render() {

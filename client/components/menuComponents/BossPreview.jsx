@@ -12,7 +12,6 @@ class BossPreview extends React.Component {
   stageData(stage) {
     const {boss} = this.props
     const stageData = boss["stage" + stage]
-    console.log({stage, stageData});
     return <div>
       <hr/>
       <p className="title is-3">Stage {stage}</p>

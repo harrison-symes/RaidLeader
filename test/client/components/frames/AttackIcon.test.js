@@ -33,9 +33,7 @@ test('getTargetFrame', () => {
       }
     }}
   />)
-  // wrapper.instance().constructor = () => ({})
 
-  // console.log(wrapper.instance().getTargetFrame());
   const actual = wrapper.instance().getTargetFrame()
   expect(actual).toEqual({
     top: 0,

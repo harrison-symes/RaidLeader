@@ -174,7 +174,6 @@ export default function player (state = null, action) {
         }
         return spell
       })
-      console.log("FOCUS", newState.spells);
       return newState
     case 'FATIGUE':
       newState.fatigue += 0.002

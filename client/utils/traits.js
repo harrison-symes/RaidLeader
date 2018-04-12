@@ -314,14 +314,12 @@ function sortTiers (traits) {
     return sorter
   }, {})
   return tierSorter
-  console.log(tierSorter);
 }
 
 function getAllTraits () {
   return life.concat(fire).concat(shadow).concat(arcane)
 }
 
-console.log(getAllTraits());
 
 module.exports = {
   sortTiers,
