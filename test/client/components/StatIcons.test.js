@@ -40,9 +40,12 @@ test('DeadRecruitIcon', () => {
 })
 
 test('PlayerIcon', () => {
-  const wrapper =  mount(<PlayerIcon name="Jeff" />)
+  const fakePlayer = {
+    name: 'Jeff'
+  }
+  const wrapper =  mount(<PlayerIcon player={fakePlayer} />)
 
-  expect(wrapper.find('p').text()).toBe('Jeff')
+  expect(wrapper.find('p').first().text()).toBe('Jeff')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-player-king')).toBeTruthy()
@@ -274,9 +277,10 @@ test('LevelIcon (6)', () => {
 test('RecruitCountIcon (multiple)', () => {
   const wrapper =  mount(<RecruitCountIcon amount={6} />)
 
-  expect(wrapper.find('p').text()).toBe('You have 6 Recruits')
+  expect(wrapper.find('p').first().text()).toBe('You have 6 Recruits')
+  expect(wrapper.find('p').last().text()).toBe('(Click to View)')
 
-  expect(wrapper.find('span').text()).toBe('6')
+  expect(wrapper.find('span').last().text()).toBe('6')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-double-team')).toBeTruthy()
@@ -285,9 +289,10 @@ test('RecruitCountIcon (multiple)', () => {
 test('RecruitCountIcon (single)', () => {
   const wrapper =  mount(<RecruitCountIcon amount={1} />)
 
-  expect(wrapper.find('p').text()).toBe('You have 1 Recruit')
+  expect(wrapper.find('p').first().text()).toBe('You have 1 Recruit')
+  expect(wrapper.find('p').last().text()).toBe('(Click to View)')
 
-  expect(wrapper.find('span').text()).toBe('1')
+  expect(wrapper.find('span').last().text()).toBe('1')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-double-team')).toBeTruthy()
@@ -296,9 +301,11 @@ test('RecruitCountIcon (single)', () => {
 test('SpellCountIcon (single)', () => {
   const wrapper =  mount(<SpellCountIcon amount={1} />)
 
-  expect(wrapper.find('p').text()).toBe('You know 1 Spell')
+  expect(wrapper.find('p').first().text()).toBe('You know 1 Spell')
+  expect(wrapper.find('p').last().text()).toBe('(Click to View)')
 
-  expect(wrapper.find('span').text()).toBe('1')
+
+  expect(wrapper.find('span').last().text()).toBe('1')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-book')).toBeTruthy()
@@ -307,9 +314,11 @@ test('SpellCountIcon (single)', () => {
 test('SpellCountIcon (multiple)', () => {
   const wrapper =  mount(<SpellCountIcon amount={6} />)
 
-  expect(wrapper.find('p').text()).toBe('You know 6 Spells')
+  expect(wrapper.find('p').first().text()).toBe('You know 6 Spells')
+  expect(wrapper.find('p').last().text()).toBe('(Click to View)')
 
-  expect(wrapper.find('span').text()).toBe('6')
+
+  expect(wrapper.find('span').last().text()).toBe('6')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
   expect(wrapper.find('i').hasClass('ra-book')).toBeTruthy()
@@ -381,7 +390,7 @@ test('WeaponAvailableIcon (no weapon, none available)', () => {
 
 test('WeaponIcon', () => {
   const wrapper =  mount(<WeaponIcon name={'Fake Weapon'} />)
-  expect(wrapper.find('span').first().text()).toBe('Fake WeaponFake Class Weapon')
+  expect(wrapper.find('span').first().text().trim()).toBe('Fake WeaponFake Class Weapon')
 
   expect(wrapper.find('span').last().text()).toBe('')
 
@@ -444,12 +453,14 @@ test('SpellIcon small', () => {
     name: 'Test Spell',
     icon: 'fake-icon',
     color: 'test',
+    description: 'Fake description',
     background: 'othertest'
   }} />)
 
-  expect(wrapper.find('p').text()).toBe('Test Spell')
+  expect(wrapper.find('p').first().text()).toBe('Test Spell')
+  expect(wrapper.find('p').last().text()).toBe('Fake description')
 
-  expect(wrapper.find('span').text()).toBe('')
+  expect(wrapper.find('span').last().text()).toBe('')
 
   const style = wrapper.find('i').prop('style')
   expect(style).toHaveProperty('color', 'test')
@@ -463,12 +474,14 @@ test('SpellIcon small', () => {
 test('SpellIcon large', () => {
   const wrapper =  mount(<SpellIcon spell={{
     name: 'Test Spell',
-    icon: 'fake-icon'
+    icon: 'fake-icon',
+    description: 'Fake description',
   }} isLarge={true}/>)
 
-  expect(wrapper.find('p').text()).toBe('Test Spell')
+  expect(wrapper.find('p').first().text()).toBe('Test Spell')
+  expect(wrapper.find('p').last().text()).toBe('Fake description')
 
-  expect(wrapper.find('span').text()).toBe('')
+  expect(wrapper.find('span').last().text()).toBe('')
 
   const style = wrapper.find('i').prop('style')
   expect(style).toHaveProperty('color', 'black')

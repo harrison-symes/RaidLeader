@@ -30,7 +30,7 @@ test('createUser db error', () => {
 })
 
 test('userExists (true)', () => {
-  return usersDb.userExists('symeshjb', testDb)
+  return usersDb.userExists('Krang', testDb)
     .then(actual => expect(actual).toBe(true))
     .catch(err => expect(err).toBeFalsy())
 })
@@ -48,11 +48,12 @@ test('userExists db error', () => {
 })
 
 test('getUserByName', () => {
-  return usersDb.getUserByName('symeshjb', testDb)
+  return usersDb.getUserByName('Krang', testDb)
     .then(user => {
       expect(user.user_id).toBe(1)
-      expect(user.user_name).toBe('symeshjb')
-      expect(user.gold).toBe(10000)
+      expect(user.user_name).toBe('Krang')
+      expect(user.gold).toBe(1000000)
+      expect(user.gems).toBe(500)
     })
 })
 

@@ -18,9 +18,10 @@ test('getSpells', () => {
     'name',
     'user_id'
   ]
+  const expectedLength = 15
   return spellsDb.getSpells(1, testDb)
     .then(actual => {
-      expect(actual).toHaveLength(1)
+      expect(actual).toHaveLength(expectedLength)
       keys.forEach(key => {
         expect(actual[0].hasOwnProperty(key)).toBeTruthy()
       })

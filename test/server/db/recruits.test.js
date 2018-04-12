@@ -14,9 +14,10 @@ afterEach(() => env.cleanup(testDb))
 
 test('getRecruits', () => {
   const keys = ['id', 'name', 'heroClass', 'level', 'weapon_id', 'zodiac', 'user_id' ]
+  const expectedLength = 10
   return recruitsDb.getRecruits(1, testDb)
     .then(actual => {
-      expect(actual).toHaveLength(9)
+      expect(actual).toHaveLength(10)
       actual.forEach(recruit => {
         keys.forEach(key => {
           expect(recruit.hasOwnProperty(key)).toBeTruthy()
@@ -57,10 +58,11 @@ test('equipWeapon (error)', () => {
 })
 
 test('addRecruit', () => {
+  const expectedId = 11
   return recruitsDb.addRecruit(1, 'Test', 2, 'Paladin', 'Aries', testDb)
     .then(actual => {
       expect(actual).toEqual({
-        id: 10,
+        id: expectedId,
         user_id: 1,
         name: 'Test',
         level: 2,
