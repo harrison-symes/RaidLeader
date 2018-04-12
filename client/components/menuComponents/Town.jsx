@@ -7,12 +7,13 @@ import {logoutUser} from '../../actions/logout'
 import RecruitmentCentre from './RecruitmentCentre'
 import Library from './Library'
 import TrainingCentre from './TrainingCentre'
+import MageTower from './MageTower'
 import Dungeons from './Dungeons'
 import BlackMarket from './BlackMarket'
 import MyRecruits from './MyRecruits'
 import MySpells from './MySpells'
 
-import {GoldIcon, RecruitCountIcon, SpellCountIcon} from '../icons/StatIcons'
+import {GoldIcon, RecruitCountIcon, SpellCountIcon, GemIcon} from '../icons/StatIcons'
 
 class Town extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Town extends Component {
       case 'Recruitment Centre': return <RecruitmentCentre close={close} />
       case 'Library': return <Library close={close} />
       case 'Training Centre': return <TrainingCentre close={close} />
+      case 'Mage Tower': return <MageTower close={close} />
       case 'Black Market': return <BlackMarket close={close} />
       case 'Dungeon Map': return <Dungeons close={close} />
       case 'My Recruits': return <MyRecruits close={close} />
@@ -53,21 +55,24 @@ class Town extends Component {
     </a>
   }
   render() {
-    const {gold, recruits, spellBook} = this.props
+    const {gold, recruits, spellBook, gems} = this.props
     const {showRecruitmentModal} = this.state
     return <div className="Town">
       <div className="has-text-centered Town-Banner">
           <p className="title is-1"> <i className="ra  ra-heart-tower ra-fw" /> Town <i className="ra ra-heart-tower ra-fw" /></p>
         <div className="level has-text-centered Resources">
-          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
+          <div className="button is-outlined is-light Info-Button is-3" style={{cursor: 'pointer'}}>
             <div className="subtitle is-2" onClick={()=>this.toggleModal('My Spells')}>
               <SpellCountIcon amount={spellBook.length} />
             </div>
           </div>
-          <div className=" is-4">
+          <div className="is-3">
             <p className="subtitle is-2"><GoldIcon value={gold} /></p>
           </div>
-          <div className="button is-outlined is-light Info-Button is-4" style={{cursor: 'pointer'}}>
+          <div className="is-3">
+            <p className="subtitle is-2"><GemIcon value={gems} /></p>
+          </div>
+          <div className="button is-outlined is-light Info-Button is-3" style={{cursor: 'pointer'}}>
             <p className="subtitle is-2" onClick={()=>this.toggleModal('My Recruits')}>
               <RecruitCountIcon amount={recruits.length} />
             </p>
@@ -89,11 +94,11 @@ class Town extends Component {
 
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower', 'The Hunt')}
-          {this.renderTownMenuButton('Library', 'ra-crystal-ball', 'The Hunt')}
+          {this.renderTownMenuButton('Library', 'ra-book', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
           {this.renderTownMenuButton('Training Centre', 'ra-muscle-up', 'The Cursed Wilds')}
-          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
           <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
@@ -105,21 +110,27 @@ class Town extends Component {
               <i className={`ra ra-turd ra-lg` }></i>
             </span>
           </Link>
-          <Link to="/new" className="button is-large is-fullwidth is-info is-outlined">
-            <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
-              <span>&nbsp;What's New?&nbsp;</span>
-            <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
-          </Link>
+          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
+
         </div>
       </div>
+      <Link to="/new" className="button is-large is-fullwidth is-dark Info-Button is-outlined">
+        <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
+          <span>&nbsp;What's New?&nbsp;</span>
+        <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
+      </Link>
     </div>
   }
 }
 
 const mapStateToProps = (state) => {
-  const {gold, recruits, spellBook, dungeons} = state
+  const {gold, recruits, spellBook, dungeons, gems} = state
   return {
-    gold, recruits, spellBook, dungeons
+    gold,
+    recruits,
+    spellBook,
+    dungeons,
+    gems
   }
 }
 

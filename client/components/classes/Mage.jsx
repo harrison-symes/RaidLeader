@@ -11,7 +11,7 @@ export class Mage extends PartyMemberFrame {
     if (started && member.isAlive) {
       if (player.mana / player.maxMana * 100 <= 30) power*=2
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      if (weapon_effect == 'charge') dispatch({type: 'PLAYER_GAIN_MANA', amount: 1})
+      if (weapon_effect == 'charge') dispatch({type: 'PLAYER_GAIN_MANA', power: 1})
     }
   }
   startFighting () {

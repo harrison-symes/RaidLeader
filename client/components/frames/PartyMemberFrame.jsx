@@ -16,6 +16,7 @@ class MemberFrame extends Component {
       attackSVGs: []
     }
     this.deleteSVG = this.deleteSVG.bind(this)
+    this.attackTimeout = null
   }
   deleteSVG(svg) {
     let {attackSVGs} = this.state
@@ -24,7 +25,7 @@ class MemberFrame extends Component {
   }
   completeCast(target) {
     if (this.props.member.isAlive) {
-      this.createSVG(target)
+      if (!this.props.member.effects.find(effect => effect.name == 'Stunned')) this.createSVG(target)
       this.startCast()
     }
   }
@@ -37,7 +38,7 @@ class MemberFrame extends Component {
   startCast() {
     const {power, speed, isAlive} = this.props.member
     const {started, member, dispatch} = this.props
-    if (isAlive && started) setTimeout(() => {
+    if (isAlive && started) this.attackTimeout = setTimeout(() => {
       if (isAlive && started) {
         if (member.weapon_effect == 'selfPoison' && Math.random() < (1 / member.speed)) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: member, effect: poisonConstructor()})
         this.completeCast()

@@ -1,11 +1,28 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor, bombConstructor} from '../../utils/effectConstructors'
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
 import KeyHandler, {KEYPRESS} from 'react-key-handler';
+
+const castTraitHandler = (trait, props, spell) => {
+  const {dispatch} = props
+  switch(trait.name) {
+    //Life
+    case 'Fruitful':
+      if (spell.element != 'Life') return
+      return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.01 * spell.cast})
+    //Fire
+    case 'Light the Way':
+      return dispatch({type: 'HEAL_PLAYER', power: (0.25 * spell.cast) * props.player.power})
+    //Shadow
+
+    //Arcane
+    default: return
+  }
+}
 
 
 class PlayerSpell extends Component {
@@ -31,11 +48,14 @@ class PlayerSpell extends Component {
     }
   }
   tickSwitch() {
-    let {spell, dispatch, player, party} = this.props
+    let {spell, dispatch, player, party, traits} = this.props
     let power = this.props.player.power * spell.tickPower
     let target = this.state.target
     if (target) target = party.find(other => other.id == target.id)
     if (player.bonusEffect == 'firePower' && spell.element == 'Fire') power*=2
+
+    if (traits.find(trait => trait.name == 'Vengeance')) power += power * (0.5 * (1 - (player.hp / player.initHp)))
+
     switch(spell.name) {
       case 'Drain Life':
         dispatch({type: 'PLAYER_ATTACK_BOSS', power})
@@ -58,11 +78,11 @@ class PlayerSpell extends Component {
       case 'Cauterize':
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.tickPercentage})
       case 'Mass Cauterize':
-        return dispatch({type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
+        return dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY'   , percentage: spell.tickPercentage})
       case 'Life Funnel':
         let health = player.initHp * spell.tickPercentage
         dispatch({type: 'DAMAGE_PLAYER', power: health})
-        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health, target})
+        return dispatch({type: 'HEAL_FRIENDLY_TARGET', power: health*2, target})
       case 'Arcane Torrent':
         let damagedRecruits = party.filter(recruit => recruit.hp < recruit.initHp)
         if (!player.spells.find(spell => spell.element == 'Life')) power*=2
@@ -79,16 +99,20 @@ class PlayerSpell extends Component {
     }
   }
   castSwitch(target) {
-    const {spell, dispatch, player, party, boss} = this.props
+    const {spell, dispatch, player, party, boss, traits} = this.props
     let power = this.props.player.power * spell.powerRatio
     console.log({target, party});
     // if (target) target = party.find(other => other.id == target.id)
     if (!this.props.started) return
-    if (player.bonusEffect == "curePoison" && spell.singleTarget) dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
-    else if (player.bonusEffect == 'Poison' && spell.singleTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
+    if (player.bonusEffect == "curePoison" && spell.singleTarget && spell.element == 'Life') dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
+    else if (player.bonusEffect == 'Poison' && spell.singleTarget && spell.element == 'Life') dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
     else if (player.bonusEffect == 'shadowPower' && spell.element == 'Shadow') dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.01})
     else if (player.bonusEffect == 'lifePower' && spell.element == 'Life') dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 0.05})
     else if (player.bonusEffect == 'firePower' ** spell.element == 'Fire') power*=2
+
+    this.props.traits.forEach(trait => castTraitHandler(trait, this.props, spell))
+
+    if (traits.find(trait => trait.name == 'Vengeance')) power += power * (0.5 * (1 - (player.hp / player.initHp)))
 
     switch(spell.name) {
       case 'Heal':
@@ -170,11 +194,10 @@ class PlayerSpell extends Component {
         if (!player.spells.find(spell => spell.element == 'Life')) percentage = spell.greaterPercentage
         return dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: percentage})
       case 'Life Soul':
+        if (!player.spells.find(spell => spell.element != 'Life')) dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: renewConstructor()})
         return dispatch({
           type: 'PERCENT_INCREASE_POWER',
-          percentage: player.spells.find(spell => spell.element != 'Life')
-            ? spell.percentage
-            : spell.greaterPercentage
+          percentage: spell.percentage
         })
       case 'Arcane Soul':
         if (!player.spells.find(spell => spell.element != 'Arcane')) {
@@ -199,6 +222,52 @@ class PlayerSpell extends Component {
         }
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
         return dispatch({type: 'HEAL_ALL_FRIENDLY', power: this.props.player.power * spell.altPowerRatio})
+      case 'Imbue':
+        if (!player.spells.find(spell => !spell.singleTarget)) dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.greaterPercentage})
+        dispatch({type: 'PERCENT_INCREASE_TARGET_RECRUIT_SPEED', target, percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_INCREASE_TARGET_RECRUIT_POWER', target, percentage: spell.percentage})
+      case 'Containment':
+        if (!player.spells.find(playerSpell => playerSpell.singleTarget || playerSpell.name == spell.name)) {
+          let aliveTargets = party.filter(recruit => recruit.isAlive)
+          if (aliveTargets.length > 0) dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: aliveTargets[Math.floor(Math.random() * aliveTargets.length)], power: 10000000})
+        }
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: spell.percentage})
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: spell.percentage})
+        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.greaterPercentage})
+      case 'Sacrifice':
+        if (target.hp / target.initHp < 0.5) dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: spell.greaterPercentage})
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power: 1000000})
+        dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 1})
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 1 / party.length})
+        return dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 1 / party.length})
+      case 'Acclimate':
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: spell.percentage})
+        for (var i = 0; i < player.spells.length; i++) {
+          if (player.spells.find(playerSpell => playerSpell.element == player.spells[i].element && player.spells[i].name != spell.name && playerSpell.name != spell.name)) return
+        }
+        console.log("no duplicate elements");
+        return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.percentage})
+      case 'Arcane Blast':
+        dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.duration)})
+      case 'Arcane Explosion':
+        dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.duration)})
+      case 'Bomb Toss':
+        let bombTargets = party.filter(recruit => recruit.isAlive)
+        if (bombTargets.length > 0) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: bombTargets[Math.floor(Math.random() * bombTargets.length)], effect: bombConstructor(spell.duration, spell.percentage)})
+        else dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.1})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
+      case 'Defuse':
+        let bomb = target.effects.find(effect => effect.name = 'Bomb')
+        if (bomb) return dispatch({type: 'DEFUSE_BOMB', target})
+        else {
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: renewConstructor()})
+          return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(3)})
+        }
+      case 'Living Bomb':
+        dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.healPercentage})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: bombConstructor(spell.duration, spell.percentage)})
       default: return
     }
   }
@@ -246,7 +315,7 @@ class PlayerSpell extends Component {
   clickSpell() {
     if (!this.props.started) return
     const {spell, player, friendlyTarget, started} = this.props
-    if (started && ((spell.singleTarget && friendlyTarget) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
+    if (started && ((spell.singleTarget && friendlyTarget && (!spell.recruitOnly || spell.recruitOnly && friendlyTarget && friendlyTarget.id != 0)) || !spell.singleTarget) && !this.state.onCooldown && !player.isCasting && spell.cost <= player.mana) {
       this.startCasting()
     }
   }
@@ -286,14 +355,15 @@ class PlayerSpell extends Component {
   }
 }
 
-const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget, boss}) => {
+const mapStateToProps = ({started, player, party, selectedSpell, friendlyTarget, boss, traits}) => {
   return {
     started,
     player,
     selectedSpell,
     friendlyTarget,
     party,
-    boss
+    boss,
+    traits
   }
 }
 

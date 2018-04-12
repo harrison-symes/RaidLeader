@@ -7,6 +7,40 @@ import PlayerSpellBar from './PlayerSpellBar'
 
 import {PowerIcon, PlayerIcon} from '../icons/StatIcons'
 
+const startingTraitHandler = (trait, props) => {
+  const {dispatch, player} = props
+  switch (trait.name) {
+    //Life
+    case 'Ingrain':
+      return dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.1})
+    case 'Hearty':
+      return dispatch({type: 'PERCENT_INCREASE_RECRUIT_HEALTH', percentage: 0.1})
+
+    //Fire
+    case 'Quicklight':
+      dispatch({type: 'REDUCE_SPELL_COOLDOWN', percentage: 0.1})
+      return dispatch({type: 'REDUCE_SPELL_CAST', percentage: 0.1})
+    case 'Burning Rush':
+      return dispatch({type: 'BURNING_RUSH_TRAIT'})
+    //Shadow
+    case 'Empower':
+      dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
+      return dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.1})
+    case 'Unchain':
+      return dispatch({type: 'REDUCE_SPELL_COST_BY_ELEMENT', reduction: 500, element: 'Shadow'})
+
+    //Arcane
+    case 'Light Feet':
+      return dispatch({type: 'REDUCE_SPELL_COST', reduction: 1})
+    case 'Mana Pool':
+      let mana = 10 * props.spellBook.filter(spell => spell.element == 'Arcane').length
+      return dispatch({type: 'INCREASE_PLAYER_MANA', mana})
+    case 'Focus':
+      return dispatch({type: 'FOCUS_TRAIT'})
+    default: return
+  }
+}
+
 class PlayerFrame extends Component {
   constructor(props) {
     super(props)
@@ -14,6 +48,10 @@ class PlayerFrame extends Component {
   }
   targetPlayer() {
     this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target: this.props.player})
+  }
+  componentDidMount() {
+    const {traits, dispatch} = this.props
+    traits.forEach(trait => startingTraitHandler(trait, this.props))
   }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) this.props.dispatch({type: 'PERCENT_INCREASE_RECRUIT_SPEED', percentage: 0.1 * nextProps.player.spells.filter(spell => spell.element == 'Arcane').length})
@@ -51,11 +89,13 @@ class PlayerFrame extends Component {
   }
 }
 
-const mapStateToProps = ({player, selectedSpell, friendlyTarget}) => {
+const mapStateToProps = ({player, selectedSpell, friendlyTarget, traits, spellBook}) => {
   return {
     player,
     selectedSpell,
-    friendlyTarget
+    friendlyTarget,
+    traits,
+    spellBook
   }
 }
 

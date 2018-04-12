@@ -14,6 +14,9 @@ import {getSpells} from '../actions/spells'
 import {getDungeons} from '../actions/dungeons'
 import {getPlayerGold} from '../actions/gold'
 import {getWeapons} from '../actions/weapons'
+import {getExperience} from '../actions/experience'
+import {getGems} from '../actions/gems'
+import {getTraits} from '../actions/traits'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +35,9 @@ class App extends React.Component {
       this.props.dispatch(getDungeons())
       this.props.dispatch(getPlayerGold())
       this.props.dispatch(getWeapons())
+      this.props.dispatch(getExperience())
+      this.props.dispatch(getGems())
+      this.props.dispatch(getTraits())
     } else props.dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
   }
   componentWillReceiveProps(nextProps) {

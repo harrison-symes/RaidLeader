@@ -128,6 +128,15 @@ export function GoldIcon ({value}) {
     </span>
   )
 }
+export function GemIcon ({value}) {
+  return toolTipGenerator(
+    <p>{value} Gem{value == 1 ? '' : 's'}</p>,
+    <span>
+      {value}
+      <i className="ra ra-fw ra-diamond icon-large" />
+    </span>
+  )
+}
 
 export function ArmorIcon ({value}) {
   return toolTipGenerator(
@@ -175,14 +184,16 @@ export function LevelIcon ({level}) {
   )
 }
 
-export function WeaponAvailableIcon ({amount, hasWeapon}) {
+export function WeaponAvailableIcon ({amount, hasWeapon, lowLevel}) {
   return toolTipGenerator(
     <p>{hasWeapon
       ? `${hasWeapon.name}`
-      : `${amount} Weapon${amount != 1 ? 's':''} Available`
+      : amount == lowLevel && amount != 0
+        ? `${lowLevel} Weapon${lowLevel == 1 ? '' : 's'}, but Recruit's Level is too Low`
+        : `${amount} Weapon${amount != 1 ? 's':''} Available`
     }</p>,
     <span>
-      <i style={{color: hasWeapon ? 'lightgreen' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon: 'ra-hand'} icon-large`} />
+      <i style={{color: hasWeapon ? 'lightgreen' : amount == lowLevel && amount != 0 ? 'red' : amount > 0 ? 'orange': 'black'}} className={`ra ra-fw ${hasWeapon ? hasWeapon.icon: 'ra-hand'} icon-large`} />
     </span>
   )
 }
@@ -222,9 +233,13 @@ export function SpellElementIcon ({element}) {
 }
 
 export function SpellIcon ({spell, isLarge}) {
-  const {name, icon, color, background} = spell
+  const {name, icon, color, background, description} = spell
   return toolTipGenerator(
-    <p>{name}</p>,
+    <span>
+      <p>{name}</p>
+      <hr />
+      <p>{description}</p>
+    </span>,
     <span>
       <i style={{color: color || 'black', backgroundColor: background || 'white'}} className={`ra ra-fw  ${isLarge ? 'ra-3x' : 'ra-fw'} ${icon} icon-large`} />
     </span>
@@ -307,7 +322,7 @@ export function GameRecruitInfo ({recruit}) {
     <span>
       <p>{Math.round(power * 10) / 10} Power</p>
       <p>{Math.round(speed * 10) / 10} Speed</p>
-      <p>({Math.round(power * speed * 10) / 10} Dp10s)</p>
+      <p>({Math.round(power * speed) / 10} Dps)</p>
     </span>,
     <span>
       {name}

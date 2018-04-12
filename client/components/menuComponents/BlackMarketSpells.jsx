@@ -57,7 +57,7 @@ class BlackMarketSpells extends Component {
             </div>
           </div>
           <hr />
-          {spell.name == 'Heal'
+          {spell.reserved
             ? <button disabled className="button is-fullwidth is-danger">You can't sell this!</button>
             : <button onClick={this.sellSpell} className="button is-fullwidth is-outlined is-success">Sell &nbsp; <GoldIcon value={`+${spellCost}`} /></button>
           }

@@ -13,7 +13,8 @@ const createPlayer = ({hp, mana, manaRegen, power, bonusEffect, level}, name) =>
     isAlive: true,
     spells: [],
     bonusEffect,
-    level
+    level,
+    fatigue: 0
   }
 )
 
@@ -44,11 +45,23 @@ export default function player (state = null, action) {
       newState.mana+=newState.manaRegen
       if (newState.mana > newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'OVERWRITE_SPELLS':
+      if (!action.spells) return state
+      newState.spells = action.spells
+      return newState
     case 'PERCENT_INCREASE_POWER':
       newState.power += newState.power * action.percentage
       return newState
     case 'PERCENT_INCREASE_MANA_REGEN':
       newState.manaRegen += newState.manaRegen * action.percentage
+      return newState
+    case 'REDUCE_SPELL_COST_BY_ELEMENT':
+      newState.spells = newState.spells.map(spell => {
+        if (spell.element != action.element) return spell
+        spell.cost -= action.reduction
+        if (spell.cost < 0) spell.cost = 0
+        return spell
+      })
       return newState
     case 'REDUCE_SPELL_COST':
       newState.spells = newState.spells.map(spell => {
@@ -112,6 +125,10 @@ export default function player (state = null, action) {
       newState.mana += action.power
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
       return newState
+    case 'INCREASE_PLAYER_MANA':
+      newState.mana += action.mana
+      newState.maxMana += action.mana
+      return newState
     case 'MAGE_START_BUFF':
       newState.mana += Math.floor(newState.mana * 0.2)
       newState.maxMana += Math.floor(newState.maxMana * 0.2)
@@ -136,6 +153,32 @@ export default function player (state = null, action) {
     case 'DAMAGE_FRIENDLY_TARGET':
       if (!action.target) return newState
       if (action.target.id == newState.id) newState.hp-=action.power
+      return newState
+    case 'BURNING_RUSH_TRAIT':
+      newState.spells = newState.spells.map(spell => {
+        if (spell.cast <= 2) {
+          spell.cast = 0
+          if (spell.isChanneled) spell.cast = spell.ticks * 0.1
+        }
+        return spell
+      })
+      return newState
+    case 'FOCUS_TRAIT':
+      newState.spells = newState.spells.map(spell => {
+        if (spell.isChanneled) {
+          spell.cast *= 0.5
+          spell.coolDown *= 0.5
+          let minCast = spell.ticks * 0.1
+          if (spell.cast < minCast) spell.cast = minCast
+          if (spell.cast < 0) spell.cast = 0
+        }
+        return spell
+      })
+      console.log("FOCUS", newState.spells);
+      return newState
+    case 'FATIGUE':
+      newState.fatigue += 0.002
+      newState.hp -= newState.initHp * newState.fatigue
       return newState
     default: return state
   }

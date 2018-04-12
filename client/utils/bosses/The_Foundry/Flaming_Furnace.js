@@ -58,11 +58,11 @@ export default {
       singleTarget: false,
       powerRatio: 0.5,
       tickPercentage: 0.1,
-      ticks: 5,
+      ticks: 3,
       onCooldown: false,
       isChanneled: true,
       tickPower: 0.5,
-      description: 'Damage a Random Enemy Recruit for (10%) Max Health 5 times during the duration of the cast',
+      description: 'Damage a Random Enemy Recruit for (10%) Max Health 3 times during the duration of the cast',
       icon: 'ra-hot-surface'
     },
   ],

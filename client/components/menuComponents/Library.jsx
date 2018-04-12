@@ -20,7 +20,7 @@ class Library extends Component {
     this.reset = this.reset.bind(this)
   }
   findByElement(element) {
-    const spellsByElement = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).map(name => spells[name]).filter(spell => spell.element == element)
+    const spellsByElement = Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).map(name => spells[name]).filter(spell => spell.element == element && !spell.reserved)
     if (spellsByElement.length) return spellsByElement[Math.floor(Math.random() * spellsByElement.length)]
   }
   solveOptions() {
@@ -73,8 +73,13 @@ class Library extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Library&nbsp; - <GoldIcon value={gold} /></p>
-          <button onClick={close} className="delete" aria-label="close"></button>
+          <span className="modal-card-title is-6 level">
+            <p className=" is-pulled-left">Library</p>
+            <p className=" is-pulled-right">
+              <GoldIcon value={gold} />
+              <button onClick={close} className="delete" aria-label="close"></button>
+            </p>
+          </span>
         </header>
         <section className="modal-card-body">
           {learntSpell != null
@@ -151,7 +156,7 @@ class Library extends Component {
                     </div>)}
                   </div>)
                   : Object.keys(spells).filter(spell => !this.props.spellBook.find(learned => learned.name == spell)).length != 0
-                  ? this.props.spellBook.length == 2 && this.props.recruits.length < 2
+                  ? this.props.spellBook.length <= 2 && this.props.recruits.length < 2
                     ? <button disabled className="is-danger is-large button is-fullwidth">Recruit another Party Member First</button>
                     : gold >= spellCost
                       ? <button onClick={this.showOptions} className="button is-large is-fullwidth">Learn a Spell! (<GoldIcon value={-1 * spellCost} />)</button>

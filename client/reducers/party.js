@@ -18,6 +18,31 @@ export default function party (state = [], action) {
         recruit.speed += recruit.speed * action.percentage
         return recruit
       })
+    case 'PERCENT_INCREASE_RECRUIT_HEALTH':
+      return newState.map(recruit => {
+        recruit.hp += recruit.hp * action.percentage
+        recruit.initHp += recruit.initHp * action.percentage
+        return recruit
+      })
+    case 'PERCENT_INCREASE_TARGET_RECRUIT_POWER':
+      if (!action.target) return state
+      target = newState.find(recruit => recruit.id == action.target.id)
+      if (!target) return state
+      target.power += target.power * action.percentage
+      return newState
+    case 'PERCENT_INCREASE_TARGET_RECRUIT_HEALTH':
+      if (!action.target) return state
+      target = newState.find(recruit => recruit.id == action.target.id)
+      if (!target) return state
+      target.hp += target.hp * action.percentage
+      target.initHp += target.initHp * action.percentage
+      return newState
+    case 'PERCENT_INCREASE_TARGET_RECRUIT_SPEED':
+      if (!action.target) return state
+      target = newState.find(recruit => recruit.id == action.target.id)
+      if (!target) return state
+      target.speed += target.speed * action.percentage
+      return newState
     case 'HEAL_FRIENDLY_TARGET':
       if (!action.target) return newState
       let target = newState.find(member => member.id == action.target.id)
@@ -51,7 +76,7 @@ export default function party (state = [], action) {
       return newState
     case 'REMOVE_EFFECT_FROM_TARGET':
       if (!action.target) return state
-      target = newState.find(member => member == action.target)
+      target = newState.find(member => member.id == action.target.id)
       if (!target) return state
       target.effects = target.effects.filter(effect => effect.name != action.effect.name)
       return newState
@@ -86,7 +111,7 @@ export default function party (state = [], action) {
       if (!target || !target.isAlive) return newState
       target.hp-=action.power
       return newState
-    case 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY':
+    case 'PERCENT_DAMAGE_ALL_FRIENDLY':
       newState = newState.map(member => {
         if (member.isAlive) member.hp-=Math.ceil(member.initHp * action.percentage)
         return member
@@ -146,6 +171,11 @@ export default function party (state = [], action) {
         if (member.id != action.target.id) member.power *= 1.1
         return member
       })
+    case 'BEAST_MASTER_START_BUFF':
+      newState.push(action.beast)
+      let master = newState.find(member => member.id == action.master.id)
+      master.petId = action.beast.id
+      return newState
     case 'INCREASE_RECRUIT_SPEED':
       if (!action.recruit) return
       target = newState.find(member => member.id == action.target.id)
@@ -160,6 +190,17 @@ export default function party (state = [], action) {
       target.isAlive = false
       target.effects = []
       console.log({newState, action});
+      return newState
+    case 'DEFUSE_BOMB':
+      if (!action.target) return state
+      target = newState.find(member => member.id == action.target.id)
+      if (!target) return state
+      let bomb = target.effects.find(effect => effect.name == 'Bomb')
+      if (!bomb) return state
+
+      bomb.colour = 'grey'
+      bomb.type = 'PERCENT_HEAL_ALL_FRIENDLY'
+
       return newState
     default: return state
   }

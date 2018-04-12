@@ -10,6 +10,7 @@ import Flaming_Furnace from './The_Foundry/Flaming_Furnace'
 import Cycling_Conveyer from './The_Foundry/Cycling_Conveyer'
 import Collapsing_Core from './The_Foundry/Collapsing_Core'
 import Trapped_Tunnel from './The_Foundry/Trapped_Tunnel'
+import Test from './Test'
 
 export default function (bossName) {
   switch(bossName) {
@@ -25,6 +26,7 @@ export default function (bossName) {
     case 'Cycling Conveyer': return Cycling_Conveyer
     case 'Collapsing Core': return Collapsing_Core
     case 'Trapped Tunnel': return Trapped_Tunnel
+    case 'Test': return Test
     default: return null
   }
 }

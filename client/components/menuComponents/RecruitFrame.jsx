@@ -21,7 +21,7 @@ class RecruitFrame extends React.Component {
     if (recruit.weapon_id) weapon = weapons.find(weapon => weapon.id == recruit.weapon_id)
     let availableWeapons = weapons.filter(other => {
       if (other == weapon) return false
-      return other.class == recruit.heroClass && other.level <= recruit.level && !recruits.find(rec => rec.weapon_id == other.id)
+      return other.class == recruit.heroClass && !recruits.find(rec => rec.weapon_id == other.id)
     })
     let dup = availableWeapons.reduce((obj, weapon) => {
       obj[weapon.name] = weapon
@@ -37,7 +37,7 @@ class RecruitFrame extends React.Component {
             <ClassIcon heroClass={recruit.heroClass} />
             <ZodiacIcon zodiac={recruit.zodiac} />
             <LevelIcon level={recruit.level} />
-            <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} />
+            <WeaponAvailableIcon amount={availableWeapons.length} hasWeapon={weapon} lowLevel={availableWeapons.filter(weapon => weapon.level > recruit.level).length}/>
           </td>
         </tr>
       <tr>

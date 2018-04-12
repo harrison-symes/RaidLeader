@@ -25,8 +25,13 @@ class RecruitmentCentre extends Component {
   }
   solveOptions() {
     const zodiacs = getZodiacs()
-    const classes = ['Priest', 'Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard', 'Necromancer']
+    const classes = ['Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard', 'Necromancer', 'Beast Master']
+
+    if (this.props.recruits.length > 1) {
+      classes.push('Priest')
+    }
     if (this.props.recruits.length > 3) classes.push('Paladin')
+
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
@@ -91,8 +96,13 @@ class RecruitmentCentre extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Recruit&nbsp; - <GoldIcon value={gold} /></p>
-          <button onClick={close} className="delete" aria-label="close"></button>
+          <span className="modal-card-title is-6 level">
+            <p className=" is-pulled-left">Recruitment</p>
+            <p className=" is-pulled-right">
+              <GoldIcon value={gold} />
+              <button onClick={close} className="delete" aria-label="close"></button>
+            </p>
+          </span>
         </header>
         <section className="modal-card-body">
           {recruited != null

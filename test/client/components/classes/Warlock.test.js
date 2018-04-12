@@ -35,7 +35,7 @@ test('Warlock attack basic success', () => {
     power: 10
   })
   expect(actions[1]).toEqual({
-    type: 'PERCENT_DAMAGE_DAMAGE_ALL_FRIENDLY',
+    type: 'PERCENT_DAMAGE_ALL_FRIENDLY',
     percentage: 0.05
   })
 })

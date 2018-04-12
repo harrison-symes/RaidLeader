@@ -7,12 +7,13 @@ import mapStateToProps from './utils/classStateMap'
 export class Bard extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
-    let {power, weapon_effect} = member
+    let {power, weapon_effect, speed} = member
     if (started && member.isAlive) {
-      let manaGain = 1
+      let manaChance = (1 / speed) > Math.random()
+      let manaGain = manaChance ? 3 : 0
       if (weapon_effect == 'loseMana') manaGain = -1
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
-      dispatch({type: 'PLAYER_GAIN_MANA', power: manaGain})
+      if (manaGain != 0) dispatch({type: 'PLAYER_GAIN_MANA', power: manaGain})
     }
   }
   startFighting () {

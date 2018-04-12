@@ -15,7 +15,7 @@ export default {
   bossTarget: null,
   description: "This Turtle has a strong shell. Really strong. Like, REALLY strong",
   goldReward: 300,
-  weaponRewards: ['Ancient Pearls', 'Glowing Pearl Talisman', 'Massive Shell'],
+  weaponRewards: ['Ancient Pearls', 'Glowing Pearl Talisman', 'Massive Shell', 'Turtle Aspect'],
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-spiral-shell',
