@@ -4,7 +4,6 @@ import {getAllTraits} from '../utils/traits'
 const allTraits = getAllTraits()
 
 export function receiveTraits(traits) {
-  console.log({traits});
   return {
     type: 'RECEIVE_TRAITS',
     traits: traits.map(trait => allTraits.find(allTrait => allTrait.name == trait.name))

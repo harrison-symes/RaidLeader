@@ -33,17 +33,14 @@ class BossRewardsModal extends Component {
       gems: this.solveBaseGems(),
       animationDone: false
     }
-    console.log("boss rewards", this.state);
     this.showRewards = this.showRewards.bind(this)
     this.addGem = this.addGem.bind(this)
     this.finishExpAnimation = this.finishExpAnimation.bind(this)
   }
   solveBaseGems() {
     const {party, currentLocation} = this.props
-    console.log({currentLocation});
     const levelMetCount = party.filter(recruit => recruit.level <= currentLocation.level).length
     const gemChance = (0.1 + (Math.random() + ((currentLocation.gemChance / currentLocation.max_party) * levelMetCount)))
-    console.log({gemChance});
     return Math.floor(gemChance)
   }
   addGem() {
@@ -65,11 +62,9 @@ class BossRewardsModal extends Component {
       reward = weapons[Math.floor(Math.random() * weapons.length)]
       reward = weaponSwitch[reward](boss.level)
       if (party.find(recruit => recruit.heroClass == reward['class'])) {
-        console.log("chose reward based on class", {party, reward, weapons: this.props.weapons});
         if (!this.props.weapons.find(weapon => weapon.name == reward.name)) return reward
       }
     }
-    console.log("Default Reward");
     return reward
   }
   componentDidMount() {

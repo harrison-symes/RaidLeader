@@ -32,10 +32,8 @@ export function loginUser (creds, cb) {
     dispatch(requestLogin(creds))
     return request('post', 'auth/login', creds)
       .then((response) => {
-        console.log({response})
         if (response.status === 403) {
           dispatch(loginError(response.body.message))
-          console.log({response});
           cb(response.body.message)
         } else {
           const userInfo = saveUserToken(response.body.token)
@@ -43,7 +41,6 @@ export function loginUser (creds, cb) {
           dispatch(receiveLogin(userInfo))
         }
       }).catch(err => {
-        console.log({err})
         cb(err.response.body.message)
       })
   }

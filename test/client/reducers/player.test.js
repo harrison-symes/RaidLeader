@@ -27,7 +27,8 @@ const fakeState = {
   isAlive: true,
   spells: fakeSpells,
   bonusEffect: 'test_weapon_effect',
-  level: 1
+  level: 1,
+  fatigue: 0
 }
 
 const fakeProgressState = {
@@ -53,7 +54,8 @@ const fakeProgressState = {
     onCooldown: true
   }],
   bonusEffect: 'test_weapon_effect',
-  level: 1
+  level: 1,
+  fatigue: 0
 }
 
 test('player initial state', () => {

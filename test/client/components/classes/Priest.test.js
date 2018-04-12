@@ -75,7 +75,7 @@ test('Priest partial overheal', () => {
 
   expect(actions[0]).toEqual({
     type: 'PHYSICAL_ATTACK_BOSS',
-    power: 2
+    power: 3
   })
 
   expect(actions[1]).toEqual({
@@ -104,7 +104,7 @@ test('Priest full overheal', () => {
 
   expect(actions[0]).toEqual({
     type: 'PHYSICAL_ATTACK_BOSS',
-    power: 20
+    power: 30
   })
 
   expect(actions[1]).toEqual({

@@ -40,28 +40,25 @@ class PartyFrame extends Component {
     }
   }
   pressUp(e) {
-    console.log("press up");
     const {party, friendlyTarget} = this.props
     if (friendlyTarget && friendlyTarget.id == 0) this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target: party.find(recruit => recruit.isAlive)})
+    else if (!friendlyTarget) this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target: party.find(recruit => recruit.isAlive)})
   }
   pressDown(e) {
-    console.log("press down");
     const {player, friendlyTarget} = this.props
     if (friendlyTarget && friendlyTarget.id != 0) this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target: player})
+    else if (!friendlyTarget) this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target: player})
   }
   pressLeft(e) {
-    console.log("press left");
     const {party, friendlyTarget} = this.props
     const aliveTargets = party.filter(recruit => recruit.isAlive)
     const currentIdx = friendlyTarget ? aliveTargets.findIndex(recruit => recruit.id == friendlyTarget.id) : -1
     let target = null
     if (currentIdx == -1 && aliveTargets.length > 0) target = aliveTargets[0]
     else if (aliveTargets.length > 0) target = currentIdx == 0 ? aliveTargets[aliveTargets.length - 1] : aliveTargets[currentIdx - 1]
-    console.log({target, currentIdx, friendlyTarget});
     if (target) this.props.dispatch({type: 'SELECT_FRIENDLY_TARGET', target})
   }
   pressRight(e) {
-    console.log("press right");
     const {party, friendlyTarget} = this.props
     const aliveTargets = party.filter(recruit => recruit.isAlive)
     const currentIdx = friendlyTarget ? aliveTargets.findIndex(recruit => recruit.id == friendlyTarget.id) : -1

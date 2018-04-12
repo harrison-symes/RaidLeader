@@ -285,7 +285,6 @@ class BossSpell extends Component {
       }
     }
     if (newCastTime >= this.props.spell.cast && this.castInterval) {
-      console.log({intervalId: this.castInterval});
       clearInterval(this.castInterval)
       if (!this.mounted) return clearInterval(this.cooldownInterval)
       this.castSwitch(target)
@@ -305,7 +304,6 @@ class BossSpell extends Component {
     this.setState({currentCd: 0, currentCastTime: 0, onCooldown: false})
   }
   componentDidMount() {
-    console.log(this.props.spell.name, 'mounting');
     this.mounted = true
     this.setState({
       onCooldown: false,
@@ -317,19 +315,16 @@ class BossSpell extends Component {
     clearInterval(this.cooldownInterval)
   }
   componentWillUnmount() {
-    console.log(this.props.spell.name, 'unmounting');
     this.mounted = false
     clearInterval(this.castInterval)
     clearInterval(this.cooldownInterval)
   }
   componentWillReceiveProps({spell, started, boss}) {
     if (!boss.spells.find(bossSpell => bossSpell.name == this.props.spell.name)) {
-      console.log("spell not found");
       clearInterval(this.castInterval)
       return clearInterval(this.cooldownInterval)
     }
     if (spell !== this.props.spell) {
-      console.log("Spell changed");
       this.setState({
         onCooldown: false,
         currentCD: 0,
