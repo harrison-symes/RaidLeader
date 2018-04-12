@@ -80,5 +80,20 @@ You should then see a screen that looks something like:
 ![Logged In, @Town](./readmeImages/raid-leader-town.png)
 
 
+(You may also run the tests, I can't promise that they will all pass, but that is fine)
+```
+npm test
+ - or -
+yarn test
+```
+
+The test output should look like this:
+
+![Tests Incomplete](./readmeImages/passing-tests-count.png)
+![Tests Coverage 1](./readmeImages/test-coverage-1.png)
+![Tests Coverage 2](./readmeImages/test-coverage-2.png)
+
+(I'll get on to fixing those when development is more stable.)
+
 **Have Fun!**
 ---
