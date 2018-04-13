@@ -39,7 +39,7 @@ test('getWeaponById (error)', () => {
 
 test('getPlayerGold', () => {
   const expected = {
-    gold: 10000
+    gold: 1000000
   }
   return playerDb.getPlayerGold(1, testDb)
     .then(actual => {
@@ -109,9 +109,10 @@ test('addWeapon (error)', () => {
 })
 
 test('getWeapons', () => {
+  const expectedLength = 10
   return playerDb.getWeapons(1, testDb)
     .then(actual => {
-      expect(actual).toHaveLength(8)
+      expect(actual).toHaveLength(expectedLength)
       actual.forEach(weapon => {
         expect(weapon.is_weapon).toBeTruthy()
         expect(weapon.user_id).toBe(1)

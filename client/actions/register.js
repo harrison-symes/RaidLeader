@@ -15,7 +15,6 @@ export function registerUserRequest ({user_name, password}, cb) {
         cb(null)
       })
       .catch(err => {
-        console.log({err});
         cb(err.response.body.message)
       })
   }

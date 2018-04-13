@@ -101,7 +101,6 @@ class PlayerSpell extends Component {
   castSwitch(target) {
     const {spell, dispatch, player, party, boss, traits} = this.props
     let power = this.props.player.power * spell.powerRatio
-    console.log({target, party});
     // if (target) target = party.find(other => other.id == target.id)
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget && spell.element == 'Life') dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
@@ -179,7 +178,6 @@ class PlayerSpell extends Component {
         let bossMana = boss.mana
         if (bossMana < 0) bossMana = 0
         else if (bossMana > spell.max) bossMana = 5
-        console.log({bossMana});
         if (!player.spells.find(spell => spell.element == 'Life')) dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: spell.percentage})
         dispatch({type: 'BOSS_GAIN_MANA', amount: bossMana * -1})
         return dispatch({type: 'PLAYER_GAIN_MANA', power: bossMana})
@@ -245,7 +243,6 @@ class PlayerSpell extends Component {
         for (var i = 0; i < player.spells.length; i++) {
           if (player.spells.find(playerSpell => playerSpell.element == player.spells[i].element && player.spells[i].name != spell.name && playerSpell.name != spell.name)) return
         }
-        console.log("no duplicate elements");
         return dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: spell.percentage})
       case 'Arcane Blast':
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})

@@ -91,7 +91,6 @@ export default function party (state = [], action) {
       target.effects = []
       return newState
     case 'SET_RECRUIT_PERCENTAGE':
-      console.log("recruit percentage set");
       newState=  newState.map(member => {
         if (member.isAlive) {
           member.hp = Math.ceil(member.initHp * (action.percentage / 100))
@@ -189,7 +188,6 @@ export default function party (state = [], action) {
       target.hp = 0
       target.isAlive = false
       target.effects = []
-      console.log({newState, action});
       return newState
     case 'DEFUSE_BOMB':
       if (!action.target) return state

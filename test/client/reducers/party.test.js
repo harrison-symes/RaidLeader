@@ -539,8 +539,8 @@ test('MONK_START_BUFF', () => {
     type: 'MONK_START_BUFF',
     target: fakeParty[0]
   })
-  let expected = fakeParty[0].speed + (0.5 * (fakeParty.length - 1))
-  expect(actual[0].speed).toBe(expected )
+  let expected = fakeParty[0].power + (fakeParty[0].power * 0.1 * (fakeParty.length - 1))
+  expect(actual[0].power).toBe(expected )
 })
 
 test('MONK_START_BUFF (bigger party)', () => {
@@ -550,8 +550,8 @@ test('MONK_START_BUFF (bigger party)', () => {
     type: 'MONK_START_BUFF',
     target: fakeParty[0]
   })
-  let expected = initial[0].speed + (0.5 * (initial.length - 1))
-  expect(actual[0].speed).toBe(expected )
+  let expected = initial[0].power + (fakeParty[0].power * 0.1 * (initial.length - 1))
+  expect(actual[0].power).toBe(expected )
 })
 
 test('WARRIOR_START_BUFF', () => {

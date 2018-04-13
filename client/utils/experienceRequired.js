@@ -38,6 +38,3 @@ module.exports = {
   solveExperienceNeeded,
   experienceForLevel
 }
-
-// console.log(solveLevelByExperience(500));
-// console.log(solveLevelByExperience(15000));

@@ -34,16 +34,17 @@ const party = [
 test('Priest startCast success', (done) => {
   const store = mockStore()
   Priest.prototype.render = () =>  <div></div>
-
+  jest.useFakeTimers();
   const mockCall = jest.fn()
   mockCall()
   Priest.prototype.findTarget = () => {
     mockCall()
     expect(mockCall.mock.calls).toHaveLength(2)
-    const timestamps = mockCall.mock.timestamps
-    const timeout = timestamps[1] - timestamps[0]
-    expect(timeout < 1100).toBeTruthy()
-    expect(timeout > 1000).toBeTruthy()
+    expect(setTimeout).toHaveBeenCalledTimes(1)
+    // const timestamps = mockCall.mock.timestamps
+    // const timeout = timestamps[1] - timestamps[0]
+    // expect(timeout < 1100).toBeTruthy()
+    // expect(timeout > 1000).toBeTruthy()
     done()
   }
 
@@ -54,6 +55,7 @@ test('Priest startCast success', (done) => {
   />)
 
   wrapper.instance().startCast()
+  jest.advanceTimersByTime(1000);
 
   const actions = store.getActions()
 

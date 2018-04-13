@@ -412,24 +412,27 @@ test('ROGUE_START_BUFF (doesnt start at max hp)', () => {
 
 test('WARLOCK_START_BUFF (with armor)', () => {
   const actual = reducer(fakeBoss, {
-    type: 'WARLOCK_START_BUFF',
-    power: 12
+    type: 'WARLOCK_START_BUFF'
   })
   const expected = {
     ...fakeBoss,
-    armor: fakeBoss.armor - 12
+    armor: fakeBoss.armor -= fakeBoss.armor * 0.1
   }
   expect(actual).toEqual(expected)
 })
 
 test('WARLOCK_START_BUFF (over armor)', () => {
-  const actual = reducer(fakeBoss, {
-    type: 'WARLOCK_START_BUFF',
-    power: 100
+  const actual = reducer({
+    ...fakeBoss,
+    armor: 0,
+    initArmor: 0
+  }, {
+    type: 'WARLOCK_START_BUFF'
   })
   const expected = {
     ...fakeBoss,
-    armor: 0
+    armor: 0,
+    initArmor: 0
   }
   expect(actual).toEqual(expected)
 })

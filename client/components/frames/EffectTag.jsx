@@ -18,9 +18,7 @@ export class EffectTag extends Component {
       if (!party.find(p => p.id == target.id).effects.find(eff => eff.name == effect.name)) return
       let ticks = this.state.ticks
       ticks++
-      console.log({effect, ticks});
       if (ticks == effect.tickRate) {
-        console.log(effect.name, "Explode");
         dispatch({type: effect.type, target, power: effect.power, percentage: effect.percentage})
         ticks = 0
       } else {

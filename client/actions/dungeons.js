@@ -10,7 +10,6 @@ export function receiveDungeonsAction (dungeons) {
     dungeons: dungeons.map(dungeon => {
       // dungeon = dungeonInfo(dungeon.name, dungeon.isCompleted)
       let newDungeon = dungeonInfo(dungeon.name, dungeon.isCompleted)
-      console.log({newDungeon});
       newDungeon.bosses = newDungeon.bosses.map(boss => bosses(boss))
       newDungeon.type = 'Dungeon'
       newDungeon.id = dungeon.id

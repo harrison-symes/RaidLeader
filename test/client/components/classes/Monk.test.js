@@ -18,6 +18,12 @@ const boss = {
   bossTarget: member
 }
 
+const fakeParty = [
+  {},
+  {},
+  member
+]
+
 test('Monk attack basic success', () => {
   const store = mockStore()
   Monk.prototype.render = function () {
@@ -28,6 +34,7 @@ test('Monk attack basic success', () => {
     member={clone(member)}
     started={true}
     dispatch={store.dispatch}
+    party={fakeParty}
   />)
   wrapper.instance().finishCast()
 
@@ -40,8 +47,8 @@ test('Monk attack basic success', () => {
     power: 10
   })
   expect(actions[1]).toEqual({
-    type: 'PERCENT_HEAL_ALL_FRIENDLY',
-    percentage: 0.1
+    type: 'HEAL_ALL_FRIENDLY',
+    power: member.power / fakeParty.length
   })
 })
 
@@ -83,6 +90,7 @@ test('Monk attack taunt basic success', () => {
     member={fakeMember}
     started={true}
     dispatch={store.dispatch}
+    party={fakeParty}
   />)
   wrapper.instance().finishCast()
 
@@ -99,8 +107,8 @@ test('Monk attack taunt basic success', () => {
     power: 10
   })
   expect(actions[2]).toEqual({
-    type: 'PERCENT_HEAL_ALL_FRIENDLY',
-    percentage: 0.1
+    type: 'HEAL_ALL_FRIENDLY',
+    power: member.power / fakeParty.length
   })
 })
 

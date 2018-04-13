@@ -77,7 +77,7 @@ module.exports = {
     icon: 'ra-sprout'
   }),
   ['Staff of Eternal Flame']: (level, id) => ({
-    name: 'Cleansed Staff of the Woods',
+    name: 'Staff of Eternal Flame',
     type: 'Weapon',
     level,
     id,
