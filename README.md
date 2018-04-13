@@ -89,9 +89,9 @@ yarn test
 
 The test output should look like this:
 
-![Tests Incomplete](./readmeImages/passing-tests-count.png)
-![Tests Coverage 1](./readmeImages/test-coverage-1.png)
-![Tests Coverage 2](./readmeImages/test-coverage-2.png)
+![Tests Incomplete](./readmeImages/passing-tests.png)
+![Tests Coverage 1](./readmeImages/tests-coverage-1.png)
+![Tests Coverage 2](./readmeImages/tests-coverage-2.png)
 
 (I'll get on to fixing those when development is more stable.)
 
