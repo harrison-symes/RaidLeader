@@ -28,18 +28,18 @@ var colors = {
 
 const life = [
   {
-    name: 'Blossom',
+    name: 'Renew',
     tier: 1,
     gemCost: 1,
-    description: 'Learn the Spell "Blossom"',
+    description: 'Learn the Spell "Renew"',
     isSpell: true,
     element: 'Life',
     requiredTrait: null,
-    icon: spells['Blossom'].icon,
-    color: spells['Blossom'].color,
-    background: spells['Blossom'].background,
+    icon: spells['Renew'].icon,
+    color: spells['Renew'].color,
+    background: spells['Renew'].background,
     element: 'Life',
-    spell: spells['Blossom']
+    spell: spells['Renew']
   },
   {
     name: 'Ingrain',
@@ -96,18 +96,18 @@ const life = [
 
 const shadow = [
   {
-    name: 'Life Funnel',
+    name: 'Life Tap',
     tier: 1,
     gemCost: 1,
-    description: 'Learn the Spell "Life Funnel"',
+    description: 'Learn the Spell "Life Tap"',
     isSpell: true,
     element: 'Shadow',
     requiredTrait: null,
-    icon: spells['Life Funnel'].icon,
-    color: spells['Life Funnel'].color,
-    background: spells['Life Funnel'].background,
+    icon: spells['Life Tap'].icon,
+    color: spells['Life Tap'].color,
+    background: spells['Life Tap'].background,
     element: 'Shadow',
-    spell: spells['Life Funnel']
+    spell: spells['Life Tap']
   },
   {
     name: 'Empower',
@@ -164,18 +164,18 @@ const shadow = [
 
 const arcane = [
   {
-    name: 'Evocate',
+    name: 'Arcane Explosion',
     tier: 1,
     gemCost: 1,
-    description: 'Learn the Spell "Evocate"',
+    description: 'Learn the Spell "Arcane Explosion"',
     isSpell: true,
     element: 'Arcane',
     requiredTrait: null,
-    icon: spells['Evocate'].icon,
-    color: spells['Evocate'].color,
-    background: spells['Evocate'].background,
+    icon: spells['Arcane Explosion'].icon,
+    color: spells['Arcane Explosion'].color,
+    background: spells['Arcane Explosion'].background,
     element: 'Arcane',
-    spell: spells['Evocate']
+    spell: spells['Arcane Explosion']
   },
   {
     name: 'Light Feet',
