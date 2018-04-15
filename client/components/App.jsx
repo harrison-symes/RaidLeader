@@ -18,6 +18,8 @@ import {getExperience} from '../actions/experience'
 import {getGems} from '../actions/gems'
 import {getTraits} from '../actions/traits'
 
+import '../../sass/main.scss'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
