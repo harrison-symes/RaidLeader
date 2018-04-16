@@ -3,32 +3,32 @@ export function MenuBackground (dungeon) {
     case 'The Hunt': return {
       icon: 'ra-dragon',
       colour: '#b88d8d',
-      background: 'https://www.transparenttextures.com/patterns/black-scales.png'
+      background: '/images/backgrounds/the-hunt.png'
     }
     case 'The Cursed Wilds': return {
       icon: 'ra-pine-tree',
       colour: '#00633a',
-      background: 'https://www.transparenttextures.com/patterns/gray-floral.png'
+      background: '/images/backgrounds/the-wilds.png'
     }
     case 'The Swamp': return {
       icon: 'ra-ocean-emblem',
       colour: '#47294a',
-      background: 'https://www.transparenttextures.com/patterns/asfalt-light.png'
+      background: '/images/backgrounds/the-swamp.png'
     }
     case 'The Foundry': return {
       icon: 'ra-forging',
       colour: '#c23f18',
-      background: 'https://www.transparenttextures.com/patterns/diagmonds.png'
+      background: '/images/backgrounds/the-foundry.png'
     }
     case 'The Armory': return {
       icon: 'ra-all-for-one',
       colour: '#302b30',
-      background: 'https://www.transparenttextures.com/patterns/brushed-alum.png'
+      background: '/images/backgrounds/the-armory.png'
     }
     case 'The Lair': return {
       icon: 'ra-uncertainty',
       colour: '#42520f',
-      background: 'https://www.transparenttextures.com/patterns/pyramid.png'
+      background: '/images/backgrounds/the-lair.png'
     }
     default: return {
       colour: 'white',

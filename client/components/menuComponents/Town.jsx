@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 
 import {logoutUser} from '../../actions/logout'
 
+import {get, set} from '../../utils/localstorage'
+
 import RecruitmentCentre from './RecruitmentCentre'
 import Library from './Library'
 import TrainingCentre from './TrainingCentre'
@@ -30,6 +32,7 @@ class Town extends Component {
     let close = () => this.toggleModal(null)
     close = close.bind(this)
     switch (showModal) {
+      case 'Logout': return this.renderLogoutConfirmModal()
       case 'Recruitment Centre': return <RecruitmentCentre close={close} />
       case 'Library': return <Library close={close} />
       case 'Training Centre': return <TrainingCentre close={close} />
@@ -40,6 +43,40 @@ class Town extends Component {
       case 'My Spells': return <MySpells close={close} />
       default: return null
     }
+  }
+  renderLogoutConfirmModal() {
+    let recruitsPending = !!JSON.parse(get('offeredRecruits'))
+    let spellsPending = !!JSON.parse(get('offeredSpells'))
+
+    return <div className={`Modal modal is-active`} >
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Logout</p>
+          <button onClick={() => this.toggleModal(null)} className="delete" aria-label="close"></button>
+        </header>
+        <section className="modal-card-body">
+          <div className="has-text-centered">
+            {(recruitsPending || spellsPending )
+              ? <div>
+                {recruitsPending && <p className="subtitle is-2">You still have some Recruits waiting at the Recruitment Centre!</p>}
+                {spellsPending && <p className="subtitle is-2">You still have some Spells waiting at the Library!</p>}
+              </div>
+              : <div className="has-text-centered">
+                <p className="subtitle is-2">Make sure you don't forget your password!</p>
+                <span className="columns">
+                  <button to="/" onClick={() => this.toggleModal(null)} className="column is-9 button is-primary is-outlined is-large">Stay</button>
+                  <Link to="/" onClick={() => this.props.dispatch(logoutUser())} className="column is-3 button is-fullwidth is-danger is-outlined is-large">(Logout)</Link>
+                </span>
+              </div>
+            }
+          </div>
+        </section>
+        <footer className="modal-card-foot">
+          <button onClick={() => this.toggleModal(null)} className="button is-large is-warning is-outlined is-fullwidth">Cancel</button>
+        </footer>
+      </div>
+    </div>
   }
   renderTownMenuButton (name, icon, required) {
     var closed
@@ -101,20 +138,20 @@ class Town extends Component {
           {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
-          <Link to="/" className="button is-large is-fullwidth is-danger is-outlined" onClick={() => this.props.dispatch(logoutUser())}>
+          <a title={"Don't do it!"} onClick={() => this.toggleModal('Logout')} className="column is-6 button is-large is-danger is-outlined">
+            <span className="icon is-large">
+              <i className={`ra ra-turd ra-lg`}></i>
+            </span>
+            &nbsp;Logout&nbsp;
             <span className="icon is-large">
               <i className={`ra ra-turd ra-lg` }></i>
             </span>
-            <span>&nbsp;Logout&nbsp;</span>
-            <span className="icon is-large">
-              <i className={`ra ra-turd ra-lg` }></i>
-            </span>
-          </Link>
+          </a>
           {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
 
         </div>
       </div>
-      <Link to="/new" className="button is-large is-fullwidth is-dark Info-Button is-outlined">
+      <Link to="/new" className="button is-large is-fullwidth is-primary Info-Button is-outlined is-inverted">
         <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
           <span>&nbsp;What's New?&nbsp;</span>
         <span><i className="ra ra-scroll-unfurled ra-lg" /></span>
