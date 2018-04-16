@@ -96,7 +96,7 @@ class BlackMarketWeapons extends Component {
                   <hr />
                   {equippedBy.map(recruit => <button onClick={()=>this.unEquip(recruit)} className="button is-fullwidth is-warning is-outlined">Unequip from {recruit.name}</button>)}
                 </div>
-                : <button onClick={this.sellWeapon} className="button is-success is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
+                : <button onClick={this.sellWeapon} className="button is-warning is-outlined">Sell &nbsp; <GoldIcon value={`+${weapon.value}`} /></button>
             }
           </div>}
         </div>)}

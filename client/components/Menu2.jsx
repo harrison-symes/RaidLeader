@@ -103,7 +103,7 @@ class Menu extends React.Component {
   }
   renderMenuLink (name, icon) {
     const {pathname} = this.props.location
-    return <a onClick={() => this.showModal(name)} className="button is-fullwidth is-large is-warning is-outlined">
+    return <a onClick={() => this.showModal(name)} className="button is-fullwidth is-large is-info is-outlined">
       <span className="icon">
         <i className={`ra ${icon} ra-lg`}></i>
       </span>
@@ -127,11 +127,11 @@ class Menu extends React.Component {
         <section className="modal-card-body">
           <div className="has-text-centered">
             <p className="subtitle is-4">If you travel to Town, you will lose all progress for your current dungeon</p>
-            <Link to="/" onClick={this.goToTown} className="button is-warning is-outlined is-large">Travel Anyway</Link>
+            <Link to="/" onClick={this.goToTown} className="button is-info is-outlined is-large">Travel Anyway</Link>
           </div>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={() => this.showModal(null)} className="button is-large is-info is-outlined is-fullwidth">Cancel</button>
+          <button onClick={() => this.showModal(null)} className="button is-large is-warning is-outlined is-fullwidth">Cancel</button>
         </footer>
       </div>
     </div>
@@ -146,7 +146,7 @@ class Menu extends React.Component {
       {this.modalSwitch()}
       <div className="Town-Buttons Menu-Buttons">
         <div className="columns">
-          <button className="button column is-fullwidth is-info is-large is-outlined" onClick={() => this.showModal('Travel To Town')}>Travel to Town</button>
+          <button className="button column is-fullwidth is-danger is-large is-outlined" onClick={() => this.showModal('Travel To Town')}>Travel to Town</button>
           <DungeonRewards />
           {this.renderStartGameButton()}
         </div>

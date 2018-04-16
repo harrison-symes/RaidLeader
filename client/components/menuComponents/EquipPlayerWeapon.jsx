@@ -191,7 +191,7 @@ class PlayerWeapon extends React.Component {
           {this.renderContent()}
         </section>
         <footer className="modal-card-foot">
-          <button onClick={this.props.close} className="button is-large is-info is-outlined is-fullwidth">Back</button>
+          <button onClick={this.props.close} className="button is-large is-dark is-outlined is-fullwidth">Back</button>
         </footer>
       </div>
     </div>

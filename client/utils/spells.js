@@ -162,7 +162,8 @@ module.exports = {
     icon: 'ra-cut-palm',
     color: colors.darkPurple,
     background: colors.faintPink,
-    element: 'Shadow'
+    element: 'Shadow',
+    reserved: true
   },
   'Evocate': {
     id: 10,
@@ -173,7 +174,6 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
-    reserved: true,
     description: 'Restore 10% Mana',
     icon: 'ra-player-teleport',
     color: colors.darkBlue,
@@ -243,7 +243,8 @@ module.exports = {
     icon: 'ra-sprout',
     color: colors.lightOlive,
     background: colors.darkGreen,
-    element: 'Life'
+    element: 'Life',
+    reserved: true
   },
   'Greater Renew': {
     id: 15,
@@ -515,7 +516,6 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow',
-    reserved: true
   },
   'Arcane Torrent': {
     id: 31,
@@ -546,7 +546,6 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life',
-    reserved: true
   },
   'Chosen Champion': {
     id: 33,
@@ -655,7 +654,8 @@ module.exports = {
     icon: 'ra-bomb-explosion',
     color: colors.darkBlue,
     background: colors.lightBlue,
-    element: 'Arcane'
+    element: 'Arcane',
+    reserved: true
   },
   'Bomb Toss': {
     id: 40,

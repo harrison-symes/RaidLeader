@@ -81,7 +81,7 @@ class MyRecruits extends Component {
           {this.renderContent()}
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Back</button>
+          <button onClick={close} className="button is-large is-dark is-outlined is-fullwidth">Back</button>
         </footer>
       </div>
     </div>
