@@ -139,7 +139,7 @@ class RecruitModal extends Component {
           </div>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={close} className="button is-large is-info is-outlined is-fullwidth">Close</button>
+          <button onClick={close} className="button is-large is-dark is-outlined is-fullwidth">Close</button>
         </footer>
       </div>
     </div>

@@ -1,0 +1,13 @@
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+//
+$primary: #BE8AD1;
+$success: #88B56A;
+$info: #70B7D8;
+$warning: #BF9B59;
+$danger: #912D2D;
+$dark: #3F3F3F;
+
+@import "~bulma/sass/utilities/derived-variables";
+
+@import '~bulma/bulma.sass';

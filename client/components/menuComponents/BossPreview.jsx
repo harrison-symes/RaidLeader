@@ -96,7 +96,7 @@ class BossPreview extends React.Component {
           {boss.hasOwnProperty('stageThree') && this.stageData('Three')}
         </section>
         <footer className="modal-card-foot">
-          <button onClick={back} className="button is-fullwidth is-large is-outlined is-info">Cancel</button>
+          <button onClick={back} className="button is-fullwidth is-large is-outlined is-dark">Cancel</button>
           <button onClick={() => this.targetBoss(boss)} className={`button is-large ${colour == 'is-success' ? 'is-outlined' : ''} is-fullwidth ${colour}`} disabled={colour != 'is-success'}>
             {targetBoss != boss
               ? colour != 'is-success'

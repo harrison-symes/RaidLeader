@@ -130,7 +130,7 @@ class BossRewardsModal extends Component {
 
               {weaponReward && this.weaponInfo(weaponReward)}
             </div>
-            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="fas fa-gift" /></button>
+            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="fas fa-gift fs-lg" /></button>
           }
         </section>
         <footer className="modal-card-foot">
