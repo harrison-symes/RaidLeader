@@ -22,7 +22,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
   min-height: 100vh;
   background-color: #8f7651;
   background-repeat: repeat;
-  background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
+  background-image: url("/images/background/town.png");
   min-height: 100vh;
   padding-top: 2%;
   margin: auto;
@@ -48,7 +48,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
     border: 2px solid black;
     padding: 1%;
     background-color: #b88e69;
-    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    background-image: url("/images/backgrounds/town-bricks.png");
   }
 
   .Resources {
@@ -65,7 +65,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
     margin: auto;
     margin-top: 0;
     background-color: #b88e69;
-    background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+    background-image: url("/images/backgrounds/town-wood.png");
 
     .Town-Button-Div {
       margin:auto;
@@ -110,7 +110,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
     }
     .modal-card-body {
       background-color: #b88e69;
-      background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+      background-image: url("/images/backgrounds/modal-bricks.png");
       hr {
         background-color: #b88e69;
       }
@@ -119,7 +119,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
       }
       .Info-Button {
         background-color: #f7c48c;
-        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        background-image: url("/images/backgrounds/game.png");
         height: 3rem;
         width: 10vw;
         min-width: 100px;
@@ -134,18 +134,18 @@ $ra-font-path: '~rpg-awesome/fonts/';
       }
       .box {
         background-color: #f7c48c;
-        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        background-image: url("/images/backgrounds/game.png");
       }
       .table {
         .tbody {
           background-color: #b88e69;
-          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+          background-image: url("/images/backgrounds/town-wood.png");
           cursor: move;
           margin: 5px;
         }
         .tbody:hover {
           background-color: #f7c48c;
-          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+          background-image: url("/images/backgrounds/town-wood.png");
         }
         .Table-Button {
           background-color: #f7c48c;
@@ -159,7 +159,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
         .Drag-And-Drop {
           overflow: hidden;
           max-width: 100%;
-          background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+          background-image: url("/images/backgrounds/town-wood.png");
           .DnD-Title {
             max-height: 15vh;
             position: fixed;
@@ -175,7 +175,7 @@ $ra-font-path: '~rpg-awesome/fonts/';
     }
     .modal-card-head, .modal-card-foot {
       background-color: #b88e69;
-      background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+      background-image: url("/images/backgrounds/town-bricks.png");
     }
     .button, .input {
       font-size: 2rem;
@@ -202,11 +202,11 @@ $ra-font-path: '~rpg-awesome/fonts/';
 
 .Game {
   background-color: #f7c48c;
-  background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+  background-image: url("/images/backgrounds/game.png");
   max-height: 100vh;
   height: 100vh;
   // background-color: white;
-  // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  // background-image: url("/images/backgrounds/player.png");
   .PlayerFrame {
     border-top: 10px white;
     position: fixed;
@@ -217,21 +217,21 @@ $ra-font-path: '~rpg-awesome/fonts/';
     width: 100vw;
     // background-color: #b8b8b8;
     // // background-color: #b88e69;
-    // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
-    // background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    // background-image: url("/images/backgrounds/player.png");
+    // background-image: url("/images/backgrounds/town-bricks.png");
     .box {
       margin-bottom: 10%;
       background-color: #b8b8b8;
       // background-color: #f7c48c;
-      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
-      // background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+      background-image: url("/images/backgrounds/player.png");
+      // background-image: url("/images/backgrounds/town-wood.png");
     }
     .PlayerSpellBarContainer {
       height: 30vh;
       width: 100%;
       margin-bottom: 10px;
       background-color: #b8b8b8;
-      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+      background-image: url("/images/backgrounds/player.png");
       button:focus {outline:0;}
       .is-success {
         background-color: lightgreen;
