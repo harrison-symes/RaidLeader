@@ -17,6 +17,10 @@ $ra-font-path: '~rpg-awesome/fonts/';
 //import react-tippy tooltip styling
 @import '~react-tippy/dist/tippy.css';
 
+.Patch-Note {
+  background-color: #b88e69;
+  background-image: url("/images/background/town.png");
+}
 
 .Town {
   min-height: 100vh;

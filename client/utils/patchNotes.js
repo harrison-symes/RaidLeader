@@ -8,7 +8,7 @@ module.exports = [
     updates: [
       {
         title: 'New Class: Beast Master!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p><b>The Beast Master</b> is a <b>Mid Health</b>, <b>Mid Power</b>, <b>Mid Speed</b> Recruit.</p>
           <p><b>Starting Buff</b>: {startingBuff('Beast Master')}</p>
           <p><b>Trait</b>: {classTraits('Beast Master')}</p>
@@ -17,7 +17,7 @@ module.exports = [
       },
       {
         title: 'Database Reset!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p><b>Apologies for destroying your precious progress!</b></p>
           <p>During development this will need to happen from time to time, but I am putting measures in place to prevent this being necessary in the future.</p>
           <p>For those of you with Level 6 Armies, this is a good chance to go through and retest the game more fairly :)</p>
@@ -26,7 +26,7 @@ module.exports = [
       },
       {
         title: 'Player Leveling',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>A new feature is in the works, and it involves gaining <b>experience</b> and <b>leveling</b> up your Player Character.</p>
           <p>Leveling will provide you with a special currencey which you can use to purchase traits / upgrades.</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - Leveling and experience gains are functional, and you will gain <b>1 Gem</b> every time you level up.</p>
@@ -39,7 +39,7 @@ module.exports = [
       },
       {
         title: 'Mage Tower Added!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>The <b>Mage Tower</b> is a new Menu you will find in <b>Town</b></p>
           <p>At the Mage Tower you can spend the <b>Gems</b> that you have earned on your adventure</p>
           <p>You will find <b>4</b> different <b>"Trees"</b>, one for each element</p>
@@ -51,7 +51,7 @@ module.exports = [
       },
       {
         title: 'Speed Scaling Changes',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>Some Classes, namely <b>Bard</b> and <b>Shaman</b> have very powerful Traits at the cost of having low Power / Speed.</p>
           <p>This meant that a Shaman with a <b>+20% Speed Zodiac</b> was amazing, but a <b>-20% Speed Zodiac</b> was terrible.</p>
           <p>To fix this, I have changed the <b>Traits</b> of the <b>Bard and Shaman</b></p>
@@ -65,7 +65,7 @@ module.exports = [
       },
       {
         title: 'New Effects; Stunned and Bomb',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>In Preparation for developing <b>The Armory</b>, I've been hard at work on several New and Interesting Effects</p>
           <br />
           <p><b>Stunned:</b> A Stunned Recruit cannot Attack. The Recruit's Attack timer will continue to 'tick' during the stun, but any <b>Completed</b> Attacks will not happen while <b>Stunned</b></p>
@@ -82,7 +82,7 @@ module.exports = [
     updates: [
       {
         title: 'New Dungeon: The Foundry',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>4 new Bosses await you in <b>The Foundry</b>!</p>
           <p>These Encounters will change their abilities and mechanics <b>DURING</b> the fight, so you better be ready for what these Machines have up their sleeves.</p>
           <p>Grab your best <b>3 Recruits (at Level 3)</b> and <b>3 Spells</b> and dive in! (There's plenty of new Loot to find!).</p>
@@ -90,14 +90,14 @@ module.exports = [
       },
       {
         title: 'Tutorial!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>If you ever had trouble learning <b>How to Play</b>, or you're worried you might have been missing something, there is now a <b>Tutorial</b>!</p>
           <p>The Tutorial will be Presented to you upon Registering for the first time. Check it out!</p>
         </div>
       },
       {
         title: 'Key Controls!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>Sick of frantically clicking back and forth between your Recruits and your Spells? Worry no more!</p>
           <p>You can now cast <b>Spells</b> using the <b>Number Keys</b>:</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>(1)</b> will cast the first spell on your <b>Spell Bar</b>, <b>(2)</b> will cast your second spell, etc...</p>
@@ -109,7 +109,7 @@ module.exports = [
       },
       {
         title: 'New Class: The Bard!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p><b>The Bard</b> is a <b>Mid Health</b>, <b>Mid Power</b>, <b>Mid Speed</b> Recruit.</p>
           <p><b>Starting Buff</b>: {startingBuff('Bard')}</p>
           <p><b>Trait</b>: {classTraits('Bard')}</p>
@@ -117,7 +117,7 @@ module.exports = [
       },
       {
         title: 'New Class: The Necromancer!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p><b>The Necromancer</b> is a <b>Low Health</b>, <b>Mid Power</b>, <b>Mid Speed</b> Recruit.</p>
           <p><b>Starting Buff</b>: {startingBuff('Necromancer')}</p>
           <p><b>Trait</b>: {classTraits('Necromancer')}</p>
@@ -125,7 +125,7 @@ module.exports = [
       },
       {
         title: 'Spell Changes!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>Keep an eye out on <b>Spells</b> as most of them have changed, some in bigger ways than others.</p>
           <p>There are also a <b>LOT</b> of new spells available for you to learn, check them out!</p>
           <p>Whenever you are offered <b>Spells</b> at the <b>Library</b>, you will now be offered a choice from each <b>Element</b> (Life, Fire, Shadow and Arcane). This should make it easier to start building synergies.</p>
@@ -134,7 +134,7 @@ module.exports = [
       },
       {
         title: 'Recruit Changes!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>You will no longer be offered <b>Paladin</b> Recruits for your first few Recruit choice.s</p>
           <p>If you don't like the Recruits you are offered, you may <b>ReRoll</b> the offerings for a small price.</p>
           <p>Many Weapons and Class stats have been tweaked so be sure to keep and eye out.</p>
@@ -142,7 +142,7 @@ module.exports = [
       },
       {
         title: 'Better Loot!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>Not getting any <b>Weapons</b> for the Classes you have chosen for your Party sucks</p>
           <p>When you defeat a Boss, the Boss has several Weapons that they can Drop for you, one is Randomly Chosen</p>
           <p>Now, when <b>Randomly</b> choosing which Weapon you will receive, you are <b>3x more likely</b> to receive a Weapon for a Class that was in your Party (if Available)</p>
@@ -152,7 +152,7 @@ module.exports = [
       },
       {
         title: 'Monk Reworked!',
-        description: <div className="content is-large">
+        description: <div className="content is-medium has-text-dark">
           <p>Across the Board the have been changes to the power of AOE (Area of Effect) Damage and Healing</p>
           <p>Overall these changes are intended to make the gameplay more interesting, and to make Targeted Spells continue to feel useful as the size of your Party starts to grow.</p>
           <p>The Monk's previous <b>Trait</b> was to <b>Heal All Recruits for (10%) of their Max Health whenever the Monk attacks</b></p>
