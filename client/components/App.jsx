@@ -9,6 +9,7 @@ import Town from './menuComponents/Town'
 import Welcome from './Welcome'
 import WhatsNew from './WhatsNew'
 
+import wakeUp from '../actions/wakeUp'
 import {getRecruits} from '../actions/recruits'
 import {getSpells} from '../actions/spells'
 import {getDungeons} from '../actions/dungeons'
@@ -30,6 +31,9 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.requestData(this.props)
+    setInterval(() => {
+      this.props.dispatch(wakeUp())
+    }, 1800000)
   }
   requestData(props) {
     if (props.auth.isAuthenticated) {

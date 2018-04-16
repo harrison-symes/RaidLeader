@@ -85,4 +85,9 @@ router.post('/traits', decode, (req, res) => {
     .catch(err => console.log({err}))
 })
 
+router.get('/wake', (req, res) => {
+  console.log("wake up");
+  res.sendStatus(200)
+})
+
 module.exports = router
