@@ -20,11 +20,10 @@ $ra-font-path: '~rpg-awesome/fonts/';
 
 .Town {
   min-height: 100vh;
+  padding-top: 1%;
   background-color: #8f7651;
   background-repeat: repeat;
   background-image: url("/images/background/town.png");
-  min-height: 100vh;
-  padding-top: 2%;
   margin: auto;
 
   .Town-Banner {
