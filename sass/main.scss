@@ -1,21 +1,22 @@
-@import '~react-tippy/dist/tippy.css';
 
-// @import '~rpg-awesome/fonts/rpg-awesome.scss';
+//import font awesome
 @import '~font-awesome/scss/_variables.scss';
 $fa-font-path: '~font-awesome/fonts/';
 @import '~font-awesome/scss/font-awesome.scss';
 
+//import rpg awesome
 @import '~rpg-awesome/scss/_variables.scss';
 $ra-font-path: '~rpg-awesome/fonts/';
 @import '~rpg-awesome/scss/rpg-awesome.scss';
 
-@import
-	'~bulma/sass/utilities/initial-variables';
 
-// $success: #8D6DC4;
+//import bulma
+@import './bulma/_my-bulma.scss';
 
-@import
-  '~bulma/bulma';
+
+//import react-tippy tooltip styling
+@import '~react-tippy/dist/tippy.css';
+
 
 .Town {
   min-height: 100vh;

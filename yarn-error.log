@@ -8822,7 +8822,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit signal: SIGHUP
   Command: sh
   Arguments: -c nodemon --watch server server/index & webpack --watch
   Directory: /home/symeshjb/workspace/raidLeader
