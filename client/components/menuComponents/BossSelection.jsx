@@ -31,7 +31,7 @@ class BossSelection extends React.Component {
         </header>
         <section className="modal-card-body">
           <div className="has-text-centered" id="bossModalID">
-            {currentLocation.bosses.map((boss, i) => <i key={i} className={`title has-text-${i + 1 <= defeated.length ? 'success' : 'danger'} is-2 icon ${i + 1 <= defeated.length ? 'ra-broken-skull' : 'ra-skull'} ra ra-fw`} />)}
+            {currentLocation.bosses.map((boss, i) => <i key={i} className={`title has-text-${i + 1 <= defeated.length ? 'success' : 'danger'} is-2 icon ${i + 1 <= defeated.length ? 'ra-broken-skull' : 'ra-skull'} ra ra-fw is-large`} />)}
             {defeated.length > 0 && <div>
               {bosses.length && <p className="title is-3">Defeated: </p>}
               {defeated.map((boss, i) => <BossPreview selectBoss={this.selectBoss}  key={'boss-preview-'+i} back={this.back} boss={boss} i={i} />)}
