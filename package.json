@@ -57,6 +57,7 @@
     "express": "^4.14.0",
     "express-jwt": "^5.3.0",
     "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
     "jsdom": "^11.0.0",
     "jsonwebtoken": "^7.4.3",
     "jsx-loader": "^0.13.2",
@@ -87,6 +88,8 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.20.3",
     "superagent": "^2.2.0",
+    "url-loader": "^1.0.1",
+    "webfonts-loader": "^4.1.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   }

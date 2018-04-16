@@ -19,6 +19,7 @@ import {getGems} from '../actions/gems'
 import {getTraits} from '../actions/traits'
 
 import '../../sass/main.scss'
+// import '../../sass/rpg-awesome.scss'
 
 class App extends React.Component {
   constructor(props) {

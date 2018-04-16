@@ -11,15 +11,18 @@ module.exports = {
       exclude: /node_modules/
     },
     {
-      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-      use: [{
-        loader: 'file-loader'
-        // options: {
-        //   name: '[name].[ext]',
-        //   outputPath: 'fonts/'
-        // }
-      }]
+      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      loader: 'url-loader?limit=100000'
     },
+    // {
+    //   test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+    //   use: [{
+    //     loader: 'file-loader?name=[name].[ext]',
+    //     options: {
+    //       name: '[name].[ext]'
+    //     }
+    //   }]
+    // },
     {
       test: /\.scss$/,
       use: [{
@@ -27,7 +30,7 @@ module.exports = {
       }, {
         loader: "css-loader" // translates CSS into CommonJS
       }, {
-        loader: "sass-loader" // compiles Sass to CSS
+        loader: "sass-loader?sourceMap" // compiles Sass to CSS
       }]
     }]
   },
