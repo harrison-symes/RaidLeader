@@ -1,7 +1,9 @@
 @import '~react-tippy/dist/tippy.css';
 
 // @import '~rpg-awesome/fonts/rpg-awesome.scss';
-// @import '~font-awesome/scss/_variables.scss';
+@import '~font-awesome/scss/_variables.scss';
+$fa-font-path: '~font-awesome/fonts/';
+@import '~font-awesome/scss/font-awesome.scss';
 
 @import '~rpg-awesome/scss/_variables.scss';
 $ra-font-path: '~rpg-awesome/fonts/';
