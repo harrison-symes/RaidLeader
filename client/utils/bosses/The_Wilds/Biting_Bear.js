@@ -18,7 +18,7 @@ export default {
   goldReward: 300,
   weaponChance: 1,
   progress_required: 1,
-  icon: 'ra-pawprint',
+  icon: 'ra-bear-head',
   spells: [
     {
       name: 'Swipe',

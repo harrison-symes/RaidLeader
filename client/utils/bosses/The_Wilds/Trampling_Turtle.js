@@ -18,7 +18,7 @@ export default {
   weaponRewards: ['Ancient Pearls', 'Glowing Pearl Talisman', 'Massive Shell', 'Turtle Aspect'],
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-spiral-shell',
+  icon: 'ra-turtle-shell',
   spells: [
     {
       name: 'Protect',

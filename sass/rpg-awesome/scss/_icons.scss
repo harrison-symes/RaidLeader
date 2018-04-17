@@ -1,6 +1,13 @@
 // Icons
 // --------------------------
 
+.#{$ra-css-prefix}-bear-head:before {
+  content: $ra-var-icon-bear-head;
+}
+
+.#{$ra-css-prefix}-turtle-shell:before {
+  content: $ra-var-icon-turtle-shell;
+}
 
 .#{$ra-css-prefix}-acid:before {
   content: $ra-var-icon-acid;
@@ -1254,10 +1261,10 @@
 .#{$ra-css-prefix}-monster-skull:before {
   content: $ra-var-icon-monster-skull;
 }
-
-.#{$ra-css-prefix}-mountains:before {
-  content: $ra-var-icon-mountains;
-}
+//
+// .#{$ra-css-prefix}-mountains:before {
+//   content: $ra-var-icon-mountains;
+// }
 
 .#{$ra-css-prefix}-moon-sun:before {
   content: $ra-var-icon-moon-sun;
