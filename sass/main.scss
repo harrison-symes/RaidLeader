@@ -5,9 +5,9 @@ $fa-font-path: '~font-awesome/fonts/';
 @import '~font-awesome/scss/font-awesome.scss';
 
 //import rpg awesome
-@import '~rpg-awesome/scss/_variables.scss';
-$ra-font-path: '~rpg-awesome/fonts/';
-@import '~rpg-awesome/scss/rpg-awesome.scss';
+@import './rpg-awesome/scss/_variables.scss';
+$ra-font-path: './rpg-awesome/fonts/';
+@import './rpg-awesome/scss/rpg-awesome.scss';
 
 
 //import bulma
