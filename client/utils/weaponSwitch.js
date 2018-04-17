@@ -223,7 +223,7 @@ module.exports = {
     description: 'A shell so heavy only a Warrior can weild it, not good for hitting things with, but great for not dying!',
     bonusEffect: 'taunt',
     effectDescription: "The Warrior's Attacks now force the Boss to target the Warrior",
-    icon: 'ra-spiral-shell'
+    icon: 'ra-turtle-shell'
   }),
   ['Ancient Pearls']: (level, id) => ({
     name: 'Ancient Pearls',
@@ -309,7 +309,7 @@ module.exports = {
     description: "A charm embedded with the Turtle's soul. It calls out quietly, seeking the aid of other Turtles.",
     bonusEffect: 'turtlePet',
     effectDescription: "The Beast Master will now summon a Turtle Pet instead. The Turtle will inherit (100%) of the Beast Master's Health, but only (30% of the Beast Master's speed)",
-    icon: 'ra-spiral-shell'
+    icon: 'ra-turtle-shell'
   }),
   ['Plagued Aegis']: (level, id) => ({
     name: 'Plagued Aegis',
