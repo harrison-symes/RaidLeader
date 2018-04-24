@@ -65,10 +65,10 @@ export default {
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
-      armor: 100,
+      armor: 0,
       health: 100,
       onCooldown: false,
-      description: 'Gain 100 Armor and 100 Health.',
+      description: '100 Health.',
       icon: 'ra-regeneration'
     }
   ]
