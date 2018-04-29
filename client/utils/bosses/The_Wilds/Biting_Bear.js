@@ -34,7 +34,7 @@ export default {
     },
     {
       name: 'Protect',
-      cast: 1,
+      cast: 3,
       cost: 5,
       coolDown: 10,
       type: 'armor',
