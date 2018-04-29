@@ -4,7 +4,7 @@ import {startingBuff, classTraits} from '../utils/classText'
 
 module.exports = [
   {
-    version: '0.4.1',
+    version: '0.4.2',
     updates: [
       {
         title: 'New Class: Beast Master!',
@@ -15,6 +15,31 @@ module.exports = [
           <p>- The Beast Master's Weapons are still in development and will <b>Soon</b> be available from all Dungeons (and they're gonna be really, really, reallllllly cool!)</p>
         </div>
       },
+      {
+        title: 'New Effects; Stunned and Bomb',
+        description: <div className="content is-medium has-text-dark">
+          <p>In Preparation for developing <b>The Armory</b>, I've been hard at work on several New and Interesting Effects</p>
+          <br />
+          <p><b>Stunned:</b> A Stunned Recruit cannot Attack. The Recruit's Attack timer will continue to 'tick' during the stun, but any <b>Completed</b> Attacks will not happen while <b>Stunned</b></p>
+          <hr />
+          <p><b>Bomb:</b> A Bomb Effect can be placed on a Recruit. The Bomb will <b>Explode</b> when it <b>Expires</b>, damagin <b>All Recruits</b> for a specified Health % (default is 20%)</p>
+          <br />
+          <p>If you want to try out the new Effects, there are several new Spells that utilise them in interesting ways</p>
+        </div>
+      },
+      {
+        title: 'The Wilds has been tweaked',
+        description: <div className="content is-medium has-text-dark">
+          <p>The Bear will now <b>Stun</b> their Target upon using <b>Bite</b> for 3 seconds.</p>
+          <p>The Spider has a new ability; <b>Web Wrap</b>, which will <b>Stun</b> a Random Recruit for 5 seconds</p>
+        </div>
+      }
+    ]
+  },
+  {
+    version: '0.4.1',
+    updates: [
+
       {
         title: 'Database Reset!',
         description: <div className="content is-medium has-text-dark">
@@ -61,18 +86,6 @@ module.exports = [
           <p><b>Shaman</b>:</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>Previous Trait</b>: "The Shaman's attacks also place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp; - <b>New Trait</b>: The Shaman's attacks have a chance to place a Renew effect on a friendly recruit with the lowest health %, healing for 60% of Target's Max Health over 15 seconds. (This chance scales with the Shaman's Speed and will occur roughly once per 10 seconds.)</p>
-        </div>
-      },
-      {
-        title: 'New Effects; Stunned and Bomb',
-        description: <div className="content is-medium has-text-dark">
-          <p>In Preparation for developing <b>The Armory</b>, I've been hard at work on several New and Interesting Effects</p>
-          <br />
-          <p><b>Stunned:</b> A Stunned Recruit cannot Attack. The Recruit's Attack timer will continue to 'tick' during the stun, but any <b>Completed</b> Attacks will not happen while <b>Stunned</b></p>
-          <hr />
-          <p><b>Bomb:</b> A Bomb Effect can be placed on a Recruit. The Bomb will <b>Explode</b> when it <b>Expires</b>, damagin <b>All Recruits</b> for a specified Health % (default is 20%)</p>
-          <br />
-          <p>If you want to try out the new Effects, there are several new Spells that utilise them in interesting ways</p>
         </div>
       }
     ]
