@@ -14,6 +14,7 @@ class SpittingSpider extends BossFrame {
         switch (spell.name) {
           case 'Feed': return true
           case 'Swipe': return true
+          case 'Web Wrap': return !!this.props.party.find(recruit => recruit.isAlive)
           case 'Spit': return true
           default: return false
         }

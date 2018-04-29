@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import { Progress } from 'react-sweet-progress';
 
-import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor} from '../../utils/effectConstructors'
 
 class BossSpell extends Component {
   constructor(props) {
@@ -76,6 +76,7 @@ class BossSpell extends Component {
 
       //Wilds
       case 'Bite':
+        dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
@@ -88,6 +89,9 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_PLAYER', power})
 
       //Spider
+      case 'Web Wrap':
+        target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunDuration(spell.stunDuration)})
       case 'Spit':
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Feed':
@@ -121,13 +125,17 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
         aliveTargets = party.filter(member => member.isAlive)
-        if (aliveTargets.length) {
-          let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
-          if (poisonedTargets.length == aliveTargets.length) target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
-          else target = aliveTargets.filter(recruit => !recruit.effects.find(effect => effect.name == 'Poison'))[Math.floor(Math.random() * aliveTargets.length)]
-          dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
-          return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
-        }
+        if (aliveTargets.length == 0) return
+
+        //find already poisoned targets
+        let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
+        let notPoisonedTargets = aliveTargets.filter(member => !member.effects.find(eff => eff.name == 'Poison'))
+
+        if (notPoisonedTargets.length == 0) target = notPoisonedTargets[Math.floor(Math.random() * notPoisonedTargets.length)]
+        else target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
+
+        dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
 
       //Piltherer
       case 'Ravage':
@@ -206,7 +214,7 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Radiate':
         let poisonPercentage = 0.1
-        poisonPercentage += (0.01 *  boss.mana)
+        poisonPercentage += (0.1 * (boss.mana / boss.maxMana))
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor(poisonPercentage)})
       case 'Fission':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
@@ -221,6 +229,7 @@ class BossSpell extends Component {
         party.forEach(recruit => {
           if (recruit.hp > highestHealth) highestHealth = recruit.hp
         })
+        dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * spell.percentage})
 
       case 'Snake Trap':
@@ -241,14 +250,16 @@ class BossSpell extends Component {
         party.forEach(recruit => {
           if (recruit.hp < lowestHealth) lowestHealth = recruit.hp
         })
+        dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: lowestHealth * 0.5})
 
       case 'Spike Trap':
         availableTargets = aliveTargets.filter(recruit => {
           return recruit.hp / recruit.initHp <= 0.2
         })
+        if (availableTargets.length == 0) return dispatch({type: "PERCENT_DAMAGE_PLAYER", percentage: 100})
+
         target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
-        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.05})
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
 
       //stage 3

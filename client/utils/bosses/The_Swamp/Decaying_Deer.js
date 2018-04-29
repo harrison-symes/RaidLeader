@@ -3,8 +3,8 @@ export default {
   level: 2,
   initHp: 2000,
   hp: 2000,
-  initPower: 60,
-  power: 60,
+  initPower: 40,
+  power: 40,
   initArmor: 500,
   armor: 500,
   mana: 2,
@@ -28,9 +28,9 @@ export default {
       singleTarget: false,
       onCooldown: false,
       health: -50,
-      powerRatio: 1,
-      percentage: 0.2,
-      description: "Damage ALL Recruits for (20%) of their Max Health and Poison them for 60% of their Max Health over 15 seconds, lose Health equal to 100% Boss Power",
+      powerRatio: 2,
+      percentage: 0.1,
+      description: "Damage ALL Recruits for (10%) of their Max Health and Poison them for 60% of their Max Health over 15 seconds, lose Health equal to (200%) Boss Power",
       icon: 'ra-desert-skull'
     },
     {
@@ -42,7 +42,7 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 100% of BOSS POWER",
+      description: "Damage the Boss TARGET for 100% of BOSS POWER",
       icon: 'ra-alligator-clip'
     },
     {
@@ -65,10 +65,10 @@ export default {
       type: 'armor',
       singleTarget: false,
       powerRatio: 1,
-      armor: 100,
+      armor: 0,
       health: 100,
       onCooldown: false,
-      description: 'Gain 100 Armor and 100 Health.',
+      description: '100 Health.',
       icon: 'ra-regeneration'
     }
   ]

@@ -27,12 +27,12 @@ export default {
       cast: 10,
       coolDown: 0,
       powerRatio: 1,
-      healthMax: 0.8,
+      healthMax: 0.9,
       type: 'damage',
       singleTarget: false,
       onCooldown: false,
       stage: 'stageTwo',
-      description: "(Only used when below 80% Health) Change to Stage 2, gaining 25 Power",
+      description: "(Only used when at 0 Armor) Change to Stage 2, gaining 25 Power",
       icon: 'ra-energise'
     },
     {
@@ -57,18 +57,18 @@ export default {
     {
       name: 'Magma Surge',
       cost: 0,
-      cast: 10,
-      coolDown: 5,
-      powerRatio: 1,
+      cast: 5,
+      coolDown: 0,
+      powerRatio: 0.5,
       percentage: 0.5,
       tickPower: 0,
       type: 'damage',
       singleTarget: true,
       isChanneled: true,
       ticks: 10,
-      tickPower: 0.1,
+      tickPower: 0.05,
       onCooldown: false,
-      description: "Damage ALL enemies for (100%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
+      description: "Damage ALL enemies for (50%) of PlAYER Power during the cast, and then Damage the Target for (50%) Boss Power",
       icon: 'ra-lava'
     }
 
@@ -106,21 +106,21 @@ export default {
       },
       {
         name: 'Magma Surge',
-        cast: 10,
         cost: 0,
-        coolDown: 5,
-        powerRatio: 1,
+        cast: 5,
+        coolDown: 0,
+        powerRatio: 0.5,
         percentage: 0.5,
         tickPower: 0,
         type: 'damage',
         singleTarget: true,
         isChanneled: true,
         ticks: 10,
-        tickPower: 0.1,
+        tickPower: 0.05,
         onCooldown: false,
-        description: "Damage ALL enemies for (100%) of PlAYER Power during the cast, and then Damage the Target for (100%) Boss Power",
+        description: "Damage ALL enemies for (50%) of PlAYER Power during the cast, and then Damage the Target for (50%) Boss Power",
         icon: 'ra-lava'
-      },
+      }
     ]
   },
   stageThree: {
@@ -173,7 +173,7 @@ export default {
         name: 'Fission',
         cast: 5,
         cost: 0,
-        coolDown: 10,
+        coolDown: 0,
         onCooldown: false,
         singleTarget: true,
         powerRatio: 1,

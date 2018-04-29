@@ -18,7 +18,7 @@ export default {
   goldReward: 300,
   weaponChance: 1,
   progress_required: 1,
-  icon: 'ra-pawprint',
+  icon: 'ra-bear-head',
   spells: [
     {
       name: 'Swipe',
@@ -34,7 +34,7 @@ export default {
     },
     {
       name: 'Protect',
-      cast: 1,
+      cast: 3,
       cost: 5,
       coolDown: 10,
       type: 'armor',
@@ -50,10 +50,11 @@ export default {
       cost: 0,
       coolDown: 1,
       powerRatio: 2,
+      stunDuration: 3,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 200% of BOSS POWER",
+      description: "Damage the Boss' TARGET for 200% of BOSS POWER. Also Stuns the Target for 3 seconds. (Stunned Recruits cannot Attack)",
       icon: 'ra-alligator-clip'
     }
   ]

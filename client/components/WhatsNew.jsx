@@ -13,7 +13,7 @@ export default function (props) {
         <p className="Town-Banner title is-2">Version {patch.version}</p>
         <br />
         <div classNames="columns is-multiline">
-          {patch.updates.map(update => <div className="column box has-text-left">
+          {patch.updates.map(update => <div className="column box Patch-Note has-text-left">
             <p className="title is-3">{update.title}</p>
             {update.description}
           </div>)}
