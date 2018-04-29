@@ -16,6 +16,7 @@ export default {
   description: `Entering a room, you find a Massive Conveyer Belt. A massive sign is hanging above it. "WARNING! CONVEYER MALFUNCTIONING, KEEP OUT. AND PLEASE DON'T REACTIVATE IT!"`,
   weaponRewards: ['Polarizing Stick', 'Lightning Rod', 'Power Drill'],
   goldReward: 700,
+  expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
   icon: ' ra-recycle',

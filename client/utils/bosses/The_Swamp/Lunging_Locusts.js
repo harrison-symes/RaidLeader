@@ -16,6 +16,7 @@ export default {
   description: "As you explore deeper into the Swamp, you see less life around you, and a soft buzzing sound starts getting louder... and louder...",
   weaponRewards: ['Plagued Wand', 'Plagued Stave', 'Plagued Scythe'],
   goldReward: 500,
+  expReward: 700,
   weaponChance: 1,
   progress_required: 1,
   icon: ' ra-butterfly',

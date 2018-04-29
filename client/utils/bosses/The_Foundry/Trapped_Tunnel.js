@@ -16,6 +16,7 @@ export default {
   description: `TESTING :) <3`,
   weaponRewards: ['Snake Charmer', 'Crushed Skull'],
   goldReward: 700,
+  expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-alien-fire',

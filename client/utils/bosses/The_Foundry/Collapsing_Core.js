@@ -16,6 +16,7 @@ export default {
   description: `At the heart of the Volcano lives a Molten, Magnetic Core. The Core's Power was being funnelled out to the Conveyer and the Furnace, and it looks like the energy is being used for further devious means.`,
   weaponRewards: ['Decaying Blade', 'Decayed Core', 'Sheet Music'],
   goldReward: 700,
+  expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-alien-fire',
