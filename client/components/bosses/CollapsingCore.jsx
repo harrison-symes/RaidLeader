@@ -9,12 +9,13 @@ class CyclingConveyer extends BossFrame {
     super(props)
   }
   solveSpell(spells, boss) {
+    const aliveTargets = this.props.party.filter(recruit => recruit.isAlive).length
     let castSpell = spells.filter(spell => {
       if (!spell.onCooldown && spell.cost <= boss.mana) {
         switch(boss.stage) {
           case 'stageOne':
             switch(spell.name) {
-              case 'Charge': return boss.hp <= (boss.initHp * spell.healthMax)
+              case 'Charge': return boss.armor = 0
               case 'Magnetic Pulse': return true
               case 'Magma Surge': return true
               default: return null
@@ -22,7 +23,7 @@ class CyclingConveyer extends BossFrame {
           case 'stageTwo':
             switch(spell.name) {
               case 'Meltdown': return boss.mana >= spell.manaRequired
-              case 'Half Life': return true
+              case 'Half Life': return aliveTargets > 0
               case 'Magma Surge': return true
 
               default: return null
@@ -30,8 +31,8 @@ class CyclingConveyer extends BossFrame {
           case 'stageThree':
             switch(spell.name) {
               case 'Explode': return boss.mana == spell.manaRequired
-              case 'Radiate': return true
-              case 'Half Life': return true
+              case 'Radiate': return aliveTargets > 0
+              case 'Half Life': return aliveTargets > 0
               case 'Fission': return true
               default: return null
             }
