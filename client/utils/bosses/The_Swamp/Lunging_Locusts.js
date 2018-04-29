@@ -56,8 +56,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      percentage: 0.3,
-      description: "Damage a random Recruit for (30%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds, Prioritises Non Poisoned Recruits.",
+      percentage: 0.25,
+      description: "Damage a random Recruit for (25%) of their Max Health and Poison that Recruit, dealing 60% of their Max Health over 15 seconds, Prioritises Non Poisoned Recruits.",
       icon: 'ra-overhead'
     }
   ]
