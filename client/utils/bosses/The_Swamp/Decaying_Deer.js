@@ -43,7 +43,8 @@ export default {
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss TARGET for 100% of BOSS POWER",
+      stunDuration: 3,
+      description: "Damage the Boss TARGET for 100% of BOSS POWER. Also Stuns the Target for 3 seconds. (Stunned Recruits cannot Attack)",
       icon: 'ra-alligator-clip'
     },
     {
