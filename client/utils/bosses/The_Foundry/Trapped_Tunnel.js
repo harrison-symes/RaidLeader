@@ -58,7 +58,8 @@ export default {
         singleTarget: false,
         powerRatio: 1,
         percentage: 0.25,
-        description: 'Damage ALL Recruits for (25%) of the CURRENT Health on the Recruit with the Highest CURRENT Health.',
+        stunDuration: 3,
+        description: 'Damage ALL Recruits for (25%) of the CURRENT Health on the Recruit with the Highest CURRENT Health, also Stuns ALL Recruits for 3 seconds (Stunned Recruits cannot attack)',
         icon: 'ra-crush'
       },
       {
@@ -67,8 +68,8 @@ export default {
         cost: 0,
         coolDown: 5,
         powerRatio: 1,
-        percentage: 0.3,
-        description: 'Damage ALL Recruits for (30%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health). Also Damages the Player for (5%) Health.',
+        percentage: 0.2,
+        description: 'Damage ALL Recruits for (20%) of their Max Health and then Poison them for (60%) of their Max Health over 15 seconds. (Only usable if there is A Recruit above (50%) Health). Also Damages the Player for (5%) Health.',
         icon: 'ra-snake'
       },
       {
@@ -107,7 +108,8 @@ export default {
         coolDown: 10,
         singleTarget: false,
         powerRatio: 1,
-        description: 'Damage ALL Recruits for (50%) of the CURRENT Health of the Recruit with the Lowest CURRENT Health.',
+        stunDuration: 3,
+        description: 'Damage ALL Recruits for (50%) of the CURRENT Health of the Recruit with the Lowest CURRENT Health, also Stuns ALL Recruits for 3 seconds (Stunned Recruits cannot attack)',
         icon: 'ra-fall-down'
       },
       {
@@ -116,7 +118,7 @@ export default {
         cost: 0,
         coolDown: 10,
         powerRatio: 1000000,
-        description: 'Kill a Recruit that is BELOW (20%) Health',
+        description: 'Kill a Recruit that is BELOW (20%) Health. If All Recruits are dead, Kill the Player',
         icon: 'ra-decapitation'
       },
       {
@@ -164,7 +166,7 @@ export default {
         cost: 0,
         coolDown: 10,
         powerRatio: 1000000,
-        description: 'Kill a Recruit that is BELOW (20%) Health',
+        description: 'Kill a Recruit that is BELOW (20%) Health, If All Recruits are dead, Kill the Player',
         icon: 'ra-decapitation'
       },
       {

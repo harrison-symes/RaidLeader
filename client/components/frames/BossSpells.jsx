@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import { Progress } from 'react-sweet-progress';
 
-import {poisonConstructor, renewConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor} from '../../utils/effectConstructors'
 
 class BossSpell extends Component {
   constructor(props) {
@@ -221,6 +221,7 @@ class BossSpell extends Component {
         party.forEach(recruit => {
           if (recruit.hp > highestHealth) highestHealth = recruit.hp
         })
+        dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: highestHealth * spell.percentage})
 
       case 'Snake Trap':
@@ -241,14 +242,16 @@ class BossSpell extends Component {
         party.forEach(recruit => {
           if (recruit.hp < lowestHealth) lowestHealth = recruit.hp
         })
+        dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: lowestHealth * 0.5})
 
       case 'Spike Trap':
         availableTargets = aliveTargets.filter(recruit => {
           return recruit.hp / recruit.initHp <= 0.2
         })
+        if (availableTargets.length == 0) return dispatch({type: "PERCENT_DAMAGE_PLAYER", percentage: 100})
+        
         target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
-        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: 0.05})
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
 
       //stage 3
