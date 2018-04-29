@@ -3,8 +3,8 @@ export default {
   level: 1,
   initHp: 1000,
   hp: 1000,
-  initPower: 25,
-  power: 25,
+  initPower: 20,
+  power: 20,
   initArmor: 0,
   armor: 0,
   mana: 0,
@@ -43,6 +43,18 @@ export default {
       onCooldown: false,
       description: "Damage ALL enemy characters for 100% BOSS POWER",
       icon: 'ra-bird-claw'
+    },
+    {
+      name: 'Web Wrap',
+      cast: 1,
+      cost: 0,
+      coolDown: 5,
+      singleTarget: false,
+      powerRatio: 1,
+      onCooldown: false,
+      stunDuration: 5,
+      description: "Stun a Random Recruit for 5 seconds. (Stunned Recruits cannot Attack)",
+      icon: 'ra-zebra-shield'
     },
     {
       name: 'Spit',

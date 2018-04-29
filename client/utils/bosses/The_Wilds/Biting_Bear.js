@@ -50,10 +50,11 @@ export default {
       cost: 0,
       coolDown: 1,
       powerRatio: 2,
+      stunDuration: 3,
       type: 'damage',
       singleTarget: true,
       onCooldown: false,
-      description: "Damage the Boss' TARGET for 200% of BOSS POWER",
+      description: "Damage the Boss' TARGET for 200% of BOSS POWER. Also Stuns the Target for 3 seconds. (Stunned Recruits cannot Attack)",
       icon: 'ra-alligator-clip'
     }
   ]

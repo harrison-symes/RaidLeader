@@ -76,6 +76,7 @@ class BossSpell extends Component {
 
       //Wilds
       case 'Bite':
+        dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
       case 'Swipe':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
@@ -88,6 +89,9 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_PLAYER', power})
 
       //Spider
+      case 'Web Wrap':
+        target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunDuration(spell.stunDuration)})
       case 'Spit':
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Feed':
