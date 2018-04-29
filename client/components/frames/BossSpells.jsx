@@ -121,13 +121,17 @@ class BossSpell extends Component {
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power})
       case 'Lunge':
         aliveTargets = party.filter(member => member.isAlive)
-        if (aliveTargets.length) {
-          let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
-          if (poisonedTargets.length == aliveTargets.length) target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
-          else target = aliveTargets.filter(recruit => !recruit.effects.find(effect => effect.name == 'Poison'))[Math.floor(Math.random() * aliveTargets.length)]
-          dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
-          return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
-        }
+        if (aliveTargets.length == 0) return
+
+        //find already poisoned targets
+        let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
+        let notPoisonedTargets = aliveTargets.filter(member => !member.effects.find(eff => eff.name == 'Poison'))
+        
+        if (notPoisonedTargets.length == 0) target = notPoisonedTargets)[Math.floor(Math.random() * notPoisonedTargets.length)]
+        else target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
+
+        dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
 
       //Piltherer
       case 'Ravage':
@@ -250,7 +254,7 @@ class BossSpell extends Component {
           return recruit.hp / recruit.initHp <= 0.2
         })
         if (availableTargets.length == 0) return dispatch({type: "PERCENT_DAMAGE_PLAYER", percentage: 100})
-        
+
         target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
 
