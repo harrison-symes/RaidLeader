@@ -29,7 +29,7 @@ class BossRewardsModal extends Component {
     this.state = {
       showRewards: false,
       goldReward,
-      expReward
+      expReward,
       weaponReward: this.solveWeaponReward(props.boss),
       currentExperience: props.experience,
       gems: this.solveBaseGems(),
