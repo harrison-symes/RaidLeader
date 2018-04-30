@@ -4,7 +4,7 @@ module.exports = {
     type: 'Weapon',
     level,
     id,
-    value: 100,
+    value: 250,
     hp: 1000,
     power: 20,
     mana: 100,
