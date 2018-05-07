@@ -28,6 +28,10 @@ function Home ({version}) {
     <div className="Town">
       <div className="Town-Banner has-text-centered">
         <Link to="/" className="title is-1">Raid Leader v{version}!</Link>
+        <br />
+        <a href="https://bulma.io">
+          <img src="/images/made-with-bulma--white.png" alt="Made with Bulma" width="256" height="48" />
+        </a>
       </div>
       <div className="Town-Buttons has-text-centered" >
 
