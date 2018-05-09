@@ -17,7 +17,31 @@ $ra-font-path: './rpg-awesome/fonts/';
 //import react-tippy tooltip styling
 @import '~react-tippy/dist/tippy.css';
 
+@font-face {
+  font-family: "OldSchool";
+  weight: 400;
+  src: url("./fonts/Old School Adventures.woff") format('woff');
+  src: url("./fonts/Old School Adventures.ttf") fromat("ttf");
+}
+
+@font-face {
+  font-family: "DragonFly";
+  weight: 400;
+  src: url("./fonts/Dragonfly.ttf") format('ttf');
+}
+
+.title {
+  font-family: "DragonFly";
+}
+
+.subtitle {
+  font-family: "Dragonwick";
+}
+
 .Patch-Note {
+  .title {
+    font-family: 'OldSchool'
+  }
   background-color: #b88e69;
   background-image: url("/images/backgrounds/town.png");
 }

@@ -16,6 +16,7 @@ export default {
   description: "A big scary Dragon, with a big Boo-Boo",
   weaponRewards: ['Dragon Scale'],
   goldReward: 300,
+  expReward: 300,
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-dragon',

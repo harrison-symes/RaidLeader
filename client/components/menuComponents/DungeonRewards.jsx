@@ -30,6 +30,7 @@ class DungeonRewards extends Component {
     this.state = {
       showRewards: false,
       goldReward: Math.ceil(props.currentLocation.gold_reward * (0.9 + (Math.random() * 0.4))),
+      expReward: Math.ceil(props.currentLocation.expReward * (0.9 + (Math.random() * 0.4))),
       weaponReward: this.solveWeaponReward(),
       gems: 0,
       animationDone: false
@@ -84,7 +85,7 @@ class DungeonRewards extends Component {
   }
   renderRewardsModal() {
     const {currentLocation} = this.props
-    const {weaponReward, showRewards, goldReward, gems} = this.state
+    const {weaponReward, showRewards, goldReward, gems, expReward} = this.state
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card">
@@ -93,7 +94,7 @@ class DungeonRewards extends Component {
           <hr />
           {showRewards
             ? <div className="has-text-centered">
-              <AnimatedExpBar experienceGained={goldReward} finishExpAnimation={this.finishExpAnimation} addGem={this.addGem} />
+              <AnimatedExpBar experienceGained={expReward} finishExpAnimation={this.finishExpAnimation} addGem={this.addGem} />
               <p className="title is-2">Your Rewards:</p>
               {gems > 0
                 ? <span className="column is-8 is-offset-2 columns">

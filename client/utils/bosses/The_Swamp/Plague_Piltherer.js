@@ -16,6 +16,7 @@ export default {
   description: "A crazed man darts around the Swamp lands, scavenging the many corpses for their precious loot. You even see him drinking some of that disgusting slime!",
   weaponRewards: ['Glowing Libram', 'The Antidote', 'Fox Aspect'],
   goldReward: 500,
+  expReward: 700,
   weaponChance: 1,
   progress_required: 3,
   icon: 'ra-radioactive',

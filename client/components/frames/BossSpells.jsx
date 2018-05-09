@@ -91,7 +91,7 @@ class BossSpell extends Component {
       //Spider
       case 'Web Wrap':
         target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
-        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunDuration(spell.stunDuration)})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.stunDuration)})
       case 'Spit':
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Feed':

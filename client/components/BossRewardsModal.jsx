@@ -25,9 +25,11 @@ class BossRewardsModal extends Component {
   constructor(props) {
     super(props)
     let goldReward = Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4)))
+    let expReward = Math.ceil(props.boss.expReward * (0.9 + (Math.random() * 0.4)))
     this.state = {
       showRewards: false,
       goldReward,
+      expReward,
       weaponReward: this.solveWeaponReward(props.boss),
       currentExperience: props.experience,
       gems: this.solveBaseGems(),
@@ -107,7 +109,7 @@ class BossRewardsModal extends Component {
     </div>
   }
   render() {
-    const {showRewards, goldReward, weaponReward, currentExperience, nextExperience, gems} = this.state
+    const {showRewards, goldReward, weaponReward, currentExperience, nextExperience, gems, expReward} = this.state
     const {boss} = this.props
     return <div className="Town-Buttons Menu-Buttons Town Menu Modal modal is-active">
       <div className="modal-background"></div>
@@ -118,7 +120,7 @@ class BossRewardsModal extends Component {
         <section className="modal-card-body">
           {showRewards
             ? <div className="has-text-centered">
-              <AnimatedExpBar currentExperience={currentExperience} experienceGained={goldReward} finishExpAnimation={this.finishExpAnimation} addGem={this.addGem} />
+              <AnimatedExpBar currentExperience={currentExperience} experienceGained={expReward} finishExpAnimation={this.finishExpAnimation} addGem={this.addGem} />
               <p className="title is-2">Your Rewards</p>
               {gems > 0
                 ? <span className="column is-8 is-offset-2 columns">

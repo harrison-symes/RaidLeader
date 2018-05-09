@@ -50,6 +50,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       gemChance: 1,
       rewards: [],
       gold_reward: 300,
+      expReward: 700,
       description: "The Paladin knows the location of a dying Dragon. Dragons are pretty scary, but they always hoard a large amount of treasure. Hopefully this Dragon won't live long enough to burn you alive...",
       bosses: [
         'Damaged Dragon'
@@ -77,6 +78,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
         }
       ],
       gold_reward: 500,
+      expReward: 1400,
       description: "Patrons of the local Town Pub have told stories of the Cursed Wilds, filled with giant beasts who have been acting more aggressively lately. Will you brave the challenge and free these Beasts from the curse?",
       bosses: [
         "Trampling Turtle",
@@ -105,6 +107,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
         }
       ],
       gold_reward: 1000,
+      expReward: 2400,
       description: "The once tranquil woods have been overwhelmed by a strange sludge in recent weeks. Many adventurers have sought the source of this plague, but none have returned. That probably means there is a lot of loot to be found here!",
       bosses: [
         "Seeping Slime",
