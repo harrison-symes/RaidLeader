@@ -6,7 +6,7 @@
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
-| POST | /api/auth/register | No | To Register and then log In a New User | User Token | [Info](#Register) |
+| POST | /api/auth/register | No | To Register and then log In a New User | User Token | [Info](#register-new-user) |
 | POST | /api/auth/login | No | To Login an already registered User | User Token | [Info](#Register)
 
 ### Dungeons
@@ -50,7 +50,7 @@
 | DELETE | /api/spells | Yes | Delete a spell from the 'spells' table by the spell name | Status Code | [Info](#Delete_Spell) |
 
 ---
-### Register
+### Register New User
 
 | Method | Endpoint | Authentication Required | Usage | Response |
 | ------ | -------- | ----- | ------- |
