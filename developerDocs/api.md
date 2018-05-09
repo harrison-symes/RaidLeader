@@ -25,6 +25,15 @@
 | PUT | /api/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#Equip_Recruit_Weapon)|
 | PUT | /api/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object | [Info](#Level_Update_Recruit) |
 
+### player
+
+| Method | Path | Auth Required | Purpose | Response | Further Info |
+| --- | --- | --- | --- | --- | --- |
+| GET | /api/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold | [Info](#Get_Gold)|
+| PUT | /api/player/gold | Yes | Remove or Add gold to/from the Requesting user | Status Code | [Info](#Put_Gold)|
+| GET | /api/player/weapons | Yes | Get a list of Weapons that the Requesting Player has collected | An Array of Weapon Objects | [Info](#Get_Weapons) |
+| POST | /api/player/weapons | Yes | Add a Weapon to the 'inventory' table, with the Requesting User as a relation | The Weapon that was added as an Object | [Info](#Post_Weapon) |
+
 ## Register
 -
 -
