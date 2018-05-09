@@ -41,6 +41,16 @@
 | PUT | /api/player/gems | Yes | Add or Remove gems from a User | Status Code | [Info](#Get_Gems) |
 | GET | /api/player/traits | Yes | Get the list of "traits" that a User has learned (from the 'traits' table) | An Array of Traits as Objects | [Info](#Get_Traits) |
 
+
+### spells
+
+| Method | Path | Auth Required | Purpose | Response | Further Info |
+| --- | --- | --- | --- | --- | --- |
+| GET | /api/spells | Yes | Receive the list of Spells from the 'spells' table, that the requesting User has "learned" | An Array of Spell Objects | [Info](#Get_Spells) |
+| POST | /api/spells | Yes | Add a Spell to the 'spells' table, related to the Requesting User (For when a Player 'learns' a Spell) | The Spell that was learned, as an Object | [Info](#Post_Spell) |
+| DELETE | /api/spells | Yes | Delete a spell from the 'spells' table by the spell name | Status Code | [Info](#Delete_Spell) | 
+
+
 ## Register
 -
 -
