@@ -6,3 +6,5 @@ bundle.js
 bundle.js.map
 coverage
 .env
+yarn-error.log
+.sass-cache

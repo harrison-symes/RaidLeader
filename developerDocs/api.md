@@ -53,7 +53,7 @@
 ### Register New User
 
 | Method | Endpoint | Authentication Required | Usage | Response |
-| ------ | -------- | ----- | ------- |
+| --- | --- | --- | --- | --- |
 | POST | /api/auth/register | No | To Register and then log In a New User | User Token |
 
 #### Request Body
@@ -68,8 +68,8 @@
 #### Response
 
 ##### Status Codes:
-  | Status Code | Meaning | Success | Response |
-  | --- | --- | --- | --- |
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
   | 200 | The Register was successful | True |
   | 400 | UserName already taken | False |
   | 500 | Server Error | False |
