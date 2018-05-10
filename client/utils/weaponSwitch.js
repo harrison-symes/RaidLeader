@@ -294,7 +294,7 @@ module.exports = {
     class: 'Bard',
     description: "The Loot you received will go perfectly with a Lute.",
     bonusEffect: null,
-    icon: 'ra-caged-bowl'
+    icon: 'ra-light-thorny-triskelion'
   }),
   ['Turtle Aspect']: (level, id) => ({
     name: 'Turtle Aspect',
@@ -324,7 +324,7 @@ module.exports = {
     description: 'A lost shield from a fallen adventurer. "A. Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-zebra-shield'
+    icon: 'ra-skull-shield'
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -414,7 +414,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-spear-head'
+    icon: 'ra-gooey-eyed-sun'
   }),
   ['Plagued Skull']: (level, id) => ({
     name: 'Plagued Skull',
@@ -459,7 +459,7 @@ module.exports = {
     description: "That disgusting Piltherer was holding a Fox captive. It seems that the Fox holds the cure to the poison infecting The Swamp",
     bonusEffect: 'foxPet',
     effectDescription: `The Beast Master will summon a Fox as a pet instead. The Fox will inherit (150%) Speed and (30%) Power from the Beast Master, and the Fox's attacks will cure any Poison Effect on itself of it's Beast Master owner`,
-    icon: 'ra-fox'
+    icon: 'ra-fox-head'
   }),
   ['Glowing Libram']: (level, id) => ({
     name: 'Glowing Libram',
@@ -474,7 +474,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
-    icon: 'ra-book'
+    icon: 'ra-book-aura'
   }),
   ['Plagued Ocarina']: (level, id) => ({
     name: 'Plagued Ocarina',
@@ -489,10 +489,10 @@ module.exports = {
     description: '"The Ocarina of Slime"',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-book'
+    icon: 'ra-ocarina'
   }),
-  ['Cracked Chassis']: (level, id) => ({
-    name: 'Cracked Chassis',
+  ['Bent Railing']: (level, id) => ({
+    name: 'Bent Railing',
     type: 'weapon',
     level,
     id,
@@ -504,7 +504,7 @@ module.exports = {
     class: 'Paladin',
     bonusEffect: 'noTaunt',
     effectDescription: 'The Paladin no longer forces the Boss to attack them',
-    icon: 'ra-cracked-shield'
+    icon: 'ra-lead-pipe'
   }),
   ['Curved Chassis']: (level, id) => ({
     name: 'Curved Chassis',
@@ -519,7 +519,7 @@ module.exports = {
     class: 'Monk',
     bonusEffect: 'taunt',
     effectDescription: "The Monk's attacks now force the Boss to Target the Monk",
-    icon: 'ra-cracked-helm'
+    icon: 'ra-riot-shield'
   }),
   ['Afterburn Arrows']: (level, id) => ({
     name: 'Afterburn Arrows',
@@ -549,7 +549,7 @@ module.exports = {
     class: 'Mage',
     bonusEffect: 'charge',
     effectDescription: "The Mage's attacks restore 1 Mana to the Player",
-    icon: 'ra-laser-site'
+    icon: 'ra-lightning-arc'
   }),
   ['Lightning Rod']: (level, id) => ({
     name: 'Lightning Rod',
@@ -564,7 +564,7 @@ module.exports = {
     class: 'Warlock',
     bonusEffect: 'lightningRod',
     effectDescription: "The Warlock now only damages themselves for 5% of Max Health whenever they attack (instead of damagin ALL party members)",
-    icon: 'ra-magnet'
+    icon: 'ra-lightning-spanner'
   }),
   ['Power Drill']: (level, id) => ({
     name: 'Power Drill',
@@ -609,7 +609,7 @@ module.exports = {
     class: 'Warrior',
     bonusEffect: 'enrage',
     effectDescription: "The Warrior deals Double Damage while below 50% Health",
-    icon: 'ra-scroll-unfurled'
+    icon: 'ra-thunder-blade'
   }),
   ['Decayed Core']: (level, id) => ({
     name: 'Decayed Core',
@@ -624,7 +624,7 @@ module.exports = {
     class: 'Priest',
     bonusEffect: 'halfLife',
     effectDescription: "The Priest's heals are Twice as effective against targets ABOVE (50%) Health",
-    icon: 'ra-implosion'
+    icon: 'ra-tumor'
   }),
   ['Snake Charmer']: (level, id) => ({
     name: 'Snake Charmer',
@@ -639,7 +639,7 @@ module.exports = {
     description: 'A flute made FROM a Snake to CHARM other Snakes. It seems to scare the other Party members...',
     effectDescription: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
     bonusEffect: 'speedBooster',
-    icon: 'ra-snake'
+    icon: 'ra-pan-flute'
   }),
   ['Crushed Skull']: (level, id) => ({
     name: 'Crushed Skull',

@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "The sound of drooling Magma grows louder as you enter the hall of a giant Furnace. Lava flows from the ceiling into a large iron pot. You were going to just leave it alone, but one of your Party members falls over, switching a lever. This could get messy.",
-  weaponRewards: ['Curved Chassis', 'Afterburn Arrows', 'Cracked Chassis'],
+  weaponRewards: ['Curved Chassis', 'Afterburn Arrows', 'Bent Railing'],
   goldReward: 700,
   expReward: 1200,
   weaponChance: 1,
