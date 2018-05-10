@@ -54,7 +54,7 @@ export function HealthIcon ({value}) {
     <p>{value} Health</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-two-hearts icon-large" />
+      <i className="ra ra-fw ra-charm icon-large" />
     </span>
   )
 }
@@ -64,7 +64,7 @@ export function SpeedIcon ({value}) {
     <p>{value} Speed</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-lightning-bolt icon-large" />
+      <i className="ra ra-fw ra-electric icon-large" />
     </span>
   )
 }
@@ -133,7 +133,7 @@ export function GemIcon ({value}) {
     <p>{value} Gem{value == 1 ? '' : 's'}</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-diamond icon-large" />
+      <i className="ra ra-fw ra-cut-diamond icon-large" />
     </span>
   )
 }
@@ -298,7 +298,7 @@ export function RecruitCountIcon ({amount}) {
     </span>,
     <span>
       {amount}
-      <i className="ra ra-double-team icon-large" />
+      <i className="ra ra-backup icon-large" />
     </span>
   )
 }
@@ -311,7 +311,7 @@ export function SpellCountIcon ({amount}) {
     </span>,
     <span>
       {amount}
-      <i className="ra ra-book icon-large" />
+      <i className="ra ra-spell-book icon-large" />
     </span>
   )
 }

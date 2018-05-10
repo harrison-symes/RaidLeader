@@ -59,7 +59,7 @@ test('HealthIcon', () => {
   expect(wrapper.find('span').text()).toBe('100')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-two-hearts')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-charm')).toBeTruthy()
 })
 
 test('SpeedIcon', () => {

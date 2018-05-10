@@ -24,20 +24,6 @@ $ra-font-path: './rpg-awesome/fonts/';
   src: url("./fonts/Old School Adventures.ttf") fromat("ttf");
 }
 
-@font-face {
-  font-family: "DragonFly";
-  weight: 400;
-  src: url("./fonts/Dragonfly.ttf") format('ttf');
-}
-
-.title {
-  font-family: "DragonFly";
-}
-
-.subtitle {
-  font-family: "Dragonwick";
-}
-
 .Patch-Note {
   .title {
     font-family: 'OldSchool'
@@ -56,7 +42,6 @@ $ra-font-path: './rpg-awesome/fonts/';
 
   .Town-Banner {
     .title {
-      text-decoration: underline;
       font-size: 4rem;
       color: black;
       @media (max-width: 900px) {
@@ -129,7 +114,6 @@ $ra-font-path: './rpg-awesome/fonts/';
     text-align: center;
     .title {
       color: black;
-      text-decoration: underline;
     }
     .modal-card-title{
       color: black;

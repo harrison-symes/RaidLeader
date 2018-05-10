@@ -87,7 +87,7 @@ const life = [
     isSpell: false,
     element: 'Life',
     requiredTrait: null,
-    icon: 'ra-two-hearts',
+    icon: 'ra-charm',
     color: spells['Life Soul'].background,
     background: 'white',
     element: 'Life',

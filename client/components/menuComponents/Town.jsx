@@ -130,24 +130,24 @@ class Town extends Component {
         </a>
 
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower', 'The Hunt')}
-          {this.renderTownMenuButton('Library', 'ra-book', 'The Hunt')}
+          {this.renderTownMenuButton('Recruitment Centre', 'ra-barracks', 'The Hunt')}
+          {this.renderTownMenuButton('Library', 'ra-gift-of-knowledge', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Training Centre', 'ra-muscle-up', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Training Centre', 'ra-military-fort', 'The Cursed Wilds')}
           {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
           <a title={"Don't do it!"} onClick={() => this.toggleModal('Logout')} className="column is-6 button is-large is-danger is-outlined">
             <span className="icon is-large">
-              <i className={`ra ra-turd ra-lg`}></i>
+              <i className={`ra ra-exit-door ra-lg`}></i>
             </span>
             &nbsp;Logout&nbsp;
             <span className="icon is-large">
-              <i className={`ra ra-turd ra-lg` }></i>
+              <i className={`ra ra-exit-door ra-lg` }></i>
             </span>
           </a>
-          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Black Market', 'ra-receive-money', 'The Cursed Wilds')}
 
         </div>
       </div>
