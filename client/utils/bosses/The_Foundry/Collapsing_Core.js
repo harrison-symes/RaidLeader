@@ -19,7 +19,7 @@ export default {
   expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-alien-fire',
+  icon: 'ra-unstable-orb',
   stage: 'stageOne',
   spells: [
     {
