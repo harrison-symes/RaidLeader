@@ -339,7 +339,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-dripping-sword'
+    icon: 'ra-gooey-sword'
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Daggers',
