@@ -37,13 +37,13 @@ export function classTraits(heroClass) {
 
 export function classIcons (heroClass) {
   switch(heroClass) {
-    case 'Paladin': return 'ra-winged-shield'
+    case 'Paladin': return 'ra-bordered-shield'
     case 'Mage': return 'ra-magic-swirl'
     case 'Priest': return 'ra-angel-outfit'
     case 'Warlock': return 'ra-flaming-claw'
     case 'Rogue': return 'ra-cowled'
     case 'Monk': return 'ra-triple-yin'
-    case 'Warrior': return 'ra-black-knight '
+    case 'Warrior': return 'ra-black-knight-helm'
     case 'Hunter': return 'ra-eye-target'
     case 'Shaman': return 'ra-lightning-helix'
     case 'Bard': return 'ra-music-spell'

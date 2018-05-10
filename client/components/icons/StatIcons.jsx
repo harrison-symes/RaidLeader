@@ -143,7 +143,7 @@ export function ArmorIcon ({value}) {
     <p>{value} Armor</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-heavy-shield icon-large" />
+      <i className="ra ra-fw ra-layered-armor icon-large" />
     </span>
   )
 }
