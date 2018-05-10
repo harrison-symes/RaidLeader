@@ -43,7 +43,7 @@ export function classIcons (heroClass) {
     case 'Warlock': return 'ra-flaming-claw'
     case 'Rogue': return 'ra-cowled'
     case 'Monk': return 'ra-triple-yin'
-    case 'Warrior': return 'ra-knight-helmet'
+    case 'Warrior': return 'ra-black-knight '
     case 'Hunter': return 'ra-eye-target'
     case 'Shaman': return 'ra-lightning-helix'
     case 'Bard': return 'ra-music-spell'

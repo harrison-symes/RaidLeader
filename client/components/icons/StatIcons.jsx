@@ -167,19 +167,10 @@ export function TargetTypeIcon ({singleTarget}) {
 }
 
 export function LevelIcon ({level}) {
-  let num
-  switch(level) {
-    case 1: num = 'one'; break;
-    case 2: num = 'two'; break;
-    case 3: num = 'three'; break;
-    case 4: num = 'four'; break;
-    case 5: num = 'five'; break;
-    case 6: num = 'six'; break;
-  }
   return toolTipGenerator(
     <p>Level {level}</p>,
     <span>
-      <i style={{color: 'white', backgroundColor: 'black'}} className={`ra ra-fw ra-dice-${num} icon-large`} />
+      <i style={{color: 'black', backgroundColor: 'white'}} className={`ra ra-fw ra-inverted-dice-${level} icon-large`} />
     </span>
   )
 }

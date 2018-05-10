@@ -155,10 +155,10 @@ class Menu extends React.Component {
           {(!boss || !playerWeapon || playerParty.length == 0 || playerSpells == 0)
             && <div className="column">
               <p className="title is-3">To Do:</p>
-              {!boss && this.renderMenuLink('Boss Selection', ' ra-on-target')}
-              {!playerWeapon && this.renderMenuLink('Equip Player Weapon', 'ra-crystal-wand')}
-              {!playerParty.length > 0 && this.renderMenuLink('Assemble Party', 'ra-podium')}
-              {!playerSpells.length > 0 && this.renderMenuLink('Select Spells', 'ra-scroll-unfurled')}
+              {!boss && this.renderMenuLink('Boss Selection', ' ra-targeting')}
+              {!playerWeapon && this.renderMenuLink('Equip Player Weapon', 'ra-switch-weapon')}
+              {!playerParty.length > 0 && this.renderMenuLink('Assemble Party', 'ra-three-friends')}
+              {!playerSpells.length > 0 && this.renderMenuLink('Select Spells', 'ra-spell-book')}
             </div>
           }
           {(playerWeapon != null || boss != null || playerSpells.length > 0 || playerParty.length > 0) && <div className="column">
