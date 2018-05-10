@@ -19,7 +19,7 @@ export default {
   expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-alien-fire',
+  icon: 'ra-gold-mine',
   stage: 'stageZero',
   spells: [
     {
@@ -31,7 +31,7 @@ export default {
       singleTarget: false,
       stage: 'stageOne',
       description: 'Change to Stage 1.',
-      icon: 'ra-metal-gate'
+      icon: 'ra-exit-door'
     },
   ],
   stageOne: {
@@ -49,7 +49,7 @@ export default {
         singleTarget: false,
         stage: 'stageTwo',
         description: 'Change to Stage 2. (Only usable at 60 Mana)',
-        icon: 'ra-metal-gate'
+        icon: 'ra-exit-door'
       },
       {
         name: 'Crushing Walls',
@@ -100,7 +100,7 @@ export default {
         singleTarget: false,
         description: 'Change to Stage 3. (Only Usable at 120 Mana)',
         stage: 'stageThree',
-        icon: 'ra-metal-gate'
+        icon: 'ra-exit-door'
       },
       {
         name: 'Crumbling Walls',
@@ -111,7 +111,7 @@ export default {
         powerRatio: 1,
         stunDuration: 3,
         description: 'Damage ALL Recruits for (50%) of the CURRENT Health of the Recruit with the Lowest CURRENT Health, also Stuns ALL Recruits for 3 seconds (Stunned Recruits cannot attack)',
-        icon: 'ra-fall-down'
+        icon: 'ra-falling-rocks'
       },
       {
         name: 'Spike Trap',
@@ -120,7 +120,7 @@ export default {
         coolDown: 10,
         powerRatio: 1000000,
         description: 'Kill a Recruit that is BELOW (20%) Health. If All Recruits are dead, Kill the Player',
-        icon: 'ra-decapitation'
+        icon: 'ra-spiked-trunk'
       },
       {
         name: 'Snake Trap',
@@ -149,7 +149,7 @@ export default {
         singleTarget: false,
         powerRatio: 10000000,
         description: 'The Player Wins (By Escaping)',
-        icon: 'ra-trail'
+        icon: 'ra-journey'
       },
       {
         name: 'Dart Trap',
@@ -168,7 +168,7 @@ export default {
         coolDown: 10,
         powerRatio: 1000000,
         description: 'Kill a Recruit that is BELOW (20%) Health, If All Recruits are dead, Kill the Player',
-        icon: 'ra-decapitation'
+        icon: 'ra-spiked-trunk'
       },
       {
         name: 'Snake Trap',
