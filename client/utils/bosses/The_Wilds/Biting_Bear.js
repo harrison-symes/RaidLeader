@@ -31,7 +31,7 @@ export default {
       powerRatio: 1,
       onCooldown: false,
       description: 'Damage ALL enemy characters for 100% BOSS POWER',
-      icon: 'ra-bird-claw'
+      icon: 'ra-claw-slashes'
     },
     {
       name: 'Protect',
@@ -43,7 +43,7 @@ export default {
       powerRatio: 25,
       onCooldown: false,
       description: 'Gain 25 ARMOR',
-      icon: 'ra-eye-shield'
+      icon: 'ra-energy-shield'
     },
     {
       name: 'Bite',
@@ -56,7 +56,7 @@ export default {
       singleTarget: true,
       onCooldown: false,
       description: "Damage the Boss' TARGET for 200% of BOSS POWER. Also Stuns the Target for 3 seconds. (Stunned Recruits cannot Attack)",
-      icon: 'ra-alligator-clip'
+      icon: 'ra-fangs'
     }
   ]
 }

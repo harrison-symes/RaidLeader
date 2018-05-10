@@ -31,7 +31,7 @@ export default {
       powerRatio: 50,
       onCooldown: false,
       description: "Gain 50 ARMOR",
-      icon: 'ra-eye-shield'
+      icon: 'ra-energy-shield'
     },
     {
       name: 'Swipe',
@@ -43,7 +43,7 @@ export default {
       powerRatio: 1,
       onCooldown: false,
       description: "Damage ALL enemy characters for 100% BOSS POWER",
-      icon: 'ra-bird-claw'
+      icon: 'ra-claw-slashes'
     },
     {
       name: 'Trample',
@@ -55,7 +55,7 @@ export default {
       powerRatio: 2,
       onCooldown: false,
       description: "Damage the enemy TARGET and the PLAYER for 200% BOSS POWER",
-      icon: 'ra-footprint'
+      icon: 'ra-stomp'
     }
   ]
 }
