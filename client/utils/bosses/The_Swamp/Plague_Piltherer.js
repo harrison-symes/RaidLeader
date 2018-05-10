@@ -19,7 +19,7 @@ export default {
   expReward: 700,
   weaponChance: 1,
   progress_required: 3,
-  icon: 'ra-radioactive',
+  icon: 'ra-mad-scientist',
   spells: [
     {
       name: 'Ingest Plague',
@@ -34,7 +34,7 @@ export default {
       health: 100,
       onCooldown: false,
       description: 'Gain 30 Power. Restore 100 Health and Armor. (Only usable when at 0 Power)',
-      icon: 'ra-potion'
+      icon: 'ra-energy-breath'
     },
     {
       name: 'Spread Plague',
@@ -46,7 +46,7 @@ export default {
       singleTarget: false,
       onCooldown: false,
       description: "(Only Usable at 30 Power), Poison All enemy recruits, dealing 60% of their Max Health over 15 seconds",
-      icon: 'ra-biohazard'
+      icon: 'ra-poison-gas'
     },
     {
       name: 'Ravage',
@@ -60,7 +60,7 @@ export default {
       power: -10,
       percentage: 0.25,
       description: "Damage each enemy Recruit for (25%) of their Max Health, lose 10 Power, Damage the Player for (3%) of their Max Health",
-      icon: 'ra-slash-ring'
+      icon: 'ra-atomic-slashes'
     },
     {
       name: 'Mad Cackle',
@@ -72,7 +72,7 @@ export default {
       powerRatio: 0,
       onCooldown: false,
       description: 'Does nothing, but it makes you a little scared (or concerned?)',
-      icon: 'ra-player-pyromaniac'
+      icon: 'ra-imp-laugh'
     }
   ]
 }
