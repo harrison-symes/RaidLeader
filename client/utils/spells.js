@@ -127,7 +127,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 1,
     description: 'Damage the Boss for (100%) of Player Power',
-    icon: 'ra-blaster',
+    icon: 'ra-ember-shot',
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire',
@@ -143,7 +143,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 0.5,
     description: 'Damage the Boss for (50%) of Player Power',
-    icon: 'ra-explosion',
+    icon: 'ra-fireflake',
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire'
@@ -398,7 +398,7 @@ module.exports = {
     percentage: 0.5,
     greaterPercentage: 0.7,
     description: 'Damage a target Recruit for (25%) Max Health over 3 seconds, then heal the target for (50%) of Max Health. If you have no Life Spells, heal for %70 instead.',
-    icon: 'ra-match',
+    icon: 'ra-match-tip',
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire'
@@ -668,7 +668,7 @@ module.exports = {
     duration: 7,
     percentage: 0.2,
     description: 'Damage the Boss for (150%) Player Power, and place a Bomb Effect on a Random Recruit that will Explode after 7 seconds, Damaging All Recruits for (20%) of their Max Health. If All Recruits are Dead, Damage the Player for (10%) of Max Health instead',
-    icon: 'ra-bombs',
+    icon: 'ra-three-burning-balls',
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire'

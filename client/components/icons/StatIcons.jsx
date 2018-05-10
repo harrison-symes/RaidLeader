@@ -104,7 +104,7 @@ export function ManaIcon ({value}) {
     <p>{value} Mana</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-crystals icon-large" />
+      <i className="ra ra-fw ra-crystal-cluster icon-large" />
     </span>
   )
 }

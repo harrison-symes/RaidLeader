@@ -121,11 +121,11 @@ class Town extends Component {
       <div className="Town-Buttons has-text-centered">
         <a onClick={() => this.toggleModal('Dungeon Map')} className="Travel-Button button is-large is-fullwidth is-primary is-outlined">
           <span className="icon is-large">
-            <i className={`ra ra-forward ra-lg` }></i>
+            <i className={`ra ra-magic-portal ra-lg` }></i>
           </span>
           <span>&nbsp;Travel&nbsp;</span>
           <span className="icon is-large">
-            <i className={`ra ra-forward ra-lg` }></i>
+            <i className={`ra ra-magic-portal ra-lg` }></i>
           </span>
         </a>
 
