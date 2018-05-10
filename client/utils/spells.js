@@ -175,7 +175,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 10,
     description: 'Restore 10% Mana',
-    icon: 'ra-player-teleport',
+    icon: 'ra-glowing-hands',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
@@ -361,7 +361,7 @@ module.exports = {
     powerRatio: 1,
     singleTarget: false,
     description: "Set the % Health of ALL recruits to the average % Health of your Party",
-    icon: 'ra-circle-of-circles',
+    icon: 'ra-high-tide',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
@@ -413,7 +413,7 @@ module.exports = {
     percentage: 30,
     greaterPercentage: 60,
     description: 'Set ALL Recruits to (30%) of their Max Health. If you have no Life Spells, set them to (60%) Health instead.',
-    icon: 'ra-gear-heart',
+    icon: 'ra-talk',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
@@ -542,7 +542,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 0.5,
     description: "Heal ALL Friendly Characters for (50%) of Player Power",
-    icon: 'ra-apple',
+    icon: 'ra-flowers',
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life',
@@ -590,7 +590,7 @@ module.exports = {
     percentage: -0.2,
     greaterPercentage: 0.5,
     description: "Reduces the Health and Speed of ALL Recruits by (20%), but increases their Power by (50%). If all of your other spells aren't Single Target Spells, Kill a Random Recruit.",
-    icon: 'ra-player-despair',
+    icon: 'ra-imprisoned',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
@@ -620,7 +620,7 @@ module.exports = {
     singleTarget: false,
     percentage: 0.1,
     description: "Increase the Max and Current of ALL Recruits by (10%). If you have no Two Spells of the same element (ignoring this Spell), Increase the Power of your Recruits by (10%) too.",
-    icon: 'ra-moon-sun',
+    icon: 'ra-cold-heart',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
@@ -636,7 +636,7 @@ module.exports = {
     powerRatio: 1.5,
     duration: 5,
     description: "Heal a Recruit for (150%) Player Power, the Recruit is then Stunned for 5 seconds (Recruits can't Attack while Stunned).",
-    icon: 'ra-player-pain',
+    icon: 'ra-hypersonic-bolt',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
@@ -651,7 +651,7 @@ module.exports = {
     powerRatio: 1.5,
     duration: 3,
     description: "Heal ALL Recruits for (150%) Player Power, the Recruits are then Stunned for 3 seconds (Recruits can't Attack while Stunned).",
-    icon: 'ra-bomb-explosion',
+    icon: 'ra-crowned-explosion',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane',
@@ -701,7 +701,7 @@ module.exports = {
     recruitOnly: true,
     powerRatio: 1,
     description: "If the Target Recruit has a Bomb Effect applied to them, the Bomb will now Heal All Recruits rather than Damage them when it expires. If there is no Bomb Effect on the Target, Apply a Renew Effect and a 3 second Stun effect to the Target instead.",
-    icon: 'ra-vest',
+    icon: 'ra-ice-bomb',
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
