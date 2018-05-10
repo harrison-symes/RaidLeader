@@ -44,7 +44,7 @@ export function PlayerIcon ({player}) {
       <p>{power} Power</p>
     </span>,
     <span>
-      <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
+      <i id="PlayerIcon" className="ra ra-lg ra-king" />
     </span>
   )
 }

@@ -62,19 +62,19 @@ class Register extends React.Component {
           <div className="control has-icons-left has-icons-right">
             <input
               required
-              className=" input is-large is-primary"
+              className="input has-text-centered is-large is-primary"
               type="text"
               name="user_name"
               onChange={this.updateDetails}
             />
-            {this.inputIcon('ra-player-king', true, this.validateUsername())}
-            {this.inputIcon('ra-player-king', false, this.validateUsername())}
+            {this.inputIcon('ra-king', true, this.validateUsername())}
+            {this.inputIcon('ra-king', false, this.validateUsername())}
           </div>
         </label><br/>
         <div className="columns">
           <label className={`label column is-large has-text-light`}>Password:
             <div className="control has-icons-left has-icons-right">
-              <input className=" input is-large is-primary"
+              <input className="input has-text-centered is-large is-primary"
                 required
                 type="password" name="password" onChange={this.updateDetails}
               />
@@ -84,7 +84,7 @@ class Register extends React.Component {
           </label>
           <label className={`label column is-offset-1 is-large has-text-light`}>Confirm:
             <div className="control has-icons-left has-icons-right">
-              <input className=" input is-large is-primary"
+              <input className="input has-text-centered is-large is-primary"
                 required
                 type="password" name="confirm_password" onChange={this.updateDetails}
               />

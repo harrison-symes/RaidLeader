@@ -37,20 +37,20 @@ export function classTraits(heroClass) {
 
 export function classIcons (heroClass) {
   switch(heroClass) {
-    case 'Paladin': return 'ra-heavy-shield'
-    case 'Mage': return 'ra-frostfire'
-    case 'Priest': return 'ra-angel-wings'
+    case 'Paladin': return 'ra-winged-shield'
+    case 'Mage': return 'ra-magic-swirl'
+    case 'Priest': return 'ra-angel-outfit'
     case 'Warlock': return 'ra-flaming-claw'
-    case 'Rogue': return ' ra-hood'
-    case 'Monk': return 'ra-doubled'
+    case 'Rogue': return 'ra-cowled'
+    case 'Monk': return 'ra-triple-yin'
     case 'Warrior': return 'ra-knight-helmet'
-    case 'Hunter': return 'ra-archer'
-    case 'Shaman': return 'ra-gem-pendant'
-    case 'Bard': return 'ra-ocarina'
-    case 'Necromancer': return 'ra-death-skull'
+    case 'Hunter': return 'ra-eye-target'
+    case 'Shaman': return 'ra-lightning-helix'
+    case 'Bard': return 'ra-music-spell'
+    case 'Necromancer': return 'ra-death-zone'
     case 'Beast Master': return 'ra-pawprint'
     case 'Beast': return 'ra-wolf-head'
-    case 'Player': return 'ra-player-king'
+    case 'Player': return 'ra-king'
     default: return null
   }
 }
@@ -119,7 +119,7 @@ export function attackIcons (heroClass) {
     }
     case 'Player': return {
       colour: 'white',
-      icon: 'ra-player-king'
+      icon: 'ra-king'
     }
     case 'Necromancer': return {
       colour: 'black',
