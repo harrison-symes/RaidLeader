@@ -35,7 +35,7 @@ module.exports = {
     singleTarget: true,
     powerRatio: 0.5,
     description: 'Heal a Friendly Target for (50%) of Player Power',
-    icon: 'ra-flower',
+    icon: 'ra-lotus-flower',
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
@@ -66,7 +66,7 @@ module.exports = {
     singleTarget: true,
     powerRatio: 3,
     description: 'Heal a Friendly Target for (200%) of Player Power',
-    icon: 'ra-flowers',
+    icon: 'ra-vine-flower',
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
@@ -81,7 +81,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 1,
     description: "Heal ALL Friendly Characters for (100%) of Player Power",
-    icon: 'ra-grass-patch',
+    icon: 'ra-flower-twirl',
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
@@ -97,7 +97,7 @@ module.exports = {
     recruitOnly: true,
     powerRatio: 2,
     description: 'Heal a Friendly Recruit and the Player for (200%) of Player Power',
-    icon: 'ra-level-two',
+    icon: 'ra-tentacle-strike',
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
@@ -193,7 +193,7 @@ module.exports = {
     tickPower: 0.5,
     powerRatio: 1,
     description: "Damage the Boss and Heal the Player for (%150) of Player Power during the cast",
-    icon: 'ra-droplet',
+    icon: 'ra-life-tap',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
@@ -208,7 +208,7 @@ module.exports = {
     singleTarget: false,
     powerRatio: 2,
     description: 'Damage the Boss and Heal ALL Friendly Characters for (%200) of Player Power',
-    icon: 'ra-defibrilate',
+    icon: 'ra-energy-breath',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
@@ -224,7 +224,7 @@ module.exports = {
     powerRatio: 2,
     mana: 5,
     description: 'Damage the Boss and Heal the Player for (100%) of Player Power and restore 5 Mana to the Player',
-    icon: 'ra-bleeding-hearts',
+    icon: 'ra-transfuse',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
@@ -256,7 +256,7 @@ module.exports = {
     powerRatio: 0.5,
     singleTarget: false,
     description: 'Place a Healing over Time effect on each friendly party member, healing them for 60% of their Max Health over 15 seconds',
-    icon: 'ra-sprout-emblem',
+    icon: 'ra-sprout-disc',
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
@@ -274,7 +274,7 @@ module.exports = {
     singleTarget: false,
     isChanneled: true,
     description: 'Damage ALL friendly characters for (50%) Player Power over 3 seconds, then heal ALL friendly characters for (150%) Player Power',
-    icon: 'ra-player-lift',
+    icon: 'ra-wind-hole',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
@@ -378,7 +378,7 @@ module.exports = {
     max: 5,
     percentage: 0.25,
     description: 'Steal up to 5 Mana from the Boss. If you have no Life Spells, Heal ALL Recruits for (25%) of their Max Health',
-    icon: 'ra-reverse',
+    icon: 'ra-snatch',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
@@ -512,7 +512,7 @@ module.exports = {
     ticks: 6,
     isChanneled: true,
     description: "Transfer 3% of Max Player Health to the Target Recruit during the Cast, Healing the Target for Twice the amount of Health Lost",
-    icon: 'ra-shot-through-the-heart',
+    icon: 'ra-life-support',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow',
@@ -606,7 +606,7 @@ module.exports = {
     percentage: 1,
     greaterPercentage: 0.5,
     description: "Kill a Target Recruit, and Heal ALL other Recruits to Full Health. Also Increases the Power of ALL Recruits and the Player by (100% divided by Party Size. i.e, 3 Recruits = (33%) Power to All). If the Target is Below (50%) Health, the Player loses (25%) Max Health",
-    icon: 'ra-player-thunder-struck',
+    icon: 'ra-evil-book',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
