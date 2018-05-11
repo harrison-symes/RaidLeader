@@ -8,8 +8,8 @@ export function isAuthenticated () {
   if (token) {
     const payload = decode(token)
     const expiry = payload.exp
-    //new Date(Date.now() + 12096e5).getTime()
-    const fortnightFromUpdate = 1524121213341
+    // new Date(Date.now() + 12096e5).getTime()
+    const fortnightFromUpdate = 1527207284070
 
     if (expiry < new Date().getTime() / 1000 || expiry < fortnightFromUpdate / 1000) {
       removeUser()
