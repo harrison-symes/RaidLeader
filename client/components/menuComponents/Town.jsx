@@ -121,33 +121,33 @@ class Town extends Component {
       <div className="Town-Buttons has-text-centered">
         <a onClick={() => this.toggleModal('Dungeon Map')} className="Travel-Button button is-large is-fullwidth is-primary is-outlined">
           <span className="icon is-large">
-            <i className={`ra ra-forward ra-lg` }></i>
+            <i className={`ra ra-magic-portal ra-lg` }></i>
           </span>
           <span>&nbsp;Travel&nbsp;</span>
           <span className="icon is-large">
-            <i className={`ra ra-forward ra-lg` }></i>
+            <i className={`ra ra-magic-portal ra-lg` }></i>
           </span>
         </a>
 
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Recruitment Centre', 'ra-guarded-tower', 'The Hunt')}
-          {this.renderTownMenuButton('Library', 'ra-book', 'The Hunt')}
+          {this.renderTownMenuButton('Recruitment Centre', 'ra-barracks', 'The Hunt')}
+          {this.renderTownMenuButton('Library', 'ra-gift-of-knowledge', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
-          {this.renderTownMenuButton('Training Centre', 'ra-muscle-up', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Training Centre', 'ra-military-fort', 'The Cursed Wilds')}
           {this.renderTownMenuButton('Mage Tower', 'ra-crystal-ball', 'The Hunt')}
         </div>
         <div className="columns Town-Button-Div">
           <a title={"Don't do it!"} onClick={() => this.toggleModal('Logout')} className="column is-6 button is-large is-danger is-outlined">
             <span className="icon is-large">
-              <i className={`ra ra-turd ra-lg`}></i>
+              <i className={`ra ra-exit-door ra-lg`}></i>
             </span>
             &nbsp;Logout&nbsp;
             <span className="icon is-large">
-              <i className={`ra ra-turd ra-lg` }></i>
+              <i className={`ra ra-exit-door ra-lg` }></i>
             </span>
           </a>
-          {this.renderTownMenuButton('Black Market', 'ra-pawn', 'The Cursed Wilds')}
+          {this.renderTownMenuButton('Black Market', 'ra-receive-money', 'The Cursed Wilds')}
 
         </div>
       </div>

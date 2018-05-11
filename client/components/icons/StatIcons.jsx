@@ -44,7 +44,7 @@ export function PlayerIcon ({player}) {
       <p>{power} Power</p>
     </span>,
     <span>
-      <i id="PlayerIcon" className="ra ra-lg ra-player-king" />
+      <i id="PlayerIcon" className="ra ra-lg ra-king" />
     </span>
   )
 }
@@ -54,7 +54,7 @@ export function HealthIcon ({value}) {
     <p>{value} Health</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-two-hearts icon-large" />
+      <i className="ra ra-fw ra-charm icon-large" />
     </span>
   )
 }
@@ -64,7 +64,7 @@ export function SpeedIcon ({value}) {
     <p>{value} Speed</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-lightning-bolt icon-large" />
+      <i className="ra ra-fw ra-electric icon-large" />
     </span>
   )
 }
@@ -104,7 +104,7 @@ export function ManaIcon ({value}) {
     <p>{value} Mana</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-crystals icon-large" />
+      <i className="ra ra-fw ra-crystal-cluster icon-large" />
     </span>
   )
 }
@@ -133,7 +133,7 @@ export function GemIcon ({value}) {
     <p>{value} Gem{value == 1 ? '' : 's'}</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-diamond icon-large" />
+      <i className="ra ra-fw ra-cut-diamond icon-large" />
     </span>
   )
 }
@@ -143,7 +143,7 @@ export function ArmorIcon ({value}) {
     <p>{value} Armor</p>,
     <span>
       {value}
-      <i className="ra ra-fw ra-heavy-shield icon-large" />
+      <i className="ra ra-fw ra-layered-armor icon-large" />
     </span>
   )
 }
@@ -167,19 +167,10 @@ export function TargetTypeIcon ({singleTarget}) {
 }
 
 export function LevelIcon ({level}) {
-  let num
-  switch(level) {
-    case 1: num = 'one'; break;
-    case 2: num = 'two'; break;
-    case 3: num = 'three'; break;
-    case 4: num = 'four'; break;
-    case 5: num = 'five'; break;
-    case 6: num = 'six'; break;
-  }
   return toolTipGenerator(
     <p>Level {level}</p>,
     <span>
-      <i style={{color: 'white', backgroundColor: 'black'}} className={`ra ra-fw ra-dice-${num} icon-large`} />
+      <i style={{color: 'black', backgroundColor: 'white'}} className={`ra ra-fw ra-inverted-dice-${level} icon-large`} />
     </span>
   )
 }
@@ -298,7 +289,7 @@ export function RecruitCountIcon ({amount}) {
     </span>,
     <span>
       {amount}
-      <i className="ra ra-double-team icon-large" />
+      <i className="ra ra-backup icon-large" />
     </span>
   )
 }
@@ -311,7 +302,7 @@ export function SpellCountIcon ({amount}) {
     </span>,
     <span>
       {amount}
-      <i className="ra ra-book icon-large" />
+      <i className="ra ra-spell-book icon-large" />
     </span>
   )
 }

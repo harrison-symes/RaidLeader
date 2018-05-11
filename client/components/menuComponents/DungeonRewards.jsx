@@ -128,7 +128,7 @@ class DungeonRewards extends Component {
     const bossesDefeated = currentLocation.bosses.filter(boss => boss.isDefeated)
     const {showRewards} = this.state
     return <span className=" is-large">
-      {currentLocation.bosses.map((boss, i) => <i key={i} className={`title has-text-${i + 1 <= bossesDefeated.length ? 'success' : 'danger'} is-2 icon ${i + 1 <= bossesDefeated.length ? 'ra-broken-skull' : 'ra-skull'} ra ra-fw is-large`} />)}
+      {currentLocation.bosses.map((boss, i) => <i key={i} className={`title has-text-${i + 1 <= bossesDefeated.length ? 'success' : 'danger'} is-2 icon ${i + 1 <= bossesDefeated.length ? 'ra-unlocking' : 'ra-boss-key'} ra ra-fw is-large`} />)}
       {bossesDefeated.length == currentLocation.bosses.length && this.renderRewardsModal()}
     </span>
   }

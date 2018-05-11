@@ -1,7 +1,7 @@
 export function MenuBackground (dungeon) {
   switch(dungeon) {
     case 'The Hunt': return {
-      icon: 'ra-dragon',
+      icon: 'ra-dragon-head',
       colour: '#b88d8d',
       background: '/images/backgrounds/the-hunt.png'
     }
@@ -11,17 +11,17 @@ export function MenuBackground (dungeon) {
       background: '/images/backgrounds/the-wilds.png'
     }
     case 'The Swamp': return {
-      icon: 'ra-ocean-emblem',
+      icon: 'ra-swamp',
       colour: '#47294a',
       background: '/images/backgrounds/the-swamp.png'
     }
     case 'The Foundry': return {
-      icon: 'ra-forging',
+      icon: 'ra-caldera',
       colour: '#c23f18',
       background: '/images/backgrounds/the-foundry.png'
     }
     case 'The Armory': return {
-      icon: 'ra-all-for-one',
+      icon: 'ra-sword-clash',
       colour: '#302b30',
       background: '/images/backgrounds/the-armory.png'
     }

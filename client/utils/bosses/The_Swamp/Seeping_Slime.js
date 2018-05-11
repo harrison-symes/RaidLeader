@@ -19,7 +19,7 @@ export default {
   expReward: 700,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-ocean-emblem',
+  icon: 'ra-slime',
   spells: [
     {
       name: 'Regenerate',
@@ -46,7 +46,7 @@ export default {
       onCooldown: false,
       percentage: 0.25,
       description: 'Damage All enemy recruits for (25%) of their Max Health. Both the Boss and Player Lose 5% Health',
-      icon: 'ra-bleeding-hearts'
+      icon: 'ra-dripping-goo'
     },
     {
       name: 'Sludge Bomb',
@@ -58,7 +58,7 @@ export default {
       singleTarget: true,
       onCooldown: false,
       description: "Damage the Boss's target for 100% Boss Power, Poison the Target dealing 60% of their Max Health over 15 seconds",
-      icon: 'ra-poison-cloud'
+      icon: 'ra-gooey-molecule'
     }
   ]
 }

@@ -39,14 +39,14 @@ class Login extends React.Component {
         {errorMessage && <h1 className="has-text-danger box column is-8 is-offset-2">{errorMessage}</h1>}
         <label className="label is-large has-text-light">Username:
           <div className="control has-icons-left has-icons-right column is-6 is-offset-3">
-            <input required className="input is-rounded is-focused has-text-centered is-large is-primary " type="text" name="user_name" onChange={this.updateDetails}/>
-            {this.inputIcon('ra-player-king', true, this.state.user_name.length > 6)}
-            {this.inputIcon('ra-player-king', false, this.state.user_name.length > 6)}
+            <input required className="input is-focused has-text-centered is-large is-primary " type="text" name="user_name" onChange={this.updateDetails}/>
+            {this.inputIcon('ra-king', true, this.state.user_name.length > 6)}
+            {this.inputIcon('ra-king', false, this.state.user_name.length > 6)}
           </div>
         </label>
         <label className="label is-large has-text-light">Password:
           <div className="control has-icons-left has-icons-right column is-6 is-offset-3">
-            <input required className="input is-rounded is-focused has-text-centered is-large is-primary" type="password" name="password" onChange={this.updateDetails}/>
+            <input required className="input is-focused has-text-centered is-large is-primary" type="password" name="password" onChange={this.updateDetails}/>
             {this.inputIcon('ra-uncertainty', true, this.state.password.length > 6)}
             {this.inputIcon('ra-uncertainty', false, this.state.password.length > 6)}
           </div>

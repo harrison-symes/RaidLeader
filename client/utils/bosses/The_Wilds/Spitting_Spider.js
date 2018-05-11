@@ -19,7 +19,7 @@ export default {
   weaponRewards: ['Fine Silk', 'Spider Eye Wand', 'Lute Thread'],
   weaponChance: 1,
   progress_required: 2,
-  icon: 'ra-spider-face',
+  icon: 'ra-masked-spider',
   spells: [
     {
       name: 'Feed',
@@ -31,7 +31,7 @@ export default {
       powerRatio: 5,
       onCooldown: false,
       description: "Gain 5 POWER",
-      icon: 'ra-knife-fork'
+      icon: 'ra-swallow'
     },
     {
       name: 'Swipe',
@@ -43,7 +43,7 @@ export default {
       powerRatio: 1,
       onCooldown: false,
       description: "Damage ALL enemy characters for 100% BOSS POWER",
-      icon: 'ra-bird-claw'
+      icon: 'ra-claw-slashes'
     },
     {
       name: 'Web Wrap',
@@ -55,7 +55,7 @@ export default {
       onCooldown: false,
       stunDuration: 5,
       description: "Stun a Random Recruit for 5 seconds. (Stunned Recruits cannot Attack)",
-      icon: 'ra-zebra-shield'
+      icon: 'ra-spider-web'
     },
     {
       name: 'Spit',
@@ -67,7 +67,7 @@ export default {
       powerRatio: 1,
       onCooldown: false,
       description: "Damage the PLAYER for 100% BOSS POWER",
-      icon: 'ra-player-thunder-struck'
+      icon: 'ra-web-spit'
     },
   ]
 }

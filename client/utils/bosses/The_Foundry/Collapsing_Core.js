@@ -19,7 +19,7 @@ export default {
   expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-alien-fire',
+  icon: 'ra-unstable-orb',
   stage: 'stageOne',
   spells: [
     {
@@ -34,7 +34,7 @@ export default {
       onCooldown: false,
       stage: 'stageTwo',
       description: "(Only used when at 0 Armor) Change to Stage 2, gaining 25 Power",
-      icon: 'ra-energise'
+      icon: 'ra-ball-glow'
     },
     {
       name: 'Magnetic Pulse',
@@ -53,7 +53,7 @@ export default {
       tickArmor: 50,
       onCooldown: false,
       description: "Gain 150 Armor during the cast, then damage the target for (50%) of Target's Max Health",
-      icon: 'ra-magnet'
+      icon: 'ra-magnet-blast'
     },
     {
       name: 'Magma Surge',
@@ -70,7 +70,7 @@ export default {
       tickPower: 0.05,
       onCooldown: false,
       description: "Damage ALL enemies for (50%) of PlAYER Power during the cast, and then Damage the Target for (50%) Boss Power",
-      icon: 'ra-lava'
+      icon: 'ra-flamed-leaf'
     }
 
   ],
@@ -103,7 +103,7 @@ export default {
         onCooldown: false,
         singleTarget: false,
         description: "Damage EACH Recruit for (50%) of their CURRENT Health",
-        icon: 'ra-reactor'
+        icon: 'ra-split-body'
       },
       {
         name: 'Magma Surge',
@@ -120,7 +120,7 @@ export default {
         tickPower: 0.05,
         onCooldown: false,
         description: "Damage ALL enemies for (50%) of PlAYER Power during the cast, and then Damage the Target for (50%) Boss Power",
-        icon: 'ra-lava'
+        icon: 'ra-flamed-leaf'
       }
     ]
   },
@@ -141,7 +141,7 @@ export default {
         onCooldown: false,
         singleTarget: false,
         description: "(Only Useable at 100 Mana): Damage ALL enemy characters for (1,000,000%) Boss Power",
-        icon: 'ra-bomb-explosion'
+        icon: 'ra-crowned-explosion'
       },
       {
         name: 'Radiate',
@@ -156,7 +156,7 @@ export default {
         onCooldown: false,
         singleTarget: true,
         description: "Poison ALL Recruits for (60%) of their Max Health over 15 seconds. The Poison increases in damage by 1% for every 1 Mana the Boss has.",
-        icon: 'ra-alien-fire'
+        icon: 'ra-sun-radiations'
       },
       {
         name: 'Half Life',
@@ -168,7 +168,7 @@ export default {
         onCooldown: false,
         singleTarget: false,
         description: "Damage EACH Recruit for (50%) of their CURRENT Health",
-        icon: 'ra-reactor'
+        icon: 'ra-split-body'
       },
       {
         name: 'Fission',
@@ -180,7 +180,7 @@ export default {
         powerRatio: 1,
         power: -10,
         description: 'Damage the Boss Target for (100%) Boss Power, lose 10 Power',
-        icon: 'ra-tesla'
+        icon: 'ra-explosive-meeting'
       }
     ]
   }

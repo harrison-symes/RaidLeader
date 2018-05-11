@@ -48,7 +48,7 @@ test('PlayerIcon', () => {
   expect(wrapper.find('p').first().text()).toBe('Jeff')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-player-king')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-king')).toBeTruthy()
 })
 
 test('HealthIcon', () => {
@@ -59,7 +59,7 @@ test('HealthIcon', () => {
   expect(wrapper.find('span').text()).toBe('100')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-two-hearts')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-charm')).toBeTruthy()
 })
 
 test('SpeedIcon', () => {

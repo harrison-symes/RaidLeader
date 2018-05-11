@@ -45,7 +45,7 @@ export default {
       onCooldown: false,
       stunDuration: 3,
       description: "Damage the Boss TARGET for 100% of BOSS POWER. Also Stuns the Target for 3 seconds. (Stunned Recruits cannot Attack)",
-      icon: 'ra-alligator-clip'
+      icon: 'ra-fangs'
     },
     {
       name: 'Feed',
@@ -57,7 +57,7 @@ export default {
       powerRatio: 10,
       onCooldown: false,
       description: 'Gain 10 Power',
-      icon: 'ra-knife-fork'
+      icon: 'ra-swallow'
     },
     {
       name: 'Regenerate',

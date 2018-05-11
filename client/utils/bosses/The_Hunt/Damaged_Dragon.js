@@ -19,7 +19,7 @@ export default {
   expReward: 300,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-dragon',
+  icon: 'ra-dragon-head',
   spells: [
     {
       name: 'Roar',
@@ -43,7 +43,7 @@ export default {
       powerRatio: 0.15,
       onCooldown: false,
       description: 'Damage ALL enemy characters for 15% BOSS POWER, lose 150 health',
-      icon: 'ra-dragon-breath'
+      icon: 'ra-fire-breath'
     },
     {
       name: 'Weakened Bite',

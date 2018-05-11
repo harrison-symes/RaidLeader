@@ -19,7 +19,7 @@ export default {
   expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
-  icon: ' ra-recycle',
+  icon: ' ra-overdrive',
   stage: 'stageZero',
   spells: [
     {
@@ -70,7 +70,7 @@ export default {
         onCooldown: false,
         percentage: 50,
         description: 'Set ALL recruits to 50% of their Max Health',
-        icon: 'ra-lightning-trio'
+        icon: 'ra-lightning-arc'
       },
       {
         name: 'Discharge',
@@ -86,7 +86,7 @@ export default {
         ticks: 10,
         tickPercentage: 0.05,
         description: 'Damage ALL recruits for 50% of their Max Health over the cast',
-        icon: 'ra-defibrilate'
+        icon: 'ra-chain-lightning'
       },
       {
         name: 'Change Gears',
@@ -99,7 +99,7 @@ export default {
         powerRatio: 1,
         stage: 'stageTwo',
         description: 'Change to Stage 2. If at 200 Mana, change to Stage 3 instead',
-        icon: 'ra-gears'
+        icon: 'ra-anticlockwise-rotation'
       }
     ]
   },
@@ -119,7 +119,7 @@ export default {
         powerRatio: 1,
         stage: 'stageOne',
         description: 'Change to Stage 1. If at 200 Mana, change to Stage 3 Instead',
-        icon: 'ra-gears'
+        icon: 'ra-clockwise-rotation'
       },
       {
         name: 'Power Drill',
@@ -146,7 +146,7 @@ export default {
         onCooldown: false,
         singleTarget: true,
         description: "Damage the Boss' Target and the Player for (100%) Boss Power",
-        icon: 'ra-robot-arm'
+        icon: 'ra-cogsplosion'
       },
       {
         name: 'Power Up',
@@ -159,7 +159,7 @@ export default {
         power: 10,
         onCooldown: false,
         description: 'Gain 20 Power',
-        icon: 'ra-heartburn'
+        icon: 'ra-tesla-coil'
       }
     ]
   },
@@ -183,7 +183,7 @@ export default {
         onCooldown: false,
         singleTarget: false,
         description: "The Boss gains 20 Power, 20 Mana and restores 200 Armor during the cast of this spell",
-        icon: 'ra-repair'
+        icon: 'ra-auto-repair'
       },
       {
         name: 'Discharge',
@@ -199,7 +199,7 @@ export default {
         ticks: 10,
         tickPercentage: 0.05,
         description: 'Damage ALL recruits for 50% of their Max Health over the cast',
-        icon: 'ra-defibrilate'
+        icon: 'ra-chain-lightning'
       },
       {
         name: 'Power Drill',
@@ -226,7 +226,7 @@ export default {
         onCooldown: false,
         singleTarget: false,
         description: 'Reduce the Cast Time and Cooldown of ALL Boss Spells by 10%',
-        icon: 'ra-recycle'
+        icon: 'ra-twirl-center'
       }
     ]
   }

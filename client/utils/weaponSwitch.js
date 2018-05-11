@@ -12,7 +12,7 @@ module.exports = {
     class: 'Player',
     description: 'It comes with a note attached; "Hitting your Recruits with this will NOT heal them!"',
     bonusEffect: null,
-    icon: 'ra-crystal-wand'
+    icon: 'ra-wizard-staff'
   }),
   ['Cursed Staff of the Wilds']: (level, id) => ({
     name: 'Cursed Staff of the Wilds',
@@ -27,7 +27,7 @@ module.exports = {
     class: 'Player',
     description: 'This Staff is covered in thorns. You hear the sounds of a Bear Wailing from inside of it.',
     bonusEffect: null,
-    icon: 'ra-dead-tree'
+    icon: 'ra-wood-stick'
   }),
   ['Cleansed Staff of the Wilds']: (level, id) => ({
     name: 'Cleansed Staff of the Wilds',
@@ -42,7 +42,7 @@ module.exports = {
     class: 'Player',
     description: 'You have lifted the curse upon the Wilds, and the Wilds presents you this as a reward.',
     bonusEffect: null,
-    icon: 'ra-pine-tree'
+    icon: 'ra-tree-branch'
   }),
   ['Plagued Staff of the Swamp']: (level, id) => ({
     name: 'Plagued Staff of the Swamp',
@@ -58,7 +58,7 @@ module.exports = {
     description: 'The staff resonates great power, but something about it feels so wrong.',
     bonusEffect: 'Poison',
     effectDescription: `Casting a Life Spell on a Recruit will Poison the Recruit for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-biohazard'
+    icon: 'ra-kusarigama'
   }),
   ['Cleansed Staff of the Woods']: (level, id) => ({
     name: 'Cleansed Staff of the Woods',
@@ -74,7 +74,7 @@ module.exports = {
     description: 'Made from a powerful Oak Tree. A small artifact of purity from the Woods that used to be...',
     bonusEffect: 'curePoison',
     effectDescription: "Casting a Life Spell on a Recruit will remove any Poison effect from the target",
-    icon: 'ra-sprout'
+    icon: 'ra-tree-face'
   }),
   ['Staff of Eternal Flame']: (level, id) => ({
     name: 'Staff of Eternal Flame',
@@ -90,7 +90,7 @@ module.exports = {
     description: 'A Glowing Sun Shaped Ruby sits at the tip of the Staff. The Hilt Glows as you touch it, warming you soul... a little too warm perhaps...',
     bonusEffect: 'firePower',
     effectDescription: "The Power of your Fire Spells is Increased by (100%)",
-    icon: 'ra-sun'
+    icon: 'ra-primitve-torch'
   }),
   ['Staff of Endless Shadow']: (level, id) => ({
     name: 'Staff of Endless Shadow',
@@ -106,7 +106,7 @@ module.exports = {
     description: 'A skull sits at the tip of the Staff. A soft voice calls out to you: "Fear not mortal, together can do anything I desire..."',
     bonusEffect: 'shadowPower',
     effectDescription: "Whenever you cast a Shadow Spell, the Power of ALL Recruits are increased by 1%",
-    icon: 'ra-death-skull'
+    icon: 'ra-skull-staff'
   }),
   ['Staff of Arcane Energy']: (level, id) => ({
     name: 'Staff of Arcane Energy',
@@ -122,7 +122,7 @@ module.exports = {
     description: 'A swirling mist hovers over the tip of the Staff. As you hold the Weapon a surge flows through your body. You feel like you could run forever. In fact, not running is quite painful.',
     bonusEffect: 'arcanePower',
     effectDescription: "Your Recruits have +10% Speed for Each Arcane Spell on your Spell Bar",
-    icon: 'ra-kaleidoscope'
+    icon: 'ra-crystal-wand'
   }),
   ['Staff of Blossoming Life']: (level, id) => ({
     name: 'Staff of Blossoming Life',
@@ -138,7 +138,7 @@ module.exports = {
     description: 'A small daisy sits at the tip of the Staff. Walking out of the Scorched Volcano with this in your hand, you watch amazed as the Earth around you sprouts and heals with new life.',
     bonusEffect: 'lifePower',
     effectDescription: "Whenever you Cast a Life Spell, Heal ALL Recruits for (5%) of their Max Health",
-    icon: 'ra-daisy'
+    icon: 'ra-caduceus'
   }),
   ['Dragon Scale']: (level, id) => ({
     name: 'Dragon Scale',
@@ -152,7 +152,7 @@ module.exports = {
     class: 'Paladin',
     description: 'A Scale from a Dragon, this should make a good shield',
     bonusEffect: null,
-    icon: 'ra-cracked-shield'
+    icon: 'ra-shieldcomb'
   }),
   ['Bear Fangs']: (level, id) => ({
     name: 'Bear Fangs',
@@ -166,7 +166,7 @@ module.exports = {
     class: 'Rogue',
     description: 'A set of Bear Fangs. Good for stabbing, not very good for blocking',
     bonusEffect: null,
-    icon: 'ra-alligator-clip'
+    icon: 'ra-front-teeth'
   }),
   ['Bear Heart']: (level, id) => ({
     name: 'Bear Heart',
@@ -180,7 +180,7 @@ module.exports = {
     class: 'Warlock',
     description: 'The heart still beats, only a true sadist would find this useful',
     bonusEffect: null,
-    icon: 'ra-bleeding-hearts'
+    icon: 'ra-heart-organ'
   }),
   ['Bear Claw Arrows']: (level, id) => ({
     name: 'Bear Claw Arrows',
@@ -208,7 +208,7 @@ module.exports = {
     class: 'Necromancer',
     description: "The Bear was very attached to this bone, you're not really sure what kind of Animal it is from. (Could be Human)",
     bonusEffect: null,
-    icon: 'ra-bone-bite'
+    icon: 'ra-bone-knife'
   }),
   ['Massive Shell']: (level, id) => ({
     name: 'Massive Shell',
@@ -237,7 +237,7 @@ module.exports = {
     class: 'Monk',
     description: "Strange, the Turtle was growing Pearls under it's shell",
     bonusEffect: null,
-    icon: 'ra-gem'
+    icon: 'ra-oyster-pearl'
   }),
   ['Glowing Pearl Talisman']: (level, id) => ({
     name: 'Glowing Pearl Talisman',
@@ -251,7 +251,7 @@ module.exports = {
     class: 'Shaman',
     description: "Strange, the Turtle was magical growing Pearls under it's shell",
     bonusEffect: null,
-    icon: 'ra-ball'
+    icon: 'ra-pearl-necklace'
   }),
   ['Fine Silk']: (level, id) => ({
     name: 'Fine Silk',
@@ -265,7 +265,7 @@ module.exports = {
     class: 'Priest',
     description: "The Spider had spun some amazing silk. Very light, with slight magical properties",
     bonusEffect: null,
-    icon: 'ra-incense'
+    icon: 'ra-rolled-cloth'
 
   }),
   ['Spider Eye Wand']: (level, id) => ({
@@ -294,7 +294,7 @@ module.exports = {
     class: 'Bard',
     description: "The Loot you received will go perfectly with a Lute.",
     bonusEffect: null,
-    icon: 'ra-vine-whip'
+    icon: 'ra-light-thorny-triskelion'
   }),
   ['Turtle Aspect']: (level, id) => ({
     name: 'Turtle Aspect',
@@ -309,7 +309,7 @@ module.exports = {
     description: "A charm embedded with the Turtle's soul. It calls out quietly, seeking the aid of other Turtles.",
     bonusEffect: 'turtlePet',
     effectDescription: "The Beast Master will now summon a Turtle Pet instead. The Turtle will inherit (100%) of the Beast Master's Health, but only (30% of the Beast Master's speed)",
-    icon: 'ra-turtle-shell'
+    icon: 'ra-turtle'
   }),
   ['Plagued Aegis']: (level, id) => ({
     name: 'Plagued Aegis',
@@ -324,7 +324,7 @@ module.exports = {
     description: 'A lost shield from a fallen adventurer. "A. Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-zebra-shield'
+    icon: 'ra-skull-shield'
   }),
   ['Plagued Blade']: (level, id) => ({
     name: 'Plagued Blade',
@@ -339,7 +339,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "A Blaine" is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-dripping-sword'
+    icon: 'ra-gooey-sword'
   }),
   ['Plagued Daggers']: (level, id) => ({
     name: 'Plagued Daggers',
@@ -414,7 +414,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "L. N." is engraved on the back',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-spear-head'
+    icon: 'ra-gooey-eyed-sun'
   }),
   ['Plagued Skull']: (level, id) => ({
     name: 'Plagued Skull',
@@ -459,7 +459,7 @@ module.exports = {
     description: "That disgusting Piltherer was holding a Fox captive. It seems that the Fox holds the cure to the poison infecting The Swamp",
     bonusEffect: 'foxPet',
     effectDescription: `The Beast Master will summon a Fox as a pet instead. The Fox will inherit (150%) Speed and (30%) Power from the Beast Master, and the Fox's attacks will cure any Poison Effect on itself of it's Beast Master owner`,
-    icon: 'ra-fox'
+    icon: 'ra-fox-head'
   }),
   ['Glowing Libram']: (level, id) => ({
     name: 'Glowing Libram',
@@ -474,7 +474,7 @@ module.exports = {
     description: 'A lost weapon from a fallen adventurer. "Dr. Dayne" is engraved on the back',
     bonusEffect: 'curePoison',
     effectDescription: `The Priest's heals cure any Poison effect on the spell's Target`,
-    icon: 'ra-book'
+    icon: 'ra-book-aura'
   }),
   ['Plagued Ocarina']: (level, id) => ({
     name: 'Plagued Ocarina',
@@ -489,10 +489,10 @@ module.exports = {
     description: '"The Ocarina of Slime"',
     bonusEffect: 'selfPoison',
     effectDescription: `The character's attacks have a chance to Poison themselves for 60% of their Max Health over 15 seconds`,
-    icon: 'ra-book'
+    icon: 'ra-ocarina'
   }),
-  ['Cracked Chassis']: (level, id) => ({
-    name: 'Cracked Chassis',
+  ['Bent Railing']: (level, id) => ({
+    name: 'Bent Railing',
     type: 'weapon',
     level,
     id,
@@ -504,7 +504,7 @@ module.exports = {
     class: 'Paladin',
     bonusEffect: 'noTaunt',
     effectDescription: 'The Paladin no longer forces the Boss to attack them',
-    icon: 'ra-cracked-shield'
+    icon: 'ra-lead-pipe'
   }),
   ['Curved Chassis']: (level, id) => ({
     name: 'Curved Chassis',
@@ -519,7 +519,7 @@ module.exports = {
     class: 'Monk',
     bonusEffect: 'taunt',
     effectDescription: "The Monk's attacks now force the Boss to Target the Monk",
-    icon: 'ra-cracked-helm'
+    icon: 'ra-riot-shield'
   }),
   ['Afterburn Arrows']: (level, id) => ({
     name: 'Afterburn Arrows',
@@ -549,7 +549,7 @@ module.exports = {
     class: 'Mage',
     bonusEffect: 'charge',
     effectDescription: "The Mage's attacks restore 1 Mana to the Player",
-    icon: 'ra-laser-site'
+    icon: 'ra-lightning-arc'
   }),
   ['Lightning Rod']: (level, id) => ({
     name: 'Lightning Rod',
@@ -564,7 +564,7 @@ module.exports = {
     class: 'Warlock',
     bonusEffect: 'lightningRod',
     effectDescription: "The Warlock now only damages themselves for 5% of Max Health whenever they attack (instead of damagin ALL party members)",
-    icon: 'ra-magnet'
+    icon: 'ra-lightning-spanner'
   }),
   ['Power Drill']: (level, id) => ({
     name: 'Power Drill',
@@ -609,7 +609,7 @@ module.exports = {
     class: 'Warrior',
     bonusEffect: 'enrage',
     effectDescription: "The Warrior deals Double Damage while below 50% Health",
-    icon: 'ra-scroll-unfurled'
+    icon: 'ra-thunder-blade'
   }),
   ['Decayed Core']: (level, id) => ({
     name: 'Decayed Core',
@@ -624,7 +624,7 @@ module.exports = {
     class: 'Priest',
     bonusEffect: 'halfLife',
     effectDescription: "The Priest's heals are Twice as effective against targets ABOVE (50%) Health",
-    icon: 'ra-implosion'
+    icon: 'ra-tumor'
   }),
   ['Snake Charmer']: (level, id) => ({
     name: 'Snake Charmer',
@@ -639,7 +639,7 @@ module.exports = {
     description: 'A flute made FROM a Snake to CHARM other Snakes. It seems to scare the other Party members...',
     effectDescription: "When the Shaman casts Renew on a Recruit, the Recruit's Speed is also increased by 10%",
     bonusEffect: 'speedBooster',
-    icon: 'ra-snake'
+    icon: 'ra-pan-flute'
   }),
   ['Crushed Skull']: (level, id) => ({
     name: 'Crushed Skull',

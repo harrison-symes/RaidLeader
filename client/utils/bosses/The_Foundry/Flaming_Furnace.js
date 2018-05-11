@@ -14,12 +14,12 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: "The sound of drooling Magma grows louder as you enter the hall of a giant Furnace. Lava flows from the ceiling into a large iron pot. You were going to just leave it alone, but one of your Party members falls over, switching a lever. This could get messy.",
-  weaponRewards: ['Curved Chassis', 'Afterburn Arrows', 'Cracked Chassis'],
+  weaponRewards: ['Curved Chassis', 'Afterburn Arrows', 'Bent Railing'],
   goldReward: 700,
   expReward: 1200,
   weaponChance: 1,
   progress_required: 0,
-  icon: 'ra-lava',
+  icon: 'ra-lantern-flame',
   spells: [
     {
       name: 'Unleash Flames',
@@ -34,7 +34,7 @@ export default {
       ticks: 10,
       onCooldown: false,
       description: "Useable when at 0 Armor: Damage ALL enemy recruits for (100%) Boss Power over the duration of the cast. Then change to Stage 2",
-      icon: 'ra-fire-shield'
+      icon: 'ra-volcano'
     },
     {
       name: 'Heat Up',
@@ -48,7 +48,7 @@ export default {
       mana: 10,
       onCooldown: false,
       description: 'Gain 10 Power and 10 Mana, damage ALL enemy characters for (100%) Boss Power',
-      icon: 'ra-heartburn'
+      icon: 'ra-burning-embers'
     },
     {
       name: 'Boil',
@@ -64,7 +64,7 @@ export default {
       isChanneled: true,
       tickPower: 0.5,
       description: 'Damage a Random Enemy Recruit for (10%) Max Health 5 times during the duration of the cast',
-      icon: 'ra-hot-surface'
+      icon: 'ra-eruption'
     },
   ],
   stageTwo: {
@@ -83,7 +83,7 @@ export default {
         mana: 10,
         onCooldown: false,
         description: 'Gain 10 Power and 10 Mana, damage ALL enemy characters for (100%) Boss Power',
-        icon: 'ra-heartburn'
+        icon: 'ra-burning-embers'
       },
       {
         name: 'Exhaust Heat',
@@ -99,7 +99,7 @@ export default {
         isChanneled: true,
         power: -5,
         description: 'Damage ALL enemy Recruits for (50%) Boss Damage over the duration of the cast. Lose 5 Power',
-        icon: 'ra-lava'
+        icon: 'ra-wildfires'
       },
       {
         name: 'Flame',
@@ -112,7 +112,7 @@ export default {
         power: -5,
         onCooldown: false,
         description: "Damage the Boss' Target and the Player for (100%) Boss Power. Lose 5 Power",
-        icon: 'ra-burning-meteor'
+        icon: 'ra-fire-tail'
       }
     ]
   }
