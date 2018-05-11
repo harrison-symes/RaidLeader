@@ -28,9 +28,9 @@ export default {
       coolDown: 10,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 50,
+      powerRatio: 30,
       onCooldown: false,
-      description: "Gain 50 ARMOR",
+      description: "Gain 30 ARMOR",
       icon: 'ra-energy-shield'
     },
     {

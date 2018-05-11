@@ -1,12 +1,12 @@
 export default {
   name: 'Biting Bear',
   level: 1,
-  initHp: 500,
-  hp: 500,
+  initHp: 400,
+  hp: 400,
   initPower: 20,
   power: 20,
-  initArmor: 200,
-  armor: 200,
+  initArmor: 250,
+  armor: 250,
   mana: 25,
   maxMana: 25,
   manaRegen: 1,
@@ -40,9 +40,9 @@ export default {
       coolDown: 10,
       type: 'armor',
       singleTarget: false,
-      powerRatio: 25,
+      powerRatio: 20,
       onCooldown: false,
-      description: 'Gain 25 ARMOR',
+      description: 'Gain 20 ARMOR',
       icon: 'ra-energy-shield'
     },
     {
