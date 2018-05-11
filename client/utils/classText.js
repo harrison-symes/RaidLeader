@@ -61,61 +61,61 @@ export function attackIcons (heroClass) {
       colour: '#FF3E96    ',
       rotates: true,
       rotation: 0,
-      icon: 'ra-bolt-shield'
+      icon: 'ra-eclipse'
     }
     case 'Mage': return {
       colour: '#EE9A00',
-      rotates: false,
+      rotates: true,
       rotation: 180,
-      icon: 'ra-frostfire'
+      icon: 'ra-sun'
     }
     case 'Warlock': return {
       colour: '#9370DB',
-      rotates: false,
+      rotates: true,
       rotation: 180,
-      icon: 'ra-beam-wake'
+      icon: 'ra-arcing-bolt'
     }
     case 'Rogue': return {
       colour: '#800000',
       rotates: false,
       rotation: 180,
-      icon: 'ra-plain-dagger'
+      icon: 'ra-flying-dagger'
     }
     case 'Hunter': return {
       colour: '#8E8E38',
       rotates: false,
       rotation: 180,
-      icon: 'ra-broadhead-arrow'
+      icon: 'ra-arrowhead'
     }
     case 'Priest': return {
       colour: '#C0FF3E',
       rotates: true,
       rotation: 0,
-      icon: 'ra-radial-balance'
+      icon: 'ra-laser-burst'
     }
     case 'Shaman': return {
       colour: '#5CACEE',
       rotates: false,
       rotation: 180,
-      icon: 'ra-focused-lightning'
+      icon: 'ra-lightning-frequency'
     }
     case 'Warrior': return {
       colour: '#EE5C42',
       rotates: true,
       rotation: 0,
-      icon: 'ra-spinning-sword'
+      icon: 'ra-sword-spin'
     }
     case 'Monk': return {
       colour: '#00FF7F',
       rotates: true,
       rotation: 0,
-      icon: 'ra-fluffy-swirl'
+      icon: 'ra-star-swirl'
     }
     case 'Bard': return {
       colour: '#4682B4',
       rotates: true,
       rotation: 0,
-      icon: 'ra-ringing-bell'
+      icon: 'ra-mu  sic-spell'
     }
     case 'Player': return {
       colour: 'white',
@@ -123,19 +123,19 @@ export function attackIcons (heroClass) {
     }
     case 'Necromancer': return {
       colour: 'black',
-      icon: 'ra-sickle',
+      icon: 'ra-bone-mace',
       rotation: 270,
       rotates: true
     }
     case 'Beast Master': return {
       colour: 'sienna',
-      icon: 'ra-horseshoe',
+      icon: 'ra-wolf-trap',
       rotation: 270,
       rotates: true
     }
     case 'Beast': return {
       colour: 'sienna',
-      icon: 'ra-broken-bone',
+      icon: 'ra-midnight-claw',
       rotation: 270,
       rotates: true
     }
