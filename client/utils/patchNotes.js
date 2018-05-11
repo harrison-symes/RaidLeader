@@ -4,6 +4,19 @@ import {startingBuff, classTraits} from '../utils/classText'
 
 module.exports = [
   {
+    version: '0.4.3',
+    updates: [
+      {
+        title: 'Icons! Icons Everywhere!',
+        description: <div className="content is-medium has-text-dark">
+          <p>The Game has updated from a sheet of 500 Icons, to over 3000 icons!</p>
+          <p>This means that some old spells, classes and weapons have had their icons changed (for the better), but this might take some getting used to.</p>
+          <p>Let me know if you preferred the old icons for any of the chnges!</p>
+        </div>
+      }
+    ]
+  }
+  {
     version: '0.4.2',
     updates: [
       {
