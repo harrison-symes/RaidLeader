@@ -19,7 +19,8 @@ class MageTower extends Component {
     this.state = {
       element: null,
       traits: null,
-      selected: null
+      selected: null,
+      isLoading: false
     }
   }
   selectTrait(selected) {
@@ -38,12 +39,19 @@ class MageTower extends Component {
   }
   purchaseTrait() {
     const {selected} = this.state
+    this.setState({isLoading: true})
     if (selected.isSpell) {
-      this.props.dispatch(gainGems(selected.gemCost * -1))
-      this.props.dispatch(addSpell(selected.spell))
+      this.props.dispatch(gainGems(selected.gemCost * -1, success => {
+        this.props.dispatch(addSpell(selected.spell, success => {
+          this.setState({isLoading: false})
+        }))
+      }))
     } else {
-      this.props.dispatch(gainGems(selected.gemCost * -1))
-      this.props.dispatch(addTrait(selected))
+      this.props.dispatch(gainGems(selected.gemCost * -1, success => {
+        this.props.dispatch(addTrait(selected, success => {
+          this.setState({isLoading: false})
+        }))
+      }))
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -74,7 +82,7 @@ class MageTower extends Component {
     </div>
   }
   renderTraitDetails() {
-    const {selected} = this.state
+    const {selected, isLoading} = this.state
     const {gems} = this.props
     const isLearned = selected.isSpell && this.props.spellBook.find(spell => spell == selected.spell)
     const isLocked = selected.tier != 1 && !this.state.traits[selected.tier - 1].find(other => other.isLearned)
@@ -86,7 +94,7 @@ class MageTower extends Component {
         ? <button disabled className="button is-outlined is-danger">Requires a Tier {selected.tier - 1} {selected.element} Trait</button>
         : !selected.isLearned
           ? (gems >= selected.gemCost)
-            ? <button onClick={()=>this.purchaseTrait()} className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
+            ? <button onClick={()=>this.purchaseTrait()} className={`button is-large is-outlined is-success ${isLoading ? "is-loading" : ""}`}>Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
             : <button disabled className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon value={selected.gemCost} />) </button>
           : null
       }

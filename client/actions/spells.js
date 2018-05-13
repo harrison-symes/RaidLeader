@@ -25,10 +25,13 @@ export function addSpellAction (spell) {
   }
 }
 
-export function addSpell (spell) {
+export function addSpell (spell, cb) {
   return dispatch => {
     request('post', 'spells', spell)
-      .then(res => dispatch(addSpellAction(spell)))
+      .then(res => {
+        dispatch(addSpellAction(spell))
+        if (cb) cb(true)
+      })
   }
 }
 

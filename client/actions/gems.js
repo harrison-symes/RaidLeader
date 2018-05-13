@@ -7,10 +7,13 @@ export function gainGemsAction (gems) {
   }
 }
 
-export function gainGems (gems) {
+export function gainGems (gems, cb) {
   return dispatch => {
     request('put', 'player/gems', {gems})
-      .then(() => dispatch(gainGemsAction(gems)))
+      .then(() => {
+        dispatch(gainGemsAction(gems))
+        if (cb) cb(true)
+      })
       .catch(err => console.log(err))
   }
 }
