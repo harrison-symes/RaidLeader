@@ -19,24 +19,25 @@ class RecruitmentCentre extends Component {
       showChoices: !!JSON.parse(get('offeredRecruits')),
       offeredRecruits: JSON.parse(get('offeredRecruits')) || [],
       selectedRecruit: null,
-      recruited: null
+      recruited: null,
+      isLoading: false
     }
     this.showOptions = this.showOptions.bind(this)
   }
   solveOptions() {
     const zodiacs = getZodiacs()
     const classes = ['Monk', 'Mage', 'Rogue', 'Warlock', 'Warrior', 'Hunter', 'Shaman', 'Bard', 'Necromancer', 'Beast Master']
-
+    const {recruits} = this.props
     if (this.props.recruits.length > 1) {
       classes.push('Priest')
     }
-    if (this.props.recruits.length > 3) classes.push('Paladin')
+    if (recruits.length > 3 || !recruits.find(recruit => recruit.heroClass == 'Paladin')) classes.push('Paladin')
 
     const offeredRecruits = []
     while (offeredRecruits.length < 3) {
       let heroClass = classes[Math.floor(Math.random() * classes.length)]
       let zodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
-      let name = randomName(this.props.recruits.map(recruit => recruit.name))
+      let name = randomName(recruits.map(recruit => recruit.name))
       if (!offeredRecruits.find(c => c.heroClass == heroClass)) offeredRecruits.push({name, heroClass, zodiac})
     }
     return offeredRecruits
@@ -54,17 +55,33 @@ class RecruitmentCentre extends Component {
     this.setState({showChoices: true, offeredRecruits})
   }
   recruit(recruit) {
-    this.props.dispatch(addRecruit(recruit))
-    set('offeredRecruits', null)
-    this.setState({offeredRecruits: [], showChoices: null, selectedRecruit: null, recruited: createClass(recruit)})
+    const {isLoading} = this.state
+    if (isLoading) return
+    this.setState({isLoading})
+    this.props.dispatch(addRecruit(recruit, success => {
+      set('offeredRecruits', null)
+      this.setState({
+        offeredRecruits: [],
+        showChoices: null,
+        selectedRecruit: null,
+        recruited: createClass(recruit),
+        isLoading: false
+      })
+    }))
   }
   reset() {
-    this.setState({offeredRecruits: [], showChoices: null, selectedRecruit: null, recruited: null})
+    this.setState({
+      offeredRecruits: [],
+      showChoices: null,
+      selectedRecruit: null,
+      recruited: null
+    })
   }
   selectRecruit(selectedRecruit) {
     this.setState({selectedRecruit})
   }
   showMore(recruit) {
+    const {isLoading} = this.state
     recruit.level = 1
     let moreInfo = createClass(recruit)
     return <div>
@@ -85,7 +102,7 @@ class RecruitmentCentre extends Component {
         <div className="column is-4"><p className="subtitle is-4"> <SpeedIcon value={moreInfo.speed} /></p></div>
       </div>
       <br />
-      <button className="button is-fullwidth is-large is-success" onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"&nbsp;<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></button>
+      <button className={`button is-fullwidth is-large is-success ${isLoading ? 'is-loading' : ''}`} onClick={() => this.recruit(recruit)}>Recruit "{recruit.name}"&nbsp;<i className={`icon ra ${classIcons(recruit.heroClass)} ra-fw`} /></button>
       <hr />
     </div>
   }
