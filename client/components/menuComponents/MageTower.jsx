@@ -38,7 +38,8 @@ class MageTower extends Component {
     this.setState({element, traits, selected: null})
   }
   purchaseTrait() {
-    const {selected} = this.state
+    const {selected, isLoading} = this.state
+    if (isLoading) return
     this.setState({isLoading: true})
     if (selected.isSpell) {
       this.props.dispatch(gainGems(selected.gemCost * -1, success => {
