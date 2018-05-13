@@ -42,10 +42,12 @@ export function deleteSpellAction (name) {
   }
 }
 
-export function sellSpell (name, value) {
+export function sellSpell (name, cb) {
   return dispatch => {
-    dispatch(earnGold(value))
     request('delete', 'spells', {name})
-      .then(res => dispatch(deleteSpellAction(name)))
+      .then(res => {
+        dispatch(deleteSpellAction(name))
+        if (cb) cb(true)
+      })
   }
 }

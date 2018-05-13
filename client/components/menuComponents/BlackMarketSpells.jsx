@@ -9,7 +9,8 @@ class BlackMarketSpells extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: null
+      selected: null,
+      isLoading: false
     }
     this.sellSpell = this.sellSpell.bind(this)
   }
@@ -17,12 +18,18 @@ class BlackMarketSpells extends Component {
     this.setState({selected})
   }
   sellSpell() {
+    const {selected, isLoading} = this.state
     const spellCost = 100 + (this.props.spells.length * 25)
-    this.props.dispatch(sellSpell(this.state.selected.name, spellCost))
+    this.setState({isLoading: true})
+    this.props.dispatch(sellSpell(selected.name, success => {
+      this.props.dispatch(earnGold(spellCost, success => {
+        this.setState({isLoading: false})
+      }))
+    }))
   }
   render() {
     const {spells} = this.props
-    const {selected} = this.state
+    const {selected, isLoading} = this.state
     const spellCost = 100 + (spells.length * 25)
     return <div className="has-text-centered">
       <span className="title is-3">Sell Spells</span>
@@ -59,7 +66,7 @@ class BlackMarketSpells extends Component {
           <hr />
           {spell.reserved
             ? <button disabled className="button is-fullwidth is-danger">You can't sell this!</button>
-            : <button onClick={this.sellSpell} className="button is-fullwidth is-outlined is-warning">Sell &nbsp; <GoldIcon value={`+${spellCost}`} /></button>
+            : <button onClick={this.sellSpell} className={`button is-fullwidth is-outlined is-warning ${isLoading ? 'is-loading' : ''}`}>Sell &nbsp; <GoldIcon value={`+${spellCost}`} /></button>
           }
         </div>}
       </div>)}
