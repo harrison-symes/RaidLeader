@@ -4,19 +4,27 @@ import {connect} from 'react-redux'
 import {QuantityIcon, WeaponEquippedByIcon, ClassIcon, HealthIcon, PowerIcon, SpeedIcon, ManaIcon, ManaRegenIcon, GoldIcon} from '../icons/StatIcons'
 
 import {sellWeapon, recruitEquipWeapon} from '../../actions/weapons'
+import {earnGold} from '../../actions/gold'
 
 class BlackMarketWeapons extends Component {
   constructor(props) {
     super(props)
     this.state = {
       selected: null,
-      equippedBy: []
+      equippedBy: [],
+      isLoading: false
     }
     this.sellWeapon = this.sellWeapon.bind(this)
   }
   sellWeapon() {
-    const {selected, equippedBy} = this.state
-    this.props.dispatch(sellWeapon(selected.id, selected.value))
+    const {selected, equippedBy, isLoading} = this.state
+    if (isLoading) return
+    this.setState({isLoading: true})
+    this.props.dispatch(sellWeapon(selected.id, success => {
+      this.props.dispatch(earnGold(selected.value, success => {
+        this.setState({isLoading: false})
+      }))
+    }))
   }
   unEquip(recruit) {
     this.props.dispatch(recruitEquipWeapon(recruit, null))

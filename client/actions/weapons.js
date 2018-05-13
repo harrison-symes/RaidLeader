@@ -10,10 +10,13 @@ export function receiveWeapons(weapons) {
   }
 }
 
-export function getWeapons () {
+export function getWeapons (cb) {
   return dispatch => {
     request('get', 'player/weapons')
-      .then(res => dispatch(receiveWeapons(res.body)))
+      .then(res => {
+        dispatch(receiveWeapons(res.body))
+        if (cb) cb(true)
+      })
   }
 }
 
@@ -46,12 +49,11 @@ export function recruitEquipWeapon (recruit, id) {
   }
 }
 
-export function sellWeapon (id, value) {
+export function sellWeapon (id, cb) {
   return dispatch => {
-    request('delete', 'player/weapons', {id, value})
+    request('delete', 'player/weapons', {id})
       .then(() => {
-        dispatch(getWeapons())
-        dispatch(getPlayerGold())
+        dispatch(getWeapons(cb))
       })
   }
 }

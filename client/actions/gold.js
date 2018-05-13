@@ -21,9 +21,12 @@ export function earnGoldAction (gold) {
   }
 }
 
-export function earnGold (gold) {
+export function earnGold (gold, cb) {
   return dispatch => {
     dispatch(earnGoldAction(gold))
     request('put', 'player/gold', {gold})
+      .then(res => {
+        if (cb) cb(true)
+      })
   }
 }
