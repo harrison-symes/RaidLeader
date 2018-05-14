@@ -23,5 +23,10 @@ router.put('/level', decode, (req, res) => {
   recruitsDb.levelUpRecruit(req.body.id, req.body.level )
     .then(recruit => res.status(200).json(recruit))
 })
+router.put('/:id/zodiac', decode, (req, res) => {
+  console.log(req.body);
+  recruitsDb.changeZodiac(req.params.id, req.body.zodiac)
+    .then(recruit => res.status(200).json(recruit))
+})
 
 module.exports = router

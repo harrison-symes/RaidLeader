@@ -37,13 +37,14 @@ class RecruitModal extends Component {
     let newZodiac = oldZodiac
     const zodiacs = getZodiacs()
     while (newZodiac == oldZodiac) {
-      newZodiac = getZodiacs[Math.floor(Math.random() * zodiacs.length)]
+      newZodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
     }
 
     const goldCost = recruit.level * 100 * -1
     dispatch(earnGold(goldCost, success => {
-      dispatch(updateZodiac(recruit.id, newZodiac, success => {
+      dispatch(updateZodiac(recruit.id, newZodiac, (success, newZodiac) => {
         this.setState({isLoading: false})
+        this.props.recruit.zodiac = newZodiac
       }))
     }))
   }
@@ -149,7 +150,7 @@ class RecruitModal extends Component {
                 {recruit.zodiac}
                 <ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/>
               </span>
-              <button onClick={this.rollZodiac} className="column is-6 is-fullwidth button is-outlined">Reroll (<GoldIcon value={recruit.level * -100} />)</button>
+              {this.props.gold >= recruit.level * 100 && <button onClick={this.rollZodiac} className="column is-6 is-fullwidth button is-outlined">Reroll (<GoldIcon value={recruit.level * -100} />)</button>}
             </span>
 
             <hr />
@@ -178,11 +179,13 @@ class RecruitModal extends Component {
   }
 }
 
-const mapStateToProps = ({playerParty, weapons, recruits}) => {
+const mapStateToProps = ({playerParty, weapons, recruits, gold}, {recruit}) => {
   return {
     playerParty,
     weapons,
-    recruits
+    recruits,
+    recruit: recruits.find(other => other.id == recruit.id),
+    gold
   }
 }
 
