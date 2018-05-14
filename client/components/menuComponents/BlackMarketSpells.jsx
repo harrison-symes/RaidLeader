@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {ManaIcon, CastTimeIcon, CoolDownIcon, TargetTypeIcon, SpellElementIcon, SpellIcon, GoldIcon} from '../icons/StatIcons'
 
 import {sellSpell} from '../../actions/spells'
-import {earnGold} from '../../actions/earnGold'
+import {earnGold} from '../../actions/gold'
 
 class BlackMarketSpells extends Component {
   constructor(props) {
