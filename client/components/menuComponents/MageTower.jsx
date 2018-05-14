@@ -13,14 +13,51 @@ import {addTrait} from '../../actions/traits'
 
 import {getTraitsByElement, sortTiers} from '../../utils/traits'
 
+const elementDescriptions = {
+  'Life': (isShowing, showDetails) => <div onClick={showDetails} style={{cursor: 'pointer'}}>
+    <p className="title is-3">Life</p>
+    {isShowing && <span className="box content is-large">
+      <p><b>Life</b> Spells are focused around <b>Healing</b> your Recruits</p>
+      <p>If you wish to dedicate your attention to keeping your friends alive, <b>Life</b> is the Element for you!</p>
+    </span>}
+  </div>,
+  'Fire': (isShowing, showDetails) => <div onClick={showDetails} style={{cursor: 'pointer'}}>
+    <p className="title is-3">Fire</p>
+    {isShowing && <span className="box content is-large">
+      <p><b>Fire</b> Spells are focused around <b>Damaging</b> the Boss</p>
+      <p>If you wish to burn your foes (and occasionally your friends), <b>Fire</b> is the Element for you!</p>
+    </span>}
+  </div>,
+  'Shadow': (isShowing, showDetails) => <div onClick={showDetails} style={{cursor: 'pointer'}}>
+    <p className="title is-3">Shadow</p>
+    {isShowing && <span className="box content is-large">
+      <p><b>Shadow</b> Spells are focused around <b>Sacrifcing Resources</b> to have stronger output.</p>
+      <p>If you like to live Life on the brink of Death, <b>Shadow</b> is the Element for you!</p>
+    </span>}
+  </div>,
+  'Arcane': (isShowing, showDetails) => <div onClick={showDetails} style={{cursor: 'pointer'}}>
+    <p className="title is-3">Arcane</p>
+    {isShowing && <span className="box content is-large">
+      <p><b>Arcane</b> Spells are focused around <b>Mana Efficiency</b> and <b>Power Spell Combinations</b>.</p>
+      <p>If you like to do cool, powerful things that might just get You and Everyone else killed, <b>Arcane</b> is the Element for you!</p>
+    </span>}
+  </div>,
+}
+
 class MageTower extends Component {
   constructor(props) {
     super(props)
     this.state = {
       element: null,
       traits: null,
-      selected: null
+      selected: null,
+      isLoading: false,
+      isShowing: props.spellBook.length < 2 || props.traits.length < 1
     }
+    this.toggleShowDetails = this.toggleShowDetails.bind(this)
+  }
+  toggleShowDetails() {
+    this.setState(({isShowing}) => ({isShowing: !isShowing}))
   }
   selectTrait(selected) {
     this.setState({selected})
@@ -37,13 +74,21 @@ class MageTower extends Component {
     this.setState({element, traits, selected: null})
   }
   purchaseTrait() {
-    const {selected} = this.state
+    const {selected, isLoading} = this.state
+    if (isLoading) return
+    this.setState({isLoading: true})
     if (selected.isSpell) {
-      this.props.dispatch(gainGems(selected.gemCost * -1))
-      this.props.dispatch(addSpell(selected.spell))
+      this.props.dispatch(gainGems(selected.gemCost * -1, success => {
+        this.props.dispatch(addSpell(selected.spell, success => {
+          this.setState({isLoading: false})
+        }))
+      }))
     } else {
-      this.props.dispatch(gainGems(selected.gemCost * -1))
-      this.props.dispatch(addTrait(selected))
+      this.props.dispatch(gainGems(selected.gemCost * -1, success => {
+        this.props.dispatch(addTrait(selected, success => {
+          this.setState({isLoading: false})
+        }))
+      }))
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -74,7 +119,7 @@ class MageTower extends Component {
     </div>
   }
   renderTraitDetails() {
-    const {selected} = this.state
+    const {selected, isLoading} = this.state
     const {gems} = this.props
     const isLearned = selected.isSpell && this.props.spellBook.find(spell => spell == selected.spell)
     const isLocked = selected.tier != 1 && !this.state.traits[selected.tier - 1].find(other => other.isLearned)
@@ -86,7 +131,7 @@ class MageTower extends Component {
         ? <button disabled className="button is-outlined is-danger">Requires a Tier {selected.tier - 1} {selected.element} Trait</button>
         : !selected.isLearned
           ? (gems >= selected.gemCost)
-            ? <button onClick={()=>this.purchaseTrait()} className="button is-large is-outlined is-success">Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
+            ? <button onClick={()=>this.purchaseTrait()} className={`button is-large is-outlined is-success ${isLoading ? "is-loading" : ""}`}>Learn {selected.name} (<GemIcon value={-1 * selected.gemCost} />)</button>
             : <button disabled className="button Info-Button is-outlined is-danger">Not Enough Gems (Costs <GemIcon value={selected.gemCost} />) </button>
           : null
       }
@@ -141,7 +186,7 @@ class MageTower extends Component {
   }
   render() {
     const {close, gems} = this.props
-    const {element} = this.state
+    const {element, isShowing} = this.state
     return <div className="Modal modal is-active">
       <div className="modal-background"></div>
       <div className="modal-card Modal">
@@ -165,6 +210,8 @@ class MageTower extends Component {
             {this.renderElementButton('Shadow')}
             {this.renderElementButton('Arcane')}
           </div>
+          {element && elementDescriptions[element](isShowing, this.toggleShowDetails)}
+          <hr />
           {!element
             ? <div className="has-text-centered">
               <p className="content is-large">Here you can spend your Gems to empower your Player Character</p>

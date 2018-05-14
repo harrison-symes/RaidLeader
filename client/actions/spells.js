@@ -25,10 +25,13 @@ export function addSpellAction (spell) {
   }
 }
 
-export function addSpell (spell) {
+export function addSpell (spell, cb) {
   return dispatch => {
     request('post', 'spells', spell)
-      .then(res => dispatch(addSpellAction(spell)))
+      .then(res => {
+        dispatch(addSpellAction(spell))
+        if (cb) cb(true)
+      })
   }
 }
 
@@ -39,10 +42,12 @@ export function deleteSpellAction (name) {
   }
 }
 
-export function sellSpell (name, value) {
+export function sellSpell (name, cb) {
   return dispatch => {
-    dispatch(earnGold(value))
     request('delete', 'spells', {name})
-      .then(res => dispatch(deleteSpellAction(name)))
+      .then(res => {
+        dispatch(deleteSpellAction(name))
+        if (cb) cb(true)
+      })
   }
 }

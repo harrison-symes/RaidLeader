@@ -1,7 +1,7 @@
 export function poisonConstructor (perc) {
   return {
     name: 'Poison',
-    icon: 'ra-poison-cloud',
+    icon: 'ra-poison-gas',
     duration: 15,
     percentage: perc || 0.1,
     colour: '#BA8CE8',
@@ -25,7 +25,7 @@ export function renewConstructor (perc) {
 export function stunConstructor (duration) {
   return {
     name: 'Stunned',
-    icon: 'ra-player-pain',
+    icon: 'ra-star-swirl',
     duration,
     tickRate: duration,
     percentage: 0,

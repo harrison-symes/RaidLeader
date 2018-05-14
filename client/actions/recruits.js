@@ -23,10 +23,13 @@ export function addRecruitAction (recruit) {
   }
 }
 
-export function addRecruit (recruit) {
+export function addRecruit (recruit, cb) {
   return dispatch => {
     request('post', 'recruits', recruit)
-      .then(res => dispatch(addRecruitAction(res.body)))
+      .then(res => {
+        dispatch(addRecruitAction(res.body))
+        cb(true)
+      })
   }
 }
 

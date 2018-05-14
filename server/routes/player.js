@@ -30,13 +30,7 @@ router.get('/weapons', decode, (req, res) => {
 
 router.delete('/weapons', decode, (req, res) => {
   playerDb.delWeapon(req.body.id)
-    .then(() => {
-      playerDb.getPlayerGold(req.user.user_id)
-      .then((user) => {
-        playerDb.updatePlayerGold(req.user.user_id, user.gold + req.body.value)
-        .then(() => res.sendStatus(202))
-      })
-    })
+    .then(() => res.sendStatus(202))
 })
 
 router.post('/getStarted', decode, (req, res) => {

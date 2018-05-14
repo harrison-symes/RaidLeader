@@ -24,9 +24,12 @@ export function addTraitAction(trait) {
   }
 }
 
-export function addTrait(trait) {
+export function addTrait(trait, cb) {
   return dispatch => {
     request('post', 'player/traits', {name: trait.name})
-      .then(res => dispatch(addTraitAction(trait)))
+      .then(res => {
+        dispatch(addTraitAction(trait))
+        if (cb) cb(true)
+      })
   }
 }
