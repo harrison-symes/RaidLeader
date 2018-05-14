@@ -9,13 +9,21 @@ class BlackMarketRecruits extends Component {
     }
   }
   render() {
+    const {recruits, gold} = this.state
+
     return <div className="has-text-centered">
       <span className="title is-3">Sell Recruits</span>
     </div>
   }
 }
 
-const mapStateToProps = ({recruits}) => ({recruits})
+const mapStateToProps = ({
+  recruits,
+  gold
+}) => ({
+  recruits,
+  gold
+})
 
 
 export default connect(mapStateToProps)(BlackMarketRecruits)

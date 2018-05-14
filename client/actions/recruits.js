@@ -49,3 +49,13 @@ export function levelUpRecruit (level, id, cb) {
       })
   }
 }
+
+export function updateZodiac (id, zodiac, cb) {
+  return dispatch => {
+    request('put', `recruits/${id}/zodiac`)
+      .then(res => {
+        dispatch(updateRecruitAction(res.body))
+        if (cb) cb(true)
+      })
+  }
+}
