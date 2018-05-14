@@ -122,7 +122,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       level: 3,
       is_repeatable: true,
       max_party: 3,
-      max_spells: 3,
+      max_spells: 4,
       requires_complete: 'The Swamp',
       gemChance: 1/3,
       rewards: [
