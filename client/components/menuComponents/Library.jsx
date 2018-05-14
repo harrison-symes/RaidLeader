@@ -14,7 +14,8 @@ class Library extends Component {
       showChoices: !!JSON.parse(get('offeredSpells')),
       offeredSpells: JSON.parse(get('offeredSpells')) || [],
       selectedSpell: null,
-      learntSpell: null
+      learntSpell: null,
+      isLoading: false
     }
     this.showOptions = this.showOptions.bind(this)
     this.reset = this.reset.bind(this)
@@ -32,37 +33,63 @@ class Library extends Component {
     const Shadow = this.findByElement('Shadow')
     const Arcane = this.findByElement('Arcane')
     return [Life, Fire, Shadow, Arcane].filter(item => !!item)
-    // while (offeredSpells.length < 4)  {
-    //   let idx = Math.floor(Math.random() * spellNames.length)
-    //   let spell = spells[spellNames[idx]]
-    //   if (!offeredSpells.find(c => c.name == spell.name)) offeredSpells.push(spell)
-    // }
+
     return offeredSpells
   }
   selectSpell (selectedSpell) {
     this.setState({selectedSpell})
   }
   reRoll() {
-    const rollCost = this.props.spellBook.length * 50
-    this.props.dispatch(earnGold(-1 * rollCost))
-    const offeredSpells = this.solveOptions()
-    set('offeredSpells', JSON.stringify(offeredSpells))
-    this.setState({showChoices: true, offeredSpells})
+    if (this.state.isLoading) return
+    const rollCost = this.props.spellBook.length * 50 * -1
+    this.setState({isLoading: true})
+    this.props.dispatch(earnGold(rollCost, success => {
+      const offeredSpells = this.solveOptions()
+      set('offeredSpells', JSON.stringify(offeredSpells))
+      this.setState({
+        showChoices: true,
+        offeredSpells,
+        isLoading: false
+      })
+    }))
   }
   showOptions() {
-    const spellCost = 200 + (this.props.spellBook.length * 50)
-    this.props.dispatch(earnGold(-1 * spellCost))
-    const offeredSpells = this.solveOptions()
-    set('offeredSpells', JSON.stringify(offeredSpells))
-    this.setState({showChoices: true, offeredSpells})
+    if (this.state.isLoading) return
+
+    this.setState({isLoading: true})
+    const spellCost = 200 + (this.props.spellBook.length * 50) * -1
+    this.props.dispatch(earnGold(spellCost, success => {
+      const offeredSpells = this.solveOptions()
+      set('offeredSpells', JSON.stringify(offeredSpells))
+      this.setState({
+        showChoices: true,
+        offeredSpells,
+        isLoading: false
+      })
+    }))
   }
   learnSpell(spell) {
-    this.props.dispatch(addSpell(spell))
-    set('offeredSpells', null)
-    this.setState({offeredSpells: [], showChoices: null, selectedSpell: null, learntSpell: spell})
+    if (this.state.isLoading) return
+    this.setState({isLoading: true})
+    
+    this.props.dispatch(addSpell(spell, success => {
+      set('offeredSpells', null)
+      this.setState({
+        offeredSpells: [],
+        showChoices: null,
+        selectedSpell: null,
+        learntSpell: spell,
+        isLoading: false
+      })
+    }))
   }
   reset() {
-    this.setState({offeredSpells: [], showChoices: null, selectSpell: null, learntSpell: null})
+    this.setState({
+      offeredSpells: [],
+      showChoices: null,
+      selectSpell: null,
+      learntSpell: null
+    })
   }
   render() {
     const {close, gold, spellBook} = this.props
