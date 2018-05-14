@@ -43,16 +43,34 @@ class RecruitmentCentre extends Component {
     return offeredRecruits
   }
   showOptions() {
-    this.props.dispatch(earnGold(-500))
-    const offeredRecruits = this.solveOptions()
-    set('offeredRecruits', JSON.stringify(offeredRecruits))
-    this.setState({showChoices: true, offeredRecruits})
+    if (this.state.isLoading) return
+    this.setState({isLoading: true})
+
+    this.props.dispatch(earnGold(-500, success => {
+      const offeredRecruits = this.solveOptions()
+      set('offeredRecruits', JSON.stringify(offeredRecruits))
+      this.setState({
+        showChoices: true,
+        offeredRecruits,
+        isLoading: false
+      })
+
+    }))
   }
   reRoll() {
-    this.props.dispatch(earnGold(-200))
-    const offeredRecruits = this.solveOptions()
-    set('offeredRecruits', JSON.stringify(offeredRecruits))
-    this.setState({showChoices: true, offeredRecruits})
+    if (this.state.isLoading) return
+    this.setState({isLoading: true})
+
+    this.props.dispatch(earnGold(-200, success => {
+      const offeredRecruits = this.solveOptions()
+      set('offeredRecruits', JSON.stringify(offeredRecruits))
+      this.setState({
+        showChoices: true,
+        offeredRecruits,
+        isLoading: false
+      })
+
+    }))
   }
   recruit(recruit) {
     const {isLoading} = this.state
