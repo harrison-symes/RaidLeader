@@ -49,6 +49,14 @@ function Home ({version}) {
         <Route path="/Register" component={Register} />
         {/* <Route path="/new" component={WhatsNew} /> */}
       </div>
+      <p className="is-fullwidth footer has-text-centered">
+        <span className="title is-4">
+          Created by
+          <a href="https://github.com/harrison-symes"> Harrison Symes</a>
+          &nbsp;-&nbsp;
+          Click <a href="https://github.com/harrison-symes/RaidLeader">Here</a> to view the Code
+        </span>
+      </p>
     </div>
   </Router>
 }
