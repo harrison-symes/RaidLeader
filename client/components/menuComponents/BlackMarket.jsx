@@ -18,7 +18,7 @@ class BlackMarket extends Component {
     this.setState({sellType})
   }
   renderNavButton(sellType) {
-    return <button className={`button is-fullwidth is-outlined ${sellType == this.state.sellType ? "is-focus is-success" : 'is-info'}`} onClick={()=>this.switchType(sellType)}>{sellType}</button>
+    return <button className={`button is-fullwidth is-outlined Info-Button ${sellType == this.state.sellType ? "is-focus is-success" : 'is-info'}`} onClick={()=>this.switchType(sellType)}>{sellType}</button>
   }
   renderNavMenu() {
     return <div className="level">

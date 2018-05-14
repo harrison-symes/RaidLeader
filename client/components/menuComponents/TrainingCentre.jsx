@@ -11,7 +11,8 @@ class TrainingCentre extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      levelUpgrade: 0
+      levelUpgrade: 0,
+      isLoading: false
     }
     this.setLevel = this.setLevel.bind(this)
     this.renderRecruit = this.renderRecruit.bind(this)
@@ -20,8 +21,14 @@ class TrainingCentre extends Component {
     this.setState({levelUpgrade: e.target.value || null})
   }
   upgradeRecruit(recruit) {
-    this.props.dispatch(earnGold((recruit.level) * -500))
-    this.props.dispatch(levelUpRecruit(recruit.level + 1, recruit.id))
+    if (this.state.isLoading) return
+    this.setState({isLoading: true})
+    const goldCost = recruit.level * 500 * -1
+    this.props.dispatch(earnGold(goldCost, success => {
+      this.props.dispatch(levelUpRecruit(recruit.level + 1, recruit.id, success => {
+        this.setState({isLoading: false})
+      }))
+    }))
   }
   renderLevelOption(requires, level) {
     const {dungeons} = this.props
@@ -69,7 +76,7 @@ class TrainingCentre extends Component {
         <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={`${recruit.speed} ${speedDiff ? `(+${speedDiff})` : ""}`}/></p></div>
       </div>
       {gold >= cost
-        ? <button onClick={() => this.upgradeRecruit(recruit)} className="button is-success is-outlined is-large">Upgrade to Level {this.state.levelUpgrade} (<GoldIcon value={`-${cost}`} />)</button>
+        ? <button onClick={() => this.upgradeRecruit(recruit)} className={`button is-success is-outlined is-large ${this.state.isLoading ? 'is-loading' : ''}`}>Upgrade to Level {this.state.levelUpgrade} (<GoldIcon value={`-${cost}`} />)</button>
         : <button disabled className="button is-danger is-large">Insufficient Funds (<GoldIcon value={-1 * cost} />)</button>
       }
     </div>

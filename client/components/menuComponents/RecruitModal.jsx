@@ -3,16 +3,21 @@ import {connect} from 'react-redux'
 
 import {recruitEquipWeapon} from '../../actions/weapons'
 import {startingBuff, classTraits} from '../../utils/classText'
-import {HealthIcon, PowerIcon, SpeedIcon, ZodiacIcon, LevelIcon, ClassIcon, WeaponIcon} from '../icons/StatIcons'
+import {HealthIcon, PowerIcon, SpeedIcon, ZodiacIcon, LevelIcon, ClassIcon, WeaponIcon, GoldIcon} from '../icons/StatIcons'
 
+import {getZodiacs} from '../../utils/zodiacs'
+import {earnGold} from '../../actions/gold'
+import {updateZodiac} from '../../actions/recruits'
 
 class RecruitModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      weaponFrame: false
+      weaponFrame: false,
+      isLoading: false
     }
     this.toggleWeaponFrame = this.toggleWeaponFrame.bind(this)
+    this.rollZodiac = this.rollZodiac.bind(this)
   }
   equip(id) {
     const {recruit} = this.props
@@ -21,6 +26,27 @@ class RecruitModal extends Component {
   }
   toggleWeaponFrame() {
     this.setState({weaponFrame: !this.state.weaponFrame})
+  }
+  rollZodiac() {
+    if (this.state.isLoading) return
+    this.setState({isLoading: true})
+
+    const {recruit, dispatch} = this.props
+
+    const oldZodiac = recruit.zodiac
+    let newZodiac = oldZodiac
+    const zodiacs = getZodiacs()
+    while (newZodiac == oldZodiac) {
+      newZodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
+    }
+
+    const goldCost = recruit.level * 100 * -1
+    dispatch(earnGold(goldCost, success => {
+      dispatch(updateZodiac(recruit.id, newZodiac, (success, newZodiac) => {
+        this.setState({isLoading: false})
+        this.props.recruit.zodiac = newZodiac
+      }))
+    }))
   }
   renderWeaponFrame() {
     const {recruit, weapons, recruits} = this.props
@@ -46,12 +72,11 @@ class RecruitModal extends Component {
           </div>
           : <p className="subtitle is-2">{recruit.name} has no Weapon</p>
         }
-        {/* {availableWeapons.length != 0 && <button className="button is-large is-info" onClick={this.toggleWeaponFrame}>{this.state.weaponFrame ? "Close":weapon ? 'Change Weapon' :"Equip A Weapon"}</button>} */}
       </div>
-      <hr />
+      <br />
       {availableWeapons.length != 0
         ? this.weaponFrame()
-        : <p className="box subtitle is-2">No Weapons Available</p>
+        : !recruit.weapon_id && <p className="box subtitle is-2">No Weapons Available</p>
       }
     </div>
   }
@@ -119,7 +144,15 @@ class RecruitModal extends Component {
               <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={recruit.power} /></p></div>
               <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={recruit.speed} /></p></div>
             </div>
-            <span className="subtitle is-1"><ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/></span>
+            <br />
+            <span className="subtitle is-1 columns">
+              <span className="column is-6">
+                {recruit.zodiac}
+                <ZodiacIcon zodiac={recruit.zodiac} isLarge={true}/>
+              </span>
+              {this.props.gold >= recruit.level * 100 && <button onClick={this.rollZodiac} className="column is-6 is-fullwidth button is-outlined">Reroll (<GoldIcon value={recruit.level * -100} />)</button>}
+            </span>
+
             <hr />
             {this.renderWeaponFrame()}
             <br />
@@ -146,11 +179,13 @@ class RecruitModal extends Component {
   }
 }
 
-const mapStateToProps = ({playerParty, weapons, recruits}) => {
+const mapStateToProps = ({playerParty, weapons, recruits, gold}, {recruit}) => {
   return {
     playerParty,
     weapons,
-    recruits
+    recruits,
+    recruit: recruits.find(other => other.id == recruit.id),
+    gold
   }
 }
 

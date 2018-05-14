@@ -40,9 +40,23 @@ export function updateRecruitAction (recruit) {
   }
 }
 
-export function levelUpRecruit (level, id) {
+export function levelUpRecruit (level, id, cb) {
   return dispatch => {
     request('put', 'recruits/level', {level, id})
-      .then(res => dispatch(updateRecruitAction(res.body)))
+      .then(res => {
+        dispatch(updateRecruitAction(res.body))
+        if (cb) cb(true)
+      })
+  }
+}
+
+export function updateZodiac (id, zodiac, cb) {
+  return dispatch => {
+    console.log({id, zodiac});
+    request('put', `recruits/${id}/zodiac`, {zodiac})
+      .then(res => {
+        dispatch(updateRecruitAction(res.body))
+        if (cb) cb(true, res.body.zodiac)
+      })
   }
 }
