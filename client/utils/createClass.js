@@ -41,7 +41,7 @@ const createMage = (name, level, id, weapon_id, zodiac) => createMember(name, le
 
 const createWarrior = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Warrior', (level + 1) * 40, (level + 1) * 9, 25)
 
-const createWarlock = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Warlock', (level + 1) * 30, (level + 1)* 15, 2.5)
+const createWarlock = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Warlock', (level + 1) * 30, (level + 1)* 15, 25)
 
 const createHunter = (name, level, id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Hunter', (level + 1) * 35, (level + 1) * 4.5, 50)
 
@@ -49,9 +49,9 @@ const createShaman = (name, level ,id, weapon_id, zodiac) => createMember(name, 
 
 const createBard = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Bard', (level + 1) * 35, (level + 1) * 10, 20)
 
-const createNecromancer = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Necromancer', (level + 1) * 30, (level + 1) * 10, 20)
+const createNecromancer = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Necromancer', (level + 1) * 30, (level + 1) * 12, 20)
 
-const createBeastMaster = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Beast Master', (level + 1) * 35, (level + 1) * 8, 20)
+const createBeastMaster = (name, level ,id, weapon_id, zodiac) => createMember(name, level, id, weapon_id, zodiac, 'Beast Master', (level + 1) * 35, (level + 1) * 9, 20)
 
 
 module.exports = ({name, heroClass, level, id, weapon_id, zodiac}) => {
