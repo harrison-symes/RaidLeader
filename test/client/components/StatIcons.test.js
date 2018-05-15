@@ -70,7 +70,7 @@ test('SpeedIcon', () => {
   expect(wrapper.find('span').text()).toBe('100')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-lightning-bolt')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-electric')).toBeTruthy()
 })
 
 test('PowerIcon', () => {
@@ -114,7 +114,7 @@ test('ManaIcon', () => {
   expect(wrapper.find('span').text()).toBe('10')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-crystals')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-crystal-cluster')).toBeTruthy()
 })
 
 test('ManaRegenIcon', () => {
@@ -147,18 +147,7 @@ test('ArmorIcon', () => {
   expect(wrapper.find('span').text()).toBe('10')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-heavy-shield')).toBeTruthy()
-})
-
-test('ArmorIcon', () => {
-  const wrapper =  mount(<ArmorIcon value={10} />)
-
-  expect(wrapper.find('p').text()).toBe('10 Armor')
-
-  expect(wrapper.find('span').text()).toBe('10')
-
-  expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-heavy-shield')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-layered-armor')).toBeTruthy()
 })
 
 test('classIcons', () => {
@@ -216,7 +205,7 @@ test('LevelIcon (1)', () => {
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-dice-one')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-inverted-dice-1')).toBeTruthy()
 })
 
 test('LevelIcon (2)', () => {
@@ -227,7 +216,7 @@ test('LevelIcon (2)', () => {
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-dice-two')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-inverted-dice-2')).toBeTruthy()
 })
 
 test('LevelIcon (3)', () => {
@@ -238,7 +227,7 @@ test('LevelIcon (3)', () => {
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-dice-three')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-inverted-dice-3')).toBeTruthy()
 })
 
 test('LevelIcon (4)', () => {
@@ -249,7 +238,7 @@ test('LevelIcon (4)', () => {
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-dice-four')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-inverted-dice-4')).toBeTruthy()
 })
 
 test('LevelIcon (5)', () => {
@@ -260,7 +249,7 @@ test('LevelIcon (5)', () => {
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-dice-five')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-inverted-dice-5')).toBeTruthy()
 })
 
 test('LevelIcon (6)', () => {
@@ -271,7 +260,7 @@ test('LevelIcon (6)', () => {
   expect(wrapper.find('span').text()).toBe('')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-dice-six')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-inverted-dice-6')).toBeTruthy()
 })
 
 test('RecruitCountIcon (multiple)', () => {
@@ -283,7 +272,7 @@ test('RecruitCountIcon (multiple)', () => {
   expect(wrapper.find('span').last().text()).toBe('6')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-double-team')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-backup')).toBeTruthy()
 })
 
 test('RecruitCountIcon (single)', () => {
@@ -295,7 +284,7 @@ test('RecruitCountIcon (single)', () => {
   expect(wrapper.find('span').last().text()).toBe('1')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-double-team')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-backup')).toBeTruthy()
 })
 
 test('SpellCountIcon (single)', () => {
@@ -308,7 +297,7 @@ test('SpellCountIcon (single)', () => {
   expect(wrapper.find('span').last().text()).toBe('1')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-book')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-spell-book')).toBeTruthy()
 })
 
 test('SpellCountIcon (multiple)', () => {
@@ -321,7 +310,7 @@ test('SpellCountIcon (multiple)', () => {
   expect(wrapper.find('span').last().text()).toBe('6')
 
   expect(wrapper.find('i').hasClass('ra')).toBeTruthy()
-  expect(wrapper.find('i').hasClass('ra-book')).toBeTruthy()
+  expect(wrapper.find('i').hasClass('ra-spell-book')).toBeTruthy()
 })
 
 test('WeaponAvailableIcon (hasWeapon multiple available)', () => {

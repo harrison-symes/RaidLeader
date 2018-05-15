@@ -3,7 +3,7 @@ import {poisonConstructor, renewConstructor} from '../../../client/utils/effectC
 test('poisonConstructor (default perc)', () => {
   const actual = poisonConstructor()
   expect(actual).toHaveProperty('name', 'Poison')
-  expect(actual).toHaveProperty('icon', 'ra-poison-cloud')
+  expect(actual).toHaveProperty('icon', 'ra-poison-gas')
   expect(actual).toHaveProperty('duration', 15)
   expect(actual).toHaveProperty('type', 'PERCENT_DAMAGE_FRIENDLY_TARGET')
   expect(actual).toHaveProperty('percentage', 0.1)
