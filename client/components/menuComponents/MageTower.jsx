@@ -49,7 +49,7 @@ class MageTower extends Component {
     super(props)
     this.state = {
       element: null,
-      traits: null,
+      traits: [],
       selected: null,
       isLoading: false,
       isShowing: props.spellBook.length < 2 || props.traits.length < 1
@@ -63,33 +63,33 @@ class MageTower extends Component {
     this.setState({selected})
   }
   pickElement(element) {
+    const {spellBook, traits} = this.props
     if (!element) return
-    let traits = getTraitsByElement(element)
-    traits.forEach(trait => {
-      if (trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
-      else if (this.props.traits.find(learned => learned.name == trait.name)) trait.isLearned = true
+    let traitsForElement = getTraitsByElement(element)
+
+    traitsForElement.forEach(trait => {
+      if (trait.isSpell && spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
+      else if (traits.find(learned => learned.name == trait.name)) trait.isLearned = true
       else trait.isLearned = false
     })
-    traits = sortTiers(traits)
-    this.setState({element, traits, selected: null})
+
+    this.setState({
+      element,
+      traits: sortTiers(traitsForElement),
+      selected: null
+    })
   }
   purchaseTrait() {
     const {selected, isLoading} = this.state
     if (isLoading) return
     this.setState({isLoading: true})
-    if (selected.isSpell) {
-      this.props.dispatch(gainGems(selected.gemCost * -1, success => {
-        this.props.dispatch(addSpell(selected.spell, success => {
-          this.setState({isLoading: false})
-        }))
-      }))
-    } else {
-      this.props.dispatch(gainGems(selected.gemCost * -1, success => {
-        this.props.dispatch(addTrait(selected, success => {
-          this.setState({isLoading: false})
-        }))
-      }))
-    }
+
+    if (selected.isSpell) this.props.learnSpell(selected, () => this.setState({
+      isLoading: false
+    }))
+    else this.props.learnTrait(selected, () => this.setState({
+      isLoading: true
+    }))
   }
   componentWillReceiveProps(nextProps) {
     this.pickElement(this.state.element)
@@ -119,10 +119,11 @@ class MageTower extends Component {
     </div>
   }
   renderTraitDetails() {
-    const {selected, isLoading} = this.state
-    const {gems} = this.props
-    const isLearned = selected.isSpell && this.props.spellBook.find(spell => spell == selected.spell)
-    const isLocked = selected.tier != 1 && !this.state.traits[selected.tier - 1].find(other => other.isLearned)
+    const {selected, isLoading, traits} = this.state
+    const {gems, spellBook} = this.props
+    const isLearned = selected.isSpell && spellBook.find(spell => spell == selected.spell)
+    const isLocked = selected.tier != 1 && !traits[selected.tier - 1].find(other => other.isLearned)
+
     return <div>
       <hr />
       <p className="content is-large">{selected.description}</p>
@@ -139,11 +140,15 @@ class MageTower extends Component {
   }
   renderTraitIcon(trait, size) {
     const {selected} = this.state
-    if (trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
-    else if (this.props.traits.find(learned => learned.name == trait.name)) trait.isLearned = true
+    const {spellBook, traits} = this.props
+
+    if (trait.isSpell && spellBook.find(spell => spell.name == trait.spell.name)) trait.isLearned = true
+    else if (traits.find(learned => learned.name == trait.name)) trait.isLearned = true
     else trait.isLearned = false
-    const isLearned = trait.isSpell && this.props.spellBook.find(spell => spell.name == trait.spell.name)
+
+    const isLearned = trait.isSpell && spellBook.find(spell => spell.name == trait.spell.name)
     const isLocked = trait.tier != 1 && !this.state.traits[trait.tier - 1].find(other => other.isLearned)
+
     return <div className={`column is-${size}`}>
       <span className="has-text-centered">
         {trait.isLearned
@@ -245,4 +250,13 @@ const mapStateToProps = ({gold, dungeons, recruits, gems, spellBook, traits}) =>
   }
 }
 
-export default connect(mapStateToProps)(MageTower)
+const mapDispatchToProps = dispatch => ({
+  learnSpell: (selected, cb) => dispatch(gainGems(selected.gemCost * -1, () => {
+    dispatch(addSpell(selected.spell, cb))
+  })),
+  learnTrait: (selected, cb) => dispatch(gainGems(selected.gemCost * -1, () => {
+    dispatch(addTrait(selected, cb))
+  }))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MageTower)
