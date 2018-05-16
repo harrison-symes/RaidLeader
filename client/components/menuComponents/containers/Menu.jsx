@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 
 import Menu from '../Menu'
 
-import {getRecruits} from '../../../actions/recruits'
+import {getRecruits, receiveRecruitsAction} from '../../../actions/recruits'
 import {getSpells} from '../../../actions/spells'
 import {getDungeons} from '../../../actions/dungeons'
 import {getPlayerGold} from '../../../actions/gold'
@@ -10,6 +10,8 @@ import {getWeapons} from '../../../actions/weapons'
 import {getExperience} from '../../../actions/experience'
 import {getGems} from '../../../actions/gems'
 import {getTraits} from '../../../actions/traits'
+
+import {loadGame} from '../../../actions/game'
 
 const weaponMod = (recruit, weapon) => {
   recruit.initHp += recruit.initHp * weapon.hp
@@ -67,17 +69,11 @@ const mapDispatchToProps = (dispatch, props) => ({
       dispatch(getExperience())
       dispatch(getGems())
       dispatch(getTraits())
-    } else dispatch({type: 'RECEIVE_RECRUITS', recruits: []})
+    } else dispatch(receiveRecruitsAction())
   },
-  loadGame:  ({playerParty, playerSpells, playerWeapon, name, weapons}) => (
-    dispatch({
-      type: 'LOAD_GAME',
-      playerParty: readyRecruits(playerParty, weapons),
-      playerSpells,
-      playerWeapon,
-      name
-    })
-  ),
+
+  loadGame:  ({playerParty, playerSpells, playerWeapon, name, weapons}) => dispatch(loadGame(playerParty, playerSpells, playerWeapon, name, weapons)),
+
   travelToTown: () => dispatch({type: 'TRAVEL_TO_TOWN'})
 })
 
