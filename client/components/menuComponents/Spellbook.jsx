@@ -4,7 +4,6 @@ import SpellFrame from './SpellFrame'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-const grid = 8;
 const getItemStyle = (draggableStyle, isDragging) => ({
   userSelect: 'none',
   padding: '5%',
@@ -18,7 +17,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 
 const getListStyle = (isDraggingOver, isFull) => ({
   background: isDraggingOver ? isFull ? '#ff6666' : 'lightblue' : 'inherit',
-  padding: grid,
+  padding: 8,
   width: '100%',
   height: '100%'
 });
@@ -30,127 +29,144 @@ class SpellBook extends React.Component {
       selectedSpell: null,
       filterType: 'All'
     }
-    this.onDragEnd = this.onDragEnd.bind(this);
-    this.viewSpell = this.viewSpell.bind(this);
-    this.back = this.back.bind(this);
   }
-  selectType(filterType) {
-    this.setState({filterType})
-  }
-  back() {
-    this.setState({selectedSpell: null})
-  }
-  viewSpell(spell) {
-    this.setState({selectedSpell: spell})
-  }
-  moveToBar(spell, index) {
-    this.props.dispatch({type: 'ADD_SPELL_TO_BAR', spell, idx: index || this.props.playerSpells.length})
-  }
-  removeFromBar (spell) {
-    this.props.dispatch({type: 'REMOVE_SPELL_FROM_BAR', spell})
-  }
-  onDragEnd(result) {
-    const {source, destination} = result
-    const spell = this.props.spellBook.find(spell => spell.id == result.draggableId)
+  selectType = filterType => this.setState({
+    filterType
+  })
+
+  back = () => this.setState({
+    selectedSpell: null
+  })
+
+  viewSpell = selectedSpell => this.setState({
+    selectedSpell
+  })
+
+  onDragEnd = ({draggableId, source, destination}) => {
     if (!source || !destination) return
-    else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar' && this.props.playerSpells.length >= this.props.currentLocation.max_spells) this.props.dispatch({type: 'REPLACE_SPELL_IN_BAR', idx: destination.index, spell})
-    else if (source.droppableId == 'spellBook' && destination.droppableId == 'spellBar') this.moveToBar(spell, destination.index)
-    else if (source.droppableId == 'spellBar' && destination.droppableId == 'spellBook') this.removeFromBar(spell)
-    else if (destination.droppableId == 'spellBar') this.props.dispatch({type: 'SHIFT_SPELL_INDEX', spell, idx: destination.index})
+
+    const spell = this.props.spellBook.find(spell => spell.id == draggableId)
+
+    const dragTo = destination.droppableId == 'spellBar'
+    const dragFrom = source.droppableId == 'spellBook'
+
+    const {playerSpells, currentLocation} = this.props
+
+    //move to bar (replace or add)
+    if (dragFrom && dragTo) playerSpells.length >= currentLocation.max_spells
+      ? this.props.replaceSpellInBar(spell, destination.index)
+      : this.props.moveToBar(spell, destination.index)
+
+    else if (!dragTo && !dragFrom) this.props.removeFromBar(spell)
+
+    //rearrange within bar
+    else if (dragTo && !dragFrom) this.props.shiftSpellIndex(spell, destination.index)
   }
-  renderContent() {
+
+  spellBarColumn = () => {
+    const {spellBook, playerSpells, currentLocation} = this.props
+    const isFull = playerSpells.length >= currentLocation.max_spells
+    return <span style={{width: '100%'}} className="has-text-centered">
+      <h1 className="title is-3 DnD-Title">Spell Bar ({playerSpells.length}/{currentLocation.max_spells})</h1>
+      <br />
+      <Droppable droppableId="spellBar">
+        {(provided, snapshot) => (
+          <div
+            className="SpellBar"
+            ref={provided.innerRef}
+            style={getListStyle(snapshot.isDraggingOver, isFull)}
+            >
+            {playerSpells.map(spell => (
+              <Draggable key={spell.id} draggableId={spell.id}>
+                {(provided, snapshot) => (
+                  <div>
+                    <table
+                    className="table has-text-centered"
+                    ref={provided.innerRef}
+                    style={getItemStyle(
+                      provided.draggableStyle,
+                      snapshot.isDragging
+                    )}
+                    {...provided.dragHandleProps}
+                    >
+                      <SpellFrame
+                      viewSpell={this.viewSpell}
+                      removeSpell={this.props.removeFromBar}
+                      onBar={true}
+                      key={`spell-${spell.id}`}
+                      spell={spell} />
+                    </table>
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+          )}
+      </Droppable>
+    </span>
+  }
+
+  spellBookColumn = () => {
     const {spellBook, playerSpells, currentLocation} = this.props
     const available = spellBook.filter(spell => !playerSpells.find(bar => spell == bar))
-    const isFull = playerSpells.length >= currentLocation.max_spells
+
+    return <span style={{width: '100%'}} className="has-text-centered">
+      <h1 className="title is-3 DnD-Title">Spellbook</h1>
+      {available.length >= 5 && <select onChange={e=>this.selectType(e.target.value)} className="select is-large is-fullwidth">
+        <option value="All">All Types</option>
+        {Object.keys(available.reduce((obj, s) => {
+          obj[s.element] = s
+          return obj
+        },{})).map(type => <option value={type}>{type} Spells ({available.filter(s => s.element == type).length})</option>)}
+      </select>}
+      <br />
+      <Droppable droppableId="spellBook">
+        {(provided, snapshot) => (
+          <div
+            className="Drop-Region"
+            ref={provided.innerRef}
+            style={getListStyle(snapshot.isDraggingOver, false)}
+            >
+            {available.filter(s => this.state.filterType =='All' || s.element == this.state.filterType).map(spell => (
+              <Draggable key={spell.id} draggableId={spell.id}>
+                {(provided, snapshot) => (
+                  <div>
+                    <table className="table has-text-centered is-fullwidth"
+                    ref={provided.innerRef}
+                    style={getItemStyle(
+                      provided.draggableStyle,
+                      snapshot.isDragging
+                    )}
+                    {...provided.dragHandleProps}
+                    >
+                      <SpellFrame
+                      viewSpell={this.viewSpell}
+                      addSpell={this.props.moveToBar}
+                      onBar={false}
+                      key={`spell-${spell.id}`}
+                      spell={spell} />
+                    </table>
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+          )}
+      </Droppable>
+    </span>
+  }
+
+  renderContent = () => {
     return <div className="has-text-centered">
+
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="columns is-mobile Drag-And-Drop">
-          <span style={{width: '100%'}} className="has-text-centered">
-            <h1 className="title is-3 DnD-Title">Spellbook</h1>
-            {available.length >= 5 && <select onChange={e=>this.selectType(e.target.value)} className="select is-large is-fullwidth">
-              <option value="All">All Types</option>
-              {Object.keys(available.reduce((obj, s) => {
-                obj[s.element] = s
-                return obj
-              },{})).map(type => <option value={type}>{type} Spells ({available.filter(s => s.element == type).length})</option>)}
-            </select>}
-            <br />
-            <Droppable droppableId="spellBook">
-              {(provided, snapshot) => (
-                <div
-                  className="Drop-Region"
-                  ref={provided.innerRef}
-                  style={getListStyle(snapshot.isDraggingOver, false)}
-                  >
-                  {available.filter(s => this.state.filterType =='All' || s.element == this.state.filterType).map(spell => (
-                    <Draggable key={spell.id} draggableId={spell.id}>
-                      {(provided, snapshot) => (
-                        <div>
-                          <table className="table has-text-centered is-fullwidth"
-                          ref={provided.innerRef}
-                          style={getItemStyle(
-                            provided.draggableStyle,
-                            snapshot.isDragging
-                          )}
-                          {...provided.dragHandleProps}
-                          >
-                            <SpellFrame
-                            viewSpell={this.viewSpell}
-                            addSpell={this.moveToBar.bind(this)}
-                            onBar={false}
-                            key={`spell-${spell.id}`}
-                            spell={spell} />
-                          </table>
-                          {provided.placeholder}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-                )}
-            </Droppable>
-          </span>
-          <span style={{width: '100%'}} className="has-text-centered">
-            <h1 className="title is-3 DnD-Title">Spell Bar ({playerSpells.length}/{currentLocation.max_spells})</h1>
-            <br />
-            <Droppable droppableId="spellBar">
-              {(provided, snapshot) => (
-                <div
-                  className="SpellBar"
-                  ref={provided.innerRef}
-                  style={getListStyle(snapshot.isDraggingOver, isFull)}
-                  >
-                  {playerSpells.map(spell => (
-                    <Draggable key={spell.id} draggableId={spell.id}>
-                      {(provided, snapshot) => (
-                        <div>
-                          <table
-                          className="table has-text-centered"
-                          ref={provided.innerRef}
-                          style={getItemStyle(
-                            provided.draggableStyle,
-                            snapshot.isDragging
-                          )}
-                          {...provided.dragHandleProps}
-                          >
-                            <SpellFrame
-                            viewSpell={this.viewSpell}
-                            removeSpell={this.removeFromBar.bind(this)}
-                            onBar={true}
-                            key={`spell-${spell.id}`}
-                            spell={spell} />
-                          </table>
-                          {provided.placeholder}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-                )}
-            </Droppable>
-          </span>
+          {this.spellBookColumn()}
+          {this.spellBarColumn()}
         </div>
       </DragDropContext>
     </div>
@@ -175,9 +191,9 @@ class SpellBook extends React.Component {
   }
 }
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyz '.split('')
 
 const isEarlier = (a, b, i) => {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz '.split('')
   if (a[i] == b[i]) return isEarlier(a, b, i + 1)
   else {
     const aIdx = alphabet.findIndex(char => char == a[i].toLowerCase())
@@ -213,14 +229,36 @@ const elementAlphabetSort = spells => {
   return newArr
 }
 
+const mapDispatchToProps = dispatch => ({
+  moveToBar: (spell, idx) => dispatch({
+    type: 'ADD_SPELL_TO_BAR',
+    spell,
+    idx
+  }),
+  removeFromBar: spell => dispatch({
+    type: 'REMOVE_SPELL_FROM_BAR',
+    spell
+  }),
+  replaceSpellInBar: (spell, idx) => dispatch({
+    type: 'REPLACE_SPELL_IN_BAR',
+    idx,
+    spell
+  }),
+  shiftSpellIndex: (spell, idx) => dispatch({
+    type: 'SHIFT_SPELL_INDEX',
+    spell,
+    idx
+  })
+})
 
-const mapStateToProps = ({spellBook, playerSpells, location}) => {
-  return {
-    // spellBook: elementAlphabetSort(spellBook),
-    spellBook,
-    playerSpells,
-    currentLocation: location
-  }
-}
+const mapStateToProps = ({
+  spellBook,
+  playerSpells,
+  location
+}) => ({
+  spellBook,
+  playerSpells,
+  currentLocation: location
+})
 
-export default connect(mapStateToProps)(SpellBook)
+export default connect(mapStateToProps, mapDispatchToProps)(SpellBook)
