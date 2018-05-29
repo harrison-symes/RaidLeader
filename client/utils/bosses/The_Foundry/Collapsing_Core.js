@@ -1,8 +1,8 @@
 export default {
   name: 'Collapsing Core',
   level: 3,
-  initHp: 5000,
-  hp: 5000,
+  initHp: 3000,
+  hp: 3000,
   initPower: 30,
   power: 30,
   initArmor: 1000,
