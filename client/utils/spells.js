@@ -733,6 +733,19 @@ module.exports = {
     color: colors.lightOlive,
     background: colors.darkGreen,
     element: 'Life'
+  },
+  'Last Stand': {
+    id: 45,
+    name: 'Last Stand',
+    cast: 10,
+    cost: 10,
+    coolDown: 60,
+    powerRatio: 1,
+    description: 'Kill ALL of your Recruits, restoring (100%) Health and Mana to the Player, and granting the Player (+50%) Power for each Recruit that Died from this Spell.',
+    icon: 'ra-mayan-pyramid',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow'
   }
 }
 

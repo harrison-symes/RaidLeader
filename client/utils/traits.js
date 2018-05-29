@@ -174,6 +174,20 @@ const shadow = [
     background: 'white',
     element: 'Shadow',
   },
+  {
+    name: 'Last Stand',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Last Stand"',
+    isSpell: true,
+    element: 'Life',
+    requiredTrait: null,
+    icon: spells['Last Stand'].icon,
+    color: spells['Last Stand'].color,
+    background: spells['Last Stand'].background,
+    element: 'Life',
+    spell: spells['Last Stand']
+  },
 ]
 
 const arcane = [

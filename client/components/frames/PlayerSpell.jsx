@@ -272,6 +272,14 @@ class PlayerSpell extends Component {
         dispatch({type: 'HEAL_ALL_FRIENDLY', power})
         dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
         return dispatch({type: 'ADJUST_SPECFIC_SPELL_STAT', spell, stat: 'cast', percentage: 1.1})
+      case 'Last Stand':
+        let aliveTargets = party.filter(recruit => recruit.isAlive)
+        if (aliveTargets.length > 0) {
+          dispatch({type: 'HEAL_PLAYER', power: player.initHp})
+          dispatch({type: 'PLAYER_GAIN_MANA', power: player.maxMana})
+          dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.5 * aliveTargets.length})
+          return dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: 100})
+        }
       default: return
     }
   }
