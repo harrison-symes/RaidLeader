@@ -256,6 +256,20 @@ const arcane = [
     background: 'white',
     element: 'Arcane',
   },
+  {
+    name: 'Re-Originate',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Re-Originate"',
+    isSpell: true,
+    element: 'Fire',
+    requiredTrait: null,
+    icon: spells['Re-Originate'].icon,
+    color: spells['Re-Originate'].color,
+    background: spells['Re-Originate'].background,
+    element: 'Arcane',
+    spell: spells['Re-Originate']
+  }
 ]
 
 const fire = [

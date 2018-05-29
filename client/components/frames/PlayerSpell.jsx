@@ -280,6 +280,13 @@ class PlayerSpell extends Component {
           dispatch({type: 'PERCENT_INCREASE_POWER', percentage: 0.5 * aliveTargets.length})
           return dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: 100})
         }
+      case 'Re-Originate':
+        dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 1})
+        dispatch({type: 'HEAL_PLAYER', power: player.initHp})
+        let manaPerc = player.mana / player.maxMana
+        let power = boss.initHp * manaPerc
+        console.log({manaPerc, power}, 'Heal Boss for:');
+        return dispatch({type: 'HEAL_BOSS', power})
       default: return
     }
   }

@@ -739,13 +739,26 @@ module.exports = {
     name: 'Last Stand',
     cast: 10,
     cost: 10,
-    coolDown: 60,
+    coolDown: 10,
     powerRatio: 1,
     description: 'Kill ALL of your Recruits, restoring (100%) Health and Mana to the Player, and granting the Player (+50%) Power for each Recruit that Died from this Spell.',
     icon: 'ra-mayan-pyramid',
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow'
+  },
+  'Re-Originate': {
+    id: 45,
+    name: 'Re-Originate',
+    cast: 10,
+    cost: 10,
+    coolDown: 10,
+    powerRatio: 1,
+    description: 'Restore ALL Recruits and the Player to (100%) Health. Also restores (X%) Health to the Boss, where X is the % of Mana you are MISSING.',
+    icon: 'ra-solar-time',
+    color: colors.darkBlue,
+    background: colors.lightBlue,
+    element: 'Arcane'
   }
 }
 
