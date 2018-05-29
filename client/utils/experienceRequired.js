@@ -1,7 +1,7 @@
 const levelExperienceRequired = level => {
   if (level == 0) return 0
   const baseExp = 1000
-  const scaleAmount = 1.1
+  const scaleAmount = 1.2
   let experienceToLevel = baseExp
   for (var i = 1; i < level; i++) {
     experienceToLevel*=scaleAmount
