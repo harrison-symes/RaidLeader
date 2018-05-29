@@ -7,6 +7,7 @@ import Spells from './spells'
 module.exports = [
   {
     version: '0.4.3',
+    title: 'The Polish',
     updates: [
       {
         title: 'Tier 4 Spells!',
@@ -41,6 +42,7 @@ module.exports = [
   },
   {
     version: '0.4.2',
+    title: 'Beast-Master',
     updates: [
       {
         title: 'New Class: Beast Master!',
@@ -74,8 +76,8 @@ module.exports = [
   },
   {
     version: '0.4.1',
+    title: 'Mage-Tower',
     updates: [
-
       {
         title: 'Database Reset!',
         description: <div className="content is-medium has-text-dark">
@@ -128,6 +130,7 @@ module.exports = [
   },
   {
     version: '0.4',
+    title: 'The-Foundry',
     updates: [
       {
         title: 'New Dungeon: The Foundry',
