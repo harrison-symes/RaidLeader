@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 import {logoutUser} from '../../actions/logout'
 
-import {get, set} from '../../utils/localstorage'
+import {get} from '../../utils/localstorage'
 
 import RecruitmentCentre from './RecruitmentCentre'
 import Library from './Library'
@@ -24,27 +24,28 @@ class Town extends Component {
       showModal: null
     }
   }
-  toggleModal(menu) {
-    this.setState({showModal: menu})
-  }
-  modalSwitch() {
+
+  toggleModal = (showModal) => this.setState({showModal})
+
+  close = () => this.toggleModal(null)
+
+  modalSwitch = () => {
     const {showModal} = this.state
-    let close = () => this.toggleModal(null)
-    close = close.bind(this)
+
     switch (showModal) {
       case 'Logout': return this.renderLogoutConfirmModal()
-      case 'Recruitment Centre': return <RecruitmentCentre close={close} />
-      case 'Library': return <Library close={close} />
-      case 'Training Centre': return <TrainingCentre close={close} />
-      case 'Mage Tower': return <MageTower close={close} />
-      case 'Black Market': return <BlackMarket close={close} />
-      case 'Dungeon Map': return <Dungeons close={close} />
-      case 'My Recruits': return <MyRecruits close={close} />
-      case 'My Spells': return <MySpells close={close} />
+      case 'Recruitment Centre': return <RecruitmentCentre close={this.close} />
+      case 'Library': return <Library close={this.close} />
+      case 'Training Centre': return <TrainingCentre close={this.close} />
+      case 'Mage Tower': return <MageTower close={this.close} />
+      case 'Black Market': return <BlackMarket close={this.close} />
+      case 'Dungeon Map': return <Dungeons close={this.close} />
+      case 'My Recruits': return <MyRecruits close={this.close} />
+      case 'My Spells': return <MySpells close={this.close} />
       default: return null
     }
   }
-  renderLogoutConfirmModal() {
+  renderLogoutConfirmModal = () => {
     let recruitsPending = !!JSON.parse(get('offeredRecruits'))
     let spellsPending = !!JSON.parse(get('offeredSpells'))
 
@@ -53,7 +54,7 @@ class Town extends Component {
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">Logout</p>
-          <button onClick={() => this.toggleModal(null)} className="delete" aria-label="close"></button>
+          <button onClick={this.close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">
           <div className="has-text-centered">
@@ -64,9 +65,9 @@ class Town extends Component {
               </div>
               : <div className="has-text-centered">
                 <p className="subtitle is-2">Make sure you don't forget your password!</p>
-                <span className="columns">
-                  <button to="/" onClick={() => this.toggleModal(null)} className="column is-9 button is-primary is-outlined is-large">Stay</button>
-                  <Link to="/" onClick={() => this.props.dispatch(logoutUser())} className="column is-3 button is-fullwidth is-danger is-outlined is-large">(Logout)</Link>
+                <span className="columns is-centered">
+                  <button to="/" onClick={this.close} className="column is-6 button is-primary is-outlined is-large">Stay</button>
+                  <Link to="/" onClick={this.props.logout} className="column is-6 button is-fullwidth is-danger is-outlined is-large">(Logout)</Link>
                 </span>
               </div>
             }
@@ -78,7 +79,7 @@ class Town extends Component {
       </div>
     </div>
   }
-  renderTownMenuButton (name, icon, required) {
+  renderTownMenuButton = (name, icon, required) => {
     var closed
     if (required) closed = !this.props.dungeons.find(dungeon => dungeon.name == required && dungeon.isCompleted)
     return <a disabled={closed} title={closed ? `Complete ${required}`: name} onClick={() => closed ? null : this.toggleModal(name)} className="column is-6 button is-large is-info is-outlined">
@@ -91,7 +92,8 @@ class Town extends Component {
       </span>
     </a>
   }
-  render() {
+
+  render = () => {
     const {gold, recruits, spellBook, gems} = this.props
     const {showRecruitmentModal} = this.state
     return <div className="Town">
@@ -160,6 +162,10 @@ class Town extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logoutUser())
+})
+
 const mapStateToProps = (state) => {
   const {gold, recruits, spellBook, dungeons, gems} = state
   return {
@@ -171,4 +177,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Town)
+export default connect(mapStateToProps, mapDispatchToProps)(Town)

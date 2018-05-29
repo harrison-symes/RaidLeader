@@ -14,34 +14,40 @@ class TrainingCentre extends Component {
       levelUpgrade: 0,
       isLoading: false
     }
-    this.setLevel = this.setLevel.bind(this)
-    this.renderRecruit = this.renderRecruit.bind(this)
   }
-  setLevel(e) {
-    this.setState({levelUpgrade: e.target.value || null})
-  }
-  upgradeRecruit(recruit) {
-    if (this.state.isLoading) return
-    this.setState({isLoading: true})
+
+  setLevel = e => this.setState({
+    levelUpgrade: e.target.value || null
+  })
+
+  upgradeRecruit = recruit => {
+    const {isLoading} = this.state
+    if (isLoading) return
+
     const goldCost = recruit.level * 500 * -1
-    this.props.dispatch(earnGold(goldCost, success => {
-      this.props.dispatch(levelUpRecruit(recruit.level + 1, recruit.id, success => {
-        this.setState({isLoading: false})
-      }))
+    this.setState({
+      isLoading: true
+    })
+
+    //spend gold
+    this.props.levelUpRecruit(goldCost, recruit, () => this.setState({
+      isLoading: false
     }))
   }
-  renderLevelOption(requires, level) {
+
+  renderLevelOption = (requires, level) => {
     const {dungeons} = this.props
     return dungeons.find(dungeon => dungeon.name == requires && dungeon.isCompleted)
       ? <option value={level}>
         <span className="content">Train Recruits to Level {level}</span>
       </option>
-      : <option value={2} disabled className="content">
+      : <option value={level} disabled className="content">
         Complete "{requires}" to Unlock Level {level} Training
       </option>
 
   }
-  renderLevelOptions() {
+
+  renderLevelOptions = () => {
     const {levelUpgrade} = this.state
     return <p className="select is-large is-rounded is-info is-focused">
       <select className="" name="levelUpgrade" value={levelUpgrade || null} onChange={this.setLevel}>
@@ -54,8 +60,10 @@ class TrainingCentre extends Component {
       </select>
     </p>
   }
-  renderRecruit(recruit, i) {
+
+  renderRecruit = (recruit, i) => {
     const {gold} = this.props
+    const {isLoading} = this.state
     let nextLevel = {...recruit}
     nextLevel.level++
     nextLevel = createClass(nextLevel)
@@ -63,30 +71,45 @@ class TrainingCentre extends Component {
     const powerDiff = Math.round(nextLevel.power - recruit.power)
     const healthDiff = Math.round(nextLevel.hp - recruit.hp)
     const cost = recruit.level * 500
+
     return <div key={`level-up-recruit-${recruit.name}-${i}`} className="box">
+
       <div className="subtitle is-3">{recruit.name} &nbsp;
         <span className="tooltip">
           <span className="tooltiptext">{recruit.heroClass}</span>
           <i className={`icon ra ra-fw ${classIcons(recruit.heroClass)}`} />
         </span>
       </div>
+
       <div className="columns">
         <div className="column is-4"><p className="subtitle is-4"><HealthIcon value={`${recruit.hp} ${healthDiff ? `(+${healthDiff})` : ""}`}/></p></div>
         <div className="column is-4"><p className="subtitle is-4"><PowerIcon value={`${recruit.power} ${powerDiff ? `(+${powerDiff})` : ""}`}/></p></div>
         <div className="column is-4"><p className="subtitle is-4"><SpeedIcon value={`${recruit.speed} ${speedDiff ? `(+${speedDiff})` : ""}`}/></p></div>
       </div>
+
       {gold >= cost
-        ? <button onClick={() => this.upgradeRecruit(recruit)} className={`button is-success is-outlined is-large ${this.state.isLoading ? 'is-loading' : ''}`}>Upgrade to Level {this.state.levelUpgrade} (<GoldIcon value={`-${cost}`} />)</button>
-        : <button disabled className="button is-danger is-large">Insufficient Funds (<GoldIcon value={-1 * cost} />)</button>
+        ? <button
+          onClick={() => this.upgradeRecruit(recruit)}
+          className={`button is-success is-outlined is-large ${isLoading ? 'is-loading' : ''}`}
+        >
+          Upgrade to Level {recruit.level + 1} (<GoldIcon value={`-${cost}`} />)
+        </button>
+        : <button
+          disabled
+          className="button is-danger is-large">
+            Insufficient Funds (<GoldIcon value={-1 * cost} />)
+        </button>
       }
+
     </div>
   }
   renderRecruits() {
     const {levelUpgrade} = this.state
-    const recruits = this.props.recruits.filter(recruit => recruit.level == levelUpgrade - 1)
+    const {recruits} = this.props
+    const upgradeableRecruits = recruits.filter(recruit => recruit.level == levelUpgrade - 1)
     return <div>
-      {recruits.length > 0
-        ? recruits.map(this.renderRecruit)
+      {upgradeableRecruits.length > 0
+        ? upgradeableRecruits.map(this.renderRecruit)
         : <p className="title is-2">You have no Level {levelUpgrade - 1} Recruits</p>
       }
     </div>
@@ -109,7 +132,7 @@ class TrainingCentre extends Component {
         <section className="modal-card-body">
           {this.renderLevelOptions()}
           <hr />
-          {this.state.levelUpgrade != 0
+          {levelUpgrade != 0
             ? this.renderRecruits()
             : <div className="has-text-centered">
               <p className="title is-3">Welcome to the Training Centre</p>
@@ -131,6 +154,12 @@ class TrainingCentre extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  levelUpRecruit: (goldCost, recruit, cb) => dispatch(earnGold(goldCost, () => {
+    dispatch(levelUpRecruit(recruit.level + 1, recruit.id, cb))
+  }))
+})
+
 const mapStateToProps = ({gold, dungeons, recruits}) => {
   return {
     dungeons,
@@ -139,4 +168,4 @@ const mapStateToProps = ({gold, dungeons, recruits}) => {
   }
 }
 
-export default connect(mapStateToProps)(TrainingCentre)
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingCentre)

@@ -15,7 +15,7 @@ class CyclingConveyer extends BossFrame {
         switch(boss.stage) {
           case 'stageOne':
             switch(spell.name) {
-              case 'Charge': return boss.armor = 0
+              case 'Charge': return boss.armor == 0
               case 'Magnetic Pulse': return true
               case 'Magma Surge': return true
               default: return null

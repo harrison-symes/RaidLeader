@@ -122,7 +122,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       level: 3,
       is_repeatable: true,
       max_party: 3,
-      max_spells: 3,
+      max_spells: 4,
       requires_complete: 'The Swamp',
       gemChance: 1/3,
       rewards: [
@@ -165,7 +165,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       rewards: [
 
       ],
-      gold_reward: 2000,
+      gold_reward: 0,
       description: "I suppose it only makes sense when you think about it. Where else would all these weapons have come from? ... ... ... Except those weapons you extracted from those dead animals earlier, you monster!",
       bosses: [
 
@@ -182,7 +182,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       rewards: [
 
       ],
-      gold_reward: 5000,
+      gold_reward: 0,
       gemChance: 1,
       description: "Hey remember that Dragon you killed a while back? Well, her boyfriend is pretty pissed of at you. So pissed off that he: Cursed the Woods, Plagued a Forest, Turned a Volcano into a Foundry, Used that Foundry to create hundreds of Weapons, and... You get the idea, I suggest being a little terrified!",
       bosses: [
