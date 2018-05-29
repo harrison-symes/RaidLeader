@@ -131,8 +131,8 @@ class BossSpell extends Component {
         let poisonedTargets = aliveTargets.filter(member => member.effects.find(eff => eff.name == 'Poison'))
         let notPoisonedTargets = aliveTargets.filter(member => !member.effects.find(eff => eff.name == 'Poison'))
 
-        if (notPoisonedTargets.length == 0) target = notPoisonedTargets[Math.floor(Math.random() * notPoisonedTargets.length)]
-        else target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
+        if (notPoisonedTargets.length == 0) target = poisonedTargets[Math.floor(Math.random() * poisonedTargets.length)]
+        else target = notPoisonedTargets[Math.floor(Math.random() * notPoisonedTargets.length)]
 
         dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
