@@ -174,7 +174,7 @@ module.exports = {
     type: 'special',
     singleTarget: false,
     powerRatio: 10,
-    mana: 10, 
+    mana: 10,
     description: 'Restore 10 Mana',
     icon: 'ra-glowing-hands',
     color: colors.darkBlue,
@@ -706,6 +706,20 @@ module.exports = {
     color: colors.darkBlue,
     background: colors.lightBlue,
     element: 'Arcane'
+  },
+  'Forest Fire': {
+    id: 43,
+    name: 'Forest Fire',
+    cast: 10,
+    cost: 10,
+    coolDown: 10,
+    singleTarget: false,
+    powerRatio: 5,
+    description: 'Damage the BOSS for (500%) of Player Power. Each time you cast this spell, reduce the Cast Time of this spell by (10%).',
+    icon: 'ra-burning-tree',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire'
   }
 }
 

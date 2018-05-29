@@ -265,6 +265,9 @@ class PlayerSpell extends Component {
       case 'Living Bomb':
         dispatch({type: 'PERCENT_HEAL_FRIENDLY_TARGET', target, percentage: spell.healPercentage})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: bombConstructor(spell.duration, spell.percentage)})
+      case 'Forest Fire':
+        dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
+        return dispatch({type: 'ADJUST_SPECFIC_SPELL_STAT', spell, stat: 'cast', percentage: 0.9})
       default: return
     }
   }

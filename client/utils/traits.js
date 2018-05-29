@@ -296,6 +296,20 @@ const fire = [
     background: 'white',
     element: 'Fire'
   },
+  {
+    name: 'Forest Fire',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Forest Fire"',
+    isSpell: true,
+    element: 'Fire',
+    requiredTrait: null,
+    icon: spells['Forest Fire'].icon,
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire',
+    spell: spells['Forest Fire']
+  },
 ]
 
 function getTraitsByElement(element) {

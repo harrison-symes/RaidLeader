@@ -81,6 +81,11 @@ export default function player (state = null, action) {
         return spell
       })
       return newState
+    case 'ADJUST_SPECFIC_SPELL_STAT':
+      let target = newState.spells.find(spell => spell.id == action.spell.id)
+      if (!target) return state
+      target[action.stat] = target[action.stat] * action.percentage
+      return newState
     case 'REDUCE_SPELL_COOLDOWN':
       newState.spells = newState.spells.map(spell => {
         spell.coolDown -= spell.coolDown * action.percentage
