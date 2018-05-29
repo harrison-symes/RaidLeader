@@ -720,6 +720,19 @@ module.exports = {
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire'
+  },
+  'Tree of Life': {
+    id: 44,
+    name: 'Tree of Life',
+    cast: 10,
+    cost: 10,
+    coolDown: 10,
+    powerRatio: 5,
+    description: 'Heal ALL Friendly Characters for (500%) of Player Power and remove ALL Effects from your Recruits. Each time you cast this spell, increase the Cast Time of this spell by (10%)',
+    icon: 'ra-holy-oak',
+    color: colors.lightOlive,
+    background: colors.darkGreen,
+    element: 'Life'
   }
 }
 

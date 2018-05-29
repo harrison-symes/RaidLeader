@@ -92,6 +92,20 @@ const life = [
     background: 'white',
     element: 'Life',
   },
+  {
+    name: 'Tree of Life',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Tree of Life"',
+    isSpell: true,
+    element: 'Life',
+    requiredTrait: null,
+    icon: spells['Tree of Life'].icon,
+    color: spells['Tree of Life'].color,
+    background: spells['Tree of Life'].background,
+    element: 'Life',
+    spell: spells['Tree of Life']
+  },
 ]
 
 const shadow = [

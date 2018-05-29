@@ -268,6 +268,10 @@ class PlayerSpell extends Component {
       case 'Forest Fire':
         dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
         return dispatch({type: 'ADJUST_SPECFIC_SPELL_STAT', spell, stat: 'cast', percentage: 0.9})
+      case 'Tree of Life':
+        dispatch({type: 'HEAL_ALL_FRIENDLY', power})
+        dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
+        return dispatch({type: 'ADJUST_SPECFIC_SPELL_STAT', spell, stat: 'cast', percentage: 1.1})
       default: return
     }
   }
