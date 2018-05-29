@@ -109,7 +109,7 @@ class TrainingCentre extends Component {
     const upgradeableRecruits = recruits.filter(recruit => recruit.level == levelUpgrade - 1)
     return <div>
       {upgradeableRecruits.length > 0
-        ? recruits.map(this.renderRecruit)
+        ? upgradeableRecruits.map(this.renderRecruit)
         : <p className="title is-2">You have no Level {levelUpgrade - 1} Recruits</p>
       }
     </div>
