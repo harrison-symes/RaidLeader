@@ -14,6 +14,7 @@ import {getTraits} from '../../../actions/traits'
 import {loadGame} from '../../../actions/game'
 
 const weaponMod = (recruit, weapon) => {
+  console.log({recruit, weapon});
   recruit.initHp += recruit.initHp * weapon.hp
   recruit.hp += recruit.hp * weapon.hp
   recruit.initPower += recruit.initPower * weapon.power
@@ -27,6 +28,7 @@ const weaponMod = (recruit, weapon) => {
 }
 
 const readyRecruits = (recruits, weapons) => {
+  console.log({weapons});
   return recruits.map(recruit => {
     let weapon = weapons.find(wep => wep.id == recruit.weapon_id)
     if (weapon) recruit = weaponMod(recruit, weapon)
@@ -72,7 +74,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     } else dispatch(receiveRecruitsAction())
   },
 
-  loadGame:  ({playerParty, playerSpells, playerWeapon, name, weapons}) => dispatch(loadGame(playerParty, playerSpells, playerWeapon, name, weapons)),
+  loadGame:  ({playerParty, playerSpells, playerWeapon, name, weapons}) => dispatch(loadGame(readyRecruits(playerParty, weapons), playerSpells, playerWeapon, name, weapons)),
 
   travelToTown: () => dispatch({type: 'TRAVEL_TO_TOWN'})
 })
