@@ -257,7 +257,7 @@ class BossSpell extends Component {
         availableTargets = aliveTargets.filter(recruit => {
           return recruit.hp / recruit.initHp <= 0.2
         })
-        if (availableTargets.length == 0) return dispatch({type: "PERCENT_DAMAGE_PLAYER", percentage: 100})
+        if (aliveTargets.length == 0) return dispatch({type: "PERCENT_DAMAGE_PLAYER", percentage: 100})
 
         target = availableTargets[Math.floor(Math.random() * availableTargets.length)]
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: 1})
