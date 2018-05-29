@@ -287,7 +287,7 @@ const fire = [
     name: 'Burning Rush',
     tier: 3,
     gemCost: 3,
-    description: 'Your Spells with a BASE cast time of 2 seconds or less have No Cast Time',
+    description: 'Your Spells with a BASE cast time of 2 seconds or less have No Cast Time. (Only for non-Channeled spells),',
     isSpell: false,
     element: 'Fire',
     requiredTrait: null,
