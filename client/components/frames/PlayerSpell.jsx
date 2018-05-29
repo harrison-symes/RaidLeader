@@ -100,7 +100,8 @@ class PlayerSpell extends Component {
   }
   castSwitch(target) {
     const {spell, dispatch, player, party, boss, traits} = this.props
-    let power = this.props.player.power * spell.powerRatio
+    let power = player.power * spell.powerRatio
+    console.log({spell, power, player});
     // if (target) target = party.find(other => other.id == target.id)
     if (!this.props.started) return
     if (player.bonusEffect == "curePoison" && spell.singleTarget && spell.element == 'Life') dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})
@@ -269,6 +270,7 @@ class PlayerSpell extends Component {
         dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
         return dispatch({type: 'ADJUST_SPECFIC_SPELL_STAT', spell, stat: 'cast', percentage: 0.9})
       case 'Tree of Life':
+        console.log({power, spell});
         dispatch({type: 'HEAL_ALL_FRIENDLY', power})
         dispatch({type: 'REMOVE_EFFECTS_FROM_ALL'})
         return dispatch({type: 'ADJUST_SPECFIC_SPELL_STAT', spell, stat: 'cast', percentage: 1.1})
@@ -284,9 +286,9 @@ class PlayerSpell extends Component {
         dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 1})
         dispatch({type: 'HEAL_PLAYER', power: player.initHp})
         let manaPerc = player.mana / player.maxMana
-        let power = boss.initHp * manaPerc
+        let bossHeal = boss.initHp * (1 - manaPerc)
         console.log({manaPerc, power}, 'Heal Boss for:');
-        return dispatch({type: 'HEAL_BOSS', power})
+        return dispatch({type: 'HEAL_BOSS', bossHeal})
       default: return
     }
   }

@@ -196,9 +196,9 @@ const isEarlier = (a, b, i) => {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz '.split('')
   if (!a[i]) return true
   if (!b[i]) return false
+  if (a.length == b.length && a.length == i)
   if (a[i] == b[i]) return isEarlier(a, b, i + 1)
   else {
-    console.log(a[i], b[i], a, b, i);
     const aIdx = alphabet.findIndex(char => char == a[i].toLowerCase())
     const bIdx = alphabet.findIndex(char => char == b[i].toLowerCase())
     const diff = aIdx - bIdx

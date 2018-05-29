@@ -712,53 +712,57 @@ module.exports = {
     name: 'Forest Fire',
     cast: 10,
     cost: 10,
-    coolDown: 10,
+    coolDown: 15,
     singleTarget: false,
     powerRatio: 5,
     description: 'Damage the BOSS for (500%) of Player Power. Each time you cast this spell, reduce the Cast Time of this spell by (10%).',
     icon: 'ra-burning-tree',
     color: colors.darkRed,
     background: colors.lightOrange,
-    element: 'Fire'
+    element: 'Fire',
+    reserved: true
   },
   'Tree of Life': {
     id: 44,
     name: 'Tree of Life',
     cast: 10,
     cost: 10,
-    coolDown: 10,
+    coolDown: 15,
     powerRatio: 5,
     description: 'Heal ALL Friendly Characters for (500%) of Player Power and remove ALL Effects from your Recruits. Each time you cast this spell, increase the Cast Time of this spell by (10%)',
     icon: 'ra-holy-oak',
     color: colors.lightOlive,
     background: colors.darkGreen,
-    element: 'Life'
+    element: 'Life',
+    reserved: true
   },
   'Last Stand': {
     id: 45,
     name: 'Last Stand',
     cast: 10,
     cost: 10,
-    coolDown: 10,
+    coolDown: 15,
     powerRatio: 1,
     description: 'Kill ALL of your Recruits, restoring (100%) Health and Mana to the Player, and granting the Player (+50%) Power for each Recruit that Died from this Spell.',
     icon: 'ra-mayan-pyramid',
     color: colors.darkPurple,
     background: colors.faintPink,
-    element: 'Shadow'
+    element: 'Shadow',
+    reserved: true
   },
   'Re-Originate': {
-    id: 45,
+    id: 46,
     name: 'Re-Originate',
     cast: 10,
     cost: 10,
-    coolDown: 10,
+    coolDown: 15,
     powerRatio: 1,
     description: 'Restore ALL Recruits and the Player to (100%) Health. Also restores (X%) Health to the Boss, where X is the % of Mana you are MISSING.',
     icon: 'ra-solar-time',
     color: colors.darkBlue,
     background: colors.lightBlue,
-    element: 'Arcane'
+    element: 'Arcane',
+    reserved: true
   }
 }
 
