@@ -81,6 +81,11 @@ export default function player (state = null, action) {
         return spell
       })
       return newState
+    case 'ADJUST_SPECFIC_SPELL_STAT':
+      let target = newState.spells.find(spell => spell.id == action.spell.id)
+      if (!target) return state
+      target[action.stat] = target[action.stat] * action.percentage
+      return newState
     case 'REDUCE_SPELL_COOLDOWN':
       newState.spells = newState.spells.map(spell => {
         spell.coolDown -= spell.coolDown * action.percentage
@@ -156,10 +161,7 @@ export default function player (state = null, action) {
       return newState
     case 'BURNING_RUSH_TRAIT':
       newState.spells = newState.spells.map(spell => {
-        if (spell.cast <= 2) {
-          spell.cast = 0
-          if (spell.isChanneled) spell.cast = spell.ticks * 0.1
-        }
+        if (spell.cast <= 2 && !spell.isChanneled) spell.cast = 0
         return spell
       })
       return newState

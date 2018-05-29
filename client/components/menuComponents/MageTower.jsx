@@ -88,7 +88,7 @@ class MageTower extends Component {
       isLoading: false
     }))
     else this.props.learnTrait(selected, () => this.setState({
-      isLoading: true
+      isLoading: false
     }))
   }
   componentWillReceiveProps(nextProps) {

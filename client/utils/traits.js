@@ -92,6 +92,20 @@ const life = [
     background: 'white',
     element: 'Life',
   },
+  {
+    name: 'Tree of Life',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Tree of Life"',
+    isSpell: true,
+    element: 'Life',
+    requiredTrait: null,
+    icon: spells['Tree of Life'].icon,
+    color: spells['Tree of Life'].color,
+    background: spells['Tree of Life'].background,
+    element: 'Life',
+    spell: spells['Tree of Life']
+  },
 ]
 
 const shadow = [
@@ -159,6 +173,20 @@ const shadow = [
     color: spells['Shadow Soul'].background,
     background: 'white',
     element: 'Shadow',
+  },
+  {
+    name: 'Last Stand',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Last Stand"',
+    isSpell: true,
+    element: 'Life',
+    requiredTrait: null,
+    icon: spells['Last Stand'].icon,
+    color: spells['Last Stand'].color,
+    background: spells['Last Stand'].background,
+    element: 'Life',
+    spell: spells['Last Stand']
   },
 ]
 
@@ -228,6 +256,20 @@ const arcane = [
     background: 'white',
     element: 'Arcane',
   },
+  {
+    name: 'Re-Originate',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Re-Originate"',
+    isSpell: true,
+    element: 'Fire',
+    requiredTrait: null,
+    icon: spells['Re-Originate'].icon,
+    color: spells['Re-Originate'].color,
+    background: spells['Re-Originate'].background,
+    element: 'Arcane',
+    spell: spells['Re-Originate']
+  }
 ]
 
 const fire = [
@@ -287,7 +329,7 @@ const fire = [
     name: 'Burning Rush',
     tier: 3,
     gemCost: 3,
-    description: 'Your Spells with a BASE cast time of 2 seconds or less have No Cast Time',
+    description: 'Your Spells with a BASE cast time of 2 seconds or less have No Cast Time. (Only for non-Channeled spells),',
     isSpell: false,
     element: 'Fire',
     requiredTrait: null,
@@ -295,6 +337,20 @@ const fire = [
     color: colors.darkRed,
     background: 'white',
     element: 'Fire'
+  },
+  {
+    name: 'Forest Fire',
+    tier: 4,
+    gemCost: 4,
+    description: 'Learn the Spell "Forest Fire"',
+    isSpell: true,
+    element: 'Fire',
+    requiredTrait: null,
+    icon: spells['Forest Fire'].icon,
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire',
+    spell: spells['Forest Fire']
   },
 ]
 

@@ -95,6 +95,7 @@ class MySpells extends Component {
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 const isEarlier = (a, b, i) => {
+  if (a.length == b.length && i == a.length)
   if (a[i] == b[i]) return isEarlier(a, b, i + 1)
   else {
     if (i >= b.length) return true
