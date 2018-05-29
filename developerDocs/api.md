@@ -7,14 +7,14 @@
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
 | POST | /api/auth/register | No | To Register and then log In a New User | User Token | [Info](#register-new-user) |
-| POST | /api/auth/login | No | To Login an already registered User | User Token | [Info](#Register)
+| POST | /api/auth/login | No | To Login an already registered User | User Token | [Info](#login-user)
 
 ### Dungeons
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
-| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#Dungeons)|
-| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#Complete_Dungeon) |
+| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#get-dungeons)|
+| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#complete-dungeon) |
 
 ### Recruits
 
