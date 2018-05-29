@@ -141,32 +141,81 @@ Failure:
 
 ---
 
-## Login
-
--
--
--
--
--
--
--
-
 ## Get Dungeons
 
--
--
--
--
--
--
--
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#Dungeons)|
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 200 | The Request was successful | True |
+  | 500 | Server Error | False |
+
+##### Response Body
+
+Success:
+```
+  [
+    {
+      "id": 1,
+      "name": "The Hunt",
+      "description": "The Paladin knows the location of a dying Dragon. Dragons are pretty scary, but they always hoard a large amount of treasure. Hopefully this Dragon won't live long enough to burn you alive...",
+      "requires_complete": null,
+      "max_party": 1,
+      "max_spells": 1,
+      "level": 1,
+      "is_repeatable": 0,
+      "gold_reward": 500,
+      "rewards": "[]",
+      "isCompleted": true
+    },
+    ...
+  ]
+```
+
+Failure:
+```
+  {
+    message: 'Error Message'
+  }
+```
+
+([back to summary](#summary))  
+
+---
 
 ## Complete Dungeon
 
--
--
--
--
--
--
--
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#Complete_Dungeon) |
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 201 | The Request successfully created an item | True |
+  | 500 | Server Error | False |
+
+#### Request Body
+
+```
+  {
+    dungeon_id: 1
+  }
+```
+
+Failure:
+```
+  {
+    message: 'Error Message'
+  }
+```
+
+---
