@@ -142,7 +142,7 @@ class PlayerSpell extends Component {
         dispatch({type: 'PLAYER_GAIN_MANA', power: spell.mana})
         return dispatch({type: 'DAMAGE_PLAYER', power})
       case 'Evocate':
-        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.mana)})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.mana})
       case 'Drain Soul':
         dispatch({type: 'PLAYER_GAIN_MANA', power: spell.mana})
         dispatch({type: 'HEAL_PLAYER', power})
