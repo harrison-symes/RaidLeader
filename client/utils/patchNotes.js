@@ -2,10 +2,33 @@ import React from 'react'
 
 import {startingBuff, classTraits} from '../utils/classText'
 
+import Spells from './spells'
+
 module.exports = [
   {
     version: '0.4.3',
     updates: [
+      {
+        title: 'Tier 4 Spells!',
+        description: <div className="content is-medium has-text-dark">
+          <p>At the <b>Mage Tower</b> you will find a new Tier of Traits to spend your <b>Gems</b> on.</p>
+          <p>These <b>Tier 4 Spells</b> are some kick-ass new Spells for you to work towards, and they have some powerful effects:</p>
+          <hr />
+          {[
+            Spells['Tree of Life'],
+            Spells['Forest Fire'],
+            Spells['Last Stand'],
+            Spells['Re-Originate']
+          ].map((spell, i) => <div key={i} className="box">
+            <p className="title is-3">{spell.name} - {spell.element} Tier 4 Spell</p>
+            <p>{spell.description}</p>
+          </div>)}
+          <hr />
+          <p>These Spells are intended to be Powerful, costly effects, and they are totally <b>NOT YET TESTED</b></p>
+          <p>So be sure to let me know if they feel too Strong or too Weak. Feedback is much appreciated</p>
+          <p>Also let me know if they feel too hard to get to in the first place, 4 Gems can take some time to gather.</p>
+        </div>
+      },
       {
         title: 'Icons! Icons Everywhere!',
         description: <div className="content is-medium has-text-dark">
