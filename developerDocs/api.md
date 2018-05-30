@@ -9,14 +9,14 @@
 | POST | /api/auth/register | No | To Register and then log In a New User | User Token | [Info](#register-new-user) |
 | POST | /api/auth/login | No | To Login an already registered User | User Token | [Info](#login-user)
 
-### Dungeons
+### [Dungeons](#dungeons)
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
 | GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#get-dungeons)|
 | POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#complete-dungeon) |
 
-### Recruits
+### [Recruits](#dungeons)
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
@@ -141,12 +141,14 @@ Failure:
 
 ---
 
-## Get Dungeons
+## Dungeons
+
+### Get Dungeons
 
 
 | Method | Endpoint | Authentication Required | Usage | Response |
 | --- | --- | --- | --- | --- |
-| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#Dungeons)|
+| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects |
 
 #### Response
 
@@ -189,11 +191,21 @@ Failure:
 
 ---
 
-## Complete Dungeon
+### Complete Dungeon
 
 | Method | Endpoint | Authentication Required | Usage | Response |
 | --- | --- | --- | --- | --- |
-| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#Complete_Dungeon) |
+| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code |
+
+#### Request
+
+#### Request Body
+
+```
+{
+  dungeon_id: 1
+}
+```
 
 #### Response
 
@@ -203,27 +215,15 @@ Failure:
   | 201 | The Request successfully created an item | True |
   | 500 | Server Error | False |
 
-#### Request Body
-
-```
-  {
-    dungeon_id: 1
-  }
-```
-
-Failure:
-```
-  {
-    message: 'Error Message'
-  }
-```
-
 ---
 
-## Get Recruits
+## Recruits
+
+
+### Get Recruits
 
 | Method | Endpoint | Authentication Required | Usage | Response |
-| GET | /api/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects | [Info](#Get_Recruits) |
+| GET | /api/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects |
 | --- | --- | --- | --- | --- |
 
 #### Response
@@ -258,6 +258,8 @@ Failure:
   }
 ```
 
+([back to summary](#summary))  
+
 ---
 
 ## Add Recruit
@@ -265,6 +267,18 @@ Failure:
 | Method | Endpoint | Authentication Required | Usage | Response |
 | --- | --- | --- | --- | --- |
 | POST | /api/recruits | Yes | Add a new Recruit to the 'recruits' table | The Recruit that was added (as an Object) |
+
+#### Request
+
+##### Request Body
+
+```
+{
+  name: 'Patty',
+  zodiac: 'Aries',
+  heroClass: 'Paladin'
+}
+```
 
 #### Response
 
@@ -274,15 +288,6 @@ Failure:
   | 201 | The Request successfully created an entry | True |
   | 500 | Server Error | False |
 
-##### Request Body
-
-```
-  {
-    name: 'Patty',
-    zodiac: 'Aries',
-    heroClass: 'Paladin'
-  }
-```
 
 #### Response Body
 
@@ -302,13 +307,15 @@ Failure:
 
 ---
 
-## Equip Recruit Weapon
+### Equip Recruit Weapon
 
 | Method | Endpoint | Authentication Required | Usage | Response |
 | --- | --- | --- | --- | --- |
 | PUT | /api/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code |
 
-### Request Body
+#### Request
+
+##### Request Body
 
 ```
 {
