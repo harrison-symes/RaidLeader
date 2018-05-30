@@ -21,10 +21,10 @@ router.put('/weapons', decode, (req, res) => {
 
 router.put('/level', decode, (req, res) => {
   recruitsDb.levelUpRecruit(req.body.id, req.body.level )
-    .then(recruit => res.status(200).json(recruit))
+    .then(recruit => res.status(202).json(recruit))
 })
+
 router.put('/:id/zodiac', decode, (req, res) => {
-  console.log(req.body);
   recruitsDb.changeZodiac(req.params.id, req.body.zodiac)
     .then(recruit => res.status(200).json(recruit))
 })
