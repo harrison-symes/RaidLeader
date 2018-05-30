@@ -29,7 +29,7 @@ export function addWeaponAction ({name, level}, id) {
 
 export function addWeapon (weapon) {
   return dispatch => {
-    request('post', 'player/weapon', weapon)
+    request('post', 'player/weapons', weapon)
       .then(res => dispatch(addWeaponAction(weapon, res.body)))
   }
 }
