@@ -25,7 +25,7 @@
 | PUT | /api/v1/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#equip-recruit-weapon)|
 | PUT | /api/v1/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object | [Info](#update-recruit-level) |
 
-### player
+### [Player](#player)
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
@@ -375,6 +375,39 @@ Failure:
       "user_id": 1,
       "zodiac": "Aries"
     }
+  }
+```
+
+([back to summary](#summary))  
+
+---
+
+## Player
+
+### Get Player Gold
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| GET | /api/v1/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold |
+| --- | --- | --- | --- | --- |
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 200 | The Request was successful | True |
+  | 500 | Server Error | False |
+
+#### Response Body
+
+```
+  4200
+```
+
+Failure:
+```
+  {
+    message: 'Error Message'
   }
 ```
 
