@@ -23,7 +23,7 @@
 | GET | /api/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects | [Info](#get-recruits) |
 | POST | /api/recruits | Yes | Add a new Recruit to the 'recruits' table | The Recruit that was added (as an Object) | [Info](#add-recruit)|
 | PUT | /api/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#equip-recruit-weapon)|
-| PUT | /api/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object | [Info](#Level_Update_Recruit) |
+| PUT | /api/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object | [Info](#update-recruit-level) |
 
 ### player
 
@@ -332,6 +332,51 @@ Failure:
   | 202 | The Request successfully updated the entry | True |
   | 500 | Server Error | False |
 
+
+([back to summary](#summary))  
+
+---
+
+### Update Recruit Level
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| PUT | /api/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object |
+
+#### Request
+
+##### Request Body
+
+```
+{
+  id: 1,
+  level: 2
+}
+```
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 202 | The Request successfully updated the entry | True |
+  | 500 | Server Error | False |
+
+##### Response Body
+
+```
+  {
+    {
+      "id": 1,
+      "name": "Patrick",
+      "heroClass": "Paladin",
+      "level": 2,
+      "weapon_id": null,
+      "user_id": 1,
+      "zodiac": "Aries"
+    }
+  }
+```
 
 ([back to summary](#summary))  
 
