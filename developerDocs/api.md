@@ -29,8 +29,8 @@
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
-| GET | /api/v1/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold | [Info](#Get_Gold)|
-| PUT | /api/v1/player/gold | Yes | Remove or Add gold to/from the Requesting user | Status Code | [Info](#Put_Gold)|
+| GET | /api/v1/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold | [Info](#get-player-gold)|
+| PUT | /api/v1/player/gold | Yes | Remove or Add gold to/from the Requesting user | Status Code | [Info](#update-player-gold)|
 | GET | /api/v1/player/weapons | Yes | Get a list of Weapons that the Requesting Player has collected | An Array of Weapon Objects | [Info](#Get_Weapons) |
 | POST | /api/v1/player/weapons | Yes | Add a Weapon to the 'inventory' table, with the Requesting User as a relation | The Weapon that was added as an Object | [Info](#Post_Weapon) |
 | DELETE | /api/v1/player/weapons | Yes | Remove a weapon from the 'inventory' table, and add gold to the Requesting User based on the Weapon's value | Status Code | [Info](#Delete_Weapon) |
@@ -223,8 +223,8 @@ Failure:
 ### Get Recruits
 
 | Method | Endpoint | Authentication Required | Usage | Response |
-| GET | /api/v1/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects |
 | --- | --- | --- | --- | --- |
+| GET | /api/v1/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects |
 
 #### Response
 
@@ -387,8 +387,8 @@ Failure:
 ### Get Player Gold
 
 | Method | Endpoint | Authentication Required | Usage | Response |
-| GET | /api/v1/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold |
 | --- | --- | --- | --- | --- |
+| GET | /api/v1/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold |
 
 #### Response
 
@@ -410,6 +410,35 @@ Failure:
     message: 'Error Message'
   }
 ```
+
+([back to summary](#summary))  
+
+---
+
+
+### Update Player Gold
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| PUT | /api/v1/player/gold | Yes | Remove or Add gold to/from the Requesting user | Status Code |
+
+#### Request
+
+##### Request Body
+
+```
+{
+  gold: 500
+}
+```
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 202 | The Request successfully updated the entry | True |
+  | 500 | Server Error | False |
 
 ([back to summary](#summary))  
 
