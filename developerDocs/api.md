@@ -7,22 +7,22 @@
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
 | POST | /api/auth/register | No | To Register and then log In a New User | User Token | [Info](#register-new-user) |
-| POST | /api/auth/login | No | To Login an already registered User | User Token | [Info](#Register)
+| POST | /api/auth/login | No | To Login an already registered User | User Token | [Info](#login-user)
 
 ### Dungeons
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
-| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#Dungeons)|
-| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#Complete_Dungeon) |
+| GET | /api/dungeons | Yes | Receive an Array of Dungeons from the 'dungeons' table | Array of Dungeon Objects | [Info](#get-dungeons)|
+| POST | /api/dungeons/complete | Yes | To mark a user as having completed a dungeon | Status Code| [Info](#complete-dungeon) |
 
 ### Recruits
 
 | Method | Path | Auth Required | Purpose | Response | Further Info |
 | --- | --- | --- | --- | --- | --- |
-| GET | /api/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects | [Info](#Get_Recruits) |
-| POST | /api/recruits | Yes | Add a new Recruit to the 'recruits' table | The Recruit that was added (as an Object) | [Info](#Add_Recruit)|
-| PUT | /api/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#Equip_Recruit_Weapon)|
+| GET | /api/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects | [Info](#get-recruits) |
+| POST | /api/recruits | Yes | Add a new Recruit to the 'recruits' table | The Recruit that was added (as an Object) | [Info](#add-recruit)|
+| PUT | /api/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#equip-recruit-weapon)|
 | PUT | /api/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object | [Info](#Level_Update_Recruit) |
 
 ### player
@@ -217,5 +217,115 @@ Failure:
     message: 'Error Message'
   }
 ```
+
+---
+
+## Get Recruits
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| GET | /api/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects | [Info](#Get_Recruits) |
+| --- | --- | --- | --- | --- |
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 200 | The Request was successful | True |
+  | 500 | Server Error | False |
+
+#### Response Body
+
+```
+  [
+    {
+        "id": 1,
+        "name": "Patrick",
+        "heroClass": "Paladin",
+        "level": 3,
+        "weapon_id": 3,
+        "user_id": 1,
+        "zodiac": "Aries"
+    },
+    ...
+  ]
+```
+
+Failure:
+```
+  {
+    message: 'Error Message'
+  }
+```
+
+---
+
+## Add Recruit
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| POST | /api/recruits | Yes | Add a new Recruit to the 'recruits' table | The Recruit that was added (as an Object) |
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 201 | The Request successfully created an entry | True |
+  | 500 | Server Error | False |
+
+##### Request Body
+
+```
+  {
+    name: 'Patty',
+    zodiac: 'Aries',
+    heroClass: 'Paladin'
+  }
+```
+
+#### Response Body
+
+```
+  {
+    "id": 2,
+    "name": "Patty",
+    "heroClass": "Paladin",
+    "level": 1,
+    "weapon_id": null,
+    "user_id": 1,
+    "zodiac": "Aries"
+  }
+```
+
+([back to summary](#summary))  
+
+---
+
+## Equip Recruit Weapon
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| PUT | /api/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code |
+
+### Request Body
+
+```
+{
+  id: 1,
+  weapon_id: 2
+}
+```
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 202 | The Request successfully updated the entry | True |
+  | 500 | Server Error | False |
+
+
+([back to summary](#summary))  
 
 ---
