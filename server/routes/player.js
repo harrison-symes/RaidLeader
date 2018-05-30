@@ -18,7 +18,7 @@ router.put('/gold', decode, (req, res) => {
     })
 })
 
-router.post('/weapon', decode, (req, res) => {
+router.post('/weapons', decode, (req, res) => {
   playerDb.addWeapon(req.user.user_id, req.body.name, req.body.level)
     .then(weapon => res.status(201).json(weapon))
 })

@@ -31,8 +31,8 @@
 | --- | --- | --- | --- | --- | --- |
 | GET | /api/v1/player/gold | Yes | Receive the amount of gold the Requesting user has in the database | Integer representing gold | [Info](#get-player-gold)|
 | PUT | /api/v1/player/gold | Yes | Remove or Add gold to/from the Requesting user | Status Code | [Info](#update-player-gold)|
-| GET | /api/v1/player/weapons | Yes | Get a list of Weapons that the Requesting Player has collected | An Array of Weapon Objects | [Info](#Get_Weapons) |
-| POST | /api/v1/player/weapons | Yes | Add a Weapon to the 'inventory' table, with the Requesting User as a relation | The Weapon that was added as an Object | [Info](#Post_Weapon) |
+| GET | /api/v1/player/weapons | Yes | Get a list of Weapons that the Requesting Player has collected | An Array of Weapon Objects | [Info](#get-weapons) |
+| POST | /api/v1/player/weapons | Yes | Add a Weapon to the 'inventory' table, with the Requesting User as a relation | The Weapon that was added as an Object | [Info](#add-weapon) |
 | DELETE | /api/v1/player/weapons | Yes | Remove a weapon from the 'inventory' table, and add gold to the Requesting User based on the Weapon's value | Status Code | [Info](#Delete_Weapon) |
 | POST | /api/v1/player/getStarted | Yes | Get a User started after they complete the tutorial, creating their first weapons, recruit and spell in the database | The Recruit, Spell and Weapon added, as objects within and Object | [Info](#Post_Started) |
 | GET | /api/v1/player/experience | Yes | Get the total experience the Requesting User has accrued | Integer value representing Experience | [Info](#Get_Experience) |
@@ -439,6 +439,88 @@ Failure:
   | --- | --- | --- |
   | 202 | The Request successfully updated the entry | True |
   | 500 | Server Error | False |
+
+([back to summary](#summary))  
+
+---
+
+
+### Get Weapons
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| GET | /api/v1/player/weapons | Yes | Get a list of Weapons that the Requesting Player has collected | An Array of Weapon Objects |
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 200 | The Request was successful | True |
+  | 500 | Server Error | False |
+
+#### Response Body
+
+```
+  [
+    {
+      "id": 1,
+      "is_weapon": 1,
+      "name": "Dragon Scale",
+      "level": 1,
+      "user_id": 1
+    }
+  ]
+```
+
+Failure:
+```
+  {
+    message: 'Error Message'
+  }
+```
+
+([back to summary](#summary))  
+
+---
+
+## Add Weapon
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| POST | /api/v1/player/weapons | Yes | Add a Weapon to the 'inventory' table, with the Requesting User as a relation | The Weapon that was added as an Object |
+
+#### Request
+
+##### Request Body
+
+```
+{
+  name: 'Dragon Scale',
+  level: '1'
+}
+```
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 201 | The Request successfully created an entry | True |
+  | 500 | Server Error | False |
+
+
+#### Response Body
+
+```
+  {
+    "id": 16,
+    "is_weapon": 1,
+    "name": "Plagued Stave",
+    "level": 1,
+    "user_id": 1
+  }
+```
 
 ([back to summary](#summary))  
 

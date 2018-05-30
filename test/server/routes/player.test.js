@@ -57,14 +57,14 @@ test('PUT /player/gold', () => {
     })
 })
 
-test('POST /player/weapon', () => {
+test('POST /player/weapons', () => {
   var token = JWT.sign({ user_id:1,"name":"Harrison" }, secret);
   const headers = {
     Accept: 'application/json',
     Authorization: "Bearer "+token
   }
   return request(server)
-    .post('/api/v1/player/weapon')
+    .post('/api/v1/player/weapons')
     .set(headers)
     .send({name: 'Fake Weapon', level: 500})
     .expect(201)
