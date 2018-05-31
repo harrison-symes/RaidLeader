@@ -8,6 +8,8 @@ export class Mage extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
     let {power, weapon_effect} = member
+    power = this.alterPower(power)
+
     if (started && member.isAlive) {
       if (player.mana / player.maxMana * 100 <= 30) power*=2
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})

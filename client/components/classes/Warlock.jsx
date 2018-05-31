@@ -8,6 +8,8 @@ export class Warlock extends PartyMemberFrame {
   finishCast() {
     const {member, started, dispatch} = this.props
     let {power, isAlive, weapon_effect} = member
+    power = this.alterPower(power)
+
     if (isAlive && started) {
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       if (weapon_effect == 'lightningRod') dispatch({type: 'PERCENT_DAMAGE_DAMAGE_FRIENDLY_TARGET', target: member, percentage: 0.05})

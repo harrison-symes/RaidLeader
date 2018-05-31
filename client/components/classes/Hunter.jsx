@@ -8,6 +8,8 @@ export class Hunter extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
     const {power, isAlive, hp, initHp, weapon_effect} = member
+    power = this.alterPower(power)
+
     if (started && isAlive) {
       if (weapon_effect == 'taunt') this.props.dispatch({type: 'BOSS_CHANGE_TARGET', target: member})
       if (hp / initHp * 100 < 50) {

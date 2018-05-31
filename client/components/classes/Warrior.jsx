@@ -8,6 +8,8 @@ export class Warrior extends PartyMemberFrame {
   finishCast() {
     const {member, boss, dispatch, started} = this.props
     let {power} = member
+    power = this.alterPower(power)
+
     if (member.isAlive && started) {
       if (member.weapon_effect == 'enrage' && (member.hp / member.initHp) <= 0.5) power*=2
       if (member.weapon_effect == 'taunt') dispatch({type: 'BOSS_CHANGE_TARGET', target:member})
