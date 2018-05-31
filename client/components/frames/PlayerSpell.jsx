@@ -98,6 +98,12 @@ class PlayerSpell extends Component {
       case 'Sear':
         const stunDuration = spell.cast / spell.ticks
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(stunDuration)})
+      case 'Mana Burn':
+        dispatch({type: 'BOSS_GAIN_MANA', amount: -1})
+        let aliveTargets = party.filter(recruit => recruit.isAlive)
+        let aliveAveragePerc = 0
+        if (aliveTargets.length) aliveAveragePerc = aliveTargets.reduce((sum, recruit) => sum + 1 - (recruit.hp / recruit.initHp), 0) / aliveTargets.length
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: player.power * aliveAveragePerc})
       default: return
     }
   }

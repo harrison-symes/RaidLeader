@@ -812,6 +812,20 @@ module.exports = {
     color: colors.darkRed,
     background: colors.lightOrange,
     element: 'Fire',
+  },
+  'Mana Burn': {
+    id: 50,
+    name: 'Mana Burn',
+    cast: 5,
+    cost: 15,
+    coolDown: 10,
+    isChanneled: true,
+    ticks: 5,
+    description: "Remove 1 Mana from the Boss 5 times during the cast. Each time 1 Mana is removed, Damage the Boss for (X%) of Player Power, where X is the average missing health of your living Recruits",
+    icon: 'ra-burning-book',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire',
   }
 }
 
