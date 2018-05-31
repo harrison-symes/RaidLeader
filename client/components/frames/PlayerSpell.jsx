@@ -5,7 +5,18 @@ import {poisonConstructor, renewConstructor, stunConstructor, bombConstructor, f
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
-import KeyHandler, {KEYPRESS} from 'react-key-handler';
+import KeyHandler, {KEYPRESS} from 'react-key-handler'
+
+const randomEffect = () => {
+  const effects = [
+    renewConstructor,
+    poisonConstructor,
+    stunConstructor,
+    bombConstructor,
+    furyConstructor
+  ]
+  return effects[Math.floor(Math.random() * effects.length)]
+}
 
 const castTraitHandler = (trait, props, spell) => {
   const {dispatch} = props
@@ -308,6 +319,22 @@ class PlayerSpell extends Component {
       case 'Sear':
         dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: furyConstructor(spell.furyDuration)})
         return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
+      case 'Dark Pact':
+        dispatch({type: 'PERCENT_HEAL_ALL_FRIENDLY', percentage: 1})
+        dispatch({type: 'PERCENT_INCREASE_RECRUIT_POWER', percentage: 0.1})
+        party.forEach(recruit => {
+          const effectOne = randomEffect()
+          let effectTwo = randomEffect()
+          while(effectOne == effectTwo) effectTwo = randomEffect()
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target: recruit, effect: effectOne()})
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target: recruit, effect: effectTwo()})
+        })
+      case 'Consume':
+        const selfDamage = spell.selfDamageRatio * player.power
+        const willDie = party.find(recruit => recruit.id == target.id).hp - selfDamage <= 0
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power: selfDamage})
+        if (willDie) return dispatch({type: 'PLAYER_GAIN_POWER', power: target.power})
+        else return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       default: return
     }
   }
