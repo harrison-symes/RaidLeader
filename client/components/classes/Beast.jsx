@@ -10,6 +10,8 @@ class Beast extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch, party} = this.props
     let {power, weapon_effect, speed} = member
+    power = this.alterPower(power)
+
     if (started && member.isAlive) {
       if (member.weapon_effect == 'foxPet') {
         dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', effect: {name: 'Poison'}, target: {id: member.ownerId}})

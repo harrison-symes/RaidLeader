@@ -8,6 +8,7 @@ export class Bard extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
     let {power, weapon_effect, speed} = member
+    power = this.alterPower(power)
     if (started && member.isAlive) {
       let manaChance = (1 / speed) > Math.random()
       let manaGain = manaChance ? 3 : 0

@@ -45,6 +45,11 @@ class MemberFrame extends Component {
       }
     }, 10000 / speed)
   }
+  alterPower(power) {
+    if (this.props.member.effects.find(effect => effect.name == 'Fury')) power *= 1.2
+
+    return power
+  }
   componentWillReceiveProps(nextProps) {
     if (!this.props.started && nextProps.started) setTimeout(() => this.startFighting(), Math.random() * 1000)
     if (nextProps.member.hp <= 0 && nextProps.member.isAlive) this.props.dispatch({type: 'MEMBER_DIED', target: this.props.member})

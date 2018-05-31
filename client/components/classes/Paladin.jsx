@@ -9,6 +9,8 @@ export class Paladin extends PartyMemberFrame {
   finishCast() {
     const {member, boss, started, dispatch} = this.props
     let {power, isAlive} = member
+    power = this.alterPower(power)
+
     if (started && isAlive) {
       dispatch({type: 'PHYSICAL_ATTACK_BOSS', power: power})
       if (member.weapon_effect != 'noTaunt') dispatch({type: 'BOSS_CHANGE_TARGET', target: member})

@@ -148,6 +148,8 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_POWER', amount: spell.power})
       case 'Spread Plague':
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: poisonConstructor()})
+      case 'Mad Cackle':
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: furyConstructor(spell.furyDuration)})
 
       //Furnace
       case 'Heat Up':

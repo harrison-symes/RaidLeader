@@ -1,4 +1,4 @@
-# Raid Leader Web API documentation
+r# Raid Leader Web API documentation
 
 ## Endpoints Menu
 
@@ -22,7 +22,7 @@
 | --- | --- | --- | --- | --- | --- |
 | GET | /api/v1/recruits | Yes | Receive an Array of Recruits (that are 'owned' by the User making the Request) from the 'recruits' table | An Array of Recruit Objects | [Info](#get-recruits) |
 | POST | /api/v1/recruits | Yes | Add a new Recruit to the 'recruits' table | The Recruit that was added (as an Object) | [Info](#add-recruit)|
-| PUT | /api/v1/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#equip-recruit-weapon)|
+| PUT | /api/v1/recruits/weapons | YES | Equip a Weapon to a Recruit (table table relation from 'recruits' to 'inventory') | Status Code | [Info](#delete-weapon) |
 | PUT | /api/v1/recruits/level | Yes | Change the Level of a Recruit in the database | The Recruit (with the level updated) as an Object | [Info](#update-recruit-level) |
 
 ### [Player](#player)
@@ -93,7 +93,7 @@ User Name Taken:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 ### Login User
@@ -137,7 +137,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -187,7 +187,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -258,7 +258,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -303,7 +303,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -333,7 +333,7 @@ Failure:
   | 500 | Server Error | False |
 
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -378,7 +378,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -411,7 +411,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -440,7 +440,7 @@ Failure:
   | 202 | The Request successfully updated the entry | True |
   | 500 | Server Error | False |
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -480,7 +480,7 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
 
 ---
 
@@ -522,6 +522,48 @@ Failure:
   }
 ```
 
-([back to summary](#summary))  
+([back to summary](#endpoints-menu))  
+
+---
+
+## Delete Weapon
+
+| Method | Endpoint | Authentication Required | Usage | Response |
+| --- | --- | --- | --- | --- |
+| POST | /api/v1/player/weapons | Yes | Add a Weapon to the 'inventory' table, with the Requesting User as a relation | The Weapon that was added as an Object |
+
+#### Request
+
+##### Request Body
+
+```
+{
+  name: 'Dragon Scale',
+  level: '1'
+}
+```
+
+#### Response
+
+##### Status Codes:
+  | Status Code | Meaning | Success |
+  | --- | --- | --- |
+  | 201 | The Request successfully created an entry | True |
+  | 500 | Server Error | False |
+
+
+#### Response Body
+
+```
+  {
+    "id": 16,
+    "is_weapon": 1,
+    "name": "Plagued Stave",
+    "level": 1,
+    "user_id": 1
+  }
+```
+
+([back to summary](#endpoints-menu))  
 
 ---

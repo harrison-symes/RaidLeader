@@ -45,3 +45,14 @@ export function bombConstructor (duration, perc) {
     type: 'PERCENT_DAMAGE_ALL_FRIENDLY'
   }
 }
+
+export function furyConstructor (duration) {
+  return {
+    name: 'Fury',
+    icon: 'ra-angry-eyes',
+    duration: duration || 10,
+    tickRate: duration || 10,
+    colour: '#D62828',
+    type: ''
+  }
+}

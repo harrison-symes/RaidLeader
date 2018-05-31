@@ -21,6 +21,7 @@ export default function boss (state = null, action) {
     case 'BOSS_GAIN_MANA':
       newState.mana+=action.amount
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
+      if (newState.mana < 0) newState.mana = 0
       return newState
     case 'BOSS_GAIN_POWER':
       newState.power+=action.amount

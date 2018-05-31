@@ -92,6 +92,7 @@
     "url-loader": "^1.0.1",
     "webfonts-loader": "^4.1.0",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "wired-card": "^0.5.2"
   }
 }

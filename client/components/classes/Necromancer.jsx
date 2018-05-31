@@ -10,6 +10,8 @@ export class Necromancer extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
     let {power, weapon_effect} = member
+    power = this.alterPower(power)
+
     if (started) {
       if (!member.isAlive) power*=0.5
 

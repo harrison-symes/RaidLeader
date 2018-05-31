@@ -8,19 +8,23 @@ export class Priest extends PartyMemberFrame {
   findTarget() {
     const {started, member, dispatch, party} = this.props
     if (!started || !member.isAlive) return
+    let {power} = member
+    power = this.alterPower(power)
 
     let target = null
     party.forEach(member => {
       if (!target && member.isAlive) target = member
       else if (target && member.isAlive && ( member.hp/ member.initHp) < (target.hp / target.initHp)) target = member
     })
-    let overHealing = (target.initHp - target.hp) - member.power
+    let overHealing = (target.initHp - target.hp) - power
     if (overHealing < 0) target = null
     this.completeCast(target)
   }
   finishCast(target) {
     const {started, member, dispatch} = this.props
     let {power} = member
+    power = this.alterPower(power)
+
     if (!target) return
     if (member.weapon_effect == 'halfLife' && (target.hp / target.initHp) >= 0.5) power*=2
     if (member.weapon_effect == "curePoison") dispatch({type: 'REMOVE_EFFECT_FROM_TARGET', target, effect: {name: 'Poison'}})

@@ -8,6 +8,8 @@ export class BeastMaster extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch, party} = this.props
     let {power, weapon_effect, speed} = member
+    power = this.alterPower(power)
+
     if (started && member.isAlive) {
       let pet = party.find(recruit => recruit.id == member.petId)
       if (pet && !pet.isAlive) power*= 1.2

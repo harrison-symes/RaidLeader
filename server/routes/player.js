@@ -18,14 +18,14 @@ router.put('/gold', decode, (req, res) => {
     })
 })
 
+router.get('/weapons', decode, (req, res) => {
+  playerDb.getWeapons(req.user.user_id)
+  .then(weapons => res.status(200).json(weapons))
+})
+
 router.post('/weapons', decode, (req, res) => {
   playerDb.addWeapon(req.user.user_id, req.body.name, req.body.level)
     .then(weapon => res.status(201).json(weapon))
-})
-
-router.get('/weapons', decode, (req, res) => {
-  playerDb.getWeapons(req.user.user_id)
-    .then(weapons => res.status(200).json(weapons))
 })
 
 router.delete('/weapons', decode, (req, res) => {
@@ -80,7 +80,6 @@ router.post('/traits', decode, (req, res) => {
 })
 
 router.get('/wake', (req, res) => {
-  console.log("wake up");
   res.sendStatus(200)
 })
 

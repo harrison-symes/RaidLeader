@@ -10,6 +10,8 @@ export class Shaman extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch, party} = this.props
     let {power, speed} = member
+    power = this.alterPower(power)
+
     if (started && member.isAlive) {
       let willRenew = (1 / speed) > Math.random()
       if (willRenew) {
