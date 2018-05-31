@@ -70,8 +70,9 @@ export default {
       type: 'armor',
       singleTarget: false,
       powerRatio: 0,
+      furyDuration: 3,
       onCooldown: false,
-      description: 'Does nothing, but it makes you a little scared (or concerned?)',
+      description: 'Apply a Fury Effect to ALL Recruits, increasing their Power by 20% for 3 seconds. HOW INFURIATING!',
       icon: 'ra-imp-laugh'
     }
   ]
