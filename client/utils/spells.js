@@ -839,6 +839,22 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow',
+  },
+  'Consume': {
+    id: 52,
+    name: 'Consume',
+    cast: 2.5,
+    cost: 5,
+    coolDown: 0,
+    powerRatio: 1,
+    selfDamageRatio: 2,
+    singleTarget: true,
+    recruitOnly: true,
+    description: "Damage the Target Recruit for (100%) of Player Power, if the Recruit dies, gain Player Power equal to the Target Recruit's Power. If the Recruit survives, Damage the Boss for (100%) of Player Power",
+    icon: 'ra-burning-passion',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire',
   }
 }
 

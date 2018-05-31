@@ -52,6 +52,9 @@ export default function player (state = null, action) {
     case 'PERCENT_INCREASE_POWER':
       newState.power += newState.power * action.percentage
       return newState
+    case 'PLAYER_GAIN_POWER':
+      newState.power += action.power
+      return newState
     case 'PERCENT_INCREASE_MANA_REGEN':
       newState.manaRegen += newState.manaRegen * action.percentage
       return newState
