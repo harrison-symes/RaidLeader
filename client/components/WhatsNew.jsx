@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import jump from 'jump.js'
 
 import { WiredCard } from "wired-card"
-import { WiredListbox } from 'wired-listbox'
 
 export default function (props) {
   return <div className="Town has-text-centered">
