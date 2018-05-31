@@ -26,7 +26,7 @@ export function stunConstructor (duration) {
   return {
     name: 'Stunned',
     icon: 'ra-star-swirl',
-    duration,
+    duration: duration || 5,
     tickRate: duration,
     percentage: 0,
     colour: '#7D9EC0',
