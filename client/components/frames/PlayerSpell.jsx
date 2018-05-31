@@ -95,6 +95,9 @@ class PlayerSpell extends Component {
           power,
           target: damagedRecruits[Math.floor(Math.random() * damagedRecruits.length)]
         })
+      case 'Sear':
+        const stunDuration = spell.cast / spell.ticks
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(stunDuration)})
       default: return
     }
   }
@@ -296,6 +299,9 @@ class PlayerSpell extends Component {
         dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
         dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: furyConstructor(spell.furyDuration)})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
+      case 'Sear':
+        dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: furyConstructor(spell.furyDuration)})
+        return dispatch({type: 'PHYSICAL_ATTACK_BOSS', power})
       default: return
     }
   }

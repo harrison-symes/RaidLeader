@@ -794,6 +794,24 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow',
+  },
+  'Sear': {
+    id: 49,
+    name: 'Sear',
+    cast: 3,
+    cost: 10,
+    coolDown: 10,
+    furyDuration: 15,
+    isChanneled: true,
+    ticks: 10,
+    singleTarget: true,
+    recruitOnly: true,
+    powerRatio: 1,
+    description: "Stun the Target Recruit for the durations of the cast, and then apply a Fury Effect to the Target, increasing the Recruit's Power by 20% for 15 seconds. Also Damages the Boss for 100% Player Power.",
+    icon: 'ra-burn',
+    color: colors.darkRed,
+    background: colors.lightOrange,
+    element: 'Fire',
   }
 }
 
