@@ -778,6 +778,22 @@ module.exports = {
     color: colors.darkPurple,
     background: colors.faintPink,
     element: 'Shadow',
+  },
+  'Demon Blood': {
+    id: 48,
+    name: 'Demon Blood',
+    cast: 3,
+    cost: 5,
+    coolDown: 5,
+    powerRatio: 1.5,
+    furyDuration: 10,
+    singleTarget: true,
+    recruitOnly: true,
+    description: "Heal the Target Recruit for (100%) Player Power. Apply a Poison Effect (60% of Recruit's Max Health as damage over 15s) and a Fury Effect (+20% Recruit Power for 10 seconds) to the Recruit",
+    icon: 'ra-gooey-daemon',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow',
   }
 }
 

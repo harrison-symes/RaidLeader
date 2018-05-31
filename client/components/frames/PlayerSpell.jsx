@@ -292,6 +292,10 @@ class PlayerSpell extends Component {
         dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.perc})
         dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: spell.perc})
         return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: furyConstructor(spell.duration)})
+      case 'Demon Blood':
+        dispatch({type: 'HEAL_FRIENDLY_TARGET', target, power})
+        dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: furyConstructor(spell.furyDuration)})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: poisonConstructor()})
       default: return
     }
   }
