@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import { Progress } from 'react-sweet-progress';
 
-import {poisonConstructor, renewConstructor, stunConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor, furyConstructor} from '../../utils/effectConstructors'
 
 class BossSpell extends Component {
   constructor(props) {

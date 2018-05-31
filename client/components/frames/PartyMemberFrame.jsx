@@ -33,7 +33,14 @@ class MemberFrame extends Component {
     var elemRect = document.getElementById('Recruit-' + this.props.member.id).getBoundingClientRect()
     var startX = elemRect.left
     var startY = elemRect.top
-    this.setState({attackSVGs: [...this.state.attackSVGs, {startX, startY, info: attackIcons(this.props.member.heroClass), target}]})
+    const {attackSVGs} = this.state
+    attackSVGs.push({
+      startX,
+      startY,
+      info: attackIcons(this.props.member.heroClass),
+      target
+    })
+    this.setState({attackSVGs})
   }
   startCast() {
     const {power, speed, isAlive} = this.props.member
@@ -81,7 +88,7 @@ class MemberFrame extends Component {
           // </div>
         }
       </div>
-      {this.state.attackSVGs && this.state.attackSVGs.map(svg => <AttackIcon svg={svg} deleteSVG={this.deleteSVG}/>)}
+      {this.state.attackSVGs && this.state.attackSVGs.map((svg, i) => <AttackIcon svg={svg} deleteSVG={this.deleteSVG} key={i} />)}
       <RecruitHealthBar recruit={{...member}}  />
     </div>
   }

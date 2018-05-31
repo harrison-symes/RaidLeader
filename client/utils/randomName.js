@@ -126,6 +126,25 @@ const names = [
   'Estelle',
   'Louie',
   'Nicole',
+  'Bradley',
+  'Blummont',
+  'Riki',
+  'Anton',
+  'Rebecca',
+  'Leete',
+  'Cate',
+  'Dan',
+  'Li Li',
+  'Phoenix',
+  'Reuben',
+  'Pinford',
+  'Stanley',
+  'Talor',
+  'Cornelia',
+  'Bronwyn',
+  'Indigo',
+  'Rachael',
+  'Sungjin'
 ]
 
 module.exports = (taken) => {

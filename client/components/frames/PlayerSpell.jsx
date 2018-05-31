@@ -329,6 +329,7 @@ class PlayerSpell extends Component {
           dispatch({type: 'ADD_EFFECT_TO_TARGET', target: recruit, effect: effectOne()})
           dispatch({type: 'ADD_EFFECT_TO_TARGET', target: recruit, effect: effectTwo()})
         })
+        return
       case 'Consume':
         const selfDamage = spell.selfDamageRatio * player.power
         const willDie = party.find(recruit => recruit.id == target.id).hp - selfDamage <= 0

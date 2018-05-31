@@ -834,6 +834,7 @@ module.exports = {
     cost: 30,
     coolDown: 30,
     stunDuration: 7,
+    powerRatio: 1,
     description: 'Heal ALL Recruits to Full Health and increase their Power by 10%. Apply 2 RANDOM Effects to each Recruit. Effects include: Renew (60% Health healed over 15s), Poison (60% Health lost over 15s), Stunned (Recruit cannot attack for 5s), Bomb (Recruit will explode after 7s, damaging ALL Recruits for 20% of their Max Health), Fury (Recruit Power is increased by 20% for 10s)',
     icon: 'ra-pentagram-rose',
     color: colors.darkPurple,
