@@ -31,6 +31,20 @@ module.exports = [
         </div>
       },
       {
+        title: 'New Spells all arounds!',
+        description: <div className="content is-medium has-text-dark">
+          <p>The are now 10 Spells per Element that are exclusive to the Library, and 3 Spells per element exclusive to the Mage Tower!</p>
+          <p>Some of these new spells are really neat, and with 52 possible spells to choose from, there are many different gameplay strategies to play with, so be sure to try out some of the madness!</p>
+        </div>
+      },
+      {
+        title: 'New Effect: Fury!',
+        description: <div className="content is-medium has-text-dark">
+          <p>Fury is a new effect that you will start to see throughout many facets of your adventure.</p>
+          <p><b>Fury:</b> Increase the Power of the Recruit by (20%) for 10s</p>
+        </div>
+      },
+      {
         title: 'Icons! Icons Everywhere!',
         description: <div className="content is-medium has-text-dark">
           <p>The Game has updated from a sheet of 500 Icons, to over 3000 icons!</p>
