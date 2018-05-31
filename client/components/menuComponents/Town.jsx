@@ -17,8 +17,6 @@ import MySpells from './MySpells'
 
 import {GoldIcon, RecruitCountIcon, SpellCountIcon, GemIcon} from '../icons/StatIcons'
 
-import { WiredButton } from "wired-button"
-
 class Town extends Component {
   constructor(props) {
     super(props)
