@@ -7,7 +7,7 @@ import mapStateToProps from './utils/classStateMap'
 export class Hunter extends PartyMemberFrame {
   finishCast() {
     const {member, started, player, dispatch} = this.props
-    const {power, isAlive, hp, initHp, weapon_effect} = member
+    let {power, isAlive, hp, initHp, weapon_effect} = member
     power = this.alterPower(power)
 
     if (started && isAlive) {

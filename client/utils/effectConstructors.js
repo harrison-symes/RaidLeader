@@ -49,7 +49,7 @@ export function bombConstructor (duration, perc) {
 export function furyConstructor (duration) {
   return {
     name: 'Fury',
-    icon: 'ra-enrage',
+    icon: 'ra-angry-eyes',
     duration: duration || 10,
     tickRate: duration || 10,
     colour: '#D62828',

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {poisonConstructor, renewConstructor, stunConstructor, bombConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor, bombConstructor, furyConstructor} from '../../utils/effectConstructors'
 
 import CircularProgressbar from 'react-circular-progressbar'
 import { Progress } from 'react-sweet-progress';
@@ -287,8 +287,11 @@ class PlayerSpell extends Component {
         dispatch({type: 'HEAL_PLAYER', power: player.initHp})
         let manaPerc = player.mana / player.maxMana
         let bossHeal = boss.initHp * (1 - manaPerc)
-        console.log({manaPerc, power}, 'Heal Boss for:');
         return dispatch({type: 'HEAL_BOSS', bossHeal})
+      case 'Blood Fury':
+        dispatch({type: 'PERCENT_DAMAGE_ALL_FRIENDLY', percentage: spell.perc})
+        dispatch({type: 'PERCENT_DAMAGE_PLAYER', percentage: spell.perc})
+        return dispatch({type: 'ADD_EFFECT_TO_ALL_FRIENDLY', effect: furyConstructor(spell.duration)})
       default: return
     }
   }

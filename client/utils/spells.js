@@ -763,6 +763,21 @@ module.exports = {
     background: colors.lightBlue,
     element: 'Arcane',
     reserved: true
+  },
+  'Blood Fury': {
+    id: 47,
+    name: 'Blood Fury',
+    cast: 2,
+    cost: 10,
+    coolDown: 15,
+    powerRatio: 1,
+    perc: 0.1,
+    duration: 10,
+    description: 'Damage ALL Recruits AND the Player for 10% of their Max Health. Apply the Fury Effect to ALL Recruits, increasing their Power by 20% for the duration.',
+    icon: 'ra-blood',
+    color: colors.darkPurple,
+    background: colors.faintPink,
+    element: 'Shadow',
   }
 }
 
