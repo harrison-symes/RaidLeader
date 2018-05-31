@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom'
 
 import jump from 'jump.js'
 
+import { WiredCard } from "wired-card"
+import { WiredListbox } from 'wired-listbox'
+
 export default function (props) {
   return <div className="Town has-text-centered">
     <div className="title is-1 Town-Banner">What's New?</div>
@@ -20,12 +23,14 @@ export default function (props) {
       {patchNotes.map(patch => <div id={patch.title}>
         <p className="Town-Banner title is-2">Version {patch.version} - {patch.title}</p>
         <br />
-        <div classNames="columns is-multiline">
-          {patch.updates.map(update => <div className="column box Patch-Note has-text-left">
-            <p className="title is-3">{update.title}</p>
-            {update.description}
+        <wired-card elevation="5" classNames="columns is-multiline">
+          {patch.updates.map(update => <div className="column Patch-Note has-text-left">
+            <wired-card elevation="3" className="column is-centered">
+              <p className="title is-3">{update.title}</p>
+              {update.description}
+            </wired-card>
           </div>)}
-        </div>
+        </wired-card>
         <hr />
       </div>)}
       <Link to='/' className="button is-info is-outlined column is-6 is-offset-3">Back</Link>
