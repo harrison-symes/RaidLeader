@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import { Progress } from 'react-sweet-progress';
 
-import {poisonConstructor, renewConstructor, stunConstructor, furyConstructor} from '../../utils/effectConstructors'
+import {poisonConstructor, renewConstructor, stunConstructor, furyConstructor, bombConstructor} from '../../utils/effectConstructors'
 
 class BossSpell extends Component {
   constructor(props) {
@@ -54,6 +54,19 @@ class BossSpell extends Component {
         return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.tickArmor})
       case 'Magma Surge':
         return dispatch({type: 'DAMAGE_ALL_FRIENDLY', power: this.props.player.power * spell.tickPower})
+
+    //Armory
+      //pirate
+      //stage 1
+      case 'Dynamite!':
+
+        if (aliveTargets.length == 0) return
+        const nonBombed = aliveTargets.filter(recruit => !recruit.effects.find(effect => effect.name = 'Bomb'))
+        if (nonBombed.length == 0) return
+
+        const bombTarget = nonBombed[Math.floor(Math.random() * nonBombed.length)]
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target: bombTarget, effect: bombConstructor()})
+
       default: return
     }
   }
@@ -267,6 +280,21 @@ class BossSpell extends Component {
       //stage 3
       case 'Escape!':
         return dispatch({type: 'PERCENT_DAMAGE_BOSS', percentage: 2})
+
+
+    //The Armory
+    //Pirate Percy
+      //Stage 1
+      case 'Hook Hand!':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        return dispatch({type: 'PLAYER_GAIN_MANA', power: spell.manaLost})
+
+      case 'Call Polly!':
+        if (aliveTargets.length == 0) return dispatch({type: 'DAMAGE_PLAYER', power})
+
+        const randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+        dispatch({type: 'ADD_EFFECT_TO_TARGET', target: randomTarget, effect: stunConstructor(spell.stunDuration)})
+        return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
       default: return
     }
   }
