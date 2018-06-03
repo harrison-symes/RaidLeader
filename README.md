@@ -3,7 +3,7 @@
 
 ## Live at https://raidleeter.herokuapp.com
 
-## Current live build: 0.4.1
+## Current live build: 0.5.0 Alpha
 
 ---
 
