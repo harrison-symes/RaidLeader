@@ -32,7 +32,7 @@ class PiratePercy extends BossFrame {
             }
           case 'stageThree':
             switch(spell.name) {
-              case 'Curse!': return true
+              case 'Curse!': return aliveTargets.length > 0
               case 'Dynamite!': return aliveTargets.find(recruit => !recruit.effects.find(effect => effect.name == 'Bomb'))
               case 'Hook Hand!': return true
               case 'Call Polly!': return aliveTargets.length > 0
