@@ -21,70 +21,6 @@ export default {
   progress_required: 0,
   icon: 'ra-pirate-captain',
   stage: 'stageOne',
-  stageOne: {
-    stage: 'stageOne',
-    manaRegen: 1,
-    power: 50,
-    mana: 0,
-    maxMana: 10,
-    armor: 0,
-    initArmor: 0,
-    spells: [
-      {
-        name: 'Board Ship!',
-        cost: 0,
-        cast: 3,
-        coolDown: 10,
-        description: 'Change to stage 2. Only usable at 1/2 of full health. During stage 2 the Boss will have 2000 armor , 100 mana and a new set of abilties.',
-        icon: 'ra-galleon',
-        stage: 'stageTwo',
-        percentage: 0.5
-      },
-      {
-        name: 'Dynamite!',
-        cost: 10,
-        cast: 3,
-        isChanneled: true,
-        ticks: 2,
-        coolDown: 0,
-        powerRatio: 1,
-        type: 'damage',
-        description: "Apply a bomb effect to a random Recruit (that hasn't been bombed already) 2 times during the cast. Bombs will explode after 7 seconds, damaging ALL Recruits for (20%) of their Max Health",
-        icon: 'ra-dynamite'
-      },
-      {
-        name: 'Hook Hand!',
-        cost: 0,
-        cast: 2,
-        coolDown: 5,
-        powerRatio: 2,
-        type: 'damage',
-        singleTarget: false,
-        onCooldown: false,
-        manaLost: -5,
-        description: "Damage the Boss' Target for (200%) of Boss Damage. Remove 5 Mana from the Player.",
-        icon: 'ra-pirate-hook'
-      },
-      {
-        name: 'Call Polly!',
-        cost: 0,
-        cast: 3,
-        coolDown: 0,
-        powerRatio: 0.5,
-        percentage: 0.5,
-        tickPower: 0,
-        stunDuration: 5,
-        type: 'damage',
-        singleTarget: true,
-        isChanneled: true,
-        ticks: 10,
-        tickPower: 0.05,
-        onCooldown: false,
-        description: "Damage a random enemy Recruit for (100%) Boss Power and stun them for 5 seconds.",
-        icon: 'ra-parrot-head'
-      }
-    ]
-  },
   spells: [
     {
       name: 'Board Ship!',
@@ -142,9 +78,9 @@ export default {
   ],
   stageTwo: {
     stage: 'stageTwo',
-    description: 'The Boss will start stage 2 with 2000 Armor and 100 mana. The boss will not generate mana during this stage',
+    description: 'The Boss will start stage 2 with 2000 Armor, 100 mana and 100 Power. The boss will not generate mana during this stage',
     manaRegen: 0,
-    power: 50,
+    power: 100,
     armor: 2500,
     initArmor: 2500,
     mana: 100,
@@ -156,11 +92,11 @@ export default {
         cost: 0,
         coolDown: 60,
         description: '(Used at 0 Armor) Return to Stage 1, losing all armor and setting Max Mana to 10.',
-        icon: 'ra-shipwreck',
+        icon: 'ra-ship-wreck',
         stage: 'stageThree'
       },
       {
-        name: 'Harpoon!',
+        name: 'Anchor Away!',
         cast: 3,
         cost: 0,
         coolDown: 10,
@@ -170,7 +106,7 @@ export default {
         stunDuration: 3,
         stage: 'stageTwo',
         description: 'Damage the Boss target for (200%) of Boss Power and stun them, and any adjacent Recruits, for 3 seconds.',
-        icon: 'ra-harpoon-chain'
+        icon: 'ra-anchor'
       },
       {
         name: 'Reload!',
@@ -192,13 +128,14 @@ export default {
         coolDown: 1,
         type: 'damage',
         powerRatio: 0.5,
+        tickPower: 0.5,
         percentage: 0.1,
         onCooldown: false,
         singleTarget: false,
         isChanneled: true,
         ticks: 10,
         description: "Damage a random Recruit for (10%) of their Health. Occurs 10 times during the cast of the spell. Each shot will damage the Player for (50%) of Boss Power if all Recruits are dead.",
-        icon: 'ra-split-body'
+        icon: 'ra-machine-gun'
       },
       {
         name: 'Dynamite!',
@@ -219,7 +156,17 @@ export default {
     description: 'During Stage 3, the Boss will once again regenerate Mana, and will perform the same abilities as Stage 1, but with 100 Power instead!',
     manaRegen: 1,
     power: 100,
+    mana: 10,
+    maxMana: 10,
     spells: [
+      {
+        name: 'Curse!',
+        cost: 0,
+        cast: 10,
+        coolDown: 30,
+        description: 'Randomly Apply 2 different Effects to each Recruit. Effects include: Renew (15s), Stun (5s), Poison (15s), Bomb (7s) and Fury (10s).',
+        icon: 'ra-pirate-skull'
+      },
       {
         name: 'Dynamite!',
         cost: 10,

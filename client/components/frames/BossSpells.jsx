@@ -5,6 +5,17 @@ import { Progress } from 'react-sweet-progress';
 
 import {poisonConstructor, renewConstructor, stunConstructor, furyConstructor, bombConstructor} from '../../utils/effectConstructors'
 
+const randomEffect = () => {
+  const effects = [
+    renewConstructor,
+    poisonConstructor,
+    stunConstructor,
+    bombConstructor,
+    furyConstructor
+  ]
+  return effects[Math.floor(Math.random() * effects.length)]
+}
+
 class BossSpell extends Component {
   constructor(props) {
     super(props)
@@ -310,7 +321,7 @@ class BossSpell extends Component {
       //stage 2
       case 'Jump Ship!':
         return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
-      case 'Harpoon!':
+      case 'Anchor Away!':
         dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
         if (target.id == 0) return
         let targetIndex = party.indexOf(target)
@@ -321,6 +332,14 @@ class BossSpell extends Component {
         if (rightTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: rightTarget, effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.stunDuration)})
 
+      case 'Curse!':
+        aliveTargets.forEach(recruit => {
+          const effectOne = randomEffect()
+          let effectTwo = randomEffect()
+          while(effectOne == effectTwo) effectTwo = randomEffect()
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target: recruit, effect: effectOne()})
+          dispatch({type: 'ADD_EFFECT_TO_TARGET', target: recruit, effect: effectTwo()})
+        })
       default: return
     }
   }

@@ -24,7 +24,7 @@ class PiratePercy extends BossFrame {
           case 'stageTwo':
             switch(spell.name) {
               case 'Jump Ship!': return boss.armor == 0
-              case 'Harpoon!': return true
+              case 'Anchor Away!': return true
               case 'Reload!': return boss.mana < 10
               case 'Rapid Fire!': return true
               case 'Dynamite!': return aliveTargets.find(recruit => !recruit.effects.find(effect => effect.name == 'Bomb'))
@@ -32,6 +32,7 @@ class PiratePercy extends BossFrame {
             }
           case 'stageThree':
             switch(spell.name) {
+              case 'Curse!': return true
               case 'Dynamite!': return aliveTargets.find(recruit => !recruit.effects.find(effect => effect.name == 'Bomb'))
               case 'Hook Hand!': return true
               case 'Call Polly!': return aliveTargets.length > 0
