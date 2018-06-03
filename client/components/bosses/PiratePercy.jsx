@@ -15,6 +15,7 @@ class PiratePercy extends BossFrame {
         switch(boss.stage) {
           case 'stageOne':
             switch(spell.name) {
+              case 'Board Ship!': return boss.hp / boss.initHp < spell.percentage
               case 'Dynamite!': return aliveTargets.find(recruit => !recruit.effects.find(effect => effect.name == 'Bomb'))
               case 'Hook Hand!': return true
               case 'Call Polly!': return aliveTargets.length > 0
@@ -22,10 +23,10 @@ class PiratePercy extends BossFrame {
             }
           case 'stageTwo':
             switch(spell.name) {
-              case 'Meltdown': return boss.mana >= spell.manaRequired
-              case 'Half Life': return aliveTargets > 0
-              case 'Magma Surge': return true
-
+              case 'Jump Ship!': return boss.armor == 0
+              case 'Harpoon!': return true
+              case 'Rapid Fire!': return true
+              case 'Dynamite!': return aliveTargets.find(recruit => !recruit.effects.find(effect => effect.name == 'Bomb'))
               default: return null
             }
           case 'stageThree':

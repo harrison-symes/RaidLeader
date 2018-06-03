@@ -67,6 +67,12 @@ class BossSpell extends Component {
         const bombTarget = nonBombed[Math.floor(Math.random() * nonBombed.length)]
         return dispatch({type: 'ADD_EFFECT_TO_TARGET', target: bombTarget, effect: bombConstructor()})
 
+      case 'Rapid Fire!':
+        if (aliveTargets.length == 0) return dispatch({type: 'DAMAGE_PLAYER', power})
+
+        target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
+        return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
+
       default: return
     }
   }
@@ -295,6 +301,23 @@ class BossSpell extends Component {
         const randomTarget = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
         dispatch({type: 'ADD_EFFECT_TO_TARGET', target: randomTarget, effect: stunConstructor(spell.stunDuration)})
         return dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target: randomTarget, power})
+      case 'Board Ship!':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+
+      //stage 2
+      case 'Jump Ship!':
+        return dispatch({type: 'BOSS_CHANGE_STAGE', stage: boss[spell.stage]})
+      case 'Harpoon!':
+        dispatch({type: 'DAMAGE_FRIENDLY_TARGET', target, power})
+        if (target.id == 0) return
+        let targetIndex = party.indexOf(target)
+        let leftTarget = targetIndex > 0 ? party[targetIndex - 1] : null
+        let rightTarget = targetIndex < party.length - 1 ? party[targetIndex + 1] : null
+
+        if (leftTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: leftTarget, effect: stunConstructor(spell.stunDuration)})
+        if (rightTarget) dispatch({type: 'ADD_EFFECT_TO_TARGET', target: rightTarget, effect: stunConstructor(spell.stunDuration)})
+        return dispatch({type: 'ADD_EFFECT_TO_TARGET', target, effect: stunConstructor(spell.stunDuration)})
+
       default: return
     }
   }
