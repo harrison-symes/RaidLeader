@@ -1,8 +1,8 @@
 export default {
   name: 'Pirate Percy',
   level: 3,
-  initHp: 4000,
-  hp: 4000,
+  initHp: 5000,
+  hp: 5000,
   initPower: 50,
   power: 50,
   initArmor: 0,
@@ -30,60 +30,59 @@ export default {
     armor: 0,
     initArmor: 0,
     spells: [
-    {
-      name: 'Board Ship!',
-      cost: 0,
-      cast: 3,
-      coolDown: 10,
-      description: 'Change to stage 2. Only usable at 2/3 of full health. During stage 2 the Boss will have 2000 armor , 100 mana and a new set of abilties.',
-      icon: 'ra-galleon',
-      stage: 'stageTwo',
-      percentage: 2/3
-
-    },
-    {
-      name: 'Dynamite!',
-      cost: 10,
-      cast: 3,
-      isChanneled: true,
-      ticks: 2,
-      coolDown: 0,
-      powerRatio: 1,
-      type: 'damage',
-      description: "Apply a bomb effect to a random Recruit (that hasn't been bombed already) 2 times during the cast. Bombs will explode after 7 seconds, damaging ALL Recruits for (20%) of their Max Health",
-      icon: 'ra-dynamite'
-    },
-    {
-      name: 'Hook Hand!',
-      cost: 0,
-      cast: 2,
-      coolDown: 5,
-      powerRatio: 2,
-      type: 'damage',
-      singleTarget: false,
-      onCooldown: false,
-      manaLost: -5,
-      description: "Damage the Boss' Target for (200%) of Boss Damage. Remove 5 Mana from the Player.",
-      icon: 'ra-pirate-hook'
-    },
-    {
-      name: 'Call Polly!',
-      cost: 0,
-      cast: 3,
-      coolDown: 0,
-      powerRatio: 0.5,
-      percentage: 0.5,
-      tickPower: 0,
-      stunDuration: 5,
-      type: 'damage',
-      singleTarget: true,
-      isChanneled: true,
-      ticks: 10,
-      tickPower: 0.05,
-      onCooldown: false,
-      description: "Damage a random enemy Recruit for (100%) Boss Power and stun them for 5 seconds.",
-      icon: 'ra-parrot-head'
-    }
+      {
+        name: 'Board Ship!',
+        cost: 0,
+        cast: 3,
+        coolDown: 10,
+        description: 'Change to stage 2. Only usable at 1/2 of full health. During stage 2 the Boss will have 2000 armor , 100 mana and a new set of abilties.',
+        icon: 'ra-galleon',
+        stage: 'stageTwo',
+        percentage: 0.5
+      },
+      {
+        name: 'Dynamite!',
+        cost: 10,
+        cast: 3,
+        isChanneled: true,
+        ticks: 2,
+        coolDown: 0,
+        powerRatio: 1,
+        type: 'damage',
+        description: "Apply a bomb effect to a random Recruit (that hasn't been bombed already) 2 times during the cast. Bombs will explode after 7 seconds, damaging ALL Recruits for (20%) of their Max Health",
+        icon: 'ra-dynamite'
+      },
+      {
+        name: 'Hook Hand!',
+        cost: 0,
+        cast: 2,
+        coolDown: 5,
+        powerRatio: 2,
+        type: 'damage',
+        singleTarget: false,
+        onCooldown: false,
+        manaLost: -5,
+        description: "Damage the Boss' Target for (200%) of Boss Damage. Remove 5 Mana from the Player.",
+        icon: 'ra-pirate-hook'
+      },
+      {
+        name: 'Call Polly!',
+        cost: 0,
+        cast: 3,
+        coolDown: 0,
+        powerRatio: 0.5,
+        percentage: 0.5,
+        tickPower: 0,
+        stunDuration: 5,
+        type: 'damage',
+        singleTarget: true,
+        isChanneled: true,
+        ticks: 10,
+        tickPower: 0.05,
+        onCooldown: false,
+        description: "Damage a random enemy Recruit for (100%) Boss Power and stun them for 5 seconds.",
+        icon: 'ra-parrot-head'
+      }
     ]
   },
   spells: [
@@ -92,10 +91,10 @@ export default {
       cost: 0,
       cast: 3,
       coolDown: 10,
-      description: 'Change to stage 2. Only usable at 2/3 of full health, and again at 1/3. During stage 2 the Boss will have 2000 armor , 100 mana and a new set of abilties.',
+      description: 'Change to stage 2. Only useable at (50%) Max Health. During stage 2 the Boss will have 2000 armor , 100 mana and a new set of abilties.',
       icon: 'ra-galleon',
-      stage: 'stageOne',
-      percentage: 2/3
+      stage: 'stageTwo',
+      percentage: 0.5
     },
     {
       name: 'Dynamite!',
@@ -146,8 +145,8 @@ export default {
     description: 'The Boss will start stage 2 with 2000 Armor and 100 mana. The boss will not generate mana during this stage',
     manaRegen: 0,
     power: 50,
-    armor: 2000,
-    initArmor: 2000,
+    armor: 2500,
+    initArmor: 2500,
     mana: 100,
     maxMana: 100,
     spells: [
@@ -158,7 +157,7 @@ export default {
         coolDown: 60,
         description: '(Used at 0 Armor) Return to Stage 1, losing all armor and setting Max Mana to 10.',
         icon: 'ra-shipwreck',
-        stage: 'stageOne'
+        stage: 'stageThree'
       },
       {
         name: 'Harpoon!',
@@ -172,6 +171,19 @@ export default {
         stage: 'stageTwo',
         description: 'Damage the Boss target for (200%) of Boss Power and stun them, and any adjacent Recruits, for 3 seconds.',
         icon: 'ra-harpoon-chain'
+      },
+      {
+        name: 'Reload!',
+        cast: 10,
+        cost: 0,
+        coolDown: 30,
+        powerRatio: 1,
+        isChanneled: true,
+        tickMana: 5,
+        tickArmor: 20,
+        ticks: 20,
+        description: 'Restore 100 Mana and 400 Armor during the cast. (Only used when low on Mana)',
+        icon: 'ra-ammo-box'
       },
       {
         name: 'Rapid Fire!',
@@ -204,61 +216,52 @@ export default {
   },
   stageThree: {
     stage: 'stageThree',
-    description: 'During Stage 3 the Core will gain 1 Mana per second, increasing in Damage as the Mana reduces. Once at 100 Mana the Core will explode, killing the Player and their Recruits',
+    description: 'During Stage 3, the Boss will once again regenerate Mana, and will perform the same abilities as Stage 1, but with 100 Power instead!',
     manaRegen: 1,
     power: 100,
     spells: [
       {
-        name: 'Explode',
-        cast: 10,
-        cost: 0,
-        coolDown: 0,
-        type: 'support',
-        manaRequired: 100,
-        powerRatio: 10000,
-        onCooldown: false,
-        singleTarget: false,
-        description: "(Only Useable at 100 Mana): Damage ALL enemy characters for (1,000,000%) Boss Power",
-        icon: 'ra-crowned-explosion'
-      },
-      {
-        name: 'Radiate',
-        cast: 5,
-        cost: 0,
-        coolDown: 10,
-        type: 'damage',
-        powerRatio: 1,
+        name: 'Dynamite!',
+        cost: 10,
+        cast: 3,
         isChanneled: true,
-        ticks: 5,
-        tickPercentage: 0.08,
-        onCooldown: false,
-        singleTarget: true,
-        description: "Poison ALL Recruits for (60%) of their Max Health over 15 seconds. The Poison increases in damage by 1% for every 1 Mana the Boss has.",
-        icon: 'ra-sun-radiations'
-      },
-      {
-        name: 'Half Life',
-        cast: 5,
-        cost: 0,
-        coolDown: 10,
-        type: 'damage',
-        powerRatio: 1,
-        onCooldown: false,
-        singleTarget: false,
-        description: "Damage EACH Recruit for (50%) of their CURRENT Health",
-        icon: 'ra-split-body'
-      },
-      {
-        name: 'Fission',
-        cast: 5,
-        cost: 0,
+        ticks: 2,
         coolDown: 0,
-        onCooldown: false,
-        singleTarget: true,
         powerRatio: 1,
-        power: -10,
-        description: 'Damage the Boss Target for (100%) Boss Power, lose 10 Power',
-        icon: 'ra-explosive-meeting'
+        type: 'damage',
+        description: "Apply a bomb effect to a random Recruit (that hasn't been bombed already) 2 times during the cast. Bombs will explode after 7 seconds, damaging ALL Recruits for (20%) of their Max Health",
+        icon: 'ra-dynamite'
+      },
+      {
+        name: 'Hook Hand!',
+        cost: 0,
+        cast: 2,
+        coolDown: 5,
+        powerRatio: 2,
+        type: 'damage',
+        singleTarget: false,
+        onCooldown: false,
+        manaLost: -5,
+        description: "Damage the Boss' Target for (200%) of Boss Damage. Remove 5 Mana from the Player.",
+        icon: 'ra-pirate-hook'
+      },
+      {
+        name: 'Call Polly!',
+        cost: 0,
+        cast: 3,
+        coolDown: 0,
+        powerRatio: 0.5,
+        percentage: 0.5,
+        tickPower: 0,
+        stunDuration: 5,
+        type: 'damage',
+        singleTarget: true,
+        isChanneled: true,
+        ticks: 10,
+        tickPower: 0.05,
+        onCooldown: false,
+        description: "Damage a random enemy Recruit for (100%) Boss Power and stun them for 5 seconds.",
+        icon: 'ra-parrot-head'
       }
     ]
   }

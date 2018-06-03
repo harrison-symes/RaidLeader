@@ -73,6 +73,9 @@ class BossSpell extends Component {
         target = aliveTargets[Math.floor(Math.random() * aliveTargets.length)]
         return dispatch({type: 'PERCENT_DAMAGE_FRIENDLY_TARGET', target, percentage: spell.percentage})
 
+      case 'Reload!':
+        dispatch({type: 'BOSS_GAIN_MANA', amount: spell.tickMana})
+        return dispatch({type: 'BOSS_GAIN_ARMOR', amount: spell.tickArmor})
       default: return
     }
   }
