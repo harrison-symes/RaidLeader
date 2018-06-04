@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: `Yarrrrr`,
-  weaponRewards: ['Decaying Blade'],
+  weaponRewards: ["Captain's Hook", 'Glass Eye', 'The Black Flag', 'Rusty Cannon'],
   goldReward: 1000,
   expReward: 1600,
   weaponChance: 1,

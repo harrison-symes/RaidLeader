@@ -20,6 +20,7 @@ export class Warrior extends PartyMemberFrame {
   startFighting () {
     const {dispatch, member} = this.props
     dispatch({type: 'WARRIOR_START_BUFF', target: member})
+    if (this.props.member.weapon_effect == 'battleyCry')     this.props.dispatch({type: 'WARRIOR_START_BUFF'})
     this.startCast()
   }
 }
