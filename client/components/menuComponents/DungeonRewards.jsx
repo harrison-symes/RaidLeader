@@ -105,7 +105,7 @@ class DungeonRewards extends Component {
               }
               {weaponReward && this.weaponInfo(weaponReward)}
             </div>
-            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success">Open Chest</button>
+            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="ra ra-fw ra-locked-chest" /></button>
           }
         </section>
         {showRewards && <footer className="modal-card-foot">

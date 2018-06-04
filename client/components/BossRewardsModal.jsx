@@ -121,7 +121,13 @@ class BossRewardsModal extends Component {
           {showRewards
             ? <div className="has-text-centered">
               <AnimatedExpBar currentExperience={currentExperience} experienceGained={expReward} finishExpAnimation={this.finishExpAnimation} addGem={this.addGem} />
-              <p className="title is-2">Your Rewards</p>
+              <p className="title is-2">
+                <i className="ra ra-open-treasure-chest ra-fw has-text-centered" />
+                &nbsp;
+                Your Rewards
+                &nbsp;
+                <i className="ra ra-open-treasure-chest ra-fw has-text-centered" />
+              </p>
               {gems > 0
                 ? <span className="column is-8 is-offset-2 columns">
                   <span className="column is-6"><p className="subtitle is-1"><GemIcon value={gems} /></p></span>
@@ -132,7 +138,7 @@ class BossRewardsModal extends Component {
 
               {weaponReward && this.weaponInfo(weaponReward)}
             </div>
-            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="fas fa-gift fs-lg" /></button>
+            : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="ra ra-lg ra-locked-chest" /></button>
           }
         </section>
         <footer className="modal-card-foot">
