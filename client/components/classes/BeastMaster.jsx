@@ -51,6 +51,13 @@ export class BeastMaster extends PartyMemberFrame {
           power: power * 0.3,
           name: 'Fox'
         }
+      case 'battleCry':
+        beast: {
+          ...beast,
+          speed,
+          power: power * 0.3,
+          name: 'Piranha'
+        }
       default: return beast
     }
   }
@@ -58,6 +65,9 @@ export class BeastMaster extends PartyMemberFrame {
     const {member, party} = this.props
 
     this.props.dispatch({type: 'BEAST_MASTER_START_BUFF', beast: this.solvePet(), master: member})
+    if (this.props.member.weapon_effect == 'battleyCry')         this.props.dispatch({type: 'BEAST_MASTER_START_BUFF', beast: this.solvePet(), master: member})
+
+
     this.startCast()
   }
 }
