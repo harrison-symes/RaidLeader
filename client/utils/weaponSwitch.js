@@ -731,8 +731,8 @@ module.exports = {
     bonusEffect: 'battleCry',
     icon: 'ra-grapple'
   }),
-  ["Rusty Chain"]: (level, id) => ({
-    name: "Rusty Chain",
+  ["Polly!"]: (level, id) => ({
+    name: "Polly!",
     type: 'weapon',
     level,
     id,
@@ -742,8 +742,8 @@ module.exports = {
     speed: -0.3,
     class: 'Hunter',
     description: "Placeholder",
-    effectDescription: "The Hunter's Starting Buff triggers TWICE! (Summons two Piranhas)",
+    effectDescription: "The Hunter's Starting Buff triggers TWICE! (Summons two Parrots)",
     bonusEffect: 'battleCry',
-    icon: 'ra-piranha'
+    icon: 'ra-parrot-head'
   }),
 }

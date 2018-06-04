@@ -56,7 +56,7 @@ export class BeastMaster extends PartyMemberFrame {
           ...beast,
           speed,
           power: power * 0.3,
-          name: 'Piranha'
+          name: 'Parrot'
         }
       default: return beast
     }

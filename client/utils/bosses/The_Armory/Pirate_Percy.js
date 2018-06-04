@@ -14,7 +14,7 @@ export default {
   isCasting: false,
   bossTarget: null,
   description: `Yarrrrr`,
-  weaponRewards: ["Captain's Hook", 'Glass Eye', 'The Black Flag', 'Rusty Cannon'],
+  weaponRewards: ["Captain's Hook", 'Glass Eye', 'The Black Flag', 'Rusty Cannon', 'Rusty Chain', 'Polly!'],
   goldReward: 1000,
   expReward: 1600,
   weaponChance: 1,
