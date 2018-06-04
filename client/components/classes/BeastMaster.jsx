@@ -52,7 +52,7 @@ export class BeastMaster extends PartyMemberFrame {
           name: 'Fox'
         }
       case 'battleCry':
-        beast: {
+        beast = {
           ...beast,
           speed,
           power: power * 0.3,
