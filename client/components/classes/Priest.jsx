@@ -43,6 +43,7 @@ export class Priest extends PartyMemberFrame {
     const {member, dispatch} = this.props
     const {heroClass, power, speed, initHp} = this.props.member
     dispatch({type: 'PRIEST_START_BUFF', target: member})
+    if (this.props.member.weapon_effect == 'battleyCry')     this.props.dispatch({type: 'PRIEST_START_BUFF', target: member})
     this.startCast();
   }
 }

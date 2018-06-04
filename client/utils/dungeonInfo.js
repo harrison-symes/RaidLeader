@@ -169,7 +169,7 @@ export default function getDungeonInfo(dungeon, isCompleted) {
       gold_reward: 0,
       description: "I suppose it only makes sense when you think about it. Where else would all these weapons have come from? ... ... ... Except those weapons you extracted from those dead animals earlier, you monster!",
       bosses: [
-
+        'Pirate Percy'
       ]
     }
     case "The Lair": return {

@@ -12,6 +12,7 @@ import FlamingFurnace from '../FlamingFurnace'
 import CyclingConveyer from '../CyclingConveyer'
 import CollapsingCore from '../CollapsingCore'
 import TrappedTunnel from '../TrappedTunnel'
+import PiratePercy from '../PiratePercy'
 
 export default function (boss) {
   switch(boss.name) {
@@ -27,6 +28,7 @@ export default function (boss) {
     case 'Cycling Conveyer': return <CyclingConveyer boss={boss} />
     case 'Collapsing Core': return <CollapsingCore boss={boss} />
     case 'Trapped Tunnel': return <TrappedTunnel boss={boss} />
+    case 'Pirate Percy': return <PiratePercy boss={boss} />
     default: return null
   }
 }

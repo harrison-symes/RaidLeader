@@ -132,6 +132,7 @@ export default function player (state = null, action) {
     case 'PLAYER_GAIN_MANA':
       newState.mana += action.power
       if (newState.mana >= newState.maxMana) newState.mana = newState.maxMana
+      if (newState.mana <= 0) newState.mana = 0
       return newState
     case 'INCREASE_PLAYER_MANA':
       newState.mana += action.mana

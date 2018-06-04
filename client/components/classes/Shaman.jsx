@@ -28,6 +28,8 @@ export class Shaman extends PartyMemberFrame {
   }
   startFighting () {
     this.props.dispatch({type: 'SHAMAN_START_BUFF'})
+    if (this.props.member.weapon_effect == 'battleyCry')     this.props.dispatch({type: 'SHAMAN_START_BUFF'})
+
     this.startCast()
   }
 }

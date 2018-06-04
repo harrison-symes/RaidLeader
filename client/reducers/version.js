@@ -1,3 +1,3 @@
-export default function (state = '0.4.3', action) {
+export default function (state = '0.5 Alpha', action) {
   return state
 }

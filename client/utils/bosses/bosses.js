@@ -10,22 +10,29 @@ import Flaming_Furnace from './The_Foundry/Flaming_Furnace'
 import Cycling_Conveyer from './The_Foundry/Cycling_Conveyer'
 import Collapsing_Core from './The_Foundry/Collapsing_Core'
 import Trapped_Tunnel from './The_Foundry/Trapped_Tunnel'
+import Pirate_Percy from './The_Armory/Pirate_Percy'
 import Test from './Test'
 
 export default function (bossName) {
   switch(bossName) {
     case 'Damaged Dragon': return Damaged_Dragon
+
     case 'Biting Bear': return Biting_Bear
     case 'Trampling Turtle': return Trampling_Turtle
     case 'Spitting Spider': return Spitting_Spider
+
     case 'Seeping Slime': return Seeping_Slime
     case 'Decaying Deer': return Decaying_Deer
     case 'Lunging Locusts': return Lunging_Locusts
     case 'Plague Piltherer': return Plague_Piltherer
+
     case 'Flaming Furnace': return Flaming_Furnace
     case 'Cycling Conveyer': return Cycling_Conveyer
     case 'Collapsing Core': return Collapsing_Core
     case 'Trapped Tunnel': return Trapped_Tunnel
+
+    case 'Pirate Percy': return Pirate_Percy
+
     case 'Test': return Test
     default: return null
   }

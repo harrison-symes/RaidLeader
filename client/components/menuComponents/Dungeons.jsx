@@ -38,7 +38,13 @@ class Dungeons extends Component {
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title is-1">Dungeon Map</p>
+          <p className="modal-card-title is-1">
+            <i className="icon ra ra-treasure-map ra-fw" />
+            &nbsp;
+            Dungeon Map
+            &nbsp;
+            <i className="icon ra ra-treasure-map ra-fw" />
+          </p>
           <button onClick={close} className="delete" aria-label="close"></button>
         </header>
         <section className="modal-card-body">

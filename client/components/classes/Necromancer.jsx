@@ -37,6 +37,7 @@ export class Necromancer extends PartyMemberFrame {
   }
   startFighting () {
     this.props.dispatch({type: 'NECROMANCER_START_BUFF'})
+    if (this.props.member.weapon_effect == 'battleyCry')     this.props.dispatch({type: 'NECROMANCER_START_BUFF'})
     this.startCast()
   }
 }

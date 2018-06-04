@@ -21,6 +21,7 @@ export class Hunter extends PartyMemberFrame {
   startFighting () {
     const {member, dispatch} = this.props
     dispatch({type: 'HUNTER_START_BUFF', target: member})
+    if (this.props.member.weapon_effect == 'battleyCry')     this.props.dispatch({type: 'HUNTER_START_BUFF', target: member})
     this.startCast()
   }
 }

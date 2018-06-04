@@ -6,6 +6,23 @@ import Spells from './spells'
 
 module.exports = [
   {
+    version: '0.5.0',
+    title: 'The Armory!',
+    updates: [
+      {
+        title: 'The Armory!',
+        description: <div className="content is-medium has-text-dark">
+          <p><b>The Armory</b> is (finally) in development!</p>
+          <p>This new dungeon is available during it's development, and bosses will be released as time progresses.</p>
+          <p>To enter The Armory you must clear <b>The Foundry</b> on your account. You may bring <b>4 Spells</b> and <b>4 Recruits</b> to this new dungeon!</p>
+          <hr />
+          <p>Currently there is one boss awaiting testing: <b>Percy the Pirate!</b></p>
+          <p>Be sure to read the Boss Descriptions :)</p>
+        </div>
+      }
+    ]
+  },
+  {
     version: '0.4.3',
     title: 'The Polish',
     updates: [
