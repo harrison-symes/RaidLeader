@@ -60,11 +60,11 @@ r# Raid Leader Web API documentation
 
 #### Request Body
 
-```
-{
-  user_name: 'Submitted-Username',
-  password: 'submitted-password'
-}
+``` js
+  {
+    user_name: 'Submitted-Username',
+    password: 'submitted-password'
+  }
 ```
 
 #### Response
@@ -79,7 +79,8 @@ r# Raid Leader Web API documentation
 ##### Response Body
 
 Success:
-```
+
+``` js
   {
     message: 'Authentication Successful'
     token: JWT-TOKEN
@@ -87,7 +88,8 @@ Success:
 ```
 
 User Name Taken:
-```
+
+``` js
   {
     message: 'User Name Already Taken'
   }
@@ -104,11 +106,11 @@ User Name Taken:
 
 #### Request Body
 
-```
-{
-  user_name: 'existing-username',
-  password: 'existing-password'
-}
+``` js
+  {
+    user_name: 'existing-username',
+    password: 'existing-password'
+  }
 ```
 
 #### Response
@@ -123,7 +125,8 @@ User Name Taken:
 ##### Response Body
 
 Success:
-```
+
+``` js
   {
     message: 'Authentication Successful'
     token: JWT-TOKEN
@@ -131,7 +134,8 @@ Success:
 ```
 
 Failure:
-```
+
+``` js
   {
     message: 'Error Message'
   }
@@ -161,7 +165,8 @@ Failure:
 ##### Response Body
 
 Success:
-```
+
+``` js
   [
     {
       "id": 1,
@@ -181,7 +186,8 @@ Success:
 ```
 
 Failure:
-```
+
+``` js
   {
     message: 'Error Message'
   }
@@ -201,10 +207,11 @@ Failure:
 
 #### Request Body
 
-```
-{
-  dungeon_id: 1
-}
+``` js
+
+  {
+    dungeon_id: 1
+  }
 ```
 
 #### Response
@@ -236,23 +243,24 @@ Failure:
 
 #### Response Body
 
-```
+``` js
   [
     {
-        "id": 1,
-        "name": "Patrick",
-        "heroClass": "Paladin",
-        "level": 3,
-        "weapon_id": 3,
-        "user_id": 1,
-        "zodiac": "Aries"
+      "id": 1,
+      "name": "Patrick",
+      "heroClass": "Paladin",
+      "level": 3,
+      "weapon_id": 3,
+      "user_id": 1,
+      "zodiac": "Aries"
     },
     ...
   ]
 ```
 
 Failure:
-```
+
+``` js
   {
     message: 'Error Message'
   }
@@ -272,12 +280,12 @@ Failure:
 
 ##### Request Body
 
-```
-{
-  name: 'Patty',
-  zodiac: 'Aries',
-  heroClass: 'Paladin'
-}
+``` js
+  {
+    name: 'Patty',
+    zodiac: 'Aries',
+    heroClass: 'Paladin'
+  }
 ```
 
 #### Response
@@ -291,7 +299,7 @@ Failure:
 
 #### Response Body
 
-```
+``` js
   {
     "id": 2,
     "name": "Patty",
@@ -317,11 +325,11 @@ Failure:
 
 ##### Request Body
 
-```
-{
-  id: 1,
-  weapon_id: 2
-}
+``` js
+  {
+    id: 1,
+    weapon_id: 2
+  }
 ```
 
 #### Response
@@ -347,11 +355,11 @@ Failure:
 
 ##### Request Body
 
-```
-{
-  id: 1,
-  level: 2
-}
+``` js
+  {
+    id: 1,
+    level: 2
+  }
 ```
 
 #### Response
@@ -364,17 +372,15 @@ Failure:
 
 ##### Response Body
 
-```
+``` js
   {
-    {
-      "id": 1,
-      "name": "Patrick",
-      "heroClass": "Paladin",
-      "level": 2,
-      "weapon_id": null,
-      "user_id": 1,
-      "zodiac": "Aries"
-    }
+    "id": 1,
+    "name": "Patrick",
+    "heroClass": "Paladin",
+    "level": 2,
+    "weapon_id": null,
+    "user_id": 1,
+    "zodiac": "Aries"
   }
 ```
 
@@ -400,12 +406,13 @@ Failure:
 
 #### Response Body
 
-```
+``` js
   4200
 ```
 
 Failure:
-```
+
+``` js
   {
     message: 'Error Message'
   }
@@ -426,10 +433,10 @@ Failure:
 
 ##### Request Body
 
-```
-{
-  gold: 500
-}
+``` js
+  {
+    gold: 500
+  }
 ```
 
 #### Response
@@ -461,7 +468,7 @@ Failure:
 
 #### Response Body
 
-```
+``` js
   [
     {
       "id": 1,
@@ -474,7 +481,8 @@ Failure:
 ```
 
 Failure:
-```
+
+``` js
   {
     message: 'Error Message'
   }
@@ -494,11 +502,11 @@ Failure:
 
 ##### Request Body
 
-```
-{
-  name: 'Dragon Scale',
-  level: '1'
-}
+``` js
+  {
+    name: 'Dragon Scale',
+    level: '1'
+  }
 ```
 
 #### Response
@@ -512,7 +520,7 @@ Failure:
 
 #### Response Body
 
-```
+``` js
   {
     "id": 16,
     "is_weapon": 1,
@@ -536,11 +544,11 @@ Failure:
 
 ##### Request Body
 
-```
-{
-  name: 'Dragon Scale',
-  level: '1'
-}
+``` js
+  {
+    name: 'Dragon Scale',
+    level: '1'
+  }
 ```
 
 #### Response
@@ -554,7 +562,7 @@ Failure:
 
 #### Response Body
 
-```
+``` js
   {
     "id": 16,
     "is_weapon": 1,
