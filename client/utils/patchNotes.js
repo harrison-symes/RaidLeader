@@ -19,6 +19,16 @@ module.exports = [
           <p>Currently there is one boss awaiting testing: <b>Percy the Pirate!</b></p>
           <p>Be sure to read the Boss Descriptions :)</p>
         </div>
+      },
+      {
+        title: 'Stranded Recruits!',
+        description: <div className="content is-medium has-text-dark">
+          <p>Occassionally when defeating a Boss your may rescue a <b>Stranded Recruit</b>!</p>
+          <p>These recruits will join your party upon rescue, and their Level will be based on the Boss' Level</p>
+          <p>This should naturally increase your options as you assemble your teams, where previously the desire to hoard gold would keep your options low.</p>
+          <p>Some bosses will only reward <b>Stranded Recruits</b> of specific Classes</p>
+          <p>Different Bosses will have differing chances to reward <b>Stranded Recruits</b>, but the default chance is <b>%15</b> (Subject to change)</p>
+        </div>
       }
     ]
   },
