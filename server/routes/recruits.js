@@ -9,8 +9,8 @@ router.get('/', decode, (req, res) => {
 })
 
 router.post('/', decode, (req, res) => {
-  const {name, heroClass, zodiac} = req.body
-  recruitsDb.addRecruit(req.user.user_id, name, 1, heroClass, zodiac)
+  const {name, heroClass, zodiac, level} = req.body
+  recruitsDb.addRecruit(req.user.user_id, name, level || 1, heroClass, zodiac)
     .then(recruit => res.status(201).json(recruit))
 })
 
