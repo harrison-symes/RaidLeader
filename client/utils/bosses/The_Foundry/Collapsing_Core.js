@@ -18,7 +18,7 @@ export default {
   goldReward: 700,
   expReward: 1200,
   weaponChance: 1,
-  progress_required: 0,
+  progress_required: 2,
   icon: 'ra-unstable-orb',
   stage: 'stageOne',
   spells: [

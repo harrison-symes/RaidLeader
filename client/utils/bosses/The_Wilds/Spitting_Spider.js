@@ -20,6 +20,7 @@ export default {
   weaponChance: 1,
   progress_required: 2,
   icon: 'ra-masked-spider',
+  recruitChance: 0.3,
   spells: [
     {
       name: 'Feed',

@@ -18,9 +18,10 @@ export default {
   goldReward: 700,
   expReward: 1200,
   weaponChance: 1,
-  progress_required: 0,
+  progress_required: 3,
   icon: 'ra-gold-mine',
   stage: 'stageZero',
+  recruitChance: 0.5,
   spells: [
     {
       name: 'Next Room',

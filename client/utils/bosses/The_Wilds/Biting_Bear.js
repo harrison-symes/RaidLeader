@@ -20,6 +20,7 @@ export default {
   weaponChance: 1,
   progress_required: 1,
   icon: 'ra-bear-head',
+  recruitChance: 0.2,
   spells: [
     {
       name: 'Swipe',

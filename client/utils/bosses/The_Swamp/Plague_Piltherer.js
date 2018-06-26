@@ -20,6 +20,7 @@ export default {
   weaponChance: 1,
   progress_required: 3,
   icon: 'ra-mad-scientist',
+  recruitChance: 0.4,
   spells: [
     {
       name: 'Ingest Plague',

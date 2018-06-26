@@ -11,6 +11,12 @@ import {HealthIcon, PowerIcon, ManaIcon, SpeedIcon, ManaRegenIcon, GoldIcon, Gem
 import AnimatedExpBar from './menuComponents/AnimatedExpBar'
 
 import {gainGems} from '../actions/gems'
+import {getZodiacs} from '../utils/zodiacs'
+import randomName from '../utils/randomName'
+import createClass from '../utils/createClass'
+
+import {addRecruit} from '../actions/recruits'
+
 
 import {solveLevelByExperience, solveExperienceNeeded, levelExperienceRequired} from '../utils/experienceRequired'
 
@@ -25,6 +31,7 @@ class BossRewardsModal extends Component {
   constructor(props) {
     super(props)
     let goldReward = Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4)))
+    if (Math.random() < 0.05) goldReward*=2
     let expReward = Math.ceil(props.boss.expReward * (0.9 + (Math.random() * 0.4)))
     this.state = {
       showRewards: false,
@@ -33,11 +40,34 @@ class BossRewardsModal extends Component {
       weaponReward: this.solveWeaponReward(props.boss),
       currentExperience: props.experience,
       gems: this.solveBaseGems(),
-      animationDone: false
+      animationDone: false,
+      recruitReward: this.solveRecruitReward(),
+      isLoading: false
     }
     this.showRewards = this.showRewards.bind(this)
     this.addGem = this.addGem.bind(this)
     this.finishExpAnimation = this.finishExpAnimation.bind(this)
+  }
+  solveRecruitReward() {
+    const {boss} = this.props
+    //UNCOMMENT THIS
+    if (Math.random() < boss.recruitChance || 0.15) return null
+
+
+    const classes = boss.recruitClasses || [
+      'Paladin', 'Priest', 'Monk',
+      'Mage', 'Rogue', 'Warlock',
+      'Warrior', 'Hunter', 'Shaman',
+      'Bard', 'Necromancer', 'Beast Master'
+    ]
+    const zodiacs = getZodiacs()
+    const {recruits} = this.props
+
+    let heroClass = classes[Math.floor(Math.random() * classes.length)]
+    let zodiac = zodiacs[Math.floor(Math.random() * zodiacs.length)]
+    let name = randomName(recruits.map(recruit => recruit.name))
+
+    return {heroClass, zodiac, name, level: boss.level}
   }
   solveBaseGems() {
     const {party, currentLocation} = this.props
@@ -73,9 +103,15 @@ class BossRewardsModal extends Component {
     this.getReward()
   }
   getReward() {
-    const {goldReward, weaponReward} = this.state
+    const {goldReward, weaponReward, recruitReward} = this.state
     this.props.dispatch(earnGold(goldReward))
     if (weaponReward) this.props.dispatch(addWeapon(weaponReward))
+    console.log({recruitReward});
+    if (recruitReward) this.props.dispatch(addRecruit(recruitReward, success => {
+      this.setState({
+        isLoading: false
+      })
+    }))
   }
   showRewards() {
     this.setState({showRewards: true})
@@ -108,8 +144,20 @@ class BossRewardsModal extends Component {
       </div>
     </div>
   }
+  recruitInfo() {
+    const {recruitReward} = this.state
+    const recruit = createClass(recruitReward)
+
+    return <div className="box">
+      <p className="title is-3">You found a stranded Recruit!</p>
+      <br />
+      <p className="title is-3">{recruit.name}</p>
+      <p className="title is-3">Level {recruit.level} - {recruit.heroClass}</p>
+      <p className="subtitle is-3">{recruit.name} has joined your party!</p>
+    </div>
+  }
   render() {
-    const {showRewards, goldReward, weaponReward, currentExperience, nextExperience, gems, expReward} = this.state
+    const {showRewards, goldReward, weaponReward, recruitReward, currentExperience, nextExperience, gems, expReward} = this.state
     const {boss} = this.props
     return <div className="Town-Buttons Menu-Buttons Town Menu Modal modal is-active">
       <div className="modal-background"></div>
@@ -136,6 +184,8 @@ class BossRewardsModal extends Component {
                 : <span className="subtitle is-1"><GoldIcon value={goldReward} /></span>
               }
 
+              {recruitReward && this.recruitInfo()}
+              {recruitReward && <hr />}
               {weaponReward && this.weaponInfo(weaponReward)}
             </div>
             : <button onClick={this.showRewards} className="button is-large is-fullwidth is-success"><i className="ra ra-lg ra-locked-chest" /></button>
@@ -149,12 +199,13 @@ class BossRewardsModal extends Component {
   }
 }
 
-const mapStateToProps = ({location, party, weapons, experience}) => {
+const mapStateToProps = ({location, party, weapons, experience, recruits}) => {
   return {
     currentLocation: location,
     party,
     weapons,
-    experience
+    experience,
+    recruits
   }
 }
 
