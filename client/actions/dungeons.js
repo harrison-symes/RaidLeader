@@ -4,7 +4,7 @@ import bosses from '../utils/bosses/bosses'
 import dungeonInfo from '../utils/dungeonInfo'
 
 export function receiveDungeonsAction (dungeons) {
-  // dungeons.push(dungeonInfo('The Test', false))
+  dungeons.push(dungeonInfo('The Test', false))
   return {
     type: "RECEIVE_DUNGEONS",
     dungeons: dungeons.map(dungeon => {
