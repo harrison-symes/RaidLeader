@@ -20,6 +20,7 @@ export default {
   weaponChance: 1,
   progress_required: 1,
   icon: ' ra-butterfly',
+  recruitChance: 0.3,
   spells: [
     {
       name: 'Overwhelm',

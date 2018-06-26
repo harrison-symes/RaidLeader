@@ -19,6 +19,7 @@ export default {
   expReward: 300,
   weaponChance: 1,
   progress_required: 0,
+  recruitChance: 0,
   icon: 'ra-dragon-head',
   spells: [
     {

@@ -20,6 +20,7 @@ export default {
   weaponChance: 1,
   progress_required: 0,
   icon: 'ra-turtle-shell',
+  recruitChance: 0.1,
   spells: [
     {
       name: 'Protect',
