@@ -31,6 +31,7 @@ class BossRewardsModal extends Component {
   constructor(props) {
     super(props)
     let goldReward = Math.ceil(props.boss.goldReward * (0.9 + (Math.random() * 0.4)))
+    if (Math.random() < 0.05) goldReward*=2
     let expReward = Math.ceil(props.boss.expReward * (0.9 + (Math.random() * 0.4)))
     this.state = {
       showRewards: false,
