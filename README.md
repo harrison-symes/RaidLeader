@@ -11,6 +11,8 @@
 
 Check out the [Developer Documentation](./developerDocs/README.md) for understanding the behaviour / purpose of utilties and APIs
 
+Check out the [Patch Notes](./developerDocs/patchNotes.md) to read about recent changes to the game!
+
 If you wish to run this repo locally, simply
 
 
