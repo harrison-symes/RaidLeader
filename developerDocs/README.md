@@ -4,3 +4,4 @@ Here are links to the different markdown documents that describe the different s
 
 ## Links
 [API](./api.md)
+[Patch Notes](./patchNotes.md)
